@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EGT Torsteuerung — CircuitJS + HMI</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --panel: #0f172a;
+      --card: #1e293b;
+      --ink: #0f172a;
+      --line: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --blue: #3b82f6;
+      --blue-btn: #2563eb;
+      --amber: #d97706;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --led-off: #334155;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%;
+      background: var(--bg); color: var(--text);
+      font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
+      color-scheme: dark;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: minmax(420px, 7fr) 8px minmax(360px, 3fr);
+      height: 100%;
+    }
+    .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
+    .sim-pane { display: flex; flex-direction: column; background: #020617; }
+    .sim-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 12px; background: var(--panel);
+      border-bottom: 1px solid #1e293b; flex-shrink: 0;
+    }
+    .sim-bar h1 { margin: 0; font-size: 13px; font-weight: 700; }
+    .sim-bar select, .sim-bar a {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--line); border-radius: 6px;
+      padding: 4px 8px; font-size: 12px; text-decoration: none;
+    }
+    .sim-bar a:hover { border-color: var(--blue); }
+    #circuitFrame { flex: 1; width: 100%; border: 0; background: #000; }
+    .split {
+      cursor: col-resize; background: #1e293b;
+      border-left: 1px solid #334155; border-right: 1px solid #334155;
+    }
+    .split:hover { background: var(--blue); }
+    .hmi-pane { overflow: auto; background: var(--bg); container-type: inline-size; }
+    .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
+
+    header.top {
+      background: linear-gradient(180deg, #121a2b 0%, var(--panel) 100%);
+      border-bottom: 1px solid #1e293b;
+      box-shadow: inset 0 1px 0 #ffffff0d;
+      margin: 0 -14px 16px;
+      padding: 0;
+    }
+    .top-inner {
+      margin: 0;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px;
+      padding: 12px 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-ico {
+      width: 42px; height: 42px; border-radius: 10px; flex: none;
+      background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #fff;
+      display: grid; place-items: center;
+      border: 1px solid #93c5fd55;
+      box-shadow: inset 0 1px 0 #ffffff40, 0 6px 14px #1d4ed840;
+    }
+    .brand-ico svg { display: block; }
+    .brand h1 {
+      margin: 0; font-size: 17px; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.2;
+    }
+    .brand p {
+      margin: 4px 0 0; font-size: 12px; color: var(--muted);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0;
+    }
+    .brand p span { white-space: nowrap; }
+    .brand p span + span::before {
+      content: "·";
+      margin: 0 8px;
+      color: #475569;
+      font-weight: 700;
+    }
+    .badges {
+      display: flex; gap: 8px; background: #020617; padding: 6px;
+      border: 1px solid #1e293b; border-radius: 12px;
+      margin-left: auto;
+    }
+    .badge {
+      min-width: 110px; text-align: center;
+      background: #0f172a; border: 1px solid #1e293b; border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .badge .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+    .badge .v { font-size: 13px; font-weight: 800; margin-top: 2px; }
+    .badge .v.with-led {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .badge .led {
+      width: 8px; height: 8px; border-radius: 50%; flex: none;
+    }
+    .badge .led.off { background: var(--red); box-shadow: 0 0 7px #ef4444; }
+    .badge .led.on { background: var(--green); box-shadow: 0 0 7px #22c55e; }
+    .state-auf { color: var(--blue); }
+    .state-zu { color: var(--yellow); }
+    .state-offen, .state-ok { color: var(--green); }
+    .state-fault { color: var(--red); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: "anlage" "side";
+      gap: 14px; align-items: start;
+    }
+    .grid > .card { grid-area: anlage; }
+    .grid > .side { grid-area: side; }
+    .card {
+      background: var(--card);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .card h2 {
+      margin: 0 0 12px; font-size: 11px; font-weight: 800;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      border-bottom: 1px solid #1e293b; padding-bottom: 8px;
+    }
+    .spd { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: none; letter-spacing: 0; }
+    input[type=range] { accent-color: var(--blue); width: 90px; }
+
+    .scene {
+      position: relative; height: 380px;
+      background: #020617; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden;
+    }
+    .drive-bar {
+      position: absolute; left: 128px; right: 16px; top: 10px; height: 44px; z-index: 5;
+      display: flex; align-items: center; gap: 8px;
+      background: #0f172ae6; border: 1px solid #334155; border-radius: 10px; padding: 0 12px;
+    }
+    .welle {
+      flex: 1; min-width: 0; height: 14px; align-self: center;
+      border-radius: 3px; border: 1px solid #64748b;
+      background: repeating-linear-gradient(90deg, #64748b 0 8px, #334155 8px 16px);
+      margin-right: -1px;
+    }
+    .drive-bar.run.auf .welle { animation: drum .45s linear infinite; }
+    .drive-bar.run.zu .welle { animation: drum-rev .45s linear infinite; }
+    .mtr-meta { display: flex; align-items: center; gap: 8px; text-align: right; flex: none; }
+    .mtr-meta b { display: block; font-size: 11px; }
+    .mtr-meta span { font-size: 10px; color: var(--muted); font-weight: 700; }
+    .mtr-meta span.auf { color: var(--blue); }
+    .mtr-meta span.zu { color: var(--yellow); }
+    .motor {
+      width: 40px; height: 40px; border-radius: 50%; flex: none; align-self: center;
+      background: #0b1220; border: 2px solid #64748b;
+      box-shadow: inset 0 0 0 3px #1e293b;
+      position: relative;
+      display: grid; place-items: center;
+    }
+    .prop { width: 36px; height: 36px; display: block; }
+    .prop .mark { fill: #e2e8f0; }
+    .hub {
+      position: absolute; left: 50%; top: 50%;
+      width: 10px; height: 10px; margin: -5px 0 0 -5px;
+      border-radius: 50%; background: #334155; border: 2px solid #cbd5e1;
+      pointer-events: none;
+    }
+    .drive-bar.run.auf .prop { animation: spin .95s linear infinite; }
+    .drive-bar.run.zu .prop { animation: spin-rev .95s linear infinite; }
+    .drive-bar.run.auf { border-color: var(--blue); }
+    .drive-bar.run.zu { border-color: var(--yellow); }
+    .drive-bar.run.auf .prop .mark { fill: var(--blue); }
+    .drive-bar.run.zu .prop .mark { fill: var(--yellow); }
+    .drive-bar.overheat {
+      border-color: var(--red);
+      background: #3f1212e6;
+    }
+    .drive-bar.overheat .motor {
+      border-color: #f87171;
+      box-shadow: 0 0 16px #ef444488, inset 0 0 0 3px #7f1d1d;
+      animation: heat .55s ease-in-out infinite;
+    }
+    .drive-bar.overheat .welle { animation: drum .22s linear infinite; }
+    .drive-bar.overheat .prop { animation: spin .35s linear infinite; }
+    .drive-bar.overheat .prop .mark { fill: #fca5a5; }
+    .mtr-meta span.hot { color: #fca5a5; }
+    @keyframes heat {
+      50% { box-shadow: 0 0 22px #ef4444cc, inset 0 0 0 3px #991b1b; }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin-rev { to { transform: rotate(-360deg); } }
+    @keyframes drum { to { background-position: 16px 0; } }
+    @keyframes drum-rev { to { background-position: -16px 0; } }
+
+    .portal {
+      position: absolute; left: 128px; right: 88px; top: 64px; bottom: 22px;
+      border: 8px solid #475569; border-bottom: 0; overflow: hidden;
+      background: linear-gradient(#0c4a6e 0, #0369a1 42%, #166534 42%, #14532d 100%);
+      box-shadow: inset 0 0 30px #0006;
+    }
+    .door {
+      position: absolute; left: 0; right: 0; top: 0; height: 100%;
+      background: repeating-linear-gradient(to bottom, #cbd5e1 0 14px, #94a3b8 14px 16px);
+      box-shadow: 0 12px 18px #0005;
+      transform-origin: top;
+    }
+    .door.past {
+      filter: saturate(.55) brightness(.82);
+      box-shadow: 0 12px 18px #7f1d1d99;
+    }
+    .edge {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 16px; z-index: 3;
+      appearance: none; cursor: pointer; font: inherit;
+      background: #f59e0b; color: #1c1917; border: 0; border-top: 1px solid #b45309;
+      font-size: 8px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .edge:hover { filter: brightness(1.08); }
+    .edge.active {
+      background: #dc2626; color: #fff; border-top-color: #991b1b;
+    }
+    .floor {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+      background: #1e293b; border-top: 2px solid #475569;
+      color: var(--muted); font-size: 9px; letter-spacing: .12em;
+      display: grid; place-items: center; font-weight: 700;
+    }
+
+    .ls {
+      position: absolute; z-index: 6;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700;
+    }
+    .ls.s1 { left: 4px; top: 72px; }
+    .ls.s2 { left: 4px; bottom: 24px; }
+    .ls-label {
+      background: #0f172a; border: 1px solid #334155;
+      border-radius: 8px; padding: 4px 7px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ls-led {
+      width: 8px; height: 8px; border-radius: 50%; background: #475569;
+    }
+    .ls.on .ls-led { background: var(--green); box-shadow: 0 0 8px #22c55ecc; }
+    .ls.on .ls-label { color: var(--green); }
+    .ls-body {
+      width: 18px; height: 28px;
+      background: linear-gradient(#ffd24a, #c9a227);
+      border: 1px solid #8a7018; border-radius: 3px;
+      position: relative;
+      box-shadow: 0 2px 4px #0006;
+    }
+    .ls-body::after {
+      content: "";
+      position: absolute; right: -10px; top: 11px;
+      width: 10px; height: 4px;
+      background: #d7dee6; border-radius: 0 2px 2px 0;
+      transform: rotate(28deg); transform-origin: left center;
+    }
+    .ls.on .ls-body::after { transform: rotate(0deg); background: #ffe08a; }
+
+    .pe-wrap {
+      position: absolute; left: 8px; right: 88px; bottom: 76px; z-index: 7;
+      display: flex; align-items: center; gap: 6px;
+      pointer-events: none;
+    }
+    .pe {
+      flex: 1; height: 22px; min-width: 0;
+      display: flex; align-items: center;
+    }
+    .pe-head {
+      width: 12px; height: 22px; flex: none;
+      background: #f59e0b; border: 1px solid #0f172a; border-radius: 2px;
+      display: grid; place-items: center;
+    }
+    .pe-head i { width: 6px; height: 6px; border-radius: 50%; }
+    .pe-head.tx i { background: #dc2626; }
+    .pe-head.rx i { background: var(--green); box-shadow: 0 0 6px #22c55e; }
+    .pe.cut .pe-head.rx i { background: #dc2626; box-shadow: 0 0 6px #ef4444; }
+    .pe-beam {
+      flex: 1; height: 2px;
+      background: linear-gradient(90deg, #ef4444cc, #ef444433, #ef4444cc);
+      box-shadow: 0 0 8px #ef4444aa;
+    }
+    .pe.cut .pe-beam {
+      background: #1e293b; box-shadow: none; opacity: .35;
+    }
+    .pe-tag {
+      flex: none;
+      background: #0f172a; border: 1px solid #334155;
+      border-radius: 8px; padding: 4px 7px;
+      font-size: 10px; font-weight: 700;
+      white-space: nowrap;
+    }
+    .obstacle {
+      position: absolute; left: 50%; bottom: 68px; z-index: 8;
+      transform: translateX(-50%);
+      appearance: none; cursor: pointer; font: inherit;
+      background: #f59e0b; color: #1c1917; border: 2px solid #fde68a;
+      border-radius: 8px; padding: 5px 10px;
+      font-size: 11px; font-weight: 800;
+      box-shadow: 0 4px 12px #0007;
+    }
+    .obstacle.on {
+      background: #dc2626; color: #fff; border-color: #fca5a5;
+    }
+
+    .ampel {
+      position: absolute; right: 18px; top: 118px; z-index: 6;
+      width: 36px;
+      background: #111;
+      border: 2px solid #334155;
+      border-radius: 12px;
+      padding: 8px 6px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      box-shadow: 0 8px 16px #0008;
+    }
+    .ampel::after {
+      content: "";
+      position: absolute; left: 50%; bottom: -28px;
+      width: 6px; height: 28px; margin-left: -3px;
+      background: #475569;
+    }
+    .ampel i {
+      display: block; width: 18px; height: 18px; border-radius: 50%;
+      background: #1e293b; border: 1px solid #0f172a;
+    }
+    .ampel.red i:nth-child(1) { background: var(--red); box-shadow: 0 0 12px #ef4444; }
+    .ampel.yellow i:nth-child(2) { background: var(--yellow); box-shadow: 0 0 12px #eab308; }
+    .ampel.green i:nth-child(3) { background: var(--green); box-shadow: 0 0 12px #22c55e; }
+    .ampel-cap {
+      position: absolute; right: 8px; top: 232px; z-index: 6;
+      font-size: 10px; font-weight: 700; color: var(--muted); text-align: center; width: 56px;
+    }
+    .alarm {
+      position: absolute; right: 8px; top: 252px; z-index: 6;
+      width: 58px; text-align: center;
+      background: #0f172ae6; border: 1px solid #334155; border-radius: 8px;
+      padding: 6px 4px 4px;
+    }
+    .p4 {
+      width: 20px; height: 20px; margin: 0 auto 2px;
+      border-radius: 50%; background: #3f1212; border: 2px solid #7f1d1d;
+    }
+    .alarm.on .p4 {
+      background: var(--red); border-color: #fca5a5;
+      box-shadow: 0 0 14px #ef4444;
+      animation: blink .45s linear infinite;
+    }
+    .hupe {
+      width: 26px; height: 16px; margin: 4px auto 0;
+      background: #475569;
+      clip-path: polygon(0 5px, 11px 5px, 26px 0, 26px 16px, 11px 11px, 0 11px);
+      position: relative;
+    }
+    .alarm.on .hupe {
+      background: #f87171;
+      animation: honk .35s ease-in-out infinite;
+    }
+    .alarm.on .hupe::after {
+      content: "";
+      position: absolute; left: 28px; top: 1px;
+      width: 8px; height: 12px;
+      border: 2px solid #f87171; border-left: 0; border-radius: 0 8px 8px 0;
+    }
+    .alarm small {
+      display: block; margin-top: 3px;
+      font-size: 9px; font-weight: 800; color: #f87171;
+      line-height: 1.2;
+    }
+    @keyframes blink { 50% { opacity: .35; } }
+    @keyframes honk { 50% { transform: scale(1.12); } }
+
+    .side {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+      min-width: 0;
+    }
+    .side > .card { min-width: 0; }
+    .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    button.cmd {
+      appearance: none; border-radius: 12px; padding: 12px 10px 10px;
+      cursor: pointer; color: #fff; text-align: center;
+      border: 1px solid transparent; font: inherit; font-weight: 800; font-size: 15px;
+    }
+    button.cmd.auf { background: var(--blue-btn); border-color: #60a5fa; }
+    button.cmd.zu { background: var(--amber); border-color: #fbbf24; }
+    button.cmd.stop { grid-column: 1 / -1; background: #dc2626; border-color: #f87171; }
+    button.cmd.notaus { grid-column: 1 / -1; background: #7f1d1d; border-color: #f87171; border-radius: 50px; }
+    button.cmd.ghost {
+      grid-column: 1 / -1; background: transparent; border-color: var(--line); color: var(--text);
+    }
+    button.cmd:hover { filter: brightness(1.08); }
+    button.cmd.active { box-shadow: inset 0 3px 8px #0007; filter: brightness(.92); }
+    .press-hint { font-size: 11px; color: var(--muted); margin-top: 10px; }
+    .test-sw {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0;
+      text-transform: none; color: var(--muted); cursor: pointer; user-select: none;
+    }
+    .test-sw input {
+      position: absolute; opacity: 0; width: 1px; height: 1px;
+    }
+    .test-sw .knob {
+      width: 36px; height: 20px; border-radius: 999px; flex: none;
+      background: #334155; border: 1px solid #475569; position: relative;
+    }
+    .test-sw .knob::after {
+      content: "";
+      position: absolute; left: 2px; top: 1px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #e2e8f0;
+      transition: transform .15s ease;
+    }
+    .test-sw input:checked + .knob {
+      background: #b45309; border-color: #fbbf24;
+    }
+    .test-sw input:checked + .knob::after { transform: translateX(16px); }
+    .test-sw input:checked ~ .test-lbl { color: #fbbf24; }
+    .test-sw input:focus-visible + .knob { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    .io { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .io-col .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 800; margin: 8px 0 6px; }
+    .io-col .k:first-child { margin-top: 0; }
+    .io-col .k em { font-style: normal; color: var(--blue); font-weight: 700; }
+    .io-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: #020617; border: 1px solid #1e293b; border-radius: 8px;
+      padding: 7px 8px; margin-bottom: 6px; font-size: 12px;
+    }
+    .io-row b { font-family: ui-monospace, Consolas, monospace; color: var(--blue); }
+    .io-row.q b { color: var(--green); }
+    .io-row span.fn { color: var(--muted); font-size: 11px; }
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--led-off); flex: none;
+    }
+    .dot.on-green { background: var(--green); box-shadow: 0 0 10px #22c55e, 0 0 18px #22c55e66; }
+    .dot.on-blue { background: var(--blue); box-shadow: 0 0 10px #3b82f6, 0 0 18px #3b82f666; }
+    .dot.on-yellow { background: var(--yellow); box-shadow: 0 0 10px #eab308, 0 0 18px #eab30866; }
+    .dot.on-red { background: var(--red); box-shadow: 0 0 10px #ef4444, 0 0 18px #ef444466; }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; grid-template-rows: 38vh 8px 1fr; }
+      .split { cursor: row-resize; }
+      .io { grid-template-columns: 1fr; }
+      .grid { grid-template-areas: "anlage" "side"; }
+      .side { grid-template-columns: 1fr; }
+      header.top { margin: 0 -14px 14px; }
+    }
+    @container (max-width: 720px) {
+      .side { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <section class="sim-pane">
+      <div class="sim-bar">
+        <h1>Steuerung — FUP auf der Mini-SPS</h1>
+        <select id="circSel" title="Unterrichtsstufe laden">
+          <option value="egt-tor-standard.txt" selected>Standardaufbau</option>
+          <option value="egt-tor-steckbrett.txt">Freies Steckbrett</option>
+          <option value="egt-tor-beispiel.txt">Beispiel (fertig)</option>
+        </select>
+        <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Zurück zu CircuitJS</a>
+      </div>
+      <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
+    </section>
+    <div class="split" id="split" title="Teiler ziehen"></div>
+    <section class="hmi-pane">
+  <div class="wrap">
+    <header class="top">
+      <div class="top-inner">
+        <div class="brand">
+          <div class="brand-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4.5" y="3" width="15" height="18" rx="1.6"/>
+              <path d="M4.5 8h15M4.5 12h15M4.5 16h15"/>
+            </svg>
+          </div>
+          <div>
+            <h1>SPS-Rolltorsteuerung</h1>
+            <p><span>Werner-Siemens-Schule</span><span>EGT</span><span>Mini-SPS</span></p>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge" id="cjsLink" title="Wartet auf CircuitJS im linken Fenster">
+            <div class="k">CircuitJS</div>
+            <div class="v with-led" id="cjsLinkTxt"><span class="led off" id="cjsLed"></span><span id="cjsLinkLabel">nicht verbunden</span></div>
+          </div>
+          <div class="badge">
+            <div class="k">Zustand</div>
+            <div class="v" id="anlageState">Tor geschlossen</div>
+          </div>
+          <div class="badge">
+            <div class="k">Position</div>
+            <div class="v" id="kpiPos">0 % (ZU)</div>
+          </div>
+          <div class="badge">
+            <div class="k">Meldung</div>
+            <div class="v state-ok" id="sysMsg">Betriebsbereit</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>
+          <span>Anlage — Rolltor</span>
+          <span class="spd">Geschwindigkeit <input id="spd" type="range" min="10" max="100" value="55" /></span>
+        </h2>
+        <div class="scene">
+          <div class="drive-bar" id="drive">
+            <div class="welle"></div>
+            <div class="motor">
+              <svg class="prop" viewBox="0 0 40 40" aria-hidden="true">
+                <g transform="translate(20 20)" fill="#94a3b8">
+                  <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5"/>
+                  <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(120)"/>
+                  <rect class="mark" x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(240)"/>
+                </g>
+              </svg>
+              <span class="hub"></span>
+            </div>
+            <div class="mtr-meta">
+              <div>
+                <b>Motor M1</b>
+                <span id="driveDir">Stillstand</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ls s1" id="lsS1">
+            <span class="ls-label"><span class="ls-led"></span> S1 → I4 oben</span>
+            <span class="ls-body"></span>
+          </div>
+          <div class="ls s2" id="lsS2">
+            <span class="ls-label"><span class="ls-led"></span> S2 → I5 unten</span>
+            <span class="ls-body"></span>
+          </div>
+
+          <div class="portal">
+            <div class="door" id="door">
+              <button type="button" class="edge" id="btnEdge">I7 Sicherheitsleiste</button>
+            </div>
+          </div>
+          <div class="pe-wrap">
+            <div class="pe-tag">B1 → I6 Lichtschranke</div>
+            <div class="pe" id="pe">
+              <div class="pe-head tx"><i></i></div>
+              <div class="pe-beam"></div>
+              <div class="pe-head rx"><i></i></div>
+            </div>
+          </div>
+          <button type="button" class="obstacle" id="btnObstacle">⚠ Hindernis stellen</button>
+          <div class="ampel red" id="ampel"><i></i><i></i><i></i></div>
+          <div class="ampel-cap">Ampel</div>
+          <div class="alarm" id="alarm">
+            <div class="p4" title="P4 Störleuchte rot"></div>
+            <div class="hupe" title="Hupe H1"></div>
+            <small>P4 rot<br />H1 Hupe</small>
+          </div>
+          <div class="floor">BODENNIVEAU</div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card">
+          <h2>
+            <span>Bedientableau</span>
+            <label class="test-sw" title="Ein: Anlage wie bisher im HTML. Aus: Ausgänge nur aus der FUP in CircuitJS.">
+              <input type="checkbox" id="testMode" />
+              <span class="knob"></span>
+              <span class="test-lbl">Testbetrieb</span>
+            </label>
+          </h2>
+          <div class="btns">
+            <button type="button" class="cmd auf" id="btnAuf">▲ AUF</button>
+            <button type="button" class="cmd zu" id="btnZu">▼ ZU</button>
+            <button type="button" class="cmd stop" id="btnStop">■ STOP</button>
+            <button type="button" class="cmd notaus" id="btnNotAus">⬤ NOT-AUS</button>
+            <button type="button" class="cmd ghost" id="btnReset">↻ Grundstellung</button>
+          </div>
+          <div class="press-hint">Taster sind <b>tastend</b>. Ohne Testbetrieb kommen die Ausgänge nur aus der FUP in CircuitJS.</div>
+        </div>
+
+        <div class="card">
+          <h2>Eingänge / Ausgänge</h2>
+          <div class="io">
+            <div class="io-col">
+              <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
+              <div class="io-row"><span><b>I1</b> <span class="fn">Taster AUF</span></span><span class="dot" id="ledI1"></span></div>
+              <div class="io-row"><span><b>I2</b> <span class="fn">Taster ZU</span></span><span class="dot" id="ledI2"></span></div>
+              <div class="io-row"><span><b>I3</b> <span class="fn">Taster STOP</span></span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row"><span><b>I4</b> <span class="fn">S1 oben</span></span><span class="dot" id="ledI4"></span></div>
+              <div class="io-row"><span><b>I5</b> <span class="fn">S2 unten</span></span><span class="dot" id="ledI5"></span></div>
+              <div class="io-row"><span><b>I6</b> <span class="fn">B1 Lichtschranke</span></span><span class="dot" id="ledI6"></span></div>
+              <div class="io-row"><span><b>I7</b> <span class="fn">Sicherheitsleiste</span></span><span class="dot" id="ledI7"></span></div>
+              <div class="io-row"><span><b>I8</b> <span class="fn">Not-Aus</span></span><span class="dot" id="ledI8"></span></div>
+            </div>
+            <div class="io-col">
+              <div class="k">Ausgänge <em>8/4</em></div>
+              <div class="io-row q"><span><b>Q1</b> <span class="fn">Motor AUF</span></span><span class="dot" id="ledQ1"></span></div>
+              <div class="io-row q"><span><b>Q2</b> <span class="fn">Motor ZU</span></span><span class="dot" id="ledQ2"></span></div>
+              <div class="io-row q"><span><b>Q3</b> <span class="fn">Ampel gelb (Fahrt)</span></span><span class="dot" id="ledQ3"></span></div>
+              <div class="io-row q"><span><b>Q4</b> <span class="fn">Hupe H1 + P4 Störung</span></span><span class="dot" id="ledQ4"></span></div>
+              <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
+              <div class="io-row q"><span><b>Q5</b> <span class="fn">Ampel rot</span></span><span class="dot" id="ledQ5"></span></div>
+              <div class="io-row q"><span><b>Q6</b> <span class="fn">Ampel grün</span></span><span class="dot" id="ledQ6"></span></div>
+              <div class="io-row q"><span><b>Q7</b> <span class="fn">frei</span></span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q"><span><b>Q8</b> <span class="fn">frei</span></span><span class="dot" id="ledQ8"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  </div>
+
+<script>
+(function () {
+  var V_ON = 230, V_OFF = 0, V_TH = 80;
+  var i1 = 0, i2 = 0, i3 = 0, i7 = 1, q1 = false, q2 = false;
+  var q3 = false, q4 = false, q5 = false, q6 = false;
+  var pos = 0, lastT = performance.now(), fault = false, obstacle = false;
+  var stallT = 0, overheat = false;
+  var REST_H = 14, OVER_MAX = 24, STALL_S = 1.5;
+  var notAus = true;
+  var sim = null, linked = false;
+  var iframe = document.getElementById("circuitFrame");
+
+  function testOn() {
+    return document.getElementById("testMode").checked;
+  }
+  function doorHeightPct(p) {
+    if (p <= 0) return 100;
+    if (p <= 100) return 100 - p * (100 - REST_H) / 100;
+    var over = Math.min(OVER_MAX, p - 100);
+    return Math.max(0, REST_H * (1 - over / OVER_MAX));
+  }
+  function posLabel(p) {
+    var s1 = p >= 99.5, s2 = p <= 0.5;
+    if (p > 100.4) return Math.round(p) + " % (über S1)";
+    if (p < -0.4) return "0 % (über S2)";
+    return Math.round(Math.max(0, Math.min(100, p))) + " % "
+	+ (s1 ? "(OFFEN)" : (s2 ? "(ZU)" : ""));
+  }
+  function high(v) { return Math.abs(v) >= V_TH; }
+
+  function setCjsBadge(on) {
+    var pill = document.getElementById("cjsLink");
+    var txt = document.getElementById("cjsLinkTxt");
+    var ledEl = document.getElementById("cjsLed");
+    var label = document.getElementById("cjsLinkLabel");
+    if (on) {
+      pill.title = "Simulator-API gefunden";
+      txt.className = "v with-led state-ok";
+      label.textContent = "verbunden";
+      ledEl.className = "led on";
+    } else {
+      pill.title = "Wartet auf CircuitJS im linken Fenster";
+      txt.className = "v with-led";
+      label.textContent = "nicht verbunden";
+      ledEl.className = "led off";
+    }
+  }
+
+  function writeExt(name, on) {
+    if (!sim || !linked) return;
+    try { sim.setExtVoltage(name, on ? V_ON : V_OFF); } catch (e) {}
+  }
+
+  function readQ() {
+    if (testOn() || !sim || !linked) return;
+    try {
+      q1 = high(sim.getNodeVoltage("Q1"));
+      q2 = high(sim.getNodeVoltage("Q2"));
+      q3 = high(sim.getNodeVoltage("Q3"));
+      q4 = high(sim.getNodeVoltage("Q4"));
+      q5 = high(sim.getNodeVoltage("Q5"));
+      q6 = high(sim.getNodeVoltage("Q6"));
+    } catch (e) {}
+    if (q1 || q2 || q3 || q4 || q5 || q6) return;
+    try {
+      var els = sim.getElements();
+      for (var i = 0; i < els.length; i++) {
+        var t = "";
+        try { t = els[i].getType(); } catch (e2) { continue; }
+        if (t.indexOf("MiniSps") < 0) continue;
+        var info = els[i].getInfo();
+        var m = /Q=([01]+)/.exec((info[2] || "") + "");
+        if (!m) continue;
+        var b = m[1];
+        q1 = b.charAt(0) === "1";
+        q2 = b.charAt(1) === "1";
+        q3 = b.charAt(2) === "1";
+        q4 = b.charAt(3) === "1";
+        q5 = b.charAt(4) === "1";
+        q6 = b.charAt(5) === "1";
+        break;
+      }
+    } catch (e) {}
+  }
+
+  document.getElementById("testMode").addEventListener("change", function () {
+    overheat = false;
+    stallT = 0;
+    if (pos > 100) pos = 100;
+    if (pos < 0) pos = 0;
+    if (!testOn()) {
+      q1 = false; q2 = false; fault = false;
+      readQ();
+    }
+  });
+
+  function led(id, on, cls) {
+    document.getElementById(id).className = "dot" + (on ? " " + (cls || "on-green") : "");
+  }
+
+  function render() {
+    var s1 = pos >= 99.5, s2 = pos <= 0.5;
+    var aufFahrt = q1 && !q2 && pos < 100;
+    var zuFahrt = q2 && !q1 && pos > 0;
+    var moving = aufFahrt || zuFahrt;
+    var motor = q1 || q2;
+
+    document.getElementById("kpiPos").textContent = posLabel(pos);
+    var doorEl = document.getElementById("door");
+    doorEl.style.height = doorHeightPct(pos) + "%";
+    doorEl.classList.toggle("past", pos > 100.4);
+
+    var state = document.getElementById("anlageState");
+    if (overheat) {
+      state.textContent = "Motor überlastet";
+      state.className = "v state-fault";
+    } else if (fault) {
+      state.textContent = "Gesperrt";
+      state.className = "v state-fault";
+    } else if (q1 && !q2 && pos >= 100) {
+      state.textContent = "Überlauf AUF";
+      state.className = "v state-fault";
+    } else if (q2 && !q1 && pos <= 0) {
+      state.textContent = "Überlauf ZU";
+      state.className = "v state-fault";
+    } else if (aufFahrt) {
+      state.textContent = "Fährt AUF";
+      state.className = "v state-auf";
+    } else if (zuFahrt) {
+      state.textContent = "Fährt ZU";
+      state.className = "v state-zu";
+    } else if (s1) {
+      state.textContent = "Tor offen";
+      state.className = "v state-offen";
+    } else if (s2) {
+      state.textContent = "Tor geschlossen";
+      state.className = "v";
+    } else {
+      state.textContent = "Stillstand";
+      state.className = "v";
+    }
+
+    var i8 = notAus;
+    var stoer = fault || !i8;
+    if (testOn() || !linked) {
+      q3 = motor && !stoer;
+      q4 = stoer;
+      q5 = !moving && !s1;
+      q6 = s1 && !moving;
+    }
+
+    document.getElementById("ampel").className =
+      "ampel " + (q3 ? "yellow" : (q6 ? "green" : "red"));
+
+    led("ledI1", i1, "on-blue"); led("ledI2", i2, "on-yellow"); led("ledI3", i3);
+    led("ledI4", s1); led("ledI5", s2); led("ledI6", !obstacle); led("ledI7", i7);
+    led("ledI8", i8);
+    led("ledQ1", q1, "on-blue"); led("ledQ2", q2, "on-yellow");
+    led("ledQ3", q3, "on-yellow"); led("ledQ4", q4, "on-red");
+    led("ledQ5", q5, "on-red"); led("ledQ6", q6);
+    led("ledQ7", false); led("ledQ8", false);
+    document.getElementById("alarm").classList.toggle("on", q4);
+
+    if (testOn() && stoer) { q1 = false; q2 = false; }
+
+    document.getElementById("lsS1").classList.toggle("on", s1);
+    document.getElementById("lsS2").classList.toggle("on", s2);
+    document.getElementById("pe").classList.toggle("cut", obstacle);
+
+    var drv = document.getElementById("drive");
+    drv.classList.toggle("run", motor && !fault);
+    drv.classList.toggle("overheat", overheat);
+    drv.classList.toggle("auf", q1 && !q2 && !overheat);
+    drv.classList.toggle("zu", q2 && !q1 && !overheat);
+
+    var dir = document.getElementById("driveDir");
+    if (overheat) {
+      dir.textContent = "Überhitzt — Q nicht aus";
+      dir.className = "hot";
+    } else {
+      dir.textContent = fault ? "gesperrt" : (motor ? (q1 ? "Rechtslauf (AUF)" : "Linkslauf (ZU)") : "Stillstand");
+      dir.className = motor && !fault ? (q1 ? "auf" : "zu") : "";
+    }
+
+    var msg = document.getElementById("sysMsg");
+    if (overheat) {
+      msg.className = "v state-fault";
+      msg.textContent = "Motor Überlast — Endlage nicht abgeschaltet";
+    } else if (testOn()) {
+      msg.className = "v state-zu";
+      msg.textContent = "Testbetrieb";
+    } else if (!linked) {
+      msg.className = "v";
+      msg.textContent = "warte auf CircuitJS";
+    } else if (fault) {
+      msg.className = "v state-fault";
+      msg.textContent = "Störung Q1+Q2";
+    } else if (!notAus) {
+      msg.className = "v state-fault";
+      msg.textContent = "Not-Aus";
+    } else if (!i7) {
+      msg.className = "v state-zu";
+      msg.textContent = "Sicherheitsleiste";
+    } else if (obstacle && !s2) {
+      msg.className = "v state-zu";
+      msg.textContent = "B1 unterbrochen";
+    } else {
+      msg.className = "v state-ok";
+      msg.textContent = "Betriebsbereit";
+    }
+  }
+
+  function hold(btn, onDown, onUp) {
+    function down(ev) { ev.preventDefault(); btn.classList.add("active"); onDown(); }
+    function up(ev) { ev.preventDefault(); btn.classList.remove("active"); onUp(); }
+    btn.addEventListener("pointerdown", down);
+    btn.addEventListener("pointerup", up);
+    btn.addEventListener("pointercancel", up);
+    btn.addEventListener("pointerleave", function (ev) {
+      if (btn.classList.contains("active")) up(ev);
+    });
+  }
+
+  hold(document.getElementById("btnAuf"), function () {
+    i1 = 1; writeExt("I1", true);
+    if (testOn() && !i3 && !fault && notAus) { q1 = true; q2 = false; }
+  }, function () { i1 = 0; writeExt("I1", false); });
+  hold(document.getElementById("btnZu"), function () {
+    i2 = 1; writeExt("I2", true);
+    if (testOn() && !i3 && !fault && !obstacle && i7 && notAus) { q2 = true; q1 = false; }
+  }, function () { i2 = 0; writeExt("I2", false); });
+  hold(document.getElementById("btnStop"), function () {
+    i3 = 1; writeExt("I3", true);
+    if (testOn()) { q1 = false; q2 = false; }
+  }, function () { i3 = 0; writeExt("I3", false); });
+  hold(document.getElementById("btnNotAus"), function () {
+    notAus = false; writeExt("I8", false);
+    if (testOn()) { q1 = false; q2 = false; }
+  }, function () { notAus = true; writeExt("I8", true); });
+  hold(document.getElementById("btnEdge"), function () {
+    i7 = 0; writeExt("I7", false);
+    if (testOn()) {
+      if (q2) { q2 = false; if (pos < 99.5 && !fault && notAus) q1 = true; }
+      else q2 = false;
+    }
+  }, function () { i7 = 1; writeExt("I7", true); });
+  document.getElementById("btnReset").addEventListener("click", function () {
+    pos = 0; fault = false; obstacle = false; q1 = false; q2 = false;
+    stallT = 0; overheat = false;
+    i1 = i2 = i3 = 0; i7 = 1; notAus = true;
+    writeExt("I1", false); writeExt("I2", false); writeExt("I3", false);
+    writeExt("I7", true); writeExt("I8", true);
+    document.getElementById("btnObstacle").classList.remove("on");
+    document.getElementById("btnObstacle").textContent = "⚠ Hindernis stellen";
+  });
+  document.getElementById("btnObstacle").addEventListener("click", function () {
+    obstacle = !obstacle;
+    this.classList.toggle("on", obstacle);
+    this.textContent = obstacle ? "⚠ Hindernis entfernen" : "⚠ Hindernis stellen";
+    writeExt("I6", !obstacle);
+    if (testOn() && obstacle) q2 = false;
+  });
+
+  function tick(now) {
+    var dt = Math.min(0.08, (now - lastT) / 1000);
+    lastT = now;
+    if (!testOn()) readQ();
+    var speed = (parseFloat(document.getElementById("spd").value) / 100) * 28;
+    if (q1 && q2) fault = true;
+    else if (q1 && !q2 && (testOn() ? notAus : true)) {
+      var cap = testOn() ? 100 : (100 + OVER_MAX);
+      pos = Math.min(cap, pos + speed * dt);
+    } else if (q2 && !q1 && (testOn() ? (!obstacle && i7 && notAus) : true)) {
+      var floor = testOn() ? 0 : -OVER_MAX;
+      pos = Math.max(floor, pos - speed * dt);
+    }
+    if (testOn()) {
+      if (obstacle || !i7 || !notAus || fault) q2 = false;
+      if (!notAus || fault) q1 = false;
+      if (pos >= 100) q1 = false;
+      if (pos <= 0) q2 = false;
+      overheat = false;
+      stallT = 0;
+      if (pos > 100) pos = 100;
+      if (pos < 0) pos = 0;
+    } else {
+      var stalled = (q1 && !q2 && pos >= 100) || (q2 && !q1 && pos <= 0);
+      if (stalled) {
+	stallT += dt;
+	if (stallT >= STALL_S) overheat = true;
+      } else {
+	stallT = 0;
+      }
+    }
+    writeExt("I4", pos >= 99.5);
+    writeExt("I5", pos <= 0.5);
+    writeExt("I6", !obstacle);
+    writeExt("I7", !!i7);
+    writeExt("I8", !!notAus);
+    setCjsBadge(linked);
+    render();
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function simLoaded() {
+    try { sim = iframe.contentWindow.CircuitJS1; } catch (e) { sim = null; }
+    linked = !!sim;
+    setCjsBadge(linked);
+    if (!sim) return;
+    sim.onupdate = function () { readQ(); };
+    writeExt("I1", !!i1);
+    writeExt("I2", !!i2);
+    writeExt("I3", !!i3);
+    writeExt("I4", pos >= 99.5);
+    writeExt("I5", pos <= 0.5);
+    writeExt("I6", !obstacle);
+    writeExt("I7", !!i7);
+    writeExt("I8", !!notAus);
+  }
+
+  function waitForSim(n) {
+    try {
+      if (iframe.contentWindow && iframe.contentWindow.CircuitJS1) {
+        simLoaded();
+        return;
+      }
+    } catch (e) {}
+    if (n > 0) setTimeout(function () { waitForSim(n - 1); }, 500);
+  }
+
+  function loadCircuit(name) {
+    linked = false; sim = null;
+    setCjsBadge(false);
+    var src = "circuitjs.html?startCircuit=" + encodeURIComponent(name) +
+      "&lang=de&IECGates=true&running=true&egtHmi=true";
+    iframe.onload = function () {
+      try { iframe.contentWindow.oncircuitjsloaded = simLoaded; } catch (e) {}
+      waitForSim(60);
+    };
+    iframe.src = src;
+  }
+
+  document.getElementById("circSel").addEventListener("change", function () {
+    loadCircuit(this.value);
+  });
+  loadCircuit("egt-tor-standard.txt");
+
+  (function splitDrag() {
+    var app = document.getElementById("app");
+    var handle = document.getElementById("split");
+    var drag = false;
+    handle.addEventListener("pointerdown", function (e) {
+      drag = true; handle.setPointerCapture(e.pointerId);
+    });
+    handle.addEventListener("pointerup", function () { drag = false; });
+    handle.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var r = app.getBoundingClientRect();
+      var vertical = window.matchMedia("(max-width: 980px)").matches;
+      if (vertical) {
+        var y = ((e.clientY - r.top) / r.height) * 100;
+        y = Math.max(25, Math.min(70, y));
+        app.style.gridTemplateRows = y + "% 8px 1fr";
+        app.style.gridTemplateColumns = "1fr";
+      } else {
+        var x = ((e.clientX - r.left) / r.width) * 100;
+        x = Math.max(28, Math.min(72, x));
+        app.style.gridTemplateColumns = x + "% 8px 1fr";
+        app.style.gridTemplateRows = "";
+      }
+    });
+  })();
+})();
+</script>
+</body>
+</html>

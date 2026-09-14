@@ -1,0 +1,10 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="64 80 640 80" f="4" si="18" te="MOTOR-05 – Kondensatormotor (vereinfachter Aufbau)"/>
+  <x x="64 112 672 112" f="4" si="14" te="Nur L/N verdrahten · C_B und Drehrichtung im Motor bearbeiten"/>
+  <EGTSpannungsquelle x="0 208 32 208" f="0" urms="230" fr="50" des="U1"/>
+  <EGTKondensatormotorKompakt x="224 224 336 336" f="0" sx="7" sy="7" des="M1" dir="1" cb="12" un="230" pn="250" ru="35" rz="55" lu="0.18" lz="0.24" j="0.12" b="0.65"/>
+  <egtleitung x="96 208 288 208" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="96 240 160 240" f="0" role="3" bez="N" col="#3498db"/>
+  <egtleitung x="160 240 160 336" f="0" role="3" bez="N" col="#3498db"/>
+  <egtleitung x="160 336 288 336" f="0" role="3" bez="N" col="#3498db"/>
+</cir>

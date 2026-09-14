@@ -1,0 +1,20 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <EGTSpannungsquelle x="512 304 544 304" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="777 280 897 400" f="0" des="X1"/>
+  <EGTSerienschalter x="768 720 896 832" f="0" des="S1" w="128" h="112" c1="0" c2="0"/>
+  <EGTAbzweigdose x="1483 280 1603 400" f="0" des="X2"/>
+  <EGTLeuchte x="1488 576 1584 576" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTLeuchte x="1904 576 2000 576" f="0" sx="3" sy="3" des="E2" np="60" nv="230"/>
+  <egtleitung x="608 304 784 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="832 848 752 848" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="752 848 784 416" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="784 416 784 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="800 704 1104 352" f="0" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="1104 352 1520 544" f="65536" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="864 704 1264 304" f="0" role="2" bez="L3" col="#c0392b"/>
+  <egtleitung x="1264 304 1936 544" f="0" role="2" bez="L3" col="#c0392b"/>
+  <egtleitung x="608 368 1552 544" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="1552 368 1968 544" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="608 336 1584 544" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="1584 336 2000 544" f="0" role="3" bez="N" col="#c0392b"/>
+</cir>

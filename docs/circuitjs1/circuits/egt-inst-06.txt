@@ -1,0 +1,40 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <EGTSpannungsquelle x="512 304 544 304" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="777 280 897 400" f="0" des="X1"/>
+  <EGTAbzweigdose x="1496 278 1616 398" f="0" des="X2"/>
+  <EGTLeuchte x="1904 576 2000 576" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <egtleitung x="608 304 816 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="848 848 1504 320" f="0" role="1" bez="L2" col="#c0392b" mids="784,848;784,320"/>
+  <egtleitung x="1552 368 1968 544" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="1552 336 1568 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <EGTWechselschalter x="800 736 896 832" f="0" des="S1" w="96" h="96"/>
+  <egtleitung x="608 368 848 368" f="131072" role="4" bez="PE" col="#c0392b"/>
+  <EGTWechselschalter x="1504 736 1600 832" f="0" p="1" des="S2" w="96" h="96"/>
+  <egtleitung x="816 720 816 704" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1552 848 1504 320" f="131072" role="1" bez="L2" col="#c0392b" mids="1488,848;1488,624;1504,624"/>
+  <egtleitung x="608 336 800 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="880 720 1520 720" f="0" role="2" bez="L3" col="#c0392b" mids="880,352;1520,352"/>
+  <egtleitung x="1936 544 1520 352" f="262144" role="2" bez="L3" col="#c0392b"/>
+  <EGTSteckdose x="784 912 880 912" f="0" sx="3" sy="2" des="ST1"/>
+  <egtleitung x="848 368 1552 368" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="816 704 1584 672" f="0" role="0" bez="L1" col="#c0392b" mids="816,304;1584,304"/>
+  <egtleitung x="816 880 816 704" f="0" role="0" bez="L1" col="#c0392b" mids="752,880;752,704"/>
+  <egtleitung x="800 336 848 336" f="131072" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="912 336 1552 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <EGTSteckdose x="1488 912 1584 912" f="0" sx="3" sy="2" des="ST2"/>
+  <egtleitung x="1584 672 1584 704" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1520 880 1584 704" f="262144" role="0" bez="L1" col="#c0392b" mids="1440,880;1440,704"/>
+  <egtleitung x="1552 864 1552 368" f="0" role="4" bez="PE" col="#c0392b" mids="1456,864;1456,720;1552,720"/>
+  <egtleitung x="1584 704 1584 720" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1584 880 1632 416" f="0" role="3" bez="N" col="#c0392b" mids="1632,880"/>
+  <egtleitung x="1568 336 1600 336" f="131072" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="864 416 880 880" f="0" role="3" bez="N" col="#c0392b" mids="928,416;928,848;880,848"/>
+  <egtleitung x="1552 864 1552 880" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="1600 336 2000 544" f="131072" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="1632 416 1600 336" f="131072" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="848 416 848 880" f="0" role="4" bez="PE" col="#c0392b" mids="768,416;768,864;848,864"/>
+  <egtleitung x="848 416 848 368" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="848 336 864 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="864 336 912 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="864 416 864 336" f="0" role="3" bez="N" col="#c0392b"/>
+</cir>

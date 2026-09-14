@@ -1,0 +1,22 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="64 80 640 80" f="4" si="18" te="MOTOR-05 – Kondensatormotor Linkslauf"/>
+  <x x="64 112 640 112" f="4" si="14" te="U1/U2 Hauptwicklung · Z1/Z2 Hilfswicklung · C_B Betriebskondensator"/>
+  <EGTSpannungsquelle x="0 208 32 208" f="0" urms="230" fr="50" des="U1"/>
+  <EGTKondensatormotor x="224 224 336 336" f="0" sx="7" sy="7" des="M1" un="230" pn="250" ru="35" rz="55" lu="0.18" lz="0.24" j="0.12" b="0.65"/>
+  <c x="192 144 192 240" f="0" c="0.000012" iv="0.001" sr="0"/>
+  <egtleitung x="96 208 272 208" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="96 240 144 240" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="144 240 144 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="144 336 272 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="144 336 144 400" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="144 400 400 400" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="400 400 400 208" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="400 208 320 208" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="272 208 272 144" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="272 144 192 144" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="192 240 192 368" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="192 368 320 368" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="320 368 320 336" f="0" role="0" bez="L1" col="#c0392b"/>
+  <x x="432 192 656 192" f="4" si="14" te="C_B = 12 µF"/>
+  <x x="432 216 720 216" f="4" si="14" te="Linkslauf: C_B → Z2, N → Z1"/>
+</cir>

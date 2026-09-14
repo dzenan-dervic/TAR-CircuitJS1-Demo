@@ -1,0 +1,16 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="128 80 896 80" f="4" si="18" te="INST-07 - Serienschaltung im Installationsschaltplan"/>
+  <b x="128 128 896 608" f="0"/>
+
+  <EGTInstallationsleitung x="80 176 208 176" f="0" role="2" bez="3" col="#c0392b"/>
+  <EGTInstallationsleitung x="208 176 512 176" f="0" role="2" bez="4" col="#c0392b"/>
+  <EGTInstallationsleitung x="512 176 768 176" f="0" role="2" bez="3" col="#c0392b"/>
+  <EGTInstallationsleitung x="208 176 208 368" f="0" role="2" bez="4" col="#c0392b"/>
+  <EGTInstallationsleitung x="512 176 512 304" f="0" role="2" bez="3" col="#c0392b"/>
+
+  <EGTAbzweigdose x="176 144 240 208" f="16384" des="X1"/>
+  <EGTAbzweigdose x="480 144 544 208" f="16384" des="X2"/>
+  <EGTSerienschalter x="176 384 256 464" f="16384" des="Q1" w="80" h="80" c1="0" c2="0"/>
+  <EGTLeuchte x="448 336 544 336" f="16384" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTLeuchte x="704 208 800 208" f="16384" sx="3" sy="3" des="E2" np="60" nv="230"/>
+</cir>

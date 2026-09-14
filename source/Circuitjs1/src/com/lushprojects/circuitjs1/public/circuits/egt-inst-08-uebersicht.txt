@@ -1,0 +1,20 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="128 80 896 80" f="4" si="18" te="INST-08 - Stromstoßschaltung im Installationsschaltplan"/>
+  <b x="128 128 896 608" f="0"/>
+
+  <EGTInstallationsleitung x="80 176 208 176" f="0" role="2" bez="3" col="#c0392b"/>
+  <EGTInstallationsleitung x="208 176 432 176" f="0" role="2" bez="4" col="#c0392b"/>
+  <EGTInstallationsleitung x="432 176 640 176" f="0" role="2" bez="4" col="#c0392b"/>
+  <EGTInstallationsleitung x="640 176 800 176" f="0" role="2" bez="3" col="#c0392b"/>
+  <EGTInstallationsleitung x="208 176 208 368" f="0" role="2" bez="2" col="#c0392b"/>
+  <EGTInstallationsleitung x="432 176 432 368" f="0" role="2" bez="2" col="#c0392b"/>
+  <EGTInstallationsleitung x="640 176 640 368" f="0" role="2" bez="4" col="#c0392b"/>
+
+  <EGTAbzweigdose x="176 144 240 208" f="16384" des="X1"/>
+  <EGTAbzweigdose x="400 144 464 208" f="16384" des="X2"/>
+  <EGTAbzweigdose x="608 144 672 208" f="16384" des="X3"/>
+  <EGTTaster x="160 384 256 480" f="16384" p="1" mm="true" des="S1" w="96" h="96"/>
+  <EGTTaster x="384 384 480 480" f="16384" p="1" mm="true" des="S2" w="96" h="96"/>
+  <EGTStromstossSpule x="608 368 656 416" f="16385" sx="3" sy="3" des="E2" np="5" nv="230" lat="0"/>
+  <EGTLeuchte x="736 208 832 208" f="16384" sx="3" sy="3" des="E1" np="60" nv="230"/>
+</cir>

@@ -1,0 +1,4 @@
+<cir f="1" ts="0.00002" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="304 32 320 32" f="4" si="16" te="Freies Steckbrett - Mini-SPS"/>
+  <EGTMiniSps x="208 80 720 432" f="0" sx="16" sy="11" var="1" qm="0" re="1" des="A1"/>
+</cir>

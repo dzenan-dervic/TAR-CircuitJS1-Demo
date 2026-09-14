@@ -1,0 +1,26 @@
+<cir f="1" ts="0.000005" ic="382.76258214399064" cb="37" pb="50" vr="5" mts="5e-11">
+  <EGTSpannungsquelle x="512 304 544 304" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="777 280 897 400" f="0" des="X1"/>
+  <EGTAbzweigdose x="1306 276 1426 396" f="0" des="X2"/>
+  <EGTLeuchte x="2000 496 2096 496" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <egtleitung x="608 304 800 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="832 800 800 304" f="131072" role="0" bez="L1" col="#c0392b" mids="768,800;768,416;800,416"/>
+  <egtleitung x="608 368 848 368" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="608 336 864 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="848 368 2064 464" f="0" role="4" bez="PE" col="#c0392b" mids="2064,368"/>
+  <egtleitung x="864 336 1648 736" f="131072" role="3" bez="N" col="#c0392b" mids="1600,336;1600,736"/>
+  <EGTTaster x="1328 688 1424 784" f="0" p="1" mm="true" des="S2" w="96" h="96"/>
+  <EGTTaster x="784 688 880 784" f="0" p="1" mm="true" des="S1" w="96" h="96"/>
+  <egtleitung x="800 304 1328 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1328 416 1376 800" f="131072" role="0" bez="L1" col="#c0392b" mids="1312,416;1312,800"/>
+  <egtleitung x="1328 304 1328 416" f="131072" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="832 672 1376 320" f="262144" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="1376 320 1376 672" f="0" role="1" bez="L2" col="#c0392b"/>
+  <EGTAbzweigdose x="1597 259 1784 446" f="0" des="X3"/>
+  <egtleitung x="1376 320 1648 672" f="131072" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="1328 304 1776 672" f="131072" role="0" bez="L1" col="#c0392b" mids="1744,304;1744,656;1776,656"/>
+  <egtleitung x="1776 752 2032 464" f="262144" role="2" bez="L3" col="#c0392b" mids="1792,752;1792,384;2032,384"/>
+  <egtleitung x="2096 464 1600 336" f="262144" role="3" bez="N" col="#c0392b"/>
+  <EGTZeitrelaisSpule x="1616 688 1696 688" f="1" sx="3" sy="3" des="K1" del="1" np="15" nv="230"/>
+  <EGTZeitrelaisKontakt x="1744 688 1792 752" f="1" sx="3" sy="4" des="K1"/>
+</cir>

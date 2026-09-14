@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EGT Pumpensteuerung — CircuitJS + HMI</title>
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --panel: #0f172a;
+      --card: #1e293b;
+      --ink: #0f172a;
+      --line: #334155;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --blue: #3b82f6;
+      --blue-btn: #2563eb;
+      --amber: #d97706;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --led-off: #334155;
+      --water: #0ea5e9;
+      --water-deep: #0369a1;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%;
+      background: var(--bg); color: var(--text);
+      font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
+      color-scheme: dark;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) 8px minmax(440px, 1.15fr);
+      height: 100%;
+    }
+    .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
+    .sim-pane { display: flex; flex-direction: column; background: #020617; }
+    .sim-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 12px; background: var(--panel);
+      border-bottom: 1px solid #1e293b; flex-shrink: 0;
+    }
+    .sim-bar h1 { margin: 0; font-size: 13px; font-weight: 700; }
+    .sim-bar select, .sim-bar a {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--line); border-radius: 6px;
+      padding: 4px 8px; font-size: 12px; text-decoration: none;
+    }
+    .sim-bar a:hover { border-color: var(--blue); }
+    #circuitFrame { flex: 1; width: 100%; border: 0; background: #000; }
+    .split {
+      cursor: col-resize; background: #1e293b;
+      border-left: 1px solid #334155; border-right: 1px solid #334155;
+    }
+    .split:hover { background: var(--blue); }
+    .hmi-pane { overflow: auto; background: var(--bg); }
+    .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
+
+    header.top {
+      background: linear-gradient(180deg, #121a2b 0%, var(--panel) 100%);
+      border-bottom: 1px solid #1e293b;
+      box-shadow: inset 0 1px 0 #ffffff0d;
+      margin: 0 -14px 16px;
+      padding: 0;
+    }
+    .top-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px;
+      padding: 12px 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-ico {
+      width: 42px; height: 42px; border-radius: 10px; flex: none;
+      background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+      color: #fff;
+      display: grid; place-items: center;
+      border: 1px solid #93c5fd55;
+      box-shadow: inset 0 1px 0 #ffffff40, 0 6px 14px #1d4ed840;
+    }
+    .brand-ico svg { display: block; }
+    .brand h1 {
+      margin: 0; font-size: 17px; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.2;
+    }
+    .brand p {
+      margin: 4px 0 0; font-size: 12px; color: var(--muted);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0;
+    }
+    .brand p span { white-space: nowrap; }
+    .brand p span + span::before {
+      content: "·";
+      margin: 0 8px;
+      color: #475569;
+      font-weight: 700;
+    }
+    .badges {
+      display: flex; gap: 8px; background: #020617; padding: 6px;
+      border: 1px solid #1e293b; border-radius: 12px;
+    }
+    .badge {
+      min-width: 110px; text-align: center;
+      background: #0f172a; border: 1px solid #1e293b; border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .badge .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+    .badge .v { font-size: 13px; font-weight: 800; margin-top: 2px; }
+    .badge .v.with-led {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .badge .led {
+      width: 8px; height: 8px; border-radius: 50%; flex: none;
+    }
+    .badge .led.off { background: var(--red); box-shadow: 0 0 7px #ef4444; }
+    .badge .led.on { background: var(--green); box-shadow: 0 0 7px #22c55e; }
+    .state-auf { color: var(--blue); }
+    .state-zu { color: var(--yellow); }
+    .state-offen, .state-ok { color: var(--green); }
+    .state-fault { color: var(--red); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .grid > .card:first-child { grid-column: 1 / -1; }
+    .card {
+      background: var(--card);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .card h2 {
+      margin: 0 0 12px; font-size: 11px; font-weight: 800;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      border-bottom: 1px solid #1e293b; padding-bottom: 8px;
+    }
+    .spd { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: none; letter-spacing: 0; }
+    input[type=range] { accent-color: var(--blue); width: 90px; }
+
+    .scene {
+      position: relative; height: 420px;
+      background: #020617; border: 1px solid #1e293b; border-radius: 12px; overflow: hidden;
+    }
+    .plant { position: absolute; inset: 22px 10px 26px; }
+
+    .well, .pump-box, .valve-box {
+      background: #0f172ae6; border: 1px solid #334155; border-radius: 10px;
+    }
+    .well {
+      position: absolute; left: 0; bottom: 46px;
+      width: 78px; height: 156px;
+      cursor: pointer;
+    }
+    .well:hover { border-color: var(--blue); }
+    .pump-box {
+      position: absolute; left: 104px; bottom: 40px;
+      width: 88px; height: 134px;
+    }
+    .valve-box {
+      position: absolute; left: 258px; top: 31px;
+      width: 32px; height: 32px; z-index: 3;
+      background: #0f172a; border: 2px solid #94a3b8; border-radius: 50%;
+    }
+    .well .unit-cap,
+    .pump-box .unit-cap,
+    .valve-box .unit-cap {
+      position: absolute;
+      left: 50%; right: auto; top: auto; bottom: calc(100% + 6px);
+      transform: translateX(-50%);
+      width: max-content; max-width: none;
+      white-space: nowrap; text-align: center;
+      background: #0f172af2; border: 1px solid #334155;
+      border-radius: 8px; padding: 5px 10px; line-height: 1.4;
+      z-index: 5;
+    }
+    .well .unit-cap b,
+    .pump-box .unit-cap b,
+    .valve-box .unit-cap b {
+      display: block; margin: 0 0 3px; font-size: 12px; line-height: 1.2;
+    }
+
+    .unit-cap {
+      font-size: 10px; font-weight: 800; color: var(--muted);
+    }
+    .unit-cap b { color: var(--text); }
+
+    .well-water, .water {
+      background: linear-gradient(180deg, #38bdf8 0%, var(--water) 28%, var(--water-deep) 100%);
+      overflow: hidden;
+    }
+    .well-water {
+      position: absolute; left: 6px; right: 6px; top: 8px; bottom: 6px;
+      height: auto; border-radius: 6px;
+    }
+    .well.dry .well-water { top: auto; height: 8%; background: #1e293b; }
+    .well.dry { border-color: var(--red); }
+    .well.noprotect { border-color: #f97316; box-shadow: 0 0 12px #f9731666; }
+    .water {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      height: 18%;
+    }
+    .water::before {
+      content: "";
+      position: absolute; left: -20%; right: -20%; top: -6px; height: 12px;
+      background: radial-gradient(circle at 20% 8px, #7dd3fc 6px, transparent 7px),
+                  radial-gradient(circle at 50% 6px, #38bdf8 7px, transparent 8px),
+                  radial-gradient(circle at 80% 8px, #7dd3fc 6px, transparent 7px);
+      animation: wave 1.6s ease-in-out infinite;
+    }
+    @keyframes wave { 50% { transform: translateX(8px); } }
+
+    .spill-lip {
+      position: absolute; left: -4px; right: 72px; top: -14px;
+      height: 22px; border-radius: 12px 12px 4px 4px;
+      background: linear-gradient(180deg, #e0f2fe 0%, #38bdf8 40%, #0284c7 100%);
+      box-shadow: 0 0 16px #38bdf8cc, 0 6px 10px #0ea5e966;
+      opacity: 0; pointer-events: none; z-index: 8;
+    }
+    .spill-fall {
+      position: absolute; left: -9px; top: -4px; width: 14px; bottom: -14px;
+      border-radius: 8px;
+      background: repeating-linear-gradient(180deg, #7dd3fc 0 8px, #0284c7 8px 16px);
+      opacity: 0; pointer-events: none; z-index: 8;
+    }
+    .spill-fall-r {
+      position: absolute; right: 68px; top: -4px; width: 12px; bottom: -14px;
+      border-radius: 8px;
+      background: repeating-linear-gradient(180deg, #7dd3fc 0 8px, #0369a1 8px 16px);
+      opacity: 0; pointer-events: none; z-index: 8;
+    }
+    .spill-pool {
+      position: absolute; left: 270px; bottom: 2px; width: 210px; height: 22px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, #38bdf8dd 0%, #0ea5e988 40%, transparent 72%);
+      opacity: 0; pointer-events: none; z-index: 8;
+    }
+    .plant.overflow .spill-lip { opacity: 1; animation: spill-bob .7s ease-in-out infinite; }
+    .plant.overflow .spill-fall,
+    .plant.overflow .spill-fall-r {
+      opacity: .92; animation: flow-v .35s linear infinite;
+    }
+    .scene:has(.plant.overflow) .spill-pool {
+      opacity: 1; animation: pool-wobble 1.1s ease-in-out infinite;
+    }
+    .tank-glass.overflow {
+      border-color: #38bdf8;
+      box-shadow: inset 0 -10px 22px #0ea5e955, 0 0 14px #22d3ee44;
+    }
+    .ls.max.fail .ls-label { border-color: #ef4444; color: #fca5a5; }
+    .ls.max.fail .ls-led { background: var(--red); box-shadow: 0 0 8px #ef4444cc; }
+    @keyframes spill-bob { 50% { transform: translateY(2px) scaleX(1.04); } }
+    @keyframes pool-wobble { 50% { transform: scale(1.08, 0.92); } }
+
+    .pipe {
+      position: absolute;
+      background: linear-gradient(#94a3b8, #64748b 45%, #475569);
+      border: 1px solid #cbd5e1;
+      border-radius: 3px;
+    }
+    .pipe-saug { left: 78px; bottom: 77px; width: 26px; height: 14px; }
+    .pipe-druck { left: 192px; bottom: 77px; width: 54px; height: 14px; }
+    .pipe-up { left: 232px; top: 40px; bottom: 77px; width: 14px; }
+    .pipe-in { left: 232px; top: 40px; width: 84px; height: 14px; }
+    .pipe-elbow {
+      left: 232px; bottom: 77px; width: 14px; height: 14px;
+      border-radius: 0 0 0 3px;
+    }
+    .spout {
+      position: absolute; left: 10px; top: 0; z-index: 2;
+      width: 10px; height: 14px;
+      background: #64748b; border: 1px solid #cbd5e1; border-radius: 0 0 4px 4px;
+    }
+    .plant.run .pipe-saug,
+    .plant.run .pipe-druck,
+    .plant.run .pipe-in,
+    .plant.run .pipe-elbow {
+      background: repeating-linear-gradient(90deg, #38bdf8 0 8px, #0369a1 8px 16px);
+      animation: flow .45s linear infinite;
+    }
+    .plant.run .pipe-up {
+      background: repeating-linear-gradient(180deg, #38bdf8 0 8px, #0369a1 8px 16px);
+      animation: flow-v .45s linear infinite;
+    }
+    .plant.run .spout { background: #38bdf8; box-shadow: 0 8px 10px #38bdf866; }
+    @keyframes flow { to { background-position: 16px 0; } }
+    @keyframes flow-v { to { background-position: 0 16px; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .impeller {
+      position: absolute; left: 50%; top: 54%;
+      width: 52px; height: 52px; margin: -26px 0 0 -26px;
+      border-radius: 50%; background: #0b1220; border: 2px solid #64748b;
+      box-shadow: inset 0 0 0 3px #1e293b;
+      display: grid; place-items: center;
+    }
+    .impeller svg { width: 44px; height: 44px; display: block; }
+    .impeller .mark { fill: #e2e8f0; }
+    .hub {
+      position: absolute; left: 50%; top: 50%;
+      width: 10px; height: 10px; margin: -5px 0 0 -5px;
+      border-radius: 50%; background: #334155; border: 2px solid #cbd5e1;
+      pointer-events: none;
+    }
+    .pump-box.run { border-color: var(--blue); }
+    .pump-box.run .impeller { border-color: var(--blue); }
+    .pump-box.run .impeller svg { animation: spin .95s linear infinite; }
+    .pump-box.run .impeller .mark { fill: var(--blue); }
+    .pump-box.hot { border-color: #f59e0b; }
+    .pump-box.hot .impeller {
+      border-color: #f59e0b;
+      box-shadow: 0 0 14px #f59e0b99, inset 0 0 10px #7c2d12;
+    }
+    .pump-box.hot .impeller .mark { fill: #fbbf24; }
+    .pump-box.trip { border-color: var(--red); }
+    .pump-box.trip .impeller { border-color: var(--red); box-shadow: 0 0 14px #ef4444aa; }
+    .pump-box.trip .impeller svg { animation: none; }
+    .plant.trip .pipe-saug,
+    .plant.trip .pipe-druck,
+    .plant.trip .pipe-in,
+    .plant.trip .pipe-elbow,
+    .plant.trip .pipe-up {
+      background: linear-gradient(#94a3b8, #64748b 45%, #475569);
+      animation: none;
+    }
+    .plant.trip .spout { background: #64748b; box-shadow: none; }
+    .heat-bar {
+      position: absolute; left: 6px; right: 6px; top: 8px;
+      height: 5px; background: #1e293b; border-radius: 3px; overflow: hidden;
+      z-index: 2;
+    }
+    .heat-bar span {
+      display: block; height: 100%; width: 0%;
+      background: linear-gradient(90deg, #eab308, #f97316 55%, #ef4444);
+      transition: width .12s linear;
+    }
+    .pump-dir {
+      position: absolute; left: 6px; right: 6px; bottom: 6px;
+      font-size: 10px; font-weight: 700; color: var(--muted); text-align: center;
+    }
+    .pump-dir.run { color: var(--blue); }
+    .pump-dir.hot { color: #fbbf24; }
+    .pump-dir.trip { color: var(--red); }
+
+    .flap {
+      position: absolute; left: 50%; top: 50%;
+      width: 4px; height: 18px; margin: -9px 0 0 -2px;
+      background: #e2e8f0; border-radius: 2px;
+      transform-origin: center center;
+      transition: transform .2s ease;
+    }
+    .valve-box.open { border-color: var(--green); }
+    .valve-box.open .flap { transform: rotate(90deg); background: var(--green); }
+
+    .tank {
+      position: absolute; left: 302px; right: 70px; top: 0; bottom: 40px;
+    }
+    .tank-cap {
+      position: absolute;
+      left: calc((100% - 76px) / 2);
+      transform: translateX(-50%);
+      top: 0;
+      width: max-content; max-width: calc(100% - 90px);
+      background: #0f172af2; border: 1px solid #334155;
+      border-radius: 8px; padding: 5px 10px;
+      font-size: 10px; font-weight: 800; color: var(--muted); line-height: 1.4;
+      z-index: 5;
+      text-align: center;
+    }
+    .tank-cap b {
+      display: block; color: var(--text); font-size: 12px;
+      margin: 0 0 3px; line-height: 1.2;
+    }
+    .tank-cap.overflow { color: #fca5a5; border-color: #ef4444; }
+    .tank-cap.overflow b { color: #f87171; }
+    .tank-body {
+      position: absolute; left: 0; right: 0; top: 50px; bottom: 0;
+    }
+    .tank-glass {
+      position: absolute; left: 0; right: 76px; top: 0; bottom: 0;
+      border: 3px solid #64748b; border-bottom-width: 5px;
+      border-radius: 4px 4px 3px 3px;
+      background: #071018;
+      overflow: hidden;
+      box-shadow: inset 0 0 28px #0008;
+    }
+    .scale {
+      position: absolute; right: 4px; top: 0; bottom: 0; width: 20px;
+      pointer-events: none; z-index: 3;
+    }
+    .scale span {
+      position: absolute; right: 0;
+      font-size: 8px; font-weight: 800; color: var(--muted); line-height: 1;
+    }
+    .scale .s100 { top: 3px; }
+    .scale .s90 { bottom: 90%; transform: translateY(50%); color: #7dd3fc; }
+    .scale .s50 { bottom: 50%; transform: translateY(50%); }
+    .scale .s20 { bottom: 20%; transform: translateY(50%); color: #facc15; }
+    .scale .s0 { bottom: 3px; }
+    .ls-line {
+      position: absolute; left: 0; right: 0; height: 2px; z-index: 4;
+    }
+    .ls-line.max { bottom: 90%; background: #38bdf8; }
+    .ls-line.min { bottom: 20%; background: var(--yellow); }
+    .ls {
+      position: absolute; right: 0; width: 76px; height: 0; z-index: 4;
+      display: flex; align-items: center;
+      font-size: 10px; font-weight: 700;
+    }
+    .ls.max { bottom: 90%; }
+    .ls.min { bottom: 20%; }
+    .ls::before {
+      content: "";
+      position: absolute; right: 76px; width: 8px; height: 2px;
+    }
+    .ls.max::before { background: #38bdf8; }
+    .ls.min::before { background: var(--yellow); }
+    .ls-label {
+      width: 72px;
+      background: #0f172af2; border: 1px solid #334155;
+      border-radius: 8px; padding: 3px 6px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ls-led {
+      width: 8px; height: 8px; border-radius: 50%; background: #475569;
+    }
+    .ls.on .ls-led { background: var(--green); box-shadow: 0 0 8px #22c55ecc; }
+    .ls.on .ls-label { color: var(--green); }
+
+    .scene-btn {
+      appearance: none; cursor: pointer; font: inherit;
+      display: grid; place-items: center;
+      background: #075985; color: #f0f9ff;
+      border: 1px solid #7dd3fc; border-radius: 8px;
+      padding: 8px 8px;
+      font-size: 11px; font-weight: 700; line-height: 1.3;
+      box-shadow: 0 2px 8px #0006; z-index: 8;
+    }
+    .scene-btn:hover { background: #0369a1; color: #fff; }
+    .scene-btn.on, .scene-btn.active {
+      background: #155e75; color: #fff; border-color: #67e8f9;
+    }
+    #btnWell {
+      position: absolute; left: 0; bottom: 4px;
+      width: 78px; padding: 8px 6px;
+      text-align: center; white-space: nowrap;
+      font-size: 11px; line-height: 1.3;
+    }
+    #btnZapf {
+      position: absolute; left: 302px; bottom: 4px;
+      min-width: 88px; text-align: center;
+    }
+
+    .lamp-row {
+      position: absolute; right: 0; top: 28px; z-index: 6;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .ml {
+      width: 62px; text-align: center;
+      background: #0f172ae6; border: 1px solid #334155; border-radius: 8px;
+      padding: 5px 4px 4px;
+    }
+    .ml i {
+      display: block; width: 16px; height: 16px; margin: 0 auto 2px;
+      border-radius: 50%; background: #1e293b; border: 2px solid #334155;
+    }
+    .ml.on-green i { background: var(--green); border-color: #86efac; box-shadow: 0 0 10px #22c55e; }
+    .ml.on-yellow i { background: var(--yellow); border-color: #fde68a; box-shadow: 0 0 10px #eab308; }
+    .ml.on-red i { background: var(--red); border-color: #fca5a5; box-shadow: 0 0 10px #ef4444; }
+    .ml small { display: block; font-size: 9px; font-weight: 800; color: var(--muted); line-height: 1.2; }
+
+    .alarm {
+      width: 62px; text-align: center;
+      background: #0f172ae6; border: 1px solid #334155; border-radius: 8px;
+      padding: 6px 4px 4px;
+    }
+    .p4 {
+      width: 20px; height: 20px; margin: 0 auto 2px;
+      border-radius: 50%; background: #1e293b; border: 2px solid #334155;
+    }
+    .alarm.on { border-color: #7f1d1d; }
+    .alarm.on .p4 {
+      background: var(--red); border-color: #fca5a5;
+      box-shadow: 0 0 14px #ef4444;
+      animation: blink .45s linear infinite;
+    }
+    .hupe {
+      width: 26px; height: 16px; margin: 4px auto 0;
+      background: #334155;
+      clip-path: polygon(0 5px, 11px 5px, 26px 0, 26px 16px, 11px 11px, 0 11px);
+      position: relative;
+    }
+    .alarm.on .hupe {
+      background: #f87171;
+      animation: honk .35s ease-in-out infinite;
+    }
+    .alarm.on .hupe::after {
+      content: "";
+      position: absolute; left: 28px; top: 1px;
+      width: 8px; height: 12px;
+      border: 2px solid #f87171; border-left: 0; border-radius: 0 8px 8px 0;
+    }
+    .alarm small {
+      display: block; margin-top: 3px;
+      font-size: 9px; font-weight: 800; color: var(--muted);
+      line-height: 1.2;
+    }
+    .alarm.on small { color: #f87171; }
+    @keyframes blink { 50% { opacity: .35; } }
+    @keyframes honk { 50% { transform: scale(1.12); } }
+
+    .floor {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+      background: #1e293b; border-top: 2px solid #475569;
+      color: var(--muted); font-size: 9px; letter-spacing: .12em;
+      display: grid; place-items: center; font-weight: 700;
+    }
+
+    .side { display: contents; }
+    .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    button.cmd {
+      appearance: none; border-radius: 12px; padding: 12px 10px 10px;
+      cursor: pointer; color: #fff; text-align: center;
+      border: 1px solid transparent; font: inherit; font-weight: 800; font-size: 15px;
+    }
+    button.cmd.auf { background: var(--blue-btn); border-color: #60a5fa; }
+    button.cmd.zu { background: var(--amber); border-color: #fbbf24; }
+    button.cmd.stop { grid-column: 1 / -1; background: #dc2626; border-color: #f87171; }
+    button.cmd.notaus { grid-column: 1 / -1; background: #7f1d1d; border-color: #f87171; border-radius: 50px; }
+    button.cmd.ghost {
+      grid-column: 1 / -1; background: transparent; border-color: var(--line); color: var(--text);
+    }
+    button.cmd:hover { filter: brightness(1.08); }
+    button.cmd.active { box-shadow: inset 0 3px 8px #0007; filter: brightness(.92); }
+    .press-hint { font-size: 11px; color: var(--muted); margin-top: 10px; }
+    .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .test-sw {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0;
+      text-transform: none; color: var(--muted); cursor: pointer; user-select: none;
+    }
+    .test-sw input {
+      position: absolute; opacity: 0; width: 1px; height: 1px;
+    }
+    .test-sw .knob {
+      width: 36px; height: 20px; border-radius: 999px; flex: none;
+      background: #334155; border: 1px solid #475569; position: relative;
+    }
+    .test-sw .knob::after {
+      content: "";
+      position: absolute; left: 2px; top: 1px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #e2e8f0;
+      transition: transform .15s ease;
+    }
+    .test-sw input:checked + .knob {
+      background: #b45309; border-color: #fbbf24;
+    }
+    .test-sw input:checked + .knob::after { transform: translateX(16px); }
+    .test-sw input:checked ~ .test-lbl { color: #fbbf24; }
+    .test-sw.ok input:checked + .knob { background: #166534; border-color: #4ade80; }
+    .test-sw.ok input:checked ~ .test-lbl { color: #86efac; }
+    .test-sw.bad input:checked + .knob { background: #7f1d1d; border-color: #f87171; }
+    .test-sw.bad input:checked ~ .test-lbl { color: #fca5a5; }
+    .test-sw input:focus-visible + .knob { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    .io { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .io-col .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 800; margin: 8px 0 6px; }
+    .io-col .k:first-child { margin-top: 0; }
+    .io-col .k em { font-style: normal; color: var(--blue); font-weight: 700; }
+    .io-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: #020617; border: 1px solid #1e293b; border-radius: 8px;
+      padding: 7px 8px; margin-bottom: 6px; font-size: 12px;
+    }
+    .io-row b { font-family: ui-monospace, Consolas, monospace; color: var(--blue); }
+    .io-row.q b { color: var(--green); }
+    .io-row span.fn { color: var(--muted); font-size: 11px; }
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--led-off); flex: none;
+    }
+    .dot.on-green { background: var(--green); box-shadow: 0 0 10px #22c55e, 0 0 18px #22c55e66; }
+    .dot.on-blue { background: var(--blue); box-shadow: 0 0 10px #3b82f6, 0 0 18px #3b82f666; }
+    .dot.on-yellow { background: var(--yellow); box-shadow: 0 0 10px #eab308, 0 0 18px #eab30866; }
+    .dot.on-red { background: var(--red); box-shadow: 0 0 10px #ef4444, 0 0 18px #ef444466; }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; grid-template-rows: 38vh 8px 1fr; }
+      .split { cursor: row-resize; }
+      .grid, .io { grid-template-columns: 1fr; }
+      .grid > .card:first-child { grid-column: 1; }
+      header.top { margin: 0 -14px 14px; }
+      .tank { left: 250px; right: 66px; }
+      .valve-box { left: 228px; }
+      .pipe-in { width: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <section class="sim-pane">
+      <div class="sim-bar">
+        <h1>Steuerung — FUP auf der Mini-SPS</h1>
+        <select id="circSel" title="Unterrichtsstufe laden">
+          <option value="egt-pumpe-fup.txt" selected>FUP-Übung</option>
+          <option value="egt-pumpe-steckbrett.txt">Steckbrett</option>
+          <option value="egt-pumpe-beispiel.txt">Beispiel</option>
+        </select>
+        <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Nur Simulator</a>
+      </div>
+      <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
+    </section>
+    <div class="split" id="split" title="Teiler ziehen"></div>
+    <section class="hmi-pane">
+  <div class="wrap">
+    <header class="top">
+      <div class="top-inner">
+        <div class="brand">
+          <div class="brand-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3c4 5.2 6.5 8.4 6.5 11.2A6.5 6.5 0 0 1 5.5 14.2C5.5 11.4 8 8.2 12 3z"/>
+              <path d="M8.2 15.6c1.2 1.6 2.4 2.2 3.8 2.2"/>
+            </svg>
+          </div>
+          <div>
+            <h1>SPS-Pumpensteuerung</h1>
+            <p><span>Werner-Siemens-Schule</span><span>EGT</span><span>Mini-SPS</span></p>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge" id="cjsLink" title="HTML-Vorschau ohne Simulator">
+            <div class="k">CircuitJS</div>
+            <div class="v with-led" id="cjsLinkTxt"><span class="led off" id="cjsLed"></span><span id="cjsLinkLabel">nicht verbunden</span></div>
+          </div>
+          <div class="badge">
+            <div class="k">Zustand</div>
+            <div class="v" id="anlageState">Stillstand</div>
+          </div>
+          <div class="badge">
+            <div class="k">Füllstand</div>
+            <div class="v" id="kpiPos">18 % (MIN)</div>
+          </div>
+          <div class="badge">
+            <div class="k">Meldung</div>
+            <div class="v state-ok" id="sysMsg">Betriebsbereit</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>
+          <span>Anlage — Wasserbehälter</span>
+          <span class="spd">Förderleistung <input id="spd" type="range" min="10" max="100" value="55" /></span>
+        </h2>
+        <div class="scene">
+          <div class="plant" id="plant">
+            <div class="well" id="brunnen" title="Brunnen leer / voll" role="button" tabindex="0">
+              <div class="unit-cap" id="wellCap"><b>Brunnen</b>Quelle · I5</div>
+              <div class="well-water"></div>
+            </div>
+            <button type="button" class="scene-btn" id="btnWell">Leeren</button>
+            <div class="pipe pipe-saug" id="pipeSaug"></div>
+            <div class="pump-box" id="pumpe">
+              <div class="unit-cap"><b>Pumpe M1</b>K1 · I6 F1</div>
+              <div class="heat-bar" title="Motorwicklung"><span id="heatFill"></span></div>
+              <div class="impeller">
+                <svg viewBox="0 0 40 40" aria-hidden="true">
+                  <g transform="translate(20 20)" fill="#94a3b8">
+                    <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5"/>
+                    <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(120)"/>
+                    <rect class="mark" x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(240)"/>
+                  </g>
+                </svg>
+                <span class="hub"></span>
+              </div>
+              <div class="pump-dir" id="driveDir">Stillstand</div>
+            </div>
+            <div class="pipe pipe-druck" id="pipe"></div>
+            <div class="pipe pipe-up"></div>
+            <div class="pipe pipe-elbow"></div>
+            <div class="pipe pipe-in"></div>
+            <div class="valve-box" id="ventil">
+              <div class="flap"></div>
+            </div>
+            <div class="tank">
+              <div class="tank-cap" id="tankCap"><b>Behälter</b>Min 20 % · Max 90 %</div>
+              <div class="tank-body">
+                <div class="spill-lip" aria-hidden="true"></div>
+                <div class="spill-fall" aria-hidden="true"></div>
+                <div class="spill-fall-r" aria-hidden="true"></div>
+                <div class="tank-glass" id="tankGlass">
+                  <div class="spout" aria-hidden="true"></div>
+                  <div class="ls-line max"></div>
+                  <div class="ls-line min"></div>
+                  <div class="water" id="water"></div>
+                  <div class="scale">
+                    <span class="s100">100</span>
+                    <span class="s90">90</span>
+                    <span class="s50">50</span>
+                    <span class="s20">20</span>
+                    <span class="s0">0</span>
+                  </div>
+                </div>
+                <div class="ls max" id="lsMax">
+                  <span class="ls-label"><span class="ls-led"></span> I4 Max</span>
+                </div>
+                <div class="ls min" id="lsMin">
+                  <span class="ls-label"><span class="ls-led"></span> I3 Min</span>
+                </div>
+              </div>
+            </div>
+          <button type="button" class="scene-btn" id="btnZapf">Zapfen</button>
+          </div>
+          <div class="lamp-row">
+            <div class="ml" id="mlQ3"><i></i><small>Q3 Voll</small></div>
+            <div class="ml" id="mlQ5"><i></i><small>Q5 Min</small></div>
+            <div class="ml" id="mlQ2"><i></i><small>Q2 Betrieb</small></div>
+            <div class="alarm" id="alarm">
+              <div class="p4" title="P4 Störleuchte rot"></div>
+              <div class="hupe" title="Hupe H1"></div>
+              <small>P4 rot<br />H1 Hupe</small>
+            </div>
+          </div>
+          <div class="spill-pool" aria-hidden="true"></div>
+          <div class="floor">BODENNIVEAU</div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card">
+          <h2>
+            <span>Bedientableau</span>
+            <label class="test-sw" title="Ein: Anlage wie bisher im HTML. Aus: Ausgänge nur aus der FUP in CircuitJS.">
+              <input type="checkbox" id="testMode" />
+              <span class="knob"></span>
+              <span class="test-lbl">Testbetrieb</span>
+            </label>
+          </h2>
+          <div class="btns">
+            <button type="button" class="cmd auf" id="btnEin">▶ EIN</button>
+            <button type="button" class="cmd zu" id="btnAus">■ AUS → I2 Öffner</button>
+            <button type="button" class="cmd notaus" id="btnNotAus">⬤ NOT-AUS</button>
+            <button type="button" class="cmd ghost" id="btnReset">↻ Grundstellung</button>
+          </div>
+          <div class="toggles">
+            <label class="test-sw ok" title="1 = Automatik (LOGIK-08), 0 = Hand">
+              <input type="checkbox" id="modeAuto" checked />
+              <span class="knob"></span>
+              <span class="test-lbl">Auto I7</span>
+            </label>
+            <label class="test-sw bad" title="Öffner I6: Ein = F1 ausgelöst">
+              <input type="checkbox" id="swF1" />
+              <span class="knob"></span>
+              <span class="test-lbl">Motorschutz I6</span>
+            </label>
+            <label class="test-sw bad" title="I4 bleibt 1: Max greift nicht — Füll-RS fällt nicht, Überlauf über 100 %">
+              <input type="checkbox" id="swI4" />
+              <span class="knob"></span>
+              <span class="test-lbl">I4 Max fehlt</span>
+            </label>
+            <label class="test-sw bad" title="I5 bleibt 1: Sensor nicht verdrahtet — Brunnen leer, Pumpe läuft trocken, F1 thermisch">
+              <input type="checkbox" id="swI5" />
+              <span class="knob"></span>
+              <span class="test-lbl">I5 fehlt</span>
+            </label>
+          </div>
+          <div class="press-hint">EIN/AUS/Not-Aus sind <b>tastend</b>. <b>Brunnen leer</b> unter der Quelle = leer/voll. I5 verdrahtet: leer → Q1 sofort aus. <b>I5 fehlt</b>: Pumpe läuft trocken, Wicklung heizt, <b>F1</b> fällt. <b>I4 Max fehlt</b> → Überlauf. Start unter 20 %. Ohne Testbetrieb kommen die Ausgänge nur aus der FUP in CircuitJS.</div>
+        </div>
+
+        <div class="card">
+          <h2>Eingänge / Ausgänge</h2>
+          <div class="io">
+            <div class="io-col">
+              <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
+              <div class="io-row"><span><b>I1</b> <span class="fn">Taster EIN</span></span><span class="dot" id="ledI1"></span></div>
+              <div class="io-row"><span><b>I2</b> <span class="fn">Taster AUS Öffner</span></span><span class="dot" id="ledI2"></span></div>
+              <div class="io-row"><span><b>I3</b> <span class="fn">Sensor Min</span></span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row"><span><b>I4</b> <span class="fn">Sensor Max Öffner</span></span><span class="dot" id="ledI4"></span></div>
+              <div class="io-row"><span><b>I5</b> <span class="fn">Trockenlauf Öffner</span></span><span class="dot" id="ledI5"></span></div>
+              <div class="io-row"><span><b>I6</b> <span class="fn">Motorschutz F1 Öffner</span></span><span class="dot" id="ledI6"></span></div>
+              <div class="io-row"><span><b>I7</b> <span class="fn">Hand / Auto</span></span><span class="dot" id="ledI7"></span></div>
+              <div class="io-row"><span><b>I8</b> <span class="fn">Not-Aus Öffner</span></span><span class="dot" id="ledI8"></span></div>
+            </div>
+            <div class="io-col">
+              <div class="k">Ausgänge <em>8/4</em></div>
+              <div class="io-row q"><span><b>Q1</b> <span class="fn">Motor / Pumpe</span></span><span class="dot" id="ledQ1"></span></div>
+              <div class="io-row q"><span><b>Q2</b> <span class="fn">Meldeleuchte Betrieb</span></span><span class="dot" id="ledQ2"></span></div>
+              <div class="io-row q"><span><b>Q3</b> <span class="fn">Meldeleuchte Voll</span></span><span class="dot" id="ledQ3"></span></div>
+              <div class="io-row q"><span><b>Q4</b> <span class="fn">Hupe</span></span><span class="dot" id="ledQ4"></span></div>
+              <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
+              <div class="io-row q"><span><b>Q5</b> <span class="fn">Meldeleuchte Min</span></span><span class="dot" id="ledQ5"></span></div>
+              <div class="io-row q"><span><b>Q6</b> <span class="fn">frei</span></span><span class="dot" id="ledQ6"></span></div>
+              <div class="io-row q"><span><b>Q7</b> <span class="fn">frei</span></span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q"><span><b>Q8</b> <span class="fn">frei</span></span><span class="dot" id="ledQ8"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  </div>
+
+<script>
+(function () {
+  var V_ON = 230, V_OFF = 0, V_TH = 80, V_OPEN = 20, OPEN_HOLD_S = 0.003, HOLD_DT_MAX = 0.0005;
+  var LVL_MIN = 20, LVL_MAX = 90, LVL_CAP = 118;
+  var i1 = 0, i2 = 1, i7 = 1, q1 = false, q2 = false;
+  var q3 = false, q4 = false, q5 = false, q6 = false;
+  var level = 18, lastT = performance.now(), fault = false;
+  var dry = false, f1Trip = false, zapf = false, i4Fail = false, i5Fail = false;
+  var motorTemp = 0;
+  var notAus = true;
+  var betrieb = false, fuellen = false;
+  var sim = null, linked = false;
+  var iframe = document.getElementById("circuitFrame");
+
+  function testOn() {
+    return document.getElementById("testMode").checked;
+  }
+
+  /** Wie EGTAcLevelHold: Ein bei |u|≥80 V, Aus erst nach 3 ms unter 20 V — kein 50-Hz-Flattern. */
+  function AcHold() {
+    this.on = false;
+    this.lowFor = 0;
+    this.lastT = null;
+  }
+  AcHold.prototype.reset = function () {
+    this.on = false;
+    this.lowFor = 0;
+    this.lastT = null;
+  };
+  AcHold.prototype.update = function (v, t) {
+    var abs = Math.abs(v);
+    var dt = 0;
+    if (this.lastT != null && t != null) dt = t - this.lastT;
+    if (!(dt > 0)) dt = 0;
+    this.lastT = t;
+    var ht = dt < HOLD_DT_MAX ? dt : HOLD_DT_MAX;
+    if (abs < V_OPEN) this.lowFor += ht;
+    else this.lowFor = 0;
+    if (!this.on) {
+      if (abs >= V_TH) this.on = true;
+    } else if (this.lowFor >= OPEN_HOLD_S) {
+      this.on = false;
+      this.lowFor = 0;
+    }
+    return this.on;
+  };
+  var qHold = [new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold()];
+  function resetQHolds() {
+    for (var i = 0; i < qHold.length; i++) qHold[i].reset();
+  }
+  function i3() { return level <= LVL_MIN; }
+  function i4() { return i4Fail ? true : level < LVL_MAX; }
+  function i5() { return i5Fail ? true : !dry; }
+  function i6() { return !f1Trip; }
+  function i8() { return notAus; }
+  function pumping() { return q1 && i6(); }
+
+  function setCjsBadge(on) {
+    var pill = document.getElementById("cjsLink");
+    var txt = document.getElementById("cjsLinkTxt");
+    var ledEl = document.getElementById("cjsLed");
+    var label = document.getElementById("cjsLinkLabel");
+    if (on) {
+      pill.title = "Simulator-API gefunden";
+      txt.className = "v with-led state-ok";
+      label.textContent = "verbunden";
+      ledEl.className = "led on";
+    } else {
+      pill.title = "Wartet auf CircuitJS im linken Fenster";
+      txt.className = "v with-led";
+      label.textContent = "nicht verbunden";
+      ledEl.className = "led off";
+    }
+  }
+
+  function writeExt(name, on) {
+    if (!sim || !linked) return;
+    try { sim.setExtVoltage(name, on ? V_ON : V_OFF); } catch (e) {}
+  }
+
+  function readQ() {
+    if (testOn() || !sim) return;
+    try {
+      var t = null;
+      try { t = sim.getTime(); } catch (e2) {}
+      q1 = qHold[0].update(sim.getNodeVoltage("Q1"), t);
+      q2 = qHold[1].update(sim.getNodeVoltage("Q2"), t);
+      q3 = qHold[2].update(sim.getNodeVoltage("Q3"), t);
+      q4 = qHold[3].update(sim.getNodeVoltage("Q4"), t);
+      q5 = qHold[4].update(sim.getNodeVoltage("Q5"), t);
+      q6 = qHold[5].update(sim.getNodeVoltage("Q6"), t);
+    } catch (e) {}
+  }
+
+  document.getElementById("testMode").addEventListener("change", function () {
+    if (!testOn()) {
+      q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false;
+      betrieb = false; fuellen = false; fault = false;
+      resetQHolds();
+      readQ();
+    } else {
+      applyTestLogic();
+    }
+    render();
+  });
+
+  function led(id, on, cls) {
+    document.getElementById(id).className = "dot" + (on ? " " + (cls || "on-green") : "");
+  }
+
+  function applyTestLogic() {
+    if (i1) betrieb = true;
+    if (!i2) betrieb = false;
+    if (i3()) fuellen = true;
+    if (!i4()) fuellen = false;
+    var safe = i5() && i6() && i8() && !fault;
+    if (i7) {
+      q1 = betrieb && fuellen && safe;
+    } else {
+      q1 = !!i1 && safe;
+    }
+    q2 = q1;
+    q3 = level >= LVL_MAX;
+    q4 = !i5() || !i6() || !i8() || fault || level >= 100 || (dry && i5Fail);
+    q5 = i3();
+    q6 = false;
+  }
+
+  function render() {
+    var overflow = level >= 100;
+    var minOn = i3();
+    var maxReached = !i4Fail && !i4();
+    var stoer = !i6() || !i8() || fault || overflow;
+
+    document.getElementById("kpiPos").textContent =
+      Math.round(level) + " %" + (overflow ? " (ÜBERLAUF)" : (maxReached ? " (VOLL)" : (minOn ? " (MIN)" : "")));
+    document.getElementById("water").style.height = Math.max(2, Math.min(100, level)) + "%";
+    document.getElementById("plant").classList.toggle("overflow", overflow);
+    document.getElementById("tankGlass").classList.toggle("overflow", overflow);
+    document.getElementById("lsMax").classList.toggle("fail", i4Fail);
+    var cap = document.getElementById("tankCap");
+    cap.classList.toggle("overflow", overflow);
+    cap.innerHTML = overflow
+      ? "<b>Überlauf</b>über 100 % — I4 greift nicht"
+      : "<b>Behälter</b>Min 20 % · Max 90 %";
+
+    var state = document.getElementById("anlageState");
+    if (overflow) {
+      state.textContent = "Überlauf";
+      state.className = "v state-fault";
+    } else if (f1Trip) {
+      state.textContent = "Motorschutz F1";
+      state.className = "v state-fault";
+    } else if (!i8() || fault) {
+      state.textContent = "Störung";
+      state.className = "v state-fault";
+    } else if (pumping() && dry) {
+      state.textContent = "Trockenlauf";
+      state.className = "v state-fault";
+    } else if (pumping()) {
+      state.textContent = "Pumpe fördert";
+      state.className = "v state-auf";
+    } else if (maxReached) {
+      state.textContent = "Behälter voll";
+      state.className = "v state-offen";
+    } else if (minOn) {
+      state.textContent = "Minimalstand";
+      state.className = "v state-zu";
+    } else if (betrieb && i7) {
+      state.textContent = "Automatik bereit";
+      state.className = "v state-ok";
+    } else {
+      state.textContent = "Stillstand";
+      state.className = "v";
+    }
+
+    led("ledI1", i1, "on-blue");
+    led("ledI2", i2, "on-yellow");
+    led("ledI3", minOn);
+    led("ledI4", i4());
+    led("ledI5", i5());
+    led("ledI6", i6());
+    led("ledI7", i7);
+    led("ledI8", i8());
+    led("ledQ1", q1, "on-blue");
+    led("ledQ2", q2, "on-yellow");
+    led("ledQ3", q3);
+    led("ledQ4", q4, "on-red");
+    led("ledQ5", q5, "on-yellow");
+    led("ledQ6", q6);
+    led("ledQ7", false);
+    led("ledQ8", false);
+
+    document.getElementById("lsMax").classList.toggle("on", maxReached);
+    document.getElementById("lsMin").classList.toggle("on", minOn);
+    document.getElementById("brunnen").classList.toggle("dry", dry);
+    document.getElementById("brunnen").classList.toggle("noprotect", dry && i5Fail);
+    document.getElementById("wellCap").innerHTML = dry
+      ? "<b>Brunnen</b>leer · I5"
+      : "<b>Brunnen</b>Quelle · I5";
+    var hot = motorTemp >= 45;
+    document.getElementById("pumpe").classList.toggle("run", pumping());
+    document.getElementById("pumpe").classList.toggle("hot", hot && !f1Trip);
+    document.getElementById("pumpe").classList.toggle("trip", f1Trip);
+    document.getElementById("heatFill").style.width = Math.max(0, Math.min(100, motorTemp)) + "%";
+    document.getElementById("plant").classList.toggle("run", pumping());
+    document.getElementById("plant").classList.toggle("trip", f1Trip);
+    document.getElementById("ventil").classList.toggle("open", pumping());
+    document.getElementById("alarm").classList.toggle("on", q4);
+    document.getElementById("mlQ2").className = "ml" + (q2 ? " on-yellow" : "");
+    document.getElementById("mlQ3").className = "ml" + (q3 ? " on-green" : "");
+    document.getElementById("mlQ5").className = "ml" + (q5 ? " on-yellow" : "");
+
+    var dir = document.getElementById("driveDir");
+    var lock = !i6() || !i8() || fault;
+    if (lock) {
+      dir.textContent = f1Trip ? "F1 aus" : "gesperrt";
+      dir.className = "pump-dir" + (f1Trip ? " trip" : "");
+    } else if (pumping() && dry) {
+      dir.textContent = "trocken heiß";
+      dir.className = "pump-dir hot";
+    } else if (pumping()) {
+      dir.textContent = "Fördert";
+      dir.className = "pump-dir run";
+    } else {
+      dir.textContent = "Stillstand";
+      dir.className = "pump-dir";
+    }
+
+    var msg = document.getElementById("sysMsg");
+    if (overflow) {
+      msg.className = "v state-fault";
+      msg.textContent = i4Fail ? "Überlauf — I4 greift nicht" : "Überlauf — Max nicht ausgewertet";
+    } else if (testOn()) {
+      if (!i8()) { msg.className = "v state-fault"; msg.textContent = "Not-Aus"; }
+      else if (!i6()) { msg.className = "v state-fault"; msg.textContent = dry ? "Motorschutz F1 — I5 nicht verdrahtet" : "Motorschutz F1"; }
+      else if (pumping() && dry) { msg.className = "v state-fault"; msg.textContent = "I5 fehlt — Pumpe läuft trocken, F1 folgt"; }
+      else if (!i5()) { msg.className = "v state-fault"; msg.textContent = "Trockenlaufschutz I5 — Pumpe aus"; }
+      else if (fault) { msg.className = "v state-fault"; msg.textContent = "Störung"; }
+      else if (betrieb && !fuellen) { msg.className = "v state-zu"; msg.textContent = "Füll-RS wartet auf I3 — unter 20 % zapfen"; }
+      else if (!betrieb && fuellen) { msg.className = "v state-ok"; msg.textContent = "Testbetrieb — EIN drücken"; }
+      else if (!betrieb) { msg.className = "v state-zu"; msg.textContent = "Testbetrieb — unter Min zapfen, dann EIN"; }
+      else { msg.className = "v state-zu"; msg.textContent = "Testbetrieb"; }
+    } else if (!sim) {
+      msg.className = "v";
+      msg.textContent = "warte auf CircuitJS";
+    } else if (!i8()) {
+      msg.className = "v state-fault";
+      msg.textContent = "Not-Aus";
+    } else if (q4) {
+      msg.className = "v state-fault";
+      msg.textContent = "Störung";
+    } else {
+      msg.className = "v state-ok";
+      msg.textContent = "Betriebsbereit";
+    }
+  }
+
+  function hold(btn, onDown, onUp) {
+    function down(ev) { ev.preventDefault(); btn.classList.add("active"); onDown(); }
+    function up(ev) { ev.preventDefault(); btn.classList.remove("active"); onUp(); }
+    btn.addEventListener("pointerdown", down);
+    btn.addEventListener("pointerup", up);
+    btn.addEventListener("pointercancel", up);
+    btn.addEventListener("pointerleave", function (ev) {
+      if (btn.classList.contains("active")) up(ev);
+    });
+  }
+
+  hold(document.getElementById("btnEin"), function () {
+    i1 = 1; writeExt("I1", true);
+    if (testOn()) applyTestLogic();
+  }, function () { i1 = 0; writeExt("I1", false); });
+
+  hold(document.getElementById("btnAus"), function () {
+    i2 = 0; writeExt("I2", false);
+    if (testOn()) applyTestLogic();
+  }, function () { i2 = 1; writeExt("I2", true); });
+
+  hold(document.getElementById("btnNotAus"), function () {
+    notAus = false; writeExt("I8", false);
+    if (testOn()) { q1 = false; betrieb = false; }
+  }, function () { notAus = true; writeExt("I8", true); });
+
+  hold(document.getElementById("btnZapf"), function () {
+    zapf = true;
+  }, function () { zapf = false; });
+
+  document.getElementById("modeAuto").addEventListener("change", function () {
+    i7 = this.checked ? 1 : 0;
+    writeExt("I7", !!i7);
+  });
+
+  function syncDry() {
+    document.getElementById("brunnen").title = dry ? "Brunnen voll machen" : "Brunnen leer machen";
+    var btn = document.getElementById("btnWell");
+    btn.classList.toggle("on", dry);
+    btn.textContent = dry ? "Füllen" : "Leeren";
+    writeExt("I5", i5());
+  }
+  function toggleWell() { dry = !dry; syncDry(); }
+  document.getElementById("btnWell").addEventListener("click", toggleWell);
+  document.getElementById("brunnen").addEventListener("click", toggleWell);
+  document.getElementById("brunnen").addEventListener("keydown", function (ev) {
+    if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); toggleWell(); }
+  });
+
+  document.getElementById("swF1").addEventListener("change", function () {
+    f1Trip = this.checked;
+    writeExt("I6", i6());
+    if (testOn() && f1Trip) q1 = false;
+  });
+
+  document.getElementById("swI4").addEventListener("change", function () {
+    i4Fail = this.checked;
+    writeExt("I4", i4());
+  });
+
+  document.getElementById("swI5").addEventListener("change", function () {
+    i5Fail = this.checked;
+    writeExt("I5", i5());
+  });
+
+  document.getElementById("btnReset").addEventListener("click", function () {
+    level = 18; fault = false; dry = false; f1Trip = false; zapf = false; i4Fail = false; i5Fail = false;
+    motorTemp = 0;
+    q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false;
+    betrieb = false; fuellen = false;
+    i1 = 0; i2 = 1; i7 = 1; notAus = true;
+    resetQHolds();
+    document.getElementById("modeAuto").checked = true;
+    document.getElementById("swF1").checked = false;
+    document.getElementById("swI4").checked = false;
+    document.getElementById("swI5").checked = false;
+    syncDry();
+    writeExt("I1", false); writeExt("I2", true);
+    writeExt("I5", true); writeExt("I6", true);
+    writeExt("I7", true); writeExt("I8", true);
+  });
+
+  function tick(now) {
+    var dt = Math.min(0.08, (now - lastT) / 1000);
+    lastT = now;
+    if (!testOn()) readQ();
+    if (pumping() && dry) motorTemp = Math.min(100, motorTemp + 72 * dt);
+    else if (pumping()) motorTemp = Math.min(100, motorTemp + 8 * dt);
+    else motorTemp = Math.max(0, motorTemp - 10 * dt);
+    if (motorTemp >= 100) {
+      f1Trip = true;
+      document.getElementById("swF1").checked = true;
+    }
+    if (testOn()) applyTestLogic();
+    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 22;
+    if (pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
+    if (zapf) level = Math.max(0, level - rate * 1.15 * dt);
+    writeExt("I1", !!i1);
+    writeExt("I2", !!i2);
+    writeExt("I3", i3());
+    writeExt("I4", i4());
+    writeExt("I5", i5());
+    writeExt("I6", i6());
+    writeExt("I7", !!i7);
+    writeExt("I8", i8());
+    render();
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function simLoaded() {
+    try { sim = iframe.contentWindow.CircuitJS1; } catch (e) { sim = null; }
+    linked = !!sim;
+    setCjsBadge(linked);
+    if (!sim) return;
+    sim.onupdate = function () { readQ(); };
+    writeExt("I1", !!i1);
+    writeExt("I2", !!i2);
+    writeExt("I3", i3());
+    writeExt("I4", i4());
+    writeExt("I5", i5());
+    writeExt("I6", i6());
+    writeExt("I7", !!i7);
+    writeExt("I8", i8());
+  }
+
+  function waitForSim(n) {
+    try {
+      if (iframe.contentWindow && iframe.contentWindow.CircuitJS1) {
+        simLoaded();
+        return;
+      }
+    } catch (e) {}
+    if (n > 0) setTimeout(function () { waitForSim(n - 1); }, 500);
+  }
+
+  function loadCircuit(name) {
+    linked = false; sim = null;
+    setCjsBadge(false);
+    var src = "circuitjs.html?startCircuit=" + encodeURIComponent(name) +
+      "&lang=de&IECGates=true&running=true&egtHmi=true";
+    iframe.onload = function () {
+      try { iframe.contentWindow.oncircuitjsloaded = simLoaded; } catch (e) {}
+      waitForSim(60);
+    };
+    iframe.src = src;
+  }
+
+  document.getElementById("circSel").addEventListener("change", function () {
+    loadCircuit(this.value);
+  });
+  loadCircuit("egt-pumpe-fup.txt");
+
+  (function splitDrag() {
+    var app = document.getElementById("app");
+    var handle = document.getElementById("split");
+    var drag = false;
+    handle.addEventListener("pointerdown", function (e) {
+      drag = true; handle.setPointerCapture(e.pointerId);
+    });
+    handle.addEventListener("pointerup", function () { drag = false; });
+    handle.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var r = app.getBoundingClientRect();
+      var vertical = window.matchMedia("(max-width: 980px)").matches;
+      if (vertical) {
+        var y = ((e.clientY - r.top) / r.height) * 100;
+        y = Math.max(25, Math.min(70, y));
+        app.style.gridTemplateRows = y + "% 8px 1fr";
+        app.style.gridTemplateColumns = "1fr";
+      } else {
+        var x = ((e.clientX - r.left) / r.width) * 100;
+        x = Math.max(28, Math.min(72, x));
+        app.style.gridTemplateColumns = x + "% 8px 1fr";
+        app.style.gridTemplateRows = "";
+      }
+    });
+  })();
+})();
+</script>
+</body>
+</html>

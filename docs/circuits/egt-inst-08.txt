@@ -1,0 +1,25 @@
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <EGTSpannungsquelle x="512 304 544 304" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="777 280 897 400" f="0" des="X1"/>
+  <EGTAbzweigdose x="1306 276 1426 396" f="0" des="X2"/>
+  <EGTLeuchte x="2000 496 2096 496" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <egtleitung x="608 304 800 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="832 800 800 304" f="131072" role="0" bez="L1" col="#c0392b" mids="768,800;768,416;800,416"/>
+  <egtleitung x="608 368 848 368" f="0" role="4" bez="PE" col="#c0392b"/>
+  <egtleitung x="608 336 864 336" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="848 368 2064 464" f="0" role="4" bez="PE" col="#c0392b" mids="2064,368"/>
+  <egtleitung x="864 336 1648 816" f="131072" role="3" bez="N" col="#c0392b" mids="1616,336;1616,816"/>
+  <EGTTaster x="1328 688 1424 784" f="0" p="1" mm="true" des="S2" w="96" h="96"/>
+  <EGTTaster x="784 688 880 784" f="0" p="1" mm="true" des="S1" w="96" h="96"/>
+  <egtleitung x="800 304 1328 304" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1328 416 1376 800" f="131072" role="0" bez="L1" col="#c0392b" mids="1312,416;1312,800"/>
+  <egtleitung x="1328 304 1328 416" f="131072" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="832 672 1376 320" f="262144" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="1376 320 1376 672" f="0" role="1" bez="L2" col="#c0392b"/>
+  <EGTAbzweigdose x="1597 259 1784 446" f="0" des="X3"/>
+  <egtleitung x="1376 320 1648 688" f="131072" role="1" bez="L2" col="#c0392b"/>
+  <egtleitung x="1328 304 1696 688" f="131072" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="1696 816 2032 464" f="131072" role="2" bez="L3" col="#c0392b" mids="1760,816;1760,384;2032,384"/>
+  <egtleitung x="2096 464 1616 336" f="262144" role="3" bez="N" col="#c0392b"/>
+  <EGTStromstossschalter x="1616 704 1632 704" f="1" sx="6" sy="7" des="E2" nno="1" nnc="0" np="5" nv="230" lat="0"/>
+</cir>
