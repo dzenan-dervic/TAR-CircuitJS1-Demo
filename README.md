@@ -2,7 +2,7 @@
 
 Dieses Repository enthält die statische, im Browser ausführbare Demo der CircuitJS1-Erweiterung für Energie- und Gebäudetechnik. Das private TAR-Projektrepository mit Pflichtenheft und Arbeitsdokumentation ist **nicht** Bestandteil dieser Veröffentlichung.
 
-- [CircuitJS1 starten](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/)
+- [CircuitJS1 auf Deutsch starten](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/?lang=de&IECGates=true)
 - [Torsteuerung mit HMI](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/egt-hmi-tor.html)
 - [Pumpensteuerung mit HMI](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/egt-hmi-pumpe.html)
 
