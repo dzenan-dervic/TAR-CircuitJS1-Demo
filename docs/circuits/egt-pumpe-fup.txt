@@ -18,13 +18,13 @@
   <EGTHmiLast x="480 208 480 256" f="4" te="Q6" fkt="frei"/>
   <x x="-259 473 -106 476" f="4" si="14" te="FUP I/Q - frei verdrahten"/>
   <EGTFupEingang x="208 512 240 544" f="1" ch="1" sps="A1"/>
-  <EGTFupEingang x="208 560 240 592" f="1" ch="2" frc="1" sps="A1"/>
+  <EGTFupEingang x="208 560 240 592" f="1" ch="2" sps="A1"/>
   <EGTFupEingang x="208 608 240 640" f="1" ch="3" sps="A1"/>
-  <EGTFupEingang x="208 656 240 688" f="1" ch="4" frc="1" sps="A1"/>
-  <EGTFupEingang x="208 704 240 736" f="1" ch="5" frc="1" sps="A1"/>
-  <EGTFupEingang x="208 752 240 784" f="1" ch="6" frc="1" sps="A1"/>
+  <EGTFupEingang x="208 656 240 688" f="1" ch="4" sps="A1"/>
+  <EGTFupEingang x="208 704 240 736" f="1" ch="5" sps="A1"/>
+  <EGTFupEingang x="208 752 240 784" f="1" ch="6" sps="A1"/>
   <EGTFupEingang x="208 800 240 832" f="1" ch="7" sps="A1"/>
-  <EGTFupEingang x="208 848 240 880" f="1" ch="8" frc="1" sps="A1"/>
+  <EGTFupEingang x="208 848 240 880" f="1" ch="8" sps="A1"/>
   <EGTFupAusgang x="688 512 720 544" f="1" ch="1" sps="A1"/>
   <EGTFupAusgang x="688 560 720 592" f="1" ch="2" sps="A1"/>
   <EGTFupAusgang x="688 608 720 640" f="1" ch="3" sps="A1"/>
