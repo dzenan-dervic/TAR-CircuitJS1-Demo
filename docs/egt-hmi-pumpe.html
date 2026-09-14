@@ -1205,7 +1205,10 @@
   function loadCircuit(name) {
     linked = false; sim = null;
     setCjsBadge(false);
+    var selection = document.getElementById("circSel");
+    var label = selection.options[selection.selectedIndex].text;
     var src = "circuitjs.html?startCircuit=" + encodeURIComponent(name) +
+      "&startLabel=" + encodeURIComponent(label) +
       "&lang=de&IECGates=true&running=true&egtHmi=true";
     iframe.onload = function () {
       try { iframe.contentWindow.oncircuitjsloaded = simLoaded; } catch (e) {}
