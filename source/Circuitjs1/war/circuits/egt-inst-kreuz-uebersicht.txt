@@ -1,4 +1,4 @@
-<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="128 80 457 83" f="4" si="18" te="Kreuzschaltung im Installationsschaltplan"/>
   <b x="128 128 896 608" f="0"/>
 

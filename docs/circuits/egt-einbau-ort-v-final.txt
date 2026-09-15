@@ -1,4 +1,4 @@
-<cir f="1" ts="0.000005" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.000005" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
   <EGTDrehstromquelle x="16 720 32 720" f="0" urms="230" fr="50" des="U2"/>
   <EGTSicherung x="240 928 352 1008" f="1" sx="7" sy="5" des="F1" poles="3" in="32" ch="2"/>
   <egtleitung x="112 720 256 720" f="0" role="0" bez="L1" col="#c0392b"/>

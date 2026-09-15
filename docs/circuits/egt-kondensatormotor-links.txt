@@ -1,4 +1,4 @@
-<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="64 80 640 80" f="4" si="18" te="MOTOR-05 – Kondensatormotor Linkslauf"/>
   <x x="64 112 640 112" f="4" si="14" te="U1/U2 Hauptwicklung · Z1/Z2 Hilfswicklung · C_B Betriebskondensator"/>
   <EGTSpannungsquelle x="0 208 32 208" f="0" urms="230" fr="50" des="U1"/>

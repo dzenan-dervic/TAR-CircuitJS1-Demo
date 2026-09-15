@@ -1,4 +1,4 @@
-<cir f="1" ts="0.000005" ic="382.76258214399064" cb="37" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.000005" ic="382.76258214399064" cb="37" pb="50" vr="5" mts="5e-11">
   <EGTSpannungsquelle x="512 304 544 304" f="0" urms="230" fr="50" des="U1"/>
   <EGTAbzweigdose x="777 280 897 400" f="0" des="X1"/>
   <EGTAbzweigdose x="1306 276 1426 396" f="0" des="X2"/>

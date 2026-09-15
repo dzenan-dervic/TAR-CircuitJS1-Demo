@@ -1,4 +1,4 @@
-<cir f="1" ts="0.00002" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.00002" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="-272 -325 -148 -305" f="4" si="14" te="Pumpe FUP-Übung\n"/>
   <EGTSpannungsquelle x="-256 -240 -192 -144" f="0" urms="230" fr="50" des="U1"/>
   <EGTMiniSps x="96 -128 608 224" f="0" sx="16" sy="11" var="1" qm="0" re="1" des="A1"/>
