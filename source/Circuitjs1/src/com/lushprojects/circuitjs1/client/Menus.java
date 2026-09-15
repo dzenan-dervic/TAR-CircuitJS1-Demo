@@ -60,6 +60,7 @@ public class Menus {
     CheckboxMenuItem printableCheckItem;
     CheckboxMenuItem conventionCheckItem;
     CheckboxMenuItem noEditCheckItem;
+    CheckboxMenuItem layoutLockCheckItem;
     CheckboxMenuItem mouseWheelEditCheckItem;
     CheckboxMenuItem toolbarCheckItem;
     MenuBar elmMenuBar;
@@ -312,6 +313,11 @@ public class Menus {
 		"FUP-Ausschaltverzögerung (TOF)", "EGTFupTofElm",
 	});
 	egtMenuBar.addSeparator();
+	egtMenuBar.addItem(layoutLockCheckItem = new CheckboxMenuItem(Locale.LS("Lock Layout"),
+		new Command() { public void execute() {
+		    sim.ui.setLayoutLocked(layoutLockCheckItem.getState());
+		}
+	}));
 	egtMenuBar.addItem(new MenuItem(Locale.LS("Torsteuerung"),
 		new MyCommand("egt", "hmi-tor")));
 	egtMenuBar.addItem(new MenuItem(Locale.LS("Pumpensteuerung"),

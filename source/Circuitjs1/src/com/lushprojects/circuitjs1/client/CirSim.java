@@ -443,6 +443,7 @@ public class CirSim implements NativePreviewHandler {
 	// 32 = linear scale in afilter
 	f |= sim.adjustTimeStep ? 64 : 0;
 	f |= autoDCOnReset ? 128 : 0;
+	f |= menus.noEditCheckItem.getState() ? 256 : 0;
 	String dump = "$ " + f + " " +
 	    sim.maxTimeStep + " " + getIterCount() + " " +
 	    ui.currentBar.getValue() + " " + CircuitElm.voltageRange + " " +
@@ -684,4 +685,3 @@ class CircuitContext {
     String modelName;
     Vector<CustomCompositeModel> changedModels = new Vector<CustomCompositeModel>();
 }
-

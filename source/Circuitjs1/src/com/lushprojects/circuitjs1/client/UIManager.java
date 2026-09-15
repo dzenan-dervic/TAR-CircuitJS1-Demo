@@ -85,6 +85,8 @@ public class UIManager {
     LoadFile loadFileInput;
     Frame iFrame;
     Vector<CircuitElm> elmList;
+    /** URL ?editable=false cannot be unlocked by a circuit flag. */
+    boolean forceNoEdit = false;
 
     // stack of enclosing subcircuits when viewing composite internals
     Vector<CustomCompositeElm> subcircuitStack = new Vector<CustomCompositeElm>();
@@ -157,6 +159,7 @@ public class UIManager {
 	} catch (Exception e) { 
 	    app.console("Exception: " + e);
 	}
+	forceNoEdit = noEditing;
 
 	boolean euroSetting = false;
 	if (euroRes)
@@ -251,7 +254,12 @@ public class UIManager {
 		}
 	});
 	menus.conventionCheckItem.setState(convention);
-	menus.noEditCheckItem.setState(noEditing);
+	menus.noEditCheckItem.setCommand(new Command() {
+	    public void execute() {
+		setLayoutLocked(menus.noEditCheckItem.getState());
+	    }
+	});
+	setLayoutLocked(noEditing);
 	menus.mouseWheelEditCheckItem.setState(mouseWheelEdit);
 
 	loadShortcuts();
@@ -901,6 +909,14 @@ public class UIManager {
 
     boolean isReadOnly() {
 	return menus.noEditCheckItem.getState() || !subcircuitStack.isEmpty();
+    }
+
+    void setLayoutLocked(boolean locked) {
+	if (forceNoEdit)
+	    locked = true;
+	menus.noEditCheckItem.setState(locked);
+	if (menus.layoutLockCheckItem != null)
+	    menus.layoutLockCheckItem.setState(locked);
     }
 
     void enableItems() {

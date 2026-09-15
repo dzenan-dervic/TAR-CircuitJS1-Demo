@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.circuitjs1;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.8.2";
-var $strongName = '21E16102828EA6D642C6AE0C394F7D41';
+var $strongName = '1E81CD14FA55C1EB745E4356D52AE12F';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -22,7 +22,7 @@ var $stats = $wnd.__gwtStatsEvent ? function(a) {
 return $wnd.__gwtStatsEvent && $wnd.__gwtStatsEvent(a);
 } : null;
 var $sessionId = $wnd.__gwtStatsSessionId ? $wnd.__gwtStatsSessionId : null;
-var $intern_0 = 2147483647, $intern_1 = 3.141592653589793, $intern_2 = 6.283185307179586, $intern_3 = {3:1, 4:1, 6:1}, $intern_4 = {33:1, 30:1, 32:1, 27:1, 34:1, 26:1, 28:1}, $intern_5 = {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 32:1, 84:1, 120:1, 109:1, 119:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, $intern_6 = {3:1, 44:1}, $intern_7 = {3:1, 13:1, 44:1}, $intern_8 = 1000, $intern_9 = 65535, $intern_10 = {156:1, 35:1, 3:1, 19:1, 18:1}, $intern_11 = {51:1, 35:1, 3:1, 19:1, 18:1}, $intern_12 = {49:1, 35:1, 3:1, 19:1, 18:1}, $intern_13 = {168:1, 35:1, 3:1, 19:1, 18:1}, $intern_14 = {35:1, 169:1, 3:1, 19:1, 18:1}, $intern_15 = {35:1, 170:1, 3:1, 19:1, 18:1}, $intern_16 = {35:1, 171:1, 3:1, 19:1, 18:1}, $intern_17 = {107:1, 3:1, 19:1, 18:1}, $intern_18 = {35:1, 226:1, 3:1, 19:1, 18:1}, $intern_19 = {35:1, 157:1, 3:1, 19:1, 18:1}, $intern_20 = 1024, $intern_21 = 1026, $intern_22 = {225:1, 3:1, 13:1, 44:1}, $intern_23 = {161:1, 3:1, 13:1, 44:1}, $intern_24 = {3:1, 4:1}, $intern_25 = {3:1, 4:1, 6:1, 25:1}, $intern_26 = {12:1, 3:1, 4:1}, $intern_27 = Infinity, $intern_28 = 4194303, $intern_29 = 1048575, $intern_30 = 524288, $intern_31 = 4194304, $intern_32 = 17592186044416, $intern_33 = 1000000000, $intern_34 = -17592186044416, $intern_35 = 0.01, $intern_36 = {515:1, 3:1}, $intern_37 = 0.02, $intern_38 = {16:1, 997:1}, $intern_39 = {263:1, 16:1}, $intern_40 = 4096, $intern_41 = 2048, $intern_42 = 32768, $intern_43 = 16384, $intern_44 = 65536, $intern_45 = 131072, $intern_46 = 262144, $intern_47 = 1048576, $intern_48 = 2097152, $intern_49 = 8388608, $intern_50 = 16777216, $intern_51 = 33554432, $intern_52 = 67108864, $intern_53 = {65:1}, $intern_54 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_55 = {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 137:1, 64:1, 32:1, 236:1, 197:1, 173:1, 84:1, 120:1, 260:1, 217:1, 109:1, 119:1, 63:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, $intern_56 = {41:1, 16:1}, $intern_57 = {33:1, 69:1, 30:1, 32:1, 71:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1}, $intern_58 = {33:1, 69:1, 30:1, 64:1, 32:1, 71:1, 63:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, $intern_59 = {179:1, 74:1, 97:1, 88:1, 101:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 99:1, 100:1, 98:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 218:1, 137:1, 32:1, 339:1, 217:1, 234:1, 55:1, 27:1, 202:1, 34:1, 36:1, 182:1, 95:1, 96:1, 26:1, 28:1}, $intern_60 = {179:1, 74:1, 97:1, 88:1, 101:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 99:1, 100:1, 98:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 218:1, 137:1, 64:1, 32:1, 339:1, 260:1, 217:1, 63:1, 234:1, 55:1, 27:1, 202:1, 34:1, 36:1, 182:1, 95:1, 96:1, 26:1, 28:1}, $intern_61 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 219:1, 26:1, 28:1, 40:1}, $intern_62 = {74:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_63 = {33:1, 30:1, 32:1, 234:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_64 = {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 137:1, 32:1, 84:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 340:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, $intern_65 = {999:1, 16:1}, $intern_66 = {33:1, 69:1, 30:1, 32:1, 71:1, 27:1, 34:1, 59:1, 1039:1, 26:1, 28:1, 116:1}, $intern_67 = {64:1, 109:1, 63:1, 55:1, 27:1, 43:1, 26:1}, $intern_68 = {143:1, 16:1}, $intern_69 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 311:1, 26:1, 28:1, 40:1}, $intern_70 = {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 84:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 340:1, 95:1, 121:1, 122:1, 96:1, 248:1, 26:1, 247:1, 28:1}, $intern_71 = {151:1, 16:1}, $intern_72 = {174:1, 3:1, 19:1, 18:1}, $intern_73 = {40:1}, $intern_74 = {132:1}, $intern_75 = {1046:1, 132:1}, $intern_76 = {14:1, 3:1, 4:1}, $intern_77 = 0.48, $intern_78 = {53:1, 3:1, 4:1, 6:1}, $intern_79 = 1.0E-8, $intern_80 = 1.0E-14, $intern_81 = 1.0E-9, $intern_82 = 1000000000000, $intern_83 = 1.0E-6, $intern_84 = 0.001, $intern_85 = 1000000, $intern_86 = {8:1, 11:1}, $intern_87 = 0.6366197723675814, $intern_88 = 1.0E-4, $intern_89 = 10000, $intern_90 = 1.5707963267948966, $intern_91 = 0.15915494309189535, $intern_92 = {8:1, 11:1, 57:1}, $intern_93 = {8:1, 11:1, 52:1, 57:1}, $intern_94 = 1.7976931348623157E308, $intern_95 = 10000000000, $intern_96 = 0.55, $intern_97 = {31:1, 3:1, 4:1}, $intern_98 = -1.5707963267948966, $intern_99 = 0.05, $intern_100 = 100000000, $intern_101 = 4294901760, $intern_102 = {8:1, 11:1, 112:1}, $intern_103 = {8:1, 11:1, 46:1}, $intern_104 = -1.0E-6, $intern_105 = 1.0E-12, $intern_106 = 1.0E-5, $intern_107 = {148:1, 8:1, 11:1}, $intern_108 = -30000, $intern_109 = 0.25, $intern_110 = {8:1, 209:1, 11:1}, $intern_111 = 0.15, $intern_112 = 0.28, $intern_113 = 1.0471975511965976, $intern_114 = 2.0943951023931953, $intern_115 = 38.662284941040014, $intern_116 = 0.025865, $intern_117 = {8:1, 160:1, 11:1}, $intern_118 = 1.7143528192808883E-7, $intern_119 = -1.3089969389957472, $intern_120 = {8:1, 48:1, 11:1, 46:1}, $intern_121 = -16385, $intern_122 = 0.45, $intern_123 = 0.0294, $intern_124 = -1000000000, $intern_125 = 24.90179381709927, $intern_126 = 0.08, $intern_127 = 0.8639379797371932, $intern_128 = {8:1, 48:1, 11:1}, $intern_129 = -2.4347343065320897, $intern_130 = -0.7068583470577033, $intern_131 = {8:1, 149:1, 11:1}, $intern_132 = {261:1, 16:1}, $intern_133 = {203:1, 16:1}, $intern_134 = 0.015, $intern_135 = 3526.6666666666665, $intern_136 = {8:1, 147:1, 11:1, 85:1}, $intern_137 = 0.035, $intern_138 = 314.1592653589793, $intern_139 = 17633.333333333332, $intern_140 = {8:1, 48:1, 341:1, 11:1}, $intern_141 = -2147483648, $intern_142 = 1.0E-15, $intern_143 = {151:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 16:1, 30:1, 32:1, 84:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, $intern_144 = 0.3333, $intern_145 = 0.6666, $intern_146 = 100000, $intern_147 = {134:1, 16:1, 8:1, 11:1, 131:1}, $intern_148 = 0.16666666666666666, $intern_149 = {134:1, 16:1, 8:1, 11:1, 191:1, 131:1}, $intern_150 = 0.0099, $intern_151 = {65:1, 134:1, 16:1, 106:1, 8:1, 11:1}, $intern_152 = {65:1, 106:1}, $intern_153 = {134:1, 16:1, 8:1, 11:1, 159:1}, $intern_154 = 0.8297872340425532, $intern_155 = 0.0231, $intern_156 = 0.005, $intern_157 = 0.0625, $intern_158 = 0.499, $intern_159 = {300:1, 203:1, 134:1, 33:1, 69:1, 16:1, 30:1, 32:1, 71:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1}, $intern_160 = 3.7E-4, $intern_161 = 0.0047, $intern_162 = -20.192307692307693, $intern_163 = 4294967295, $intern_164 = {8:1, 11:1, 201:1}, $intern_165 = {19:1, 222:1}, $intern_166 = {40:1, 155:1, 178:1}, $intern_167 = {40:1, 155:1, 178:1, 337:1}, $intern_168 = {259:1}, $intern_169 = 15525485, $intern_170 = 5.9604644775390625E-8;
+var $intern_0 = 2147483647, $intern_1 = 3.141592653589793, $intern_2 = 6.283185307179586, $intern_3 = {3:1, 4:1, 6:1}, $intern_4 = {33:1, 30:1, 32:1, 27:1, 34:1, 26:1, 28:1}, $intern_5 = {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 32:1, 85:1, 120:1, 109:1, 119:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, $intern_6 = {3:1, 44:1}, $intern_7 = {3:1, 13:1, 44:1}, $intern_8 = 65535, $intern_9 = {156:1, 35:1, 3:1, 19:1, 18:1}, $intern_10 = {51:1, 35:1, 3:1, 19:1, 18:1}, $intern_11 = {49:1, 35:1, 3:1, 19:1, 18:1}, $intern_12 = {168:1, 35:1, 3:1, 19:1, 18:1}, $intern_13 = {35:1, 169:1, 3:1, 19:1, 18:1}, $intern_14 = {35:1, 170:1, 3:1, 19:1, 18:1}, $intern_15 = {35:1, 171:1, 3:1, 19:1, 18:1}, $intern_16 = {107:1, 3:1, 19:1, 18:1}, $intern_17 = {35:1, 226:1, 3:1, 19:1, 18:1}, $intern_18 = {35:1, 157:1, 3:1, 19:1, 18:1}, $intern_19 = 1029, $intern_20 = {225:1, 3:1, 13:1, 44:1}, $intern_21 = {161:1, 3:1, 13:1, 44:1}, $intern_22 = {3:1, 4:1}, $intern_23 = 1000, $intern_24 = {3:1, 4:1, 6:1, 25:1}, $intern_25 = 1024, $intern_26 = {12:1, 3:1, 4:1}, $intern_27 = Infinity, $intern_28 = 4194303, $intern_29 = 1048575, $intern_30 = 524288, $intern_31 = 4194304, $intern_32 = 17592186044416, $intern_33 = 1000000000, $intern_34 = -17592186044416, $intern_35 = 0.01, $intern_36 = {515:1, 3:1}, $intern_37 = 0.02, $intern_38 = {16:1, 1000:1}, $intern_39 = {263:1, 16:1}, $intern_40 = 4096, $intern_41 = 2048, $intern_42 = 32768, $intern_43 = 16384, $intern_44 = 65536, $intern_45 = 131072, $intern_46 = 262144, $intern_47 = 1048576, $intern_48 = 2097152, $intern_49 = 8388608, $intern_50 = 16777216, $intern_51 = 33554432, $intern_52 = 67108864, $intern_53 = {61:1}, $intern_54 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_55 = {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 137:1, 65:1, 32:1, 236:1, 197:1, 173:1, 85:1, 120:1, 260:1, 217:1, 109:1, 119:1, 64:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, $intern_56 = {41:1, 16:1}, $intern_57 = {33:1, 69:1, 30:1, 32:1, 72:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1}, $intern_58 = {33:1, 69:1, 30:1, 65:1, 32:1, 72:1, 64:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, $intern_59 = {179:1, 75:1, 98:1, 89:1, 102:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 100:1, 101:1, 99:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 218:1, 137:1, 32:1, 339:1, 217:1, 234:1, 55:1, 27:1, 202:1, 34:1, 36:1, 182:1, 96:1, 97:1, 26:1, 28:1}, $intern_60 = {179:1, 75:1, 98:1, 89:1, 102:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 100:1, 101:1, 99:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 218:1, 137:1, 65:1, 32:1, 339:1, 260:1, 217:1, 64:1, 234:1, 55:1, 27:1, 202:1, 34:1, 36:1, 182:1, 96:1, 97:1, 26:1, 28:1}, $intern_61 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 219:1, 26:1, 28:1, 40:1}, $intern_62 = {75:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_63 = {33:1, 30:1, 32:1, 234:1, 27:1, 47:1, 34:1, 26:1, 28:1, 40:1}, $intern_64 = {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 137:1, 32:1, 85:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 340:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, $intern_65 = {1002:1, 16:1}, $intern_66 = {33:1, 69:1, 30:1, 32:1, 72:1, 27:1, 34:1, 59:1, 1044:1, 26:1, 28:1, 116:1}, $intern_67 = {65:1, 109:1, 64:1, 55:1, 27:1, 43:1, 26:1}, $intern_68 = {143:1, 16:1}, $intern_69 = {33:1, 30:1, 32:1, 27:1, 47:1, 34:1, 311:1, 26:1, 28:1, 40:1}, $intern_70 = {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 85:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 340:1, 96:1, 121:1, 122:1, 97:1, 248:1, 26:1, 247:1, 28:1}, $intern_71 = {151:1, 16:1}, $intern_72 = {174:1, 3:1, 19:1, 18:1}, $intern_73 = {40:1}, $intern_74 = {132:1}, $intern_75 = {1051:1, 132:1}, $intern_76 = {14:1, 3:1, 4:1}, $intern_77 = 0.48, $intern_78 = {53:1, 3:1, 4:1, 6:1}, $intern_79 = 1.0E-8, $intern_80 = 1.0E-14, $intern_81 = 1.0E-9, $intern_82 = 1000000000000, $intern_83 = 1.0E-6, $intern_84 = 0.001, $intern_85 = 1000000, $intern_86 = {8:1, 11:1}, $intern_87 = 0.6366197723675814, $intern_88 = 1.0E-4, $intern_89 = 10000, $intern_90 = 1.5707963267948966, $intern_91 = 0.15915494309189535, $intern_92 = {8:1, 11:1, 57:1}, $intern_93 = {8:1, 11:1, 52:1, 57:1}, $intern_94 = 1.7976931348623157E308, $intern_95 = 10000000000, $intern_96 = 0.55, $intern_97 = {31:1, 3:1, 4:1}, $intern_98 = -1.5707963267948966, $intern_99 = 0.05, $intern_100 = 100000000, $intern_101 = 4294901760, $intern_102 = {8:1, 11:1, 112:1}, $intern_103 = {8:1, 11:1, 46:1}, $intern_104 = -1.0E-6, $intern_105 = 1.0E-12, $intern_106 = 1.0E-5, $intern_107 = {148:1, 8:1, 11:1}, $intern_108 = -30000, $intern_109 = 0.25, $intern_110 = {8:1, 213:1, 11:1}, $intern_111 = 0.15, $intern_112 = 0.28, $intern_113 = 1.0471975511965976, $intern_114 = 2.0943951023931953, $intern_115 = 38.662284941040014, $intern_116 = 0.025865, $intern_117 = {8:1, 160:1, 11:1}, $intern_118 = 1.7143528192808883E-7, $intern_119 = -1.3089969389957472, $intern_120 = {8:1, 48:1, 11:1, 46:1}, $intern_121 = -16385, $intern_122 = 0.45, $intern_123 = 0.0294, $intern_124 = -1000000000, $intern_125 = 24.90179381709927, $intern_126 = 0.08, $intern_127 = 0.8639379797371932, $intern_128 = {8:1, 48:1, 11:1}, $intern_129 = -2.4347343065320897, $intern_130 = -0.7068583470577033, $intern_131 = {8:1, 149:1, 11:1}, $intern_132 = {261:1, 16:1}, $intern_133 = {203:1, 16:1}, $intern_134 = 0.015, $intern_135 = 3526.6666666666665, $intern_136 = {8:1, 147:1, 11:1, 86:1}, $intern_137 = 0.035, $intern_138 = 314.1592653589793, $intern_139 = 17633.333333333332, $intern_140 = {8:1, 48:1, 341:1, 11:1}, $intern_141 = -2147483648, $intern_142 = 1.0E-15, $intern_143 = {151:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 16:1, 30:1, 32:1, 85:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, $intern_144 = 0.3333, $intern_145 = 0.6666, $intern_146 = 100000, $intern_147 = {134:1, 16:1, 8:1, 11:1, 131:1}, $intern_148 = 0.16666666666666666, $intern_149 = {134:1, 16:1, 8:1, 11:1, 191:1, 131:1}, $intern_150 = 0.0099, $intern_151 = {61:1, 134:1, 16:1, 84:1, 8:1, 11:1}, $intern_152 = {61:1, 84:1}, $intern_153 = {134:1, 16:1, 8:1, 11:1, 159:1}, $intern_154 = 0.8297872340425532, $intern_155 = 0.0231, $intern_156 = 0.005, $intern_157 = 0.0625, $intern_158 = 0.499, $intern_159 = {300:1, 203:1, 134:1, 33:1, 69:1, 16:1, 30:1, 32:1, 72:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1}, $intern_160 = 3.7E-4, $intern_161 = 0.0047, $intern_162 = -20.192307692307693, $intern_163 = 4294967295, $intern_164 = {8:1, 11:1, 201:1}, $intern_165 = {19:1, 222:1}, $intern_166 = {40:1, 155:1, 178:1}, $intern_167 = {40:1, 155:1, 178:1, 337:1}, $intern_168 = {259:1}, $intern_169 = 15525485, $intern_170 = 5.9604644775390625E-8;
 var _, prototypesByTypeId_0, initFnList_0, permutationId = -1;
 function setGwtProperty(propertyName, propertyValue){
   typeof window === 'object' && typeof window['$gwt'] === 'object' && (window['$gwt'][propertyName] = propertyValue);
@@ -466,15 +466,15 @@ function Animation$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(574, 1, {}, Animation$1);
+defineClass(575, 1, {}, Animation$1);
 _.execute = function execute(timestamp){
   $execute(this, timestamp);
 }
 ;
-var Lcom_google_gwt_animation_client_Animation$1_2_classLit = createForClass('com.google.gwt.animation.client', 'Animation/1', 574);
-defineClass(1037, 1, {});
+var Lcom_google_gwt_animation_client_Animation$1_2_classLit = createForClass('com.google.gwt.animation.client', 'Animation/1', 575);
+defineClass(1042, 1, {});
 var instance;
-var Lcom_google_gwt_animation_client_AnimationScheduler_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationScheduler', 1037);
+var Lcom_google_gwt_animation_client_AnimationScheduler_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationScheduler', 1042);
 defineClass(335, 1, {335:1});
 var Lcom_google_gwt_animation_client_AnimationScheduler$AnimationHandle_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationScheduler/AnimationHandle', 335);
 function AnimationSchedulerImplStandard(){
@@ -494,24 +494,24 @@ function requestImpl(cb, element){
   return {id:handle};
 }
 
-defineClass(983, 1037, {}, AnimationSchedulerImplStandard);
+defineClass(986, 1042, {}, AnimationSchedulerImplStandard);
 _.requestAnimationFrame_0 = function requestAnimationFrame_0(callback, element){
   var handle;
   handle = requestImpl(callback, element);
   return new AnimationSchedulerImplStandard$1(handle);
 }
 ;
-var Lcom_google_gwt_animation_client_AnimationSchedulerImplStandard_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplStandard', 983);
+var Lcom_google_gwt_animation_client_AnimationSchedulerImplStandard_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplStandard', 986);
 function AnimationSchedulerImplStandard$1(val$handle){
   this.val$handle2 = val$handle;
 }
 
-defineClass(984, 335, {335:1}, AnimationSchedulerImplStandard$1);
+defineClass(987, 335, {335:1}, AnimationSchedulerImplStandard$1);
 _.cancel = function cancel(){
   cancelImpl(this.val$handle2);
 }
 ;
-var Lcom_google_gwt_animation_client_AnimationSchedulerImplStandard$1_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplStandard/1', 984);
+var Lcom_google_gwt_animation_client_AnimationSchedulerImplStandard$1_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplStandard/1', 987);
 function $cancelAnimationFrame(this$static, requestId){
   $remove_13(this$static.animationRequests, requestId);
   this$static.animationRequests.array.length == 0 && $cancel_0(this$static.timer);
@@ -519,7 +519,7 @@ function $cancelAnimationFrame(this$static, requestId){
 
 function $updateAnimations(this$static){
   var curAnimations, duration, requestId, requestId$index, requestId$max;
-  curAnimations = initUnidimensionalArray(Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer$AnimationHandleImpl_2_classLit, {1058:1, 3:1, 4:1, 6:1}, 336, this$static.animationRequests.array.length, 0, 1);
+  curAnimations = initUnidimensionalArray(Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer$AnimationHandleImpl_2_classLit, {1063:1, 3:1, 4:1, 6:1}, 336, this$static.animationRequests.array.length, 0, 1);
   curAnimations = $toArray_0(this$static.animationRequests, curAnimations);
   duration = new Duration;
   for (requestId$index = 0 , requestId$max = curAnimations.length; requestId$index < requestId$max; ++requestId$index) {
@@ -535,7 +535,7 @@ function AnimationSchedulerImplTimer(){
   this.timer = new AnimationSchedulerImplTimer$1(this);
 }
 
-defineClass(985, 1037, {}, AnimationSchedulerImplTimer);
+defineClass(988, 1042, {}, AnimationSchedulerImplTimer);
 _.requestAnimationFrame_0 = function requestAnimationFrame_1(callback, element){
   var requestId;
   requestId = new AnimationSchedulerImplTimer$AnimationHandleImpl(this, callback);
@@ -544,7 +544,7 @@ _.requestAnimationFrame_0 = function requestAnimationFrame_1(callback, element){
   return requestId;
 }
 ;
-var Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplTimer', 985);
+var Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplTimer', 988);
 function $cancel_0(this$static){
   if (!this$static.timerId) {
     return;
@@ -613,12 +613,12 @@ function AnimationSchedulerImplTimer$1(this$0){
   Timer.call(this);
 }
 
-defineClass(986, 267, {}, AnimationSchedulerImplTimer$1);
+defineClass(989, 267, {}, AnimationSchedulerImplTimer$1);
 _.run_0 = function run_0(){
   $updateAnimations(this.this$01);
 }
 ;
-var Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer$1_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplTimer/1', 986);
+var Lcom_google_gwt_animation_client_AnimationSchedulerImplTimer$1_2_classLit = createForClass('com.google.gwt.animation.client', 'AnimationSchedulerImplTimer/1', 989);
 function AnimationSchedulerImplTimer$AnimationHandleImpl(this$0, callback){
   this.this$01 = this$0;
   this.callback = callback;
@@ -648,20 +648,20 @@ function AlertRoleImpl(){
   RoleImpl.call(this, 'alert');
 }
 
-defineClass(878, 39, {}, AlertRoleImpl);
-var Lcom_google_gwt_aria_client_AlertRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'AlertRoleImpl', 878);
+defineClass(881, 39, {}, AlertRoleImpl);
+var Lcom_google_gwt_aria_client_AlertRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'AlertRoleImpl', 881);
 function AlertdialogRoleImpl(){
   RoleImpl.call(this, 'alertdialog');
 }
 
-defineClass(877, 39, {}, AlertdialogRoleImpl);
-var Lcom_google_gwt_aria_client_AlertdialogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'AlertdialogRoleImpl', 877);
+defineClass(880, 39, {}, AlertdialogRoleImpl);
+var Lcom_google_gwt_aria_client_AlertdialogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'AlertdialogRoleImpl', 880);
 function ApplicationRoleImpl(){
   RoleImpl.call(this, 'application');
 }
 
-defineClass(879, 39, {}, ApplicationRoleImpl);
-var Lcom_google_gwt_aria_client_ApplicationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ApplicationRoleImpl', 879);
+defineClass(882, 39, {}, ApplicationRoleImpl);
+var Lcom_google_gwt_aria_client_ApplicationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ApplicationRoleImpl', 882);
 function $getAriaValue(this$static, value_0){
   var buf, item_0, item$index, item$max;
   buf = new StringBuilder;
@@ -696,104 +696,104 @@ function ArticleRoleImpl(){
   RoleImpl.call(this, 'article');
 }
 
-defineClass(880, 39, {}, ArticleRoleImpl);
-var Lcom_google_gwt_aria_client_ArticleRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ArticleRoleImpl', 880);
+defineClass(883, 39, {}, ArticleRoleImpl);
+var Lcom_google_gwt_aria_client_ArticleRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ArticleRoleImpl', 883);
 function BannerRoleImpl(){
   RoleImpl.call(this, 'banner');
 }
 
-defineClass(881, 39, {}, BannerRoleImpl);
-var Lcom_google_gwt_aria_client_BannerRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'BannerRoleImpl', 881);
+defineClass(884, 39, {}, BannerRoleImpl);
+var Lcom_google_gwt_aria_client_BannerRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'BannerRoleImpl', 884);
 function ButtonRoleImpl(){
   RoleImpl.call(this, 'button');
 }
 
-defineClass(882, 39, {}, ButtonRoleImpl);
-var Lcom_google_gwt_aria_client_ButtonRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ButtonRoleImpl', 882);
+defineClass(885, 39, {}, ButtonRoleImpl);
+var Lcom_google_gwt_aria_client_ButtonRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ButtonRoleImpl', 885);
 function CheckboxRoleImpl(){
   RoleImpl.call(this, 'checkbox');
 }
 
-defineClass(883, 39, {}, CheckboxRoleImpl);
-var Lcom_google_gwt_aria_client_CheckboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'CheckboxRoleImpl', 883);
+defineClass(886, 39, {}, CheckboxRoleImpl);
+var Lcom_google_gwt_aria_client_CheckboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'CheckboxRoleImpl', 886);
 function ColumnheaderRoleImpl(){
   RoleImpl.call(this, 'columnheader');
 }
 
-defineClass(884, 39, {}, ColumnheaderRoleImpl);
-var Lcom_google_gwt_aria_client_ColumnheaderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ColumnheaderRoleImpl', 884);
+defineClass(887, 39, {}, ColumnheaderRoleImpl);
+var Lcom_google_gwt_aria_client_ColumnheaderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ColumnheaderRoleImpl', 887);
 function ComboboxRoleImpl(){
   RoleImpl.call(this, 'combobox');
 }
 
-defineClass(885, 39, {}, ComboboxRoleImpl);
-var Lcom_google_gwt_aria_client_ComboboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ComboboxRoleImpl', 885);
+defineClass(888, 39, {}, ComboboxRoleImpl);
+var Lcom_google_gwt_aria_client_ComboboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ComboboxRoleImpl', 888);
 function ComplementaryRoleImpl(){
   RoleImpl.call(this, 'complementary');
 }
 
-defineClass(886, 39, {}, ComplementaryRoleImpl);
-var Lcom_google_gwt_aria_client_ComplementaryRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ComplementaryRoleImpl', 886);
+defineClass(889, 39, {}, ComplementaryRoleImpl);
+var Lcom_google_gwt_aria_client_ComplementaryRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ComplementaryRoleImpl', 889);
 function ContentinfoRoleImpl(){
   RoleImpl.call(this, 'contentinfo');
 }
 
-defineClass(887, 39, {}, ContentinfoRoleImpl);
-var Lcom_google_gwt_aria_client_ContentinfoRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ContentinfoRoleImpl', 887);
+defineClass(890, 39, {}, ContentinfoRoleImpl);
+var Lcom_google_gwt_aria_client_ContentinfoRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ContentinfoRoleImpl', 890);
 function DefinitionRoleImpl(){
   RoleImpl.call(this, 'definition');
 }
 
-defineClass(888, 39, {}, DefinitionRoleImpl);
-var Lcom_google_gwt_aria_client_DefinitionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DefinitionRoleImpl', 888);
+defineClass(891, 39, {}, DefinitionRoleImpl);
+var Lcom_google_gwt_aria_client_DefinitionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DefinitionRoleImpl', 891);
 function DialogRoleImpl(){
   RoleImpl.call(this, 'dialog');
 }
 
-defineClass(889, 39, {}, DialogRoleImpl);
-var Lcom_google_gwt_aria_client_DialogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DialogRoleImpl', 889);
+defineClass(892, 39, {}, DialogRoleImpl);
+var Lcom_google_gwt_aria_client_DialogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DialogRoleImpl', 892);
 function DirectoryRoleImpl(){
   RoleImpl.call(this, 'directory');
 }
 
-defineClass(890, 39, {}, DirectoryRoleImpl);
-var Lcom_google_gwt_aria_client_DirectoryRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DirectoryRoleImpl', 890);
+defineClass(893, 39, {}, DirectoryRoleImpl);
+var Lcom_google_gwt_aria_client_DirectoryRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DirectoryRoleImpl', 893);
 function DocumentRoleImpl(){
   RoleImpl.call(this, 'document');
 }
 
-defineClass(891, 39, {}, DocumentRoleImpl);
-var Lcom_google_gwt_aria_client_DocumentRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DocumentRoleImpl', 891);
+defineClass(894, 39, {}, DocumentRoleImpl);
+var Lcom_google_gwt_aria_client_DocumentRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'DocumentRoleImpl', 894);
 function FormRoleImpl(){
   RoleImpl.call(this, 'form');
 }
 
-defineClass(892, 39, {}, FormRoleImpl);
-var Lcom_google_gwt_aria_client_FormRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'FormRoleImpl', 892);
+defineClass(895, 39, {}, FormRoleImpl);
+var Lcom_google_gwt_aria_client_FormRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'FormRoleImpl', 895);
 function GridRoleImpl(){
   RoleImpl.call(this, 'grid');
 }
 
-defineClass(894, 39, {}, GridRoleImpl);
-var Lcom_google_gwt_aria_client_GridRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GridRoleImpl', 894);
+defineClass(897, 39, {}, GridRoleImpl);
+var Lcom_google_gwt_aria_client_GridRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GridRoleImpl', 897);
 function GridcellRoleImpl(){
   RoleImpl.call(this, 'gridcell');
 }
 
-defineClass(893, 39, {}, GridcellRoleImpl);
-var Lcom_google_gwt_aria_client_GridcellRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GridcellRoleImpl', 893);
+defineClass(896, 39, {}, GridcellRoleImpl);
+var Lcom_google_gwt_aria_client_GridcellRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GridcellRoleImpl', 896);
 function GroupRoleImpl(){
   RoleImpl.call(this, 'group');
 }
 
-defineClass(895, 39, {}, GroupRoleImpl);
-var Lcom_google_gwt_aria_client_GroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GroupRoleImpl', 895);
+defineClass(898, 39, {}, GroupRoleImpl);
+var Lcom_google_gwt_aria_client_GroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'GroupRoleImpl', 898);
 function HeadingRoleImpl(){
   RoleImpl.call(this, 'heading');
 }
 
-defineClass(896, 39, {}, HeadingRoleImpl);
-var Lcom_google_gwt_aria_client_HeadingRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'HeadingRoleImpl', 896);
+defineClass(899, 39, {}, HeadingRoleImpl);
+var Lcom_google_gwt_aria_client_HeadingRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'HeadingRoleImpl', 899);
 function $init(this$static, elementId){
   this$static.id_0 = elementId;
 }
@@ -802,68 +802,68 @@ function Id(element){
   $init(this, element.id);
 }
 
-defineClass(328, 1, {1059:1, 328:1}, Id);
+defineClass(328, 1, {1064:1, 328:1}, Id);
 var Lcom_google_gwt_aria_client_Id_2_classLit = createForClass('com.google.gwt.aria.client', 'Id', 328);
 function ImgRoleImpl(){
   RoleImpl.call(this, 'img');
 }
 
-defineClass(897, 39, {}, ImgRoleImpl);
-var Lcom_google_gwt_aria_client_ImgRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ImgRoleImpl', 897);
+defineClass(900, 39, {}, ImgRoleImpl);
+var Lcom_google_gwt_aria_client_ImgRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ImgRoleImpl', 900);
 function LinkRoleImpl(){
   RoleImpl.call(this, 'link');
 }
 
-defineClass(898, 39, {}, LinkRoleImpl);
-var Lcom_google_gwt_aria_client_LinkRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'LinkRoleImpl', 898);
+defineClass(901, 39, {}, LinkRoleImpl);
+var Lcom_google_gwt_aria_client_LinkRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'LinkRoleImpl', 901);
 function ListRoleImpl(){
   RoleImpl.call(this, 'list');
 }
 
-defineClass(901, 39, {}, ListRoleImpl);
-var Lcom_google_gwt_aria_client_ListRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListRoleImpl', 901);
+defineClass(904, 39, {}, ListRoleImpl);
+var Lcom_google_gwt_aria_client_ListRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListRoleImpl', 904);
 function ListboxRoleImpl(){
   RoleImpl.call(this, 'listbox');
 }
 
-defineClass(899, 39, {}, ListboxRoleImpl);
-var Lcom_google_gwt_aria_client_ListboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListboxRoleImpl', 899);
+defineClass(902, 39, {}, ListboxRoleImpl);
+var Lcom_google_gwt_aria_client_ListboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListboxRoleImpl', 902);
 function ListitemRoleImpl(){
   RoleImpl.call(this, 'listitem');
 }
 
-defineClass(900, 39, {}, ListitemRoleImpl);
-var Lcom_google_gwt_aria_client_ListitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListitemRoleImpl', 900);
+defineClass(903, 39, {}, ListitemRoleImpl);
+var Lcom_google_gwt_aria_client_ListitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ListitemRoleImpl', 903);
 function LogRoleImpl(){
   RoleImpl.call(this, 'log');
 }
 
-defineClass(902, 39, {}, LogRoleImpl);
-var Lcom_google_gwt_aria_client_LogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'LogRoleImpl', 902);
+defineClass(905, 39, {}, LogRoleImpl);
+var Lcom_google_gwt_aria_client_LogRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'LogRoleImpl', 905);
 function MainRoleImpl(){
   RoleImpl.call(this, 'main');
 }
 
-defineClass(903, 39, {}, MainRoleImpl);
-var Lcom_google_gwt_aria_client_MainRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MainRoleImpl', 903);
+defineClass(906, 39, {}, MainRoleImpl);
+var Lcom_google_gwt_aria_client_MainRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MainRoleImpl', 906);
 function MarqueeRoleImpl(){
   RoleImpl.call(this, 'marquee');
 }
 
-defineClass(904, 39, {}, MarqueeRoleImpl);
-var Lcom_google_gwt_aria_client_MarqueeRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MarqueeRoleImpl', 904);
+defineClass(907, 39, {}, MarqueeRoleImpl);
+var Lcom_google_gwt_aria_client_MarqueeRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MarqueeRoleImpl', 907);
 function MathRoleImpl(){
   RoleImpl.call(this, 'math');
 }
 
-defineClass(905, 39, {}, MathRoleImpl);
-var Lcom_google_gwt_aria_client_MathRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MathRoleImpl', 905);
+defineClass(908, 39, {}, MathRoleImpl);
+var Lcom_google_gwt_aria_client_MathRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MathRoleImpl', 908);
 function MenuRoleImpl(){
   RoleImpl.call(this, 'menu');
 }
 
-defineClass(910, 39, {}, MenuRoleImpl);
-var Lcom_google_gwt_aria_client_MenuRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuRoleImpl', 910);
+defineClass(913, 39, {}, MenuRoleImpl);
+var Lcom_google_gwt_aria_client_MenuRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuRoleImpl', 913);
 function $setAriaActivedescendantProperty(element, value_0){
   $set_0(($clinit_Property() , ACTIVEDESCENDANT), element, stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_aria_client_Id_2_classLit, 1), $intern_3, 328, 0, [value_0]));
 }
@@ -872,50 +872,50 @@ function MenubarRoleImpl(){
   RoleImpl.call(this, 'menubar');
 }
 
-defineClass(906, 39, {}, MenubarRoleImpl);
-var Lcom_google_gwt_aria_client_MenubarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenubarRoleImpl', 906);
+defineClass(909, 39, {}, MenubarRoleImpl);
+var Lcom_google_gwt_aria_client_MenubarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenubarRoleImpl', 909);
 function MenuitemRoleImpl(){
   RoleImpl.call(this, 'menuitem');
 }
 
-defineClass(909, 39, {}, MenuitemRoleImpl);
-var Lcom_google_gwt_aria_client_MenuitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemRoleImpl', 909);
+defineClass(912, 39, {}, MenuitemRoleImpl);
+var Lcom_google_gwt_aria_client_MenuitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemRoleImpl', 912);
 function MenuitemcheckboxRoleImpl(){
   RoleImpl.call(this, 'menuitemcheckbox');
 }
 
-defineClass(907, 39, {}, MenuitemcheckboxRoleImpl);
-var Lcom_google_gwt_aria_client_MenuitemcheckboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemcheckboxRoleImpl', 907);
+defineClass(910, 39, {}, MenuitemcheckboxRoleImpl);
+var Lcom_google_gwt_aria_client_MenuitemcheckboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemcheckboxRoleImpl', 910);
 function MenuitemradioRoleImpl(){
   RoleImpl.call(this, 'menuitemradio');
 }
 
-defineClass(908, 39, {}, MenuitemradioRoleImpl);
-var Lcom_google_gwt_aria_client_MenuitemradioRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemradioRoleImpl', 908);
+defineClass(911, 39, {}, MenuitemradioRoleImpl);
+var Lcom_google_gwt_aria_client_MenuitemradioRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'MenuitemradioRoleImpl', 911);
 function NavigationRoleImpl(){
   RoleImpl.call(this, 'navigation');
 }
 
-defineClass(911, 39, {}, NavigationRoleImpl);
-var Lcom_google_gwt_aria_client_NavigationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'NavigationRoleImpl', 911);
+defineClass(914, 39, {}, NavigationRoleImpl);
+var Lcom_google_gwt_aria_client_NavigationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'NavigationRoleImpl', 914);
 function NoteRoleImpl(){
   RoleImpl.call(this, 'note');
 }
 
-defineClass(912, 39, {}, NoteRoleImpl);
-var Lcom_google_gwt_aria_client_NoteRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'NoteRoleImpl', 912);
+defineClass(915, 39, {}, NoteRoleImpl);
+var Lcom_google_gwt_aria_client_NoteRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'NoteRoleImpl', 915);
 function OptionRoleImpl(){
   RoleImpl.call(this, 'option');
 }
 
-defineClass(913, 39, {}, OptionRoleImpl);
-var Lcom_google_gwt_aria_client_OptionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'OptionRoleImpl', 913);
+defineClass(916, 39, {}, OptionRoleImpl);
+var Lcom_google_gwt_aria_client_OptionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'OptionRoleImpl', 916);
 function PresentationRoleImpl(){
   RoleImpl.call(this, 'presentation');
 }
 
-defineClass(914, 39, {}, PresentationRoleImpl);
-var Lcom_google_gwt_aria_client_PresentationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'PresentationRoleImpl', 914);
+defineClass(917, 39, {}, PresentationRoleImpl);
+var Lcom_google_gwt_aria_client_PresentationRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'PresentationRoleImpl', 917);
 function PrimitiveValueAttribute(name_0){
   Attribute.call(this, name_0);
 }
@@ -930,8 +930,8 @@ function ProgressbarRoleImpl(){
   RoleImpl.call(this, 'progressbar');
 }
 
-defineClass(915, 39, {}, ProgressbarRoleImpl);
-var Lcom_google_gwt_aria_client_ProgressbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ProgressbarRoleImpl', 915);
+defineClass(918, 39, {}, ProgressbarRoleImpl);
+var Lcom_google_gwt_aria_client_ProgressbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ProgressbarRoleImpl', 918);
 function $clinit_Property(){
   $clinit_Property = emptyMethod;
   ACTIVEDESCENDANT = new AriaValueAttribute('aria-activedescendant');
@@ -967,20 +967,20 @@ function RadioRoleImpl(){
   RoleImpl.call(this, 'radio');
 }
 
-defineClass(917, 39, {}, RadioRoleImpl);
-var Lcom_google_gwt_aria_client_RadioRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RadioRoleImpl', 917);
+defineClass(920, 39, {}, RadioRoleImpl);
+var Lcom_google_gwt_aria_client_RadioRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RadioRoleImpl', 920);
 function RadiogroupRoleImpl(){
   RoleImpl.call(this, 'radiogroup');
 }
 
-defineClass(916, 39, {}, RadiogroupRoleImpl);
-var Lcom_google_gwt_aria_client_RadiogroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RadiogroupRoleImpl', 916);
+defineClass(919, 39, {}, RadiogroupRoleImpl);
+var Lcom_google_gwt_aria_client_RadiogroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RadiogroupRoleImpl', 919);
 function RegionRoleImpl(){
   RoleImpl.call(this, 'region');
 }
 
-defineClass(918, 39, {}, RegionRoleImpl);
-var Lcom_google_gwt_aria_client_RegionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RegionRoleImpl', 918);
+defineClass(921, 39, {}, RegionRoleImpl);
+var Lcom_google_gwt_aria_client_RegionRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RegionRoleImpl', 921);
 function $clinit_Roles(){
   $clinit_Roles = emptyMethod;
   ALERTDIALOG = new AlertdialogRoleImpl;
@@ -1113,50 +1113,50 @@ function RowRoleImpl(){
   RoleImpl.call(this, 'row');
 }
 
-defineClass(921, 39, {}, RowRoleImpl);
-var Lcom_google_gwt_aria_client_RowRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowRoleImpl', 921);
+defineClass(924, 39, {}, RowRoleImpl);
+var Lcom_google_gwt_aria_client_RowRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowRoleImpl', 924);
 function RowgroupRoleImpl(){
   RoleImpl.call(this, 'rowgroup');
 }
 
-defineClass(919, 39, {}, RowgroupRoleImpl);
-var Lcom_google_gwt_aria_client_RowgroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowgroupRoleImpl', 919);
+defineClass(922, 39, {}, RowgroupRoleImpl);
+var Lcom_google_gwt_aria_client_RowgroupRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowgroupRoleImpl', 922);
 function RowheaderRoleImpl(){
   RoleImpl.call(this, 'rowheader');
 }
 
-defineClass(920, 39, {}, RowheaderRoleImpl);
-var Lcom_google_gwt_aria_client_RowheaderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowheaderRoleImpl', 920);
+defineClass(923, 39, {}, RowheaderRoleImpl);
+var Lcom_google_gwt_aria_client_RowheaderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'RowheaderRoleImpl', 923);
 function ScrollbarRoleImpl(){
   RoleImpl.call(this, 'scrollbar');
 }
 
-defineClass(922, 39, {}, ScrollbarRoleImpl);
-var Lcom_google_gwt_aria_client_ScrollbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ScrollbarRoleImpl', 922);
+defineClass(925, 39, {}, ScrollbarRoleImpl);
+var Lcom_google_gwt_aria_client_ScrollbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ScrollbarRoleImpl', 925);
 function SearchRoleImpl(){
   RoleImpl.call(this, 'search');
 }
 
-defineClass(923, 39, {}, SearchRoleImpl);
-var Lcom_google_gwt_aria_client_SearchRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SearchRoleImpl', 923);
+defineClass(926, 39, {}, SearchRoleImpl);
+var Lcom_google_gwt_aria_client_SearchRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SearchRoleImpl', 926);
 function SeparatorRoleImpl(){
   RoleImpl.call(this, 'separator');
 }
 
-defineClass(924, 39, {}, SeparatorRoleImpl);
-var Lcom_google_gwt_aria_client_SeparatorRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SeparatorRoleImpl', 924);
+defineClass(927, 39, {}, SeparatorRoleImpl);
+var Lcom_google_gwt_aria_client_SeparatorRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SeparatorRoleImpl', 927);
 function SliderRoleImpl(){
   RoleImpl.call(this, 'slider');
 }
 
-defineClass(925, 39, {}, SliderRoleImpl);
-var Lcom_google_gwt_aria_client_SliderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SliderRoleImpl', 925);
+defineClass(928, 39, {}, SliderRoleImpl);
+var Lcom_google_gwt_aria_client_SliderRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SliderRoleImpl', 928);
 function SpinbuttonRoleImpl(){
   RoleImpl.call(this, 'spinbutton');
 }
 
-defineClass(926, 39, {}, SpinbuttonRoleImpl);
-var Lcom_google_gwt_aria_client_SpinbuttonRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SpinbuttonRoleImpl', 926);
+defineClass(929, 39, {}, SpinbuttonRoleImpl);
+var Lcom_google_gwt_aria_client_SpinbuttonRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'SpinbuttonRoleImpl', 929);
 function $clinit_State(){
   $clinit_State = emptyMethod;
   new PrimitiveValueAttribute('aria-busy');
@@ -1175,68 +1175,68 @@ function StatusRoleImpl(){
   RoleImpl.call(this, 'status');
 }
 
-defineClass(927, 39, {}, StatusRoleImpl);
-var Lcom_google_gwt_aria_client_StatusRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'StatusRoleImpl', 927);
+defineClass(930, 39, {}, StatusRoleImpl);
+var Lcom_google_gwt_aria_client_StatusRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'StatusRoleImpl', 930);
 function TabRoleImpl(){
   RoleImpl.call(this, 'tab');
 }
 
-defineClass(930, 39, {}, TabRoleImpl);
-var Lcom_google_gwt_aria_client_TabRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TabRoleImpl', 930);
+defineClass(933, 39, {}, TabRoleImpl);
+var Lcom_google_gwt_aria_client_TabRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TabRoleImpl', 933);
 function TablistRoleImpl(){
   RoleImpl.call(this, 'tablist');
 }
 
-defineClass(928, 39, {}, TablistRoleImpl);
-var Lcom_google_gwt_aria_client_TablistRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TablistRoleImpl', 928);
+defineClass(931, 39, {}, TablistRoleImpl);
+var Lcom_google_gwt_aria_client_TablistRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TablistRoleImpl', 931);
 function TabpanelRoleImpl(){
   RoleImpl.call(this, 'tabpanel');
 }
 
-defineClass(929, 39, {}, TabpanelRoleImpl);
-var Lcom_google_gwt_aria_client_TabpanelRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TabpanelRoleImpl', 929);
+defineClass(932, 39, {}, TabpanelRoleImpl);
+var Lcom_google_gwt_aria_client_TabpanelRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TabpanelRoleImpl', 932);
 function TextboxRoleImpl(){
   RoleImpl.call(this, 'textbox');
 }
 
-defineClass(931, 39, {}, TextboxRoleImpl);
-var Lcom_google_gwt_aria_client_TextboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TextboxRoleImpl', 931);
+defineClass(934, 39, {}, TextboxRoleImpl);
+var Lcom_google_gwt_aria_client_TextboxRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TextboxRoleImpl', 934);
 function TimerRoleImpl(){
   RoleImpl.call(this, 'timer');
 }
 
-defineClass(932, 39, {}, TimerRoleImpl);
-var Lcom_google_gwt_aria_client_TimerRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TimerRoleImpl', 932);
+defineClass(935, 39, {}, TimerRoleImpl);
+var Lcom_google_gwt_aria_client_TimerRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TimerRoleImpl', 935);
 function ToolbarRoleImpl(){
   RoleImpl.call(this, 'toolbar');
 }
 
-defineClass(933, 39, {}, ToolbarRoleImpl);
-var Lcom_google_gwt_aria_client_ToolbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ToolbarRoleImpl', 933);
+defineClass(936, 39, {}, ToolbarRoleImpl);
+var Lcom_google_gwt_aria_client_ToolbarRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'ToolbarRoleImpl', 936);
 function TooltipRoleImpl(){
   RoleImpl.call(this, 'tooltip');
 }
 
-defineClass(934, 39, {}, TooltipRoleImpl);
-var Lcom_google_gwt_aria_client_TooltipRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TooltipRoleImpl', 934);
+defineClass(937, 39, {}, TooltipRoleImpl);
+var Lcom_google_gwt_aria_client_TooltipRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TooltipRoleImpl', 937);
 function TreeRoleImpl(){
   RoleImpl.call(this, 'tree');
 }
 
-defineClass(937, 39, {}, TreeRoleImpl);
-var Lcom_google_gwt_aria_client_TreeRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreeRoleImpl', 937);
+defineClass(940, 39, {}, TreeRoleImpl);
+var Lcom_google_gwt_aria_client_TreeRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreeRoleImpl', 940);
 function TreegridRoleImpl(){
   RoleImpl.call(this, 'treegrid');
 }
 
-defineClass(935, 39, {}, TreegridRoleImpl);
-var Lcom_google_gwt_aria_client_TreegridRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreegridRoleImpl', 935);
+defineClass(938, 39, {}, TreegridRoleImpl);
+var Lcom_google_gwt_aria_client_TreegridRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreegridRoleImpl', 938);
 function TreeitemRoleImpl(){
   RoleImpl.call(this, 'treeitem');
 }
 
-defineClass(936, 39, {}, TreeitemRoleImpl);
-var Lcom_google_gwt_aria_client_TreeitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreeitemRoleImpl', 936);
+defineClass(939, 39, {}, TreeitemRoleImpl);
+var Lcom_google_gwt_aria_client_TreeitemRoleImpl_2_classLit = createForClass('com.google.gwt.aria.client', 'TreeitemRoleImpl', 939);
 function $addStyleDependentName(this$static, styleSuffix){
   $setStyleName_0(this$static, getStylePrimaryName(($clinit_DOM() , this$static.element)) + '-' + styleSuffix, true);
 }
@@ -1542,14 +1542,14 @@ function $setEnabled(this$static, enabled){
 }
 
 function $setFocus(this$static){
-  ($clinit_DOM() , this$static.element).focus();
+  $focus_0(($clinit_DOM() , this$static.element));
 }
 
 function FocusWidget(elem){
   $setElement_0(this, ($clinit_DOM() , elem));
 }
 
-defineClass(84, 28, $intern_5);
+defineClass(85, 28, $intern_5);
 _.getTabIndex = function getTabIndex(){
   return $getTabIndex(($clinit_DOM() , this.element));
 }
@@ -1565,7 +1565,7 @@ _.setTabIndex = function setTabIndex(index_0){
   $setTabIndex(($clinit_DOM() , this.element), index_0);
 }
 ;
-var Lcom_google_gwt_user_client_ui_FocusWidget_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FocusWidget', 84);
+var Lcom_google_gwt_user_client_ui_FocusWidget_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FocusWidget', 85);
 function $getContext2d(this$static){
   return ($clinit_DOM() , this$static.element).getContext('2d');
 }
@@ -1600,16 +1600,16 @@ function createIfSupported(){
   return new Canvas_0(element);
 }
 
-defineClass(719, 84, $intern_5, Canvas_0);
+defineClass(722, 85, $intern_5, Canvas_0);
 var detector;
-var Lcom_google_gwt_canvas_client_Canvas_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas', 719);
-defineClass(1022, 1, {});
-var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetector_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetector', 1022);
+var Lcom_google_gwt_canvas_client_Canvas_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas', 722);
+defineClass(1025, 1, {});
+var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetector_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetector', 1025);
 function Canvas$CanvasElementSupportDetectedMaybe(){
 }
 
-defineClass(720, 1022, {}, Canvas$CanvasElementSupportDetectedMaybe);
-var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetectedMaybe', 720);
+defineClass(723, 1025, {}, Canvas$CanvasElementSupportDetectedMaybe);
+var Lcom_google_gwt_canvas_client_Canvas$CanvasElementSupportDetectedMaybe_2_classLit = createForClass('com.google.gwt.canvas.client', 'Canvas/CanvasElementSupportDetectedMaybe', 723);
 function $hashCode(this$static){
   return !!this$static && !!this$static.hashCode?this$static.hashCode():getHashCode(this$static);
 }
@@ -1874,14 +1874,14 @@ function RuntimeException_1(message, cause){
   Throwable.call(this, message, cause);
 }
 
-defineClass(86, 13, $intern_7, RuntimeException_0);
-var Ljava_lang_RuntimeException_2_classLit = createForClass('java.lang', 'RuntimeException', 86);
+defineClass(87, 13, $intern_7, RuntimeException_0);
+var Ljava_lang_RuntimeException_2_classLit = createForClass('java.lang', 'RuntimeException', 87);
 function CodeDownloadException(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(1032, 86, $intern_7, CodeDownloadException);
-var Lcom_google_gwt_core_client_CodeDownloadException_2_classLit = createForClass('com.google.gwt.core.client', 'CodeDownloadException', 1032);
+defineClass(1037, 87, $intern_7, CodeDownloadException);
+var Lcom_google_gwt_core_client_CodeDownloadException_2_classLit = createForClass('com.google.gwt.core.client', 'CodeDownloadException', 1037);
 function $elapsedMillis(this$static){
   return now_1() - this$static.start_0;
 }
@@ -1893,7 +1893,7 @@ function Duration(){
 defineClass(306, 1, {}, Duration);
 _.start_0 = 0;
 var Lcom_google_gwt_core_client_Duration_2_classLit = createForClass('com.google.gwt.core.client', 'Duration', 306);
-defineClass(304, 86, $intern_7);
+defineClass(304, 87, $intern_7);
 var Ljava_lang_JsException_2_classLit = createForClass('java.lang', 'JsException', 304);
 defineClass(525, 304, $intern_7);
 var Lcom_google_gwt_core_client_impl_JavaScriptExceptionBase_2_classLit = createForClass('com.google.gwt.core.client.impl', 'JavaScriptExceptionBase', 525);
@@ -1942,8 +1942,8 @@ function now_1(){
   return (new Date).getTime();
 }
 
-defineClass($intern_8, 1, {});
-var Lcom_google_gwt_core_client_Scheduler_2_classLit = createForClass('com.google.gwt.core.client', 'Scheduler', $intern_8);
+defineClass(1003, 1, {});
+var Lcom_google_gwt_core_client_Scheduler_2_classLit = createForClass('com.google.gwt.core.client', 'Scheduler', 1003);
 function $clinit_ScriptInjector(){
   $clinit_ScriptInjector = emptyMethod;
 }
@@ -2003,8 +2003,8 @@ function ScriptInjector$FromUrl(){
   this.scriptUrl = 'canvas2svg.js';
 }
 
-defineClass(839, 1, {}, ScriptInjector$FromUrl);
-var Lcom_google_gwt_core_client_ScriptInjector$FromUrl_2_classLit = createForClass('com.google.gwt.core.client', 'ScriptInjector/FromUrl', 839);
+defineClass(842, 1, {}, ScriptInjector$FromUrl);
+var Lcom_google_gwt_core_client_ScriptInjector$FromUrl_2_classLit = createForClass('com.google.gwt.core.client', 'ScriptInjector/FromUrl', 842);
 function $clinit_Impl(){
   $clinit_Impl = emptyMethod;
   !!($clinit_StackTraceCreator() , collector);
@@ -2235,16 +2235,16 @@ function scheduleFixedDelayImpl(cmd, delayMs){
   $wnd.setTimeout(callback, delayMs);
 }
 
-defineClass(537, $intern_8, {}, SchedulerImpl);
+defineClass(538, 1003, {}, SchedulerImpl);
 _.flushRunning = false;
 _.shouldBeRunning = false;
 var INSTANCE;
-var Lcom_google_gwt_core_client_impl_SchedulerImpl_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl', 537);
+var Lcom_google_gwt_core_client_impl_SchedulerImpl_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl', 538);
 function SchedulerImpl$Flusher(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(538, 1, {}, SchedulerImpl$Flusher);
+defineClass(539, 1, {}, SchedulerImpl$Flusher);
 _.execute_0 = function execute_1(){
   this.this$01.flushRunning = true;
   $flushPostEventPumpCommands(this.this$01);
@@ -2252,18 +2252,18 @@ _.execute_0 = function execute_1(){
   return this.this$01.shouldBeRunning = $isWorkQueued(this.this$01);
 }
 ;
-var Lcom_google_gwt_core_client_impl_SchedulerImpl$Flusher_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl/Flusher', 538);
+var Lcom_google_gwt_core_client_impl_SchedulerImpl$Flusher_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl/Flusher', 539);
 function SchedulerImpl$Rescuer(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(539, 1, {}, SchedulerImpl$Rescuer);
+defineClass(540, 1, {}, SchedulerImpl$Rescuer);
 _.execute_0 = function execute_2(){
   this.this$01.flushRunning && scheduleFixedDelayImpl(this.this$01.flusher, 1);
   return this.this$01.shouldBeRunning;
 }
 ;
-var Lcom_google_gwt_core_client_impl_SchedulerImpl$Rescuer_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl/Rescuer', 539);
+var Lcom_google_gwt_core_client_impl_SchedulerImpl$Rescuer_2_classLit = createForClass('com.google.gwt.core.client.impl', 'SchedulerImpl/Rescuer', 540);
 function $clinit_StackTraceCreator(){
   $clinit_StackTraceCreator = emptyMethod;
   var c, enforceLegacy;
@@ -2311,12 +2311,12 @@ function supportsErrorStack(){
 }
 
 var collector;
-defineClass(1010, 1, {});
-var Lcom_google_gwt_core_client_impl_StackTraceCreator$Collector_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/Collector', 1010);
+defineClass(1013, 1, {});
+var Lcom_google_gwt_core_client_impl_StackTraceCreator$Collector_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/Collector', 1013);
 function StackTraceCreator$CollectorLegacy(){
 }
 
-defineClass(526, 1010, {}, StackTraceCreator$CollectorLegacy);
+defineClass(526, 1013, {}, StackTraceCreator$CollectorLegacy);
 _.collect = function collect(error){
   var seen = {}, name_1;
   var fnStack = [];
@@ -2393,7 +2393,7 @@ function $parse(this$static, stString){
   return this$static.createSte(fileName, toReturn, line, col);
 }
 
-defineClass(1011, 1010, {});
+defineClass(1014, 1013, {});
 _.collect = function collect_0(error){
 }
 ;
@@ -2418,11 +2418,11 @@ _.getStackTrace = function getStackTrace_0(t){
   return stackTrace;
 }
 ;
-var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorModern_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorModern', 1011);
+var Lcom_google_gwt_core_client_impl_StackTraceCreator$CollectorModern_2_classLit = createForClass('com.google.gwt.core.client.impl', 'StackTraceCreator/CollectorModern', 1014);
 function StackTraceCreator$CollectorModernNoSourceMap(){
 }
 
-defineClass(527, 1011, {}, StackTraceCreator$CollectorModernNoSourceMap);
+defineClass(527, 1014, {}, StackTraceCreator$CollectorModernNoSourceMap);
 _.createSte = function createSte_0(fileName, method, line, col){
   return new StackTraceElement(method, fileName, -1);
 }
@@ -2582,6 +2582,10 @@ function $createInputRadioElement(doc, name_0){
   return elem;
 }
 
+function $dispatchEvent(target, evt){
+  target.dispatchEvent(evt);
+}
+
 function $eventGetButton(evt){
   var button = evt.button;
   if (button == 1) {
@@ -2653,7 +2657,7 @@ function $getScrollLeft(elem){
 }
 
 function $getTabIndex(elem){
-  return elem.tabIndex < $intern_9?elem.tabIndex:-(elem.tabIndex % $intern_9) - 1;
+  return elem.tabIndex < $intern_8?elem.tabIndex:-(elem.tabIndex % $intern_8) - 1;
 }
 
 function $selectRemoveOption(select, index_0){
@@ -2763,39 +2767,39 @@ function values_1(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$BorderStyle_2_classLit, 1), $intern_3, 156, 0, [NONE, DOTTED, DASHED, HIDDEN_0, SOLID]);
 }
 
-defineClass(156, 18, $intern_10);
+defineClass(156, 18, $intern_9);
 var DASHED, DOTTED, HIDDEN_0, NONE, SOLID;
 var Lcom_google_gwt_dom_client_Style$BorderStyle_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle', 156, values_1);
 function Style$BorderStyle$1(){
   Style$BorderStyle.call(this, 'NONE', 0);
 }
 
-defineClass(638, 156, $intern_10, Style$BorderStyle$1);
-var Lcom_google_gwt_dom_client_Style$BorderStyle$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/1', 638, null);
+defineClass(641, 156, $intern_9, Style$BorderStyle$1);
+var Lcom_google_gwt_dom_client_Style$BorderStyle$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/1', 641, null);
 function Style$BorderStyle$2(){
   Style$BorderStyle.call(this, 'DOTTED', 1);
 }
 
-defineClass(639, 156, $intern_10, Style$BorderStyle$2);
-var Lcom_google_gwt_dom_client_Style$BorderStyle$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/2', 639, null);
+defineClass(642, 156, $intern_9, Style$BorderStyle$2);
+var Lcom_google_gwt_dom_client_Style$BorderStyle$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/2', 642, null);
 function Style$BorderStyle$3(){
   Style$BorderStyle.call(this, 'DASHED', 2);
 }
 
-defineClass(640, 156, $intern_10, Style$BorderStyle$3);
-var Lcom_google_gwt_dom_client_Style$BorderStyle$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/3', 640, null);
+defineClass(643, 156, $intern_9, Style$BorderStyle$3);
+var Lcom_google_gwt_dom_client_Style$BorderStyle$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/3', 643, null);
 function Style$BorderStyle$4(){
   Style$BorderStyle.call(this, 'HIDDEN', 3);
 }
 
-defineClass(641, 156, $intern_10, Style$BorderStyle$4);
-var Lcom_google_gwt_dom_client_Style$BorderStyle$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/4', 641, null);
+defineClass(644, 156, $intern_9, Style$BorderStyle$4);
+var Lcom_google_gwt_dom_client_Style$BorderStyle$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/4', 644, null);
 function Style$BorderStyle$5(){
   Style$BorderStyle.call(this, 'SOLID', 4);
 }
 
-defineClass(642, 156, $intern_10, Style$BorderStyle$5);
-var Lcom_google_gwt_dom_client_Style$BorderStyle$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/5', 642, null);
+defineClass(645, 156, $intern_9, Style$BorderStyle$5);
+var Lcom_google_gwt_dom_client_Style$BorderStyle$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/BorderStyle/5', 645, null);
 function $clinit_Style$Cursor(){
   $clinit_Style$Cursor = emptyMethod;
   DEFAULT = new Style$Cursor$1;
@@ -2827,117 +2831,117 @@ function values_2(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Cursor_2_classLit, 1), $intern_3, 51, 0, [DEFAULT, AUTO, CROSSHAIR, POINTER, MOVE, E_RESIZE, NE_RESIZE, NW_RESIZE, N_RESIZE, SE_RESIZE, SW_RESIZE, S_RESIZE, W_RESIZE, TEXT, WAIT, HELP, COL_RESIZE, ROW_RESIZE]);
 }
 
-defineClass(51, 18, $intern_11);
+defineClass(51, 18, $intern_10);
 var AUTO, COL_RESIZE, CROSSHAIR, DEFAULT, E_RESIZE, HELP, MOVE, NE_RESIZE, NW_RESIZE, N_RESIZE, POINTER, ROW_RESIZE, SE_RESIZE, SW_RESIZE, S_RESIZE, TEXT, WAIT, W_RESIZE;
 var Lcom_google_gwt_dom_client_Style$Cursor_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor', 51, values_2);
 function Style$Cursor$1(){
   Style$Cursor.call(this, 'DEFAULT', 0);
 }
 
-defineClass(643, 51, $intern_11, Style$Cursor$1);
-var Lcom_google_gwt_dom_client_Style$Cursor$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/1', 643, null);
+defineClass(646, 51, $intern_10, Style$Cursor$1);
+var Lcom_google_gwt_dom_client_Style$Cursor$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/1', 646, null);
 function Style$Cursor$10(){
   Style$Cursor.call(this, 'SE_RESIZE', 9);
 }
 
-defineClass(652, 51, $intern_11, Style$Cursor$10);
-var Lcom_google_gwt_dom_client_Style$Cursor$10_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/10', 652, null);
+defineClass(655, 51, $intern_10, Style$Cursor$10);
+var Lcom_google_gwt_dom_client_Style$Cursor$10_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/10', 655, null);
 function Style$Cursor$11(){
   Style$Cursor.call(this, 'SW_RESIZE', 10);
 }
 
-defineClass(653, 51, $intern_11, Style$Cursor$11);
-var Lcom_google_gwt_dom_client_Style$Cursor$11_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/11', 653, null);
+defineClass(656, 51, $intern_10, Style$Cursor$11);
+var Lcom_google_gwt_dom_client_Style$Cursor$11_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/11', 656, null);
 function Style$Cursor$12(){
   Style$Cursor.call(this, 'S_RESIZE', 11);
 }
 
-defineClass(654, 51, $intern_11, Style$Cursor$12);
-var Lcom_google_gwt_dom_client_Style$Cursor$12_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/12', 654, null);
+defineClass(657, 51, $intern_10, Style$Cursor$12);
+var Lcom_google_gwt_dom_client_Style$Cursor$12_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/12', 657, null);
 function Style$Cursor$13(){
   Style$Cursor.call(this, 'W_RESIZE', 12);
 }
 
-defineClass(655, 51, $intern_11, Style$Cursor$13);
-var Lcom_google_gwt_dom_client_Style$Cursor$13_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/13', 655, null);
+defineClass(658, 51, $intern_10, Style$Cursor$13);
+var Lcom_google_gwt_dom_client_Style$Cursor$13_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/13', 658, null);
 function Style$Cursor$14(){
   Style$Cursor.call(this, 'TEXT', 13);
 }
 
-defineClass(656, 51, $intern_11, Style$Cursor$14);
-var Lcom_google_gwt_dom_client_Style$Cursor$14_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/14', 656, null);
+defineClass(659, 51, $intern_10, Style$Cursor$14);
+var Lcom_google_gwt_dom_client_Style$Cursor$14_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/14', 659, null);
 function Style$Cursor$15(){
   Style$Cursor.call(this, 'WAIT', 14);
 }
 
-defineClass(657, 51, $intern_11, Style$Cursor$15);
-var Lcom_google_gwt_dom_client_Style$Cursor$15_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/15', 657, null);
+defineClass(660, 51, $intern_10, Style$Cursor$15);
+var Lcom_google_gwt_dom_client_Style$Cursor$15_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/15', 660, null);
 function Style$Cursor$16(){
   Style$Cursor.call(this, 'HELP', 15);
 }
 
-defineClass(658, 51, $intern_11, Style$Cursor$16);
-var Lcom_google_gwt_dom_client_Style$Cursor$16_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/16', 658, null);
+defineClass(661, 51, $intern_10, Style$Cursor$16);
+var Lcom_google_gwt_dom_client_Style$Cursor$16_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/16', 661, null);
 function Style$Cursor$17(){
   Style$Cursor.call(this, 'COL_RESIZE', 16);
 }
 
-defineClass(659, 51, $intern_11, Style$Cursor$17);
-var Lcom_google_gwt_dom_client_Style$Cursor$17_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/17', 659, null);
+defineClass(662, 51, $intern_10, Style$Cursor$17);
+var Lcom_google_gwt_dom_client_Style$Cursor$17_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/17', 662, null);
 function Style$Cursor$18(){
   Style$Cursor.call(this, 'ROW_RESIZE', 17);
 }
 
-defineClass(660, 51, $intern_11, Style$Cursor$18);
-var Lcom_google_gwt_dom_client_Style$Cursor$18_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/18', 660, null);
+defineClass(663, 51, $intern_10, Style$Cursor$18);
+var Lcom_google_gwt_dom_client_Style$Cursor$18_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/18', 663, null);
 function Style$Cursor$2(){
   Style$Cursor.call(this, 'AUTO', 1);
 }
 
-defineClass(644, 51, $intern_11, Style$Cursor$2);
-var Lcom_google_gwt_dom_client_Style$Cursor$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/2', 644, null);
+defineClass(647, 51, $intern_10, Style$Cursor$2);
+var Lcom_google_gwt_dom_client_Style$Cursor$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/2', 647, null);
 function Style$Cursor$3(){
   Style$Cursor.call(this, 'CROSSHAIR', 2);
 }
 
-defineClass(645, 51, $intern_11, Style$Cursor$3);
-var Lcom_google_gwt_dom_client_Style$Cursor$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/3', 645, null);
+defineClass(648, 51, $intern_10, Style$Cursor$3);
+var Lcom_google_gwt_dom_client_Style$Cursor$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/3', 648, null);
 function Style$Cursor$4(){
   Style$Cursor.call(this, 'POINTER', 3);
 }
 
-defineClass(646, 51, $intern_11, Style$Cursor$4);
-var Lcom_google_gwt_dom_client_Style$Cursor$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/4', 646, null);
+defineClass(649, 51, $intern_10, Style$Cursor$4);
+var Lcom_google_gwt_dom_client_Style$Cursor$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/4', 649, null);
 function Style$Cursor$5(){
   Style$Cursor.call(this, 'MOVE', 4);
 }
 
-defineClass(647, 51, $intern_11, Style$Cursor$5);
-var Lcom_google_gwt_dom_client_Style$Cursor$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/5', 647, null);
+defineClass(650, 51, $intern_10, Style$Cursor$5);
+var Lcom_google_gwt_dom_client_Style$Cursor$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/5', 650, null);
 function Style$Cursor$6(){
   Style$Cursor.call(this, 'E_RESIZE', 5);
 }
 
-defineClass(648, 51, $intern_11, Style$Cursor$6);
-var Lcom_google_gwt_dom_client_Style$Cursor$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/6', 648, null);
+defineClass(651, 51, $intern_10, Style$Cursor$6);
+var Lcom_google_gwt_dom_client_Style$Cursor$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/6', 651, null);
 function Style$Cursor$7(){
   Style$Cursor.call(this, 'NE_RESIZE', 6);
 }
 
-defineClass(649, 51, $intern_11, Style$Cursor$7);
-var Lcom_google_gwt_dom_client_Style$Cursor$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/7', 649, null);
+defineClass(652, 51, $intern_10, Style$Cursor$7);
+var Lcom_google_gwt_dom_client_Style$Cursor$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/7', 652, null);
 function Style$Cursor$8(){
   Style$Cursor.call(this, 'NW_RESIZE', 7);
 }
 
-defineClass(650, 51, $intern_11, Style$Cursor$8);
-var Lcom_google_gwt_dom_client_Style$Cursor$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/8', 650, null);
+defineClass(653, 51, $intern_10, Style$Cursor$8);
+var Lcom_google_gwt_dom_client_Style$Cursor$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/8', 653, null);
 function Style$Cursor$9(){
   Style$Cursor.call(this, 'N_RESIZE', 8);
 }
 
-defineClass(651, 51, $intern_11, Style$Cursor$9);
-var Lcom_google_gwt_dom_client_Style$Cursor$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/9', 651, null);
+defineClass(654, 51, $intern_10, Style$Cursor$9);
+var Lcom_google_gwt_dom_client_Style$Cursor$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Cursor/9', 654, null);
 function $clinit_Style$Display(){
   $clinit_Style$Display = emptyMethod;
   NONE_0 = new Style$Display$1;
@@ -2970,199 +2974,199 @@ function values_3(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Display_2_classLit, 1), $intern_3, 49, 0, [NONE_0, BLOCK, INLINE, INLINE_BLOCK, INLINE_TABLE, LIST_ITEM, RUN_IN, TABLE, TABLE_CAPTION, TABLE_COLUMN_GROUP, TABLE_HEADER_GROUP, TABLE_FOOTER_GROUP, TABLE_ROW_GROUP, TABLE_CELL, TABLE_COLUMN, TABLE_ROW, INITIAL, FLEX, INLINE_FLEX]);
 }
 
-defineClass(49, 18, $intern_12);
+defineClass(49, 18, $intern_11);
 var BLOCK, FLEX, INITIAL, INLINE, INLINE_BLOCK, INLINE_FLEX, INLINE_TABLE, LIST_ITEM, NONE_0, RUN_IN, TABLE, TABLE_CAPTION, TABLE_CELL, TABLE_COLUMN, TABLE_COLUMN_GROUP, TABLE_FOOTER_GROUP, TABLE_HEADER_GROUP, TABLE_ROW, TABLE_ROW_GROUP;
 var Lcom_google_gwt_dom_client_Style$Display_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display', 49, values_3);
 function Style$Display$1(){
   Style$Display.call(this, 'NONE', 0);
 }
 
-defineClass(661, 49, $intern_12, Style$Display$1);
+defineClass(664, 49, $intern_11, Style$Display$1);
 _.getCssName = function getCssName(){
   return 'none';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/1', 661, null);
+var Lcom_google_gwt_dom_client_Style$Display$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/1', 664, null);
 function Style$Display$10(){
   Style$Display.call(this, 'TABLE_COLUMN_GROUP', 9);
 }
 
-defineClass(670, 49, $intern_12, Style$Display$10);
+defineClass(673, 49, $intern_11, Style$Display$10);
 _.getCssName = function getCssName_0(){
   return 'table-column-group';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$10_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/10', 670, null);
+var Lcom_google_gwt_dom_client_Style$Display$10_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/10', 673, null);
 function Style$Display$11(){
   Style$Display.call(this, 'TABLE_HEADER_GROUP', 10);
 }
 
-defineClass(671, 49, $intern_12, Style$Display$11);
+defineClass(674, 49, $intern_11, Style$Display$11);
 _.getCssName = function getCssName_1(){
   return 'table-header-group';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$11_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/11', 671, null);
+var Lcom_google_gwt_dom_client_Style$Display$11_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/11', 674, null);
 function Style$Display$12(){
   Style$Display.call(this, 'TABLE_FOOTER_GROUP', 11);
 }
 
-defineClass(672, 49, $intern_12, Style$Display$12);
+defineClass(675, 49, $intern_11, Style$Display$12);
 _.getCssName = function getCssName_2(){
   return 'table-footer-group';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$12_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/12', 672, null);
+var Lcom_google_gwt_dom_client_Style$Display$12_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/12', 675, null);
 function Style$Display$13(){
   Style$Display.call(this, 'TABLE_ROW_GROUP', 12);
 }
 
-defineClass(673, 49, $intern_12, Style$Display$13);
+defineClass(676, 49, $intern_11, Style$Display$13);
 _.getCssName = function getCssName_3(){
   return 'table-row-group';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$13_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/13', 673, null);
+var Lcom_google_gwt_dom_client_Style$Display$13_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/13', 676, null);
 function Style$Display$14(){
   Style$Display.call(this, 'TABLE_CELL', 13);
 }
 
-defineClass(674, 49, $intern_12, Style$Display$14);
+defineClass(677, 49, $intern_11, Style$Display$14);
 _.getCssName = function getCssName_4(){
   return 'table-cell';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$14_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/14', 674, null);
+var Lcom_google_gwt_dom_client_Style$Display$14_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/14', 677, null);
 function Style$Display$15(){
   Style$Display.call(this, 'TABLE_COLUMN', 14);
 }
 
-defineClass(675, 49, $intern_12, Style$Display$15);
+defineClass(678, 49, $intern_11, Style$Display$15);
 _.getCssName = function getCssName_5(){
   return 'table-column';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$15_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/15', 675, null);
+var Lcom_google_gwt_dom_client_Style$Display$15_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/15', 678, null);
 function Style$Display$16(){
   Style$Display.call(this, 'TABLE_ROW', 15);
 }
 
-defineClass(676, 49, $intern_12, Style$Display$16);
+defineClass(679, 49, $intern_11, Style$Display$16);
 _.getCssName = function getCssName_6(){
   return 'table-row';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$16_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/16', 676, null);
+var Lcom_google_gwt_dom_client_Style$Display$16_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/16', 679, null);
 function Style$Display$17(){
   Style$Display.call(this, 'INITIAL', 16);
 }
 
-defineClass(677, 49, $intern_12, Style$Display$17);
+defineClass(680, 49, $intern_11, Style$Display$17);
 _.getCssName = function getCssName_7(){
   return 'initial';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$17_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/17', 677, null);
+var Lcom_google_gwt_dom_client_Style$Display$17_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/17', 680, null);
 function Style$Display$18(){
   Style$Display.call(this, 'FLEX', 17);
 }
 
-defineClass(678, 49, $intern_12, Style$Display$18);
+defineClass(681, 49, $intern_11, Style$Display$18);
 _.getCssName = function getCssName_8(){
   return 'flex';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$18_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/18', 678, null);
+var Lcom_google_gwt_dom_client_Style$Display$18_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/18', 681, null);
 function Style$Display$19(){
   Style$Display.call(this, 'INLINE_FLEX', 18);
 }
 
-defineClass(679, 49, $intern_12, Style$Display$19);
+defineClass(682, 49, $intern_11, Style$Display$19);
 _.getCssName = function getCssName_9(){
   return 'inline-flex';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$19_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/19', 679, null);
+var Lcom_google_gwt_dom_client_Style$Display$19_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/19', 682, null);
 function Style$Display$2(){
   Style$Display.call(this, 'BLOCK', 1);
 }
 
-defineClass(662, 49, $intern_12, Style$Display$2);
+defineClass(665, 49, $intern_11, Style$Display$2);
 _.getCssName = function getCssName_10(){
   return 'block';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/2', 662, null);
+var Lcom_google_gwt_dom_client_Style$Display$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/2', 665, null);
 function Style$Display$3(){
   Style$Display.call(this, 'INLINE', 2);
 }
 
-defineClass(663, 49, $intern_12, Style$Display$3);
+defineClass(666, 49, $intern_11, Style$Display$3);
 _.getCssName = function getCssName_11(){
   return 'inline';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/3', 663, null);
+var Lcom_google_gwt_dom_client_Style$Display$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/3', 666, null);
 function Style$Display$4(){
   Style$Display.call(this, 'INLINE_BLOCK', 3);
 }
 
-defineClass(664, 49, $intern_12, Style$Display$4);
+defineClass(667, 49, $intern_11, Style$Display$4);
 _.getCssName = function getCssName_12(){
   return 'inline-block';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/4', 664, null);
+var Lcom_google_gwt_dom_client_Style$Display$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/4', 667, null);
 function Style$Display$5(){
   Style$Display.call(this, 'INLINE_TABLE', 4);
 }
 
-defineClass(665, 49, $intern_12, Style$Display$5);
+defineClass(668, 49, $intern_11, Style$Display$5);
 _.getCssName = function getCssName_13(){
   return 'inline-table';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/5', 665, null);
+var Lcom_google_gwt_dom_client_Style$Display$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/5', 668, null);
 function Style$Display$6(){
   Style$Display.call(this, 'LIST_ITEM', 5);
 }
 
-defineClass(666, 49, $intern_12, Style$Display$6);
+defineClass(669, 49, $intern_11, Style$Display$6);
 _.getCssName = function getCssName_14(){
   return 'list-item';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/6', 666, null);
+var Lcom_google_gwt_dom_client_Style$Display$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/6', 669, null);
 function Style$Display$7(){
   Style$Display.call(this, 'RUN_IN', 6);
 }
 
-defineClass(667, 49, $intern_12, Style$Display$7);
+defineClass(670, 49, $intern_11, Style$Display$7);
 _.getCssName = function getCssName_15(){
   return 'run-in';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/7', 667, null);
+var Lcom_google_gwt_dom_client_Style$Display$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/7', 670, null);
 function Style$Display$8(){
   Style$Display.call(this, 'TABLE', 7);
 }
 
-defineClass(668, 49, $intern_12, Style$Display$8);
+defineClass(671, 49, $intern_11, Style$Display$8);
 _.getCssName = function getCssName_16(){
   return 'table';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/8', 668, null);
+var Lcom_google_gwt_dom_client_Style$Display$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/8', 671, null);
 function Style$Display$9(){
   Style$Display.call(this, 'TABLE_CAPTION', 8);
 }
 
-defineClass(669, 49, $intern_12, Style$Display$9);
+defineClass(672, 49, $intern_11, Style$Display$9);
 _.getCssName = function getCssName_17(){
   return 'table-caption';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Display$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/9', 669, null);
+var Lcom_google_gwt_dom_client_Style$Display$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Display/9', 672, null);
 function $clinit_Style$FontWeight(){
   $clinit_Style$FontWeight = emptyMethod;
   NORMAL = new Style$FontWeight$1;
@@ -3180,33 +3184,33 @@ function values_4(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$FontWeight_2_classLit, 1), $intern_3, 168, 0, [NORMAL, BOLD, BOLDER, LIGHTER]);
 }
 
-defineClass(168, 18, $intern_13);
+defineClass(168, 18, $intern_12);
 var BOLD, BOLDER, LIGHTER, NORMAL;
 var Lcom_google_gwt_dom_client_Style$FontWeight_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight', 168, values_4);
 function Style$FontWeight$1(){
   Style$FontWeight.call(this, 'NORMAL', 0);
 }
 
-defineClass(680, 168, $intern_13, Style$FontWeight$1);
-var Lcom_google_gwt_dom_client_Style$FontWeight$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/1', 680, null);
+defineClass(683, 168, $intern_12, Style$FontWeight$1);
+var Lcom_google_gwt_dom_client_Style$FontWeight$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/1', 683, null);
 function Style$FontWeight$2(){
   Style$FontWeight.call(this, 'BOLD', 1);
 }
 
-defineClass(681, 168, $intern_13, Style$FontWeight$2);
-var Lcom_google_gwt_dom_client_Style$FontWeight$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/2', 681, null);
+defineClass(684, 168, $intern_12, Style$FontWeight$2);
+var Lcom_google_gwt_dom_client_Style$FontWeight$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/2', 684, null);
 function Style$FontWeight$3(){
   Style$FontWeight.call(this, 'BOLDER', 2);
 }
 
-defineClass(682, 168, $intern_13, Style$FontWeight$3);
-var Lcom_google_gwt_dom_client_Style$FontWeight$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/3', 682, null);
+defineClass(685, 168, $intern_12, Style$FontWeight$3);
+var Lcom_google_gwt_dom_client_Style$FontWeight$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/3', 685, null);
 function Style$FontWeight$4(){
   Style$FontWeight.call(this, 'LIGHTER', 3);
 }
 
-defineClass(683, 168, $intern_13, Style$FontWeight$4);
-var Lcom_google_gwt_dom_client_Style$FontWeight$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/4', 683, null);
+defineClass(686, 168, $intern_12, Style$FontWeight$4);
+var Lcom_google_gwt_dom_client_Style$FontWeight$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/FontWeight/4', 686, null);
 function $clinit_Style$Overflow(){
   $clinit_Style$Overflow = emptyMethod;
   VISIBLE = new Style$Overflow$1;
@@ -3224,33 +3228,33 @@ function values_5(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Overflow_2_classLit, 1), $intern_3, 169, 0, [VISIBLE, HIDDEN_1, SCROLL, AUTO_0]);
 }
 
-defineClass(169, 18, $intern_14);
+defineClass(169, 18, $intern_13);
 var AUTO_0, HIDDEN_1, SCROLL, VISIBLE;
 var Lcom_google_gwt_dom_client_Style$Overflow_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow', 169, values_5);
 function Style$Overflow$1(){
   Style$Overflow.call(this, 'VISIBLE', 0);
 }
 
-defineClass(684, 169, $intern_14, Style$Overflow$1);
-var Lcom_google_gwt_dom_client_Style$Overflow$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/1', 684, null);
+defineClass(687, 169, $intern_13, Style$Overflow$1);
+var Lcom_google_gwt_dom_client_Style$Overflow$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/1', 687, null);
 function Style$Overflow$2(){
   Style$Overflow.call(this, 'HIDDEN', 1);
 }
 
-defineClass(685, 169, $intern_14, Style$Overflow$2);
-var Lcom_google_gwt_dom_client_Style$Overflow$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/2', 685, null);
+defineClass(688, 169, $intern_13, Style$Overflow$2);
+var Lcom_google_gwt_dom_client_Style$Overflow$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/2', 688, null);
 function Style$Overflow$3(){
   Style$Overflow.call(this, 'SCROLL', 2);
 }
 
-defineClass(686, 169, $intern_14, Style$Overflow$3);
-var Lcom_google_gwt_dom_client_Style$Overflow$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/3', 686, null);
+defineClass(689, 169, $intern_13, Style$Overflow$3);
+var Lcom_google_gwt_dom_client_Style$Overflow$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/3', 689, null);
 function Style$Overflow$4(){
   Style$Overflow.call(this, 'AUTO', 3);
 }
 
-defineClass(687, 169, $intern_14, Style$Overflow$4);
-var Lcom_google_gwt_dom_client_Style$Overflow$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/4', 687, null);
+defineClass(690, 169, $intern_13, Style$Overflow$4);
+var Lcom_google_gwt_dom_client_Style$Overflow$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Overflow/4', 690, null);
 function $clinit_Style$Position(){
   $clinit_Style$Position = emptyMethod;
   STATIC = new Style$Position$1;
@@ -3268,33 +3272,33 @@ function values_6(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Position_2_classLit, 1), $intern_3, 170, 0, [STATIC, RELATIVE, ABSOLUTE, FIXED]);
 }
 
-defineClass(170, 18, $intern_15);
+defineClass(170, 18, $intern_14);
 var ABSOLUTE, FIXED, RELATIVE, STATIC;
 var Lcom_google_gwt_dom_client_Style$Position_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position', 170, values_6);
 function Style$Position$1(){
   Style$Position.call(this, 'STATIC', 0);
 }
 
-defineClass(688, 170, $intern_15, Style$Position$1);
-var Lcom_google_gwt_dom_client_Style$Position$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/1', 688, null);
+defineClass(691, 170, $intern_14, Style$Position$1);
+var Lcom_google_gwt_dom_client_Style$Position$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/1', 691, null);
 function Style$Position$2(){
   Style$Position.call(this, 'RELATIVE', 1);
 }
 
-defineClass(689, 170, $intern_15, Style$Position$2);
-var Lcom_google_gwt_dom_client_Style$Position$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/2', 689, null);
+defineClass(692, 170, $intern_14, Style$Position$2);
+var Lcom_google_gwt_dom_client_Style$Position$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/2', 692, null);
 function Style$Position$3(){
   Style$Position.call(this, 'ABSOLUTE', 2);
 }
 
-defineClass(690, 170, $intern_15, Style$Position$3);
-var Lcom_google_gwt_dom_client_Style$Position$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/3', 690, null);
+defineClass(693, 170, $intern_14, Style$Position$3);
+var Lcom_google_gwt_dom_client_Style$Position$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/3', 693, null);
 function Style$Position$4(){
   Style$Position.call(this, 'FIXED', 3);
 }
 
-defineClass(691, 170, $intern_15, Style$Position$4);
-var Lcom_google_gwt_dom_client_Style$Position$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/4', 691, null);
+defineClass(694, 170, $intern_14, Style$Position$4);
+var Lcom_google_gwt_dom_client_Style$Position$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Position/4', 694, null);
 function $clinit_Style$TextAlign(){
   $clinit_Style$TextAlign = emptyMethod;
   CENTER = new Style$TextAlign$1;
@@ -3312,33 +3316,33 @@ function values_7(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$TextAlign_2_classLit, 1), $intern_3, 171, 0, [CENTER, JUSTIFY, LEFT, RIGHT]);
 }
 
-defineClass(171, 18, $intern_16);
+defineClass(171, 18, $intern_15);
 var CENTER, JUSTIFY, LEFT, RIGHT;
 var Lcom_google_gwt_dom_client_Style$TextAlign_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign', 171, values_7);
 function Style$TextAlign$1(){
   Style$TextAlign.call(this, 'CENTER', 0);
 }
 
-defineClass(692, 171, $intern_16, Style$TextAlign$1);
-var Lcom_google_gwt_dom_client_Style$TextAlign$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/1', 692, null);
+defineClass(695, 171, $intern_15, Style$TextAlign$1);
+var Lcom_google_gwt_dom_client_Style$TextAlign$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/1', 695, null);
 function Style$TextAlign$2(){
   Style$TextAlign.call(this, 'JUSTIFY', 1);
 }
 
-defineClass(693, 171, $intern_16, Style$TextAlign$2);
-var Lcom_google_gwt_dom_client_Style$TextAlign$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/2', 693, null);
+defineClass(696, 171, $intern_15, Style$TextAlign$2);
+var Lcom_google_gwt_dom_client_Style$TextAlign$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/2', 696, null);
 function Style$TextAlign$3(){
   Style$TextAlign.call(this, 'LEFT', 2);
 }
 
-defineClass(694, 171, $intern_16, Style$TextAlign$3);
-var Lcom_google_gwt_dom_client_Style$TextAlign$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/3', 694, null);
+defineClass(697, 171, $intern_15, Style$TextAlign$3);
+var Lcom_google_gwt_dom_client_Style$TextAlign$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/3', 697, null);
 function Style$TextAlign$4(){
   Style$TextAlign.call(this, 'RIGHT', 3);
 }
 
-defineClass(695, 171, $intern_16, Style$TextAlign$4);
-var Lcom_google_gwt_dom_client_Style$TextAlign$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/4', 695, null);
+defineClass(698, 171, $intern_15, Style$TextAlign$4);
+var Lcom_google_gwt_dom_client_Style$TextAlign$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/TextAlign/4', 698, null);
 function $clinit_Style$Unit(){
   $clinit_Style$Unit = emptyMethod;
   PX = new Style$Unit$1;
@@ -3361,99 +3365,99 @@ function values_8(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Unit_2_classLit, 1), $intern_3, 107, 0, [PX, PCT, EM, EX, PT, PC, IN, CM, MM]);
 }
 
-defineClass(107, 18, $intern_17);
+defineClass(107, 18, $intern_16);
 var CM, EM, EX, IN, MM, PC, PCT, PT, PX;
 var Lcom_google_gwt_dom_client_Style$Unit_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit', 107, values_8);
 function Style$Unit$1(){
   Style$Unit.call(this, 'PX', 0);
 }
 
-defineClass(629, 107, $intern_17, Style$Unit$1);
+defineClass(632, 107, $intern_16, Style$Unit$1);
 _.getType_0 = function getType(){
   return 'px';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/1', 629, null);
+var Lcom_google_gwt_dom_client_Style$Unit$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/1', 632, null);
 function Style$Unit$2(){
   Style$Unit.call(this, 'PCT', 1);
 }
 
-defineClass(630, 107, $intern_17, Style$Unit$2);
+defineClass(633, 107, $intern_16, Style$Unit$2);
 _.getType_0 = function getType_0(){
   return '%';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/2', 630, null);
+var Lcom_google_gwt_dom_client_Style$Unit$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/2', 633, null);
 function Style$Unit$3(){
   Style$Unit.call(this, 'EM', 2);
 }
 
-defineClass(631, 107, $intern_17, Style$Unit$3);
+defineClass(634, 107, $intern_16, Style$Unit$3);
 _.getType_0 = function getType_1(){
   return 'em';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/3', 631, null);
+var Lcom_google_gwt_dom_client_Style$Unit$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/3', 634, null);
 function Style$Unit$4(){
   Style$Unit.call(this, 'EX', 3);
 }
 
-defineClass(632, 107, $intern_17, Style$Unit$4);
+defineClass(635, 107, $intern_16, Style$Unit$4);
 _.getType_0 = function getType_2(){
   return 'ex';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/4', 632, null);
+var Lcom_google_gwt_dom_client_Style$Unit$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/4', 635, null);
 function Style$Unit$5(){
   Style$Unit.call(this, 'PT', 4);
 }
 
-defineClass(633, 107, $intern_17, Style$Unit$5);
+defineClass(636, 107, $intern_16, Style$Unit$5);
 _.getType_0 = function getType_3(){
   return 'pt';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/5', 633, null);
+var Lcom_google_gwt_dom_client_Style$Unit$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/5', 636, null);
 function Style$Unit$6(){
   Style$Unit.call(this, 'PC', 5);
 }
 
-defineClass(634, 107, $intern_17, Style$Unit$6);
+defineClass(637, 107, $intern_16, Style$Unit$6);
 _.getType_0 = function getType_4(){
   return 'pc';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/6', 634, null);
+var Lcom_google_gwt_dom_client_Style$Unit$6_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/6', 637, null);
 function Style$Unit$7(){
   Style$Unit.call(this, 'IN', 6);
 }
 
-defineClass(635, 107, $intern_17, Style$Unit$7);
+defineClass(638, 107, $intern_16, Style$Unit$7);
 _.getType_0 = function getType_5(){
   return 'in';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/7', 635, null);
+var Lcom_google_gwt_dom_client_Style$Unit$7_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/7', 638, null);
 function Style$Unit$8(){
   Style$Unit.call(this, 'CM', 7);
 }
 
-defineClass(636, 107, $intern_17, Style$Unit$8);
+defineClass(639, 107, $intern_16, Style$Unit$8);
 _.getType_0 = function getType_6(){
   return 'cm';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/8', 636, null);
+var Lcom_google_gwt_dom_client_Style$Unit$8_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/8', 639, null);
 function Style$Unit$9(){
   Style$Unit.call(this, 'MM', 8);
 }
 
-defineClass(637, 107, $intern_17, Style$Unit$9);
+defineClass(640, 107, $intern_16, Style$Unit$9);
 _.getType_0 = function getType_7(){
   return 'mm';
 }
 ;
-var Lcom_google_gwt_dom_client_Style$Unit$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/9', 637, null);
+var Lcom_google_gwt_dom_client_Style$Unit$9_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Unit/9', 640, null);
 function $clinit_Style$Visibility(){
   $clinit_Style$Visibility = emptyMethod;
   VISIBLE_0 = new Style$Visibility$1;
@@ -3469,21 +3473,21 @@ function values_9(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$Visibility_2_classLit, 1), $intern_3, 226, 0, [VISIBLE_0, HIDDEN_2]);
 }
 
-defineClass(226, 18, $intern_18);
+defineClass(226, 18, $intern_17);
 var HIDDEN_2, VISIBLE_0;
 var Lcom_google_gwt_dom_client_Style$Visibility_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Visibility', 226, values_9);
 function Style$Visibility$1(){
   Style$Visibility.call(this, 'VISIBLE', 0);
 }
 
-defineClass(696, 226, $intern_18, Style$Visibility$1);
-var Lcom_google_gwt_dom_client_Style$Visibility$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Visibility/1', 696, null);
+defineClass(699, 226, $intern_17, Style$Visibility$1);
+var Lcom_google_gwt_dom_client_Style$Visibility$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Visibility/1', 699, null);
 function Style$Visibility$2(){
   Style$Visibility.call(this, 'HIDDEN', 1);
 }
 
-defineClass(697, 226, $intern_18, Style$Visibility$2);
-var Lcom_google_gwt_dom_client_Style$Visibility$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Visibility/2', 697, null);
+defineClass(700, 226, $intern_17, Style$Visibility$2);
+var Lcom_google_gwt_dom_client_Style$Visibility$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/Visibility/2', 700, null);
 function $clinit_Style$WhiteSpace(){
   $clinit_Style$WhiteSpace = emptyMethod;
   NORMAL_0 = new Style$WhiteSpace$1;
@@ -3502,39 +3506,39 @@ function values_10(){
   return stampJavaTypeInfo(getClassLiteralForArray(Lcom_google_gwt_dom_client_Style$WhiteSpace_2_classLit, 1), $intern_3, 157, 0, [NORMAL_0, NOWRAP, PRE, PRE_LINE, PRE_WRAP]);
 }
 
-defineClass(157, 18, $intern_19);
+defineClass(157, 18, $intern_18);
 var NORMAL_0, NOWRAP, PRE, PRE_LINE, PRE_WRAP;
 var Lcom_google_gwt_dom_client_Style$WhiteSpace_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace', 157, values_10);
 function Style$WhiteSpace$1(){
   Style$WhiteSpace.call(this, 'NORMAL', 0);
 }
 
-defineClass(698, 157, $intern_19, Style$WhiteSpace$1);
-var Lcom_google_gwt_dom_client_Style$WhiteSpace$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/1', 698, null);
+defineClass(701, 157, $intern_18, Style$WhiteSpace$1);
+var Lcom_google_gwt_dom_client_Style$WhiteSpace$1_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/1', 701, null);
 function Style$WhiteSpace$2(){
   Style$WhiteSpace.call(this, 'NOWRAP', 1);
 }
 
-defineClass(699, 157, $intern_19, Style$WhiteSpace$2);
-var Lcom_google_gwt_dom_client_Style$WhiteSpace$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/2', 699, null);
+defineClass(702, 157, $intern_18, Style$WhiteSpace$2);
+var Lcom_google_gwt_dom_client_Style$WhiteSpace$2_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/2', 702, null);
 function Style$WhiteSpace$3(){
   Style$WhiteSpace.call(this, 'PRE', 2);
 }
 
-defineClass(700, 157, $intern_19, Style$WhiteSpace$3);
-var Lcom_google_gwt_dom_client_Style$WhiteSpace$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/3', 700, null);
+defineClass(703, 157, $intern_18, Style$WhiteSpace$3);
+var Lcom_google_gwt_dom_client_Style$WhiteSpace$3_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/3', 703, null);
 function Style$WhiteSpace$4(){
   Style$WhiteSpace.call(this, 'PRE_LINE', 3);
 }
 
-defineClass(701, 157, $intern_19, Style$WhiteSpace$4);
-var Lcom_google_gwt_dom_client_Style$WhiteSpace$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/4', 701, null);
+defineClass(704, 157, $intern_18, Style$WhiteSpace$4);
+var Lcom_google_gwt_dom_client_Style$WhiteSpace$4_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/4', 704, null);
 function Style$WhiteSpace$5(){
   Style$WhiteSpace.call(this, 'PRE_WRAP', 4);
 }
 
-defineClass(702, 157, $intern_19, Style$WhiteSpace$5);
-var Lcom_google_gwt_dom_client_Style$WhiteSpace$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/5', 702, null);
+defineClass(705, 157, $intern_18, Style$WhiteSpace$5);
+var Lcom_google_gwt_dom_client_Style$WhiteSpace$5_2_classLit = createForEnum('com.google.gwt.dom.client', 'Style/WhiteSpace/5', 705, null);
 function $setRows(this$static, rows_0){
   this$static.rows = rows_0;
 }
@@ -3543,24 +3547,24 @@ function $getRelativeX(this$static, target){
   return ((this$static.clientX || 0) | 0) - $getAbsoluteLeft(target) + $getScrollLeft(target) + ($wnd.pageXOffset | 0);
 }
 
-defineClass(1017, 1, {});
+defineClass(1020, 1, {});
 _.toString_0 = function toString_4(){
   return 'An event type';
 }
 ;
-var Lcom_google_web_bindery_event_shared_Event_2_classLit = createForClass('com.google.web.bindery.event.shared', 'Event', 1017);
+var Lcom_google_web_bindery_event_shared_Event_2_classLit = createForClass('com.google.web.bindery.event.shared', 'Event', 1020);
 function $overrideSource(this$static, source){
   this$static.source = source;
 }
 
-defineClass(1018, 1017, {});
+defineClass(1021, 1020, {});
 _.revive = function revive(){
   this.dead = false;
   this.source = null;
 }
 ;
 _.dead = false;
-var Lcom_google_gwt_event_shared_GwtEvent_2_classLit = createForClass('com.google.gwt.event.shared', 'GwtEvent', 1018);
+var Lcom_google_gwt_event_shared_GwtEvent_2_classLit = createForClass('com.google.gwt.event.shared', 'GwtEvent', 1021);
 function $setNativeEvent(this$static, nativeEvent){
   this$static.nativeEvent = nativeEvent;
 }
@@ -3588,13 +3592,13 @@ function fireNativeEvent(nativeEvent, handlerSource, relativeElem){
   }
 }
 
-defineClass($intern_20, 1018, {});
+defineClass(1027, 1021, {});
 _.getAssociatedType = function getAssociatedType(){
   return this.getAssociatedType_0();
 }
 ;
 var registered;
-var Lcom_google_gwt_event_dom_client_DomEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'DomEvent', $intern_20);
+var Lcom_google_gwt_event_dom_client_DomEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'DomEvent', 1027);
 function $clinit_BlurEvent(){
   $clinit_BlurEvent = emptyMethod;
   TYPE = new DomEvent$Type('blur', new BlurEvent);
@@ -3603,7 +3607,7 @@ function $clinit_BlurEvent(){
 function BlurEvent(){
 }
 
-defineClass(876, $intern_20, {}, BlurEvent);
+defineClass(879, 1027, {}, BlurEvent);
 _.dispatch = function dispatch(handler){
   !handler.this$01.shownChildMenu && $selectItem(handler.this$01, null);
 }
@@ -3613,7 +3617,7 @@ _.getAssociatedType_0 = function getAssociatedType_0(){
 }
 ;
 var TYPE;
-var Lcom_google_gwt_event_dom_client_BlurEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'BlurEvent', 876);
+var Lcom_google_gwt_event_dom_client_BlurEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'BlurEvent', 879);
 function $clinit_ChangeEvent(){
   $clinit_ChangeEvent = emptyMethod;
   TYPE_0 = new DomEvent$Type('change', new ChangeEvent);
@@ -3622,7 +3626,7 @@ function $clinit_ChangeEvent(){
 function ChangeEvent(){
 }
 
-defineClass(846, $intern_20, {}, ChangeEvent);
+defineClass(848, 1027, {}, ChangeEvent);
 _.dispatch = function dispatch_0(handler){
   handler.onChange(this);
 }
@@ -3632,9 +3636,9 @@ _.getAssociatedType_0 = function getAssociatedType_1(){
 }
 ;
 var TYPE_0;
-var Lcom_google_gwt_event_dom_client_ChangeEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ChangeEvent', 846);
-defineClass(1025, $intern_20, {});
-var Lcom_google_gwt_event_dom_client_HumanInputEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'HumanInputEvent', 1025);
+var Lcom_google_gwt_event_dom_client_ChangeEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ChangeEvent', 848);
+defineClass(1028, 1027, {});
+var Lcom_google_gwt_event_dom_client_HumanInputEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'HumanInputEvent', 1028);
 function $getX(this$static){
   var e, relativeElem;
   relativeElem = this$static.relativeElem;
@@ -3653,8 +3657,8 @@ function $getY(this$static){
   return (this$static.nativeEvent.clientY || 0) | 0;
 }
 
-defineClass($intern_21, 1025, {});
-var Lcom_google_gwt_event_dom_client_MouseEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseEvent', $intern_21);
+defineClass($intern_19, 1028, {});
+var Lcom_google_gwt_event_dom_client_MouseEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseEvent', $intern_19);
 function $clinit_ClickEvent(){
   $clinit_ClickEvent = emptyMethod;
   TYPE_1 = new DomEvent$Type('click', new ClickEvent);
@@ -3663,7 +3667,7 @@ function $clinit_ClickEvent(){
 function ClickEvent(){
 }
 
-defineClass(731, $intern_21, {}, ClickEvent);
+defineClass(734, $intern_19, {}, ClickEvent);
 _.dispatch = function dispatch_1(handler){
   handler.onClick(this);
 }
@@ -3673,7 +3677,7 @@ _.getAssociatedType_0 = function getAssociatedType_2(){
 }
 ;
 var TYPE_1;
-var Lcom_google_gwt_event_dom_client_ClickEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ClickEvent', 731);
+var Lcom_google_gwt_event_dom_client_ClickEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ClickEvent', 734);
 function $clinit_ContextMenuEvent(){
   $clinit_ContextMenuEvent = emptyMethod;
   TYPE_2 = new DomEvent$Type('contextmenu', new ContextMenuEvent);
@@ -3682,7 +3686,7 @@ function $clinit_ContextMenuEvent(){
 function ContextMenuEvent(){
 }
 
-defineClass(755, $intern_20, {}, ContextMenuEvent);
+defineClass(758, 1027, {}, ContextMenuEvent);
 _.dispatch = function dispatch_2(handler){
   $onContextMenu(handler, this);
 }
@@ -3692,8 +3696,8 @@ _.getAssociatedType_0 = function getAssociatedType_3(){
 }
 ;
 var TYPE_2;
-var Lcom_google_gwt_event_dom_client_ContextMenuEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ContextMenuEvent', 755);
-defineClass(542, 1, {});
+var Lcom_google_gwt_event_dom_client_ContextMenuEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'ContextMenuEvent', 758);
+defineClass(543, 1, {});
 _.hashCode_0 = function hashCode_2(){
   return this.index_0;
 }
@@ -3704,12 +3708,12 @@ _.toString_0 = function toString_5(){
 ;
 _.index_0 = 0;
 var nextHashCode = 0;
-var Lcom_google_web_bindery_event_shared_Event$Type_2_classLit = createForClass('com.google.web.bindery.event.shared', 'Event/Type', 542);
+var Lcom_google_web_bindery_event_shared_Event$Type_2_classLit = createForClass('com.google.web.bindery.event.shared', 'Event/Type', 543);
 function GwtEvent$Type(){
   this.index_0 = ++nextHashCode;
 }
 
-defineClass(163, 542, {}, GwtEvent$Type);
+defineClass(163, 543, {}, GwtEvent$Type);
 var Lcom_google_gwt_event_shared_GwtEvent$Type_2_classLit = createForClass('com.google.gwt.event.shared', 'GwtEvent/Type', 163);
 function DomEvent$Type(eventName, flyweight){
   var types;
@@ -3735,7 +3739,7 @@ function $clinit_DoubleClickEvent(){
 function DoubleClickEvent(){
 }
 
-defineClass(856, $intern_21, {}, DoubleClickEvent);
+defineClass(858, $intern_19, {}, DoubleClickEvent);
 _.dispatch = function dispatch_3(handler){
   handler.onDoubleClick(this);
 }
@@ -3745,11 +3749,11 @@ _.getAssociatedType_0 = function getAssociatedType_4(){
 }
 ;
 var TYPE_3;
-var Lcom_google_gwt_event_dom_client_DoubleClickEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'DoubleClickEvent', 856);
-defineClass(1028, $intern_20, {});
-var Lcom_google_gwt_event_dom_client_KeyEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyEvent', 1028);
-defineClass(1029, 1028, {});
-var Lcom_google_gwt_event_dom_client_KeyCodeEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyCodeEvent', 1029);
+var Lcom_google_gwt_event_dom_client_DoubleClickEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'DoubleClickEvent', 858);
+defineClass(1032, 1027, {});
+var Lcom_google_gwt_event_dom_client_KeyEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyEvent', 1032);
+defineClass(1033, 1032, {});
+var Lcom_google_gwt_event_dom_client_KeyCodeEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyCodeEvent', 1033);
 function maybeSwapArrowKeysForRtl(code_0, isRtl){
   isRtl && (code_0 == 39?(code_0 = 37):code_0 == 37 && (code_0 = 39));
   return code_0;
@@ -3763,7 +3767,7 @@ function $clinit_KeyUpEvent(){
 function KeyUpEvent(){
 }
 
-defineClass(864, 1029, {}, KeyUpEvent);
+defineClass(866, 1033, {}, KeyUpEvent);
 _.dispatch = function dispatch_4(handler){
   handler.onKeyUp(this);
 }
@@ -3773,7 +3777,7 @@ _.getAssociatedType_0 = function getAssociatedType_5(){
 }
 ;
 var TYPE_4;
-var Lcom_google_gwt_event_dom_client_KeyUpEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyUpEvent', 864);
+var Lcom_google_gwt_event_dom_client_KeyUpEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'KeyUpEvent', 866);
 function $clinit_MouseDownEvent(){
   $clinit_MouseDownEvent = emptyMethod;
   TYPE_5 = new DomEvent$Type('mousedown', new MouseDownEvent);
@@ -3782,7 +3786,7 @@ function $clinit_MouseDownEvent(){
 function MouseDownEvent(){
 }
 
-defineClass(847, $intern_21, {}, MouseDownEvent);
+defineClass(849, $intern_19, {}, MouseDownEvent);
 _.dispatch = function dispatch_5(handler){
   handler.onMouseDown(this);
 }
@@ -3792,7 +3796,7 @@ _.getAssociatedType_0 = function getAssociatedType_6(){
 }
 ;
 var TYPE_5;
-var Lcom_google_gwt_event_dom_client_MouseDownEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseDownEvent', 847);
+var Lcom_google_gwt_event_dom_client_MouseDownEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseDownEvent', 849);
 function $clinit_MouseMoveEvent(){
   $clinit_MouseMoveEvent = emptyMethod;
   TYPE_6 = new DomEvent$Type('mousemove', new MouseMoveEvent);
@@ -3801,7 +3805,7 @@ function $clinit_MouseMoveEvent(){
 function MouseMoveEvent(){
 }
 
-defineClass(849, $intern_21, {}, MouseMoveEvent);
+defineClass(851, $intern_19, {}, MouseMoveEvent);
 _.dispatch = function dispatch_6(handler){
   handler.onMouseMove(this);
 }
@@ -3811,7 +3815,7 @@ _.getAssociatedType_0 = function getAssociatedType_7(){
 }
 ;
 var TYPE_6;
-var Lcom_google_gwt_event_dom_client_MouseMoveEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseMoveEvent', 849);
+var Lcom_google_gwt_event_dom_client_MouseMoveEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseMoveEvent', 851);
 function $clinit_MouseOutEvent(){
   $clinit_MouseOutEvent = emptyMethod;
   TYPE_7 = new DomEvent$Type('mouseout', new MouseOutEvent);
@@ -3820,7 +3824,7 @@ function $clinit_MouseOutEvent(){
 function MouseOutEvent(){
 }
 
-defineClass(844, $intern_21, {}, MouseOutEvent);
+defineClass(846, $intern_19, {}, MouseOutEvent);
 _.dispatch = function dispatch_7(handler){
   handler.onMouseOut(this);
 }
@@ -3830,7 +3834,7 @@ _.getAssociatedType_0 = function getAssociatedType_8(){
 }
 ;
 var TYPE_7;
-var Lcom_google_gwt_event_dom_client_MouseOutEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseOutEvent', 844);
+var Lcom_google_gwt_event_dom_client_MouseOutEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseOutEvent', 846);
 function $clinit_MouseOverEvent(){
   $clinit_MouseOverEvent = emptyMethod;
   TYPE_8 = new DomEvent$Type('mouseover', new MouseOverEvent);
@@ -3839,7 +3843,7 @@ function $clinit_MouseOverEvent(){
 function MouseOverEvent(){
 }
 
-defineClass(843, $intern_21, {}, MouseOverEvent);
+defineClass(845, $intern_19, {}, MouseOverEvent);
 _.dispatch = function dispatch_8(handler){
   handler.onMouseOver(this);
 }
@@ -3849,7 +3853,7 @@ _.getAssociatedType_0 = function getAssociatedType_9(){
 }
 ;
 var TYPE_8;
-var Lcom_google_gwt_event_dom_client_MouseOverEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseOverEvent', 843);
+var Lcom_google_gwt_event_dom_client_MouseOverEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseOverEvent', 845);
 function $clinit_MouseUpEvent(){
   $clinit_MouseUpEvent = emptyMethod;
   TYPE_9 = new DomEvent$Type('mouseup', new MouseUpEvent);
@@ -3858,7 +3862,7 @@ function $clinit_MouseUpEvent(){
 function MouseUpEvent(){
 }
 
-defineClass(848, $intern_21, {}, MouseUpEvent);
+defineClass(850, $intern_19, {}, MouseUpEvent);
 _.dispatch = function dispatch_9(handler){
   handler.onMouseUp(this);
 }
@@ -3868,7 +3872,7 @@ _.getAssociatedType_0 = function getAssociatedType_10(){
 }
 ;
 var TYPE_9;
-var Lcom_google_gwt_event_dom_client_MouseUpEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseUpEvent', 848);
+var Lcom_google_gwt_event_dom_client_MouseUpEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'MouseUpEvent', 850);
 function $clinit_MouseWheelEvent(){
   $clinit_MouseWheelEvent = emptyMethod;
   TYPE_10 = new DomEvent$Type('mousewheel', new MouseWheelEvent_0);
@@ -3878,7 +3882,7 @@ function $clinit_MouseWheelEvent(){
 function MouseWheelEvent_0(){
 }
 
-defineClass(376, $intern_21, {}, MouseWheelEvent_0);
+defineClass(376, $intern_19, {}, MouseWheelEvent_0);
 _.dispatch = function dispatch_10(handler){
   handler.onMouseWheel(this);
 }
@@ -3901,11 +3905,11 @@ function PrivateMap(){
   this.map_0 = {};
 }
 
-defineClass(857, 1, {}, PrivateMap);
-var Lcom_google_gwt_event_dom_client_PrivateMap_2_classLit = createForClass('com.google.gwt.event.dom.client', 'PrivateMap', 857);
-defineClass(1027, 1025, {});
+defineClass(859, 1, {}, PrivateMap);
+var Lcom_google_gwt_event_dom_client_PrivateMap_2_classLit = createForClass('com.google.gwt.event.dom.client', 'PrivateMap', 859);
+defineClass(1031, 1028, {});
 var impl;
-var Lcom_google_gwt_event_dom_client_TouchEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent', 1027);
+var Lcom_google_gwt_event_dom_client_TouchEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent', 1031);
 function $clinit_TouchCancelEvent(){
   $clinit_TouchCancelEvent = emptyMethod;
   TYPE_11 = new DomEvent$Type('touchcancel', new TouchCancelEvent);
@@ -3914,7 +3918,7 @@ function $clinit_TouchCancelEvent(){
 function TouchCancelEvent(){
 }
 
-defineClass(855, 1027, {}, TouchCancelEvent);
+defineClass(857, 1031, {}, TouchCancelEvent);
 _.dispatch = function dispatch_11(handler){
   handler.onTouchCancel(this);
 }
@@ -3924,7 +3928,7 @@ _.getAssociatedType_0 = function getAssociatedType_12(){
 }
 ;
 var TYPE_11;
-var Lcom_google_gwt_event_dom_client_TouchCancelEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchCancelEvent', 855);
+var Lcom_google_gwt_event_dom_client_TouchCancelEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchCancelEvent', 857);
 function $clinit_TouchEndEvent(){
   $clinit_TouchEndEvent = emptyMethod;
   TYPE_12 = new DomEvent$Type('touchend', new TouchEndEvent);
@@ -3933,7 +3937,7 @@ function $clinit_TouchEndEvent(){
 function TouchEndEvent(){
 }
 
-defineClass(854, 1027, {}, TouchEndEvent);
+defineClass(856, 1031, {}, TouchEndEvent);
 _.dispatch = function dispatch_12(handler){
   handler.onTouchEnd(this);
 }
@@ -3943,14 +3947,14 @@ _.getAssociatedType_0 = function getAssociatedType_13(){
 }
 ;
 var TYPE_12;
-var Lcom_google_gwt_event_dom_client_TouchEndEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEndEvent', 854);
-defineClass(851, 1, {});
-var Lcom_google_gwt_event_dom_client_TouchEvent$TouchSupportDetector_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent/TouchSupportDetector', 851);
+var Lcom_google_gwt_event_dom_client_TouchEndEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEndEvent', 856);
+defineClass(853, 1, {});
+var Lcom_google_gwt_event_dom_client_TouchEvent$TouchSupportDetector_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent/TouchSupportDetector', 853);
 function TouchEvent$TouchSupportDetectorNo(){
 }
 
-defineClass(852, 851, {}, TouchEvent$TouchSupportDetectorNo);
-var Lcom_google_gwt_event_dom_client_TouchEvent$TouchSupportDetectorNo_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent/TouchSupportDetectorNo', 852);
+defineClass(854, 853, {}, TouchEvent$TouchSupportDetectorNo);
+var Lcom_google_gwt_event_dom_client_TouchEvent$TouchSupportDetectorNo_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchEvent/TouchSupportDetectorNo', 854);
 function $clinit_TouchMoveEvent(){
   $clinit_TouchMoveEvent = emptyMethod;
   TYPE_13 = new DomEvent$Type('touchmove', new TouchMoveEvent);
@@ -3959,7 +3963,7 @@ function $clinit_TouchMoveEvent(){
 function TouchMoveEvent(){
 }
 
-defineClass(853, 1027, {}, TouchMoveEvent);
+defineClass(855, 1031, {}, TouchMoveEvent);
 _.dispatch = function dispatch_13(handler){
   handler.onTouchMove(this);
 }
@@ -3969,7 +3973,7 @@ _.getAssociatedType_0 = function getAssociatedType_14(){
 }
 ;
 var TYPE_13;
-var Lcom_google_gwt_event_dom_client_TouchMoveEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchMoveEvent', 853);
+var Lcom_google_gwt_event_dom_client_TouchMoveEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchMoveEvent', 855);
 function $clinit_TouchStartEvent(){
   $clinit_TouchStartEvent = emptyMethod;
   TYPE_14 = new DomEvent$Type('touchstart', new TouchStartEvent);
@@ -3978,7 +3982,7 @@ function $clinit_TouchStartEvent(){
 function TouchStartEvent(){
 }
 
-defineClass(850, 1027, {}, TouchStartEvent);
+defineClass(852, 1031, {}, TouchStartEvent);
 _.dispatch = function dispatch_14(handler){
   handler.onTouchStart(this);
 }
@@ -3988,7 +3992,7 @@ _.getAssociatedType_0 = function getAssociatedType_15(){
 }
 ;
 var TYPE_14;
-var Lcom_google_gwt_event_dom_client_TouchStartEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchStartEvent', 850);
+var Lcom_google_gwt_event_dom_client_TouchStartEvent_2_classLit = createForClass('com.google.gwt.event.dom.client', 'TouchStartEvent', 852);
 function AttachEvent(attached){
   this.attached = attached;
 }
@@ -4001,7 +4005,7 @@ function fire_0(source, attached){
   }
 }
 
-defineClass(953, 1018, {}, AttachEvent);
+defineClass(956, 1021, {}, AttachEvent);
 _.dispatch = function dispatch_15(handler){
   this.attached?$setupBustClickHandler(handler.this$01):$removeBustClickHandler(handler.this$01);
 }
@@ -4012,7 +4016,7 @@ _.getAssociatedType = function getAssociatedType_16(){
 ;
 _.attached = false;
 var TYPE_15;
-var Lcom_google_gwt_event_logical_shared_AttachEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'AttachEvent', 953);
+var Lcom_google_gwt_event_logical_shared_AttachEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'AttachEvent', 956);
 function CloseEvent_0(autoClosed){
   this.autoClosed = autoClosed;
 }
@@ -4025,7 +4029,7 @@ function fire_1(source, autoClosed){
   }
 }
 
-defineClass(861, 1018, {}, CloseEvent_0);
+defineClass(863, 1021, {}, CloseEvent_0);
 _.dispatch = function dispatch_16(handler){
   handler.onClose(this);
 }
@@ -4036,7 +4040,7 @@ _.getAssociatedType = function getAssociatedType_17(){
 ;
 _.autoClosed = false;
 var TYPE_16;
-var Lcom_google_gwt_event_logical_shared_CloseEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'CloseEvent', 861);
+var Lcom_google_gwt_event_logical_shared_CloseEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'CloseEvent', 863);
 function ResizeEvent(width_0){
   this.width_0 = width_0;
 }
@@ -4049,7 +4053,7 @@ function fire_2(source, width_0){
   }
 }
 
-defineClass(620, 1018, {}, ResizeEvent);
+defineClass(623, 1021, {}, ResizeEvent);
 _.dispatch = function dispatch_17(handler){
   handler.onResize(this);
 }
@@ -4060,7 +4064,7 @@ _.getAssociatedType = function getAssociatedType_18(){
 ;
 _.width_0 = 0;
 var TYPE_17;
-var Lcom_google_gwt_event_logical_shared_ResizeEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'ResizeEvent', 620);
+var Lcom_google_gwt_event_logical_shared_ResizeEvent_2_classLit = createForClass('com.google.gwt.event.logical.shared', 'ResizeEvent', 623);
 function ValueChangeEvent(value_0){
   this.value_0 = value_0;
 }
@@ -4081,7 +4085,7 @@ function fireIfNotEqual(source, oldValue, newValue){
   }
 }
 
-defineClass(390, 1018, {}, ValueChangeEvent);
+defineClass(390, 1021, {}, ValueChangeEvent);
 _.dispatch = function dispatch_18(handler){
   handler.onValueChange(this);
 }
@@ -4137,8 +4141,8 @@ _.fireEvent = function fireEvent_0(event_0){
 }
 ;
 var Lcom_google_gwt_event_shared_HandlerManager_2_classLit = createForClass('com.google.gwt.event.shared', 'HandlerManager', 223);
-defineClass(1019, 1, {});
-var Lcom_google_web_bindery_event_shared_EventBus_2_classLit = createForClass('com.google.web.bindery.event.shared', 'EventBus', 1019);
+defineClass(1022, 1, {});
+var Lcom_google_web_bindery_event_shared_EventBus_2_classLit = createForClass('com.google.web.bindery.event.shared', 'EventBus', 1022);
 function $defer(this$static, command){
   !this$static.deferredDeltas && (this$static.deferredDeltas = new ArrayList);
   $add_8(this$static.deferredDeltas, command);
@@ -4252,10 +4256,10 @@ function $isEventHandled_0(this$static, eventKey){
   return $containsKey(this$static.map_0, eventKey);
 }
 
-defineClass(544, 1019, {});
+defineClass(545, 1022, {});
 _.firingDepth = 0;
 _.isReverseOrder = false;
-var Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus', 544);
+var Lcom_google_web_bindery_event_shared_SimpleEventBus_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus', 545);
 function $doRemove(this$static, type_0, source, handler){
   this$static.firingDepth > 0?$defer(this$static, new SimpleEventBus$3(this$static, type_0, source, handler)):$doRemoveNow(this$static, type_0, source, handler);
 }
@@ -4265,14 +4269,14 @@ function HandlerManager$Bus(fireInReverseOrder){
   this.isReverseOrder = fireInReverseOrder;
 }
 
-defineClass(545, 544, {}, HandlerManager$Bus);
-var Lcom_google_gwt_event_shared_HandlerManager$Bus_2_classLit = createForClass('com.google.gwt.event.shared', 'HandlerManager/Bus', 545);
+defineClass(546, 545, {}, HandlerManager$Bus);
+var Lcom_google_gwt_event_shared_HandlerManager$Bus_2_classLit = createForClass('com.google.gwt.event.shared', 'HandlerManager/Bus', 546);
 function LegacyHandlerWrapper(real){
   this.real = real;
 }
 
-defineClass(838, 1, {1049:1}, LegacyHandlerWrapper);
-var Lcom_google_gwt_event_shared_LegacyHandlerWrapper_2_classLit = createForClass('com.google.gwt.event.shared', 'LegacyHandlerWrapper', 838);
+defineClass(841, 1, {1054:1}, LegacyHandlerWrapper);
+var Lcom_google_gwt_event_shared_LegacyHandlerWrapper_2_classLit = createForClass('com.google.gwt.event.shared', 'LegacyHandlerWrapper', 841);
 function UmbrellaException(causes){
   var cause, cause$iterator, i;
   RuntimeException_1.call(this, makeMessage(causes), causes.isEmpty()?null:causes.iterator().next_1());
@@ -4303,13 +4307,13 @@ function makeMessage(causes){
   return b.string;
 }
 
-defineClass(225, 86, $intern_22, UmbrellaException);
+defineClass(225, 87, $intern_20, UmbrellaException);
 var Lcom_google_web_bindery_event_shared_UmbrellaException_2_classLit = createForClass('com.google.web.bindery.event.shared', 'UmbrellaException', 225);
 function UmbrellaException_0(causes){
   UmbrellaException.call(this, causes);
 }
 
-defineClass(359, 225, $intern_22, UmbrellaException_0);
+defineClass(359, 225, $intern_20, UmbrellaException_0);
 var Lcom_google_gwt_event_shared_UmbrellaException_2_classLit = createForClass('com.google.gwt.event.shared', 'UmbrellaException', 359);
 function $cancel_1(this$static){
   var xhr;
@@ -4331,7 +4335,7 @@ function $fireOnResponseReceived(this$static, callback){
   $cancel_0(this$static.timer);
   xhr = this$static.xmlHttpRequest;
   this$static.xmlHttpRequest = null;
-  response = new ResponseImpl(xhr);
+  response = new Request$RequestImplIE8And9$1(xhr);
   callback.onResponseReceived(this$static, response);
 }
 
@@ -4365,12 +4369,22 @@ function Request$1(this$0){
   Timer.call(this);
 }
 
-defineClass(536, 267, {}, Request$1);
+defineClass(537, 267, {}, Request$1);
 _.run_0 = function run_1(){
   $fireOnTimeout(this.this$01);
 }
 ;
-var Lcom_google_gwt_http_client_Request$1_2_classLit = createForClass('com.google.gwt.http.client', 'Request/1', 536);
+var Lcom_google_gwt_http_client_Request$1_2_classLit = createForClass('com.google.gwt.http.client', 'Request/1', 537);
+defineClass(1019, 1, {});
+var Lcom_google_gwt_http_client_Response_2_classLit = createForClass('com.google.gwt.http.client', 'Response', 1019);
+defineClass(535, 1019, {});
+var Lcom_google_gwt_http_client_ResponseImpl_2_classLit = createForClass('com.google.gwt.http.client', 'ResponseImpl', 535);
+function Request$RequestImplIE8And9$1($anonymous0){
+  this.xmlHttpRequest = $anonymous0;
+}
+
+defineClass(536, 535, {}, Request$RequestImplIE8And9$1);
+var Lcom_google_gwt_http_client_Request$RequestImplIE8And9$1_2_classLit = createForClass('com.google.gwt.http.client', 'Request/RequestImplIE8And9/1', 536);
 function $clinit_RequestBuilder(){
   $clinit_RequestBuilder = emptyMethod;
   new RequestBuilder$Method('DELETE');
@@ -4466,28 +4480,20 @@ function RequestException(message){
   Exception.call(this, message);
 }
 
-defineClass(161, 13, $intern_23, RequestException);
+defineClass(161, 13, $intern_21, RequestException);
 var Lcom_google_gwt_http_client_RequestException_2_classLit = createForClass('com.google.gwt.http.client', 'RequestException', 161);
 function RequestPermissionException(url_0){
   RequestException.call(this, 'The URL ' + url_0 + ' is invalid or violates the same-origin security restriction');
 }
 
-defineClass(621, 161, $intern_23, RequestPermissionException);
-var Lcom_google_gwt_http_client_RequestPermissionException_2_classLit = createForClass('com.google.gwt.http.client', 'RequestPermissionException', 621);
+defineClass(624, 161, $intern_21, RequestPermissionException);
+var Lcom_google_gwt_http_client_RequestPermissionException_2_classLit = createForClass('com.google.gwt.http.client', 'RequestPermissionException', 624);
 function RequestTimeoutException(timeoutMillis){
   RequestException.call(this, 'A request timeout has expired after ' + timeoutMillis + ' ms');
 }
 
-defineClass(979, 161, $intern_23, RequestTimeoutException);
-var Lcom_google_gwt_http_client_RequestTimeoutException_2_classLit = createForClass('com.google.gwt.http.client', 'RequestTimeoutException', 979);
-defineClass(1016, 1, {});
-var Lcom_google_gwt_http_client_Response_2_classLit = createForClass('com.google.gwt.http.client', 'Response', 1016);
-function ResponseImpl(xmlHttpRequest){
-  this.xmlHttpRequest = xmlHttpRequest;
-}
-
-defineClass(535, 1016, {}, ResponseImpl);
-var Lcom_google_gwt_http_client_ResponseImpl_2_classLit = createForClass('com.google.gwt.http.client', 'ResponseImpl', 535);
+defineClass(982, 161, $intern_21, RequestTimeoutException);
+var Lcom_google_gwt_http_client_RequestTimeoutException_2_classLit = createForClass('com.google.gwt.http.client', 'RequestTimeoutException', 982);
 function throwIfEmptyOrNull(name_0, value_0){
   throwIfNull(name_0, value_0);
   if (0 == $trim(value_0).length) {
@@ -4555,7 +4561,7 @@ function $addPart(this$static, buf, count){
   if (buf.string.length > 0) {
     $add_8(this$static.patternParts, new DateTimeFormat$PatternPart(buf.string, count));
     oldLength = buf.string.length;
-    0 < oldLength?(buf.string = buf.string.substr(0, 0)):0 > oldLength && (buf.string += valueOf_1(initUnidimensionalArray(C_classLit, $intern_24, 7, -oldLength, 15, 1)));
+    0 < oldLength?(buf.string = buf.string.substr(0, 0)):0 > oldLength && (buf.string += valueOf_1(initUnidimensionalArray(C_classLit, $intern_22, 7, -oldLength, 15, 1)));
   }
 }
 
@@ -4612,15 +4618,15 @@ function $formatFractionalSeconds(buf, count, date){
   var time, value_0;
   time = fromDouble_0(date.jsdate.getTime());
   if (compare_0(time, 0) < 0) {
-    value_0 = $intern_8 - toInt_0(mod(neg_1(time), $intern_8));
-    value_0 == $intern_8 && (value_0 = 0);
+    value_0 = $intern_23 - toInt_0(mod(neg_1(time), $intern_23));
+    value_0 == $intern_23 && (value_0 = 0);
   }
    else {
-    value_0 = toInt_0(mod(time, $intern_8));
+    value_0 = toInt_0(mod(time, $intern_23));
   }
   if (count == 1) {
     value_0 = $wnd.Math.min((value_0 + 50) / 100 | 0, 9);
-    $append_0(buf, 48 + value_0 & $intern_9);
+    $append_0(buf, 48 + value_0 & $intern_8);
   }
    else if (count == 2) {
     value_0 = $wnd.Math.min((value_0 + 5) / 10 | 0, 99);
@@ -4637,13 +4643,13 @@ function $formatMonth(buf, count, date){
   value_0 = date.jsdate.getMonth();
   switch (count) {
     case 5:
-      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'])[value_0]);
+      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'])[value_0]);
       break;
     case 4:
-      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])[value_0]);
+      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])[value_0]);
       break;
     case 3:
-      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])[value_0]);
+      $append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])[value_0]);
       break;
     default:$zeroPaddingNumber(buf, value_0 + 1, count);
   }
@@ -4760,7 +4766,7 @@ function $subFormat(buf, ch_0, count, adjustedDate, adjustedTime, timezone){
   switch (ch_0) {
     case 71:
       value0 = adjustedDate.jsdate.getFullYear() - 1900 >= -1900?1:0;
-      count >= 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Before Christ', 'Anno Domini'])[value0]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['BC', 'AD'])[value0]);
+      count >= 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Before Christ', 'Anno Domini'])[value0]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['BC', 'AD'])[value0]);
       break;
     case 121:
       $formatYear(buf, count, adjustedDate);
@@ -4777,10 +4783,10 @@ function $subFormat(buf, ch_0, count, adjustedDate, adjustedTime, timezone){
       break;
     case 69:
       value2 = adjustedDate.jsdate.getDay();
-      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['S', 'M', 'T', 'W', 'T', 'F', 'S'])[value2]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])[value2]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[value2]);
+      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['S', 'M', 'T', 'W', 'T', 'F', 'S'])[value2]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])[value2]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[value2]);
       break;
     case 97:
-      adjustedTime.jsdate.getHours() >= 12 && adjustedTime.jsdate.getHours() < 24?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['AM', 'PM'])[1]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['AM', 'PM'])[0]);
+      adjustedTime.jsdate.getHours() >= 12 && adjustedTime.jsdate.getHours() < 24?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['AM', 'PM'])[1]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['AM', 'PM'])[0]);
       break;
     case 104:
       value3 = adjustedTime.jsdate.getHours() % 12;
@@ -4796,15 +4802,15 @@ function $subFormat(buf, ch_0, count, adjustedDate, adjustedTime, timezone){
       break;
     case 99:
       value6 = adjustedDate.jsdate.getDay();
-      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['S', 'M', 'T', 'W', 'T', 'F', 'S'])[value6]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])[value6]):count == 3?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[value6]):$zeroPaddingNumber(buf, value6, 1);
+      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['S', 'M', 'T', 'W', 'T', 'F', 'S'])[value6]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])[value6]):count == 3?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'])[value6]):$zeroPaddingNumber(buf, value6, 1);
       break;
     case 76:
       value7 = adjustedDate.jsdate.getMonth();
-      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'])[value7]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])[value7]):count == 3?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])[value7]):$zeroPaddingNumber(buf, value7 + 1, count);
+      count == 5?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'])[value7]):count == 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'])[value7]):count == 3?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])[value7]):$zeroPaddingNumber(buf, value7 + 1, count);
       break;
     case 81:
       value8 = adjustedDate.jsdate.getMonth() / 3 | 0;
-      count < 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Q1', 'Q2', 'Q3', 'Q4'])[value8]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter'])[value8]);
+      count < 4?$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Q1', 'Q2', 'Q3', 'Q4'])[value8]):$append_4(buf, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1st quarter', '2nd quarter', '3rd quarter', '4th quarter'])[value8]);
       break;
     case 100:
       value9 = adjustedDate.jsdate.getDate();
@@ -4842,8 +4848,8 @@ function $zeroPaddingNumber(buf, value_0, minWidth){
   buf.string += value_0;
 }
 
-defineClass(860, 1, {});
-var Lcom_google_gwt_i18n_shared_DateTimeFormat_2_classLit = createForClass('com.google.gwt.i18n.shared', 'DateTimeFormat', 860);
+defineClass(862, 1, {});
+var Lcom_google_gwt_i18n_shared_DateTimeFormat_2_classLit = createForClass('com.google.gwt.i18n.shared', 'DateTimeFormat', 862);
 function $clinit_DateTimeFormat_0(){
   $clinit_DateTimeFormat_0 = emptyMethod;
   $clinit_DateTimeFormat();
@@ -4870,13 +4876,13 @@ function getFormat(pattern, dtfi){
   return dtf;
 }
 
-defineClass(378, 860, {378:1}, DateTimeFormat);
+defineClass(378, 862, {378:1}, DateTimeFormat);
 var cache;
 var Lcom_google_gwt_i18n_client_DateTimeFormat_2_classLit = createForClass('com.google.gwt.i18n.client', 'DateTimeFormat', 378);
-defineClass(1034, 1, {});
-var Lcom_google_gwt_i18n_shared_DefaultDateTimeFormatInfo_2_classLit = createForClass('com.google.gwt.i18n.shared', 'DefaultDateTimeFormatInfo', 1034);
-defineClass(1035, 1034, {});
-var Lcom_google_gwt_i18n_client_DefaultDateTimeFormatInfo_2_classLit = createForClass('com.google.gwt.i18n.client', 'DefaultDateTimeFormatInfo', 1035);
+defineClass(1039, 1, {});
+var Lcom_google_gwt_i18n_shared_DefaultDateTimeFormatInfo_2_classLit = createForClass('com.google.gwt.i18n.shared', 'DefaultDateTimeFormatInfo', 1039);
+defineClass(1040, 1039, {});
+var Lcom_google_gwt_i18n_client_DefaultDateTimeFormatInfo_2_classLit = createForClass('com.google.gwt.i18n.client', 'DefaultDateTimeFormatInfo', 1040);
 function $clinit_HasDirection$Direction(){
   $clinit_HasDirection$Direction = emptyMethod;
   RTL = new HasDirection$Direction('RTL', 0);
@@ -4914,9 +4920,9 @@ function $getNumberConstants(this$static){
 function LocaleInfo(){
 }
 
-defineClass(840, 1, {}, LocaleInfo);
+defineClass(843, 1, {}, LocaleInfo);
 var instance_0;
-var Lcom_google_gwt_i18n_client_LocaleInfo_2_classLit = createForClass('com.google.gwt.i18n.client', 'LocaleInfo', 840);
+var Lcom_google_gwt_i18n_client_LocaleInfo_2_classLit = createForClass('com.google.gwt.i18n.client', 'LocaleInfo', 843);
 function $clinit_NumberFormat(){
   $clinit_NumberFormat = emptyMethod;
   $getNumberConstants(($clinit_LocaleInfo() , $clinit_LocaleInfo() , instance_0));
@@ -5039,7 +5045,7 @@ function $format_1(this$static, isNegative, digits, scale){
   this$static.decimalPosition = this$static.digitsLength + scale;
   useExponent = this$static.useExponentialNotation;
   currentGroupingSize = this$static.groupingSize;
-  this$static.decimalPosition > $intern_20 && (useExponent = true);
+  this$static.decimalPosition > $intern_25 && (useExponent = true);
   useExponent && $computeExponent(this$static, digits);
   $processLeadingZeros(this$static, digits);
   $roundValue(this$static, digits);
@@ -5080,7 +5086,7 @@ function $localizeDigits(digits, zero){
   n = digits.string.length;
   for (i = 0; i < n; ++i) {
     ch_0 = $charAt_0(digits.string, i);
-    ch_0 >= 48 && ch_0 <= 57 && $setCharAt(digits, i, ch_0 - 48 + zero & $intern_9);
+    ch_0 >= 48 && ch_0 <= 57 && $setCharAt(digits, i, ch_0 - 48 + zero & $intern_8);
   }
 }
 
@@ -5194,7 +5200,7 @@ function $parseAffix(this$static, pattern, start_0, affix, inNegativePattern){
             if (this$static.multiplier != 1) {
               throw toJs(new IllegalArgumentException_0('Too many percent/per mille characters in pattern "' + pattern + '"'));
             }
-            this$static.multiplier = $intern_8;
+            this$static.multiplier = $intern_23;
           }
 
           affix.string += '\u2030';
@@ -5222,7 +5228,7 @@ function $parseNumber(this$static, text_0, pos){
     ch_0 = $charAt_0(text_0, pos[0]);
     digit = $getDigit(ch_0);
     if (digit >= 0 && digit <= 9) {
-      $append_0(normalizedText, digit + 48 & $intern_9);
+      $append_0(normalizedText, digit + 48 & $intern_8);
       sawDigit = true;
     }
      else if (ch_0 == (checkCriticalStringElementIndex(0, decimal.length) , decimal.charCodeAt(0))) {
@@ -5262,7 +5268,7 @@ function $parseNumber(this$static, text_0, pos){
       if (scale != 1) {
         break;
       }
-      scale = $intern_8;
+      scale = $intern_23;
       if (sawDigit) {
         ++pos[0];
         break;
@@ -5443,7 +5449,7 @@ function $propagateCarry(this$static, digits, i){
       $setCharAt(digits, i--, 48);
     }
      else {
-      $setCharAt(digits, i, digit + 1 & $intern_9);
+      $setCharAt(digits, i, digit + 1 & $intern_8);
       carry = false;
     }
   }
@@ -5523,30 +5529,30 @@ var Lcom_google_gwt_i18n_client_NumberFormat_2_classLit = createForClass('com.go
 function $getISOTimeZoneString(this$static){
   var data_0, offset;
   offset = -this$static.standardOffset;
-  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_24, 7, 15, [43, 48, 48, 58, 48, 48]);
+  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_22, 7, 15, [43, 48, 48, 58, 48, 48]);
   if (offset < 0) {
     data_0[0] = 45;
     offset = -offset;
   }
-  data_0[1] = data_0[1] + ((offset / 60 | 0) / 10 | 0) & $intern_9;
-  data_0[2] = data_0[2] + (offset / 60 | 0) % 10 & $intern_9;
-  data_0[4] = data_0[4] + (offset % 60 / 10 | 0) & $intern_9;
-  data_0[5] = data_0[5] + offset % 10 & $intern_9;
+  data_0[1] = data_0[1] + ((offset / 60 | 0) / 10 | 0) & $intern_8;
+  data_0[2] = data_0[2] + (offset / 60 | 0) % 10 & $intern_8;
+  data_0[4] = data_0[4] + (offset % 60 / 10 | 0) & $intern_8;
+  data_0[5] = data_0[5] + offset % 10 & $intern_8;
   return valueOf_2(data_0, data_0.length);
 }
 
 function $getRFCTimeZoneString(this$static){
   var data_0, offset;
   offset = -this$static.standardOffset;
-  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_24, 7, 15, [43, 48, 48, 48, 48]);
+  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_22, 7, 15, [43, 48, 48, 48, 48]);
   if (offset < 0) {
     data_0[0] = 45;
     offset = -offset;
   }
-  data_0[1] = data_0[1] + ((offset / 60 | 0) / 10 | 0) & $intern_9;
-  data_0[2] = data_0[2] + (offset / 60 | 0) % 10 & $intern_9;
-  data_0[3] = data_0[3] + (offset % 60 / 10 | 0) & $intern_9;
-  data_0[4] = data_0[4] + offset % 10 & $intern_9;
+  data_0[1] = data_0[1] + ((offset / 60 | 0) / 10 | 0) & $intern_8;
+  data_0[2] = data_0[2] + (offset / 60 | 0) % 10 & $intern_8;
+  data_0[3] = data_0[3] + (offset % 60 / 10 | 0) & $intern_8;
+  data_0[4] = data_0[4] + offset % 10 & $intern_8;
   return valueOf_2(data_0, data_0.length);
 }
 
@@ -5555,15 +5561,15 @@ function TimeZone(){
 
 function composeGMTString(offset){
   var data_0;
-  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_24, 7, 15, [71, 77, 84, 45, 48, 48, 58, 48, 48]);
+  data_0 = stampJavaTypeInfo(getClassLiteralForArray(C_classLit, 1), $intern_22, 7, 15, [71, 77, 84, 45, 48, 48, 58, 48, 48]);
   if (offset <= 0) {
     data_0[3] = 43;
     offset = -offset;
   }
-  data_0[4] = data_0[4] + ((offset / 60 | 0) / 10 | 0) & $intern_9;
-  data_0[5] = data_0[5] + (offset / 60 | 0) % 10 & $intern_9;
-  data_0[7] = data_0[7] + (offset % 60 / 10 | 0) & $intern_9;
-  data_0[8] = data_0[8] + offset % 10 & $intern_9;
+  data_0[4] = data_0[4] + ((offset / 60 | 0) / 10 | 0) & $intern_8;
+  data_0[5] = data_0[5] + (offset / 60 | 0) % 10 & $intern_8;
+  data_0[7] = data_0[7] + (offset % 60 / 10 | 0) & $intern_8;
+  data_0[8] = data_0[8] + offset % 10 & $intern_8;
   return valueOf_2(data_0, data_0.length);
 }
 
@@ -5602,7 +5608,7 @@ function createTimeZone(timeZoneOffsetInMinutes){
   tz = new TimeZone;
   tz.standardOffset = timeZoneOffsetInMinutes;
   tz.timezoneID = composePOSIXTimeZoneID(timeZoneOffsetInMinutes);
-  tz.tzNames = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 2, 6, 1);
+  tz.tzNames = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 2, 6, 1);
   tz.tzNames[0] = composeUTCString(timeZoneOffsetInMinutes);
   tz.tzNames[1] = composeUTCString(timeZoneOffsetInMinutes);
   return tz;
@@ -5618,14 +5624,14 @@ function offsetDisplay(offset){
   return '' + hour + ':' + ('' + mins);
 }
 
-defineClass(977, 1, {}, TimeZone);
+defineClass(980, 1, {}, TimeZone);
 _.standardOffset = 0;
-var Lcom_google_gwt_i18n_client_TimeZone_2_classLit = createForClass('com.google.gwt.i18n.client', 'TimeZone', 977);
+var Lcom_google_gwt_i18n_client_TimeZone_2_classLit = createForClass('com.google.gwt.i18n.client', 'TimeZone', 980);
 function NumberConstantsImpl_(){
 }
 
-defineClass(975, 1, {}, NumberConstantsImpl_);
-var Lcom_google_gwt_i18n_client_constants_NumberConstantsImpl_1_2_classLit = createForClass('com.google.gwt.i18n.client.constants', 'NumberConstantsImpl_', 975);
+defineClass(978, 1, {}, NumberConstantsImpl_);
+var Lcom_google_gwt_i18n_client_constants_NumberConstantsImpl_1_2_classLit = createForClass('com.google.gwt.i18n.client.constants', 'NumberConstantsImpl_', 978);
 function $getSimpleCurrencySymbol(this$static){
   return this$static[4] || this$static[1];
 }
@@ -5633,8 +5639,8 @@ function $getSimpleCurrencySymbol(this$static){
 function DateTimeFormatInfoImpl(){
 }
 
-defineClass(976, 1035, {}, DateTimeFormatInfoImpl);
-var Lcom_google_gwt_i18n_client_impl_cldr_DateTimeFormatInfoImpl_2_classLit = createForClass('com.google.gwt.i18n.client.impl.cldr', 'DateTimeFormatInfoImpl', 976);
+defineClass(979, 1040, {}, DateTimeFormatInfoImpl);
+var Lcom_google_gwt_i18n_client_impl_cldr_DateTimeFormatInfoImpl_2_classLit = createForClass('com.google.gwt.i18n.client.impl.cldr', 'DateTimeFormatInfoImpl', 979);
 function DateTimeFormat$PatternPart(txt, cnt){
   this.text_0 = txt;
   this.count = cnt;
@@ -6510,7 +6516,7 @@ function $layout(this$static, duration, callback){
       l_0.bottomUnit = l_0.targetBottomUnit;
       l_0.widthUnit = l_0.targetWidthUnit;
       l_0.heightUnit = l_0.targetHeightUnit;
-      $layout_0(l_0);
+      $layout_0(this$static.impl, l_0);
       !!callback && (child = l_0.userObject , instanceOf(child, 219) && child.onResize_0());
     }
     return;
@@ -6532,7 +6538,7 @@ function $removeChild_0(this$static, layer){
 }
 
 function Layout(parent_0){
-  this.impl = new LayoutImpl;
+  this.impl = new LayoutImplIE8;
   this.layers = new ArrayList;
   this.parentElem = parent_0;
   $initParent(this.impl, parent_0);
@@ -6546,7 +6552,7 @@ function Layout$1(this$0, val$callback){
   Animation.call(this);
 }
 
-defineClass(628, 309, {}, Layout$1);
+defineClass(631, 309, {}, Layout$1);
 _.onCancel = function onCancel_0(){
   this.this$01.animation = null;
   $layout(this.this$01, 0, null);
@@ -6567,12 +6573,12 @@ _.onUpdate = function onUpdate(progress){
     l_0.setTargetBottom && (l_0.bottom_0 = l_0.sourceBottom + (l_0.targetBottom - l_0.sourceBottom) * progress);
     l_0.setTargetWidth && (l_0.width_0 = l_0.sourceWidth + (l_0.targetWidth - l_0.sourceWidth) * progress);
     l_0.setTargetHeight && (l_0.height_0 = l_0.sourceHeight + (l_0.targetHeight - l_0.sourceHeight) * progress);
-    $layout_0(l_0);
+    $layout_0(this.this$01.impl, l_0);
     !!this.val$callback2 && (child = l_0.userObject , instanceOf(child, 219) && child.onResize_0());
   }
 }
 ;
-var Lcom_google_gwt_layout_client_Layout$1_2_classLit = createForClass('com.google.gwt.layout.client', 'Layout/1', 628);
+var Lcom_google_gwt_layout_client_Layout$1_2_classLit = createForClass('com.google.gwt.layout.client', 'Layout/1', 631);
 function $setBottomHeight(this$static, bottom, bottomUnit, height, heightUnit){
   this$static.setTargetBottom = this$static.setTargetHeight = true;
   this$static.setTargetTop = false;
@@ -6728,29 +6734,6 @@ function $initParent(this$static, parent_0){
   $appendChild(parent_0, this$static.relativeRuler = createRuler(($clinit_Style$Unit() , EM), EX));
 }
 
-function $layout_0(layer){
-  var style;
-  style = layer.container.style;
-  layer.visible?(style['display'] = '' , undefined):(style['display'] = ($clinit_Style$Display() , 'none') , undefined);
-  style['left'] = layer.setLeft?layer.left_0 + 'px':'';
-  style['top'] = layer.setTop?layer.top_0 + 'px':'';
-  style['right'] = layer.setRight?layer.right + 'px':'';
-  style['bottom'] = layer.setBottom?layer.bottom_0 + 'px':'';
-  style['width'] = layer.setWidth?layer.width_0 + 'px':'';
-  style['height'] = layer.setHeight?layer.height_0 + 'px':'';
-  style = layer.child.style;
-  switch (2) {
-    case 2:
-      style['left'] = ($clinit_Style$Unit() , '0.0px');
-      style['right'] = '0.0px';
-  }
-  switch (2) {
-    case 2:
-      style['top'] = ($clinit_Style$Unit() , '0.0px');
-      style['bottom'] = '0.0px';
-  }
-}
-
 function $removeChild_1(container, child){
   var parent_0, parent0, style;
   parent0 = $getParentElement(container);
@@ -6762,10 +6745,6 @@ function $removeChild_1(container, child){
   style['top'] = '';
   style['width'] = '';
   style['height'] = '';
-}
-
-function LayoutImpl(){
-  $clinit_LayoutImpl();
 }
 
 function createRuler(widthUnit, heightUnit){
@@ -6783,9 +6762,81 @@ function createRuler(widthUnit, heightUnit){
   return ruler;
 }
 
-defineClass(841, 1, {}, LayoutImpl);
+defineClass(1030, 1, {});
 var fixedRuler;
-var Lcom_google_gwt_layout_client_LayoutImpl_2_classLit = createForClass('com.google.gwt.layout.client', 'LayoutImpl', 841);
+var Lcom_google_gwt_layout_client_LayoutImpl_2_classLit = createForClass('com.google.gwt.layout.client', 'LayoutImpl', 1030);
+function $layout_0(this$static, layer){
+  var oldDisplay, style;
+  style = layer.container.style;
+  setLayer(layer.container, layer);
+  if (layer.visible) {
+    oldDisplay = style['display'];
+    style['display'] = '';
+    oldDisplay.length > 0 && $updateVisibility(this$static, layer.container);
+  }
+   else {
+    style['display'] = ($clinit_Style$Display() , 'none');
+  }
+  layer.setLeft?$setValue(this$static, layer, 'left', layer.left_0, layer.leftUnit, false, false):(style['left'] = '' , undefined);
+  layer.setRight?$setValue(this$static, layer, 'right', layer.right, layer.rightUnit, false, false):(style['right'] = '' , undefined);
+  layer.setTop?$setValue(this$static, layer, 'top', layer.top_0, layer.topUnit, true, false):(style['top'] = '' , undefined);
+  layer.setBottom?$setValue(this$static, layer, 'bottom', layer.bottom_0, layer.bottomUnit, true, false):(style['bottom'] = '' , undefined);
+  layer.setWidth?$setValue(this$static, layer, 'width', layer.width_0, layer.widthUnit, false, true):(style['width'] = '' , undefined);
+  layer.setHeight?$setValue(this$static, layer, 'height', layer.height_0, layer.heightUnit, true, true):(style['height'] = '' , undefined);
+  style = layer.child.style;
+  switch (2) {
+    case 2:
+      style['left'] = ($clinit_Style$Unit() , '0.0px');
+      style['right'] = '0.0px';
+  }
+  switch (2) {
+    case 2:
+      style['top'] = ($clinit_Style$Unit() , '0.0px');
+      style['bottom'] = '0.0px';
+  }
+}
+
+function $removeLayerRefs(parent_0){
+  for (var i = 0; i < parent_0.childNodes.length; ++i) {
+    var container = parent_0.childNodes[i];
+    container.__layer && (container.__layer = null);
+  }
+}
+
+function $setValue(this$static, layer, prop, value_0, unit, vertical, noNegative){
+  switch (unit.ordinal) {
+    case 0:
+    case 1:
+      break;
+    default:value_0 = value_0 * $getUnitSizeInPixels(this$static, layer.container, unit, vertical);
+      value_0 = round_int(value_0 + 0.5);
+      $clinit_Style$Unit();
+  }
+  noNegative && value_0 < 0 && (value_0 = 0);
+  layer.container.style[prop] = value_0 + 'px';
+}
+
+function $updateVisibility(this$static, container){
+  var i, layer, node, nodes;
+  layer = container.__layer;
+  !!layer && $layout_0(this$static, layer);
+  nodes = container.childNodes;
+  for (i = 0; i < nodes.length; ++i) {
+    node = nodes[i];
+    node.nodeType == 1 && $updateVisibility(this$static, node);
+  }
+}
+
+function LayoutImplIE8(){
+  $clinit_LayoutImpl();
+}
+
+function setLayer(container, layer){
+  container.__layer = layer;
+}
+
+defineClass(870, 1030, {}, LayoutImplIE8);
+var Lcom_google_gwt_layout_client_LayoutImplIE8_2_classLit = createForClass('com.google.gwt.layout.client', 'LayoutImplIE8', 870);
 function $replace(this$static, input_0, replacement){
   return input_0.replace(this$static, replacement);
 }
@@ -6802,12 +6853,12 @@ function ImageResourcePrototype(url_0){
   this.url_0 = url_0;
 }
 
-defineClass(980, 1, {}, ImageResourcePrototype);
+defineClass(983, 1, {}, ImageResourcePrototype);
 _.height_0 = 0;
 _.left_0 = 0;
 _.top_0 = 0;
 _.width_0 = 0;
-var Lcom_google_gwt_resources_client_impl_ImageResourcePrototype_2_classLit = createForClass('com.google.gwt.resources.client.impl', 'ImageResourcePrototype', 980);
+var Lcom_google_gwt_resources_client_impl_ImageResourcePrototype_2_classLit = createForClass('com.google.gwt.resources.client.impl', 'ImageResourcePrototype', 983);
 function $append(this$static, styles){
   $append_4(this$static.sb, styles.css);
   return this$static;
@@ -6817,14 +6868,14 @@ function SafeStylesBuilder(){
   this.sb = new StringBuilder;
 }
 
-defineClass(988, 1, {}, SafeStylesBuilder);
-var Lcom_google_gwt_safecss_shared_SafeStylesBuilder_2_classLit = createForClass('com.google.gwt.safecss.shared', 'SafeStylesBuilder', 988);
+defineClass(991, 1, {}, SafeStylesBuilder);
+var Lcom_google_gwt_safecss_shared_SafeStylesBuilder_2_classLit = createForClass('com.google.gwt.safecss.shared', 'SafeStylesBuilder', 991);
 function SafeStylesString(css){
   verifySafeStylesConstraints(css);
   this.css = css;
 }
 
-defineClass(216, 1, {1060:1, 216:1, 3:1}, SafeStylesString);
+defineClass(216, 1, {1065:1, 216:1, 3:1}, SafeStylesString);
 _.equals_0 = function equals_1(obj){
   if (!instanceOf(obj, 216)) {
     return false;
@@ -6850,7 +6901,7 @@ function OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml(html){
   this.html = html;
 }
 
-defineClass(992, 1, $intern_36, OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml);
+defineClass(995, 1, $intern_36, OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml);
 _.asString = function asString(){
   return this.html;
 }
@@ -6866,7 +6917,7 @@ _.hashCode_0 = function hashCode_4(){
   return getHashCode_0(this.html);
 }
 ;
-var Lcom_google_gwt_safehtml_shared_OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml_2_classLit = createForClass('com.google.gwt.safehtml.shared', 'OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml', 992);
+var Lcom_google_gwt_safehtml_shared_OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml_2_classLit = createForClass('com.google.gwt.safehtml.shared', 'OnlyToBeUsedInGeneratedCodeStringBlessedAsSafeHtml', 995);
 function SafeHtmlString(html){
   if (html == null) {
     throw toJs(new NullPointerException_0('html is null'));
@@ -6924,7 +6975,7 @@ function SafeUriString(uri_0){
   this.uri_0 = uri_0;
 }
 
-defineClass(298, 1, {1056:1, 298:1}, SafeUriString);
+defineClass(298, 1, {1061:1, 298:1}, SafeUriString);
 _.equals_0 = function equals_4(obj){
   if (!instanceOf(obj, 298)) {
     return false;
@@ -7007,20 +7058,20 @@ function $setItem_0(storage, key, data_0){
   $wnd[storage].setItem(key, data_0);
 }
 
-defineClass(1031, 1, {});
-var Lcom_google_gwt_text_shared_AbstractRenderer_2_classLit = createForClass('com.google.gwt.text.shared', 'AbstractRenderer', 1031);
+defineClass(1035, 1, {});
+var Lcom_google_gwt_text_shared_AbstractRenderer_2_classLit = createForClass('com.google.gwt.text.shared', 'AbstractRenderer', 1035);
 function PassthroughParser(){
 }
 
-defineClass(874, 1, {}, PassthroughParser);
+defineClass(877, 1, {}, PassthroughParser);
 var INSTANCE_0;
-var Lcom_google_gwt_text_shared_testing_PassthroughParser_2_classLit = createForClass('com.google.gwt.text.shared.testing', 'PassthroughParser', 874);
+var Lcom_google_gwt_text_shared_testing_PassthroughParser_2_classLit = createForClass('com.google.gwt.text.shared.testing', 'PassthroughParser', 877);
 function PassthroughRenderer(){
 }
 
-defineClass(873, 1031, {}, PassthroughRenderer);
+defineClass(876, 1035, {}, PassthroughRenderer);
 var INSTANCE_1;
-var Lcom_google_gwt_text_shared_testing_PassthroughRenderer_2_classLit = createForClass('com.google.gwt.text.shared.testing', 'PassthroughRenderer', 873);
+var Lcom_google_gwt_text_shared_testing_PassthroughRenderer_2_classLit = createForClass('com.google.gwt.text.shared.testing', 'PassthroughRenderer', 876);
 function $calcNewVelocity(initialVelocity, decelFactor, oldVelocity, minDecel){
   var maxVelocityX, minVelocityX, newVelocity;
   newVelocity = initialVelocity * decelFactor;
@@ -7060,8 +7111,8 @@ function $updateState(state){
 function DefaultMomentum(){
 }
 
-defineClass(989, 1, {}, DefaultMomentum);
-var Lcom_google_gwt_touch_client_DefaultMomentum_2_classLit = createForClass('com.google.gwt.touch.client', 'DefaultMomentum', 989);
+defineClass(992, 1, {}, DefaultMomentum);
+var Lcom_google_gwt_touch_client_DefaultMomentum_2_classLit = createForClass('com.google.gwt.touch.client', 'DefaultMomentum', 992);
 function $setCumulativeElapsedMillis(this$static, cumulativeElapsedMillis){
   this$static.cumulativeElapsedMillis = cumulativeElapsedMillis;
 }
@@ -7080,10 +7131,10 @@ function Momentum$State(initialPosition, initialVelocity){
   this.velocity = new Point_0(initialVelocity);
 }
 
-defineClass(990, 1, {}, Momentum$State);
+defineClass(993, 1, {}, Momentum$State);
 _.cumulativeElapsedMillis = 0;
 _.elapsedMillis = 0;
-var Lcom_google_gwt_touch_client_Momentum$State_2_classLit = createForClass('com.google.gwt.touch.client', 'Momentum/State', 990);
+var Lcom_google_gwt_touch_client_Momentum$State_2_classLit = createForClass('com.google.gwt.touch.client', 'Momentum/State', 993);
 function $minus(this$static, c){
   return new Point(this$static.x_0 - c.x_0, this$static.y_0 - c.y_0);
 }
@@ -7338,57 +7389,57 @@ function TouchScroller(){
   $setMomentum(this, new DefaultMomentum);
 }
 
-defineClass(963, 1, {}, TouchScroller);
+defineClass(966, 1, {}, TouchScroller);
 _.dragging = false;
 _.touching = false;
 var isSupported;
-var Lcom_google_gwt_touch_client_TouchScroller_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller', 963);
+var Lcom_google_gwt_touch_client_TouchScroller_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller', 966);
 function TouchScroller$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(967, 1, {1057:1, 16:1}, TouchScroller$1);
-var Lcom_google_gwt_touch_client_TouchScroller$1_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/1', 967);
+defineClass(970, 1, {1062:1, 16:1}, TouchScroller$1);
+var Lcom_google_gwt_touch_client_TouchScroller$1_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/1', 970);
 function TouchScroller$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(968, 1, {1040:1, 16:1}, TouchScroller$2);
+defineClass(971, 1, {1045:1, 16:1}, TouchScroller$2);
 _.onTouchStart = function onTouchStart(event_0){
   $onTouchStart(this.this$01, event_0);
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$2_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/2', 968);
+var Lcom_google_gwt_touch_client_TouchScroller$2_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/2', 971);
 function TouchScroller$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(969, 1, {1043:1, 16:1}, TouchScroller$3);
+defineClass(972, 1, {1048:1, 16:1}, TouchScroller$3);
 _.onTouchMove = function onTouchMove(event_0){
   $onTouchMove(this.this$01, event_0);
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$3_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/3', 969);
+var Lcom_google_gwt_touch_client_TouchScroller$3_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/3', 972);
 function TouchScroller$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(970, 1, {1042:1, 16:1}, TouchScroller$4);
+defineClass(973, 1, {1047:1, 16:1}, TouchScroller$4);
 _.onTouchEnd = function onTouchEnd(event_0){
   $onTouchEnd(this.this$01);
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$4_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/4', 970);
+var Lcom_google_gwt_touch_client_TouchScroller$4_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/4', 973);
 function TouchScroller$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(971, 1, {1041:1, 16:1}, TouchScroller$5);
+defineClass(974, 1, {1046:1, 16:1}, TouchScroller$5);
 _.onTouchCancel = function onTouchCancel(event_0){
   $onTouchEnd(this.this$01);
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$5_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/5', 971);
+var Lcom_google_gwt_touch_client_TouchScroller$5_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/5', 974);
 function TouchScroller$6(this$0){
   this.this$01 = this$0;
 }
@@ -7423,7 +7474,7 @@ function TouchScroller$MomentumCommand(this$0, endVelocity){
   this.windowResizeHandler = addResizeHandler(new TouchScroller$MomentumCommand$1(this));
 }
 
-defineClass(964, 1, {}, TouchScroller$MomentumCommand);
+defineClass(967, 1, {}, TouchScroller$MomentumCommand);
 _.execute_0 = function execute_3(){
   var cumulativeElapsedMillis, hMax, hMin, hPos, notDone, vMax, vPos;
   if (this != this.this$01.momentumCommand) {
@@ -7450,22 +7501,22 @@ _.execute_0 = function execute_3(){
 }
 ;
 _.lastElapsedMillis = 0;
-var Lcom_google_gwt_touch_client_TouchScroller$MomentumCommand_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumCommand', 964);
+var Lcom_google_gwt_touch_client_TouchScroller$MomentumCommand_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumCommand', 967);
 function TouchScroller$MomentumCommand$1(this$1){
   this.this$11 = this$1;
 }
 
-defineClass(966, 1, $intern_39, TouchScroller$MomentumCommand$1);
+defineClass(969, 1, $intern_39, TouchScroller$MomentumCommand$1);
 _.onResize = function onResize(event_0){
   $finish(this.this$11);
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$MomentumCommand$1_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumCommand/1', 966);
+var Lcom_google_gwt_touch_client_TouchScroller$MomentumCommand$1_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumCommand/1', 969);
 function TouchScroller$MomentumTouchRemovalCommand(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(965, 1, {}, TouchScroller$MomentumTouchRemovalCommand);
+defineClass(968, 1, {}, TouchScroller$MomentumTouchRemovalCommand);
 _.execute_0 = function execute_4(){
   var currentTime, iter, point;
   currentTime = now_1();
@@ -7477,7 +7528,7 @@ _.execute_0 = function execute_4(){
   return this.this$01.touchPositionsDuringMomentum.array.length != 0;
 }
 ;
-var Lcom_google_gwt_touch_client_TouchScroller$MomentumTouchRemovalCommand_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumTouchRemovalCommand', 965);
+var Lcom_google_gwt_touch_client_TouchScroller$MomentumTouchRemovalCommand_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/MomentumTouchRemovalCommand', 968);
 function $setTemporalPoint(this$static, point, time){
   this$static.point = point;
   this$static.time = time;
@@ -7494,8 +7545,8 @@ function TouchScroller$TemporalPoint_0(point, time){
 defineClass(233, 1, {233:1}, TouchScroller$TemporalPoint, TouchScroller$TemporalPoint_0);
 _.time = 0;
 var Lcom_google_gwt_touch_client_TouchScroller$TemporalPoint_2_classLit = createForClass('com.google.gwt.touch.client', 'TouchScroller/TemporalPoint', 233);
-defineClass(993, 1, {16:1});
-var Lcom_google_gwt_user_client_BaseListenerWrapper_2_classLit = createForClass('com.google.gwt.user.client', 'BaseListenerWrapper', 993);
+defineClass(996, 1, {16:1});
+var Lcom_google_gwt_user_client_BaseListenerWrapper_2_classLit = createForClass('com.google.gwt.user.client', 'BaseListenerWrapper', 996);
 function $clinit_DOM(){
   $clinit_DOM = emptyMethod;
   $clinit_DOMImplStandard();
@@ -7577,7 +7628,7 @@ var currentEvent = null, sCaptureElem;
 function $onModuleLoad(){
   var allowedModes, currentMode, i;
   currentMode = $doc.compatMode;
-  allowedModes = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['CSS1Compat']);
+  allowedModes = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['CSS1Compat']);
   for (i = 0; i < allowedModes.length; i++) {
     if ($equals_1(allowedModes[i], currentMode)) {
       return;
@@ -7666,7 +7717,7 @@ function fire_4(handlers, nativeEvent){
   return true;
 }
 
-defineClass(541, 1018, {}, Event$NativePreviewEvent);
+defineClass(542, 1021, {}, Event$NativePreviewEvent);
 _.dispatch = function dispatch_19(handler){
   handler.onPreviewNativeEvent(this);
   singleton.isFirstHandler = false;
@@ -7684,7 +7735,7 @@ _.isCanceled = false;
 _.isConsumed = false;
 _.isFirstHandler = false;
 var TYPE_19, singleton;
-var Lcom_google_gwt_user_client_Event$NativePreviewEvent_2_classLit = createForClass('com.google.gwt.user.client', 'Event/NativePreviewEvent', 541);
+var Lcom_google_gwt_user_client_Event$NativePreviewEvent_2_classLit = createForClass('com.google.gwt.user.client', 'Event/NativePreviewEvent', 542);
 function $clinit_History(){
   $clinit_History = emptyMethod;
   new History$HistoryImpl;
@@ -7725,20 +7776,20 @@ function History$HistoryEventSource(){
   this.handlers = new HandlerManager(null);
 }
 
-defineClass(961, 1, {220:1, 30:1}, History$HistoryEventSource);
+defineClass(964, 1, {220:1, 30:1}, History$HistoryEventSource);
 _.fireEvent = function fireEvent_1(event_0){
   $fireEvent_0(this.handlers, event_0);
 }
 ;
-var Lcom_google_gwt_user_client_History$HistoryEventSource_2_classLit = createForClass('com.google.gwt.user.client', 'History/HistoryEventSource', 961);
+var Lcom_google_gwt_user_client_History$HistoryEventSource_2_classLit = createForClass('com.google.gwt.user.client', 'History/HistoryEventSource', 964);
 function History$HistoryImpl(){
   var handler;
   handler = $entry(onHashChanged);
   $wnd.addEventListener('hashchange', handler, false);
 }
 
-defineClass(962, 1, {}, History$HistoryImpl);
-var Lcom_google_gwt_user_client_History$HistoryImpl_2_classLit = createForClass('com.google.gwt.user.client', 'History/HistoryImpl', 962);
+defineClass(965, 1, {}, History$HistoryImpl);
+var Lcom_google_gwt_user_client_History$HistoryImpl_2_classLit = createForClass('com.google.gwt.user.client', 'History/HistoryImpl', 965);
 function $decode(toDecode){
   return $wnd.decodeURI(toDecode.replace('%23', '#'));
 }
@@ -7826,7 +7877,7 @@ function Window$ClosingEvent(){
   $clinit_Window$ClosingEvent();
 }
 
-defineClass(543, 1018, {}, Window$ClosingEvent);
+defineClass(544, 1021, {}, Window$ClosingEvent);
 _.dispatch = function dispatch_20(handler){
   handler.this$01.app.unsavedChanges && !($wnd.openFile != undefined) && $setMessage(this, LS('Are you sure?  There are unsaved changes.'));
 }
@@ -7837,7 +7888,7 @@ _.getAssociatedType = function getAssociatedType_21(){
 ;
 _.message_0 = null;
 var TYPE_20;
-var Lcom_google_gwt_user_client_Window$ClosingEvent_2_classLit = createForClass('com.google.gwt.user.client', 'Window/ClosingEvent', 543);
+var Lcom_google_gwt_user_client_Window$ClosingEvent_2_classLit = createForClass('com.google.gwt.user.client', 'Window/ClosingEvent', 544);
 function assign(newURL){
   $wnd.location.assign(newURL);
 }
@@ -7853,7 +7904,7 @@ function $eventGetTypeInt(eventType){
     case 'blur':
       return $intern_40;
     case 'change':
-      return $intern_20;
+      return $intern_25;
     case 'click':
       return 1;
     case 'dblclick':
@@ -8016,7 +8067,7 @@ function $sinkEventsImpl(elem, bits){
   chMask & 128 && (elem.onkeydown = bits & 128?dispatchEvent_2:null);
   chMask & 256 && (elem.onkeypress = bits & 256?dispatchEvent_2:null);
   chMask & 512 && (elem.onkeyup = bits & 512?dispatchEvent_2:null);
-  chMask & $intern_20 && (elem.onchange = bits & $intern_20?dispatchEvent_2:null);
+  chMask & $intern_25 && (elem.onchange = bits & $intern_25?dispatchEvent_2:null);
   chMask & $intern_41 && (elem.onfocus = bits & $intern_41?dispatchEvent_2:null);
   chMask & $intern_40 && (elem.onblur = bits & $intern_40?dispatchEvent_2:null);
   chMask & 8192 && (elem.onlosecapture = bits & 8192?dispatchEvent_2:null);
@@ -8119,17 +8170,17 @@ function getIndex(elem){
   return index_0 == null?-1:index_0;
 }
 
-defineClass(862, 1, {}, ElementMapperImpl);
+defineClass(864, 1, {}, ElementMapperImpl);
 _.freeList = null;
-var Lcom_google_gwt_user_client_impl_ElementMapperImpl_2_classLit = createForClass('com.google.gwt.user.client.impl', 'ElementMapperImpl', 862);
+var Lcom_google_gwt_user_client_impl_ElementMapperImpl_2_classLit = createForClass('com.google.gwt.user.client.impl', 'ElementMapperImpl', 864);
 function ElementMapperImpl$FreeNode(index_0, next){
   this.index_0 = index_0;
   this.next_0 = next;
 }
 
-defineClass(863, 1, {}, ElementMapperImpl$FreeNode);
+defineClass(865, 1, {}, ElementMapperImpl$FreeNode);
 _.index_0 = 0;
-var Lcom_google_gwt_user_client_impl_ElementMapperImpl$FreeNode_2_classLit = createForClass('com.google.gwt.user.client.impl', 'ElementMapperImpl/FreeNode', 863);
+var Lcom_google_gwt_user_client_impl_ElementMapperImpl$FreeNode_2_classLit = createForClass('com.google.gwt.user.client.impl', 'ElementMapperImpl/FreeNode', 865);
 function foreach_0(map_0, fn){
   for (var e in map_0) {
     map_0.hasOwnProperty(e) && fn(e, map_0[e]);
@@ -8147,26 +8198,26 @@ function $initHandler(initFunc, cmd){
 function WindowImplIE$1(){
 }
 
-defineClass(618, 1, $intern_53, WindowImplIE$1);
+defineClass(621, 1, $intern_53, WindowImplIE$1);
 _.execute_1 = function execute_5(){
   $wnd.__gwt_initWindowCloseHandler($entry(onClosing), $entry(onClosed));
 }
 ;
-var Lcom_google_gwt_user_client_impl_WindowImplIE$1_2_classLit = createForClass('com.google.gwt.user.client.impl', 'WindowImplIE/1', 618);
+var Lcom_google_gwt_user_client_impl_WindowImplIE$1_2_classLit = createForClass('com.google.gwt.user.client.impl', 'WindowImplIE/1', 621);
 function WindowImplIE$2(){
 }
 
-defineClass(619, 1, $intern_53, WindowImplIE$2);
+defineClass(622, 1, $intern_53, WindowImplIE$2);
 _.execute_1 = function execute_6(){
   $wnd.__gwt_initWindowResizeHandler($entry(onResize_0));
 }
 ;
-var Lcom_google_gwt_user_client_impl_WindowImplIE$2_2_classLit = createForClass('com.google.gwt.user.client.impl', 'WindowImplIE/2', 619);
+var Lcom_google_gwt_user_client_impl_WindowImplIE$2_2_classLit = createForClass('com.google.gwt.user.client.impl', 'WindowImplIE/2', 622);
 function $adopt(this$static, child){
   $setParent(child, this$static);
 }
 
-defineClass(1021, 28, $intern_54);
+defineClass($intern_25, 28, $intern_54);
 _.add_0 = function add_3(child){
   throw toJs(new UnsupportedOperationException_0('This panel does not support no-arg add()'));
 }
@@ -8179,10 +8230,10 @@ _.doDetachChildren = function doDetachChildren_0(){
   tryCommand(this, ($clinit_AttachDetachException() , detachCommand));
 }
 ;
-var Lcom_google_gwt_user_client_ui_Panel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Panel', 1021);
+var Lcom_google_gwt_user_client_ui_Panel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Panel', $intern_25);
 function $add(this$static, child, container){
   $removeFromParent(child);
-  $add_6(this$static.children, child);
+  $add_6(this$static.children_0, child);
   $clinit_DOM();
   $appendChild(container, resolve(child.element));
   $setParent(child, this$static);
@@ -8192,37 +8243,37 @@ function $adjustIndex(this$static, child, beforeIndex){
   var idx;
   $checkIndexBoundsForInsertion(this$static, beforeIndex);
   if (child.parent_0 == this$static) {
-    idx = $indexOf(this$static.children, child);
+    idx = $indexOf(this$static.children_0, child);
     idx < beforeIndex && --beforeIndex;
   }
   return beforeIndex;
 }
 
 function $checkIndexBoundsForInsertion(this$static, index_0){
-  if (index_0 < 0 || index_0 > this$static.children.size_0) {
+  if (index_0 < 0 || index_0 > this$static.children_0.size_0) {
     throw toJs(new IndexOutOfBoundsException);
   }
 }
 
 function $getWidget(this$static, index_0){
-  return $get_0(this$static.children, index_0);
+  return $get_0(this$static.children_0, index_0);
 }
 
 function $getWidgetIndex(this$static, child){
-  return $indexOf(this$static.children, child);
+  return $indexOf(this$static.children_0, child);
 }
 
 function $insert(this$static, child, container, beforeIndex){
   beforeIndex = $adjustIndex(this$static, child, beforeIndex);
   $removeFromParent(child);
-  $insert_3(this$static.children, child, beforeIndex);
+  $insert_3(this$static.children_0, child, beforeIndex);
   $clinit_DOM();
   $appendChild(container, resolve(child.element));
   $setParent(child, this$static);
 }
 
 function $remove(this$static, index_0){
-  return $remove_4(this$static, $get_0(this$static.children, index_0));
+  return $remove_4(this$static, $get_0(this$static.children_0, index_0));
 }
 
 function $remove_0(this$static, w){
@@ -8236,18 +8287,18 @@ function $remove_0(this$static, w){
    finally {
     elem = ($clinit_DOM() , w.element);
     $removeChild((null , $getParentElement(elem)), elem);
-    $remove_6(this$static.children, w);
+    $remove_6(this$static.children_0, w);
   }
   return true;
 }
 
 function ComplexPanel(){
-  this.children = new WidgetCollection(this);
+  this.children_0 = new WidgetCollection(this);
 }
 
-defineClass(244, 1021, $intern_54);
+defineClass(244, $intern_25, $intern_54);
 _.iterator = function iterator_0(){
-  return new WidgetCollection$WidgetIterator(this.children);
+  return new WidgetCollection$WidgetIterator(this.children_0);
 }
 ;
 _.remove_0 = function remove_0(w){
@@ -8272,7 +8323,7 @@ function changeToStaticPositioning(elem){
   elem.style['position'] = '';
 }
 
-defineClass(721, 244, $intern_54);
+defineClass(724, 244, $intern_54);
 _.add_0 = function add_4(w){
   $add_0(this, w);
 }
@@ -8281,13 +8332,13 @@ _.remove_0 = function remove_1(w){
   return $remove_1(this, w);
 }
 ;
-var Lcom_google_gwt_user_client_ui_AbsolutePanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AbsolutePanel', 721);
+var Lcom_google_gwt_user_client_ui_AbsolutePanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AbsolutePanel', 724);
 function create_1(resource){
   return new ClippedImagePrototype(resource.url_0, resource.left_0, resource.top_0, resource.width_0, resource.height_0);
 }
 
-defineClass(1033, 1, {});
-var Lcom_google_gwt_user_client_ui_AbstractImagePrototype_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AbstractImagePrototype', 1033);
+defineClass(1038, 1, {});
+var Lcom_google_gwt_user_client_ui_AbstractImagePrototype_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AbstractImagePrototype', 1038);
 function $clinit_HasHorizontalAlignment(){
   $clinit_HasHorizontalAlignment = emptyMethod;
   ALIGN_CENTER = new HasHorizontalAlignment$HorizontalAlignmentConstant(($clinit_Style$TextAlign() , 'center'));
@@ -8308,7 +8359,7 @@ function Anchor_0(text_0, href_0){
   $setHref(this.element, href_0);
 }
 
-defineClass(206, 84, {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 218:1, 137:1, 64:1, 32:1, 84:1, 120:1, 260:1, 217:1, 109:1, 119:1, 63:1, 234:1, 152:1, 55:1, 27:1, 202:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, Anchor_0);
+defineClass(206, 85, {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 218:1, 137:1, 65:1, 32:1, 85:1, 120:1, 260:1, 217:1, 109:1, 119:1, 64:1, 234:1, 152:1, 55:1, 27:1, 202:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, Anchor_0);
 _.getTabIndex = function getTabIndex_0(){
   return $getTabIndex(($clinit_DOM() , this.element));
 }
@@ -8353,27 +8404,27 @@ function tryCommand(hasWidgets, c){
   }
 }
 
-defineClass(624, 359, $intern_22, AttachDetachException);
+defineClass(627, 359, $intern_20, AttachDetachException);
 var attachCommand, detachCommand;
-var Lcom_google_gwt_user_client_ui_AttachDetachException_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException', 624);
+var Lcom_google_gwt_user_client_ui_AttachDetachException_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException', 627);
 function AttachDetachException$1(){
 }
 
-defineClass(625, 1, {}, AttachDetachException$1);
+defineClass(628, 1, {}, AttachDetachException$1);
 _.execute_2 = function execute_7(w){
   w.onAttach();
 }
 ;
-var Lcom_google_gwt_user_client_ui_AttachDetachException$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException/1', 625);
+var Lcom_google_gwt_user_client_ui_AttachDetachException$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException/1', 628);
 function AttachDetachException$2(){
 }
 
-defineClass(626, 1, {}, AttachDetachException$2);
+defineClass(629, 1, {}, AttachDetachException$2);
 _.execute_2 = function execute_8(w){
   w.onDetach();
 }
 ;
-var Lcom_google_gwt_user_client_ui_AttachDetachException$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException/2', 626);
+var Lcom_google_gwt_user_client_ui_AttachDetachException$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'AttachDetachException/2', 629);
 function $setHTML(this$static, html){
   $setInnerHTML(($clinit_DOM() , this$static.element), html);
 }
@@ -8382,7 +8433,7 @@ function ButtonBase(elem){
   FocusWidget.call(this, elem);
 }
 
-defineClass(197, 84, {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 64:1, 32:1, 197:1, 84:1, 120:1, 109:1, 119:1, 63:1, 55:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1});
+defineClass(197, 85, {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 65:1, 32:1, 197:1, 85:1, 120:1, 109:1, 119:1, 64:1, 55:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1});
 var Lcom_google_gwt_user_client_ui_ButtonBase_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ButtonBase', 197);
 function Button(){
   var e;
@@ -8399,7 +8450,7 @@ function Button_1(html){
   $setInnerHTML(($clinit_DOM() , this.element), html);
 }
 
-defineClass(29, 197, {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 64:1, 32:1, 29:1, 197:1, 84:1, 120:1, 109:1, 119:1, 63:1, 55:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, Button, Button_0, Button_1);
+defineClass(29, 197, {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 65:1, 32:1, 29:1, 197:1, 85:1, 120:1, 109:1, 119:1, 64:1, 55:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, Button, Button_0, Button_1);
 var Lcom_google_gwt_user_client_ui_Button_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Button', 29);
 function $getWidgetTd(this$static, w){
   if (w.parent_0 != this$static) {
@@ -8453,7 +8504,7 @@ function $setEnabled_0(this$static, enabled){
   enabled?$setStyleName_0(this$static, getStylePrimaryName(($clinit_DOM() , this$static.element)) + '-' + 'disabled', false):$setStyleName_0(this$static, getStylePrimaryName(($clinit_DOM() , this$static.element)) + '-' + 'disabled', true);
 }
 
-function $setValue(this$static, value_0){
+function $setValue_0(this$static, value_0){
   var oldValue;
   value_0 == null && (value_0 = ($clinit_Boolean() , FALSE));
   oldValue = this$static.attached?($clinit_Boolean() , this$static.inputElem.checked?true:false):($clinit_Boolean() , this$static.inputElem.defaultChecked?true:false);
@@ -8502,7 +8553,7 @@ _.onLoad = function onLoad_0(){
 _.onUnload = function onUnload_0(){
   $clinit_DOM();
   this.inputElem.__listener = null;
-  $setValue(this, this.attached?($clinit_Boolean() , this.inputElem.checked?true:false):($clinit_Boolean() , this.inputElem.defaultChecked?true:false));
+  $setValue_0(this, this.attached?($clinit_Boolean() , this.inputElem.checked?true:false):($clinit_Boolean() , this.inputElem.defaultChecked?true:false));
 }
 ;
 _.setTabIndex = function setTabIndex_1(index_0){
@@ -8519,12 +8570,12 @@ function CheckBox$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(757, 1, $intern_56, CheckBox$1);
+defineClass(760, 1, $intern_56, CheckBox$1);
 _.onClick = function onClick(event_0){
   fire_3(this.this$01, $getValue(this.this$01));
 }
 ;
-var Lcom_google_gwt_user_client_ui_CheckBox$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'CheckBox/1', 757);
+var Lcom_google_gwt_user_client_ui_CheckBox$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'CheckBox/1', 760);
 function $checkInit(this$static){
   if (!this$static.widget) {
     throw toJs(new IllegalStateException_0('initWidget() is not called yet'));
@@ -8547,7 +8598,7 @@ function $initWidget(this$static, widget){
   $setParent(widget, this$static);
 }
 
-defineClass(1023, 28, $intern_4);
+defineClass(1026, 28, $intern_4);
 _.isAttached = function isAttached_0(){
   if (this.widget) {
     return this.widget.attached;
@@ -8586,7 +8637,7 @@ _.resolvePotentialElement = function resolvePotentialElement_0(){
   return $clinit_DOM() , this.element;
 }
 ;
-var Lcom_google_gwt_user_client_ui_Composite_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Composite', 1023);
+var Lcom_google_gwt_user_client_ui_Composite_2_classLit = createForClass('com.google.gwt.user.client.ui', 'Composite', 1026);
 function $add_1(this$static, w){
   if (this$static.getWidget()) {
     throw toJs(new IllegalStateException_0('SimplePanel can only contain one child widget'));
@@ -8630,7 +8681,7 @@ function SimplePanel_0(elem){
   $setElement_0(this, ($clinit_DOM() , elem));
 }
 
-defineClass(269, 1021, $intern_54);
+defineClass(269, $intern_25, $intern_54);
 _.add_0 = function add_5(w){
   $add_1(this, w);
 }
@@ -8932,7 +8983,7 @@ function DecoratedPopupPanel(autoHide, modal, prefix){
   var rowStyles;
   PopupPanel_0.call(this, autoHide);
   this.modal = modal;
-  rowStyles = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, [prefix + 'Top', prefix + 'Middle', prefix + 'Bottom']);
+  rowStyles = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, [prefix + 'Top', prefix + 'Middle', prefix + 'Bottom']);
   this.decPanel = new DecoratorPanel(rowStyles);
   $setStyleName(this.decPanel, '');
   setStylePrimaryName($getParentElement(($clinit_DOM() , $getFirstChildElement(this.element))), 'gwt-DecoratedPopupPanel');
@@ -9004,12 +9055,12 @@ function createTD(styleName){
   return tdElem;
 }
 
-defineClass(859, 269, $intern_54, DecoratorPanel);
+defineClass(861, 269, $intern_54, DecoratorPanel);
 _.getContainerElement = function getContainerElement_1(){
   return $getContainerElement(this);
 }
 ;
-var Lcom_google_gwt_user_client_ui_DecoratorPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DecoratorPanel', 859);
+var Lcom_google_gwt_user_client_ui_DecoratorPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DecoratorPanel', 861);
 function $beginDragging(this$static, event_0){
   $onMouseDown(this$static, $getX(event_0), $getY(event_0));
 }
@@ -9233,13 +9284,13 @@ function DialogBox$CaptionImpl(){
   ($clinit_DOM() , this.element).className = 'Caption';
 }
 
-defineClass(567, 271, $intern_60, DialogBox$CaptionImpl);
-var Lcom_google_gwt_user_client_ui_DialogBox$CaptionImpl_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DialogBox/CaptionImpl', 567);
+defineClass(568, 271, $intern_60, DialogBox$CaptionImpl);
+var Lcom_google_gwt_user_client_ui_DialogBox$CaptionImpl_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DialogBox/CaptionImpl', 568);
 function DialogBox$MouseHandler(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(568, 1, {300:1, 514:1, 203:1, 261:1, 513:1, 16:1}, DialogBox$MouseHandler);
+defineClass(569, 1, {300:1, 514:1, 203:1, 261:1, 513:1, 16:1}, DialogBox$MouseHandler);
 _.onMouseDown = function onMouseDown(event_0){
   $beginDragging(this.this$01, event_0);
 }
@@ -9258,7 +9309,7 @@ _.onMouseUp = function onMouseUp(event_0){
   $endDragging(this.this$01, event_0);
 }
 ;
-var Lcom_google_gwt_user_client_ui_DialogBox$MouseHandler_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DialogBox/MouseHandler', 568);
+var Lcom_google_gwt_user_client_ui_DialogBox$MouseHandler_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DialogBox/MouseHandler', 569);
 function $setTextOrHtml(this$static, content_0, isHtml){
   isHtml?$setInnerHTML(this$static.element, content_0):$setInnerText(this$static.element, content_0);
   if (this$static.textDir != this$static.initialElementDir) {
@@ -9289,7 +9340,7 @@ function $doLayout(this$static){
   top_0 = 0;
   right = 0;
   bottom = 0;
-  for (child$iterator = new WidgetCollection$WidgetIterator(this$static.children); child$iterator.index_0 < child$iterator.this$01.size_0;) {
+  for (child$iterator = new WidgetCollection$WidgetIterator(this$static.children_0); child$iterator.index_0 < child$iterator.this$01.size_0;) {
     child = $next_1(child$iterator);
     data_0 = child.layoutData;
     layer = data_0.layer;
@@ -9339,7 +9390,7 @@ function $getResolvedDirection(direction){
 function $insert_0(this$static, widget, direction, size_0){
   var children, data_0, layer;
   $removeFromParent(widget);
-  children = this$static.children;
+  children = this$static.children_0;
   $insert_3(children, widget, children.size_0);
   direction == ($clinit_DockLayoutPanel$Direction() , CENTER_0) && (this$static.center = widget);
   layer = $attachChild(this$static.layout, ($clinit_DOM() , widget.element), widget);
@@ -9367,7 +9418,7 @@ function DockLayoutPanel(unit){
   this.layoutCmd = new DockLayoutPanel$DockAnimateCommand(this, this.layout);
 }
 
-defineClass(622, 244, $intern_61, DockLayoutPanel);
+defineClass(625, 244, $intern_61, DockLayoutPanel);
 _.add_0 = function add_6(widget){
   $insert_0(this, widget, ($clinit_DockLayoutPanel$Direction() , CENTER_0), 0);
 }
@@ -9378,11 +9429,12 @@ _.onAttach = function onAttach_2(){
 ;
 _.onDetach = function onDetach_1(){
   $onDetach(this);
+  $removeLayerRefs(this.layout.parentElem);
 }
 ;
 _.onResize_0 = function onResize_2(){
   var child, child$iterator;
-  for (child$iterator = new WidgetCollection$WidgetIterator(this.children); child$iterator.index_0 < child$iterator.this$01.size_0;) {
+  for (child$iterator = new WidgetCollection$WidgetIterator(this.children_0); child$iterator.index_0 < child$iterator.this$01.size_0;) {
     child = $next_1(child$iterator);
     instanceOf(child, 219) && child.onResize_0();
   }
@@ -9399,7 +9451,7 @@ _.remove_0 = function remove_4(w){
   return removed;
 }
 ;
-var Lcom_google_gwt_user_client_ui_DockLayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DockLayoutPanel', 622);
+var Lcom_google_gwt_user_client_ui_DockLayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DockLayoutPanel', 625);
 function $clinit_DockLayoutPanel$Direction(){
   $clinit_DockLayoutPanel$Direction = emptyMethod;
   NORTH = new DockLayoutPanel$Direction('NORTH', 0);
@@ -9458,12 +9510,12 @@ function DockLayoutPanel$DockAnimateCommand(this$0, layout){
   LayoutCommand.call(this, layout);
 }
 
-defineClass(623, 358, $intern_53, DockLayoutPanel$DockAnimateCommand);
+defineClass(626, 358, $intern_53, DockLayoutPanel$DockAnimateCommand);
 _.doBeforeLayout = function doBeforeLayout_0(){
   $doLayout(this.this$01);
 }
 ;
-var Lcom_google_gwt_user_client_ui_DockLayoutPanel$DockAnimateCommand_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DockLayoutPanel/DockAnimateCommand', 623);
+var Lcom_google_gwt_user_client_ui_DockLayoutPanel$DockAnimateCommand_2_classLit = createForClass('com.google.gwt.user.client.ui', 'DockLayoutPanel/DockAnimateCommand', 626);
 function DockLayoutPanel$LayoutData(direction, size_0, layer){
   this.direction_0 = direction;
   this.size_0 = size_0;
@@ -9487,11 +9539,11 @@ function FileUpload_0(element){
   $setElement_0(this, ($clinit_DOM() , element));
 }
 
-defineClass(246, 84, {74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 30:1, 32:1, 84:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1}, FileUpload);
+defineClass(246, 85, {75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 30:1, 32:1, 85:1, 120:1, 109:1, 119:1, 152:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1}, FileUpload);
 var Lcom_google_gwt_user_client_ui_FileUpload_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FileUpload', 246);
 function $addCells(tbody, row, num){
   var i, rowElem, tdElement;
-  rowElem = tbody.rows[row];
+  rowElem = tbody.children[row];
   for (i = 0; i < num; i++) {
     tdElement = $doc.createElement('td');
     rowElem.appendChild(tdElement);
@@ -9527,12 +9579,12 @@ function $cleanCell(this$static, row, column, clearInnerHTML){
 
 function $getDOMCellCount(tableBody, row){
   var rowElement;
-  rowElement = tableBody.rows[row];
-  return rowElement.cells.length;
+  rowElement = tableBody.children[row];
+  return rowElement.children.length;
 }
 
 function $getDOMRowCount(tbody){
-  return ($clinit_DOM() , tbody).rows.length;
+  return ($clinit_DOM() , tbody).children.length;
 }
 
 function $internalClearCell(this$static, td, clearInnerHTML){
@@ -9618,7 +9670,7 @@ function HTMLTable(){
   $setElement(this, this.tableElem);
 }
 
-defineClass(367, 1021, $intern_62);
+defineClass(367, $intern_25, $intern_62);
 _.iterator = function iterator_3(){
   return new HTMLTable$1(this);
 }
@@ -9659,7 +9711,7 @@ function FlexTable(){
   $setColumnFormatter(this, new HTMLTable$ColumnFormatter(this));
 }
 
-defineClass(785, 367, $intern_62, FlexTable);
+defineClass(788, 367, $intern_62, FlexTable);
 _.getRowCount = function getRowCount(){
   return $getDOMRowCount(this.bodyElem);
 }
@@ -9672,9 +9724,9 @@ _.prepareRow = function prepareRow(row){
   $prepareRow(this, row);
 }
 ;
-var Lcom_google_gwt_user_client_ui_FlexTable_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FlexTable', 785);
+var Lcom_google_gwt_user_client_ui_FlexTable_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FlexTable', 788);
 function $getCellElement_0(tbody, row, col){
-  return tbody.rows[row].cells[col];
+  return $getCells(tbody.children[row])[col];
 }
 
 function $getRawElement(this$static, row, column){
@@ -9696,8 +9748,8 @@ function FlexTable$FlexCellFormatter(this$0){
   HTMLTable$CellFormatter.call(this, this$0);
 }
 
-defineClass(786, 368, {}, FlexTable$FlexCellFormatter);
-var Lcom_google_gwt_user_client_ui_FlexTable$FlexCellFormatter_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FlexTable/FlexCellFormatter', 786);
+defineClass(789, 368, {}, FlexTable$FlexCellFormatter);
+var Lcom_google_gwt_user_client_ui_FlexTable$FlexCellFormatter_2_classLit = createForClass('com.google.gwt.user.client.ui', 'FlexTable/FlexCellFormatter', 789);
 function $add_2(this$static, w){
   $add(this$static, w, ($clinit_DOM() , this$static.element));
 }
@@ -9854,7 +9906,7 @@ function HTMLTable$1(this$0){
   $findNext(this);
 }
 
-defineClass(787, 1, {}, HTMLTable$1);
+defineClass(790, 1, {}, HTMLTable$1);
 _.next_1 = function next_0(){
   return $next(this);
 }
@@ -9875,7 +9927,7 @@ _.remove_1 = function remove_6(){
 ;
 _.lastIndex = -1;
 _.nextIndex = -1;
-var Lcom_google_gwt_user_client_ui_HTMLTable$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HTMLTable/1', 787);
+var Lcom_google_gwt_user_client_ui_HTMLTable$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HTMLTable/1', 790);
 function $prepareColumnGroup(this$static){
   if (!this$static.columnGroup) {
     this$static.columnGroup = ($clinit_DOM() , $doc.createElement('colgroup'));
@@ -9906,12 +9958,16 @@ function HTMLTable$ColumnFormatter(this$0){
 
 defineClass(369, 1, {}, HTMLTable$ColumnFormatter);
 var Lcom_google_gwt_user_client_ui_HTMLTable$ColumnFormatter_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HTMLTable/ColumnFormatter', 369);
+function $getCells(row){
+  return row.children;
+}
+
 function $getRow(tbody, row){
   return $getRow_0(($clinit_DOM() , tbody), row);
 }
 
 function $getRow_0(tbody, row){
-  return $clinit_DOM() , tbody.rows[row];
+  return $clinit_DOM() , tbody.children[row];
 }
 
 function $setVisible_1(this$static, row, visible){
@@ -9937,8 +9993,8 @@ var ALIGN_BOTTOM, ALIGN_MIDDLE, ALIGN_TOP;
 function HasHorizontalAlignment$AutoHorizontalAlignmentConstant(){
 }
 
-defineClass(575, 1, {}, HasHorizontalAlignment$AutoHorizontalAlignmentConstant);
-var Lcom_google_gwt_user_client_ui_HasHorizontalAlignment$AutoHorizontalAlignmentConstant_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HasHorizontalAlignment/AutoHorizontalAlignmentConstant', 575);
+defineClass(576, 1, {}, HasHorizontalAlignment$AutoHorizontalAlignmentConstant);
+var Lcom_google_gwt_user_client_ui_HasHorizontalAlignment$AutoHorizontalAlignmentConstant_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HasHorizontalAlignment/AutoHorizontalAlignmentConstant', 576);
 function HasHorizontalAlignment$HorizontalAlignmentConstant(textAlignString){
   this.textAlignString = textAlignString;
 }
@@ -9951,7 +10007,7 @@ function startOf(direction){
   return direction == ($clinit_HasDirection$Direction() , LTR)?($clinit_HasHorizontalAlignment() , ALIGN_LEFT):direction == RTL?($clinit_HasHorizontalAlignment() , ALIGN_RIGHT):($clinit_HasHorizontalAlignment() , ALIGN_LOCALE_START);
 }
 
-defineClass(272, 575, {}, HasHorizontalAlignment$HorizontalAlignmentConstant);
+defineClass(272, 576, {}, HasHorizontalAlignment$HorizontalAlignmentConstant);
 var Lcom_google_gwt_user_client_ui_HasHorizontalAlignment$HorizontalAlignmentConstant_2_classLit = createForClass('com.google.gwt.user.client.ui', 'HasHorizontalAlignment/HorizontalAlignmentConstant', 272);
 function HasVerticalAlignment$VerticalAlignmentConstant(verticalAlignString){
   this.verticalAlignString = verticalAlignString;
@@ -10010,16 +10066,16 @@ var Lcom_google_gwt_user_client_ui_InlineLabel_2_classLit = createForClass('com.
 function LayoutCommand$1(){
 }
 
-defineClass(627, 1, {}, LayoutCommand$1);
-var Lcom_google_gwt_user_client_ui_LayoutCommand$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'LayoutCommand/1', 627);
+defineClass(630, 1, {}, LayoutCommand$1);
+var Lcom_google_gwt_user_client_ui_LayoutCommand$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'LayoutCommand/1', 630);
 function $add_4(this$static, widget){
-  $insert_1(this$static, widget, this$static.children.size_0);
+  $insert_1(this$static, widget, this$static.children_0.size_0);
 }
 
 function $insert_1(this$static, widget, beforeIndex){
   var layer;
   $removeFromParent(widget);
-  $insert_3(this$static.children, widget, beforeIndex);
+  $insert_3(this$static.children_0, widget, beforeIndex);
   layer = $attachChild(this$static.layout, ($clinit_DOM() , widget.element), widget);
   widget.layoutData = layer;
   $setParent(widget, this$static);
@@ -10028,13 +10084,13 @@ function $insert_1(this$static, widget, beforeIndex){
 
 function $onResize(this$static){
   var child, child$iterator;
-  for (child$iterator = new WidgetCollection$WidgetIterator(this$static.children); child$iterator.index_0 < child$iterator.this$01.size_0;) {
+  for (child$iterator = new WidgetCollection$WidgetIterator(this$static.children_0); child$iterator.index_0 < child$iterator.this$01.size_0;) {
     child = $next_1(child$iterator);
     instanceOf(child, 219) && child.onResize_0();
   }
 }
 
-defineClass(703, 244, $intern_61);
+defineClass(706, 244, $intern_61);
 _.add_0 = function add_9(widget){
   $add_4(this, widget);
 }
@@ -10045,6 +10101,7 @@ _.onAttach = function onAttach_3(){
 ;
 _.onDetach = function onDetach_2(){
   $onDetach(this);
+  $removeLayerRefs(this.layout.parentElem);
 }
 ;
 _.onResize_0 = function onResize_3(){
@@ -10058,7 +10115,7 @@ _.remove_0 = function remove_8(w){
   return removed;
 }
 ;
-var Lcom_google_gwt_user_client_ui_LayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'LayoutPanel', 703);
+var Lcom_google_gwt_user_client_ui_LayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'LayoutPanel', 706);
 function $addItem(this$static, item_0){
   $insertItem(this$static, item_0, item_0, -1);
 }
@@ -10128,20 +10185,20 @@ function ListBox(){
   ($clinit_DOM() , this.element).className = 'gwt-ListBox';
 }
 
-defineClass(186, 84, $intern_64, ListBox);
+defineClass(186, 85, $intern_64, ListBox);
 var Lcom_google_gwt_user_client_ui_ListBox_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ListBox', 186);
-defineClass(994, 993, {16:1});
-var Lcom_google_gwt_user_client_ui_ListenerWrapper_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ListenerWrapper', 994);
+defineClass(997, 996, {16:1});
+var Lcom_google_gwt_user_client_ui_ListenerWrapper_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ListenerWrapper', 997);
 function ListenerWrapper$WrappedPopupListener(listener){
   this.listener = listener;
 }
 
-defineClass(995, 994, $intern_65, ListenerWrapper$WrappedPopupListener);
+defineClass(998, 997, $intern_65, ListenerWrapper$WrappedPopupListener);
 _.onClose = function onClose(event_0){
   $onPopupClosed(this.listener, event_0.autoClosed);
 }
 ;
-var Lcom_google_gwt_user_client_ui_ListenerWrapper$WrappedPopupListener_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ListenerWrapper/WrappedPopupListener', 995);
+var Lcom_google_gwt_user_client_ui_ListenerWrapper$WrappedPopupListener_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ListenerWrapper/WrappedPopupListener', 998);
 function $addItem_0(this$static, item_0){
   return $insertItem_0(this$static, item_0, this$static.allItems.array.length);
 }
@@ -10239,7 +10296,7 @@ function $findItem(this$static, hItem){
 }
 
 function $focus(this$static){
-  ($clinit_DOM() , this$static.element).focus();
+  $focus_0(($clinit_DOM() , this$static.element));
 }
 
 function $init_0(this$static, vertical, subMenuIcon){
@@ -10295,7 +10352,6 @@ function $insertSeparator(this$static, separator, beforeIndex){
 }
 
 function $itemOver(this$static, item_0, focus_0){
-  var focus_1;
   if (!item_0) {
     if (!!this$static.selectedItem && !!this$static.shownChildMenu && this$static.shownChildMenu == this$static.selectedItem.subMenu) {
       return;
@@ -10305,7 +10361,7 @@ function $itemOver(this$static, item_0, focus_0){
     return;
   }
   $selectItem(this$static, item_0);
-  focus_0 && this$static.focusOnHover && (($clinit_DOM() , this$static.element).focus() , undefined);
+  focus_0 && this$static.focusOnHover && $focus_0(($clinit_DOM() , this$static.element));
   !!item_0 && (!!this$static.shownChildMenu || !!this$static.parentMenu || this$static.autoOpen) && $doItemAction(this$static, item_0, false, this$static.focusOnHover);
 }
 
@@ -10363,7 +10419,7 @@ function $onBrowserEvent_0(this$static, event_0){
   switch ($eventGetTypeInt(event_0.type)) {
     case 1:
       {
-        this$static.element.focus();
+        $focus_0(this$static.element);
         !!item_0 && $doItemAction(this$static, item_0, true, true);
         break;
       }
@@ -10438,11 +10494,10 @@ function $onBrowserEvent_0(this$static, event_0){
 }
 
 function $onHide(this$static, focus_0){
-  var focus_1;
   if (this$static.shownChildMenu) {
     $onHide(this$static.shownChildMenu, focus_0);
     $hide(this$static.popup, false);
-    focus_0 && (($clinit_DOM() , this$static.element).focus() , undefined);
+    focus_0 && $focus_0(($clinit_DOM() , this$static.element));
   }
 }
 
@@ -10617,29 +10672,29 @@ function MenuBar$1(val$cmd){
   this.val$cmd2 = val$cmd;
 }
 
-defineClass(599, 1, $intern_53, MenuBar$1);
+defineClass(601, 1, $intern_53, MenuBar$1);
 _.execute_1 = function execute_10(){
   this.val$cmd2.execute_1();
 }
 ;
-var Lcom_google_gwt_user_client_ui_MenuBar$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/1', 599);
+var Lcom_google_gwt_user_client_ui_MenuBar$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/1', 601);
 function MenuBar$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(600, 1, {1051:1, 16:1}, MenuBar$2);
-var Lcom_google_gwt_user_client_ui_MenuBar$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/2', 600);
+defineClass(602, 1, {1056:1, 16:1}, MenuBar$2);
+var Lcom_google_gwt_user_client_ui_MenuBar$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/2', 602);
 function MenuBar$3(this$0, val$item){
   this.this$01 = this$0;
   this.val$item2 = val$item;
 }
 
-defineClass(601, 1, {}, MenuBar$3);
+defineClass(603, 1, {}, MenuBar$3);
 _.setPosition = function setPosition(offsetWidth, offsetHeight){
   this.this$01.vertical?$positionNextTo(this.this$01.popup, this.val$item2):$positionBelow(this.this$01.popup, this.val$item2);
 }
 ;
-var Lcom_google_gwt_user_client_ui_MenuBar$3_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/3', 601);
+var Lcom_google_gwt_user_client_ui_MenuBar$3_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/3', 603);
 function $leftOf(object){
   return $getAbsoluteLeft(($clinit_DOM() , object.element));
 }
@@ -10689,7 +10744,7 @@ function MenuBar$MenuPopup(this$0){
   this.previewAllNativeEvents = true;
 }
 
-defineClass(598, 355, $intern_57, MenuBar$MenuPopup);
+defineClass(600, 355, $intern_57, MenuBar$MenuPopup);
 _.onPreviewNativeEvent = function onPreviewNativeEvent_2(event_0){
   var parentMenuElement, target;
   if (!event_0.isCanceled) {
@@ -10711,7 +10766,7 @@ _.onPreviewNativeEvent = function onPreviewNativeEvent_2(event_0){
 }
 ;
 _.towardsEast = false;
-var Lcom_google_gwt_user_client_ui_MenuBar$MenuPopup_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/MenuPopup', 598);
+var Lcom_google_gwt_user_client_ui_MenuBar$MenuPopup_2_classLit = createForClass('com.google.gwt.user.client.ui', 'MenuBar/MenuPopup', 600);
 var menuBarSubMenuIcon;
 function $clinit_MenuBar_Resources_default_InlineClientBundleGenerator$menuBarSubMenuIconInitializer(){
   $clinit_MenuBar_Resources_default_InlineClientBundleGenerator$menuBarSubMenuIconInitializer = emptyMethod;
@@ -10820,32 +10875,32 @@ function PopupPanel$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(571, 1, $intern_39, PopupPanel$1);
+defineClass(572, 1, $intern_39, PopupPanel$1);
 _.onResize = function onResize_4(event_0){
   $onResize_0(this);
 }
 ;
-var Lcom_google_gwt_user_client_ui_PopupPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/1', 571);
+var Lcom_google_gwt_user_client_ui_PopupPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/1', 572);
 function PopupPanel$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(572, 1, $intern_38, PopupPanel$3);
+defineClass(573, 1, $intern_38, PopupPanel$3);
 _.onPreviewNativeEvent = function onPreviewNativeEvent_3(event_0){
   $previewNativeEvent(this.this$01, event_0);
 }
 ;
-var Lcom_google_gwt_user_client_ui_PopupPanel$3_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/3', 572);
+var Lcom_google_gwt_user_client_ui_PopupPanel$3_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/3', 573);
 function PopupPanel$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(573, 1, $intern_68, PopupPanel$4);
+defineClass(574, 1, $intern_68, PopupPanel$4);
 _.onValueChange = function onValueChange(event_0){
   this.this$01.autoHideOnHistoryEvents && this.this$01.hide(false);
 }
 ;
-var Lcom_google_gwt_user_client_ui_PopupPanel$4_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/4', 573);
+var Lcom_google_gwt_user_client_ui_PopupPanel$4_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/4', 574);
 function $clinit_PopupPanel$AnimationType(){
   $clinit_PopupPanel$AnimationType = emptyMethod;
   CENTER_1 = new PopupPanel$AnimationType('CENTER', 0);
@@ -10970,7 +11025,7 @@ function PopupPanel$ResizeAnimation(panel){
   this.curPanel = panel;
 }
 
-defineClass(569, 309, {}, PopupPanel$ResizeAnimation);
+defineClass(570, 309, {}, PopupPanel$ResizeAnimation);
 _.onComplete = function onComplete_1(){
   $onComplete(this);
 }
@@ -10992,19 +11047,19 @@ _.isUnloading = false;
 _.offsetHeight_0 = 0;
 _.offsetWidth_0 = -1;
 _.showing = false;
-var Lcom_google_gwt_user_client_ui_PopupPanel$ResizeAnimation_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/ResizeAnimation', 569);
+var Lcom_google_gwt_user_client_ui_PopupPanel$ResizeAnimation_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/ResizeAnimation', 570);
 function PopupPanel$ResizeAnimation$1(this$1){
   this.this$11 = this$1;
   Timer.call(this);
 }
 
-defineClass(570, 267, {}, PopupPanel$ResizeAnimation$1);
+defineClass(571, 267, {}, PopupPanel$ResizeAnimation$1);
 _.run_0 = function run_2(){
   this.this$11.showTimer = null;
   $run_0(this.this$11, 200, null);
 }
 ;
-var Lcom_google_gwt_user_client_ui_PopupPanel$ResizeAnimation$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/ResizeAnimation/1', 570);
+var Lcom_google_gwt_user_client_ui_PopupPanel$ResizeAnimation$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'PopupPanel/ResizeAnimation/1', 571);
 function $clinit_PotentialElement(){
   $clinit_PotentialElement = emptyMethod;
   declareShim();
@@ -11111,23 +11166,23 @@ function get_0(){
   return singleton_0;
 }
 
-defineClass(704, 703, $intern_61, RootLayoutPanel);
+defineClass(707, 706, $intern_61, RootLayoutPanel);
 _.onLoad = function onLoad_1(){
   $fillParent(this.layout.parentElem);
 }
 ;
 var singleton_0;
-var Lcom_google_gwt_user_client_ui_RootLayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootLayoutPanel', 704);
+var Lcom_google_gwt_user_client_ui_RootLayoutPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootLayoutPanel', 707);
 function RootLayoutPanel$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(705, 1, $intern_39, RootLayoutPanel$1);
+defineClass(708, 1, $intern_39, RootLayoutPanel$1);
 _.onResize = function onResize_5(event_0){
   $onResize(this.this$01);
 }
 ;
-var Lcom_google_gwt_user_client_ui_RootLayoutPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootLayoutPanel/1', 705);
+var Lcom_google_gwt_user_client_ui_RootLayoutPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootLayoutPanel/1', 708);
 function $clinit_RootPanel(){
   $clinit_RootPanel = emptyMethod;
   maybeDetachCommand = new RootPanel$1;
@@ -11179,58 +11234,92 @@ function get_1(){
   return rp;
 }
 
-defineClass(311, 721, $intern_69);
+defineClass(311, 724, $intern_69);
 var maybeDetachCommand, rootPanels, widgetsToDetach;
 var Lcom_google_gwt_user_client_ui_RootPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel', 311);
 function RootPanel$1(){
 }
 
-defineClass(723, 1, {}, RootPanel$1);
+defineClass(726, 1, {}, RootPanel$1);
 _.execute_2 = function execute_11(w){
   w.isAttached() && w.onDetach();
 }
 ;
-var Lcom_google_gwt_user_client_ui_RootPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/1', 723);
+var Lcom_google_gwt_user_client_ui_RootPanel$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/1', 726);
 function RootPanel$2(){
 }
 
-defineClass(724, 1, $intern_65, RootPanel$2);
+defineClass(727, 1, $intern_65, RootPanel$2);
 _.onClose = function onClose_0(closeEvent){
   detachWidgets();
 }
 ;
-var Lcom_google_gwt_user_client_ui_RootPanel$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/2', 724);
+var Lcom_google_gwt_user_client_ui_RootPanel$2_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/2', 727);
 function RootPanel$DefaultRootPanel(){
   RootPanel.call(this, $doc.body);
 }
 
-defineClass(722, 311, $intern_69, RootPanel$DefaultRootPanel);
-var Lcom_google_gwt_user_client_ui_RootPanel$DefaultRootPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/DefaultRootPanel', 722);
+defineClass(725, 311, $intern_69, RootPanel$DefaultRootPanel);
+var Lcom_google_gwt_user_client_ui_RootPanel$DefaultRootPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'RootPanel/DefaultRootPanel', 725);
 function $getMaximumHorizontalScrollPosition(scrollable){
-  return $isRtl(scrollable)?0:((scrollable.scrollWidth || 0) | 0) - (scrollable.clientWidth | 0);
+  return scrollable.currentStyle.direction == 'rtl'?0:((scrollable.scrollWidth || 0) | 0) - (scrollable.clientWidth | 0);
 }
 
 function $getMinimumHorizontalScrollPosition(scrollable){
-  return $isRtl(scrollable)?(scrollable.clientWidth | 0) - ((scrollable.scrollWidth || 0) | 0):0;
+  return scrollable.currentStyle.direction == 'rtl'?(scrollable.clientWidth | 0) - ((scrollable.scrollWidth || 0) | 0):0;
 }
 
-function $isRtl(scrollable){
-  var computedStyle = $doc.defaultView.getComputedStyle(scrollable, null);
-  return computedStyle.getPropertyValue('direction') == 'rtl';
-}
-
-function ScrollImpl(){
-}
-
-defineClass(326, 1, {}, ScrollImpl);
+defineClass(1036, 1, {});
 var impl_0;
-var Lcom_google_gwt_user_client_ui_ScrollImpl_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ScrollImpl', 326);
+var Lcom_google_gwt_user_client_ui_ScrollImpl_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ScrollImpl', 1036);
+function $initialize(scrollable, container){
+  scrollable.__lastScrollTop = scrollable.__lastScrollLeft = 0;
+  scrollable.attachEvent('onscroll', scrollHandler);
+  scrollable.attachEvent('onresize', resizeHandler);
+  container.attachEvent('onresize', resizeHandler);
+  container.__isScrollContainer = true;
+}
+
+function ScrollImpl$ScrollImplTrident(){
+  initStaticHandlers();
+}
+
+function initStaticHandlers(){
+  scrollHandler = function(){
+    var scrollableElem = $wnd.event.srcElement;
+    scrollableElem.__lastScrollTop = scrollableElem.scrollTop;
+    scrollableElem.__lastScrollLeft = scrollableElem.scrollLeft;
+  }
+  ;
+  resizeHandler = function(){
+    var scrollableElem = $wnd.event.srcElement;
+    scrollableElem.__isScrollContainer && (scrollableElem = scrollableElem.parentNode);
+    setTimeout($entry(function(){
+      if (scrollableElem.scrollTop != scrollableElem.__lastScrollTop || scrollableElem.scrollLeft != scrollableElem.__lastScrollLeft) {
+        scrollableElem.__lastScrollTop = scrollableElem.scrollTop;
+        scrollableElem.__lastScrollLeft = scrollableElem.scrollLeft;
+        triggerScrollEvent(scrollableElem);
+      }
+    }
+    ), 1);
+  }
+  ;
+}
+
+function triggerScrollEvent(elem){
+  var evt;
+  $dispatchEvent(elem, (evt = $doc.createEvent('HTMLEvents') , evt.initEvent('scroll', false, false) , evt));
+}
+
+defineClass(326, 1036, {}, ScrollImpl$ScrollImplTrident);
+var resizeHandler, scrollHandler;
+var Lcom_google_gwt_user_client_ui_ScrollImpl$ScrollImplTrident_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ScrollImpl/ScrollImplTrident', 326);
 function $getHorizontalScrollPosition(this$static){
   return $getScrollLeft(($clinit_DOM() , this$static.scrollableElem));
 }
 
 function $getMaximumHorizontalScrollPosition_0(this$static){
-  return $getMaximumHorizontalScrollPosition((!impl_0 && (impl_0 = new ScrollImpl) , $clinit_DOM() , this$static.scrollableElem));
+  return $getMaximumHorizontalScrollPosition((!impl_0 && (impl_0 = new ScrollImpl$ScrollImplTrident) , $clinit_DOM() , this$static.scrollableElem));
 }
 
 function $getMaximumVerticalScrollPosition(this$static){
@@ -11238,7 +11327,7 @@ function $getMaximumVerticalScrollPosition(this$static){
 }
 
 function $getMinimumHorizontalScrollPosition_0(this$static){
-  return $getMinimumHorizontalScrollPosition((!impl_0 && (impl_0 = new ScrollImpl) , $clinit_DOM() , this$static.scrollableElem));
+  return $getMinimumHorizontalScrollPosition((!impl_0 && (impl_0 = new ScrollImpl$ScrollImplTrident) , $clinit_DOM() , this$static.scrollableElem));
 }
 
 function $getVerticalScrollPosition(this$static){
@@ -11273,10 +11362,11 @@ function ScrollPanel(){
   this.scrollableElem.style['zoom'] = '1';
   this.containerElem.style['zoom'] = '1';
   $setTouchScrollingDisabled(this);
-  !impl_0 && (impl_0 = new ScrollImpl);
+  !impl_0 && (impl_0 = new ScrollImpl$ScrollImplTrident);
+  $initialize(this.scrollableElem, this.containerElem);
 }
 
-defineClass(784, 269, $intern_61, ScrollPanel);
+defineClass(787, 269, $intern_61, ScrollPanel);
 _.getContainerElement = function getContainerElement_2(){
   return $clinit_DOM() , this.containerElem;
 }
@@ -11307,7 +11397,7 @@ _.setWidth_0 = function setWidth_1(width_0){
   ($clinit_DOM() , this.element).style['width'] = width_0;
 }
 ;
-var Lcom_google_gwt_user_client_ui_ScrollPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ScrollPanel', 784);
+var Lcom_google_gwt_user_client_ui_ScrollPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ScrollPanel', 787);
 function $next_0(this$static){
   if (!this$static.hasElement || !this$static.this$01.widget) {
     throw toJs(new NoSuchElementException);
@@ -11387,7 +11477,7 @@ function ValueBoxBase(elem){
   $clinit_LocaleInfo();
 }
 
-defineClass(247, 84, {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 84:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 247:1, 28:1});
+defineClass(247, 85, {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 85:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 247:1, 28:1});
 _.onBrowserEvent = function onBrowserEvent_4(event_0){
   var type_0;
   type_0 = ($clinit_DOM() , $eventGetTypeInt(event_0.type));
@@ -11440,19 +11530,19 @@ function TextBox_0(element){
   ($clinit_DOM() , this.element).className = 'gwt-TextBox';
 }
 
-defineClass(130, 248, {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 204:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 84:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 340:1, 95:1, 121:1, 122:1, 96:1, 130:1, 248:1, 26:1, 247:1, 28:1}, TextBox);
+defineClass(130, 248, {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 204:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 516:1, 218:1, 137:1, 32:1, 236:1, 85:1, 120:1, 109:1, 119:1, 152:1, 55:1, 235:1, 27:1, 34:1, 340:1, 96:1, 121:1, 122:1, 97:1, 130:1, 248:1, 26:1, 247:1, 28:1}, TextBox);
 var Lcom_google_gwt_user_client_ui_TextBox_2_classLit = createForClass('com.google.gwt.user.client.ui', 'TextBox', 130);
 function ValueBoxBase$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(762, 1, $intern_71, ValueBoxBase$1);
+defineClass(765, 1, $intern_71, ValueBoxBase$1);
 _.onChange = function onChange(event_0){
   var raw;
   fire_3(this.this$01, (raw = $getValueOrThrow(this.this$01) , raw == null?'':raw));
 }
 ;
-var Lcom_google_gwt_user_client_ui_ValueBoxBase$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ValueBoxBase/1', 762);
+var Lcom_google_gwt_user_client_ui_ValueBoxBase$1_2_classLit = createForClass('com.google.gwt.user.client.ui', 'ValueBoxBase/1', 765);
 function $clinit_ValueBoxBase$TextAlignment(){
   $clinit_ValueBoxBase$TextAlignment = emptyMethod;
   CENTER_2 = new ValueBoxBase$TextAlignment$1;
@@ -11477,26 +11567,26 @@ function ValueBoxBase$TextAlignment$1(){
   ValueBoxBase$TextAlignment.call(this, 'CENTER', 0);
 }
 
-defineClass(758, 174, $intern_72, ValueBoxBase$TextAlignment$1);
-var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$1_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/1', 758, null);
+defineClass(761, 174, $intern_72, ValueBoxBase$TextAlignment$1);
+var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$1_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/1', 761, null);
 function ValueBoxBase$TextAlignment$2(){
   ValueBoxBase$TextAlignment.call(this, 'JUSTIFY', 1);
 }
 
-defineClass(759, 174, $intern_72, ValueBoxBase$TextAlignment$2);
-var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$2_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/2', 759, null);
+defineClass(762, 174, $intern_72, ValueBoxBase$TextAlignment$2);
+var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$2_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/2', 762, null);
 function ValueBoxBase$TextAlignment$3(){
   ValueBoxBase$TextAlignment.call(this, 'LEFT', 2);
 }
 
-defineClass(760, 174, $intern_72, ValueBoxBase$TextAlignment$3);
-var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$3_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/3', 760, null);
+defineClass(763, 174, $intern_72, ValueBoxBase$TextAlignment$3);
+var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$3_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/3', 763, null);
 function ValueBoxBase$TextAlignment$4(){
   ValueBoxBase$TextAlignment.call(this, 'RIGHT', 3);
 }
 
-defineClass(761, 174, $intern_72, ValueBoxBase$TextAlignment$4);
-var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$4_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/4', 761, null);
+defineClass(764, 174, $intern_72, ValueBoxBase$TextAlignment$4);
+var Lcom_google_gwt_user_client_ui_ValueBoxBase$TextAlignment$4_2_classLit = createForEnum('com.google.gwt.user.client.ui', 'ValueBoxBase/TextAlignment/4', 764, null);
 function $add_5(this$static, w){
   var td, tr;
   tr = ($clinit_DOM() , $doc.createElement('tr'));
@@ -11540,7 +11630,7 @@ function VerticalPanel(){
   this.table['cellPadding'] = '0';
 }
 
-defineClass(87, 362, $intern_63, VerticalPanel);
+defineClass(88, 362, $intern_63, VerticalPanel);
 _.add_0 = function add_10(w){
   $add_5(this, w);
 }
@@ -11549,7 +11639,7 @@ _.remove_0 = function remove_10(w){
   return $remove_4(this, w);
 }
 ;
-var Lcom_google_gwt_user_client_ui_VerticalPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'VerticalPanel', 87);
+var Lcom_google_gwt_user_client_ui_VerticalPanel_2_classLit = createForClass('com.google.gwt.user.client.ui', 'VerticalPanel', 88);
 function $add_6(this$static, w){
   $insert_3(this$static, w, this$static.size_0);
 }
@@ -11616,13 +11706,13 @@ function WidgetCollection(parent_0){
   this.array = initUnidimensionalArray(Lcom_google_gwt_user_client_ui_Widget_2_classLit, $intern_3, 28, 4, 0, 1);
 }
 
-defineClass(842, 1, $intern_73, WidgetCollection);
+defineClass(844, 1, $intern_73, WidgetCollection);
 _.iterator = function iterator_4(){
   return new WidgetCollection$WidgetIterator(this);
 }
 ;
 _.size_0 = 0;
-var Lcom_google_gwt_user_client_ui_WidgetCollection_2_classLit = createForClass('com.google.gwt.user.client.ui', 'WidgetCollection', 842);
+var Lcom_google_gwt_user_client_ui_WidgetCollection_2_classLit = createForClass('com.google.gwt.user.client.ui', 'WidgetCollection', 844);
 function $next_1(this$static){
   if (this$static.index_0 >= this$static.this$01.size_0) {
     throw toJs(new NoSuchElementException);
@@ -11683,8 +11773,8 @@ function $image(arg0, arg1){
 function ClippedImageImpl_TemplateImpl(){
 }
 
-defineClass(991, 1, {}, ClippedImageImpl_TemplateImpl);
-var Lcom_google_gwt_user_client_ui_impl_ClippedImageImpl_1TemplateImpl_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'ClippedImageImpl_TemplateImpl', 991);
+defineClass(994, 1, {}, ClippedImageImpl_TemplateImpl);
+var Lcom_google_gwt_user_client_ui_impl_ClippedImageImpl_1TemplateImpl_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'ClippedImageImpl_TemplateImpl', 994);
 function $clinit_ClippedImagePrototype(){
   $clinit_ClippedImagePrototype = emptyMethod;
   $clinit_ClippedImageImpl();
@@ -11703,13 +11793,24 @@ function ClippedImagePrototype(url_0, left, top_0, width_0, height){
   this.height_0 = height;
 }
 
-defineClass(875, 1033, {}, ClippedImagePrototype);
+defineClass(878, 1038, {}, ClippedImagePrototype);
 _.height_0 = 0;
 _.left_0 = 0;
 _.top_0 = 0;
 _.url_0 = null;
 _.width_0 = 0;
-var Lcom_google_gwt_user_client_ui_impl_ClippedImagePrototype_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'ClippedImagePrototype', 875);
+var Lcom_google_gwt_user_client_ui_impl_ClippedImagePrototype_2_classLit = createForClass('com.google.gwt.user.client.ui.impl', 'ClippedImagePrototype', 878);
+function $focus_0(elem){
+  try {
+    elem.focus();
+  }
+   catch (e) {
+    if (!elem || !elem.focus) {
+      throw e;
+    }
+  }
+}
+
 function $setClip(popup, rect){
   popup.style['clip'] = rect;
 }
@@ -11725,7 +11826,7 @@ function $setSelectionRange_0(elem, pos, length_0){
 function assertCompileTimeUserAgent(){
   var runtimeValue;
   runtimeValue = $getRuntimeValue();
-  if (!$equals_1('ie10', runtimeValue)) {
+  if (!$equals_1('ie9', runtimeValue)) {
     throw toJs(new UserAgentAsserter$UserAgentAssertionError(runtimeValue));
   }
 }
@@ -11739,7 +11840,7 @@ var Ljava_lang_Error_2_classLit = createForClass('java.lang', 'Error', 301);
 defineClass(135, 301, $intern_6);
 var Ljava_lang_AssertionError_2_classLit = createForClass('java.lang', 'AssertionError', 135);
 function UserAgentAsserter$UserAgentAssertionError(runtimeValue){
-  Error_0.call(this, 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_9('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 44)?'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie10) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.':null);
+  Error_0.call(this, 'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.' == null?'null':toString_9('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.'), instanceOf('Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.', 44)?'Possible problem with your *.gwt.xml module file.\nThe compile time user.agent value (ie9) does not match the runtime user.agent value (' + runtimeValue + ').\n' + 'Expect more errors.':null);
 }
 
 defineClass(517, 135, $intern_6, UserAgentAsserter$UserAgentAssertionError);
@@ -11797,7 +11898,7 @@ function DOMException_0(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(385, 86, $intern_7);
+defineClass(385, 87, $intern_7);
 var Lcom_google_gwt_xml_client_DOMException_2_classLit = createForClass('com.google.gwt.xml.client', 'DOMException', 385);
 function $clinit_XMLParser(){
   $clinit_XMLParser = emptyMethod;
@@ -11903,8 +12004,8 @@ function AttrImpl(o){
   NodeImpl.call(this, o);
 }
 
-defineClass(954, 208, $intern_74, AttrImpl);
-var Lcom_google_gwt_xml_client_impl_AttrImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'AttrImpl', 954);
+defineClass(957, 208, $intern_74, AttrImpl);
+var Lcom_google_gwt_xml_client_impl_AttrImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'AttrImpl', 957);
 function CharacterDataImpl(o){
   NodeImpl.call(this, o);
 }
@@ -11957,7 +12058,7 @@ function CDATASectionImpl(o){
   TextImpl.call(this, o);
 }
 
-defineClass(955, 503, $intern_75, CDATASectionImpl);
+defineClass(958, 503, $intern_75, CDATASectionImpl);
 _.toString_0 = function toString_15(){
   var b;
   b = new StringBuilder_1('<![CDATA[');
@@ -11966,12 +12067,12 @@ _.toString_0 = function toString_15(){
   return b.string;
 }
 ;
-var Lcom_google_gwt_xml_client_impl_CDATASectionImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'CDATASectionImpl', 955);
+var Lcom_google_gwt_xml_client_impl_CDATASectionImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'CDATASectionImpl', 958);
 function CommentImpl(o){
   CharacterDataImpl.call(this, o);
 }
 
-defineClass(956, 502, $intern_74, CommentImpl);
+defineClass(959, 502, $intern_74, CommentImpl);
 _.toString_0 = function toString_16(){
   var b;
   b = new StringBuilder_1('<!--');
@@ -11980,7 +12081,7 @@ _.toString_0 = function toString_16(){
   return b.string;
 }
 ;
-var Lcom_google_gwt_xml_client_impl_CommentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'CommentImpl', 956);
+var Lcom_google_gwt_xml_client_impl_CommentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'CommentImpl', 959);
 function DOMNodeException(e, item_0){
   DOMException_0.call(this, 'Error during DOM manipulation of: ' + summarize(item_0.toString_0()));
   $initCause(this, e);
@@ -11997,14 +12098,14 @@ function summarize(text_0){
   return $substring_0(text_0, 0, $wnd.Math.min(text_0.length, 128));
 }
 
-defineClass(870, 385, $intern_7, DOMParseException);
-var Lcom_google_gwt_xml_client_impl_DOMParseException_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DOMParseException', 870);
+defineClass(873, 385, $intern_7, DOMParseException);
+var Lcom_google_gwt_xml_client_impl_DOMParseException_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DOMParseException', 873);
 function DocumentFragmentImpl(o){
   NodeImpl.call(this, o);
 }
 
-defineClass(957, 208, $intern_74, DocumentFragmentImpl);
-var Lcom_google_gwt_xml_client_impl_DocumentFragmentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DocumentFragmentImpl', 957);
+defineClass(960, 208, $intern_74, DocumentFragmentImpl);
+var Lcom_google_gwt_xml_client_impl_DocumentFragmentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DocumentFragmentImpl', 960);
 function $createElement(this$static, tagName){
   var e;
   try {
@@ -12040,7 +12141,7 @@ function $createTextNode(this$static, data_0){
 function $importNode(this$static, importedNode){
   var e;
   try {
-    return build(($clinit_XMLParserImpl() , $importNodeImpl(this$static.jsObject, importedNode.jsObject, true)));
+    return build(($clinit_XMLParserImpl() , importedNode.jsObject));
   }
    catch ($e0) {
     $e0 = toJava($e0);
@@ -12057,8 +12158,8 @@ function DocumentImpl(o){
   NodeImpl.call(this, o);
 }
 
-defineClass(958, 208, {1054:1, 132:1}, DocumentImpl);
-var Lcom_google_gwt_xml_client_impl_DocumentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DocumentImpl', 958);
+defineClass(961, 208, {1059:1, 132:1}, DocumentImpl);
+var Lcom_google_gwt_xml_client_impl_DocumentImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'DocumentImpl', 961);
 function $getAttribute(this$static, tagName){
   return getAttribute(this$static.jsObject, tagName);
 }
@@ -12099,8 +12200,8 @@ function ElementImpl(o){
   NodeImpl.call(this, o);
 }
 
-defineClass(959, 208, {1055:1, 132:1}, ElementImpl);
-var Lcom_google_gwt_xml_client_impl_ElementImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'ElementImpl', 959);
+defineClass(962, 208, {1060:1, 132:1}, ElementImpl);
+var Lcom_google_gwt_xml_client_impl_ElementImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'ElementImpl', 962);
 function $item(this$static, index_0){
   return build(item_3(this$static.jsObject, index_0));
 }
@@ -12146,15 +12247,15 @@ function ProcessingInstructionImpl(o){
   NodeImpl.call(this, o);
 }
 
-defineClass(960, 208, $intern_74, ProcessingInstructionImpl);
+defineClass(963, 208, $intern_74, ProcessingInstructionImpl);
 _.toString_0 = function toString_18(){
   return $clinit_XMLParserImpl() , $toStringImpl(this);
 }
 ;
-var Lcom_google_gwt_xml_client_impl_ProcessingInstructionImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'ProcessingInstructionImpl', 960);
+var Lcom_google_gwt_xml_client_impl_ProcessingInstructionImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'ProcessingInstructionImpl', 963);
 function $clinit_XMLParserImpl(){
   $clinit_XMLParserImpl = emptyMethod;
-  impl_2 = new XMLParserImplStandard;
+  impl_2 = new XMLParserImplIE6;
 }
 
 function $parse_2(this$static, contents){
@@ -12272,38 +12373,71 @@ function setAttribute(jsObject, name_0, value_0){
   jsObject.setAttribute(name_0, value_0);
 }
 
-defineClass(1030, 1, {});
+defineClass(1034, 1, {});
 var impl_2;
-var Lcom_google_gwt_xml_client_impl_XMLParserImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'XMLParserImpl', 1030);
+var Lcom_google_gwt_xml_client_impl_XMLParserImpl_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'XMLParserImpl', 1034);
 function $createDocumentImpl(){
-  return document.implementation.createDocument('', '', null);
-}
-
-function $importNodeImpl(jsObject, importedNode, deep){
-  return jsObject.importNode(importedNode, deep);
+  var doc = selectDOMDocumentVersion();
+  doc.preserveWhiteSpace = true;
+  doc.setProperty('SelectionNamespaces', "xmlns:xsl='http://www.w3.org/1999/XSL/Transform'");
+  doc.setProperty('SelectionLanguage', 'XPath');
+  return doc;
 }
 
 function $parseImpl(this$static, contents){
-  var domParser = this$static.domParser;
-  var result = domParser.parseFromString(contents, 'text/xml');
-  var roottag = result.documentElement;
-  if (roottag.tagName == 'parsererror' && roottag.namespaceURI == 'http://www.mozilla.org/newlayout/xml/parsererror.xml') {
-    throw new Error(roottag.firstChild.data);
+  var doc = this$static.createDocumentImpl();
+  if (!doc.loadXML(contents)) {
+    var err = doc.parseError;
+    throw new Error('line ' + err.line + ', char ' + err.linepos + ':' + err.reason);
   }
-  return result;
+   else {
+    return doc;
+  }
 }
 
 function $toStringImpl(node){
   var jsNode = node.getJsObject();
-  return (new XMLSerializer).serializeToString(jsNode);
+  return jsNode.xml;
 }
 
-function XMLParserImplStandard(){
-  this.domParser = new DOMParser;
+function XMLParserImplIE6(){
 }
 
-defineClass(869, 1030, {}, XMLParserImplStandard);
-var Lcom_google_gwt_xml_client_impl_XMLParserImplStandard_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'XMLParserImplStandard', 869);
+function selectDOMDocumentVersion(){
+  try {
+    return new ActiveXObject('Msxml2.DOMDocument');
+  }
+   catch (e) {
+  }
+  try {
+    return new ActiveXObject('MSXML.DOMDocument');
+  }
+   catch (e) {
+  }
+  try {
+    return new ActiveXObject('MSXML3.DOMDocument');
+  }
+   catch (e) {
+  }
+  try {
+    return new ActiveXObject('Microsoft.XmlDom');
+  }
+   catch (e) {
+  }
+  try {
+    return new ActiveXObject('Microsoft.DOMDocument');
+  }
+   catch (e) {
+  }
+  throw new Error('XMLParserImplIE6.createDocumentImpl: Could not find appropriate version of DOMDocument.');
+}
+
+defineClass(872, 1034, {}, XMLParserImplIE6);
+_.createDocumentImpl = function createDocumentImpl(){
+  return $createDocumentImpl();
+}
+;
+var Lcom_google_gwt_xml_client_impl_XMLParserImplIE6_2_classLit = createForClass('com.google.gwt.xml.client.impl', 'XMLParserImplIE6', 872);
 function $removeHandler(this$static){
   $doRemove(this$static.this$01, this$static.val$type2, this$static.val$source3, this$static.val$handler4);
 }
@@ -12315,8 +12449,8 @@ function SimpleEventBus$1(this$0, val$type, val$handler){
   this.val$handler4 = val$handler;
 }
 
-defineClass(546, 1, {}, SimpleEventBus$1);
-var Lcom_google_web_bindery_event_shared_SimpleEventBus$1_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/1', 546);
+defineClass(547, 1, {}, SimpleEventBus$1);
+var Lcom_google_web_bindery_event_shared_SimpleEventBus$1_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/1', 547);
 function SimpleEventBus$2(this$0, val$type, val$handler){
   this.this$01 = this$0;
   this.val$type2 = val$type;
@@ -12324,12 +12458,12 @@ function SimpleEventBus$2(this$0, val$type, val$handler){
   this.val$handler4 = val$handler;
 }
 
-defineClass(547, 1, {1038:1}, SimpleEventBus$2);
+defineClass(548, 1, {1043:1}, SimpleEventBus$2);
 _.execute_1 = function execute_12(){
   $doAddNow(this.this$01, this.val$type2, this.val$source3, this.val$handler4);
 }
 ;
-var Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/2', 547);
+var Lcom_google_web_bindery_event_shared_SimpleEventBus$2_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/2', 548);
 function SimpleEventBus$3(this$0, val$type, val$source, val$handler){
   this.this$01 = this$0;
   this.val$type2 = val$type;
@@ -12337,12 +12471,12 @@ function SimpleEventBus$3(this$0, val$type, val$source, val$handler){
   this.val$handler4 = val$handler;
 }
 
-defineClass(548, 1, {1038:1}, SimpleEventBus$3);
+defineClass(549, 1, {1043:1}, SimpleEventBus$3);
 _.execute_1 = function execute_13(){
   $doRemoveNow(this.this$01, this.val$type2, this.val$source3, this.val$handler4);
 }
 ;
-var Lcom_google_web_bindery_event_shared_SimpleEventBus$3_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/3', 548);
+var Lcom_google_web_bindery_event_shared_SimpleEventBus$3_2_classLit = createForClass('com.google.web.bindery.event.shared', 'SimpleEventBus/3', 549);
 function $$init_0(this$static){
 }
 
@@ -12699,7 +12833,7 @@ function $drawValues(this$static, g, s, hs){
   w = round_int($measureText(g.context, s).width);
   $setColor_0(g, whiteColor);
   ya = g.currentFontSize / 2 | 0;
-  if (instanceOf(this$static, 52) || instanceOf(this$static, 293)) {
+  if (instanceOf(this$static, 52) || instanceOf(this$static, 280)) {
     xc = this$static.x2;
     yc = this$static.y2;
   }
@@ -13148,8 +13282,8 @@ function getUnitText(v, u, sf){
   if (va < $intern_84)
     return $format_0(sf?shortFormat:showFormat, v * $intern_85) + sp + muString + u;
   if (va < 1)
-    return $format_0(sf?shortFormat:showFormat, v * $intern_8) + sp + 'm' + u;
-  if (va < $intern_8)
+    return $format_0(sf?shortFormat:showFormat, v * $intern_23) + sp + 'm' + u;
+  if (va < $intern_23)
     return $format_0(sf?shortFormat:showFormat, v) + sp + u;
   if (va < $intern_85)
     return $format_0(sf?shortFormat:showFormat, v * $intern_84) + sp + 'k' + u;
@@ -13168,7 +13302,7 @@ function getUnitTextWithScale(val, utext, scale, fixed_0){
   if (scale == 1)
     return $format_0(nf, val) + ' ' + utext;
   if (scale == 2)
-    return $format_0(nf, $intern_8 * val) + ' m' + utext;
+    return $format_0(nf, $intern_23 * val) + ' m' + utext;
   if (scale == 3)
     return $format_0(nf, $intern_85 * val) + ' ' + muString + utext;
   return getUnitText(val, utext, false);
@@ -13408,7 +13542,7 @@ _.getEditInfo = function getEditInfo(n){
 ;
 _.getElmType = function getElmType(){
   var info;
-  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 10, 6, 1);
+  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 10, 6, 1);
   this.getInfo_0(info);
   return info[0];
 }
@@ -13423,7 +13557,7 @@ _.getInfo_0 = function getInfo(arr){
 _.getInfoJS = function getInfoJS(){
   var arr, i, jsarr;
   jsarr = [];
-  arr = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 20, 6, 1);
+  arr = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 20, 6, 1);
   this.getInfo_0(arr);
   for (i = 0; arr[i] != null; i++) {
     jsarr[jsarr.length] = arr[i];
@@ -13477,7 +13611,7 @@ _.getPower = function getPower(){
 ;
 _.getScopeText = function getScopeText(v){
   var info;
-  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 10, 6, 1);
+  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 10, 6, 1);
   this.getInfo_0(info);
   return info[0];
 }
@@ -13524,7 +13658,7 @@ _.getXmlDumpType = function getXmlDumpType(){
   var t;
   t = this.getDumpType();
   if (t > 64 && t < 127)
-    return String.fromCharCode(t & $intern_9);
+    return String.fromCharCode(t & $intern_8);
   return $replace_0($replace_0($getName(this.___clazz), 'com.lushprojects.circuitjs1.client.', ''), 'Elm', '');
 }
 ;
@@ -14370,7 +14504,7 @@ function ACRailElm(xx, yy){
   this.maxVoltage_0 = 120 * $wnd.Math.sqrt(2);
 }
 
-defineClass(948, 52, $intern_93, ACRailElm);
+defineClass(946, 52, $intern_93, ACRailElm);
 _.getDumpClass = function getDumpClass_0(){
   return Lcom_lushprojects_circuitjs1_client_RailElm_2_classLit;
 }
@@ -14379,18 +14513,18 @@ _.getShortcut = function getShortcut_1(){
   return 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ACRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACRailElm', 948);
+var Lcom_lushprojects_circuitjs1_client_ACRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACRailElm', 946);
 function ACVoltageElm(xx, yy){
   VoltageElm.call(this, xx, yy, 1);
   this.maxVoltage_0 = 120 * $wnd.Math.sqrt(2);
 }
 
-defineClass(950, 57, $intern_92, ACVoltageElm);
+defineClass(941, 57, $intern_92, ACVoltageElm);
 _.getDumpClass = function getDumpClass_1(){
   return Lcom_lushprojects_circuitjs1_client_VoltageElm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ACVoltageElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACVoltageElm', 950);
+var Lcom_lushprojects_circuitjs1_client_ACVoltageElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACVoltageElm', 941);
 function $clinit_ChipElm(){
   $clinit_ChipElm = emptyMethod;
   sideFlipXY = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [2, 3, 0, 1]);
@@ -14498,7 +14632,7 @@ function $dumpXmlState(this$static, elem){
 }
 
 function $flippedXSide(this$static, s){
-  if ((this$static.flags & $intern_20) == 0)
+  if ((this$static.flags & $intern_25) == 0)
     return s;
   if (s == 2)
     return 3;
@@ -14866,7 +15000,7 @@ _.execute_3 = function execute_14(){
 ;
 _.flipX = function flipX_1(center2, count){
   var xs;
-  this.flags ^= $intern_20;
+  this.flags ^= $intern_25;
   if (count != 1) {
     xs = (this.flippedSizeX + 1) * this.cspc2;
     this.x_0 = center2 - this.x_0 - xs;
@@ -14877,7 +15011,7 @@ _.flipX = function flipX_1(center2, count){
 ;
 _.flipXY = function flipXY_0(xmy, count){
   this.flags ^= $intern_40;
-  (this.flags & $intern_20) != 0 != ((this.flags & $intern_41) != 0) && (this.flags ^= 3072);
+  (this.flags & $intern_25) != 0 != ((this.flags & $intern_41) != 0) && (this.flags ^= 3072);
   if (count != 1) {
     this.x_0 += this.cspc2;
     $flipXY(this, xmy);
@@ -15071,7 +15205,7 @@ function ADCElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(494, 17, $intern_86, ADCElm, ADCElm_0);
+defineClass(436, 17, $intern_86, ADCElm, ADCElm_0);
 _.allowBus = function allowBus_0(){
   return true;
 }
@@ -15132,7 +15266,7 @@ _.setupPins = function setupPins(){
   $setupPins(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ADCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ADCElm', 494);
+var Lcom_lushprojects_circuitjs1_client_ADCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ADCElm', 436);
 function $drawWaveform_0(this$static, g, center){
   var xc, yc;
   $setColor_0(g, mouseElmRef == this$static || this$static.selected_0 || $containsKey(app_0.mouse.scopePlotRoles, this$static) || instanceOf(mouseElmRef, 15) && $getElm_0(mouseElmRef.elmScope) == this$static || $isOnHighlightedNet(this$static)?selectColor_0:($clinit_Color() , gray));
@@ -15146,7 +15280,7 @@ function $drawWaveform_0(this$static, g, center){
 function AMElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.maxVoltage = 5;
-  this.carrierfreq = $intern_8;
+  this.carrierfreq = $intern_23;
   this.signalfreq = 40;
   this.freqTimeZero = 0;
   this.curcount_0 = 0;
@@ -15162,7 +15296,7 @@ function AMElm_0(xa, ya, xb, yb, f, st){
   this.curcount_0 = 0;
 }
 
-defineClass(433, 8, $intern_86, AMElm, AMElm_0);
+defineClass(496, 8, $intern_86, AMElm, AMElm_0);
 _.doStep = function doStep_3(){
   var w;
   $updateVoltageSource(this.voltSource, (w = $intern_2 * (sim_0.t - this.freqTimeZero) , ($wnd.Math.sin(w * this.signalfreq) + 1) / 2 * $wnd.Math.sin(w * this.carrierfreq) * this.maxVoltage));
@@ -15274,7 +15408,7 @@ _.carrierfreq = 0;
 _.freqTimeZero = 0;
 _.maxVoltage = 0;
 _.signalfreq = 0;
-var Lcom_lushprojects_circuitjs1_client_AMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AMElm', 433);
+var Lcom_lushprojects_circuitjs1_client_AMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AMElm', 496);
 function AboutBox(){
   var sstor;
   PopupPanel.call(this);
@@ -15290,18 +15424,18 @@ function AboutBox(){
   $show(this);
 }
 
-defineClass(735, 54, $intern_57, AboutBox);
-var Lcom_lushprojects_circuitjs1_client_AboutBox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AboutBox', 735);
+defineClass(738, 54, $intern_57, AboutBox);
+var Lcom_lushprojects_circuitjs1_client_AboutBox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AboutBox', 738);
 function AboutBox$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(736, 1, $intern_56, AboutBox$1);
+defineClass(739, 1, $intern_56, AboutBox$1);
 _.onClick = function onClick_0(event_0){
   $hide(this.this$01, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AboutBox$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AboutBox/1', 736);
+var Lcom_lushprojects_circuitjs1_client_AboutBox$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AboutBox/1', 739);
 function $createSlider(this$static, sim){
   var ei, value_0;
   if (!this$static.elm)
@@ -15366,7 +15500,7 @@ function $setSliderValue(this$static, value_0){
   }
   intValue = $valueToSliderPosition(this$static, value_0);
   this$static.settingValue = true;
-  $setValue_2(this$static.slider, intValue);
+  $setValue_3(this$static.slider, intValue);
   this$static.settingValue = false;
 }
 
@@ -15403,7 +15537,7 @@ function $valueToSliderPosition(this$static, value_0){
 function Adjustable(ce, item_0){
   var ei;
   this.minValue = 1;
-  this.maxValue = $intern_8;
+  this.maxValue = $intern_23;
   this.flags = 0;
   this.elm = ce;
   this.editItem = item_0;
@@ -15498,7 +15632,7 @@ function undumpXml_3(xml, app){
   item_0 = findEditItemByName(elm, en, ei);
   adj = new Adjustable(elm, item_0);
   adj.minValue = $parseDoubleAttr(xml, 'mn', 1);
-  adj.maxValue = $parseDoubleAttr(xml, 'mx', $intern_8);
+  adj.maxValue = $parseDoubleAttr(xml, 'mx', $intern_23);
   adj.sliderText = $parseStringAttr(xml, 'st', '');
   adj.sliderStep = $parseDoubleAttr(xml, 'stp', 0);
   ss = $parseIntAttr(xml, 'ss', -1);
@@ -15507,7 +15641,7 @@ function undumpXml_3(xml, app){
   $add_11(app.adjustables, adj);
 }
 
-defineClass(275, 1, {65:1, 106:1, 275:1}, Adjustable, Adjustable_0);
+defineClass(275, 1, {61:1, 84:1, 275:1}, Adjustable, Adjustable_0);
 _.execute_1 = function execute_16(){
   var adj, i, sim, ei, val, result, step;
   if (this.settingValue)
@@ -15559,7 +15693,7 @@ function AmmeterElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(430, 8, $intern_86, AmmeterElm, AmmeterElm_0);
+defineClass(418, 8, $intern_86, AmmeterElm, AmmeterElm_0);
 _.draw = function draw_4(g){
   var plusPoint, s, w, width_0;
   $setVoltageColor(this, g, this.volts[0]);
@@ -15757,7 +15891,7 @@ _.scale_0 = 0;
 _.selectedValue = 0;
 _.total = 0;
 _.zerocount = 0;
-var Lcom_lushprojects_circuitjs1_client_AmmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AmmeterElm', 430);
+var Lcom_lushprojects_circuitjs1_client_AmmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AmmeterElm', 418);
 function $setupPins_0(this$static){
   var i;
   this$static.inputCount = 1 << this$static.selectBitCount;
@@ -15804,7 +15938,7 @@ function AnalogMuxElm_0(xa, ya, xb, yb, f, st){
   $setupPins_0(this);
 }
 
-defineClass(413, 17, $intern_86, AnalogMuxElm, AnalogMuxElm_0);
+defineClass(412, 17, $intern_86, AnalogMuxElm, AnalogMuxElm_0);
 _.calculateCurrent = function calculateCurrent_0(){
   var c, i, i0, i1, outputCurrent, r, selectedInput;
   selectedInput = 0;
@@ -15931,7 +16065,7 @@ _.r_off = 0;
 _.r_on = 0;
 _.selectBitCount = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_AnalogMuxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogMuxElm', 413);
+var Lcom_lushprojects_circuitjs1_client_AnalogMuxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogMuxElm', 412);
 function $setPoints_1(this$static){
   $setPoints(this$static);
   $calcLeads(this$static, 32);
@@ -15969,7 +16103,7 @@ function AnalogSwitchElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(295, 8, $intern_86, AnalogSwitchElm, AnalogSwitchElm_0);
+defineClass(286, 8, $intern_86, AnalogSwitchElm, AnalogSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_1(){
   if (this.resistance == 0)
     return;
@@ -16118,7 +16252,7 @@ _.r_off = 0;
 _.r_on = 0;
 _.resistance = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_AnalogSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitchElm', 295);
+var Lcom_lushprojects_circuitjs1_client_AnalogSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitchElm', 286);
 function AnalogSwitch2Elm(xx, yy){
   AnalogSwitchElm.call(this, xx, yy);
 }
@@ -16127,7 +16261,7 @@ function AnalogSwitch2Elm_0(xa, ya, xb, yb, f, st){
   AnalogSwitchElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(481, 295, $intern_86, AnalogSwitch2Elm, AnalogSwitch2Elm_0);
+defineClass(480, 286, $intern_86, AnalogSwitch2Elm, AnalogSwitch2Elm_0);
 _.calculateCurrent = function calculateCurrent_2(){
   this.open_0?(this.current_0 = (this.volts[0] - this.volts[2]) / this.r_on):(this.current_0 = (this.volts[0] - this.volts[1]) / this.r_on);
 }
@@ -16224,7 +16358,7 @@ _.stamp = function stamp_7(){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AnalogSwitch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitch2Elm', 481);
+var Lcom_lushprojects_circuitjs1_client_AnalogSwitch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitch2Elm', 480);
 function $createEuroGatePolygon(this$static){
   var pts;
   pts = $newPointArray(4);
@@ -16356,7 +16490,7 @@ function GateElm_0(xa, ya, xb, yb, f, st){
   $setupVolts(this);
 }
 
-defineClass(283, 8, $intern_86);
+defineClass(279, 8, $intern_86);
 _.addRoutingObstacle = function addRoutingObstacle_3(router){
   var hs2, i, leadDist, pa, pb;
   for (i = 0; i < this.inputCount; i++)
@@ -16551,7 +16685,7 @@ _.oscillationCount = 0;
 _.propagationDelay = 0;
 _.ww = 0;
 var lastHighVoltage = 5, lastSchmitt = false;
-var Lcom_lushprojects_circuitjs1_client_GateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GateElm', 283);
+var Lcom_lushprojects_circuitjs1_client_GateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GateElm', 279);
 function $ellipse(g, x_0, y_0, rx, ry, ro, sa, ea, ccw){
   rx >= 0 && ry >= 0 && g.ellipse(x_0, y_0, rx, ry, ro, sa, ea, ccw);
 }
@@ -16564,7 +16698,7 @@ function AndGateElm_0(xa, ya, xb, yb, f, st){
   GateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(284, 283, $intern_86, AndGateElm, AndGateElm_0);
+defineClass(295, 279, $intern_86, AndGateElm, AndGateElm_0);
 _.calcFunction = function calcFunction(){
   var f, i;
   f = true;
@@ -16630,7 +16764,7 @@ _.setPoints = function setPoints_8(){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AndGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AndGateElm', 284);
+var Lcom_lushprojects_circuitjs1_client_AndGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AndGateElm', 295);
 function AntennaElm(xx, yy){
   RailElm_0.call(this, xx, yy, 1);
 }
@@ -16640,7 +16774,7 @@ function AntennaElm_0(xa, ya, xb, yb, f, st){
   this.waveform = 1;
 }
 
-defineClass(410, 52, $intern_93, AntennaElm, AntennaElm_0);
+defineClass(449, 52, $intern_93, AntennaElm, AntennaElm_0);
 _.drawRail = function drawRail_0(g){
   $drawRailText(this, g, 'Ant');
 }
@@ -16673,7 +16807,7 @@ _.stepFinished = function stepFinished_2(){
 }
 ;
 _.fmphase = 0;
-var Lcom_lushprojects_circuitjs1_client_AntennaElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AntennaElm', 410);
+var Lcom_lushprojects_circuitjs1_client_AntennaElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AntennaElm', 449);
 function AudioFileEntry(){
 }
 
@@ -16862,13 +16996,13 @@ function AudioInputElm$1(this$0, val$file, val$thisElm){
   this.val$thisElm3 = val$thisElm;
 }
 
-defineClass(871, 1, $intern_71, AudioInputElm$1);
+defineClass(874, 1, $intern_71, AudioInputElm$1);
 _.onChange = function onChange_0(event_0){
   this.this$01.fileName = $replaceAll($replaceAll($getElement(this.val$file2).value, '^.*\\\\', ''), '\\.[^.]*$', '');
   fetchLoadFileData(this.val$thisElm3, $getElement(this.val$file2));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AudioInputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AudioInputElm/1', 871);
+var Lcom_lushprojects_circuitjs1_client_AudioInputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AudioInputElm/1', 874);
 function $$init_2(this$static){
   this$static.dataSampleCount = 0;
   this$static.nextDataSample = 0;
@@ -17017,7 +17151,7 @@ function playJS(samples, sampleRate){
     var intBuffer = new Int16Array(buffer.length + 23), tmp;
     intBuffer[0] = 18770;
     intBuffer[1] = 17990;
-    intBuffer[2] = 2 * buffer.length + 15 & $intern_9;
+    intBuffer[2] = 2 * buffer.length + 15 & $intern_8;
     intBuffer[3] = (2 * buffer.length + 15 & $intern_101) >> 16;
     intBuffer[4] = 16727;
     intBuffer[5] = 17750;
@@ -17027,16 +17161,16 @@ function playJS(samples, sampleRate){
     intBuffer[9] = 0;
     intBuffer[10] = 1;
     intBuffer[11] = this._channels;
-    intBuffer[12] = this._sampleRate & $intern_9;
+    intBuffer[12] = this._sampleRate & $intern_8;
     intBuffer[13] = (this._sampleRate & $intern_101) >> 16;
-    intBuffer[14] = 2 * this._channels * this._sampleRate & $intern_9;
+    intBuffer[14] = 2 * this._channels * this._sampleRate & $intern_8;
     intBuffer[15] = (2 * this._channels * this._sampleRate & $intern_101) >> 16;
     intBuffer[16] = 2 * this._channels;
     intBuffer[17] = 16;
     intBuffer[18] = 0;
     intBuffer[19] = 24932;
     intBuffer[20] = 24948;
-    intBuffer[21] = 2 * buffer.length & $intern_9;
+    intBuffer[21] = 2 * buffer.length & $intern_8;
     intBuffer[22] = (2 * buffer.length & $intern_101) >> 16;
     for (var i = 0; i < buffer.length; i++)
       intBuffer[i + 23] = buffer[i];
@@ -17047,7 +17181,7 @@ function playJS(samples, sampleRate){
   wav.setBuffer(samples);
   var srclist = [];
   while (!wav.eof()) {
-    srclist.push(wav.getBuffer($intern_8));
+    srclist.push(wav.getBuffer($intern_23));
   }
   var oldblob = $doc.audioBlob;
   var oldobj = $doc.audioObject;
@@ -17238,12 +17372,12 @@ function AudioOutputElm$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(866, 1, $intern_56, AudioOutputElm$1);
+defineClass(868, 1, $intern_56, AudioOutputElm$1);
 _.onClick = function onClick_1(event_0){
   $play(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AudioOutputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AudioOutputElm/1', 866);
+var Lcom_lushprojects_circuitjs1_client_AudioOutputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AudioOutputElm/1', 868);
 function GraphicElm(xx, yy){
   CircuitElm.call(this, xx, yy);
 }
@@ -17272,7 +17406,7 @@ function BoxElm_0(xa, ya, xb, yb, f){
   $setBbox(this, this.x_0, this.y_0, this.x2, this.y2);
 }
 
-defineClass(496, 112, $intern_102, BoxElm, BoxElm_0);
+defineClass(492, 112, $intern_102, BoxElm, BoxElm_0);
 _.creationFailed = function creationFailed_0(){
   return $wnd.Math.abs(this.x2 - this.x_0) < 32 || $wnd.Math.abs(this.y2 - this.y_0) < 32;
 }
@@ -17329,7 +17463,7 @@ _.selectRect = function selectRect_0(r, add_0){
 _.setEditValue = function setEditValue_8(n, ei){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_BoxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BoxElm', 496);
+var Lcom_lushprojects_circuitjs1_client_BoxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BoxElm', 492);
 function $dumpXml_2(this$static, elem){
   dumpAttr_1(elem, 'x', this$static.x_0 + ' ' + this$static.y_0 + ' ' + this$static.x2 + ' ' + this$static.y2);
   dumpAttr_0(elem, 'f', this$static.flags);
@@ -17439,7 +17573,7 @@ function SwitchElm_0(xa, ya, xb, yb, f, st){
   var str;
   CircuitElm_0.call(this, xa, ya, xb, yb, f);
   str = $nextToken(st);
-  $compareTo(str, 'true') == 0?(this.position = instanceOf(this, 211)?0:1):$compareTo(str, 'false') == 0?(this.position = instanceOf(this, 211)?1:0):(this.position = (new Integer_0(str)).value_0);
+  $compareTo(str, 'true') == 0?(this.position = instanceOf(this, 210)?0:1):$compareTo(str, 'false') == 0?(this.position = instanceOf(this, 210)?1:0):(this.position = (new Integer_0(str)).value_0);
   this.momentary = $booleanValue(($clinit_Boolean() , $equalsIgnoreCase('true', $nextToken(st))));
   this.posCount = 2;
   this.label_0 = null;
@@ -17600,7 +17734,7 @@ function BusLogicInputElm(xx, yy){
   this.loV = 0;
 }
 
-defineClass(946, 46, $intern_103, BusLogicInputElm);
+defineClass(943, 46, $intern_103, BusLogicInputElm);
 _.calculateCurrent = function calculateCurrent_4(){
 }
 ;
@@ -17769,7 +17903,7 @@ _.busWidth = 0;
 _.hiV = 0;
 _.loV = 0;
 _.value_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_BusLogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusLogicInputElm', 946);
+var Lcom_lushprojects_circuitjs1_client_BusLogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusLogicInputElm', 943);
 function $setupPins_1(this$static){
   var i, i0, ii;
   this$static.sizeX = 2;
@@ -17907,7 +18041,7 @@ function BusTransceiverElm(xx, yy){
   $setupPins_2(this);
 }
 
-defineClass(947, 17, $intern_86, BusTransceiverElm);
+defineClass(949, 17, $intern_86, BusTransceiverElm);
 _.allowBus = function allowBus_1(){
   return true;
 }
@@ -18024,7 +18158,7 @@ _.aNodes = 0;
 _.bNodes = 0;
 _.dataBits = 0;
 _.intNodes = 0;
-var Lcom_lushprojects_circuitjs1_client_BusTransceiverElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusTransceiverElm', 947);
+var Lcom_lushprojects_circuitjs1_client_BusTransceiverElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusTransceiverElm', 949);
 function CC2Elm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -18037,7 +18171,7 @@ function CC2Elm_0(xa, ya, xb, yb, f, st){
   this.gain = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(330, 17, $intern_86, CC2Elm, CC2Elm_0);
+defineClass(331, 17, $intern_86, CC2Elm, CC2Elm_0);
 _.calculateCurrent = function calculateCurrent_5(){
   this.pins[2].current = this.pins[0].current * this.gain;
 }
@@ -18108,19 +18242,19 @@ _.undumpXml = function undumpXml_13(xml){
 }
 ;
 _.gain = 0;
-var Lcom_lushprojects_circuitjs1_client_CC2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2Elm', 330);
+var Lcom_lushprojects_circuitjs1_client_CC2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2Elm', 331);
 function CC2NegElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
   this.gain = -1;
 }
 
-defineClass(944, 330, $intern_86, CC2NegElm);
+defineClass(947, 331, $intern_86, CC2NegElm);
 _.getDumpClass = function getDumpClass_2(){
   return Lcom_lushprojects_circuitjs1_client_CC2Elm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CC2NegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2NegElm', 944);
+var Lcom_lushprojects_circuitjs1_client_CC2NegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2NegElm', 947);
 function $getConvergeLimit(){
   if (sim_0.subIterations < 10)
     return $intern_84;
@@ -18309,7 +18443,7 @@ _.setupPins = function setupPins_4(){
   this.sizeY = this.inputCount > 2?this.inputCount:2;
   this.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, this.inputCount + 2, 0, 1);
   for (i = 0; i != this.inputCount; i++)
-    this.pins[i] = new ChipElm$Pin(this, i, 2, String.fromCharCode(65 + i & $intern_9));
+    this.pins[i] = new ChipElm$Pin(this, i, 2, String.fromCharCode(65 + i & $intern_8));
   this.pins[this.inputCount] = new ChipElm$Pin(this, 0, 3, 'C+');
   this.pins[this.inputCount + 1] = new ChipElm$Pin(this, 1, 3, 'C-');
   this.lastVolts = initUnidimensionalArray(D_classLit, $intern_76, 7, this.inputCount, 15, 1);
@@ -18354,8 +18488,8 @@ function $setupPins_3(this$static){
   this$static.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, this$static.inputCount + 2, 0, 1);
   this$static.inputPairCount = this$static.inputCount / 2 | 0;
   for (i = 0; i != this$static.inputPairCount; i++) {
-    this$static.pins[i * 2] = new ChipElm$Pin(this$static, i * 2, 2, String.fromCharCode(65 + i & $intern_9) + '+');
-    this$static.pins[i * 2 + 1] = new ChipElm$Pin(this$static, i * 2 + 1, 2, String.fromCharCode(65 + i & $intern_9) + '-');
+    this$static.pins[i * 2] = new ChipElm$Pin(this$static, i * 2, 2, String.fromCharCode(65 + i & $intern_8) + '+');
+    this$static.pins[i * 2 + 1] = new ChipElm$Pin(this$static, i * 2 + 1, 2, String.fromCharCode(65 + i & $intern_8) + '-');
     this$static.pins[i * 2 + 1].output = true;
   }
   this$static.pins[i * 2] = new ChipElm$Pin(this$static, 0, 3, 'O+');
@@ -18379,7 +18513,7 @@ function CCCSElm_0(xa, ya, xb, yb, f, st){
   $setupPins_3(this);
 }
 
-defineClass(332, 187, {332:1, 8:1, 11:1}, CCCSElm, CCCSElm_0);
+defineClass(330, 187, {330:1, 8:1, 11:1}, CCCSElm, CCCSElm_0);
 _.doStep = function doStep_10(){
   var convergeLimit, cur, dv, dx, i, rs, v, v0, v2;
   if (this.broken) {
@@ -18534,7 +18668,7 @@ _.stepFinished = function stepFinished_6(){
 ;
 _.inputPairCount = 0;
 var FLAG_SPICE = 2;
-var Lcom_lushprojects_circuitjs1_client_CCCSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CCCSElm', 332);
+var Lcom_lushprojects_circuitjs1_client_CCCSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CCCSElm', 330);
 function $setCurrentExprValue_0(this$static, n, cur){
   n == 0 && this$static.inputPairCount < 9 && (this$static.exprState.values[8] = cur);
   this$static.exprState.values[n] = cur;
@@ -18547,8 +18681,8 @@ function $setupPins_4(this$static){
   this$static.inputPairCount = this$static.inputCount / 2 | 0;
   this$static.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, this$static.inputCount + 2, 0, 1);
   for (i = 0; i != this$static.inputPairCount; i++) {
-    this$static.pins[i * 2] = new ChipElm$Pin(this$static, i * 2, 2, String.fromCharCode(65 + i & $intern_9) + '+');
-    this$static.pins[i * 2 + 1] = new ChipElm$Pin(this$static, i * 2 + 1, 2, String.fromCharCode(65 + i & $intern_9) + '-');
+    this$static.pins[i * 2] = new ChipElm$Pin(this$static, i * 2, 2, String.fromCharCode(65 + i & $intern_8) + '+');
+    this$static.pins[i * 2 + 1] = new ChipElm$Pin(this$static, i * 2 + 1, 2, String.fromCharCode(65 + i & $intern_8) + '-');
     this$static.pins[i * 2 + 1].output = true;
   }
   this$static.pins[i * 2] = new ChipElm$Pin(this$static, 0, 3, 'V+');
@@ -19025,7 +19159,7 @@ function $getState(this$static){
 }
 
 function $setState_0(this$static, s){
-  $setValue(this$static, ($clinit_Boolean() , s?true:false));
+  $setValue_0(this$static, ($clinit_Boolean() , s?true:false));
 }
 
 function Checkbox(s){
@@ -19034,10 +19168,10 @@ function Checkbox(s){
 
 function Checkbox_0(s, b){
   CheckBox_0.call(this, LS(s));
-  $setValue(this, ($clinit_Boolean() , b?true:false));
+  $setValue_0(this, ($clinit_Boolean() , b?true:false));
 }
 
-defineClass(37, 173, {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 137:1, 64:1, 32:1, 236:1, 197:1, 173:1, 84:1, 120:1, 260:1, 217:1, 109:1, 119:1, 63:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1, 37:1}, Checkbox, Checkbox_0);
+defineClass(37, 173, {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 137:1, 65:1, 32:1, 236:1, 197:1, 173:1, 85:1, 120:1, 260:1, 217:1, 109:1, 119:1, 64:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1, 37:1}, Checkbox, Checkbox_0);
 var Lcom_lushprojects_circuitjs1_client_Checkbox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Checkbox', 37);
 function CheckboxAlignedMenuItem(s, cmd){
   MenuItem.call(this, ($clinit_SafeHtmlUtils() , new SafeHtmlString(checkBoxHtml + '&nbsp;<\/div>' + s)), cmd);
@@ -19097,7 +19231,7 @@ function CheckboxMenuItem_1(s, c){
   this.shortcut = c;
 }
 
-defineClass(82, 43, {65:1, 64:1, 106:1, 109:1, 63:1, 55:1, 27:1, 43:1, 26:1, 82:1}, CheckboxMenuItem, CheckboxMenuItem_0, CheckboxMenuItem_1);
+defineClass(71, 43, {61:1, 65:1, 84:1, 109:1, 64:1, 55:1, 27:1, 43:1, 26:1, 71:1}, CheckboxMenuItem, CheckboxMenuItem_0, CheckboxMenuItem_1);
 _.execute_1 = function execute_17(){
   $setState_1(this, !this.on);
   if (this.extcmd) {
@@ -19108,7 +19242,7 @@ _.execute_1 = function execute_17(){
 ;
 _.on = false;
 var checkBoxHtml = '<div style="display:inline-block;width:15px;">';
-var Lcom_lushprojects_circuitjs1_client_CheckboxMenuItem_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CheckboxMenuItem', 82);
+var Lcom_lushprojects_circuitjs1_client_CheckboxMenuItem_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CheckboxMenuItem', 71);
 function $fixName(this$static){
   var result;
   if ($startsWith(this$static.text_0, '/')) {
@@ -19137,7 +19271,7 @@ function $fixName(this$static){
 
 function $setPoint(this$static, px, py, dx, dy, dax, day, sx, sy){
   var busExtra, xa, ya;
-  if ((this$static.this$01.flags & $intern_20) != 0) {
+  if ((this$static.this$01.flags & $intern_25) != 0) {
     dx = -dx;
     dax = -dax;
     px += this$static.this$01.cspc2 * (this$static.this$01.flippedSizeX - 1);
@@ -19393,7 +19527,7 @@ function $init_1(this$static){
       throw toJs($e0);
   }
   this$static.transform_0 = initUnidimensionalArray(D_classLit, $intern_76, 7, 6, 15, 1);
-  this$static.shortcuts = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 127, 6, 1);
+  this$static.shortcuts = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 127, 6, 1);
   this$static.elmList = new Vector;
   $init_3(this$static.ui);
   this$static.adjustables = new Vector;
@@ -19678,12 +19812,12 @@ function CirSim$1(this$0){
   Timer.call(this);
 }
 
-defineClass(540, 267, {}, CirSim$1);
+defineClass(541, 267, {}, CirSim$1);
 _.run_0 = function run_3(){
   $updateCircuit(this.this$01.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CirSim$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CirSim/1', 540);
+var Lcom_lushprojects_circuitjs1_client_CirSim$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CirSim/1', 541);
 function CircuitContext(){
   this.changedModels = new Vector;
 }
@@ -19710,9 +19844,9 @@ function $clearCircuit(this$static){
   $setState_1(this$static.menus.showValuesCheckItem, true);
   this$static.app.autoDCOnReset = false;
   $setGrid(this$static.app.ui);
-  $setValue_2(this$static.app.ui.speedBar, 117);
-  $setValue_2(this$static.app.ui.currentBar, 50);
-  $setValue_2(this$static.app.ui.powerBar, 50);
+  $setValue_3(this$static.app.ui.speedBar, 117);
+  $setValue_3(this$static.app.ui.currentBar, 50);
+  $setValue_3(this$static.app.ui.powerBar, 50);
   voltageRange = 5;
   this$static.scopes.scopeCount = 0;
   this$static.sim.lastIterTime = 0;
@@ -19876,6 +20010,7 @@ function $readCircuitFlags(this$static, flags){
   $setState_1(this$static.menus.showValuesCheckItem, (flags & 16) == 0);
   this$static.sim.adjustTimeStep = (flags & 64) != 0;
   this$static.app.autoDCOnReset = (flags & 128) != 0;
+  this$static.app.ui.forceNoEdit || $setLayoutLocked(this$static.app.ui, (flags & 256) != 0);
 }
 
 function $readOptions(this$static, st, importFlags){
@@ -19889,11 +20024,11 @@ function $readOptions(this$static, st, importFlags){
   this$static.sim.maxTimeStep = this$static.sim.timeStep = __parseAndValidateDouble($nextToken(st));
   sp = __parseAndValidateDouble($nextToken(st));
   sp2 = round_int($wnd.Math.log(10 * sp) * 24 + 61.5);
-  $setValue_2(this$static.app.ui.speedBar, sp2);
-  $setValue_2(this$static.app.ui.currentBar, __parseAndValidateInt($nextToken(st), 10));
+  $setValue_3(this$static.app.ui.speedBar, sp2);
+  $setValue_3(this$static.app.ui.currentBar, __parseAndValidateInt($nextToken(st), 10));
   voltageRange = __parseAndValidateDouble($nextToken(st));
   try {
-    $setValue_2(this$static.app.ui.powerBar, __parseAndValidateInt($nextToken(st), 10));
+    $setValue_3(this$static.app.ui.powerBar, __parseAndValidateInt($nextToken(st), 10));
     this$static.sim.minTimeStep = __parseAndValidateDouble($nextToken(st));
   }
    catch ($e0) {
@@ -19911,20 +20046,21 @@ function CircuitLoader(app, sim, scopes, menus){
   this.menus = menus;
 }
 
-defineClass(594, 1, {}, CircuitLoader);
-var Lcom_lushprojects_circuitjs1_client_CircuitLoader_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CircuitLoader', 594);
+defineClass(596, 1, {}, CircuitLoader);
+var Lcom_lushprojects_circuitjs1_client_CircuitLoader_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CircuitLoader', 596);
 function CircuitLoader$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(595, 1, {}, CircuitLoader$2);
+defineClass(597, 1, {}, CircuitLoader$2);
 _.onError = function onError(request, exception){
   alert_0(LS("Can't load circuit!"));
 }
 ;
 _.onResponseReceived = function onResponseReceived(request, response){
-  var text_0;
-  if (response.xmlHttpRequest.status == 200) {
+  var statusCode, text_0;
+  statusCode = response.xmlHttpRequest.status;
+  if ((statusCode == 1223?204:statusCode) == 200) {
     text_0 = response.xmlHttpRequest.responseText;
     $readCircuit_0(this.this$01, text_0, 8);
     $allowSave(this.this$01.app.ui, false);
@@ -19935,7 +20071,7 @@ _.onResponseReceived = function onResponseReceived(request, response){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CircuitLoader$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CircuitLoader/2', 595);
+var Lcom_lushprojects_circuitjs1_client_CircuitLoader$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CircuitLoader/2', 597);
 function CircuitMatrix(){
   this.nodeList = new Vector;
   this.voltageSourceList = new Vector;
@@ -19974,7 +20110,7 @@ function ClockElm(xx, yy){
   this.flags |= 1;
 }
 
-defineClass(941, 52, $intern_93, ClockElm);
+defineClass(952, 52, $intern_93, ClockElm);
 _.getDumpClass = function getDumpClass_3(){
   return Lcom_lushprojects_circuitjs1_client_RailElm_2_classLit;
 }
@@ -19983,7 +20119,7 @@ _.getShortcut = function getShortcut_9(){
   return 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ClockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ClockElm', 941);
+var Lcom_lushprojects_circuitjs1_client_ClockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ClockElm', 952);
 function $clinit_Color(){
   $clinit_Color = emptyMethod;
   white = new Color(255, 255, 255);
@@ -20407,7 +20543,7 @@ function $menuPerformed(this$static, menu, item_0){
     item_0 == 'remove' && $setElm(s, null);
     item_0 == 'removeplot' && $removePlot(s, this$static.app.scopeManager.menuPlot);
     item_0 == 'speed2' && $speedUp(s);
-    item_0 == 'speed1/2' && (s.speed < $intern_20 && (s.speed *= 2) , $resetGraph(s, false));
+    item_0 == 'speed1/2' && (s.speed < $intern_25 && (s.speed *= 2) , $resetGraph(s, false));
     item_0 == 'maxscale' && $maxScale(s);
     item_0 == 'stack' && $stackScope(this$static.app.scopeManager, this$static.app.scopeManager.menuScope);
     item_0 == 'unstack' && $unstackScope(this$static.app.scopeManager, this$static.app.scopeManager.menuScope);
@@ -20535,16 +20671,16 @@ function electronSaveAsCallback(s){
   $repaint(app.ui);
 }
 
-defineClass(591, 1, {}, CommandManager);
-var Lcom_lushprojects_circuitjs1_client_CommandManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CommandManager', 591);
+defineClass(593, 1, {}, CommandManager);
+var Lcom_lushprojects_circuitjs1_client_CommandManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CommandManager', 593);
 function CommandManager$FlipInfo(){
 }
 
-defineClass(592, 1, {}, CommandManager$FlipInfo);
+defineClass(594, 1, {}, CommandManager$FlipInfo);
 _.count = 0;
 _.cx = 0;
 _.cy = 0;
-var Lcom_lushprojects_circuitjs1_client_CommandManager$FlipInfo_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CommandManager/FlipInfo', 592);
+var Lcom_lushprojects_circuitjs1_client_CommandManager$FlipInfo_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CommandManager/FlipInfo', 594);
 function $$init_4(this$static){
   this$static.numPosts = 0;
   this$static.numNodes = 0;
@@ -20667,7 +20803,7 @@ function $loadComposite(this$static, stIn, model, externalNodes){
     $add_11(this$static.compElmList, newce);
     $add_8(nodeInfoList.arrayList, nodeStr);
   }
-  this$static.compNodeInfo = $toArray_1(nodeInfoList, initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 0, 6, 1));
+  this$static.compNodeInfo = $toArray_1(nodeInfoList, initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 0, 6, 1));
   this$static.extNodeIds = externalNodes;
   this$static.numPosts = this$static.numNodes = externalNodes.length;
   this$static.posts = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Point_2_classLit, $intern_78, 10, this$static.numPosts, 0, 1);
@@ -20697,7 +20833,7 @@ function $loadCompositeXml(this$static, elmEntries, externalNodes){
     nn = getAttribute(childElem.jsObject, 'nn');
     $add_8(nodeInfoList.arrayList, nn != null?nn:'');
   }
-  this$static.compNodeInfo = $toArray_1(nodeInfoList, initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 0, 6, 1));
+  this$static.compNodeInfo = $toArray_1(nodeInfoList, initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 0, 6, 1));
   this$static.extNodeIds = externalNodes;
   this$static.numPosts = this$static.numNodes = externalNodes.length;
   this$static.posts = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Point_2_classLit, $intern_78, 10, this$static.numPosts, 0, 1);
@@ -20922,7 +21058,7 @@ function ComparatorElm_0(xa, ya, xb, yb, f, st){
   $setSize_2(this, (f & 2) != 0?1:2);
 }
 
-defineClass(414, 113, $intern_86, ComparatorElm, ComparatorElm_0);
+defineClass(401, 113, $intern_86, ComparatorElm, ComparatorElm_0);
 _.draw = function draw_15(g){
   $setBbox_0(this, this.point1, this.point2, this.opheight * 2);
   $setVoltageColor(this, g, this.volts[0]);
@@ -21005,7 +21141,7 @@ _.opheight = 0;
 _.opsize = 0;
 _.opwidth = 0;
 var modelExternalNodes, modelString = 'OpAmpElm 1 2 3\rAnalogSwitchElm 4 5 3\rGroundElm 5';
-var Lcom_lushprojects_circuitjs1_client_ComparatorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ComparatorElm', 414);
+var Lcom_lushprojects_circuitjs1_client_ComparatorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ComparatorElm', 401);
 function $setupPins_5(this$static){
   var bitsY, p;
   this$static.sizeX = 2;
@@ -21051,7 +21187,7 @@ function Counter2Elm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(477, 17, $intern_86, Counter2Elm, Counter2Elm_0);
+defineClass(479, 17, $intern_86, Counter2Elm, Counter2Elm_0);
 _.allowBus = function allowBus_2(){
   return true;
 }
@@ -21167,7 +21303,7 @@ _.ent = 0;
 _.load = 0;
 _.modulus = 0;
 _.rco = 0;
-var Lcom_lushprojects_circuitjs1_client_Counter2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Counter2Elm', 477);
+var Lcom_lushprojects_circuitjs1_client_Counter2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Counter2Elm', 479);
 function $setupPins_6(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = this$static.bitOrder == 2?3:this$static.bits;
@@ -21203,7 +21339,7 @@ function CounterElm_0(xa, ya, xb, yb, f, st){
   this.pins[1].bubble = this.invertreset;
 }
 
-defineClass(417, 17, $intern_86, CounterElm, CounterElm_0);
+defineClass(454, 17, $intern_86, CounterElm, CounterElm_0);
 _.allowBus = function allowBus_3(){
   return true;
 }
@@ -21327,7 +21463,7 @@ _.undumpXml = function undumpXml_18(xml){
 ;
 _.invertreset = false;
 _.modulus = 0;
-var Lcom_lushprojects_circuitjs1_client_CounterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CounterElm', 417);
+var Lcom_lushprojects_circuitjs1_client_CounterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CounterElm', 454);
 function $setPoints_5(this$static){
   var dp, i, offset;
   $setPoints_3(this$static);
@@ -21371,7 +21507,7 @@ function CrossSwitchElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(412, 46, $intern_103, CrossSwitchElm, CrossSwitchElm_0);
+defineClass(489, 46, $intern_103, CrossSwitchElm, CrossSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_7(){
   var dst, i;
   if (this.resistance > 0)
@@ -21558,7 +21694,7 @@ _.validate = function validate_7(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CrossSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrossSwitchElm', 412);
+var Lcom_lushprojects_circuitjs1_client_CrossSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrossSwitchElm', 489);
 function $clinit_CrystalElm(){
   $clinit_CrystalElm = emptyMethod;
   modelExternalNodes_0 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [1, 2]);
@@ -21602,7 +21738,7 @@ function CrystalElm_0(xa, ya, xb, yb, f, st){
   $initCrystal(this);
 }
 
-defineClass(455, 113, $intern_86, CrystalElm, CrystalElm_0);
+defineClass(417, 113, $intern_86, CrystalElm, CrystalElm_0);
 _.canViewInScope_0 = function canViewInScope_1(){
   return true;
 }
@@ -21669,7 +21805,8 @@ _.getEditInfo = function getEditInfo_14(n){
 _.getInfo_0 = function getInfo_22(arr){
   var cSer, fp, fs, q;
   arr[0] = 'crystal';
-  $getBasicInfo(this, arr);
+  arr[1] = 'I = ' + getUnitText($wnd.Math.abs(this.current_0), 'A', false);
+  arr[2] = 'Vd = ' + getUnitText($wnd.Math.abs(this.volts[0] - this.volts[1]), 'V', false);
   fs = 1 / ($wnd.Math.sqrt(this.inductance * this.seriesCapacitance) * $intern_1 * 2);
   cSer = this.parallelCapacitance * this.seriesCapacitance / (this.parallelCapacitance + this.seriesCapacitance);
   fp = 1 / ($wnd.Math.sqrt(this.inductance * cSer) * $intern_1 * 2);
@@ -21733,7 +21870,7 @@ _.parallelCapacitance = 0;
 _.resistance = 0;
 _.seriesCapacitance = 0;
 var modelExternalNodes_0, modelString_0 = 'CapacitorElm 1 2\rCapacitorElm 1 3\rInductorElm 3 4\rResistorElm 4 2';
-var Lcom_lushprojects_circuitjs1_client_CrystalElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrystalElm', 455);
+var Lcom_lushprojects_circuitjs1_client_CrystalElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrystalElm', 417);
 function $setBroken(this$static, b){
   this$static.broken = b && !(this$static.maxVoltage > 0);
 }
@@ -21769,7 +21906,7 @@ function CurrentElm_0(xa, ya, xb, yb, f, st){
   this.currentValue == 0 && (this.currentValue = $intern_35);
 }
 
-defineClass(209, 8, $intern_110, CurrentElm, CurrentElm_0);
+defineClass(213, 8, $intern_110, CurrentElm, CurrentElm_0);
 _.doStep = function doStep_13(){
   var absG, arg, g, i, maxStep, sech2, tanhArg, vMid, vStart, vWidth, vd, vt;
   if (this.broken || !(this.maxVoltage > 0))
@@ -21911,7 +22048,7 @@ _.broken = false;
 _.currentValue = 0;
 _.lastVoltDiff = 0;
 _.maxVoltage = 0;
-var Lcom_lushprojects_circuitjs1_client_CurrentElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CurrentElm', 209);
+var Lcom_lushprojects_circuitjs1_client_CurrentElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CurrentElm', 213);
 function $allocPins(this$static, n){
   this$static.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, n, 0, 1);
 }
@@ -22116,7 +22253,7 @@ _.dumpXmlModel = function dumpXmlModel_0(doc){
 ;
 _.flipX = function flipX_4(center2, count){
   var xs;
-  this.flags ^= $intern_20;
+  this.flags ^= $intern_25;
   if (count != 1) {
     xs = (this.chip.flippedSizeX + 1) * this.chip.cspc2;
     this.x_0 = center2 - this.x_0 - xs;
@@ -22127,7 +22264,7 @@ _.flipX = function flipX_4(center2, count){
 ;
 _.flipXY = function flipXY_3(xmy, count){
   this.flags ^= $intern_40;
-  (this.flags & $intern_20) != 0 != ((this.flags & $intern_41) != 0) && (this.flags ^= 3072);
+  (this.flags & $intern_25) != 0 != ((this.flags & $intern_41) != 0) && (this.flags ^= 3072);
   if (count != 1) {
     this.x_0 += this.chip.cspc2;
     $flipXY(this, xmy);
@@ -22590,7 +22727,7 @@ function getModelWithName(name_0){
 
 function loadInternalModels(){
   var i, model, models, st;
-  models = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['. ~LM317-v2 0 2 2 3 adj 2 1 1 in 1 0 2 out 3 0 3 JfetElm\\s3\\s4\\s1\\s\\rResistorElm\\s5\\s39\\rCapacitorElm\\s39\\s6\\rCapacitorElm\\s39\\s5\\rTransistorElm\\s39\\s5\\s6\\s\\rResistorElm\\s7\\s40\\rCapacitorElm\\s40\\s8\\rCapacitorElm\\s40\\s5\\rTransistorElm\\s40\\s5\\s8\\s\\rResistorElm\\s5\\s41\\rCapacitorElm\\s41\\s9\\rCapacitorElm\\s41\\s7\\rTransistorElm\\s41\\s7\\s9\\s\\rResistorElm\\s7\\s42\\rCapacitorElm\\s42\\s3\\rCapacitorElm\\s42\\s10\\rTransistorElm\\s42\\s10\\s3\\s\\rResistorElm\\s10\\s43\\rCapacitorElm\\s43\\s11\\rCapacitorElm\\s43\\s3\\rTransistorElm\\s43\\s3\\s11\\s\\rResistorElm\\s10\\s44\\rCapacitorElm\\s44\\s13\\rCapacitorElm\\s44\\s12\\rTransistorElm\\s44\\s12\\s13\\s\\rResistorElm\\s5\\s45\\rCapacitorElm\\s45\\s14\\rCapacitorElm\\s45\\s11\\rTransistorElm\\s45\\s11\\s14\\s\\rResistorElm\\s12\\s46\\rCapacitorElm\\s46\\s11\\rCapacitorElm\\s46\\s15\\rTransistorElm\\s46\\s15\\s11\\s\\rResistorElm\\s5\\s47\\rCapacitorElm\\s47\\s17\\rCapacitorElm\\s47\\s16\\rTransistorElm\\s47\\s16\\s17\\s\\rResistorElm\\s15\\s48\\rCapacitorElm\\s48\\s18\\rCapacitorElm\\s48\\s16\\rTransistorElm\\s48\\s16\\s18\\s\\rResistorElm\\s19\\s49\\rCapacitorElm\\s49\\s16\\rCapacitorElm\\s49\\s3\\rTransistorElm\\s49\\s3\\s16\\s\\rResistorElm\\s20\\s50\\rCapacitorElm\\s50\\s19\\rCapacitorElm\\s50\\s1\\rTransistorElm\\s50\\s1\\s19\\s\\rResistorElm\\s5\\s51\\rCapacitorElm\\s51\\s21\\rCapacitorElm\\s51\\s20\\rTransistorElm\\s51\\s20\\s21\\s\\rResistorElm\\s22\\s52\\rCapacitorElm\\s52\\s20\\rCapacitorElm\\s52\\s3\\rTransistorElm\\s52\\s3\\s20\\s\\rResistorElm\\s23\\s53\\rCapacitorElm\\s53\\s16\\rCapacitorElm\\s53\\s22\\rTransistorElm\\s53\\s22\\s16\\s\\rResistorElm\\s3\\s54\\rCapacitorElm\\s54\\s24\\rCapacitorElm\\s54\\s22\\rTransistorElm\\s54\\s22\\s24\\s\\rResistorElm\\s23\\s55\\rCapacitorElm\\s55\\s16\\rCapacitorElm\\s55\\s23\\rTransistorElm\\s55\\s23\\s16\\s\\rResistorElm\\s3\\s56\\rCapacitorElm\\s56\\s25\\rCapacitorElm\\s56\\s23\\rTransistorElm\\s56\\s23\\s25\\s\\rResistorElm\\s26\\s57\\rCapacitorElm\\s57\\s16\\rCapacitorElm\\s57\\s3\\rTransistorElm\\s57\\s3\\s16\\s\\rResistorElm\\s27\\s58\\rCapacitorElm\\s58\\s3\\rCapacitorElm\\s58\\s26\\rTransistorElm\\s58\\s26\\s3\\s\\rResistorElm\\s28\\s59\\rCapacitorElm\\s59\\s1\\rCapacitorElm\\s59\\s28\\rTransistorElm\\s59\\s28\\s1\\s\\rResistorElm\\s28\\s60\\rCapacitorElm\\s60\\s1\\rCapacitorElm\\s60\\s16\\rTransistorElm\\s60\\s16\\s1\\s\\rResistorElm\\s16\\s61\\rCapacitorElm\\s61\\s29\\rCapacitorElm\\s61\\s28\\rTransistorElm\\s61\\s28\\s29\\s\\rResistorElm\\s31\\s62\\rCapacitorElm\\s62\\s32\\rCapacitorElm\\s62\\s30\\rTransistorElm\\s62\\s30\\s32\\s\\rResistorElm\\s31\\s63\\rCapacitorElm\\s63\\s33\\rCapacitorElm\\s63\\s30\\rTransistorElm\\s63\\s30\\s33\\s\\rResistorElm\\s34\\s64\\rCapacitorElm\\s64\\s35\\rCapacitorElm\\s64\\s1\\rTransistorElm\\s64\\s1\\s35\\s\\rResistorElm\\s35\\s65\\rCapacitorElm\\s65\\s36\\rCapacitorElm\\s65\\s1\\rTransistorElm\\s65\\s1\\s36\\s\\rDiodeElm\\s3\\s4\\rDiodeElm\\s37\\s1\\rDiodeElm\\s32\\s38\\rResistorElm\\s1\\s6\\rResistorElm\\s1\\s9\\rResistorElm\\s1\\s14\\rResistorElm\\s1\\s17\\rResistorElm\\s1\\s21\\rResistorElm\\s4\\s7\\rResistorElm\\s7\\s10\\rResistorElm\\s11\\s12\\rResistorElm\\s8\\s3\\rResistorElm\\s13\\s3\\rResistorElm\\s15\\s3\\rResistorElm\\s18\\s3\\rResistorElm\\s19\\s3\\rResistorElm\\s2\\s24\\rResistorElm\\s24\\s25\\rResistorElm\\s16\\s26\\rResistorElm\\s16\\s31\\rResistorElm\\s29\\s35\\rResistorElm\\s16\\s34\\rResistorElm\\s27\\s30\\rResistorElm\\s30\\s31\\rResistorElm\\s3\\s35\\rResistorElm\\s37\\s38\\rResistorElm\\s33\\s32\\rResistorElm\\s33\\s36\\rResistorElm\\s36\\s3\\rCapacitorElm\\s22\\s3\\rCapacitorElm\\s22\\s2\\rCapacitorElm\\s26\\s27\\rCapacitorElm\\s5\\s3\\rCapacitorElm\\s28\\s3\\rCapacitorElm\\s23\\s3\\r 0\\\\s-7\\\\s0.0001\\s0\\\\s200\\s2\\\\s1.5000000000000002e-13\\\\s0\\\\s0\\s2\\\\s1e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.1\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s200\\s2\\\\s1.5000000000000002e-13\\\\s0\\\\s0\\s2\\\\s1e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.1\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s50\\s2\\\\s4e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s10\\s2\\\\s3e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A2\\s0\\\\s10\\s2\\\\s3e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A2\\s0\\\\s50\\s2\\\\s4e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s20\\s2\\\\s1e-11\\\\s0\\\\s0\\s2\\\\s5e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A5\\s0\\\\s2\\s2\\\\s1e-10\\\\s0\\\\s0\\s2\\\\s5e-11\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A50\\s2\\\\s~lm317-dz\\s2\\\\s~lm317-dz\\s2\\\\s~lm317-dz\\s0\\\\s310\\s0\\\\s310\\s0\\\\s190\\s0\\\\s82\\s0\\\\s5600\\s0\\\\s100000\\s0\\\\s130\\s0\\\\s12400\\s0\\\\s180\\s0\\\\s4100\\s0\\\\s5800\\s0\\\\s72\\s0\\\\s5100\\s0\\\\s12000\\s0\\\\s2400\\s0\\\\s6700\\s0\\\\s12000\\s0\\\\s130\\s0\\\\s370\\s0\\\\s13000\\s0\\\\s400\\s0\\\\s160\\s0\\\\s18000\\s0\\\\s160\\s0\\\\s3\\s0\\\\s0.1\\s2\\\\s3e-11\\\\s0\\\\s0\\s2\\\\s3e-11\\\\s0\\\\s0\\s2\\\\s5e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0', '. ~TL431 0 1 3 3 A 2 0 1 C 1 0 0 ref 3 1 2 ResistorElm\\s3\\s18\\rCapacitorElm\\s18\\s4\\rCapacitorElm\\s18\\s1\\rTransistorElm\\s18\\s1\\s4\\s\\rResistorElm\\s4\\s5\\rResistorElm\\s5\\s6\\rResistorElm\\s5\\s7\\rResistorElm\\s6\\s19\\rCapacitorElm\\s19\\s2\\rCapacitorElm\\s19\\s6\\rTransistorElm\\s19\\s6\\s2\\s\\rResistorElm\\s6\\s20\\rCapacitorElm\\s20\\s8\\rCapacitorElm\\s20\\s7\\rTransistorElm\\s20\\s7\\s8\\s\\rResistorElm\\s8\\s2\\rResistorElm\\s4\\s21\\rCapacitorElm\\s21\\s10\\rCapacitorElm\\s21\\s9\\rTransistorElm\\s21\\s9\\s10\\s\\rResistorElm\\s10\\s11\\rResistorElm\\s7\\s22\\rCapacitorElm\\s22\\s2\\rCapacitorElm\\s22\\s11\\rTransistorElm\\s22\\s11\\s2\\s\\rResistorElm\\s13\\s23\\rCapacitorElm\\s23\\s2\\rCapacitorElm\\s23\\s12\\rTransistorElm\\s23\\s12\\s2\\s\\rResistorElm\\s9\\s24\\rCapacitorElm\\s24\\s14\\rCapacitorElm\\s24\\s9\\rTransistorElm\\s24\\s9\\s14\\s\\rResistorElm\\s9\\s25\\rCapacitorElm\\s25\\s15\\rCapacitorElm\\s25\\s12\\rTransistorElm\\s25\\s12\\s15\\s\\rResistorElm\\s1\\s14\\rResistorElm\\s1\\s15\\rResistorElm\\s12\\s26\\rCapacitorElm\\s26\\s16\\rCapacitorElm\\s26\\s1\\rTransistorElm\\s26\\s1\\s16\\s\\rResistorElm\\s17\\s16\\rResistorElm\\s17\\s27\\rCapacitorElm\\s27\\s2\\rCapacitorElm\\s27\\s1\\rTransistorElm\\s27\\s1\\s2\\s\\rResistorElm\\s17\\s2\\rResistorElm\\s12\\s28\\rCapacitorElm\\s28\\s3\\rCapacitorElm\\s28\\s12\\rTransistorElm\\s28\\s12\\s3\\s\\rDiodeElm\\s2\\s12\\rResistorElm\\s13\\s6\\rDiodeElm\\s2\\s1\\rCapacitorElm\\s1\\s12\\rCapacitorElm\\s7\\s11\\r 0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s3280\\s0\\\\s2400\\s0\\\\s7200\\s0\\\\s33.333333333333336\\s2\\\\s1.2e-12\\\\s0\\\\s0\\s2\\\\s2.4e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A1.2\\s0\\\\s18.18181818181818\\s2\\\\s2.2000000000000003e-12\\\\s0\\\\s0\\s2\\\\s4.400000000000001e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A2.2\\s0\\\\s800\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s4000\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s80\\s2\\\\s5e-13\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A0.5\\s0\\\\s80\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s3e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s60\\\\s~tl431ed-qp_ed\\s0\\\\s80\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s3e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s60\\\\s~tl431ed-qp_ed\\s0\\\\s800\\s0\\\\s800\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s150\\s0\\\\s8\\s2\\\\s5e-12\\\\s0\\\\s0\\s2\\\\s1e-11\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A5\\s0\\\\s10000\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s2\\\\s~tl431ed-d_ed\\s0\\\\s1000\\s2\\\\s~tl431ed-d_ed\\s2\\\\s1e-11\\\\s0\\\\s0\\s2\\\\s2e-11\\\\s0\\\\s0']);
+  models = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['. ~LM317-v2 0 2 2 3 adj 2 1 1 in 1 0 2 out 3 0 3 JfetElm\\s3\\s4\\s1\\s\\rResistorElm\\s5\\s39\\rCapacitorElm\\s39\\s6\\rCapacitorElm\\s39\\s5\\rTransistorElm\\s39\\s5\\s6\\s\\rResistorElm\\s7\\s40\\rCapacitorElm\\s40\\s8\\rCapacitorElm\\s40\\s5\\rTransistorElm\\s40\\s5\\s8\\s\\rResistorElm\\s5\\s41\\rCapacitorElm\\s41\\s9\\rCapacitorElm\\s41\\s7\\rTransistorElm\\s41\\s7\\s9\\s\\rResistorElm\\s7\\s42\\rCapacitorElm\\s42\\s3\\rCapacitorElm\\s42\\s10\\rTransistorElm\\s42\\s10\\s3\\s\\rResistorElm\\s10\\s43\\rCapacitorElm\\s43\\s11\\rCapacitorElm\\s43\\s3\\rTransistorElm\\s43\\s3\\s11\\s\\rResistorElm\\s10\\s44\\rCapacitorElm\\s44\\s13\\rCapacitorElm\\s44\\s12\\rTransistorElm\\s44\\s12\\s13\\s\\rResistorElm\\s5\\s45\\rCapacitorElm\\s45\\s14\\rCapacitorElm\\s45\\s11\\rTransistorElm\\s45\\s11\\s14\\s\\rResistorElm\\s12\\s46\\rCapacitorElm\\s46\\s11\\rCapacitorElm\\s46\\s15\\rTransistorElm\\s46\\s15\\s11\\s\\rResistorElm\\s5\\s47\\rCapacitorElm\\s47\\s17\\rCapacitorElm\\s47\\s16\\rTransistorElm\\s47\\s16\\s17\\s\\rResistorElm\\s15\\s48\\rCapacitorElm\\s48\\s18\\rCapacitorElm\\s48\\s16\\rTransistorElm\\s48\\s16\\s18\\s\\rResistorElm\\s19\\s49\\rCapacitorElm\\s49\\s16\\rCapacitorElm\\s49\\s3\\rTransistorElm\\s49\\s3\\s16\\s\\rResistorElm\\s20\\s50\\rCapacitorElm\\s50\\s19\\rCapacitorElm\\s50\\s1\\rTransistorElm\\s50\\s1\\s19\\s\\rResistorElm\\s5\\s51\\rCapacitorElm\\s51\\s21\\rCapacitorElm\\s51\\s20\\rTransistorElm\\s51\\s20\\s21\\s\\rResistorElm\\s22\\s52\\rCapacitorElm\\s52\\s20\\rCapacitorElm\\s52\\s3\\rTransistorElm\\s52\\s3\\s20\\s\\rResistorElm\\s23\\s53\\rCapacitorElm\\s53\\s16\\rCapacitorElm\\s53\\s22\\rTransistorElm\\s53\\s22\\s16\\s\\rResistorElm\\s3\\s54\\rCapacitorElm\\s54\\s24\\rCapacitorElm\\s54\\s22\\rTransistorElm\\s54\\s22\\s24\\s\\rResistorElm\\s23\\s55\\rCapacitorElm\\s55\\s16\\rCapacitorElm\\s55\\s23\\rTransistorElm\\s55\\s23\\s16\\s\\rResistorElm\\s3\\s56\\rCapacitorElm\\s56\\s25\\rCapacitorElm\\s56\\s23\\rTransistorElm\\s56\\s23\\s25\\s\\rResistorElm\\s26\\s57\\rCapacitorElm\\s57\\s16\\rCapacitorElm\\s57\\s3\\rTransistorElm\\s57\\s3\\s16\\s\\rResistorElm\\s27\\s58\\rCapacitorElm\\s58\\s3\\rCapacitorElm\\s58\\s26\\rTransistorElm\\s58\\s26\\s3\\s\\rResistorElm\\s28\\s59\\rCapacitorElm\\s59\\s1\\rCapacitorElm\\s59\\s28\\rTransistorElm\\s59\\s28\\s1\\s\\rResistorElm\\s28\\s60\\rCapacitorElm\\s60\\s1\\rCapacitorElm\\s60\\s16\\rTransistorElm\\s60\\s16\\s1\\s\\rResistorElm\\s16\\s61\\rCapacitorElm\\s61\\s29\\rCapacitorElm\\s61\\s28\\rTransistorElm\\s61\\s28\\s29\\s\\rResistorElm\\s31\\s62\\rCapacitorElm\\s62\\s32\\rCapacitorElm\\s62\\s30\\rTransistorElm\\s62\\s30\\s32\\s\\rResistorElm\\s31\\s63\\rCapacitorElm\\s63\\s33\\rCapacitorElm\\s63\\s30\\rTransistorElm\\s63\\s30\\s33\\s\\rResistorElm\\s34\\s64\\rCapacitorElm\\s64\\s35\\rCapacitorElm\\s64\\s1\\rTransistorElm\\s64\\s1\\s35\\s\\rResistorElm\\s35\\s65\\rCapacitorElm\\s65\\s36\\rCapacitorElm\\s65\\s1\\rTransistorElm\\s65\\s1\\s36\\s\\rDiodeElm\\s3\\s4\\rDiodeElm\\s37\\s1\\rDiodeElm\\s32\\s38\\rResistorElm\\s1\\s6\\rResistorElm\\s1\\s9\\rResistorElm\\s1\\s14\\rResistorElm\\s1\\s17\\rResistorElm\\s1\\s21\\rResistorElm\\s4\\s7\\rResistorElm\\s7\\s10\\rResistorElm\\s11\\s12\\rResistorElm\\s8\\s3\\rResistorElm\\s13\\s3\\rResistorElm\\s15\\s3\\rResistorElm\\s18\\s3\\rResistorElm\\s19\\s3\\rResistorElm\\s2\\s24\\rResistorElm\\s24\\s25\\rResistorElm\\s16\\s26\\rResistorElm\\s16\\s31\\rResistorElm\\s29\\s35\\rResistorElm\\s16\\s34\\rResistorElm\\s27\\s30\\rResistorElm\\s30\\s31\\rResistorElm\\s3\\s35\\rResistorElm\\s37\\s38\\rResistorElm\\s33\\s32\\rResistorElm\\s33\\s36\\rResistorElm\\s36\\s3\\rCapacitorElm\\s22\\s3\\rCapacitorElm\\s22\\s2\\rCapacitorElm\\s26\\s27\\rCapacitorElm\\s5\\s3\\rCapacitorElm\\s28\\s3\\rCapacitorElm\\s23\\s3\\r 0\\\\s-7\\\\s0.0001\\s0\\\\s200\\s2\\\\s1.5000000000000002e-13\\\\s0\\\\s0\\s2\\\\s1e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.1\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s200\\s2\\\\s1.5000000000000002e-13\\\\s0\\\\s0\\s2\\\\s1e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.1\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s50\\s2\\\\s4e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A2\\s0\\\\s100\\s2\\\\s3.0000000000000003e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s10\\s2\\\\s3e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A2\\s0\\\\s10\\s2\\\\s3e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s40\\\\s~lm317-qpl-A2\\s0\\\\s50\\s2\\\\s4e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s500\\s2\\\\s4e-13\\\\s0\\\\s0\\s2\\\\s2e-13\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A0.2\\s0\\\\s20\\s2\\\\s1e-11\\\\s0\\\\s0\\s2\\\\s5e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A5\\s0\\\\s2\\s2\\\\s1e-10\\\\s0\\\\s0\\s2\\\\s5e-11\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s80\\\\s~lm317-qnl-A50\\s2\\\\s~lm317-dz\\s2\\\\s~lm317-dz\\s2\\\\s~lm317-dz\\s0\\\\s310\\s0\\\\s310\\s0\\\\s190\\s0\\\\s82\\s0\\\\s5600\\s0\\\\s100000\\s0\\\\s130\\s0\\\\s12400\\s0\\\\s180\\s0\\\\s4100\\s0\\\\s5800\\s0\\\\s72\\s0\\\\s5100\\s0\\\\s12000\\s0\\\\s2400\\s0\\\\s6700\\s0\\\\s12000\\s0\\\\s130\\s0\\\\s370\\s0\\\\s13000\\s0\\\\s400\\s0\\\\s160\\s0\\\\s18000\\s0\\\\s160\\s0\\\\s3\\s0\\\\s0.1\\s2\\\\s3e-11\\\\s0\\\\s0\\s2\\\\s3e-11\\\\s0\\\\s0\\s2\\\\s5e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0', '. ~TL431 0 1 3 3 A 2 0 1 C 1 0 0 ref 3 1 2 ResistorElm\\s3\\s18\\rCapacitorElm\\s18\\s4\\rCapacitorElm\\s18\\s1\\rTransistorElm\\s18\\s1\\s4\\s\\rResistorElm\\s4\\s5\\rResistorElm\\s5\\s6\\rResistorElm\\s5\\s7\\rResistorElm\\s6\\s19\\rCapacitorElm\\s19\\s2\\rCapacitorElm\\s19\\s6\\rTransistorElm\\s19\\s6\\s2\\s\\rResistorElm\\s6\\s20\\rCapacitorElm\\s20\\s8\\rCapacitorElm\\s20\\s7\\rTransistorElm\\s20\\s7\\s8\\s\\rResistorElm\\s8\\s2\\rResistorElm\\s4\\s21\\rCapacitorElm\\s21\\s10\\rCapacitorElm\\s21\\s9\\rTransistorElm\\s21\\s9\\s10\\s\\rResistorElm\\s10\\s11\\rResistorElm\\s7\\s22\\rCapacitorElm\\s22\\s2\\rCapacitorElm\\s22\\s11\\rTransistorElm\\s22\\s11\\s2\\s\\rResistorElm\\s13\\s23\\rCapacitorElm\\s23\\s2\\rCapacitorElm\\s23\\s12\\rTransistorElm\\s23\\s12\\s2\\s\\rResistorElm\\s9\\s24\\rCapacitorElm\\s24\\s14\\rCapacitorElm\\s24\\s9\\rTransistorElm\\s24\\s9\\s14\\s\\rResistorElm\\s9\\s25\\rCapacitorElm\\s25\\s15\\rCapacitorElm\\s25\\s12\\rTransistorElm\\s25\\s12\\s15\\s\\rResistorElm\\s1\\s14\\rResistorElm\\s1\\s15\\rResistorElm\\s12\\s26\\rCapacitorElm\\s26\\s16\\rCapacitorElm\\s26\\s1\\rTransistorElm\\s26\\s1\\s16\\s\\rResistorElm\\s17\\s16\\rResistorElm\\s17\\s27\\rCapacitorElm\\s27\\s2\\rCapacitorElm\\s27\\s1\\rTransistorElm\\s27\\s1\\s2\\s\\rResistorElm\\s17\\s2\\rResistorElm\\s12\\s28\\rCapacitorElm\\s28\\s3\\rCapacitorElm\\s28\\s12\\rTransistorElm\\s28\\s12\\s3\\s\\rDiodeElm\\s2\\s12\\rResistorElm\\s13\\s6\\rDiodeElm\\s2\\s1\\rCapacitorElm\\s1\\s12\\rCapacitorElm\\s7\\s11\\r 0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s3280\\s0\\\\s2400\\s0\\\\s7200\\s0\\\\s33.333333333333336\\s2\\\\s1.2e-12\\\\s0\\\\s0\\s2\\\\s2.4e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A1.2\\s0\\\\s18.18181818181818\\s2\\\\s2.2000000000000003e-12\\\\s0\\\\s0\\s2\\\\s4.400000000000001e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A2.2\\s0\\\\s800\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s4000\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s80\\s2\\\\s5e-13\\\\s0\\\\s0\\s2\\\\s1e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A0.5\\s0\\\\s80\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s3e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s60\\\\s~tl431ed-qp_ed\\s0\\\\s80\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s3e-12\\\\s0\\\\s0\\s0\\\\s-1\\\\s0\\\\s0\\\\s60\\\\s~tl431ed-qp_ed\\s0\\\\s800\\s0\\\\s800\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s0\\\\s150\\s0\\\\s8\\s2\\\\s5e-12\\\\s0\\\\s0\\s2\\\\s1e-11\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed-A5\\s0\\\\s10000\\s0\\\\s40\\s2\\\\s1e-12\\\\s0\\\\s0\\s2\\\\s2e-12\\\\s0\\\\s0\\s0\\\\s1\\\\s0\\\\s0\\\\s140\\\\s~tl431ed-qn_ed\\s2\\\\s~tl431ed-d_ed\\s0\\\\s1000\\s2\\\\s~tl431ed-d_ed\\s2\\\\s1e-11\\\\s0\\\\s0\\s2\\\\s2e-11\\\\s0\\\\s0']);
   for (i = 0; i != models.length; i++) {
     st = new StringTokenizer_0(models[i], ' ');
     $nextToken(st);
@@ -22995,7 +23132,7 @@ function $parseRules(this$static, ei){
         return;
       }
       if (used[x_0 - 97]) {
-        newRl += String.fromCharCode(x_0 + 65 - 97 & $intern_9);
+        newRl += String.fromCharCode(x_0 + 65 - 97 & $intern_8);
         continue;
       }
       used[x_0 - 97] = true;
@@ -23296,7 +23433,7 @@ function CustomTransformerElm_0(xa, ya, xb, yb, f, st){
   $parseDescription(this, this.description, null);
 }
 
-defineClass(450, 8, $intern_86, CustomTransformerElm, CustomTransformerElm_0);
+defineClass(499, 8, $intern_86, CustomTransformerElm, CustomTransformerElm_0);
 _.calculateCurrent = function calculateCurrent_8(){
   var i, j, n, ni, val, voltdiff;
   for (i = 0; i != this.nodeCount; i++)
@@ -23563,7 +23700,7 @@ _.needDots = false;
 _.nodeCount = 0;
 _.primaryCoils = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_CustomTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CustomTransformerElm', 450);
+var Lcom_lushprojects_circuitjs1_client_CustomTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CustomTransformerElm', 499);
 function $setupPins_8(this$static){
   var bitsY;
   this$static.sizeX = 2;
@@ -23587,7 +23724,7 @@ function DACElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(488, 17, $intern_86, DACElm, DACElm_0);
+defineClass(446, 17, $intern_86, DACElm, DACElm_0);
 _.allowBus = function allowBus_4(){
   return true;
 }
@@ -23648,7 +23785,7 @@ _.setupPins = function setupPins_11(){
   $setupPins_8(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_DACElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DACElm', 488);
+var Lcom_lushprojects_circuitjs1_client_DACElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DACElm', 446);
 function $$init_5(this$static){
   this$static.voltSources = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_VoltageSource_2_classLit, $intern_3, 136, 2, 0, 1);
 }
@@ -23705,7 +23842,7 @@ function drawThickerLine(g, pa, pb){
   g.context.lineWidth = 1;
 }
 
-defineClass(459, 8, $intern_86, DCMotorElm, DCMotorElm_0);
+defineClass(468, 8, $intern_86, DCMotorElm, DCMotorElm_0);
 _.calculateCurrent = function calculateCurrent_9(){
   this.coilCurrent = $calculateCurrent_4(this.ind, this.volts[0] - this.volts[2]);
   this.inertiaCurrent = $calculateCurrent_4(this.indInertia, this.volts[4] - this.volts[5]);
@@ -23886,7 +24023,7 @@ _.inertiaCurrent = 0;
 _.resistance = 0;
 _.speed = 0;
 _.tau = 0;
-var Lcom_lushprojects_circuitjs1_client_DCMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DCMotorElm', 459);
+var Lcom_lushprojects_circuitjs1_client_DCMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DCMotorElm', 468);
 function DCVoltageElm(xx, yy){
   VoltageElm.call(this, xx, yy, 0);
 }
@@ -23939,7 +24076,7 @@ function DFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.justLoaded = true;
 }
 
-defineClass(489, 17, $intern_86, DFlipFlopElm, DFlipFlopElm_0);
+defineClass(424, 17, $intern_86, DFlipFlopElm, DFlipFlopElm_0);
 _.execute_3 = function execute_21(){
   var isReset, isSet;
   if (this.justLoaded) {
@@ -24032,7 +24169,7 @@ _.setupPins = function setupPins_12(){
 }
 ;
 _.justLoaded = false;
-var Lcom_lushprojects_circuitjs1_client_DFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DFlipFlopElm', 489);
+var Lcom_lushprojects_circuitjs1_client_DFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DFlipFlopElm', 424);
 function $flip(this$static){
   this$static.dx == 0 && (this$static.x_0 = this$static.x2 = this$static.x_0 - round_int(this$static.dpx1 * 16 * 3));
   this$static.dy == 0 && (this$static.y_0 = this$static.y2 = this$static.y_0 - round_int(this$static.dpy1 * 16 * 3));
@@ -24083,7 +24220,7 @@ function DPDTSwitchElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(396, 46, $intern_103, DPDTSwitchElm, DPDTSwitchElm_0);
+defineClass(474, 46, $intern_103, DPDTSwitchElm, DPDTSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_10(){
   var i;
   if (this.resistance > 0)
@@ -24289,7 +24426,7 @@ _.validate = function validate_9(){
 }
 ;
 _.poleCount = 0;
-var Lcom_lushprojects_circuitjs1_client_DPDTSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DPDTSwitchElm', 396);
+var Lcom_lushprojects_circuitjs1_client_DPDTSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DPDTSwitchElm', 474);
 function $clinit_DarlingtonElm(){
   $clinit_DarlingtonElm = emptyMethod;
   modelExternalNodes_1 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [1, 2, 3]);
@@ -24630,13 +24767,13 @@ function DataInputElm$1(this$0, val$file, val$thisElm){
   this.val$thisElm3 = val$thisElm;
 }
 
-defineClass(872, 1, $intern_71, DataInputElm$1);
+defineClass(875, 1, $intern_71, DataInputElm$1);
 _.onChange = function onChange_1(event_0){
   this.this$01.fileName = $replaceAll($replaceAll($getElement(this.val$file2).value, '^.*\\\\', ''), '\\.[^.]*$', '');
   fetchLoadFileData_0(this.val$thisElm3, $getElement(this.val$file2));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_DataInputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataInputElm/1', 872);
+var Lcom_lushprojects_circuitjs1_client_DataInputElm$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataInputElm/1', 875);
 function $setDataCount_0(this$static, ct){
   this$static.dataCount = ct;
   this$static.data_0 = initUnidimensionalArray(D_classLit, $intern_76, 7, this$static.dataCount, 15, 1);
@@ -24654,7 +24791,7 @@ function DataRecorderElm_0(xa, ya, xb, yb, f, st){
   $setDataCount_0(this, __parseAndValidateInt($nextToken(st), 10));
 }
 
-defineClass(468, 8, $intern_86, DataRecorderElm, DataRecorderElm_0);
+defineClass(471, 8, $intern_86, DataRecorderElm, DataRecorderElm_0);
 _.draw = function draw_24(g){
   var f, s, selected;
   g.context.save();
@@ -24764,7 +24901,7 @@ _.dataCount = 0;
 _.dataFull = false;
 _.dataPtr = 0;
 _.lastTimeStepCount = 0;
-var Lcom_lushprojects_circuitjs1_client_DataRecorderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataRecorderElm', 468);
+var Lcom_lushprojects_circuitjs1_client_DataRecorderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataRecorderElm', 471);
 function $readSelectValue(this$static){
   var i, sel;
   sel = 0;
@@ -24888,7 +25025,7 @@ function DeMultiplexerElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(463, 17, $intern_86, DeMultiplexerElm, DeMultiplexerElm_0);
+defineClass(413, 17, $intern_86, DeMultiplexerElm, DeMultiplexerElm_0);
 _.dumpXml = function dumpXml_27(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_0(elem, 'se', this.selectBitCount);
@@ -25015,7 +25152,7 @@ _.outputMode = 0;
 _.outputPin = 0;
 _.selectBitCount = 0;
 _.selectPin = 0;
-var Lcom_lushprojects_circuitjs1_client_DeMultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DeMultiplexerElm', 463);
+var Lcom_lushprojects_circuitjs1_client_DeMultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DeMultiplexerElm', 413);
 function $setupPins_11(this$static){
   this$static.sizeX = 3;
   this$static.sizeY = this$static.bitOrder == 2?2:this$static.bitCount;
@@ -25047,7 +25184,7 @@ function DecimalDisplayElm_0(xa, ya, xb, yb, f, st){
   $setupPins_11(this);
 }
 
-defineClass(490, 17, $intern_86, DecimalDisplayElm, DecimalDisplayElm_0);
+defineClass(456, 17, $intern_86, DecimalDisplayElm, DecimalDisplayElm_0);
 _.allowBus = function allowBus_5(){
   return true;
 }
@@ -25160,7 +25297,7 @@ _.undumpXml = function undumpXml_30(xml){
 ;
 _.bitCount = 0;
 _.displayMode = 0;
-var Lcom_lushprojects_circuitjs1_client_DecimalDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DecimalDisplayElm', 490);
+var Lcom_lushprojects_circuitjs1_client_DecimalDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DecimalDisplayElm', 456);
 function DelayBufferElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.noDiagonal = true;
@@ -25185,7 +25322,7 @@ function DelayBufferElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(423, 8, $intern_86, DelayBufferElm, DelayBufferElm_0);
+defineClass(430, 8, $intern_86, DelayBufferElm, DelayBufferElm_0);
 _.doStep = function doStep_18(){
   var inState, outState;
   inState = this.volts[0] > this.threshold;
@@ -25304,7 +25441,7 @@ _.delay = 0;
 _.delayEndTime = 0;
 _.highVoltage = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_DelayBufferElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DelayBufferElm', 423);
+var Lcom_lushprojects_circuitjs1_client_DelayBufferElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DelayBufferElm', 430);
 function $createDiodes(this$static){
   this$static.diode1 = new Diode(sim_0);
   this$static.diode2 = new Diode(sim_0);
@@ -25331,7 +25468,7 @@ function DiacElm_0(xa, ya, xb, yb, f, st){
   $createDiodes(this);
 }
 
-defineClass(425, 8, $intern_86, DiacElm, DiacElm_0);
+defineClass(395, 8, $intern_86, DiacElm, DiacElm_0);
 _.calculateCurrent = function calculateCurrent_11(){
   var r;
   r = this.state?this.onresistance:this.offresistance;
@@ -25429,7 +25566,7 @@ _.setPoints = function setPoints_24(){
   this.plate2 = $newPointArray(2);
   $interpPoint2(this.lead1, this.lead2, this.plate1[0], this.plate1[1], 0, 16);
   $interpPoint2(this.lead1, this.lead2, this.plate2[0], this.plate2[1], 1, 16);
-  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 213, 2, 0, 1);
+  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 209, 2, 0, 1);
   for (i = 0; i != 2; i++) {
     sgn = -1 + i * 2;
     p1 = $interpPoint_0(this.lead1, this.lead2, i, 8 * sgn);
@@ -25464,7 +25601,7 @@ _.holdcurrent = 0;
 _.offresistance = 0;
 _.onresistance = 0;
 _.state = false;
-var Lcom_lushprojects_circuitjs1_client_DiacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DiacElm', 425);
+var Lcom_lushprojects_circuitjs1_client_DiacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DiacElm', 395);
 function $closeDialog(this$static){
   $hide_0(this$static, false);
   dialogShowing == this$static && (dialogShowing = null);
@@ -25613,7 +25750,7 @@ function $getEditInfo_2(this$static, n){
   var dm, ei, i;
   if (n == 0) {
     ei = new EditInfo_0('Model', 0, -1, -1);
-    this$static.models = getModelList_0(instanceOf(this$static, 296));
+    this$static.models = getModelList_0(instanceOf(this$static, 292));
     ei.choice = new Choice;
     for (i = 0; i != this$static.models.arrayList.array.length; i++) {
       dm = $get_4(this$static.models, i);
@@ -26193,7 +26330,7 @@ function EGTAbzweigdoseElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(432, 112, {8:1, 48:1, 11:1, 112:1}, EGTAbzweigdoseElm, EGTAbzweigdoseElm_0);
+defineClass(404, 112, {8:1, 48:1, 11:1, 112:1}, EGTAbzweigdoseElm, EGTAbzweigdoseElm_0);
 _.creationFailed = function creationFailed_1(){
   return $wnd.Math.abs(this.x2 - this.x_0) < 32 || $wnd.Math.abs(this.y2 - this.y_0) < 32;
 }
@@ -26333,7 +26470,7 @@ _.undumpXml = function undumpXml_34(xml){
   this.note = undumpXml_60(xml, this.note);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTAbzweigdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAbzweigdoseElm', 432);
+var Lcom_lushprojects_circuitjs1_client_EGTAbzweigdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAbzweigdoseElm', 404);
 function $reset_3(this$static){
   this$static.avgAbs = 0;
   this$static.on = false;
@@ -26373,11 +26510,11 @@ function $update_0(this$static, instantV, dt){
 function EGTAcLevelHold(){
 }
 
-defineClass(294, 1, {294:1}, EGTAcLevelHold);
+defineClass(297, 1, {297:1}, EGTAcLevelHold);
 _.avgAbs = 0;
 _.lowForS = 0;
 _.on = false;
-var Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAcLevelHold', 294);
+var Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAcLevelHold', 297);
 function $clinit_EGTAusschalterElm(){
   $clinit_EGTAusschalterElm = emptyMethod;
   COL_OPEN = new Color(255, 179, 71);
@@ -26546,7 +26683,7 @@ function EGTAusschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(497, 46, $intern_120, EGTAusschalterElm, EGTAusschalterElm_0);
+defineClass(491, 46, $intern_120, EGTAusschalterElm, EGTAusschalterElm_0);
 _.calculateCurrent = function calculateCurrent_13(){
   var r;
   if ((this.flags & $intern_43) != 0 || this.position == 1) {
@@ -26717,7 +26854,7 @@ _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
 var COL_OPEN;
-var Lcom_lushprojects_circuitjs1_client_EGTAusschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAusschalterElm', 497);
+var Lcom_lushprojects_circuitjs1_client_EGTAusschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAusschalterElm', 491);
 function $$init_8(this$static){
   this$static.designation = 'B1';
   this$static.note = '';
@@ -26834,7 +26971,7 @@ function $tickTimer(this$static){
     return;
   }
   if (running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
     this$static.waitAccum += dt;
@@ -26910,7 +27047,7 @@ function EGTBewegungsmelderElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(291, 17, {8:1, 291:1, 48:1, 11:1}, EGTBewegungsmelderElm, EGTBewegungsmelderElm_0);
+defineClass(287, 17, {8:1, 287:1, 48:1, 11:1}, EGTBewegungsmelderElm, EGTBewegungsmelderElm_0);
 _.calculateCurrent = function calculateCurrent_14(){
   clearPinCurrents(this.pins);
   this.supplyCurrent = (this.volts[0] - this.volts[1]) / this.resistance;
@@ -27117,7 +27254,7 @@ _.supplyCurCount = 0;
 _.supplyCurrent = 0;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTBewegungsmelderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTBewegungsmelderElm', 291);
+var Lcom_lushprojects_circuitjs1_client_EGTBewegungsmelderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTBewegungsmelderElm', 287);
 function assignOnPlace(ce){
   var cur, d, h, inherited, k;
   if (!instanceOf(ce, 48))
@@ -27362,8 +27499,8 @@ function getUnitTextRPM(v, u){
   if (va < $intern_84)
     return $format_0(nf, v * $intern_85) + ' ' + muString + u;
   if (va < 1)
-    return $format_0(nf, v * $intern_8) + ' ' + 'm' + u;
-  if (va < $intern_8)
+    return $format_0(nf, v * $intern_23) + ' ' + 'm' + u;
+  if (va < $intern_23)
     return $format_0(nf, v) + ' ' + u;
   if (va < $intern_85)
     return $format_0(nf, v * $intern_84) + ' ' + 'k' + u;
@@ -27374,7 +27511,7 @@ function getUnitTextRPM(v, u){
   return $format_0(new NumberFormat_0('#.##E000', $getDefaultNative()), v) + ' ' + u;
 }
 
-defineClass(289, 8, $intern_86, ThreePhaseMotorElm, ThreePhaseMotorElm_0);
+defineClass(288, 8, $intern_86, ThreePhaseMotorElm, ThreePhaseMotorElm_0);
 _.calculateCurrent = function calculateCurrent_15(){
   var i, j, n1, n2, ni, val, voltdiff;
   if (this.nodeCurrents == null)
@@ -27627,7 +27764,7 @@ _.filteredSpeed = 0;
 _.speed = 0;
 _.vs1value = 0;
 _.vs2value = 0;
-var Lcom_lushprojects_circuitjs1_client_ThreePhaseMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThreePhaseMotorElm', 289);
+var Lcom_lushprojects_circuitjs1_client_ThreePhaseMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThreePhaseMotorElm', 288);
 function $clinit_EGTDrehstrommotorElm(){
   $clinit_EGTDrehstrommotorElm = emptyMethod;
   COL_ACCENT = new Color(74, 158, 255);
@@ -27984,7 +28121,7 @@ function relClose(a, b){
   return $wnd.Math.abs(a - b) / b < $intern_109;
 }
 
-defineClass(422, 289, $intern_128, EGTDrehstrommotorElm, EGTDrehstrommotorElm_0);
+defineClass(440, 288, $intern_128, EGTDrehstrommotorElm, EGTDrehstrommotorElm_0);
 _.draw = function draw_32(g){
   var cx, cy, dir_0, extra, i, labelSize, ntxt, r, rr, stTxt, stroke, subSize, tw, tx, ty, wireTxt;
   $setBbox_0(this, this.point1, this.point2, this.cr);
@@ -28133,10 +28270,11 @@ _.getEditInfo = function getEditInfo_30(n){
 _.getInfo_0 = function getInfo_39(arr){
   var iLine, rpm;
   arr[0] = LS('EGT-Drehstrommotor');
-  $getBasicInfo(this, arr);
+  arr[1] = 'I = ' + getUnitText($wnd.Math.abs(this.current_0), 'A', false);
+  arr[2] = 'Vd = ' + getUnitText($wnd.Math.abs(this.volts[0] - this.volts[1]), 'V', false);
   arr[3] = LS('Zustand') + ' = ' + $statusText(this);
   arr[4] = LS('Klemmung') + ' = ' + $wiringHintText(this);
-  arr[5] = LS('Nennleistung') + ' = ' + getUnitText(this.ratedKw * $intern_8, LS('W'), false) + ', \u03B7 = ' + toInt_0(fromDouble_0($wnd.Math.round(clampEta(this.eta) * 100))) + ' %' + ', In \u2248 ' + getUnitText(this.ratedKw * $intern_8 / ($wnd.Math.sqrt(3) * 400 * clampEta(this.eta) * 0.8), 'A', false);
+  arr[5] = LS('Nennleistung') + ' = ' + getUnitText(this.ratedKw * $intern_23, LS('W'), false) + ', \u03B7 = ' + toInt_0(fromDouble_0($wnd.Math.round(clampEta(this.eta) * 100))) + ' %' + ', In \u2248 ' + getUnitText(this.ratedKw * $intern_23 / ($wnd.Math.sqrt(3) * 400 * clampEta(this.eta) * 0.8), 'A', false);
   iLine = this.envIu;
   this.envIv > iLine && (iLine = this.envIv);
   this.envIw > iLine && (iLine = this.envIw);
@@ -28258,11 +28396,11 @@ _.ratedKw = 0;
 _.showAdvanced = false;
 _.skipAdvancedThisApply = false;
 var COL_ACCENT, COL_IDLE;
-var Lcom_lushprojects_circuitjs1_client_EGTDrehstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstrommotorElm', 422);
+var Lcom_lushprojects_circuitjs1_client_EGTDrehstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstrommotorElm', 440);
 function $clinit_EGTDrehstromquelleElm(){
   $clinit_EGTDrehstromquelleElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE']);
+  PIN_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE']);
   PIN_COLORS = stampJavaTypeInfo(getClassLiteralForArray(Lcom_lushprojects_circuitjs1_client_Color_2_classLit, 1), $intern_3, 21, 0, [($clinit_EGTStyle() , COL_L1), COL_L2, COL_L3, COL_N, null]);
 }
 
@@ -28323,7 +28461,7 @@ function EGTDrehstromquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(421, 17, $intern_128, EGTDrehstromquelleElm, EGTDrehstromquelleElm_0);
+defineClass(463, 17, $intern_128, EGTDrehstromquelleElm, EGTDrehstromquelleElm_0);
 _.doStep = function doStep_23(){
   var i;
   for (i = 0; i < 3; i++)
@@ -28458,7 +28596,7 @@ _.undumpXml = function undumpXml_39(xml){
 _.frequency = 0;
 _.voltageRMS = 0;
 var PIN_COLORS, PIN_LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTDrehstromquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstromquelleElm', 421);
+var Lcom_lushprojects_circuitjs1_client_EGTDrehstromquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstromquelleElm', 463);
 function $clinit_EGTFupOperandElm(){
   $clinit_EGTFupOperandElm = emptyMethod;
   $clinit_ChipElm();
@@ -28852,7 +28990,7 @@ function EGTFupAusgangElm_0(xa, ya, xb, yb, f, st){
   EGTFupOperandElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(408, 149, $intern_131, EGTFupAusgangElm, EGTFupAusgangElm_0);
+defineClass(407, 149, $intern_131, EGTFupAusgangElm, EGTFupAusgangElm_0);
 _.getDumpType = function getDumpType_48(){
   return 468;
 }
@@ -28865,7 +29003,7 @@ _.isInputOperand = function isInputOperand(){
   return false;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupAusgangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupAusgangElm', 408);
+var Lcom_lushprojects_circuitjs1_client_EGTFupAusgangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupAusgangElm', 407);
 function $addBtn(this$static, svg, label_0, title_0, cls){
   var b, ic, ics, st, ts, tx;
   b = new FlowPanel;
@@ -28954,38 +29092,38 @@ function lambda$1(b_0){
   ($clinit_DOM() , b_0.element).style['backgroundColor'] = 'transparent';
 }
 
-defineClass(715, 196, $intern_54, EGTFupBar);
-var Lcom_lushprojects_circuitjs1_client_EGTFupBar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar', 715);
+defineClass(718, 196, $intern_54, EGTFupBar);
+var Lcom_lushprojects_circuitjs1_client_EGTFupBar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar', 718);
 function EGTFupBar$1(val$cls){
   this.val$cls2 = val$cls;
 }
 
-defineClass(718, 1, $intern_56, EGTFupBar$1);
+defineClass(721, 1, $intern_56, EGTFupBar$1);
 _.onClick = function onClick_2(event_0){
   $execute_0(new MyCommand('main', this.val$cls2));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupBar$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/1', 718);
+var Lcom_lushprojects_circuitjs1_client_EGTFupBar$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/1', 721);
 function EGTFupBar$lambda$0$Type(b_0){
   this.b_0 = b_0;
 }
 
-defineClass(716, 1, $intern_132, EGTFupBar$lambda$0$Type);
+defineClass(719, 1, $intern_132, EGTFupBar$lambda$0$Type);
 _.onMouseOver = function onMouseOver_0(arg0){
   lambda$0(this.b_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupBar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/lambda$0$Type', 716);
+var Lcom_lushprojects_circuitjs1_client_EGTFupBar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/lambda$0$Type', 719);
 function EGTFupBar$lambda$1$Type(b_0){
   this.b_0 = b_0;
 }
 
-defineClass(717, 1, $intern_133, EGTFupBar$lambda$1$Type);
+defineClass(720, 1, $intern_133, EGTFupBar$lambda$1$Type);
 _.onMouseOut = function onMouseOut_0(arg0){
   lambda$1(this.b_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupBar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/lambda$1$Type', 717);
+var Lcom_lushprojects_circuitjs1_client_EGTFupBar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupBar/lambda$1$Type', 720);
 function EGTFupEingangElm(xx, yy){
   $clinit_EGTFupOperandElm();
   EGTFupOperandElm.call(this, xx, yy);
@@ -28996,7 +29134,7 @@ function EGTFupEingangElm_0(xa, ya, xb, yb, f, st){
   EGTFupOperandElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(287, 149, {8:1, 287:1, 149:1, 11:1}, EGTFupEingangElm, EGTFupEingangElm_0);
+defineClass(281, 149, {8:1, 281:1, 149:1, 11:1}, EGTFupEingangElm, EGTFupEingangElm_0);
 _.getDumpType = function getDumpType_49(){
   return 467;
 }
@@ -29009,7 +29147,7 @@ _.isInputOperand = function isInputOperand_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupEingangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupEingangElm', 287);
+var Lcom_lushprojects_circuitjs1_client_EGTFupEingangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupEingangElm', 281);
 function $clinit_EGTFupZeitElm(){
   $clinit_EGTFupZeitElm = emptyMethod;
   $clinit_ChipElm();
@@ -29022,7 +29160,7 @@ function $addWallTime(this$static, timing){
   now_0 = ($clinit_System() , fromDouble_0(Date.now()));
   running = !!app_0 && app_0.ui.app.simRunning;
   if (timing && running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
     this$static.elapsed += dt;
@@ -29093,7 +29231,7 @@ function EGTFupZeitElm_0(xa, ya, xb, yb, f, st){
   $initGeometry(this);
 }
 
-defineClass(288, 17, $intern_86);
+defineClass(289, 17, $intern_86);
 _.drag = function drag_6(xx, yy){
   $syncEndpoints_1(this);
 }
@@ -29267,7 +29405,7 @@ _.delay = 0;
 _.elapsed = 0;
 _.lastWallMs = 0;
 var COL_HI_0, COL_LO;
-var Lcom_lushprojects_circuitjs1_client_EGTFupZeitElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupZeitElm', 288);
+var Lcom_lushprojects_circuitjs1_client_EGTFupZeitElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupZeitElm', 289);
 function EGTFupTofElm(xx, yy){
   $clinit_EGTFupZeitElm();
   EGTFupZeitElm.call(this, xx, yy);
@@ -29278,7 +29416,7 @@ function EGTFupTofElm_0(xa, ya, xb, yb, f, st){
   EGTFupZeitElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(420, 288, $intern_86, EGTFupTofElm, EGTFupTofElm_0);
+defineClass(459, 289, $intern_86, EGTFupTofElm, EGTFupTofElm_0);
 _.getDumpType = function getDumpType_50(){
   return 477;
 }
@@ -29291,7 +29429,7 @@ _.isOnDelay = function isOnDelay(){
   return false;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupTofElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTofElm', 420);
+var Lcom_lushprojects_circuitjs1_client_EGTFupTofElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTofElm', 459);
 function EGTFupTonElm(xx, yy){
   $clinit_EGTFupZeitElm();
   EGTFupZeitElm.call(this, xx, yy);
@@ -29302,7 +29440,7 @@ function EGTFupTonElm_0(xa, ya, xb, yb, f, st){
   EGTFupZeitElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(419, 288, $intern_86, EGTFupTonElm, EGTFupTonElm_0);
+defineClass(458, 289, $intern_86, EGTFupTonElm, EGTFupTonElm_0);
 _.getDumpType = function getDumpType_51(){
   return 476;
 }
@@ -29315,11 +29453,11 @@ _.isOnDelay = function isOnDelay_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupTonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTonElm', 419);
+var Lcom_lushprojects_circuitjs1_client_EGTFupTonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTonElm', 458);
 function $clinit_EGTGleichspannungsquelleElm(){
   $clinit_EGTGleichspannungsquelleElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['+', '\u2212']);
+  PIN_LABELS_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['+', '\u2212']);
 }
 
 function $$init_13(this$static){
@@ -29369,7 +29507,7 @@ function EGTGleichspannungsquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(499, 17, $intern_128, EGTGleichspannungsquelleElm, EGTGleichspannungsquelleElm_0);
+defineClass(465, 17, $intern_128, EGTGleichspannungsquelleElm, EGTGleichspannungsquelleElm_0);
 _.doStep = function doStep_25(){
   $updateVoltageSource(this.pins[0].voltSource, this.voltage);
   $updateVoltageSource(this.pins[1].voltSource, 0);
@@ -29489,7 +29627,7 @@ _.undumpXml = function undumpXml_42(xml){
 ;
 _.voltage = 0;
 var PIN_LABELS_0;
-var Lcom_lushprojects_circuitjs1_client_EGTGleichspannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichspannungsquelleElm', 499);
+var Lcom_lushprojects_circuitjs1_client_EGTGleichspannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichspannungsquelleElm', 465);
 function $clinit_EGTGleichstrommotorElm(){
   $clinit_EGTGleichstrommotorElm = emptyMethod;
   $clinit_ChipElm();
@@ -29781,7 +29919,7 @@ function EGTGleichstrommotorElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(401, 17, $intern_128, EGTGleichstrommotorElm, EGTGleichstrommotorElm_0);
+defineClass(421, 17, $intern_128, EGTGleichstrommotorElm, EGTGleichstrommotorElm_0);
 _.calculateCurrent = function calculateCurrent_16(){
   clearPinCurrents(this.pins);
   if (this.resistance <= 0) {
@@ -29985,14 +30123,14 @@ _.nom_v = 0;
 _.resistance = 0;
 _.speed = 0;
 var COL_ACCENT_0, COL_IDLE_0;
-var Lcom_lushprojects_circuitjs1_client_EGTGleichstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichstrommotorElm', 401);
+var Lcom_lushprojects_circuitjs1_client_EGTGleichstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichstrommotorElm', 421);
 function $clinit_EGTHilfsschalterblockElm(){
   $clinit_EGTHilfsschalterblockElm = emptyMethod;
   $clinit_ChipElm();
-  NO_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['13', '33', '53', '73']);
-  NO_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['14', '34', '54', '74']);
-  NC_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['21', '31', '41', '51']);
-  NC_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['22', '32', '42', '52']);
+  NO_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['13', '33', '53', '73']);
+  NO_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['14', '34', '54', '74']);
+  NC_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['21', '31', '41', '51']);
+  NC_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['22', '32', '42', '52']);
 }
 
 function $$init_15(this$static){
@@ -30174,7 +30312,7 @@ function EGTHilfsschalterblockElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(254, 17, {8:1, 48:1, 254:1, 11:1}, EGTHilfsschalterblockElm, EGTHilfsschalterblockElm_0);
+defineClass(256, 17, {8:1, 48:1, 256:1, 11:1}, EGTHilfsschalterblockElm, EGTHilfsschalterblockElm_0);
 _.calculateCurrent = function calculateCurrent_17(){
   var en, i;
   clearPinCurrents(this.pins);
@@ -30361,14 +30499,14 @@ _.undumpXml = function undumpXml_44(xml){
 _.nNc = 0;
 _.nNo = 0;
 var NC_BOT, NC_TOP, NO_BOT, NO_TOP;
-var Lcom_lushprojects_circuitjs1_client_EGTHilfsschalterblockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschalterblockElm', 254);
+var Lcom_lushprojects_circuitjs1_client_EGTHilfsschalterblockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschalterblockElm', 256);
 function $clinit_EGTHilfsschuetzElm(){
   $clinit_EGTHilfsschuetzElm = emptyMethod;
   $clinit_ChipElm();
-  NO_TOP_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['13', '33', '53', '73']);
-  NO_BOT_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['14', '34', '54', '74']);
-  NC_TOP_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['21', '31', '41', '51']);
-  NC_BOT_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['22', '32', '42', '52']);
+  NO_TOP_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['13', '33', '53', '73']);
+  NO_BOT_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['14', '34', '54', '74']);
+  NC_TOP_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['21', '31', '41', '51']);
+  NC_BOT_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['22', '32', '42', '52']);
 }
 
 function $$init_16(this$static){
@@ -30597,7 +30735,7 @@ function EGTHilfsschuetzElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(257, 17, {8:1, 48:1, 257:1, 342:1, 11:1}, EGTHilfsschuetzElm, EGTHilfsschuetzElm_0);
+defineClass(254, 17, {8:1, 48:1, 254:1, 342:1, 11:1}, EGTHilfsschuetzElm, EGTHilfsschuetzElm_0);
 _.calculateCurrent = function calculateCurrent_18(){
   var i, iNom;
   this.current_0 = $calculateCurrent_3(this.coilL, this.volts[0], this.volts[2 + (this.nNo + this.nNc) * 2]);
@@ -30866,7 +31004,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var NC_BOT_0, NC_TOP_0, NO_BOT_0, NO_TOP_0;
-var Lcom_lushprojects_circuitjs1_client_EGTHilfsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschuetzElm', 257);
+var Lcom_lushprojects_circuitjs1_client_EGTHilfsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschuetzElm', 254);
 function ExtVoltageElm(xx, yy){
   RailElm_0.call(this, xx, yy, 1);
   this.name_0 = 'ext';
@@ -30949,7 +31087,7 @@ function EGTHmiGeberElm_0(xa, ya, xb, yb, f, st){
   this.funktion = $hasMoreTokens(st)?unescape_0($nextToken(st)):'';
 }
 
-defineClass(418, 205, {8:1, 48:1, 11:1, 205:1, 52:1, 57:1}, EGTHmiGeberElm, EGTHmiGeberElm_0);
+defineClass(425, 205, {8:1, 48:1, 11:1, 205:1, 52:1, 57:1}, EGTHmiGeberElm, EGTHmiGeberElm_0);
 _.draw = function draw_33(g){
   var addr, anchor, boxW, bx, by, dir_0, dx, dy, fkt, fx1, fx2, fy1, fy2, hi, ledX, ledY, len, t, tx, tx2, ty, ux, uy, vertical, wAddr, wFkt;
   g.context.save();
@@ -31106,7 +31244,7 @@ _.undumpXml = function undumpXml_47(xml){
 }
 ;
 var COL_HI_1, COL_LED_OFF;
-var Lcom_lushprojects_circuitjs1_client_EGTHmiGeberElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiGeberElm', 418);
+var Lcom_lushprojects_circuitjs1_client_EGTHmiGeberElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiGeberElm', 425);
 function $$init_17(this$static){
   this$static.busWidth = 1;
 }
@@ -31421,7 +31559,7 @@ function EGTHmiLastElm_0(xa, ya, xb, yb, f, st){
   this.flags |= 4;
 }
 
-defineClass(452, 164, {8:1, 48:1, 11:1, 164:1}, EGTHmiLastElm, EGTHmiLastElm_0);
+defineClass(432, 164, {8:1, 48:1, 11:1, 164:1}, EGTHmiLastElm, EGTHmiLastElm_0);
 _.draw = function draw_35(g){
   var addr, anchor, boxW, bx, by, dir_0, dx, dy, fkt, fx1, fx2, fy1, fy2, hi, ledX, ledY, len, t, tx, tx2, ty, ux, uy, vertical, wAddr, wFkt;
   g.context.save();
@@ -31581,7 +31719,7 @@ _.undumpXml = function undumpXml_49(xml){
 ;
 _.lastHiT = 0;
 var COL_HI_2, COL_LED_OFF_0;
-var Lcom_lushprojects_circuitjs1_client_EGTHmiLastElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiLastElm', 452);
+var Lcom_lushprojects_circuitjs1_client_EGTHmiLastElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiLastElm', 432);
 function $$init_19(this$static){
   this$static.busWidth = 1;
 }
@@ -31704,7 +31842,7 @@ function pointOnWireInteriorForPoints(px, py, pts){
   return false;
 }
 
-defineClass(85, 8, {8:1, 11:1, 85:1}, WireElm, WireElm_0);
+defineClass(86, 8, {8:1, 11:1, 86:1}, WireElm, WireElm_0);
 _.draw = function draw_36(g){
   var i, s, value_0, number;
   if (this.currents != null) {
@@ -31824,12 +31962,12 @@ _.stamp = function stamp_34(){
 }
 ;
 _.busWidth = 0;
-var Lcom_lushprojects_circuitjs1_client_WireElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WireElm', 85);
+var Lcom_lushprojects_circuitjs1_client_WireElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WireElm', 86);
 function $clinit_EGTLeitungElm(){
   $clinit_EGTLeitungElm = emptyMethod;
-  ROLE_NAMES = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE', 'Beliebige Farbe']);
-  ROLE_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE', 'L']);
-  ROLE_MENU = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L1  Braun', 'L2  Schwarz', 'L3  Grau', 'N  Blau', 'PE  Gr\xFCn-Gelb', 'Beliebige Farbe']);
+  ROLE_NAMES = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE', 'Beliebige Farbe']);
+  ROLE_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L1', 'L2', 'L3', 'N', 'PE', 'L']);
+  ROLE_MENU = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L1  Braun', 'L2  Schwarz', 'L3  Grau', 'N  Blau', 'PE  Gr\xFCn-Gelb', 'Beliebige Farbe']);
 }
 
 function $$init_20(this$static){
@@ -32221,7 +32359,7 @@ function setPendingLeiterArt(art){
   pendingLeiterArt = safeRole(art);
 }
 
-defineClass(147, 85, $intern_136, EGTLeitungElm, EGTLeitungElm_0);
+defineClass(147, 86, $intern_136, EGTLeitungElm, EGTLeitungElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_8(router){
   var a, b, i;
   if (!this.routePoints || this.routePoints.array.length < 2) {
@@ -32738,7 +32876,7 @@ function EGTInstallationsleitungElm_0(xa, ya, xb, yb, f, st){
   this.flags &= -65537;
 }
 
-defineClass(402, 147, $intern_136, EGTInstallationsleitungElm, EGTInstallationsleitungElm_0);
+defineClass(403, 147, $intern_136, EGTInstallationsleitungElm, EGTInstallationsleitungElm_0);
 _.doDots = function doDots_1(g){
 }
 ;
@@ -32784,11 +32922,11 @@ _.setEditValue = function setEditValue_38(n, ei){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTInstallationsleitungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTInstallationsleitungElm', 402);
+var Lcom_lushprojects_circuitjs1_client_EGTInstallationsleitungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTInstallationsleitungElm', 403);
 function $clinit_EGTKlingelElm(){
   $clinit_EGTKlingelElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_1 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L', 'N']);
+  PIN_LABELS_1 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L', 'N']);
 }
 
 function $$init_21(this$static){
@@ -32942,7 +33080,7 @@ function EGTKlingelElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(486, 17, $intern_128, EGTKlingelElm, EGTKlingelElm_0);
+defineClass(475, 17, $intern_128, EGTKlingelElm, EGTKlingelElm_0);
 _.calculateCurrent = function calculateCurrent_20(){
   clearPinCurrents(this.pins);
   if ((this.flags & $intern_43) != 0 || this.resistance <= 0) {
@@ -33135,7 +33273,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var PIN_LABELS_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKlingelElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKlingelElm', 486);
+var Lcom_lushprojects_circuitjs1_client_EGTKlingelElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKlingelElm', 475);
 function $clinit_EGTKondensatormotorElm(){
   $clinit_EGTKondensatormotorElm = emptyMethod;
   $clinit_ChipElm();
@@ -33325,7 +33463,7 @@ function EGTKondensatormotorElm_0(xa, ya, xb, yb, f, st){
   $setPoints_0(this);
 }
 
-defineClass(471, 17, $intern_128, EGTKondensatormotorElm, EGTKondensatormotorElm_0);
+defineClass(416, 17, $intern_128, EGTKondensatormotorElm, EGTKondensatormotorElm_0);
 _.calculateCurrent = function calculateCurrent_21(){
   $calculateCurrent_1(this);
 }
@@ -33601,7 +33739,7 @@ _.rMain = 0;
 _.speed = 0;
 _.torque = 0;
 var COL_ACCENT_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorElm', 471);
+var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorElm', 416);
 function $clinit_EGTKondensatormotorKompaktElm(){
   $clinit_EGTKondensatormotorKompaktElm = emptyMethod;
   $clinit_ChipElm();
@@ -33800,7 +33938,7 @@ function EGTKondensatormotorKompaktElm_0(xa, ya, xb, yb, f, st){
   $syncEndpoints_5(this);
 }
 
-defineClass(416, 17, $intern_128, EGTKondensatormotorKompaktElm, EGTKondensatormotorKompaktElm_0);
+defineClass(445, 17, $intern_128, EGTKondensatormotorKompaktElm, EGTKondensatormotorKompaktElm_0);
 _.calculateCurrent = function calculateCurrent_22(){
   $calculateCurrent_2(this);
 }
@@ -34174,7 +34312,7 @@ _.showAdvanced = false;
 _.speed = 0;
 _.voltageSquaredEnvelope = 0;
 var COL_ACCENT_2, COL_IDLE_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorKompaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorKompaktElm', 416);
+var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorKompaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorKompaktElm', 445);
 function $$init_24(this$static){
   this$static.designation = 'S3';
   this$static.note = '';
@@ -34400,7 +34538,7 @@ function EGTKreuzschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(435, 46, $intern_120, EGTKreuzschalterElm, EGTKreuzschalterElm_0);
+defineClass(439, 46, $intern_120, EGTKreuzschalterElm, EGTKreuzschalterElm_0);
 _.calculateCurrent = function calculateCurrent_23(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -34615,11 +34753,11 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTKreuzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKreuzschalterElm', 435);
+var Lcom_lushprojects_circuitjs1_client_EGTKreuzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKreuzschalterElm', 439);
 function $clinit_EGTLeistungsschuetzElm(){
   $clinit_EGTLeistungsschuetzElm = emptyMethod;
   $clinit_ChipElm();
-  LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['A1', 'A2', '1', '2', '3', '4', '5', '6', '13', '14']);
+  LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['A1', 'A2', '1', '2', '3', '4', '5', '6', '13', '14']);
 }
 
 function $$init_25(this$static){
@@ -34804,7 +34942,7 @@ function EGTLeistungsschuetzElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(256, 17, {8:1, 48:1, 256:1, 342:1, 11:1}, EGTLeistungsschuetzElm, EGTLeistungsschuetzElm_0);
+defineClass(257, 17, {8:1, 48:1, 257:1, 342:1, 11:1}, EGTLeistungsschuetzElm, EGTLeistungsschuetzElm_0);
 _.calculateCurrent = function calculateCurrent_24(){
   var iNom;
   this.current_0 = $calculateCurrent_3(this.coilL, this.volts[0], this.volts[10]);
@@ -35059,11 +35197,11 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTLeistungsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeistungsschuetzElm', 256);
+var Lcom_lushprojects_circuitjs1_client_EGTLeistungsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeistungsschuetzElm', 257);
 function $clinit_EGTLeuchteElm(){
   $clinit_EGTLeuchteElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_2 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L', 'PE', 'N']);
+  PIN_LABELS_2 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L', 'PE', 'N']);
   COL_MELD_RING = new Color(201, 162, 39);
   COL_LIT = new Color(255, 224, 102);
 }
@@ -35484,7 +35622,7 @@ function EGTLeuchteElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(279, 17, $intern_128, EGTLeuchteElm, EGTLeuchteElm_0);
+defineClass(282, 17, $intern_128, EGTLeuchteElm, EGTLeuchteElm_0);
 _.calculateCurrent = function calculateCurrent_25(){
   var n;
   clearPinCurrents(this.pins);
@@ -35684,7 +35822,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var COL_LIT, COL_MELD_RING, PIN_LABELS_2;
-var Lcom_lushprojects_circuitjs1_client_EGTLeuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeuchteElm', 279);
+var Lcom_lushprojects_circuitjs1_client_EGTLeuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeuchteElm', 282);
 function EGTMeldeleuchteElm(xx, yy){
   $clinit_EGTLeuchteElm();
   EGTLeuchteElm.call(this, xx, yy);
@@ -35716,7 +35854,7 @@ function EGTMeldeleuchteElm_0(xa, ya, xb, yb, f, st){
   $setPoints_0(this);
 }
 
-defineClass(392, 279, $intern_128, EGTMeldeleuchteElm, EGTMeldeleuchteElm_0);
+defineClass(467, 282, $intern_128, EGTMeldeleuchteElm, EGTMeldeleuchteElm_0);
 _.getChipEditInfo = function getChipEditInfo_25(n){
   if (n <= 1)
     return $getChipEditInfo_0(this, n);
@@ -35747,7 +35885,7 @@ _.undumpXml = function undumpXml_57(xml){
   $setPoints_0(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTMeldeleuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMeldeleuchteElm', 392);
+var Lcom_lushprojects_circuitjs1_client_EGTMeldeleuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMeldeleuchteElm', 467);
 function $$init_27(this$static){
   this$static.variant = 0;
   this$static.qMask = 0;
@@ -35755,7 +35893,7 @@ function $$init_27(this$static){
   this$static.lcdIMask = 0;
   this$static.runEnable = true;
   this$static.supplyHold = new EGTAcLevelHold;
-  this$static.iHold = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit, $intern_3, 294, 8, 0, 1);
+  this$static.iHold = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit, $intern_3, 297, 8, 0, 1);
   this$static.designation = 'A1';
   this$static.note = '';
 }
@@ -35796,7 +35934,7 @@ function $bandLayout(this$static, bodyH, out){
 
 function $bitString(mask, n){
   var c, i;
-  c = initUnidimensionalArray(C_classLit, $intern_24, 7, n, 15, 1);
+  c = initUnidimensionalArray(C_classLit, $intern_22, 7, n, 15, 1);
   for (i = 0; i < n; i++)
     c[i] = (mask & 1 << i) != 0?49:48;
   return valueOf_2(c, c.length);
@@ -36154,7 +36292,7 @@ function $setupPins_23(this$static){
   this$static.sizeX = this$static.variant == 1?16:12;
   this$static.sizeY = 11;
   this$static.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, 10 + 2 * (this$static.variant == 1?8:4), 0, 1);
-  topLabs = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 10, 6, 1);
+  topLabs = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 10, 6, 1);
   topLabs[0] = 'L1';
   topLabs[1] = 'N';
   for (i0 = 1; i0 <= 8; i0++)
@@ -36892,8 +37030,8 @@ var device, lastStep = -2;
 function $clinit_EGTMotorschutzschalterElm(){
   $clinit_EGTMotorschutzschalterElm = emptyMethod;
   $clinit_ChipElm();
-  TOP_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1', '3', '5']);
-  BOTTOM_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['2', '4', '6']);
+  TOP_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1', '3', '5']);
+  BOTTOM_LABELS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['2', '4', '6']);
   COL_GRAY = new Color(119, 119, 119);
 }
 
@@ -37170,7 +37308,7 @@ function EGTMotorschutzschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(475, 17, $intern_128, EGTMotorschutzschalterElm, EGTMotorschutzschalterElm_0);
+defineClass(423, 17, $intern_128, EGTMotorschutzschalterElm, EGTMotorschutzschalterElm_0);
 _.calculateCurrent = function calculateCurrent_27(){
   var a, b, i;
   clearPinCurrents(this.pins);
@@ -37463,7 +37601,7 @@ _.tripReason = 0;
 _.tripTime = 0;
 _.tripped = false;
 var BOTTOM_LABELS, COL_GRAY, TOP_LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTMotorschutzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMotorschutzschalterElm', 475);
+var Lcom_lushprojects_circuitjs1_client_EGTMotorschutzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMotorschutzschalterElm', 423);
 function applyAt(d, n, ei){
   if (n != 1 || !ei || !ei.textf)
     return false;
@@ -37984,8 +38122,8 @@ var Lcom_lushprojects_circuitjs1_client_EGTSchuetzHilfskontaktElm_2_classLit = c
 function $clinit_EGTSchuetzLeistungskontakteElm(){
   $clinit_EGTSchuetzLeistungskontakteElm = emptyMethod;
   $clinit_ChipElm();
-  TOP_LAB = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1', '3', '5']);
-  BOT_LAB = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['2', '4', '6']);
+  TOP_LAB = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1', '3', '5']);
+  BOT_LAB = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['2', '4', '6']);
 }
 
 function $$init_30(this$static){
@@ -38293,7 +38431,7 @@ function $clinit_EGTSchuetzLink(){
 }
 
 function designationIfSchuetz(ce){
-  if (instanceOf(ce, 297) || instanceOf(ce, 256) || instanceOf(ce, 257) || instanceOf(ce, 192) || instanceOf(ce, 212) || instanceOf(ce, 254))
+  if (instanceOf(ce, 296) || instanceOf(ce, 257) || instanceOf(ce, 254) || instanceOf(ce, 192) || instanceOf(ce, 212) || instanceOf(ce, 256))
     return ce;
   return null;
 }
@@ -38345,10 +38483,10 @@ function markAuxTens(self_0, des, used){
       h = ce;
       $equals_1(normalize(h.designation), des) && markTens(used, h.contactNo);
     }
-     else if (instanceOf(ce, 256)) {
+     else if (instanceOf(ce, 257)) {
       $equals_1(normalize(ce.designation), des) && (used[1] = true);
     }
-     else if (instanceOf(ce, 257)) {
+     else if (instanceOf(ce, 254)) {
       k = ce;
       if (!$equals_1(normalize(k.designation), des))
         continue;
@@ -38357,7 +38495,7 @@ function markAuxTens(self_0, des, used){
       for (c = 0; c < k.nNc; c++)
         markTens(used, tensOfTerminal(($clinit_EGTHilfsschuetzElm() , NC_TOP_0)[c]));
     }
-     else if (instanceOf(ce, 254)) {
+     else if (instanceOf(ce, 256)) {
       b = ce;
       if (!$equals_1(normalize(b.designation), des))
         continue;
@@ -38661,7 +38799,7 @@ function EGTSchuetzSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(297, 17, {8:1, 48:1, 342:1, 297:1, 11:1}, EGTSchuetzSpuleElm, EGTSchuetzSpuleElm_0);
+defineClass(296, 17, {8:1, 48:1, 342:1, 296:1, 11:1}, EGTSchuetzSpuleElm, EGTSchuetzSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_30(){
   var iNom;
   clearPinCurrents(this.pins);
@@ -38918,7 +39056,7 @@ _.energized = false;
 _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTSchuetzSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzSpuleElm', 297);
+var Lcom_lushprojects_circuitjs1_client_EGTSchuetzSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzSpuleElm', 296);
 function $clinit_EGTSerienschalterElm(){
   $clinit_EGTSerienschalterElm = emptyMethod;
   COL_OPEN_0 = new Color(255, 179, 71);
@@ -39091,7 +39229,7 @@ function EGTSerienschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(406, 46, $intern_120, EGTSerienschalterElm, EGTSerienschalterElm_0);
+defineClass(447, 46, $intern_120, EGTSerienschalterElm, EGTSerienschalterElm_0);
 _.calculateCurrent = function calculateCurrent_31(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -39300,14 +39438,14 @@ _.curcount2 = 0;
 _.current1 = 0;
 _.current2 = 0;
 var COL_OPEN_0;
-var Lcom_lushprojects_circuitjs1_client_EGTSerienschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSerienschalterElm', 406);
+var Lcom_lushprojects_circuitjs1_client_EGTSerienschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSerienschalterElm', 447);
 function $clinit_EGTSicherungElm(){
   $clinit_EGTSicherungElm = emptyMethod;
   $clinit_ChipElm();
   IN_A = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [6, 10, 13, 16, 20, 25, 32, 40, 50, 63]);
   MAG_MULT = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [5, 10, 20]);
-  TERM_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1', '3', '5']);
-  TERM_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['2', '4', '6']);
+  TERM_TOP = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1', '3', '5']);
+  TERM_BOT = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['2', '4', '6']);
 }
 
 function $$init_33(this$static){
@@ -39525,7 +39663,7 @@ function $tickProtection(this$static){
   running = !!app_0 && app_0.ui.app.simRunning;
   dt = 0;
   if (running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
   }
@@ -39650,7 +39788,7 @@ function nearestIn(v){
   return best;
 }
 
-defineClass(493, 17, $intern_128, EGTSicherungElm, EGTSicherungElm_0);
+defineClass(450, 17, $intern_128, EGTSicherungElm, EGTSicherungElm_0);
 _.calculateCurrent = function calculateCurrent_32(){
   var a, b, i;
   clearPinCurrents(this.pins);
@@ -39924,11 +40062,11 @@ _.thermal = 0;
 _.tripReason = 0;
 _.tripped = false;
 var IN_A, MAG_MULT, TERM_BOT, TERM_TOP;
-var Lcom_lushprojects_circuitjs1_client_EGTSicherungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSicherungElm', 493);
+var Lcom_lushprojects_circuitjs1_client_EGTSicherungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSicherungElm', 450);
 function $clinit_EGTSpannungsquelleElm(){
   $clinit_EGTSpannungsquelleElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_3 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L', 'N', 'PE']);
+  PIN_LABELS_3 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L', 'N', 'PE']);
 }
 
 function $$init_34(this$static){
@@ -39984,7 +40122,7 @@ function EGTSpannungsquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(405, 17, $intern_128, EGTSpannungsquelleElm, EGTSpannungsquelleElm_0);
+defineClass(494, 17, $intern_128, EGTSpannungsquelleElm, EGTSpannungsquelleElm_0);
 _.doStep = function doStep_39(){
   var vL;
   vL = $getLineVoltage(this);
@@ -40123,11 +40261,11 @@ _.undumpXml = function undumpXml_66(xml){
 _.frequency = 0;
 _.voltageRMS = 0;
 var PIN_LABELS_3;
-var Lcom_lushprojects_circuitjs1_client_EGTSpannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSpannungsquelleElm', 405);
+var Lcom_lushprojects_circuitjs1_client_EGTSpannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSpannungsquelleElm', 494);
 function $clinit_EGTSteckdoseElm(){
   $clinit_EGTSteckdoseElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_4 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L', 'PE', 'N']);
+  PIN_LABELS_4 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L', 'PE', 'N']);
 }
 
 function $$init_35(this$static){
@@ -40268,7 +40406,7 @@ function EGTSteckdoseElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(465, 17, $intern_128, EGTSteckdoseElm, EGTSteckdoseElm_0);
+defineClass(472, 17, $intern_128, EGTSteckdoseElm, EGTSteckdoseElm_0);
 _.creationFailed = function creationFailed_12(){
   return this.sizeX < 3 || this.sizeY < 2;
 }
@@ -40419,7 +40557,7 @@ _.undumpXml = function undumpXml_67(xml){
 }
 ;
 var PIN_LABELS_4;
-var Lcom_lushprojects_circuitjs1_client_EGTSteckdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSteckdoseElm', 465);
+var Lcom_lushprojects_circuitjs1_client_EGTSteckdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSteckdoseElm', 472);
 function $$init_36(this$static){
   this$static.designation = 'E1';
   this$static.note = '';
@@ -40513,7 +40651,7 @@ function EGTStromstossKontaktElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(427, 17, $intern_128, EGTStromstossKontaktElm, EGTStromstossKontaktElm_0);
+defineClass(392, 17, $intern_128, EGTStromstossKontaktElm, EGTStromstossKontaktElm_0);
 _.calculateCurrent = function calculateCurrent_33(){
   clearPinCurrents(this.pins);
   this.switchCurrent = 0;
@@ -40691,7 +40829,7 @@ _.undumpXml = function undumpXml_68(xml){
 ;
 _.switchCurCount = 0;
 _.switchCurrent = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossKontaktElm', 427);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossKontaktElm', 392);
 function $clinit_EGTStromstossLink(){
   $clinit_EGTStromstossLink = emptyMethod;
   latched = new HashMap;
@@ -40847,7 +40985,7 @@ function EGTStromstossSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(478, 17, $intern_128, EGTStromstossSpuleElm, EGTStromstossSpuleElm_0);
+defineClass(469, 17, $intern_128, EGTStromstossSpuleElm, EGTStromstossSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_34(){
   var iNom, vCoil;
   if ((this.flags & $intern_43) != 0) {
@@ -41114,7 +41252,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.wasCoilOn = false;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossSpuleElm', 478);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossSpuleElm', 469);
 function $$init_38(this$static){
   this$static.designation = 'E1';
   this$static.note = '';
@@ -41347,7 +41485,7 @@ function EGTStromstossschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(409, 17, $intern_128, EGTStromstossschalterElm, EGTStromstossschalterElm_0);
+defineClass(429, 17, $intern_128, EGTStromstossschalterElm, EGTStromstossschalterElm_0);
 _.calculateCurrent = function calculateCurrent_35(){
   var i, iNom, vCoil;
   clearPinCurrents(this.pins);
@@ -41612,7 +41750,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.wasCoilOn = false;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossschalterElm', 409);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossschalterElm', 429);
 function $clinit_EGTStyle(){
   $clinit_EGTStyle = emptyMethod;
   COL_L1 = new Color(139, 69, 19);
@@ -41886,12 +42024,12 @@ function drawHousingAnno(g, elm, left, top_0, right, bottom, color_0, line1, lin
   $clinit_EGTStyle();
   var above, cx, half, i, i0, i1, i2, i3, k, lines, maxW, n, note, raw, tx, w, y0, yBot, ys;
   note = of(elm);
-  raw = note.length > 0?stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, [line1, note, line2, line3, line4]):stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, [line1, line2, line3, line4]);
+  raw = note.length > 0?stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, [line1, note, line2, line3, line4]):stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, [line1, line2, line3, line4]);
   n = 0;
   for (i0 = 0; i0 < raw.length; i0++) {
     raw[i0] != null && raw[i0].length > 0 && ++n;
   }
-  lines = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, n, 6, 1);
+  lines = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, n, 6, 1);
   k = 0;
   for (i1 = 0; i1 < raw.length; i1++) {
     raw[i1] != null && raw[i1].length > 0 && (lines[k++] = raw[i1]);
@@ -42590,7 +42728,7 @@ function EGTTasterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(399, 46, $intern_120, EGTTasterElm, EGTTasterElm_0);
+defineClass(498, 46, $intern_120, EGTTasterElm, EGTTasterElm_0);
 _.calculateCurrent = function calculateCurrent_36(){
   var r;
   if ((this.flags & $intern_43) != 0 || !((this.flags & $intern_46) != 0?this.position != 0:this.position == 0)) {
@@ -42775,7 +42913,7 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTTasterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTasterElm', 399);
+var Lcom_lushprojects_circuitjs1_client_EGTTasterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTasterElm', 498);
 function $$init_40(this$static){
   this$static.designation = 'Q1';
   this$static.note = '';
@@ -42939,7 +43077,7 @@ function $tickTimer_0(this$static){
     return;
   }
   if (this$static.timedOn && running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
     this$static.waitAccum += dt;
@@ -43010,7 +43148,7 @@ function EGTTreppenlichtElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(464, 17, $intern_128, EGTTreppenlichtElm, EGTTreppenlichtElm_0);
+defineClass(408, 17, $intern_128, EGTTreppenlichtElm, EGTTreppenlichtElm_0);
 _.calculateCurrent = function calculateCurrent_37(){
   var iNom, vCoil;
   clearPinCurrents(this.pins);
@@ -43246,11 +43384,11 @@ _.nom_v = 0;
 _.resistance = 0;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTTreppenlichtElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTreppenlichtElm', 464);
+var Lcom_lushprojects_circuitjs1_client_EGTTreppenlichtElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTreppenlichtElm', 408);
 function $clinit_EGTTueroeffnerElm(){
   $clinit_EGTTueroeffnerElm = emptyMethod;
   $clinit_ChipElm();
-  PIN_LABELS_5 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['L', 'N']);
+  PIN_LABELS_5 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['L', 'N']);
 }
 
 function $$init_41(this$static){
@@ -43389,7 +43527,7 @@ function EGTTueroeffnerElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(428, 17, $intern_128, EGTTueroeffnerElm, EGTTueroeffnerElm_0);
+defineClass(431, 17, $intern_128, EGTTueroeffnerElm, EGTTueroeffnerElm_0);
 _.calculateCurrent = function calculateCurrent_38(){
   clearPinCurrents(this.pins);
   if ((this.flags & $intern_43) != 0 || this.resistance <= 0) {
@@ -43582,11 +43720,11 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var PIN_LABELS_5;
-var Lcom_lushprojects_circuitjs1_client_EGTTueroeffnerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTueroeffnerElm', 428);
+var Lcom_lushprojects_circuitjs1_client_EGTTueroeffnerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTueroeffnerElm', 431);
 function $clinit_EGTUeberlastHeizleiterElm(){
   $clinit_EGTUeberlastHeizleiterElm = emptyMethod;
   $clinit_ChipElm();
-  LABELS_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1', '2', '3', '4', '5', '6']);
+  LABELS_0 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1', '2', '3', '4', '5', '6']);
 }
 
 function $$init_42(this$static){
@@ -43655,7 +43793,7 @@ function $tickThermal(this$static){
   running = !!app_0 && app_0.ui.app.simRunning;
   dt = 0;
   if (running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
   }
@@ -43725,7 +43863,7 @@ function EGTUeberlastHeizleiterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(395, 17, $intern_140, EGTUeberlastHeizleiterElm, EGTUeberlastHeizleiterElm_0);
+defineClass(481, 17, $intern_140, EGTUeberlastHeizleiterElm, EGTUeberlastHeizleiterElm_0);
 _.calculateCurrent = function calculateCurrent_39(){
   clearPinCurrents(this.pins);
   this.poleCurrent[0] = (this.volts[0] - this.volts[1]) / $intern_99;
@@ -43959,7 +44097,7 @@ _.thermal = 0;
 _.tripTime = 0;
 _.tripped = false;
 var LABELS_0;
-var Lcom_lushprojects_circuitjs1_client_EGTUeberlastHeizleiterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastHeizleiterElm', 395);
+var Lcom_lushprojects_circuitjs1_client_EGTUeberlastHeizleiterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastHeizleiterElm', 481);
 function $$init_43(this$static){
   this$static.designation = 'F1';
   this$static.note = '';
@@ -44336,7 +44474,7 @@ var tripped;
 function $clinit_EGTUeberlastrelaisElm(){
   $clinit_EGTUeberlastrelaisElm = emptyMethod;
   $clinit_ChipElm();
-  LABELS_1 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['1', '2', '3', '4', '5', '6', '95', '96', '97', '98']);
+  LABELS_1 = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['1', '2', '3', '4', '5', '6', '95', '96', '97', '98']);
 }
 
 function $$init_44(this$static){
@@ -44461,7 +44599,7 @@ function $tickThermal_0(this$static){
   running = !!app_0 && app_0.ui.app.simRunning;
   dt = 0;
   if (running && neq(this$static.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, this$static.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
   }
@@ -44531,7 +44669,7 @@ function EGTUeberlastrelaisElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(476, 17, $intern_140, EGTUeberlastrelaisElm, EGTUeberlastrelaisElm_0);
+defineClass(402, 17, $intern_140, EGTUeberlastrelaisElm, EGTUeberlastrelaisElm_0);
 _.calculateCurrent = function calculateCurrent_41(){
   clearPinCurrents(this.pins);
   this.poleCurrent[0] = (this.volts[0] - this.volts[1]) / $intern_99;
@@ -44771,7 +44909,7 @@ _.thermal = 0;
 _.tripTime = 0;
 _.tripped = false;
 var LABELS_1;
-var Lcom_lushprojects_circuitjs1_client_EGTUeberlastrelaisElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastrelaisElm', 476);
+var Lcom_lushprojects_circuitjs1_client_EGTUeberlastrelaisElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastrelaisElm', 402);
 function $$init_45(this$static){
   this$static.designation = 'S2';
   this$static.note = '';
@@ -44925,7 +45063,7 @@ function EGTWechselschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(467, 46, $intern_120, EGTWechselschalterElm, EGTWechselschalterElm_0);
+defineClass(400, 46, $intern_120, EGTWechselschalterElm, EGTWechselschalterElm_0);
 _.calculateCurrent = function calculateCurrent_42(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -45118,7 +45256,7 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTWechselschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTWechselschalterElm', 467);
+var Lcom_lushprojects_circuitjs1_client_EGTWechselschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTWechselschalterElm', 400);
 function $$init_46(this$static){
   this$static.designation = 'K1';
   this$static.note = '';
@@ -45236,7 +45374,7 @@ function EGTZeitrelaisKontaktElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(286, 17, {8:1, 48:1, 286:1, 11:1}, EGTZeitrelaisKontaktElm, EGTZeitrelaisKontaktElm_0);
+defineClass(284, 17, {8:1, 48:1, 284:1, 11:1}, EGTZeitrelaisKontaktElm, EGTZeitrelaisKontaktElm_0);
 _.calculateCurrent = function calculateCurrent_43(){
   clearPinCurrents(this.pins);
   this.switchCurrent = 0;
@@ -45450,7 +45588,7 @@ _.undumpXml = function undumpXml_78(xml){
 ;
 _.switchCurCount = 0;
 _.switchCurrent = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisKontaktElm', 286);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisKontaktElm', 284);
 function $clinit_EGTZeitrelaisLink(){
   $clinit_EGTZeitrelaisLink = emptyMethod;
   states = new HashMap;
@@ -45481,7 +45619,7 @@ function findCoil(des){
   list = app_0.elmList;
   for (i = 0; i < list.arrayList.array.length; i++) {
     ce = (checkArrayElementIndex(i, list.arrayList.array.length) , $get_2(list.arrayList, i));
-    if (instanceOf(ce, 280)) {
+    if (instanceOf(ce, 290)) {
       sp = ce;
       if ($equals_1(normalize_2(sp.designation), d))
         return sp;
@@ -45500,7 +45638,7 @@ function findContacts(des){
   list = app_0.elmList;
   for (i = 0; i < list.arrayList.array.length; i++) {
     ce = (checkArrayElementIndex(i, list.arrayList.array.length) , $get_2(list.arrayList, i));
-    if (instanceOf(ce, 286)) {
+    if (instanceOf(ce, 284)) {
       k = ce;
       $equals_1(normalize_2(k.designation), d) && $add_8(out.arrayList, k);
     }
@@ -45618,7 +45756,7 @@ function updateFromCoil(des, poweredNow, mode, delayOn, delayOff){
       return;
     }
     if (running && neq(s.lastWallMs, 0)) {
-      dt = toDouble_0(sub_1(now_0, s.lastWallMs)) / $intern_8;
+      dt = toDouble_0(sub_1(now_0, s.lastWallMs)) / $intern_23;
       dt < 0 && (dt = 0);
       dt > $intern_109 && (dt = $intern_109);
       s.waitAccum += dt;
@@ -45632,7 +45770,7 @@ function updateFromCoil(des, poweredNow, mode, delayOn, delayOff){
     return;
   }
   if (running && isWaitingState(s) && neq(s.lastWallMs, 0)) {
-    dt = toDouble_0(sub_1(now_0, s.lastWallMs)) / $intern_8;
+    dt = toDouble_0(sub_1(now_0, s.lastWallMs)) / $intern_23;
     dt < 0 && (dt = 0);
     dt > $intern_109 && (dt = $intern_109);
     s.waitAccum += dt;
@@ -45645,7 +45783,7 @@ var states;
 function EGTZeitrelaisLink$State(){
 }
 
-defineClass(393, 1, {393:1}, EGTZeitrelaisLink$State);
+defineClass(460, 1, {460:1}, EGTZeitrelaisLink$State);
 _.delay = 1;
 _.delayOff = $intern_109;
 _.lastWallMs = 0;
@@ -45653,7 +45791,7 @@ _.mode = 0;
 _.powered = false;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisLink$State_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisLink/State', 393);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisLink$State_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisLink/State', 460);
 function $$init_47(this$static){
   this$static.designation = 'K1';
   this$static.note = '';
@@ -45808,7 +45946,7 @@ function EGTZeitrelaisSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(280, 17, {8:1, 48:1, 280:1, 11:1}, EGTZeitrelaisSpuleElm, EGTZeitrelaisSpuleElm_0);
+defineClass(290, 17, {8:1, 48:1, 290:1, 11:1}, EGTZeitrelaisSpuleElm, EGTZeitrelaisSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_44(){
   var iNom;
   clearPinCurrents(this.pins);
@@ -46082,7 +46220,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.skipTimeWrite = false;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisSpuleElm', 280);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisSpuleElm', 290);
 function $adjustChipSize(this$static, dx, dy){
   var i, i0, i1, needShift, p, pe;
   if (dx < 0) {
@@ -46614,7 +46752,7 @@ function preservePinLayout(newModel, existingModel){
   }
 }
 
-defineClass(274, 144, {300:1, 514:1, 203:1, 261:1, 513:1, 33:1, 69:1, 16:1, 30:1, 64:1, 32:1, 71:1, 63:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, EditCompositeModelDialog);
+defineClass(274, 144, {300:1, 514:1, 203:1, 261:1, 513:1, 33:1, 69:1, 16:1, 30:1, 65:1, 32:1, 72:1, 64:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, EditCompositeModelDialog);
 _.enterPressed = function enterPressed_0(){
   $enterPressed(this);
 }
@@ -46725,7 +46863,7 @@ var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog_2_classLit = cr
 function EditCompositeModelDialog$1(){
 }
 
-defineClass(774, 1, {}, EditCompositeModelDialog$1);
+defineClass(777, 1, {}, EditCompositeModelDialog$1);
 _.compare = function compare_1(a, b){
   return $compareTo(a.name_0.toLowerCase(), b.name_0.toLowerCase());
 }
@@ -46734,12 +46872,12 @@ _.equals_0 = function equals_7(other){
   return this === other;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/1', 774);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/1', 777);
 function EditCompositeModelDialog$10(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(783, 1, {}, EditCompositeModelDialog$10);
+defineClass(786, 1, {}, EditCompositeModelDialog$10);
 _.compare = function compare_2(a, b){
   return this.this$01.dragStartPosArr[a.value_0] - this.this$01.dragStartPosArr[b.value_0];
 }
@@ -46748,88 +46886,88 @@ _.equals_0 = function equals_8(other){
   return this === other;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/10', 783);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/10', 786);
 function EditCompositeModelDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(775, 1, $intern_68, EditCompositeModelDialog$2);
+defineClass(778, 1, $intern_68, EditCompositeModelDialog$2);
 _.onValueChange = function onValueChange_0(event_0){
   $drawChip_0(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/2', 775);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/2', 778);
 function EditCompositeModelDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(776, 1, $intern_56, EditCompositeModelDialog$3);
+defineClass(779, 1, $intern_56, EditCompositeModelDialog$3);
 _.onClick = function onClick_3(event_0){
   $adjustChipSize(this.this$01, 1, 0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/3', 776);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/3', 779);
 function EditCompositeModelDialog$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(777, 1, $intern_56, EditCompositeModelDialog$4);
+defineClass(780, 1, $intern_56, EditCompositeModelDialog$4);
 _.onClick = function onClick_4(event_0){
   $adjustChipSize(this.this$01, -1, 0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/4', 777);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/4', 780);
 function EditCompositeModelDialog$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(778, 1, $intern_56, EditCompositeModelDialog$5);
+defineClass(781, 1, $intern_56, EditCompositeModelDialog$5);
 _.onClick = function onClick_5(event_0){
   $adjustChipSize(this.this$01, 0, 1);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/5', 778);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/5', 781);
 function EditCompositeModelDialog$6(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(779, 1, $intern_56, EditCompositeModelDialog$6);
+defineClass(782, 1, $intern_56, EditCompositeModelDialog$6);
 _.onClick = function onClick_6(event_0){
   $adjustChipSize(this.this$01, 0, -1);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/6', 779);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/6', 782);
 function EditCompositeModelDialog$7(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(780, 1, $intern_56, EditCompositeModelDialog$7);
+defineClass(783, 1, $intern_56, EditCompositeModelDialog$7);
 _.onClick = function onClick_7(event_0){
   $setShowLabel(this.this$01.model, $booleanValue($getValue(this.this$01.labelCheck)));
   $drawChip_0(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/7', 780);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/7', 783);
 function EditCompositeModelDialog$8(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(781, 1, $intern_56, EditCompositeModelDialog$8);
+defineClass(784, 1, $intern_56, EditCompositeModelDialog$8);
 _.onClick = function onClick_8(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/8', 781);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/8', 784);
 function EditCompositeModelDialog$9(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(782, 1, $intern_56, EditCompositeModelDialog$9);
+defineClass(785, 1, $intern_56, EditCompositeModelDialog$9);
 _.onClick = function onClick_9(event_0){
   $enterPressed(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/9', 782);
+var Lcom_lushprojects_circuitjs1_client_EditCompositeModelDialog$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditCompositeModelDialog/9', 785);
 function $clinit_EditDialog(){
   $clinit_EditDialog = emptyMethod;
   noCommaFormat = ($clinit_NumberFormat() , new NumberFormat_0('####.##########', $getDefaultNative()));
@@ -46886,7 +47024,7 @@ function $buildDialog(this$static){
     if (!this$static.einfos[i])
       break;
     ei = this$static.einfos[i];
-    if (vp.children.size_0 > 15 || ei.newColumn) {
+    if (vp.children_0.size_0 > 15 || ei.newColumn) {
       vp = new VerticalPanel;
       $add_3(hp, vp);
       ($clinit_DOM() , vp.element).style['paddingLeft'] = ($clinit_Style$Unit() , '10.0px');
@@ -47081,7 +47219,7 @@ function parseUnits(s){
       break;
     case 107:
     case 75:
-      mult = $intern_8;
+      mult = $intern_23;
       break;
     case 77:
       mult = $intern_85;
@@ -47113,8 +47251,8 @@ function unitString(ei, v){
   if (va < $intern_84)
     return $format_0(noCommaFormat, v * $intern_85) + 'u';
   if (va < 1)
-    return $format_0(noCommaFormat, v * $intern_8) + 'm';
-  if (va < $intern_8)
+    return $format_0(noCommaFormat, v * $intern_23) + 'm';
+  if (va < $intern_23)
     return $format_0(noCommaFormat, v);
   if (va < $intern_85)
     return $format_0(noCommaFormat, v * $intern_84) + 'k';
@@ -47139,88 +47277,88 @@ function EditDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(559, 1, $intern_56, EditDialog$1);
+defineClass(560, 1, $intern_56, EditDialog$1);
 _.onClick = function onClick_10(event_0){
   this.this$01.apply_0();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/1', 559);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/1', 560);
 function EditDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(560, 1, $intern_56, EditDialog$2);
+defineClass(561, 1, $intern_56, EditDialog$2);
 _.onClick = function onClick_11(event_0){
   this.this$01.apply_0() && this.this$01.closeDialog();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/2', 560);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/2', 561);
 function EditDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(561, 1, $intern_56, EditDialog$3);
+defineClass(562, 1, $intern_56, EditDialog$3);
 _.onClick = function onClick_12(event_0){
   this.this$01.closeDialog();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/3', 561);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/3', 562);
 function EditDialog$4(val$ftb){
   this.val$ftb2 = val$ftb;
 }
 
-defineClass(562, 1, $intern_53, EditDialog$4);
+defineClass(563, 1, $intern_53, EditDialog$4);
 _.execute_1 = function execute_51(){
   $setFocus(this.val$ftb2);
   $selectAll(this.val$ftb2);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/4', 562);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/4', 563);
 function EditDialog$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(563, 1, $intern_71, EditDialog$5);
+defineClass(564, 1, $intern_71, EditDialog$5);
 _.onChange = function onChange_2(e){
   $itemStateChanged(this.this$01, e);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/5', 563);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/5', 564);
 function EditDialog$6(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(564, 1, $intern_68, EditDialog$6);
+defineClass(565, 1, $intern_68, EditDialog$6);
 _.onValueChange = function onValueChange_1(e){
   $itemStateChanged(this.this$01, e);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/6', 564);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/6', 565);
 function EditDialog$7(){
 }
 
-defineClass(565, 1, $intern_56, EditDialog$7);
+defineClass(566, 1, $intern_56, EditDialog$7);
 _.onClick = function onClick_13(event_0){
   $doc.getElementById('EditDialogLoadFileElement').click();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/7', 565);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/7', 566);
 function EditDialog$8(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(566, 1, $intern_56, EditDialog$8);
+defineClass(567, 1, $intern_56, EditDialog$8);
 _.onClick = function onClick_14(event_0){
   $itemStateChanged(this.this$01, event_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/8', 566);
-defineClass(981, 246, $intern_143);
+var Lcom_lushprojects_circuitjs1_client_EditDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialog/8', 567);
+defineClass(984, 246, $intern_143);
 _.onChange = function onChange_3(e){
   $handle();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDialogLoadFile_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialogLoadFile', 981);
+var Lcom_lushprojects_circuitjs1_client_EditDialogLoadFile_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDialogLoadFile', 984);
 function EditDiodeModelDialog(dm, f, de){
   $clinit_EditDialog();
   EditDialog.call(this, dm, f);
@@ -47229,7 +47367,7 @@ function EditDiodeModelDialog(dm, f, de){
   $removeFromParent(this.applyButton);
 }
 
-defineClass(511, 241, $intern_58, EditDiodeModelDialog);
+defineClass(512, 241, $intern_58, EditDiodeModelDialog);
 _.apply_0 = function apply_3(){
   if (!$apply(this))
     return false;
@@ -47247,7 +47385,7 @@ _.closeDialog = function closeDialog_1(){
   diodeModelEditDialog = null;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditDiodeModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDiodeModelDialog', 511);
+var Lcom_lushprojects_circuitjs1_client_EditDiodeModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditDiodeModelDialog', 512);
 function $$init_48(this$static){
 }
 
@@ -47565,7 +47703,7 @@ function EditRelayModelDialog(rm, f, re){
   $removeFromParent(this.applyButton);
 }
 
-defineClass(512, 241, $intern_58, EditRelayModelDialog);
+defineClass(511, 241, $intern_58, EditRelayModelDialog);
 _.apply_0 = function apply_4(){
   if (!$apply(this))
     return false;
@@ -47581,7 +47719,7 @@ _.closeDialog = function closeDialog_2(){
   !!edlg && ($clearDialog(edlg) , $buildDialog(edlg));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EditRelayModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditRelayModelDialog', 512);
+var Lcom_lushprojects_circuitjs1_client_EditRelayModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditRelayModelDialog', 511);
 function EditTransistorModelDialog(dm, f, te){
   $clinit_EditDialog();
   EditDialog.call(this, dm, f);
@@ -47610,419 +47748,140 @@ _.closeDialog = function closeDialog_3(){
 ;
 var Lcom_lushprojects_circuitjs1_client_EditTransistorModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditTransistorModelDialog', 510);
 function $create(className, x1, y1){
-  if ($equals_1('CurrentElm', className)) {
-    return new CurrentElm(x1, y1);
-  }
-  if ($equals_1('EGTMeldeleuchteElm', className)) {
-    return new EGTMeldeleuchteElm(x1, y1);
-  }
-  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
-    return new EGTZeitrelaisSpuleElm(x1, y1);
-  }
-  if ($equals_1('ROMElm', className)) {
-    return new ROMElm(x1, y1);
-  }
-  if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
-    return new EGTUeberlastHeizleiterElm(x1, y1);
-  }
-  if ($equals_1('DPDTSwitchElm', className)) {
-    return new DPDTSwitchElm(x1, y1);
-  }
-  if ($equals_1('NortonAmpElm', className)) {
-    return new NortonAmpElm(x1, y1);
-  }
-  if ($equals_1('SchmittElm', className)) {
-    return new SchmittElm(x1, y1);
-  }
-  if ($equals_1('NandGateElm', className)) {
-    return new NandGateElm(x1, y1);
-  }
-  if ($equals_1('MBBSwitchElm', className)) {
-    return new MBBSwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTTasterElm', className)) {
-    return new EGTTasterElm(x1, y1);
-  }
-  if ($equals_1('NDarlingtonElm', className)) {
-    return new NDarlingtonElm(x1, y1);
-  }
-  if ($equals_1('AudioOutputElm', className)) {
-    return new AudioOutputElm(x1, y1);
-  }
-  if ($equals_1('SparkGapElm', className)) {
-    return new SparkGapElm(x1, y1);
-  }
-  if ($equals_1('ResistorElm', className)) {
-    return new ResistorElm(x1, y1);
-  }
-  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
-    return new EGTZeitrelaisKontaktElm(x1, y1);
-  }
-  if ($equals_1('SquareRailElm', className)) {
-    return new SquareRailElm(x1, y1);
-  }
-  if ($equals_1('TestPointElm', className)) {
-    return new TestPointElm(x1, y1);
-  }
-  if ($equals_1('EGTGleichstrommotorElm', className)) {
-    return new EGTGleichstrommotorElm(x1, y1);
-  }
-  if ($equals_1('EGTInstallationsleitungElm', className)) {
-    return new EGTInstallationsleitungElm(x1, y1);
-  }
-  if ($equals_1('SCRElm', className)) {
-    return new SCRElm(x1, y1);
-  }
-  if ($equals_1('OptocouplerElm', className)) {
-    return new OptocouplerElm(x1, y1);
-  }
-  if ($equals_1('EGTSpannungsquelleElm', className)) {
-    return new EGTSpannungsquelleElm(x1, y1);
-  }
-  if ($equals_1('EGTSerienschalterElm', className)) {
-    return new EGTSerienschalterElm(x1, y1);
-  }
-  if ($equals_1('PotElm', className)) {
-    return new PotElm(x1, y1);
-  }
-  if ($equals_1('FuseElm', className)) {
-    return new FuseElm(x1, y1);
-  }
-  if ($equals_1('EGTFupEingangElm', className)) {
-    return new EGTFupEingangElm(x1, y1);
-  }
-  if ($equals_1('AndGateElm', className)) {
-    return new AndGateElm(x1, y1);
-  }
-  if ($equals_1('LogicInputElm', className)) {
-    return new LogicInputElm(x1, y1);
-  }
-  if ($equals_1('EGTFupAusgangElm', className)) {
-    return new EGTFupAusgangElm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossschalterElm', className)) {
-    return new EGTStromstossschalterElm(x1, y1);
-  }
-  if ($equals_1('EGTHilfsschalterblockElm', className)) {
-    return new EGTHilfsschalterblockElm(x1, y1);
-  }
-  if ($equals_1('VCCSElm', className)) {
-    return new VCCSElm(x1, y1);
-  }
-  if ($equals_1('AntennaElm', className)) {
-    return new AntennaElm(x1, y1);
-  }
-  if ($equals_1('UnijunctionElm', className)) {
-    return new UnijunctionElm(x1, y1);
-  }
-  if ($equals_1('CrossSwitchElm', className)) {
-    return new CrossSwitchElm(x1, y1);
-  }
-  if ($equals_1('OpAmpSwapElm', className)) {
-    return new OpAmpSwapElm(x1, y1);
-  }
-  if ($equals_1('AnalogMuxElm', className)) {
-    return new AnalogMuxElm(x1, y1);
-  }
-  if ($equals_1('RailElm', className)) {
-    return new RailElm(x1, y1);
-  }
-  if ($equals_1('ComparatorElm', className)) {
-    return new ComparatorElm(x1, y1);
-  }
-  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
-    return new EGTSchuetzHilfskontaktElm(x1, y1);
-  }
-  if ($equals_1('TriodeElm', className)) {
-    return new TriodeElm(x1, y1);
-  }
-  if ($equals_1('SwitchElm', className)) {
-    return new SwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
-    return new EGTKondensatormotorKompaktElm(x1, y1);
-  }
-  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
-    return new EGTSchuetzLeistungskontakteElm(x1, y1);
-  }
-  if ($equals_1('CounterElm', className)) {
-    return new CounterElm(x1, y1);
-  }
-  if ($equals_1('DiodeElm', className)) {
-    return new DiodeElm(x1, y1);
-  }
-  if ($equals_1('NMosfetElm', className)) {
-    return new NMosfetElm(x1, y1);
-  }
-  if ($equals_1('EGTHmiGeberElm', className)) {
-    return new EGTHmiGeberElm(x1, y1);
-  }
-  if ($equals_1('EGTFupTofElm', className)) {
-    return new EGTFupTofElm(x1, y1);
-  }
-  if ($equals_1('EGTDrehstromquelleElm', className)) {
-    return new EGTDrehstromquelleElm(x1, y1);
-  }
-  if ($equals_1('LabeledNodeElm', className)) {
-    return new LabeledNodeElm(x1, y1);
-  }
-  if ($equals_1('EGTDrehstrommotorElm', className)) {
-    return new EGTDrehstrommotorElm(x1, y1);
-  }
-  if ($equals_1('DelayBufferElm', className)) {
-    return new DelayBufferElm(x1, y1);
-  }
-  if ($equals_1('NTransistorElm', className)) {
-    return new NTransistorElm(x1, y1);
-  }
-  if ($equals_1('ClockElm', className)) {
-    return new ClockElm(x1, y1);
-  }
-  if ($equals_1('TunnelDiodeElm', className)) {
-    return new TunnelDiodeElm(x1, y1);
-  }
-  if ($equals_1('DiacElm', className)) {
-    return new DiacElm(x1, y1);
+  if ($equals_1('EGTStromstossKontaktElm', className)) {
+    return new EGTStromstossKontaktElm(x1, y1);
   }
   if ($equals_1('TransformerElm', className)) {
     return new TransformerElm(x1, y1);
   }
-  if ($equals_1('DCVoltageElm', className)) {
-    return new DCVoltageElm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossKontaktElm', className)) {
-    return new EGTStromstossKontaktElm(x1, y1);
-  }
-  if ($equals_1('CapacitorElm', className)) {
-    return new CapacitorElm(x1, y1);
+  if ($equals_1('OpAmpElm', className)) {
+    return new OpAmpElm(x1, y1);
   }
   if ($equals_1('CustomLogicElm', className)) {
     return new CustomLogicElm(x1, y1);
   }
-  if ($equals_1('EGTLeitungElm', className)) {
-    return new EGTLeitungElm(x1, y1);
+  if ($equals_1('VCVSElm', className)) {
+    return new VCVSElm(x1, y1);
   }
-  if ($equals_1('EGTTueroeffnerElm', className)) {
-    return new EGTTueroeffnerElm(x1, y1);
+  if ($equals_1('DiacElm', className)) {
+    return new DiacElm(x1, y1);
   }
-  if ($equals_1('ThermistorNTCElm', className)) {
-    return new ThermistorNTCElm(x1, y1);
+  if ($equals_1('NorGateElm', className)) {
+    return new NorGateElm(x1, y1);
   }
-  if ($equals_1('PTransistorElm', className)) {
-    return new PTransistorElm(x1, y1);
+  if ($equals_1('ACVoltageElm', className)) {
+    return new ACVoltageElm(x1, y1);
   }
-  if ($equals_1('VarRailElm', className)) {
-    return new VarRailElm(x1, y1);
+  if ($equals_1('VCOElm', className)) {
+    return new VCOElm(x1, y1);
   }
-  if ($equals_1('OpAmpElm', className)) {
-    return new OpAmpElm(x1, y1);
-  }
-  if ($equals_1('PDarlingtonElm', className)) {
-    return new PDarlingtonElm(x1, y1);
-  }
-  if ($equals_1('AmmeterElm', className)) {
-    return new AmmeterElm(x1, y1);
-  }
-  if ($equals_1('WattmeterElm', className)) {
-    return new WattmeterElm(x1, y1);
-  }
-  if ($equals_1('EGTAbzweigdoseElm', className)) {
-    return new EGTAbzweigdoseElm(x1, y1);
-  }
-  if ($equals_1('EGTBewegungsmelderElm', className)) {
-    return new EGTBewegungsmelderElm(x1, y1);
-  }
-  if ($equals_1('CustomCompositeElm', className)) {
-    return new CustomCompositeElm(x1, y1);
-  }
-  if ($equals_1('AMElm', className)) {
-    return new AMElm(x1, y1);
-  }
-  if ($equals_1('TextElm', className)) {
-    return new TextElm(x1, y1);
-  }
-  if ($equals_1('CC2Elm', className)) {
-    return new CC2Elm(x1, y1);
-  }
-  if ($equals_1('OrGateElm', className)) {
-    return new OrGateElm(x1, y1);
-  }
-  if ($equals_1('PMosfetElm', className)) {
-    return new PMosfetElm(x1, y1);
-  }
-  if ($equals_1('SRAMElm', className)) {
-    return new SRAMElm(x1, y1);
-  }
-  if ($equals_1('EGTLeuchteElm', className)) {
-    return new EGTLeuchteElm(x1, y1);
-  }
-  if ($equals_1('EGTKreuzschalterElm', className)) {
-    return new EGTKreuzschalterElm(x1, y1);
-  }
-  if ($equals_1('LineElm', className)) {
-    return new LineElm(x1, y1);
-  }
-  if ($equals_1('LDRElm', className)) {
-    return new LDRElm(x1, y1);
-  }
-  if ($equals_1('InductorElm', className)) {
-    return new InductorElm(x1, y1);
-  }
-  if ($equals_1('MonostableElm', className)) {
-    return new MonostableElm(x1, y1);
-  }
-  if ($equals_1('PisoShiftElm', className)) {
-    return new PisoShiftElm(x1, y1);
-  }
-  if ($equals_1('RelayContactElm', className)) {
-    return new RelayContactElm(x1, y1);
-  }
-  if ($equals_1('Switch2Elm', className)) {
-    return new Switch2Elm(x1, y1);
-  }
-  if ($equals_1('SevenSegDecoderElm', className)) {
-    return new SevenSegDecoderElm(x1, y1);
-  }
-  if ($equals_1('NoiseElm', className)) {
-    return new NoiseElm(x1, y1);
-  }
-  if ($equals_1('EGTLeistungsschuetzElm', className)) {
-    return new EGTLeistungsschuetzElm(x1, y1);
-  }
-  if ($equals_1('NJfetElm', className)) {
-    return new NJfetElm(x1, y1);
-  }
-  if ($equals_1('SweepElm', className)) {
-    return new SweepElm(x1, y1);
-  }
-  if ($equals_1('ThreePhaseMotorElm', className)) {
-    return new ThreePhaseMotorElm(x1, y1);
-  }
-  if ($equals_1('OpAmpRealElm', className)) {
-    return new OpAmpRealElm(x1, y1);
-  }
-  if ($equals_1('RSSpeicherElm', className)) {
-    return new RSSpeicherElm(x1, y1);
-  }
-  if ($equals_1('XnorGateElm', className)) {
-    return new XnorGateElm(x1, y1);
-  }
-  if ($equals_1('LatchElm', className)) {
-    return new LatchElm(x1, y1);
-  }
-  if ($equals_1('OTAElm', className)) {
-    return new OTAElm(x1, y1);
-  }
-  if ($equals_1('StopTriggerElm', className)) {
-    return new StopTriggerElm(x1, y1);
-  }
-  if ($equals_1('EGTMiniSpsElm', className)) {
-    return new EGTMiniSpsElm(x1, y1);
-  }
-  if ($equals_1('BusLogicInputElm', className)) {
-    return new BusLogicInputElm(x1, y1);
-  }
-  if ($equals_1('TransLineElm', className)) {
-    return new TransLineElm(x1, y1);
-  }
-  if ($equals_1('TimerElm', className)) {
-    return new TimerElm(x1, y1);
-  }
-  if ($equals_1('WireElm', className)) {
-    return new WireElm(x1, y1);
-  }
-  if ($equals_1('CC2NegElm', className)) {
-    return new CC2NegElm(x1, y1);
-  }
-  if ($equals_1('MultiplexerElm', className)) {
-    return new MultiplexerElm(x1, y1);
-  }
-  if ($equals_1('CustomTransformerElm', className)) {
-    return new CustomTransformerElm(x1, y1);
-  }
-  if ($equals_1('JKFlipFlopElm', className)) {
-    return new JKFlipFlopElm(x1, y1);
-  }
-  if ($equals_1('EGTHmiLastElm', className)) {
-    return new EGTHmiLastElm(x1, y1);
+  if ($equals_1('RelayElm', className)) {
+    return new RelayElm(x1, y1);
   }
   if ($equals_1('SevenSegElm', className)) {
     return new SevenSegElm(x1, y1);
   }
-  if ($equals_1('VCVSElm', className)) {
-    return new VCVSElm(x1, y1);
+  if ($equals_1('EGTWechselschalterElm', className)) {
+    return new EGTWechselschalterElm(x1, y1);
   }
-  if ($equals_1('CrystalElm', className)) {
-    return new CrystalElm(x1, y1);
+  if ($equals_1('ComparatorElm', className)) {
+    return new ComparatorElm(x1, y1);
   }
-  if ($equals_1('TriacElm', className)) {
-    return new TriacElm(x1, y1);
+  if ($equals_1('EGTUeberlastrelaisElm', className)) {
+    return new EGTUeberlastrelaisElm(x1, y1);
   }
-  if ($equals_1('PhaseCompElm', className)) {
-    return new PhaseCompElm(x1, y1);
+  if ($equals_1('EGTInstallationsleitungElm', className)) {
+    return new EGTInstallationsleitungElm(x1, y1);
   }
-  if ($equals_1('PJfetElm', className)) {
-    return new PJfetElm(x1, y1);
+  if ($equals_1('GyratorElm', className)) {
+    return new GyratorElm(x1, y1);
   }
-  if ($equals_1('VaractorElm', className)) {
-    return new VaractorElm(x1, y1);
+  if ($equals_1('EGTAbzweigdoseElm', className)) {
+    return new EGTAbzweigdoseElm(x1, y1);
   }
-  if ($equals_1('DCMotorElm', className)) {
-    return new DCMotorElm(x1, y1);
+  if ($equals_1('HalfAdderElm', className)) {
+    return new HalfAdderElm(x1, y1);
   }
-  if ($equals_1('EGTFupTonElm', className)) {
-    return new EGTFupTonElm(x1, y1);
+  if ($equals_1('CCCSElm', className)) {
+    return new CCCSElm(x1, y1);
   }
-  if ($equals_1('ScopeElm', className)) {
-    return new ScopeElm(x1, y1);
+  if ($equals_1('SweepElm', className)) {
+    return new SweepElm(x1, y1);
   }
-  if ($equals_1('TriStateElm', className)) {
-    return new TriStateElm(x1, y1);
+  if ($equals_1('OpAmpRealElm', className)) {
+    return new OpAmpRealElm(x1, y1);
   }
-  if ($equals_1('BusTransceiverElm', className)) {
-    return new BusTransceiverElm(x1, y1);
+  if ($equals_1('EGTFupEingangElm', className)) {
+    return new EGTFupEingangElm(x1, y1);
   }
-  if ($equals_1('RelayCoilElm', className)) {
-    return new RelayCoilElm(x1, y1);
-  }
-  if ($equals_1('TFlipFlopElm', className)) {
-    return new TFlipFlopElm(x1, y1);
+  if ($equals_1('EGTLeuchteElm', className)) {
+    return new EGTLeuchteElm(x1, y1);
   }
   if ($equals_1('InvertingSchmittElm', className)) {
     return new InvertingSchmittElm(x1, y1);
   }
-  if ($equals_1('DeMultiplexerElm', className)) {
-    return new DeMultiplexerElm(x1, y1);
-  }
-  if ($equals_1('ACRailElm', className)) {
-    return new ACRailElm(x1, y1);
-  }
-  if ($equals_1('GroundElm', className)) {
-    return new GroundElm(x1, y1);
-  }
   if ($equals_1('EGTTreppenlichtElm', className)) {
     return new EGTTreppenlichtElm(x1, y1);
   }
-  if ($equals_1('EGTSteckdoseElm', className)) {
-    return new EGTSteckdoseElm(x1, y1);
+  if ($equals_1('PisoShiftElm', className)) {
+    return new PisoShiftElm(x1, y1);
   }
-  if ($equals_1('SipoShiftElm', className)) {
-    return new SipoShiftElm(x1, y1);
+  if ($equals_1('TunnelDiodeElm', className)) {
+    return new TunnelDiodeElm(x1, y1);
   }
-  if ($equals_1('EGTWechselschalterElm', className)) {
-    return new EGTWechselschalterElm(x1, y1);
+  if ($equals_1('BusLogicInputElm', className)) {
+    return new BusLogicInputElm(x1, y1);
   }
-  if ($equals_1('DataRecorderElm', className)) {
-    return new DataRecorderElm(x1, y1);
+  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
+    return new EGTZeitrelaisKontaktElm(x1, y1);
   }
-  if ($equals_1('FullAdderElm', className)) {
-    return new FullAdderElm(x1, y1);
+  if ($equals_1('VarRailElm', className)) {
+    return new VarRailElm(x1, y1);
   }
-  if ($equals_1('MotorProtectionSwitchElm', className)) {
-    return new MotorProtectionSwitchElm(x1, y1);
+  if ($equals_1('LogicInputElm', className)) {
+    return new LogicInputElm(x1, y1);
   }
-  if ($equals_1('InstructionDisplayElm', className)) {
-    return new InstructionDisplayElm(x1, y1);
+  if ($equals_1('TFlipFlopElm', className)) {
+    return new TFlipFlopElm(x1, y1);
+  }
+  if ($equals_1('AnalogSwitchElm', className)) {
+    return new AnalogSwitchElm(x1, y1);
+  }
+  if ($equals_1('OpAmpSwapElm', className)) {
+    return new OpAmpSwapElm(x1, y1);
+  }
+  if ($equals_1('NJfetElm', className)) {
+    return new NJfetElm(x1, y1);
+  }
+  if ($equals_1('AnalogMuxElm', className)) {
+    return new AnalogMuxElm(x1, y1);
+  }
+  if ($equals_1('CustomCompositeElm', className)) {
+    return new CustomCompositeElm(x1, y1);
+  }
+  if ($equals_1('WireElm', className)) {
+    return new WireElm(x1, y1);
+  }
+  if ($equals_1('DeMultiplexerElm', className)) {
+    return new DeMultiplexerElm(x1, y1);
+  }
+  if ($equals_1('DataInputElm', className)) {
+    return new DataInputElm(x1, y1);
+  }
+  if ($equals_1('XnorGateElm', className)) {
+    return new XnorGateElm(x1, y1);
+  }
+  if ($equals_1('RailElm', className)) {
+    return new RailElm(x1, y1);
+  }
+  if ($equals_1('OTAElm', className)) {
+    return new OTAElm(x1, y1);
+  }
+  if ($equals_1('NMosfetElm', className)) {
+    return new NMosfetElm(x1, y1);
+  }
+  if ($equals_1('PTransistorElm', className)) {
+    return new PTransistorElm(x1, y1);
   }
   if ($equals_1('EGTHilfsschuetzElm', className)) {
     return new EGTHilfsschuetzElm(x1, y1);
@@ -48030,531 +47889,555 @@ function $create(className, x1, y1){
   if ($equals_1('EGTKondensatormotorElm', className)) {
     return new EGTKondensatormotorElm(x1, y1);
   }
-  if ($equals_1('LEDArrayElm', className)) {
-    return new LEDArrayElm(x1, y1);
+  if ($equals_1('CrystalElm', className)) {
+    return new CrystalElm(x1, y1);
   }
-  if ($equals_1('LampElm', className)) {
-    return new LampElm(x1, y1);
+  if ($equals_1('AmmeterElm', className)) {
+    return new AmmeterElm(x1, y1);
   }
-  if ($equals_1('RingCounterElm', className)) {
-    return new RingCounterElm(x1, y1);
-  }
-  if ($equals_1('DataInputElm', className)) {
-    return new DataInputElm(x1, y1);
-  }
-  if ($equals_1('HalfAdderElm', className)) {
-    return new HalfAdderElm(x1, y1);
-  }
-  if ($equals_1('EGTMotorschutzschalterElm', className)) {
-    return new EGTMotorschutzschalterElm(x1, y1);
-  }
-  if ($equals_1('AnalogSwitchElm', className)) {
-    return new AnalogSwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTUeberlastrelaisElm', className)) {
-    return new EGTUeberlastrelaisElm(x1, y1);
-  }
-  if ($equals_1('ACVoltageElm', className)) {
-    return new ACVoltageElm(x1, y1);
-  }
-  if ($equals_1('Counter2Elm', className)) {
-    return new Counter2Elm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossSpuleElm', className)) {
-    return new EGTStromstossSpuleElm(x1, y1);
-  }
-  if ($equals_1('RoutedWireElm', className)) {
-    return new RoutedWireElm(x1, y1);
-  }
-  if ($equals_1('RelayElm', className)) {
-    return new RelayElm(x1, y1);
-  }
-  if ($equals_1('GyratorElm', className)) {
-    return new GyratorElm(x1, y1);
-  }
-  if ($equals_1('BusSplitterElm', className)) {
-    return new BusSplitterElm(x1, y1);
-  }
-  if ($equals_1('OutputElm', className)) {
-    return new OutputElm(x1, y1);
-  }
-  if ($equals_1('EGTUeberlastKontaktElm', className)) {
-    return new EGTUeberlastKontaktElm(x1, y1);
-  }
-  if ($equals_1('OhmMeterElm', className)) {
-    return new OhmMeterElm(x1, y1);
-  }
-  if ($equals_1('AudioInputElm', className)) {
-    return new AudioInputElm(x1, y1);
-  }
-  if ($equals_1('ZenerElm', className)) {
-    return new ZenerElm(x1, y1);
-  }
-  if ($equals_1('AnalogSwitch2Elm', className)) {
-    return new AnalogSwitch2Elm(x1, y1);
-  }
-  if ($equals_1('FMElm', className)) {
-    return new FMElm(x1, y1);
+  if ($equals_1('UnijunctionElm', className)) {
+    return new UnijunctionElm(x1, y1);
   }
   if ($equals_1('ProbeElm', className)) {
     return new ProbeElm(x1, y1);
   }
-  if ($equals_1('MemristorElm', className)) {
-    return new MemristorElm(x1, y1);
+  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
+    return new EGTSchuetzHilfskontaktElm(x1, y1);
+  }
+  if ($equals_1('PhaseCompElm', className)) {
+    return new PhaseCompElm(x1, y1);
   }
   if ($equals_1('GraphicElm', className)) {
     return new GraphicElm(x1, y1);
   }
-  if ($equals_1('VCOElm', className)) {
-    return new VCOElm(x1, y1);
+  if ($equals_1('EGTGleichstrommotorElm', className)) {
+    return new EGTGleichstrommotorElm(x1, y1);
+  }
+  if ($equals_1('DCVoltageElm', className)) {
+    return new DCVoltageElm(x1, y1);
+  }
+  if ($equals_1('PotElm', className)) {
+    return new PotElm(x1, y1);
+  }
+  if ($equals_1('SipoShiftElm', className)) {
+    return new SipoShiftElm(x1, y1);
   }
   if ($equals_1('XorGateElm', className)) {
     return new XorGateElm(x1, y1);
   }
-  if ($equals_1('TappedTransformerElm', className)) {
-    return new TappedTransformerElm(x1, y1);
-  }
-  if ($equals_1('EGTSchuetzSpuleElm', className)) {
-    return new EGTSchuetzSpuleElm(x1, y1);
-  }
-  if ($equals_1('LogicOutputElm', className)) {
-    return new LogicOutputElm(x1, y1);
-  }
-  if ($equals_1('PushSwitchElm', className)) {
-    return new PushSwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTKlingelElm', className)) {
-    return new EGTKlingelElm(x1, y1);
-  }
-  if ($equals_1('InverterElm', className)) {
-    return new InverterElm(x1, y1);
-  }
-  if ($equals_1('CCCSElm', className)) {
-    return new CCCSElm(x1, y1);
-  }
-  if ($equals_1('DACElm', className)) {
-    return new DACElm(x1, y1);
+  if ($equals_1('EGTMotorschutzschalterElm', className)) {
+    return new EGTMotorschutzschalterElm(x1, y1);
   }
   if ($equals_1('DFlipFlopElm', className)) {
     return new DFlipFlopElm(x1, y1);
   }
-  if ($equals_1('DecimalDisplayElm', className)) {
-    return new DecimalDisplayElm(x1, y1);
+  if ($equals_1('EGTHmiGeberElm', className)) {
+    return new EGTHmiGeberElm(x1, y1);
   }
-  if ($equals_1('TimeDelayRelayElm', className)) {
-    return new TimeDelayRelayElm(x1, y1);
+  if ($equals_1('StopTriggerElm', className)) {
+    return new StopTriggerElm(x1, y1);
   }
-  if ($equals_1('CustomCompositeChipElm', className)) {
-    return new CustomCompositeChipElm(x1, y1);
+  if ($equals_1('NoiseElm', className)) {
+    return new NoiseElm(x1, y1);
   }
-  if ($equals_1('CCVSElm', className)) {
-    return new CCVSElm(x1, y1);
+  if ($equals_1('MonostableElm', className)) {
+    return new MonostableElm(x1, y1);
   }
-  if ($equals_1('LEDElm', className)) {
-    return new LEDElm(x1, y1);
+  if ($equals_1('InductorElm', className)) {
+    return new InductorElm(x1, y1);
   }
-  if ($equals_1('EGTSicherungElm', className)) {
-    return new EGTSicherungElm(x1, y1);
+  if ($equals_1('FullAdderElm', className)) {
+    return new FullAdderElm(x1, y1);
+  }
+  if ($equals_1('ACRailElm', className)) {
+    return new ACRailElm(x1, y1);
+  }
+  if ($equals_1('GroundElm', className)) {
+    return new GroundElm(x1, y1);
+  }
+  if ($equals_1('RelayContactElm', className)) {
+    return new RelayContactElm(x1, y1);
+  }
+  if ($equals_1('EGTStromstossschalterElm', className)) {
+    return new EGTStromstossschalterElm(x1, y1);
+  }
+  if ($equals_1('DelayBufferElm', className)) {
+    return new DelayBufferElm(x1, y1);
+  }
+  if ($equals_1('EGTTueroeffnerElm', className)) {
+    return new EGTTueroeffnerElm(x1, y1);
+  }
+  if ($equals_1('EGTHmiLastElm', className)) {
+    return new EGTHmiLastElm(x1, y1);
+  }
+  if ($equals_1('CC2NegElm', className)) {
+    return new CC2NegElm(x1, y1);
+  }
+  if ($equals_1('InverterElm', className)) {
+    return new InverterElm(x1, y1);
+  }
+  if ($equals_1('MemristorElm', className)) {
+    return new MemristorElm(x1, y1);
+  }
+  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
+    return new EGTSchuetzLeistungskontakteElm(x1, y1);
+  }
+  if ($equals_1('MotorProtectionSwitchElm', className)) {
+    return new MotorProtectionSwitchElm(x1, y1);
+  }
+  if ($equals_1('ScopeElm', className)) {
+    return new ScopeElm(x1, y1);
   }
   if ($equals_1('ADCElm', className)) {
     return new ADCElm(x1, y1);
   }
-  if ($equals_1('NorGateElm', className)) {
-    return new NorGateElm(x1, y1);
+  if ($equals_1('SwitchElm', className)) {
+    return new SwitchElm(x1, y1);
   }
-  if ($equals_1('BoxElm', className)) {
-    return new BoxElm(x1, y1);
+  if ($equals_1('LatchElm', className)) {
+    return new LatchElm(x1, y1);
   }
-  if ($equals_1('EGTAusschalterElm', className)) {
-    return new EGTAusschalterElm(x1, y1);
+  if ($equals_1('NDarlingtonElm', className)) {
+    return new NDarlingtonElm(x1, y1);
+  }
+  if ($equals_1('LogicOutputElm', className)) {
+    return new LogicOutputElm(x1, y1);
+  }
+  if ($equals_1('RelayCoilElm', className)) {
+    return new RelayCoilElm(x1, y1);
+  }
+  if ($equals_1('OrGateElm', className)) {
+    return new OrGateElm(x1, y1);
+  }
+  if ($equals_1('EGTBewegungsmelderElm', className)) {
+    return new EGTBewegungsmelderElm(x1, y1);
+  }
+  if ($equals_1('EGTKreuzschalterElm', className)) {
+    return new EGTKreuzschalterElm(x1, y1);
+  }
+  if ($equals_1('EGTUeberlastKontaktElm', className)) {
+    return new EGTUeberlastKontaktElm(x1, y1);
+  }
+  if ($equals_1('EGTDrehstrommotorElm', className)) {
+    return new EGTDrehstrommotorElm(x1, y1);
+  }
+  if ($equals_1('BusSplitterElm', className)) {
+    return new BusSplitterElm(x1, y1);
+  }
+  if ($equals_1('PushSwitchElm', className)) {
+    return new PushSwitchElm(x1, y1);
+  }
+  if ($equals_1('VaractorElm', className)) {
+    return new VaractorElm(x1, y1);
+  }
+  if ($equals_1('EGTFupAusgangElm', className)) {
+    return new EGTFupAusgangElm(x1, y1);
+  }
+  if ($equals_1('FuseElm', className)) {
+    return new FuseElm(x1, y1);
+  }
+  if ($equals_1('AudioInputElm', className)) {
+    return new AudioInputElm(x1, y1);
+  }
+  if ($equals_1('TimerElm', className)) {
+    return new TimerElm(x1, y1);
+  }
+  if ($equals_1('CustomCompositeChipElm', className)) {
+    return new CustomCompositeChipElm(x1, y1);
+  }
+  if ($equals_1('TriodeElm', className)) {
+    return new TriodeElm(x1, y1);
+  }
+  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
+    return new EGTKondensatormotorKompaktElm(x1, y1);
+  }
+  if ($equals_1('CC2Elm', className)) {
+    return new CC2Elm(x1, y1);
+  }
+  if ($equals_1('DACElm', className)) {
+    return new DACElm(x1, y1);
+  }
+  if ($equals_1('EGTSerienschalterElm', className)) {
+    return new EGTSerienschalterElm(x1, y1);
+  }
+  if ($equals_1('FMElm', className)) {
+    return new FMElm(x1, y1);
+  }
+  if ($equals_1('AntennaElm', className)) {
+    return new AntennaElm(x1, y1);
+  }
+  if ($equals_1('BusTransceiverElm', className)) {
+    return new BusTransceiverElm(x1, y1);
+  }
+  if ($equals_1('EGTSicherungElm', className)) {
+    return new EGTSicherungElm(x1, y1);
+  }
+  if ($equals_1('SchmittElm', className)) {
+    return new SchmittElm(x1, y1);
   }
   if ($equals_1('SeqGenElm', className)) {
     return new SeqGenElm(x1, y1);
   }
+  if ($equals_1('SevenSegDecoderElm', className)) {
+    return new SevenSegDecoderElm(x1, y1);
+  }
+  if ($equals_1('CounterElm', className)) {
+    return new CounterElm(x1, y1);
+  }
+  if ($equals_1('ThermistorNTCElm', className)) {
+    return new ThermistorNTCElm(x1, y1);
+  }
+  if ($equals_1('CapacitorElm', className)) {
+    return new CapacitorElm(x1, y1);
+  }
+  if ($equals_1('DecimalDisplayElm', className)) {
+    return new DecimalDisplayElm(x1, y1);
+  }
+  if ($equals_1('TriStateElm', className)) {
+    return new TriStateElm(x1, y1);
+  }
+  if ($equals_1('EGTFupTonElm', className)) {
+    return new EGTFupTonElm(x1, y1);
+  }
+  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
+    return new EGTZeitrelaisSpuleElm(x1, y1);
+  }
+  if ($equals_1('TappedTransformerElm', className)) {
+    return new TappedTransformerElm(x1, y1);
+  }
+  if ($equals_1('ThreePhaseMotorElm', className)) {
+    return new ThreePhaseMotorElm(x1, y1);
+  }
+  if ($equals_1('RSSpeicherElm', className)) {
+    return new RSSpeicherElm(x1, y1);
+  }
+  if ($equals_1('RingCounterElm', className)) {
+    return new RingCounterElm(x1, y1);
+  }
+  if ($equals_1('EGTDrehstromquelleElm', className)) {
+    return new EGTDrehstromquelleElm(x1, y1);
+  }
+  if ($equals_1('CCVSElm', className)) {
+    return new CCVSElm(x1, y1);
+  }
+  if ($equals_1('LEDArrayElm', className)) {
+    return new LEDArrayElm(x1, y1);
+  }
+  if ($equals_1('EGTHilfsschalterblockElm', className)) {
+    return new EGTHilfsschalterblockElm(x1, y1);
+  }
+  if ($equals_1('LabeledNodeElm', className)) {
+    return new LabeledNodeElm(x1, y1);
+  }
   if ($equals_1('EGTGleichspannungsquelleElm', className)) {
     return new EGTGleichspannungsquelleElm(x1, y1);
+  }
+  if ($equals_1('JKFlipFlopElm', className)) {
+    return new JKFlipFlopElm(x1, y1);
+  }
+  if ($equals_1('SRAMElm', className)) {
+    return new SRAMElm(x1, y1);
+  }
+  if ($equals_1('EGTLeistungsschuetzElm', className)) {
+    return new EGTLeistungsschuetzElm(x1, y1);
+  }
+  if ($equals_1('CurrentElm', className)) {
+    return new CurrentElm(x1, y1);
+  }
+  if ($equals_1('PMosfetElm', className)) {
+    return new PMosfetElm(x1, y1);
+  }
+  if ($equals_1('EGTMeldeleuchteElm', className)) {
+    return new EGTMeldeleuchteElm(x1, y1);
+  }
+  if ($equals_1('EGTFupTofElm', className)) {
+    return new EGTFupTofElm(x1, y1);
+  }
+  if ($equals_1('DCMotorElm', className)) {
+    return new DCMotorElm(x1, y1);
+  }
+  if ($equals_1('EGTStromstossSpuleElm', className)) {
+    return new EGTStromstossSpuleElm(x1, y1);
+  }
+  if ($equals_1('SCRElm', className)) {
+    return new SCRElm(x1, y1);
+  }
+  if ($equals_1('DataRecorderElm', className)) {
+    return new DataRecorderElm(x1, y1);
+  }
+  if ($equals_1('EGTSteckdoseElm', className)) {
+    return new EGTSteckdoseElm(x1, y1);
+  }
+  if ($equals_1('PDarlingtonElm', className)) {
+    return new PDarlingtonElm(x1, y1);
+  }
+  if ($equals_1('LampElm', className)) {
+    return new LampElm(x1, y1);
+  }
+  if ($equals_1('OutputElm', className)) {
+    return new OutputElm(x1, y1);
+  }
+  if ($equals_1('DPDTSwitchElm', className)) {
+    return new DPDTSwitchElm(x1, y1);
+  }
+  if ($equals_1('EGTKlingelElm', className)) {
+    return new EGTKlingelElm(x1, y1);
+  }
+  if ($equals_1('TriacElm', className)) {
+    return new TriacElm(x1, y1);
+  }
+  if ($equals_1('LineElm', className)) {
+    return new LineElm(x1, y1);
+  }
+  if ($equals_1('TransLineElm', className)) {
+    return new TransLineElm(x1, y1);
+  }
+  if ($equals_1('AudioOutputElm', className)) {
+    return new AudioOutputElm(x1, y1);
+  }
+  if ($equals_1('Counter2Elm', className)) {
+    return new Counter2Elm(x1, y1);
+  }
+  if ($equals_1('AnalogSwitch2Elm', className)) {
+    return new AnalogSwitch2Elm(x1, y1);
+  }
+  if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
+    return new EGTUeberlastHeizleiterElm(x1, y1);
+  }
+  if ($equals_1('NTransistorElm', className)) {
+    return new NTransistorElm(x1, y1);
+  }
+  if ($equals_1('ZenerElm', className)) {
+    return new ZenerElm(x1, y1);
+  }
+  if ($equals_1('OptocouplerElm', className)) {
+    return new OptocouplerElm(x1, y1);
+  }
+  if ($equals_1('WattmeterElm', className)) {
+    return new WattmeterElm(x1, y1);
+  }
+  if ($equals_1('PJfetElm', className)) {
+    return new PJfetElm(x1, y1);
+  }
+  if ($equals_1('MBBSwitchElm', className)) {
+    return new MBBSwitchElm(x1, y1);
+  }
+  if ($equals_1('PolarCapacitorElm', className)) {
+    return new PolarCapacitorElm(x1, y1);
+  }
+  if ($equals_1('LEDElm', className)) {
+    return new LEDElm(x1, y1);
+  }
+  if ($equals_1('RoutedWireElm', className)) {
+    return new RoutedWireElm(x1, y1);
+  }
+  if ($equals_1('SparkGapElm', className)) {
+    return new SparkGapElm(x1, y1);
+  }
+  if ($equals_1('ClockElm', className)) {
+    return new ClockElm(x1, y1);
+  }
+  if ($equals_1('DiodeElm', className)) {
+    return new DiodeElm(x1, y1);
+  }
+  if ($equals_1('LDRElm', className)) {
+    return new LDRElm(x1, y1);
+  }
+  if ($equals_1('TextElm', className)) {
+    return new TextElm(x1, y1);
+  }
+  if ($equals_1('Switch2Elm', className)) {
+    return new Switch2Elm(x1, y1);
+  }
+  if ($equals_1('CrossSwitchElm', className)) {
+    return new CrossSwitchElm(x1, y1);
+  }
+  if ($equals_1('EGTLeitungElm', className)) {
+    return new EGTLeitungElm(x1, y1);
+  }
+  if ($equals_1('MultiplexerElm', className)) {
+    return new MultiplexerElm(x1, y1);
   }
   if ($equals_1('ExtVoltageElm', className)) {
     return new ExtVoltageElm(x1, y1);
   }
-  if ($equals_1('PolarCapacitorElm', className)) {
-    return new PolarCapacitorElm(x1, y1);
+  if ($equals_1('TestPointElm', className)) {
+    return new TestPointElm(x1, y1);
+  }
+  if ($equals_1('AndGateElm', className)) {
+    return new AndGateElm(x1, y1);
+  }
+  if ($equals_1('EGTAusschalterElm', className)) {
+    return new EGTAusschalterElm(x1, y1);
+  }
+  if ($equals_1('EGTSchuetzSpuleElm', className)) {
+    return new EGTSchuetzSpuleElm(x1, y1);
+  }
+  if ($equals_1('InstructionDisplayElm', className)) {
+    return new InstructionDisplayElm(x1, y1);
+  }
+  if ($equals_1('SquareRailElm', className)) {
+    return new SquareRailElm(x1, y1);
+  }
+  if ($equals_1('BoxElm', className)) {
+    return new BoxElm(x1, y1);
+  }
+  if ($equals_1('NandGateElm', className)) {
+    return new NandGateElm(x1, y1);
+  }
+  if ($equals_1('EGTSpannungsquelleElm', className)) {
+    return new EGTSpannungsquelleElm(x1, y1);
+  }
+  if ($equals_1('ResistorElm', className)) {
+    return new ResistorElm(x1, y1);
+  }
+  if ($equals_1('OhmMeterElm', className)) {
+    return new OhmMeterElm(x1, y1);
+  }
+  if ($equals_1('VCCSElm', className)) {
+    return new VCCSElm(x1, y1);
+  }
+  if ($equals_1('AMElm', className)) {
+    return new AMElm(x1, y1);
+  }
+  if ($equals_1('TimeDelayRelayElm', className)) {
+    return new TimeDelayRelayElm(x1, y1);
+  }
+  if ($equals_1('NortonAmpElm', className)) {
+    return new NortonAmpElm(x1, y1);
+  }
+  if ($equals_1('EGTTasterElm', className)) {
+    return new EGTTasterElm(x1, y1);
+  }
+  if ($equals_1('CustomTransformerElm', className)) {
+    return new CustomTransformerElm(x1, y1);
+  }
+  if ($equals_1('EGTMiniSpsElm', className)) {
+    return new EGTMiniSpsElm(x1, y1);
+  }
+  if ($equals_1('ROMElm', className)) {
+    return new ROMElm(x1, y1);
   }
   return null;
 }
 
 function $create_0(className, x1, y1, x2, y2, f, st){
-  if ($equals_1('CurrentElm', className)) {
-    return new CurrentElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMeldeleuchteElm', className)) {
-    return new EGTMeldeleuchteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
-    return new EGTZeitrelaisSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ROMElm', className)) {
-    return new ROMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
-    return new EGTUeberlastHeizleiterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DPDTSwitchElm', className)) {
-    return new DPDTSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SchmittElm', className)) {
-    return new SchmittElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('NandGateElm', className)) {
-    return new NandGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MBBSwitchElm', className)) {
-    return new MBBSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTasterElm', className)) {
-    return new EGTTasterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AudioOutputElm', className)) {
-    return new AudioOutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SparkGapElm', className)) {
-    return new SparkGapElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ResistorElm', className)) {
-    return new ResistorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
-    return new EGTZeitrelaisKontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TestPointElm', className)) {
-    return new TestPointElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTGleichstrommotorElm', className)) {
-    return new EGTGleichstrommotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTInstallationsleitungElm', className)) {
-    return new EGTInstallationsleitungElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SCRElm', className)) {
-    return new SCRElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OptocouplerElm', className)) {
-    return new OptocouplerElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('EGTSpannungsquelleElm', className)) {
-    return new EGTSpannungsquelleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSerienschalterElm', className)) {
-    return new EGTSerienschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PotElm', className)) {
-    return new PotElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('FuseElm', className)) {
-    return new FuseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupEingangElm', className)) {
-    return new EGTFupEingangElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AndGateElm', className)) {
-    return new AndGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LogicInputElm', className)) {
-    return new LogicInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupAusgangElm', className)) {
-    return new EGTFupAusgangElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTStromstossschalterElm', className)) {
-    return new EGTStromstossschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHilfsschalterblockElm', className)) {
-    return new EGTHilfsschalterblockElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VCCSElm', className)) {
-    return new VCCSElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AntennaElm', className)) {
-    return new AntennaElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('UnijunctionElm', className)) {
-    return new UnijunctionElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('CrossSwitchElm', className)) {
-    return new CrossSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AnalogMuxElm', className)) {
-    return new AnalogMuxElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RailElm', className)) {
-    return new RailElm_1(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ComparatorElm', className)) {
-    return new ComparatorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
-    return new EGTSchuetzHilfskontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TriodeElm', className)) {
-    return new TriodeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SwitchElm', className)) {
-    return new SwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
-    return new EGTKondensatormotorKompaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
-    return new EGTSchuetzLeistungskontakteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CounterElm', className)) {
-    return new CounterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DiodeElm', className)) {
-    return new DiodeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHmiGeberElm', className)) {
-    return new EGTHmiGeberElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupTofElm', className)) {
-    return new EGTFupTofElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTDrehstromquelleElm', className)) {
-    return new EGTDrehstromquelleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LabeledNodeElm', className)) {
-    return new LabeledNodeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTDrehstrommotorElm', className)) {
-    return new EGTDrehstrommotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DelayBufferElm', className)) {
-    return new DelayBufferElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TunnelDiodeElm', className)) {
-    return new TunnelDiodeElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('DiacElm', className)) {
-    return new DiacElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTStromstossKontaktElm', className)) {
+    return new EGTStromstossKontaktElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('TransformerElm', className)) {
     return new TransformerElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('TransistorElm', className)) {
-    return new TransistorElm(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTStromstossKontaktElm', className)) {
-    return new EGTStromstossKontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CapacitorElm', className)) {
-    return new CapacitorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CustomLogicElm', className)) {
-    return new CustomLogicElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeitungElm', className)) {
-    return new EGTLeitungElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTueroeffnerElm', className)) {
-    return new EGTTueroeffnerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ThermistorNTCElm', className)) {
-    return new ThermistorNTCElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VarRailElm', className)) {
-    return new VarRailElm_0(x1, y1, x2, y2, f, st);
-  }
   if ($equals_1('OpAmpElm', className)) {
     return new OpAmpElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AmmeterElm', className)) {
-    return new AmmeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VoltageElm', className)) {
-    return new VoltageElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('WattmeterElm', className)) {
-    return new WattmeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTAbzweigdoseElm', className)) {
-    return new EGTAbzweigdoseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTBewegungsmelderElm', className)) {
-    return new EGTBewegungsmelderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CustomCompositeElm', className)) {
-    return new CustomCompositeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AMElm', className)) {
-    return new AMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TextElm', className)) {
-    return new TextElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CC2Elm', className)) {
-    return new CC2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OrGateElm', className)) {
-    return new OrGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SRAMElm', className)) {
-    return new SRAMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeuchteElm', className)) {
-    return new EGTLeuchteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKreuzschalterElm', className)) {
-    return new EGTKreuzschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LineElm', className)) {
-    return new LineElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('LDRElm', className)) {
-    return new LDRElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InductorElm', className)) {
-    return new InductorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MonostableElm', className)) {
-    return new MonostableElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PisoShiftElm', className)) {
-    return new PisoShiftElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RelayContactElm', className)) {
-    return new RelayContactElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('Switch2Elm', className)) {
-    return new Switch2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SevenSegDecoderElm', className)) {
-    return new SevenSegDecoderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('NoiseElm', className)) {
-    return new NoiseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeistungsschuetzElm', className)) {
-    return new EGTLeistungsschuetzElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SweepElm', className)) {
-    return new SweepElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ThreePhaseMotorElm', className)) {
-    return new ThreePhaseMotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OpAmpRealElm', className)) {
-    return new OpAmpRealElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RSSpeicherElm', className)) {
-    return new RSSpeicherElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('XnorGateElm', className)) {
-    return new XnorGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LatchElm', className)) {
-    return new LatchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OTAElm', className)) {
-    return new OTAElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('StopTriggerElm', className)) {
-    return new StopTriggerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMiniSpsElm', className)) {
-    return new EGTMiniSpsElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TransLineElm', className)) {
-    return new TransLineElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TimerElm', className)) {
-    return new TimerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('WireElm', className)) {
-    return new WireElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('MultiplexerElm', className)) {
-    return new MultiplexerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CustomTransformerElm', className)) {
-    return new CustomTransformerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('JKFlipFlopElm', className)) {
-    return new JKFlipFlopElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHmiLastElm', className)) {
-    return new EGTHmiLastElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SevenSegElm', className)) {
-    return new SevenSegElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VCVSElm', className)) {
-    return new VCVSElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CrystalElm', className)) {
-    return new CrystalElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('JfetElm', className)) {
-    return new JfetElm(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TriacElm', className)) {
-    return new TriacElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PhaseCompElm', className)) {
-    return new PhaseCompElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VaractorElm', className)) {
-    return new VaractorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DCMotorElm', className)) {
-    return new DCMotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupTonElm', className)) {
-    return new EGTFupTonElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ScopeElm', className)) {
-    return new ScopeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TriStateElm', className)) {
-    return new TriStateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RelayCoilElm', className)) {
-    return new RelayCoilElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TFlipFlopElm', className)) {
-    return new TFlipFlopElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InvertingSchmittElm', className)) {
-    return new InvertingSchmittElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DeMultiplexerElm', className)) {
-    return new DeMultiplexerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('GroundElm', className)) {
-    return new GroundElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTreppenlichtElm', className)) {
-    return new EGTTreppenlichtElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSteckdoseElm', className)) {
-    return new EGTSteckdoseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SipoShiftElm', className)) {
-    return new SipoShiftElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTWechselschalterElm', className)) {
-    return new EGTWechselschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DataRecorderElm', className)) {
-    return new DataRecorderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('FullAdderElm', className)) {
-    return new FullAdderElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('DarlingtonElm', className)) {
     return new DarlingtonElm(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('MotorProtectionSwitchElm', className)) {
-    return new MotorProtectionSwitchElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('CustomLogicElm', className)) {
+    return new CustomLogicElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VCVSElm', className)) {
+    return new VCVSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DiacElm', className)) {
+    return new DiacElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('NorGateElm', className)) {
+    return new NorGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VCOElm', className)) {
+    return new VCOElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayElm', className)) {
+    return new RelayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SevenSegElm', className)) {
+    return new SevenSegElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTWechselschalterElm', className)) {
+    return new EGTWechselschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ComparatorElm', className)) {
+    return new ComparatorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTUeberlastrelaisElm', className)) {
+    return new EGTUeberlastrelaisElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTInstallationsleitungElm', className)) {
+    return new EGTInstallationsleitungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTAbzweigdoseElm', className)) {
+    return new EGTAbzweigdoseElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('HalfAdderElm', className)) {
+    return new HalfAdderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CCCSElm', className)) {
+    return new CCCSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SweepElm', className)) {
+    return new SweepElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OpAmpRealElm', className)) {
+    return new OpAmpRealElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupEingangElm', className)) {
+    return new EGTFupEingangElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeuchteElm', className)) {
+    return new EGTLeuchteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('InvertingSchmittElm', className)) {
+    return new InvertingSchmittElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTreppenlichtElm', className)) {
+    return new EGTTreppenlichtElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PisoShiftElm', className)) {
+    return new PisoShiftElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TunnelDiodeElm', className)) {
+    return new TunnelDiodeElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
+    return new EGTZeitrelaisKontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VarRailElm', className)) {
+    return new VarRailElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LogicInputElm', className)) {
+    return new LogicInputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TFlipFlopElm', className)) {
+    return new TFlipFlopElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AnalogSwitchElm', className)) {
+    return new AnalogSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AnalogMuxElm', className)) {
+    return new AnalogMuxElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CustomCompositeElm', className)) {
+    return new CustomCompositeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('WireElm', className)) {
+    return new WireElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('DeMultiplexerElm', className)) {
+    return new DeMultiplexerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DataInputElm', className)) {
+    return new DataInputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('XnorGateElm', className)) {
+    return new XnorGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RailElm', className)) {
+    return new RailElm_1(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OTAElm', className)) {
+    return new OTAElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('EGTHilfsschuetzElm', className)) {
     return new EGTHilfsschuetzElm_0(x1, y1, x2, y2, f, st);
@@ -48562,140 +48445,395 @@ function $create_0(className, x1, y1, x2, y2, f, st){
   if ($equals_1('EGTKondensatormotorElm', className)) {
     return new EGTKondensatormotorElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('LEDArrayElm', className)) {
-    return new LEDArrayElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('CrystalElm', className)) {
+    return new CrystalElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('LampElm', className)) {
-    return new LampElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('VoltageElm', className)) {
+    return new VoltageElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('RingCounterElm', className)) {
-    return new RingCounterElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('AmmeterElm', className)) {
+    return new AmmeterElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('DataInputElm', className)) {
-    return new DataInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('HalfAdderElm', className)) {
-    return new HalfAdderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMotorschutzschalterElm', className)) {
-    return new EGTMotorschutzschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AnalogSwitchElm', className)) {
-    return new AnalogSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTUeberlastrelaisElm', className)) {
-    return new EGTUeberlastrelaisElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('Counter2Elm', className)) {
-    return new Counter2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTStromstossSpuleElm', className)) {
-    return new EGTStromstossSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RelayElm', className)) {
-    return new RelayElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('BusSplitterElm', className)) {
-    return new BusSplitterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OutputElm', className)) {
-    return new OutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTUeberlastKontaktElm', className)) {
-    return new EGTUeberlastKontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OhmMeterElm', className)) {
-    return new OhmMeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AudioInputElm', className)) {
-    return new AudioInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ZenerElm', className)) {
-    return new ZenerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AnalogSwitch2Elm', className)) {
-    return new AnalogSwitch2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('FMElm', className)) {
-    return new FMElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('UnijunctionElm', className)) {
+    return new UnijunctionElm_0(x1, y1, x2, y2, f);
   }
   if ($equals_1('ProbeElm', className)) {
     return new ProbeElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('MemristorElm', className)) {
-    return new MemristorElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
+    return new EGTSchuetzHilfskontaktElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('MosfetElm', className)) {
-    return new MosfetElm(x1, y1, x2, y2, f, st);
+  if ($equals_1('PhaseCompElm', className)) {
+    return new PhaseCompElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('VCOElm', className)) {
-    return new VCOElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTGleichstrommotorElm', className)) {
+    return new EGTGleichstrommotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PotElm', className)) {
+    return new PotElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SipoShiftElm', className)) {
+    return new SipoShiftElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('XorGateElm', className)) {
     return new XorGateElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('TappedTransformerElm', className)) {
-    return new TappedTransformerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSchuetzSpuleElm', className)) {
-    return new EGTSchuetzSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LogicOutputElm', className)) {
-    return new LogicOutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKlingelElm', className)) {
-    return new EGTKlingelElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InverterElm', className)) {
-    return new InverterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CCCSElm', className)) {
-    return new CCCSElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DACElm', className)) {
-    return new DACElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTMotorschutzschalterElm', className)) {
+    return new EGTMotorschutzschalterElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('DFlipFlopElm', className)) {
     return new DFlipFlopElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('DecimalDisplayElm', className)) {
-    return new DecimalDisplayElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTHmiGeberElm', className)) {
+    return new EGTHmiGeberElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('TimeDelayRelayElm', className)) {
-    return new TimeDelayRelayElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('StopTriggerElm', className)) {
+    return new StopTriggerElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('CCVSElm', className)) {
-    return new CCVSElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('NoiseElm', className)) {
+    return new NoiseElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('LEDElm', className)) {
-    return new LEDElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('MonostableElm', className)) {
+    return new MonostableElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('EGTSicherungElm', className)) {
-    return new EGTSicherungElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('InductorElm', className)) {
+    return new InductorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FullAdderElm', className)) {
+    return new FullAdderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('GroundElm', className)) {
+    return new GroundElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('JfetElm', className)) {
+    return new JfetElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayContactElm', className)) {
+    return new RelayContactElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTStromstossschalterElm', className)) {
+    return new EGTStromstossschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DelayBufferElm', className)) {
+    return new DelayBufferElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTueroeffnerElm', className)) {
+    return new EGTTueroeffnerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTHmiLastElm', className)) {
+    return new EGTHmiLastElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('InverterElm', className)) {
+    return new InverterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MemristorElm', className)) {
+    return new MemristorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
+    return new EGTSchuetzLeistungskontakteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MotorProtectionSwitchElm', className)) {
+    return new MotorProtectionSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ScopeElm', className)) {
+    return new ScopeElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('ADCElm', className)) {
     return new ADCElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('NorGateElm', className)) {
-    return new NorGateElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('SwitchElm', className)) {
+    return new SwitchElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('BoxElm', className)) {
-    return new BoxElm_0(x1, y1, x2, y2, f);
+  if ($equals_1('LatchElm', className)) {
+    return new LatchElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('EGTAusschalterElm', className)) {
-    return new EGTAusschalterElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('LogicOutputElm', className)) {
+    return new LogicOutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayCoilElm', className)) {
+    return new RelayCoilElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OrGateElm', className)) {
+    return new OrGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTBewegungsmelderElm', className)) {
+    return new EGTBewegungsmelderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKreuzschalterElm', className)) {
+    return new EGTKreuzschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTUeberlastKontaktElm', className)) {
+    return new EGTUeberlastKontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTDrehstrommotorElm', className)) {
+    return new EGTDrehstrommotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('BusSplitterElm', className)) {
+    return new BusSplitterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VaractorElm', className)) {
+    return new VaractorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupAusgangElm', className)) {
+    return new EGTFupAusgangElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FuseElm', className)) {
+    return new FuseElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TransistorElm', className)) {
+    return new TransistorElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AudioInputElm', className)) {
+    return new AudioInputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TimerElm', className)) {
+    return new TimerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriodeElm', className)) {
+    return new TriodeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
+    return new EGTKondensatormotorKompaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CC2Elm', className)) {
+    return new CC2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DACElm', className)) {
+    return new DACElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSerienschalterElm', className)) {
+    return new EGTSerienschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FMElm', className)) {
+    return new FMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AntennaElm', className)) {
+    return new AntennaElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSicherungElm', className)) {
+    return new EGTSicherungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SchmittElm', className)) {
+    return new SchmittElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('SeqGenElm', className)) {
     return new SeqGenElm_0(x1, y1, x2, y2, f, st);
   }
+  if ($equals_1('SevenSegDecoderElm', className)) {
+    return new SevenSegDecoderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CounterElm', className)) {
+    return new CounterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ThermistorNTCElm', className)) {
+    return new ThermistorNTCElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CapacitorElm', className)) {
+    return new CapacitorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DecimalDisplayElm', className)) {
+    return new DecimalDisplayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriStateElm', className)) {
+    return new TriStateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupTonElm', className)) {
+    return new EGTFupTonElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
+    return new EGTZeitrelaisSpuleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TappedTransformerElm', className)) {
+    return new TappedTransformerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ThreePhaseMotorElm', className)) {
+    return new ThreePhaseMotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MosfetElm', className)) {
+    return new MosfetElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RSSpeicherElm', className)) {
+    return new RSSpeicherElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RingCounterElm', className)) {
+    return new RingCounterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTDrehstromquelleElm', className)) {
+    return new EGTDrehstromquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CCVSElm', className)) {
+    return new CCVSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LEDArrayElm', className)) {
+    return new LEDArrayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTHilfsschalterblockElm', className)) {
+    return new EGTHilfsschalterblockElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LabeledNodeElm', className)) {
+    return new LabeledNodeElm_0(x1, y1, x2, y2, f, st);
+  }
   if ($equals_1('EGTGleichspannungsquelleElm', className)) {
     return new EGTGleichspannungsquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('JKFlipFlopElm', className)) {
+    return new JKFlipFlopElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SRAMElm', className)) {
+    return new SRAMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeistungsschuetzElm', className)) {
+    return new EGTLeistungsschuetzElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CurrentElm', className)) {
+    return new CurrentElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTMeldeleuchteElm', className)) {
+    return new EGTMeldeleuchteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupTofElm', className)) {
+    return new EGTFupTofElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DCMotorElm', className)) {
+    return new DCMotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTStromstossSpuleElm', className)) {
+    return new EGTStromstossSpuleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SCRElm', className)) {
+    return new SCRElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DataRecorderElm', className)) {
+    return new DataRecorderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSteckdoseElm', className)) {
+    return new EGTSteckdoseElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LampElm', className)) {
+    return new LampElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OutputElm', className)) {
+    return new OutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DPDTSwitchElm', className)) {
+    return new DPDTSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKlingelElm', className)) {
+    return new EGTKlingelElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriacElm', className)) {
+    return new TriacElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LineElm', className)) {
+    return new LineElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('TransLineElm', className)) {
+    return new TransLineElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AudioOutputElm', className)) {
+    return new AudioOutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('Counter2Elm', className)) {
+    return new Counter2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AnalogSwitch2Elm', className)) {
+    return new AnalogSwitch2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
+    return new EGTUeberlastHeizleiterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ZenerElm', className)) {
+    return new ZenerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OptocouplerElm', className)) {
+    return new OptocouplerElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('WattmeterElm', className)) {
+    return new WattmeterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MBBSwitchElm', className)) {
+    return new MBBSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PolarCapacitorElm', className)) {
+    return new PolarCapacitorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LEDElm', className)) {
+    return new LEDElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SparkGapElm', className)) {
+    return new SparkGapElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DiodeElm', className)) {
+    return new DiodeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LDRElm', className)) {
+    return new LDRElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TextElm', className)) {
+    return new TextElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('Switch2Elm', className)) {
+    return new Switch2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CrossSwitchElm', className)) {
+    return new CrossSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeitungElm', className)) {
+    return new EGTLeitungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MultiplexerElm', className)) {
+    return new MultiplexerElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('ExtVoltageElm', className)) {
     return new ExtVoltageElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('PolarCapacitorElm', className)) {
-    return new PolarCapacitorElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('TestPointElm', className)) {
+    return new TestPointElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AndGateElm', className)) {
+    return new AndGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTAusschalterElm', className)) {
+    return new EGTAusschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSchuetzSpuleElm', className)) {
+    return new EGTSchuetzSpuleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('BoxElm', className)) {
+    return new BoxElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('NandGateElm', className)) {
+    return new NandGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSpannungsquelleElm', className)) {
+    return new EGTSpannungsquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ResistorElm', className)) {
+    return new ResistorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OhmMeterElm', className)) {
+    return new OhmMeterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VCCSElm', className)) {
+    return new VCCSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AMElm', className)) {
+    return new AMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TimeDelayRelayElm', className)) {
+    return new TimeDelayRelayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTasterElm', className)) {
+    return new EGTTasterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CustomTransformerElm', className)) {
+    return new CustomTransformerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTMiniSpsElm', className)) {
+    return new EGTMiniSpsElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ROMElm', className)) {
+    return new ROMElm_0(x1, y1, x2, y2, f, st);
   }
   return null;
 }
@@ -48733,12 +48871,12 @@ function ExportAsImageDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(773, 1, $intern_56, ExportAsImageDialog$1);
+defineClass(776, 1, $intern_56, ExportAsImageDialog$1);
 _.onClick = function onClick_15(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsImageDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsImageDialog/1', 773);
+var Lcom_lushprojects_circuitjs1_client_ExportAsImageDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsImageDialog/1', 776);
 function $apply_0(this$static){
   var a, fname;
   fname = $getText(this$static.textBox);
@@ -48787,34 +48925,34 @@ function setLastFileName(s){
   s == null || $equals_1(s.substr(0, 10), 'circuitjs-')?(lastFileName = null):(lastFileName = s);
 }
 
-defineClass(732, 144, $intern_58, ExportAsLocalFileDialog);
+defineClass(735, 144, $intern_58, ExportAsLocalFileDialog);
 _.apply_0 = function apply_6(){
   return $apply_0(this);
 }
 ;
 var lastFileName;
-var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog', 732);
+var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog', 735);
 function ExportAsLocalFileDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(733, 1, $intern_56, ExportAsLocalFileDialog$1);
+defineClass(736, 1, $intern_56, ExportAsLocalFileDialog$1);
 _.onClick = function onClick_16(event_0){
   $apply_0(this.this$01);
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog/1', 733);
+var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog/1', 736);
 function ExportAsLocalFileDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(734, 1, $intern_56, ExportAsLocalFileDialog$2);
+defineClass(737, 1, $intern_56, ExportAsLocalFileDialog$2);
 _.onClick = function onClick_17(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog/2', 734);
+var Lcom_lushprojects_circuitjs1_client_ExportAsLocalFileDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsLocalFileDialog/2', 737);
 function ExportAsTextDialog(asim, s){
   var copyButton, hp, importButton, okButton, ta;
   Dialog.call(this);
@@ -48844,23 +48982,23 @@ function ExportAsTextDialog(asim, s){
   $center(this);
 }
 
-defineClass(769, 144, $intern_58, ExportAsTextDialog);
-var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog', 769);
+defineClass(772, 144, $intern_58, ExportAsTextDialog);
+var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog', 772);
 function ExportAsTextDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(770, 1, $intern_56, ExportAsTextDialog$1);
+defineClass(773, 1, $intern_56, ExportAsTextDialog$1);
 _.onClick = function onClick_18(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/1', 770);
+var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/1', 773);
 function ExportAsTextDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(771, 1, $intern_56, ExportAsTextDialog$2);
+defineClass(774, 1, $intern_56, ExportAsTextDialog$2);
 _.onClick = function onClick_19(event_0){
   var s;
   $pushUndo(this.this$01.sim.undoManager);
@@ -48872,12 +49010,12 @@ _.onClick = function onClick_19(event_0){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/2', 771);
+var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/2', 774);
 function ExportAsTextDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(772, 1, $intern_56, ExportAsTextDialog$3);
+defineClass(775, 1, $intern_56, ExportAsTextDialog$3);
 _.onClick = function onClick_20(event_0){
   $setFocus(this.this$01.textArea);
   $selectAll(this.this$01.textArea);
@@ -48885,7 +49023,7 @@ _.onClick = function onClick_20(event_0){
   $setSelectionRange(this.this$01.textArea, 0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/3', 772);
+var Lcom_lushprojects_circuitjs1_client_ExportAsTextDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsTextDialog/3', 775);
 function $shortIsSupported(){
   if ($wnd.openFile != undefined)
     return false;
@@ -48945,19 +49083,20 @@ function createShort(urlin){
   }
 }
 
-defineClass(764, 144, $intern_58, ExportAsUrlDialog);
+defineClass(767, 144, $intern_58, ExportAsUrlDialog);
 var textArea;
-var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog', 764);
+var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog', 767);
 function ExportAsUrlDialog$1(){
 }
 
-defineClass(765, 1, {}, ExportAsUrlDialog$1);
+defineClass(768, 1, {}, ExportAsUrlDialog$1);
 _.onError = function onError_0(request, exception){
 }
 ;
 _.onResponseReceived = function onResponseReceived_0(request, response){
-  var text_0;
-  if (response.xmlHttpRequest.status == 200) {
+  var statusCode, text_0;
+  statusCode = response.xmlHttpRequest.status;
+  if ((statusCode == 1223?204:statusCode) == 200) {
     text_0 = response.xmlHttpRequest.responseText;
     $setText_2(textArea, text_0);
   }
@@ -48967,32 +49106,32 @@ _.onResponseReceived = function onResponseReceived_0(request, response){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/1', 765);
+var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/1', 768);
 function ExportAsUrlDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(766, 1, $intern_56, ExportAsUrlDialog$2);
+defineClass(769, 1, $intern_56, ExportAsUrlDialog$2);
 _.onClick = function onClick_21(event_0){
   $setVisible(this.this$01.shortButton, false);
   createShort(this.this$01.requrl);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/2', 766);
+var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/2', 769);
 function ExportAsUrlDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(767, 1, $intern_56, ExportAsUrlDialog$3);
+defineClass(770, 1, $intern_56, ExportAsUrlDialog$3);
 _.onClick = function onClick_22(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/3', 767);
+var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/3', 770);
 function ExportAsUrlDialog$4(){
 }
 
-defineClass(768, 1, $intern_56, ExportAsUrlDialog$4);
+defineClass(771, 1, $intern_56, ExportAsUrlDialog$4);
 _.onClick = function onClick_23(event_0){
   $setFocus(textArea);
   $selectAll(textArea);
@@ -49000,14 +49139,14 @@ _.onClick = function onClick_23(event_0){
   $setSelectionRange(textArea, 0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/4', 768);
+var Lcom_lushprojects_circuitjs1_client_ExportAsUrlDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ExportAsUrlDialog/4', 771);
 function $eval(this$static, es){
   var i, left, right, x_0;
   left = null;
   right = null;
-  if (!!this$static.children && this$static.children.arrayList.array.length > 0) {
-    left = $firstElement(this$static.children);
-    this$static.children.arrayList.array.length == 2 && (right = $lastElement(this$static.children));
+  if (!!this$static.children_0 && this$static.children_0.arrayList.array.length > 0) {
+    left = $firstElement(this$static.children_0);
+    this$static.children_0.arrayList.array.length == 2 && (right = $lastElement(this$static.children_0));
   }
   switch (this$static.type_0) {
     case 1:
@@ -49037,7 +49176,7 @@ function $eval(this$static, es){
     case 39:
       return $eval(left, es) > $eval(right, es)?1:0;
     case 32:
-      return $eval($get_4(this$static.children, $eval(left, es) != 0?1:2), es);
+      return $eval($get_4(this$static.children_0, $eval(left, es) != 0?1:2), es);
     case 10:
       return -$eval(left, es);
     case 41:
@@ -49085,21 +49224,21 @@ function $eval(this$static, es){
     case 20:
       {
         x_0 = $eval(left, es);
-        for (i = 1; i < this$static.children.arrayList.array.length; i++)
-          x_0 = $wnd.Math.min(x_0, $eval($get_4(this$static.children, i), es));
+        for (i = 1; i < this$static.children_0.arrayList.array.length; i++)
+          x_0 = $wnd.Math.min(x_0, $eval($get_4(this$static.children_0, i), es));
         return x_0;
       }
 
     case 19:
       {
         x_0 = $eval(left, es);
-        for (i = 1; i < this$static.children.arrayList.array.length; i++)
-          x_0 = $wnd.Math.max(x_0, $eval($get_4(this$static.children, i), es));
+        for (i = 1; i < this$static.children_0.arrayList.array.length; i++)
+          x_0 = $wnd.Math.max(x_0, $eval($get_4(this$static.children_0, i), es));
         return x_0;
       }
 
     case 21:
-      return $wnd.Math.min($wnd.Math.max($eval(left, es), $eval($get_4(this$static.children, 1), es)), $eval($get_4(this$static.children, 2), es));
+      return $wnd.Math.min($wnd.Math.max($eval(left, es), $eval($get_4(this$static.children_0, 1), es)), $eval($get_4(this$static.children_0, 2), es));
     case 26:
       {
         x_0 = $eval(left, es);
@@ -49111,7 +49250,7 @@ function $eval(this$static, es){
     case 27:
       {
         x_0 = $eval(left, es);
-        return $eval($get_4(this$static.children, x_0 > 0?2:1), es);
+        return $eval($get_4(this$static.children_0, x_0 > 0?2:1), es);
       }
 
     case 23:
@@ -49129,7 +49268,7 @@ function $eval(this$static, es){
     case 25:
       return $eval(left, es) % $eval(right, es);
     case 22:
-      return $pwl(es, this$static.children);
+      return $pwl(es, this$static.children_0);
     case 28:
       return $wnd.Math.pow($wnd.Math.abs($eval(left, es)), $eval(right, es));
     case 29:
@@ -49194,9 +49333,9 @@ function Expr_0(vv){
 }
 
 function Expr_1(e1, e2, v){
-  this.children = new Vector;
-  $add_11(this.children, e1);
-  !!e2 && $add_11(this.children, e2);
+  this.children_0 = new Vector;
+  $add_11(this.children_0, e1);
+  !!e2 && $add_11(this.children_0, e2);
   this.type_0 = v;
 }
 
@@ -49246,7 +49385,7 @@ function $parse_3(this$static){
     $skip(this$static, ':') || $setError_0(this$static, 'expected :, got ' + this$static.token);
     e3 = $parse_3(this$static);
     ret = new Expr_1(e, e2, 32);
-    $add_11(ret.children, e3);
+    $add_11(ret.children_0, e3);
     return ret;
   }
   return e;
@@ -49342,7 +49481,7 @@ function $parseFuncMulti(this$static, t, minArgs, maxArgs){
   e = new Expr_1(e1, null, t);
   while ($skip(this$static, ',')) {
     enext = $parse_3(this$static);
-    $add_11(e.children, enext);
+    $add_11(e.children_0, enext);
     ++args;
   }
   $skip(this$static, ')') || $setError_0(this$static, 'expected ), got ' + this$static.token);
@@ -49465,11 +49604,11 @@ function $parseTerm(this$static){
   if ($skip(this$static, 'ceil'))
     return $parseFunc(this$static, 43);
   if ($skip(this$static, 'min'))
-    return $parseFuncMulti(this$static, 20, 2, $intern_8);
+    return $parseFuncMulti(this$static, 20, 2, $intern_23);
   if ($skip(this$static, 'max'))
-    return $parseFuncMulti(this$static, 19, 2, $intern_8);
+    return $parseFuncMulti(this$static, 19, 2, $intern_23);
   if ($skip(this$static, 'pwl'))
-    return $parseFuncMulti(this$static, 22, 2, $intern_8);
+    return $parseFuncMulti(this$static, 22, 2, $intern_23);
   if ($skip(this$static, 'mod'))
     return $parseFuncMulti(this$static, 25, 2, 2);
   if ($skip(this$static, 'step'))
@@ -49699,7 +49838,7 @@ function FMElm_0(xa, ya, xb, yb, f, st){
   this.curcount_0 = 0;
 }
 
-defineClass(482, 8, $intern_86, FMElm, FMElm_0);
+defineClass(448, 8, $intern_86, FMElm, FMElm_0);
 _.doStep = function doStep_50(){
   $updateVoltageSource(this.voltSource, $getVoltage(this));
 }
@@ -49818,13 +49957,13 @@ _.funcx = 0;
 _.lasttime = 0;
 _.maxVoltage = 0;
 _.signalfreq = 0;
-var Lcom_lushprojects_circuitjs1_client_FMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FMElm', 482);
+var Lcom_lushprojects_circuitjs1_client_FMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FMElm', 448);
 function $checkElm(this$static, n1, ce){
   var c, j, j0, k;
   if (ce == this$static.firstElm)
     return false;
   if (this$static.type_0 == 1) {
-    if (instanceOf(ce, 209))
+    if (instanceOf(ce, 213))
       return false;
   }
   if (this$static.type_0 == 2) {
@@ -49940,7 +50079,7 @@ function FullAdderElm_0(xa, ya, xb, yb, f, st){
   $setupPins_40(this);
 }
 
-defineClass(469, 17, $intern_86, FullAdderElm, FullAdderElm_0);
+defineClass(428, 17, $intern_86, FullAdderElm, FullAdderElm_0);
 _.allowBus = function allowBus_6(){
   return (this.flags & 2) != 0;
 }
@@ -49999,7 +50138,7 @@ _.setupPins = function setupPins_46(){
 ;
 _.carryIn = 0;
 _.carryOut = 0;
-var Lcom_lushprojects_circuitjs1_client_FullAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FullAdderElm', 469);
+var Lcom_lushprojects_circuitjs1_client_FullAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FullAdderElm', 428);
 function $getTempColor(this$static){
   var c, temp, val, x_0;
   c = $getVoltageColor(this$static, this$static.volts[0]);
@@ -50044,7 +50183,7 @@ function FuseElm_0(xa, ya, xb, yb, f, st){
   this.blown = $booleanValue(($clinit_Boolean() , $equalsIgnoreCase('true', $nextToken(st))));
 }
 
-defineClass(407, 8, $intern_86, FuseElm, FuseElm_0);
+defineClass(442, 8, $intern_86, FuseElm, FuseElm_0);
 _.calculateCurrent = function calculateCurrent_45(){
   this.current_0 = (this.volts[0] - this.volts[1]) / (this.blown?$intern_33:this.resistance);
 }
@@ -50168,7 +50307,7 @@ _.blown = false;
 _.heat = 0;
 _.i2t = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_FuseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FuseElm', 407);
+var Lcom_lushprojects_circuitjs1_client_FuseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FuseElm', 442);
 function $clipRect(this$static, width_0, height){
   this$static.context.beginPath();
   $rect(this$static.context, 0, 0, width_0, height);
@@ -50468,14 +50607,14 @@ function $setPoints_40(this$static){
 
 function GyratorElm(xx, yy){
   CircuitElm.call(this, xx, yy);
-  this.gyrResistance = $intern_8;
+  this.gyrResistance = $intern_23;
   this.width_0 = 32;
   this.noDiagonal = true;
   this.current = initUnidimensionalArray(D_classLit, $intern_76, 7, 2, 15, 1);
   this.curcount = initUnidimensionalArray(D_classLit, $intern_76, 7, 2, 15, 1);
 }
 
-defineClass(951, 8, $intern_86, GyratorElm);
+defineClass(942, 8, $intern_86, GyratorElm);
 _.calculateCurrent = function calculateCurrent_46(){
   var g, v1, v2;
   g = 1 / this.gyrResistance;
@@ -50606,7 +50745,7 @@ _.stamp = function stamp_64(){
 _.flip = 0;
 _.gyrResistance = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_GyratorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GyratorElm', 951);
+var Lcom_lushprojects_circuitjs1_client_GyratorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GyratorElm', 942);
 function HalfAdderElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -50617,7 +50756,7 @@ function HalfAdderElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(474, 17, $intern_86, HalfAdderElm, HalfAdderElm_0);
+defineClass(405, 17, $intern_86, HalfAdderElm, HalfAdderElm_0);
 _.execute_3 = function execute_53(){
   this.pins[0].value_0 = this.pins[2].value_0 ^ this.pins[3].value_0;
   this.pins[1].value_0 = this.pins[2].value_0 && this.pins[3].value_0;
@@ -50651,7 +50790,7 @@ _.setupPins = function setupPins_47(){
   this.pins[3] = new ChipElm$Pin(this, 1, 2, 'B');
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_HalfAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'HalfAdderElm', 474);
+var Lcom_lushprojects_circuitjs1_client_HalfAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'HalfAdderElm', 405);
 function $doExportAsSVG(this$static){
   if (!$initializeSVGScriptIfNecessary(this$static, 'doExportAsSVG')) {
     return;
@@ -50777,9 +50916,9 @@ function clipboardWriteImage(cv){
   );
 }
 
-defineClass(589, 1, {}, ImageExporter);
+defineClass(591, 1, {}, ImageExporter);
 _.loadedCanvas2SVG = false;
-var Lcom_lushprojects_circuitjs1_client_ImageExporter_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImageExporter', 589);
+var Lcom_lushprojects_circuitjs1_client_ImageExporter_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImageExporter', 591);
 function $onSuccess(this$static){
   this$static.this$01.loadedCanvas2SVG = true;
   $equals_1(this$static.val$followupAction2, 'doExportAsSVG')?$doExportAsSVG(this$static.this$01):$equals_1(this$static.val$followupAction2, 'doExportAsSVGFromAPI') && $doExportAsSVGFromAPI(this$static.this$01);
@@ -50790,7 +50929,7 @@ function ImageExporter$1(this$0, val$followupAction){
   this.val$followupAction2 = val$followupAction;
 }
 
-defineClass(590, 1, {}, ImageExporter$1);
+defineClass(592, 1, {}, ImageExporter$1);
 _.onFailure = function onFailure(reason){
   $wnd.alert("Can't load canvas2svg.js.");
 }
@@ -50800,7 +50939,7 @@ _.onSuccess = function onSuccess(result){
   $onSuccess((lastArg = this , result , lastArg));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImageExporter$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImageExporter/1', 590);
+var Lcom_lushprojects_circuitjs1_client_ImageExporter$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImageExporter/1', 592);
 function $doDropboxImport(){
   var options = {success:function(files){
     function reqListener(){
@@ -50840,9 +50979,9 @@ function isSupported_0(){
   }
 }
 
-defineClass(763, 1, {}, ImportFromDropbox);
+defineClass(766, 1, {}, ImportFromDropbox);
 var sim_1;
-var Lcom_lushprojects_circuitjs1_client_ImportFromDropbox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropbox', 763);
+var Lcom_lushprojects_circuitjs1_client_ImportFromDropbox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropbox', 766);
 function ImportFromDropboxDialog(csim){
   Dialog.call(this);
   sim_2 = csim;
@@ -50908,41 +51047,41 @@ function doImportDropboxLink(link_0, validateIsDropbox){
   doDropboxImport(link_0);
 }
 
-defineClass(613, 144, $intern_58, ImportFromDropboxDialog);
+defineClass(616, 144, $intern_58, ImportFromDropboxDialog);
 var sim_2;
-var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog', 613);
+var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog', 616);
 function ImportFromDropboxDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(614, 1, $intern_56, ImportFromDropboxDialog$1);
+defineClass(617, 1, $intern_56, ImportFromDropboxDialog$1);
 _.onClick = function onClick_24(event_0){
   $closeDialog(this.this$01);
   new ImportFromDropbox(sim_2);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/1', 614);
+var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/1', 617);
 function ImportFromDropboxDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(615, 1, $intern_56, ImportFromDropboxDialog$2);
+defineClass(618, 1, $intern_56, ImportFromDropboxDialog$2);
 _.onClick = function onClick_25(event_0){
   $closeDialog(this.this$01);
   doImportDropboxLink($getText(this.this$01.ta), ($clinit_Boolean() , true));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/2', 615);
+var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/2', 618);
 function ImportFromDropboxDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(616, 1, $intern_56, ImportFromDropboxDialog$3);
+defineClass(619, 1, $intern_56, ImportFromDropboxDialog$3);
 _.onClick = function onClick_26(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/3', 616);
+var Lcom_lushprojects_circuitjs1_client_ImportFromDropboxDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromDropboxDialog/3', 619);
 function ImportFromTextDialog(asim){
   var cancelButton, okButton, subCheck;
   Dialog.call(this);
@@ -50967,14 +51106,14 @@ function ImportFromTextDialog(asim){
   $show(this);
 }
 
-defineClass(737, 144, $intern_58, ImportFromTextDialog);
-var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog', 737);
+defineClass(740, 144, $intern_58, ImportFromTextDialog);
+var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog', 740);
 function ImportFromTextDialog$1(this$0, val$subCheck){
   this.this$01 = this$0;
   this.val$subCheck2 = val$subCheck;
 }
 
-defineClass(738, 1, $intern_56, ImportFromTextDialog$1);
+defineClass(741, 1, $intern_56, ImportFromTextDialog$1);
 _.onClick = function onClick_27(event_0){
   var s;
   $pushUndo(this.this$01.sim.undoManager);
@@ -50983,17 +51122,17 @@ _.onClick = function onClick_27(event_0){
   $importCircuitFromText(this.this$01.sim, s, $getState(this.val$subCheck2));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog/1', 738);
+var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog/1', 741);
 function ImportFromTextDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(739, 1, $intern_56, ImportFromTextDialog$2);
+defineClass(742, 1, $intern_56, ImportFromTextDialog$2);
 _.onClick = function onClick_28(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog/2', 739);
+var Lcom_lushprojects_circuitjs1_client_ImportFromTextDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ImportFromTextDialog/2', 742);
 function $calcEffectiveInductance(this$static, i){
   var ratio;
   if (this$static.saturationCurrent <= 0)
@@ -51304,7 +51443,7 @@ function InstructionDisplayElm(xx, yy){
   $parseEntries(this, null);
 }
 
-defineClass(949, 8, $intern_86, InstructionDisplayElm);
+defineClass(953, 8, $intern_86, InstructionDisplayElm);
 _.addRoutingObstacle = function addRoutingObstacle_10(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.x2, this.y2);
   $addObstacle(router, this.x2 - 10, this.y2 - 10, this.x2 + 10, this.y2 + 10);
@@ -51440,7 +51579,7 @@ _.undumpXml = function undumpXml_84(xml){
 ;
 _.busWidth = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm', 949);
+var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm', 953);
 function $getText_0(this$static, value_0){
   var close_0, ep, es, expr, exprStr, intResult, open_0, pos, result, sb;
   sb = new StringBuilder;
@@ -51492,10 +51631,10 @@ function InstructionDisplayElm$LookupEntry(lo, hi, template){
   this.template = template;
 }
 
-defineClass(331, 1, {331:1}, InstructionDisplayElm$LookupEntry);
+defineClass(332, 1, {332:1}, InstructionDisplayElm$LookupEntry);
 _.hi = 0;
 _.lo = 0;
-var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm$LookupEntry_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm/LookupEntry', 331);
+var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm$LookupEntry_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm/LookupEntry', 332);
 function InverterElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.noDiagonal = true;
@@ -51519,7 +51658,7 @@ function InverterElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(487, 8, $intern_86, InverterElm, InverterElm_0);
+defineClass(433, 8, $intern_86, InverterElm, InverterElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_11(router){
   $addRoutingObstacleWithLeads(this, router, 16);
 }
@@ -51649,7 +51788,7 @@ _.validate = function validate_12(){
 _.highVoltage = 0;
 _.lastOutputVoltage = 0;
 _.slewRate = 0;
-var Lcom_lushprojects_circuitjs1_client_InverterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InverterElm', 487);
+var Lcom_lushprojects_circuitjs1_client_InverterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InverterElm', 433);
 function $setPoints_41(this$static){
   var triPoints, ww;
   $setPoints(this$static);
@@ -51699,7 +51838,7 @@ function InvertingSchmittElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(282, 8, $intern_86, InvertingSchmittElm, InvertingSchmittElm_0);
+defineClass(283, 8, $intern_86, InvertingSchmittElm, InvertingSchmittElm_0);
 _.doStep = function doStep_54(){
   var maxStep, out, v0;
   v0 = this.volts[1];
@@ -51840,7 +51979,7 @@ _.lowerTrigger = 0;
 _.slewRate = 0;
 _.state = false;
 _.upperTrigger = 0;
-var Lcom_lushprojects_circuitjs1_client_InvertingSchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InvertingSchmittElm', 282);
+var Lcom_lushprojects_circuitjs1_client_InvertingSchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InvertingSchmittElm', 283);
 function $setupPins_41(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = 3;
@@ -51873,7 +52012,7 @@ function JKFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.justLoaded = true;
 }
 
-defineClass(451, 17, $intern_86, JKFlipFlopElm, JKFlipFlopElm_0);
+defineClass(466, 17, $intern_86, JKFlipFlopElm, JKFlipFlopElm_0);
 _.execute_3 = function execute_54(){
   var q, transition;
   if (this.justLoaded) {
@@ -51951,7 +52090,7 @@ _.setupPins = function setupPins_48(){
 }
 ;
 _.justLoaded = false;
-var Lcom_lushprojects_circuitjs1_client_JKFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JKFlipFlopElm', 451);
+var Lcom_lushprojects_circuitjs1_client_JKFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JKFlipFlopElm', 466);
 function $setupJSInterface(this$static){
   var that = this$static;
   $wnd.CircuitJS1 = {setSimRunning:$entry(function(run){
@@ -52002,7 +52141,7 @@ function JSInterface(app){
   this.app = app;
 }
 
-defineClass(617, 1, {}, JSInterface);
+defineClass(620, 1, {}, JSInterface);
 _.doExportAsSVGFromAPI = function doExportAsSVGFromAPI(){
   $doExportAsSVGFromAPI(this.app.imageExporter);
 }
@@ -52069,7 +52208,7 @@ _.simIsRunning = function simIsRunning(){
   return this.app.ui.app.simRunning;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_JSInterface_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JSInterface', 617);
+var Lcom_lushprojects_circuitjs1_client_JSInterface_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JSInterface', 620);
 function $$init_51(this$static){
   this$static.FLAG_PNP = 1;
   this$static.FLAG_SHOWVT = 2;
@@ -52833,7 +52972,7 @@ function LDRElm_0(xa, ya, xb, yb, f, st){
   $createSlider_1(this);
 }
 
-defineClass(437, 8, $intern_151, LDRElm, LDRElm_0);
+defineClass(487, 8, $intern_151, LDRElm, LDRElm_0);
 _.calculateCurrent = function calculateCurrent_49(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -52970,7 +53109,7 @@ _.undumpXml = function undumpXml_88(xml){
   this.lux = this.maxLux * this.position + this.minLux;
   this.resistance = $calcResistance(this, this.lux);
   value_0 = round_int(this.position * 100);
-  $setValue_2(this.slider, value_0);
+  $setValue_3(this.slider, value_0);
   $setText_0(this.label_0, this.sliderText);
 }
 ;
@@ -52979,7 +53118,7 @@ _.maxLux = 0;
 _.minLux = 0;
 _.position = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_LDRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LDRElm', 437);
+var Lcom_lushprojects_circuitjs1_client_LDRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LDRElm', 487);
 function $setColor_2(this$static, g, p){
   var cc, w;
   if (this$static.currents == null) {
@@ -53034,7 +53173,7 @@ function LEDArrayElm_0(xa, ya, xb, yb, f, st){
   $setPoints_0(this);
 }
 
-defineClass(472, 17, $intern_86, LEDArrayElm, LEDArrayElm_0);
+defineClass(464, 17, $intern_86, LEDArrayElm, LEDArrayElm_0);
 _.calculateCurrent = function calculateCurrent_50(){
   var cur, i, ix, iy;
   i = 0;
@@ -53183,7 +53322,7 @@ _.undumpXml = function undumpXml_89(xml){
 ;
 _.decayMultiplier = 0;
 _.lastDrawTime = 0;
-var Lcom_lushprojects_circuitjs1_client_LEDArrayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDArrayElm', 472);
+var Lcom_lushprojects_circuitjs1_client_LEDArrayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDArrayElm', 464);
 function LEDElm(xx, yy){
   DiodeElm.call(this, xx, yy);
   this.modelName = lastLEDModelName;
@@ -53215,7 +53354,7 @@ function LEDElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(492, 160, $intern_117, LEDElm, LEDElm_0);
+defineClass(485, 160, $intern_117, LEDElm, LEDElm_0);
 _.draw = function draw_55(g){
   var cc, cr, w;
   if (mouseElmRef == this || this.selected_0 || $containsKey(app_0.mouse.scopePlotRoles, this) || instanceOf(mouseElmRef, 15) && $getElm_0(mouseElmRef.elmScope) == this || $isOnHighlightedNet(this) || app_0.mouse.dragElm == this) {
@@ -53309,7 +53448,7 @@ _.colorG = 0;
 _.colorR = 0;
 _.maxBrightnessCurrent = 0;
 var lastLEDModelName = 'default-led';
-var Lcom_lushprojects_circuitjs1_client_LEDElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDElm', 492);
+var Lcom_lushprojects_circuitjs1_client_LEDElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDElm', 485);
 function LabeledNodeElm$LabelEntry(){
 }
 
@@ -53607,7 +53746,7 @@ function LatchElm_0(xa, ya, xb, yb, f, st){
   $restoreOutputValues(this);
 }
 
-defineClass(444, 17, $intern_86, LatchElm, LatchElm_0);
+defineClass(437, 17, $intern_86, LatchElm, LatchElm_0);
 _.allowBus = function allowBus_7(){
   return true;
 }
@@ -53800,7 +53939,7 @@ _.oe1Pin = 0;
 _.oe2Pin = 0;
 _.resetPin = 0;
 _.setPin = 0;
-var Lcom_lushprojects_circuitjs1_client_LatchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LatchElm', 444);
+var Lcom_lushprojects_circuitjs1_client_LatchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LatchElm', 437);
 function LineElm(xx, yy){
   GraphicElm.call(this, xx, yy);
   this.x2 = xx;
@@ -53815,7 +53954,7 @@ function LineElm_0(xa, ya, xb, yb, f){
   $setBbox(this, this.x_0, this.y_0, this.x2, this.y2);
 }
 
-defineClass(436, 112, $intern_102, LineElm, LineElm_0);
+defineClass(477, 112, $intern_102, LineElm, LineElm_0);
 _.creationFailed = function creationFailed_16(){
   return hypot(this.x_0 - this.x2, this.y_0 - this.y2) < 16;
 }
@@ -53857,7 +53996,7 @@ _.getShortcut = function getShortcut_32(){
 _.setEditValue = function setEditValue_56(n, ei){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_LineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LineElm', 436);
+var Lcom_lushprojects_circuitjs1_client_LineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LineElm', 477);
 function LoadFile(s){
   FileUpload.call(this);
   sim_3 = s;
@@ -53929,7 +54068,7 @@ function LogicInputElm_0(xa, ya, xb, yb, f, st){
   (this.flags & 1) != 0 && (this.posCount = 3);
 }
 
-defineClass(211, 46, {8:1, 11:1, 211:1, 46:1}, LogicInputElm, LogicInputElm_0);
+defineClass(210, 46, {8:1, 11:1, 210:1, 46:1}, LogicInputElm, LogicInputElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_13(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
   $addObstacle(router, this.x2 - 10, this.y2 - 10, this.x2 + 10, this.y2 + 10);
@@ -54087,7 +54226,7 @@ _.validate = function validate_13(){
 ;
 _.hiV = 0;
 _.loV = 0;
-var Lcom_lushprojects_circuitjs1_client_LogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LogicInputElm', 211);
+var Lcom_lushprojects_circuitjs1_client_LogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LogicInputElm', 210);
 function LogicOutputElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.threshold = 2.5;
@@ -54225,7 +54364,7 @@ function MBBSwitchElm_0(xa, ya, xb, yb, f, st){
   $setup_4(this);
 }
 
-defineClass(285, 46, {8:1, 11:1, 285:1, 46:1}, MBBSwitchElm, MBBSwitchElm_0);
+defineClass(293, 46, {8:1, 11:1, 293:1, 46:1}, MBBSwitchElm, MBBSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_53(){
   if (this.resistance > 0) {
     this.currents[0] = this.both || this.position == 0?(this.volts[0] - this.volts[1]) / this.resistance:0;
@@ -54381,7 +54520,7 @@ _.toggle = function toggle_2(){
   if (this.link_0 != 0) {
     for (i = 0; i != sim_0.elmList.arrayList.array.length; i++) {
       o = $elementAt(sim_0.elmList, i);
-      if (instanceOf(o, 285)) {
+      if (instanceOf(o, 293)) {
         s2 = o;
         s2.link_0 == this.link_0 && (s2.position = this.position);
       }
@@ -54418,7 +54557,7 @@ _.validate = function validate_14(){
 ;
 _.both = false;
 _.link_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_MBBSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MBBSwitchElm', 285);
+var Lcom_lushprojects_circuitjs1_client_MBBSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MBBSwitchElm', 293);
 function MemristorElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.r_on = 100;
@@ -54447,7 +54586,7 @@ function MemristorElm_0(xa, ya, xb, yb, f, st){
   this.resistance = 100;
 }
 
-defineClass(483, 8, $intern_86, MemristorElm, MemristorElm_0);
+defineClass(434, 8, $intern_86, MemristorElm, MemristorElm_0);
 _.calculateCurrent = function calculateCurrent_54(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -54582,21 +54721,21 @@ _.r_off = 0;
 _.r_on = 0;
 _.resistance = 0;
 _.totalWidth = 0;
-var Lcom_lushprojects_circuitjs1_client_MemristorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MemristorElm', 483);
+var Lcom_lushprojects_circuitjs1_client_MemristorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MemristorElm', 434);
 function $composeEgtLeitungSubmenu(this$static){
   var bar, i, mi;
   bar = new MenuBar_0(true);
   this$static.egtLeitungEinfachItem = new CheckboxMenuItem(LS('Einfach (L/Z)'));
-  $setScheduledCommand(this$static.egtLeitungEinfachItem, new Menus$7);
+  $setScheduledCommand(this$static.egtLeitungEinfachItem, new Menus$8);
   this$static.egtLeitungFlexibelItem = new CheckboxMenuItem(LS('Flexibel (Knick)'));
-  $setScheduledCommand(this$static.egtLeitungFlexibelItem, new Menus$8);
+  $setScheduledCommand(this$static.egtLeitungFlexibelItem, new Menus$9);
   $addItem_0(bar, this$static.egtLeitungEinfachItem);
   $addItem_0(bar, this$static.egtLeitungFlexibelItem);
   $addSeparator(bar, new MenuItemSeparator);
-  this$static.egtLeiterWahlItems = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_CheckboxMenuItem_2_classLit, $intern_3, 82, ($clinit_EGTLeitungElm() , ROLE_NAMES).length, 0, 1);
+  this$static.egtLeiterWahlItems = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_CheckboxMenuItem_2_classLit, $intern_3, 71, ($clinit_EGTLeitungElm() , ROLE_NAMES).length, 0, 1);
   for (i = 0; i < ROLE_MENU.length; i++) {
     mi = new CheckboxMenuItem(LS(ROLE_MENU[i]));
-    $setScheduledCommand(mi, new Menus$9(i));
+    $setScheduledCommand(mi, new Menus$10(i));
     this$static.egtLeiterWahlItems[i] = mi;
     $insertItem_0(bar, mi, bar.allItems.array.length);
   }
@@ -54606,33 +54745,33 @@ function $composeEgtLeitungSubmenu(this$static){
 
 function $composeMainMenu(this$static, mainMenuBar, num){
   var achipMenuBar, activeBlocMenuBar, activeMenuBar, chipMenuBar, gateMenuBar, inputMenuBar, mi, otherMenuBar, outputMenuBar, passMenuBar;
-  $makeClassCheckItems(this$static, mainMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Wire', 'WireElm', 'Add Routed Wire', 'RoutedWireElm', 'Add Resistor', 'ResistorElm']));
+  $makeClassCheckItems(this$static, mainMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Wire', 'WireElm', 'Add Routed Wire', 'RoutedWireElm', 'Add Resistor', 'ResistorElm']));
   passMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, passMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Capacitor', 'CapacitorElm', 'Add Capacitor (polarized)', 'PolarCapacitorElm', 'Add Inductor', 'InductorElm', 'Add Switch', 'SwitchElm', 'Add Push Switch', 'PushSwitchElm', 'Add SPDT Switch', 'Switch2Elm', 'Add DPDT Switch', 'DPDTSwitchElm', 'Add Make-Before-Break Switch', 'MBBSwitchElm', 'Add Potentiometer', 'PotElm', 'Add Transformer', 'TransformerElm', 'Add Tapped Transformer', 'TappedTransformerElm', 'Add Custom Transformer', 'CustomTransformerElm', 'Add Transmission Line', 'TransLineElm', 'Add Relay', 'RelayElm', 'Add Relay Coil', 'RelayCoilElm', 'Add Relay Contact', 'RelayContactElm', 'Add Photoresistor', 'LDRElm', 'Add Thermistor', 'ThermistorNTCElm', 'Add Memristor', 'MemristorElm', 'Add Spark Gap', 'SparkGapElm', 'Add Fuse', 'FuseElm', 'Add Crystal', 'CrystalElm', 'Add Cross Switch', 'CrossSwitchElm', 'Add Gyrator', 'GyratorElm']));
+  $makeClassCheckItems(this$static, passMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Capacitor', 'CapacitorElm', 'Add Capacitor (polarized)', 'PolarCapacitorElm', 'Add Inductor', 'InductorElm', 'Add Switch', 'SwitchElm', 'Add Push Switch', 'PushSwitchElm', 'Add SPDT Switch', 'Switch2Elm', 'Add DPDT Switch', 'DPDTSwitchElm', 'Add Make-Before-Break Switch', 'MBBSwitchElm', 'Add Potentiometer', 'PotElm', 'Add Transformer', 'TransformerElm', 'Add Tapped Transformer', 'TappedTransformerElm', 'Add Custom Transformer', 'CustomTransformerElm', 'Add Transmission Line', 'TransLineElm', 'Add Relay', 'RelayElm', 'Add Relay Coil', 'RelayCoilElm', 'Add Relay Contact', 'RelayContactElm', 'Add Photoresistor', 'LDRElm', 'Add Thermistor', 'ThermistorNTCElm', 'Add Memristor', 'MemristorElm', 'Add Spark Gap', 'SparkGapElm', 'Add Fuse', 'FuseElm', 'Add Crystal', 'CrystalElm', 'Add Cross Switch', 'CrossSwitchElm', 'Add Gyrator', 'GyratorElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(($clinit_SafeHtmlUtils() , new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Passive Components'))), passMenuBar));
   inputMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, inputMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Ground', 'GroundElm', 'Add Voltage Source (2-terminal)', 'DCVoltageElm', 'Add A/C Voltage Source (2-terminal)', 'ACVoltageElm', 'Add Voltage Source (1-terminal)', 'RailElm', 'Add A/C Voltage Source (1-terminal)', 'ACRailElm', 'Add Square Wave Source (1-terminal)', 'SquareRailElm', 'Add Clock', 'ClockElm', 'Add A/C Sweep', 'SweepElm', 'Add Variable Voltage', 'VarRailElm', 'Add Antenna', 'AntennaElm', 'Add AM Source', 'AMElm', 'Add FM Source', 'FMElm', 'Add Current Source', 'CurrentElm', 'Add Noise Generator', 'NoiseElm', 'Add Audio Input', 'AudioInputElm', 'Add Data Input', 'DataInputElm', 'Add External Voltage (JavaScript)', 'ExtVoltageElm']));
+  $makeClassCheckItems(this$static, inputMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Ground', 'GroundElm', 'Add Voltage Source (2-terminal)', 'DCVoltageElm', 'Add A/C Voltage Source (2-terminal)', 'ACVoltageElm', 'Add Voltage Source (1-terminal)', 'RailElm', 'Add A/C Voltage Source (1-terminal)', 'ACRailElm', 'Add Square Wave Source (1-terminal)', 'SquareRailElm', 'Add Clock', 'ClockElm', 'Add A/C Sweep', 'SweepElm', 'Add Variable Voltage', 'VarRailElm', 'Add Antenna', 'AntennaElm', 'Add AM Source', 'AMElm', 'Add FM Source', 'FMElm', 'Add Current Source', 'CurrentElm', 'Add Noise Generator', 'NoiseElm', 'Add Audio Input', 'AudioInputElm', 'Add Data Input', 'DataInputElm', 'Add External Voltage (JavaScript)', 'ExtVoltageElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Inputs and Sources')), inputMenuBar));
   outputMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, outputMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Analog Output', 'OutputElm', 'Add LED', 'LEDElm', 'Add Lamp', 'LampElm', 'Add Text', 'TextElm', 'Add Box', 'BoxElm', 'Add Line', 'LineElm', 'Add Labeled Node', 'LabeledNodeElm', 'Add Voltmeter/Scope Probe', 'ProbeElm', 'Add Ohmmeter', 'OhmMeterElm', 'Add Ammeter', 'AmmeterElm', 'Add Wattmeter', 'WattmeterElm', 'Add Test Point', 'TestPointElm', 'Add Decimal Display', 'DecimalDisplayElm', 'Add Instruction Display', 'InstructionDisplayElm', 'Add LED Array', 'LEDArrayElm', 'Add Data Export', 'DataRecorderElm', 'Add Audio Output', 'AudioOutputElm', 'Add Stop Trigger', 'StopTriggerElm', 'Add DC Motor', 'DCMotorElm', 'Add 3-Phase Motor', 'ThreePhaseMotorElm']));
+  $makeClassCheckItems(this$static, outputMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Analog Output', 'OutputElm', 'Add LED', 'LEDElm', 'Add Lamp', 'LampElm', 'Add Text', 'TextElm', 'Add Box', 'BoxElm', 'Add Line', 'LineElm', 'Add Labeled Node', 'LabeledNodeElm', 'Add Voltmeter/Scope Probe', 'ProbeElm', 'Add Ohmmeter', 'OhmMeterElm', 'Add Ammeter', 'AmmeterElm', 'Add Wattmeter', 'WattmeterElm', 'Add Test Point', 'TestPointElm', 'Add Decimal Display', 'DecimalDisplayElm', 'Add Instruction Display', 'InstructionDisplayElm', 'Add LED Array', 'LEDArrayElm', 'Add Data Export', 'DataRecorderElm', 'Add Audio Output', 'AudioOutputElm', 'Add Stop Trigger', 'StopTriggerElm', 'Add DC Motor', 'DCMotorElm', 'Add 3-Phase Motor', 'ThreePhaseMotorElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Outputs and Labels')), outputMenuBar));
   $register(new CCVSElm(0, 0));
   $register(new VCCSElm(0, 0));
   activeMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, activeMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Diode', 'DiodeElm', 'Add Zener Diode', 'ZenerElm', 'Add Transistor (bipolar, NPN)', 'NTransistorElm', 'Add Transistor (bipolar, PNP)', 'PTransistorElm', 'Add MOSFET (N-Channel)', 'NMosfetElm', 'Add MOSFET (P-Channel)', 'PMosfetElm', 'Add JFET (N-Channel)', 'NJfetElm', 'Add JFET (P-Channel)', 'PJfetElm', 'Add SCR', 'SCRElm', 'Add DIAC', 'DiacElm', 'Add TRIAC', 'TriacElm', 'Add Darlington Pair (NPN)', 'NDarlingtonElm', 'Add Darlington Pair (PNP)', 'PDarlingtonElm', 'Add Varactor/Varicap', 'VaractorElm', 'Add Tunnel Diode', 'TunnelDiodeElm', 'Add Triode', 'TriodeElm', 'Add Unijunction Transistor', 'UnijunctionElm']));
+  $makeClassCheckItems(this$static, activeMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Diode', 'DiodeElm', 'Add Zener Diode', 'ZenerElm', 'Add Transistor (bipolar, NPN)', 'NTransistorElm', 'Add Transistor (bipolar, PNP)', 'PTransistorElm', 'Add MOSFET (N-Channel)', 'NMosfetElm', 'Add MOSFET (P-Channel)', 'PMosfetElm', 'Add JFET (N-Channel)', 'NJfetElm', 'Add JFET (P-Channel)', 'PJfetElm', 'Add SCR', 'SCRElm', 'Add DIAC', 'DiacElm', 'Add TRIAC', 'TriacElm', 'Add Darlington Pair (NPN)', 'NDarlingtonElm', 'Add Darlington Pair (PNP)', 'PDarlingtonElm', 'Add Varactor/Varicap', 'VaractorElm', 'Add Tunnel Diode', 'TunnelDiodeElm', 'Add Triode', 'TriodeElm', 'Add Unijunction Transistor', 'UnijunctionElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Active Components')), activeMenuBar));
   activeBlocMenuBar = new MenuBar_0(true);
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Active Building Blocks')), activeBlocMenuBar));
   gateMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, gateMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Logic Input', 'LogicInputElm', 'Add Logic Output', 'LogicOutputElm', 'Add Bus Input', 'BusLogicInputElm', 'Add Inverter', 'InverterElm', 'Add NAND Gate', 'NandGateElm', 'Add NOR Gate', 'NorGateElm', 'Add AND Gate', 'AndGateElm', 'Add OR Gate', 'OrGateElm', 'Add XOR Gate', 'XorGateElm', 'Add XNOR Gate', 'XnorGateElm']));
+  $makeClassCheckItems(this$static, gateMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Logic Input', 'LogicInputElm', 'Add Logic Output', 'LogicOutputElm', 'Add Bus Input', 'BusLogicInputElm', 'Add Inverter', 'InverterElm', 'Add NAND Gate', 'NandGateElm', 'Add NOR Gate', 'NorGateElm', 'Add AND Gate', 'AndGateElm', 'Add OR Gate', 'OrGateElm', 'Add XOR Gate', 'XorGateElm', 'Add XNOR Gate', 'XnorGateElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Logic Gates, Input and Output')), gateMenuBar));
   chipMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, chipMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add D Flip-Flop', 'DFlipFlopElm', 'Add JK Flip-Flop', 'JKFlipFlopElm', 'Add T Flip-Flop', 'TFlipFlopElm', 'Add RS/SR-Speicher (FUP)', 'RSSpeicherElm', 'Add 7 Segment LED', 'SevenSegElm', 'Add 7 Segment Decoder', 'SevenSegDecoderElm', 'Add Multiplexer', 'MultiplexerElm', 'Add Demultiplexer', 'DeMultiplexerElm', 'Add SIPO shift register', 'SipoShiftElm', 'Add PISO shift register', 'PisoShiftElm', 'Add Counter', 'CounterElm', 'Add Counter w/ Load', 'Counter2Elm', 'Add Ring Counter', 'DecadeElm', 'Add Latch/Register', 'LatchElm', 'Add Sequence generator', 'SeqGenElm', 'Add Adder', 'FullAdderElm', 'Add Half Adder', 'HalfAdderElm', 'Add Custom Logic', 'UserDefinedLogicElm', 'Add Static RAM', 'SRAMElm', 'Add ROM', 'ROMElm', 'Add Bus Transceiver', 'BusTransceiverElm', 'Add Bus Splitter', 'BusSplitterElm']));
+  $makeClassCheckItems(this$static, chipMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add D Flip-Flop', 'DFlipFlopElm', 'Add JK Flip-Flop', 'JKFlipFlopElm', 'Add T Flip-Flop', 'TFlipFlopElm', 'Add RS/SR-Speicher (FUP)', 'RSSpeicherElm', 'Add 7 Segment LED', 'SevenSegElm', 'Add 7 Segment Decoder', 'SevenSegDecoderElm', 'Add Multiplexer', 'MultiplexerElm', 'Add Demultiplexer', 'DeMultiplexerElm', 'Add SIPO shift register', 'SipoShiftElm', 'Add PISO shift register', 'PisoShiftElm', 'Add Counter', 'CounterElm', 'Add Counter w/ Load', 'Counter2Elm', 'Add Ring Counter', 'DecadeElm', 'Add Latch/Register', 'LatchElm', 'Add Sequence generator', 'SeqGenElm', 'Add Adder', 'FullAdderElm', 'Add Half Adder', 'HalfAdderElm', 'Add Custom Logic', 'UserDefinedLogicElm', 'Add Static RAM', 'SRAMElm', 'Add ROM', 'ROMElm', 'Add Bus Transceiver', 'BusTransceiverElm', 'Add Bus Splitter', 'BusSplitterElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Digital Chips')), chipMenuBar));
   achipMenuBar = new MenuBar_0(true);
-  $makeClassCheckItems(this$static, achipMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add 555 Timer', 'TimerElm', 'Add Phase Comparator', 'PhaseCompElm', 'Add DAC', 'DACElm', 'Add ADC', 'ADCElm', 'Add VCO', 'VCOElm', 'Add Monostable', 'MonostableElm']));
+  $makeClassCheckItems(this$static, achipMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add 555 Timer', 'TimerElm', 'Add Phase Comparator', 'PhaseCompElm', 'Add DAC', 'DACElm', 'Add ADC', 'ADCElm', 'Add VCO', 'VCOElm', 'Add Monostable', 'MonostableElm']));
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Analog and Hybrid Chips')), achipMenuBar));
-  $makeClassCheckItems(this$static, activeBlocMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Add Op Amp (ideal, - on top)', 'OpAmpElm', 'Add Op Amp (ideal, + on top)', 'OpAmpSwapElm', 'Add Op Amp (real)', 'OpAmpRealElm', 'Add Analog Switch (SPST)', 'AnalogSwitchElm', 'Add Analog Switch (SPDT)', 'AnalogSwitch2Elm', 'Add Analog Multiplexer', 'AnalogMuxElm', 'Add Tristate Buffer', 'TriStateElm', 'Add Schmitt Trigger', 'SchmittElm', 'Add Schmitt Trigger (Inverting)', 'InvertingSchmittElm', 'Add Delay Buffer', 'DelayBufferElm', 'Add CCII+', 'CC2Elm', 'Add CCII-', 'CC2NegElm', 'Add Comparator (Hi-Z/GND output)', 'ComparatorElm', 'Add OTA (LM13700 style)', 'OTAElm', 'Add Norton Amp (LM3900)', 'NortonAmpElm', 'Add Voltage-Controlled Voltage Source (VCVS)', 'VCVSElm', 'Add Voltage-Controlled Current Source (VCCS)', 'VCCSElm', 'Add Current-Controlled Voltage Source (CCVS)', 'CCVSElm', 'Add Current-Controlled Current Source (CCCS)', 'CCCSElm', 'Add Optocoupler', 'OptocouplerElm', 'Add Time Delay Relay', 'TimeDelayRelayElm', 'Add LM317', 'CustomCompositeElm:~LM317-v2', 'Add TL431', 'CustomCompositeElm:~TL431', 'Add Motor Protection Switch', 'MotorProtectionSwitchElm', 'Add Subcircuit Instance', 'CustomCompositeElm']));
+  $makeClassCheckItems(this$static, activeBlocMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Add Op Amp (ideal, - on top)', 'OpAmpElm', 'Add Op Amp (ideal, + on top)', 'OpAmpSwapElm', 'Add Op Amp (real)', 'OpAmpRealElm', 'Add Analog Switch (SPST)', 'AnalogSwitchElm', 'Add Analog Switch (SPDT)', 'AnalogSwitch2Elm', 'Add Analog Multiplexer', 'AnalogMuxElm', 'Add Tristate Buffer', 'TriStateElm', 'Add Schmitt Trigger', 'SchmittElm', 'Add Schmitt Trigger (Inverting)', 'InvertingSchmittElm', 'Add Delay Buffer', 'DelayBufferElm', 'Add CCII+', 'CC2Elm', 'Add CCII-', 'CC2NegElm', 'Add Comparator (Hi-Z/GND output)', 'ComparatorElm', 'Add OTA (LM13700 style)', 'OTAElm', 'Add Norton Amp (LM3900)', 'NortonAmpElm', 'Add Voltage-Controlled Voltage Source (VCVS)', 'VCVSElm', 'Add Voltage-Controlled Current Source (VCCS)', 'VCCSElm', 'Add Current-Controlled Voltage Source (CCVS)', 'CCVSElm', 'Add Current-Controlled Current Source (CCCS)', 'CCCSElm', 'Add Optocoupler', 'OptocouplerElm', 'Add Time Delay Relay', 'TimeDelayRelayElm', 'Add LM317', 'CustomCompositeElm:~LM317-v2', 'Add TL431', 'CustomCompositeElm:~TL431', 'Add Motor Protection Switch', 'MotorProtectionSwitchElm', 'Add Subcircuit Instance', 'CustomCompositeElm']));
   this$static.subcircuitMenuBar == null && (this$static.subcircuitMenuBar = initUnidimensionalArray(Lcom_google_gwt_user_client_ui_MenuBar_2_classLit, $intern_3, 59, 2, 0, 1));
   this$static.subcircuitMenuBar[num] = new MenuBar_0(true);
   $addItem_0(mainMenuBar, new MenuItem_0(new SafeHtmlString(checkBoxHtml + LS('&nbsp;<\/div>Subcircuits')), this$static.subcircuitMenuBar[num]));
@@ -54660,7 +54799,7 @@ function $getSetupList(this$static, openDefault){
   url_0 = getModuleBaseURL() + 'setuplist.txt';
   requestBuilder = new RequestBuilder(($clinit_RequestBuilder() , GET), url_0);
   try {
-    $sendRequest(requestBuilder, new Menus$10(this$static, openDefault));
+    $sendRequest(requestBuilder, new Menus$11(this$static, openDefault));
   }
    catch ($e0) {
     $e0 = toJava($e0);
@@ -54781,10 +54920,11 @@ function $init_2(this$static){
   egtMenuBar.autoOpen = true;
   $getClassCheckItem(this$static, LS('EGT-Leitung'), 'EGTLeitungElm');
   $addItem_0(egtMenuBar, new MenuItem_2(LS('EGT-Leitung'), $composeEgtLeitungSubmenu(this$static)));
-  $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['EGT-Installationsleitung (\xDCbersicht)', 'EGTInstallationsleitungElm', 'EGT-Spannungsquelle (L/N/PE)', 'EGTSpannungsquelleElm', 'EGT-Drehstromquelle (L1/L2/L3/N/PE)', 'EGTDrehstromquelleElm', 'EGT-Gleichspannungsquelle (+/\u2212)', 'EGTGleichspannungsquelleElm', 'EGT-Abzweigdose', 'EGTAbzweigdoseElm', 'EGT-Steckdose (Schuko)', 'EGTSteckdoseElm', 'EGT-Ausschalter (rastend)', 'EGTAusschalterElm', 'EGT-Serienschalter (rastend)', 'EGTSerienschalterElm', 'EGT-Wechselschalter (rastend)', 'EGTWechselschalterElm', 'EGT-Kreuzschalter (rastend)', 'EGTKreuzschalterElm', 'EGT-Taster (tastend)', 'EGTTasterElm', 'EGT-Leuchte', 'EGTLeuchteElm', 'EGT-Meldeleuchte', 'EGTMeldeleuchteElm', 'EGT-Klingel', 'EGTKlingelElm', 'EGT-T\xFCr\xF6ffner', 'EGTTueroeffnerElm', 'EGT-Leistungssch\xFCtz (gekoppelt)', 'EGTLeistungsschuetzElm', 'EGT-Hilfssch\xFCtz (gekoppelt)', 'EGTHilfsschuetzElm', 'EGT-Hilfsschalterblock', 'EGTHilfsschalterblockElm', 'EGT-Drehstrommotor (Asynchron)', 'EGTDrehstrommotorElm', 'EGT-Gleichstrommotor', 'EGTGleichstrommotorElm', 'EGT-Kondensatormotor (vereinfacht)', 'EGTKondensatormotorKompaktElm', 'EGT-Kondensatormotor (Klemmbrett)', 'EGTKondensatormotorElm', 'EGT-Sch\xFCtz-Spule', 'EGTSchuetzSpuleElm', 'EGT-Sch\xFCtz-Leistungskontakte', 'EGTSchuetzLeistungskontakteElm', 'EGT-Sch\xFCtz-Hilfskontakt', 'EGTSchuetzHilfskontaktElm', 'EGT-Stromsto\xDFschalter (zusammen)', 'EGTStromstossschalterElm', 'EGT-Stromsto\xDF-Spule', 'EGTStromstossSpuleElm', 'EGT-Stromsto\xDF-Kontakt', 'EGTStromstossKontaktElm', 'EGT-Zeitrelais-Spule (Ein/Aus/Kombiniert/Blinkend)', 'EGTZeitrelaisSpuleElm', 'EGT-Zeitrelais-Kontakt (Ein/Aus/Kombiniert/Blinkend)', 'EGTZeitrelaisKontaktElm', 'EGT-Treppenlichtautomat', 'EGTTreppenlichtElm', 'EGT-Thermisches \xDCberlastrelais', 'EGTUeberlastrelaisElm', 'EGT-\xDCberlastrelais (Heizleiter)', 'EGTUeberlastHeizleiterElm', 'EGT-\xDCberlastrelais-Kontakt', 'EGTUeberlastKontaktElm', 'EGT-Motorschutzschalter (3-polig)', 'EGTMotorschutzschalterElm', 'EGT-Sicherung', 'EGTSicherungElm', 'EGT-Bewegungsmelder (IR)', 'EGTBewegungsmelderElm', 'EGT-Mini-SPS (LOGO)', 'EGTMiniSpsElm']));
-  this$static.sim.egtHmi && $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['EGT-HMI-Geber (Klemme I)', 'EGTHmiGeberElm', 'EGT-HMI-Ausgang (Klemme Q)', 'EGTHmiLastElm']));
-  $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['EGT-FUP-Eingang (I)', 'EGTFupEingangElm', 'EGT-FUP-Ausgang (Q)', 'EGTFupAusgangElm', 'RS/SR-Speicher (FUP)', 'RSSpeicherElm', 'FUP-Einschaltverz\xF6gerung (TON)', 'EGTFupTonElm', 'FUP-Ausschaltverz\xF6gerung (TOF)', 'EGTFupTofElm']));
+  $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['EGT-Installationsleitung (\xDCbersicht)', 'EGTInstallationsleitungElm', 'EGT-Spannungsquelle (L/N/PE)', 'EGTSpannungsquelleElm', 'EGT-Drehstromquelle (L1/L2/L3/N/PE)', 'EGTDrehstromquelleElm', 'EGT-Gleichspannungsquelle (+/\u2212)', 'EGTGleichspannungsquelleElm', 'EGT-Abzweigdose', 'EGTAbzweigdoseElm', 'EGT-Steckdose (Schuko)', 'EGTSteckdoseElm', 'EGT-Ausschalter (rastend)', 'EGTAusschalterElm', 'EGT-Serienschalter (rastend)', 'EGTSerienschalterElm', 'EGT-Wechselschalter (rastend)', 'EGTWechselschalterElm', 'EGT-Kreuzschalter (rastend)', 'EGTKreuzschalterElm', 'EGT-Taster (tastend)', 'EGTTasterElm', 'EGT-Leuchte', 'EGTLeuchteElm', 'EGT-Meldeleuchte', 'EGTMeldeleuchteElm', 'EGT-Klingel', 'EGTKlingelElm', 'EGT-T\xFCr\xF6ffner', 'EGTTueroeffnerElm', 'EGT-Leistungssch\xFCtz (gekoppelt)', 'EGTLeistungsschuetzElm', 'EGT-Hilfssch\xFCtz (gekoppelt)', 'EGTHilfsschuetzElm', 'EGT-Hilfsschalterblock', 'EGTHilfsschalterblockElm', 'EGT-Drehstrommotor (Asynchron)', 'EGTDrehstrommotorElm', 'EGT-Gleichstrommotor', 'EGTGleichstrommotorElm', 'EGT-Kondensatormotor (vereinfacht)', 'EGTKondensatormotorKompaktElm', 'EGT-Kondensatormotor (Klemmbrett)', 'EGTKondensatormotorElm', 'EGT-Sch\xFCtz-Spule', 'EGTSchuetzSpuleElm', 'EGT-Sch\xFCtz-Leistungskontakte', 'EGTSchuetzLeistungskontakteElm', 'EGT-Sch\xFCtz-Hilfskontakt', 'EGTSchuetzHilfskontaktElm', 'EGT-Stromsto\xDFschalter (zusammen)', 'EGTStromstossschalterElm', 'EGT-Stromsto\xDF-Spule', 'EGTStromstossSpuleElm', 'EGT-Stromsto\xDF-Kontakt', 'EGTStromstossKontaktElm', 'EGT-Zeitrelais-Spule (Ein/Aus/Kombiniert/Blinkend)', 'EGTZeitrelaisSpuleElm', 'EGT-Zeitrelais-Kontakt (Ein/Aus/Kombiniert/Blinkend)', 'EGTZeitrelaisKontaktElm', 'EGT-Treppenlichtautomat', 'EGTTreppenlichtElm', 'EGT-Thermisches \xDCberlastrelais', 'EGTUeberlastrelaisElm', 'EGT-\xDCberlastrelais (Heizleiter)', 'EGTUeberlastHeizleiterElm', 'EGT-\xDCberlastrelais-Kontakt', 'EGTUeberlastKontaktElm', 'EGT-Motorschutzschalter (3-polig)', 'EGTMotorschutzschalterElm', 'EGT-Sicherung', 'EGTSicherungElm', 'EGT-Bewegungsmelder (IR)', 'EGTBewegungsmelderElm', 'EGT-Mini-SPS (LOGO)', 'EGTMiniSpsElm']));
+  this$static.sim.egtHmi && $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['EGT-HMI-Geber (Klemme I)', 'EGTHmiGeberElm', 'EGT-HMI-Ausgang (Klemme Q)', 'EGTHmiLastElm']));
+  $makeClassCheckItems(this$static, egtMenuBar, stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['EGT-FUP-Eingang (I)', 'EGTFupEingangElm', 'EGT-FUP-Ausgang (Q)', 'EGTFupAusgangElm', 'RS/SR-Speicher (FUP)', 'RSSpeicherElm', 'FUP-Einschaltverz\xF6gerung (TON)', 'EGTFupTonElm', 'FUP-Ausschaltverz\xF6gerung (TOF)', 'EGTFupTofElm']));
   $addSeparator(egtMenuBar, new MenuItemSeparator);
+  $addItem_0(egtMenuBar, this$static.layoutLockCheckItem = new CheckboxMenuItem_0(LS('Lock Layout'), new Menus$7(this$static)));
   $addItem_0(egtMenuBar, new MenuItem_1(LS('Torsteuerung'), new MyCommand('egt', 'hmi-tor')));
   $addItem_0(egtMenuBar, new MenuItem_1(LS('Pumpensteuerung'), new MyCommand('egt', 'hmi-pumpe')));
   $addItem_0(this$static.menuBar, new MenuItem_2(LS('EGT'), egtMenuBar));
@@ -54904,33 +55044,46 @@ function Menus(sim_){
   this.sim = sim_;
 }
 
-defineClass(602, 1, {}, Menus);
+defineClass(604, 1, {}, Menus);
 _.isMac = false;
-var Lcom_lushprojects_circuitjs1_client_Menus_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus', 602);
+var Lcom_lushprojects_circuitjs1_client_Menus_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus', 604);
 function Menus$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(603, 1, $intern_152, Menus$1);
+defineClass(605, 1, $intern_152, Menus$1);
 _.execute_1 = function execute_57(){
   this.this$01.voltsCheckItem.on && $setState_1(this.this$01.powerCheckItem, false);
   $setPowerBarEnable(this.this$01.sim.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/1', 603);
-function Menus$10(this$0, val$openDefault){
+var Lcom_lushprojects_circuitjs1_client_Menus$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/1', 605);
+function Menus$10(val$art){
+  this.val$art2 = val$art;
+}
+
+defineClass(614, 1, $intern_152, Menus$10);
+_.execute_1 = function execute_58(){
+  setPendingLeiterArt(this.val$art2);
+  $menuPerformed(theApp.commands, 'main', 'EGTLeitungElm');
+}
+;
+_.val$art2 = 0;
+var Lcom_lushprojects_circuitjs1_client_Menus$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/10', 614);
+function Menus$11(this$0, val$openDefault){
   this.this$01 = this$0;
   this.val$openDefault2 = val$openDefault;
 }
 
-defineClass(612, 1, {}, Menus$10);
+defineClass(615, 1, {}, Menus$11);
 _.onError = function onError_1(request, exception){
   alert_0(LS("Can't load circuit list!"));
 }
 ;
 _.onResponseReceived = function onResponseReceived_1(request, response){
-  var lastArg, text_0;
-  if (response.xmlHttpRequest.status == 200) {
+  var lastArg, statusCode, text_0;
+  statusCode = response.xmlHttpRequest.status;
+  if ((statusCode == 1223?204:statusCode) == 200) {
     text_0 = response.xmlHttpRequest.responseText;
     $processSetupList(this.this$01, $getBytes((lastArg = text_0 , $clinit_EmulatedCharset() , lastArg)), this.val$openDefault2);
   }
@@ -54940,92 +55093,90 @@ _.onResponseReceived = function onResponseReceived_1(request, response){
 }
 ;
 _.val$openDefault2 = false;
-var Lcom_lushprojects_circuitjs1_client_Menus$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/10', 612);
+var Lcom_lushprojects_circuitjs1_client_Menus$11_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/11', 615);
 function Menus$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(604, 1, $intern_152, Menus$2);
-_.execute_1 = function execute_58(){
+defineClass(606, 1, $intern_152, Menus$2);
+_.execute_1 = function execute_59(){
   this.this$01.powerCheckItem.on && $setState_1(this.this$01.voltsCheckItem, false);
   $setPowerBarEnable(this.this$01.sim.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/2', 604);
+var Lcom_lushprojects_circuitjs1_client_Menus$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/2', 606);
 function Menus$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(605, 1, $intern_152, Menus$3);
-_.execute_1 = function execute_59(){
+defineClass(607, 1, $intern_152, Menus$3);
+_.execute_1 = function execute_60(){
   $setGrid(this.this$01.sim.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/3', 605);
+var Lcom_lushprojects_circuitjs1_client_Menus$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/3', 607);
 function Menus$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(606, 1, $intern_152, Menus$4);
-_.execute_1 = function execute_60(){
+defineClass(608, 1, $intern_152, Menus$4);
+_.execute_1 = function execute_61(){
   $setToolbar(this.this$01.sim.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/4', 606);
+var Lcom_lushprojects_circuitjs1_client_Menus$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/4', 608);
 function Menus$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(607, 1, $intern_152, Menus$5);
-_.execute_1 = function execute_61(){
+defineClass(609, 1, $intern_152, Menus$5);
+_.execute_1 = function execute_62(){
   $setOptionInStorage('crossHair', this.this$01.crossHairCheckItem.on);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/5', 607);
+var Lcom_lushprojects_circuitjs1_client_Menus$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/5', 609);
 function Menus$6(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(608, 1, $intern_152, Menus$6);
-_.execute_1 = function execute_62(){
+defineClass(610, 1, $intern_152, Menus$6);
+_.execute_1 = function execute_63(){
   $setOptionInStorage('mouseWheelEdit', this.this$01.mouseWheelEditCheckItem.on);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/6', 608);
-function Menus$7(){
+var Lcom_lushprojects_circuitjs1_client_Menus$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/6', 610);
+function Menus$7(this$0){
+  this.this$01 = this$0;
 }
 
-defineClass(609, 1, $intern_152, Menus$7);
-_.execute_1 = function execute_63(){
+defineClass(611, 1, $intern_152, Menus$7);
+_.execute_1 = function execute_64(){
+  $setLayoutLocked(this.this$01.sim.ui, this.this$01.layoutLockCheckItem.on);
+}
+;
+var Lcom_lushprojects_circuitjs1_client_Menus$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/7', 611);
+function Menus$8(){
+}
+
+defineClass(612, 1, $intern_152, Menus$8);
+_.execute_1 = function execute_65(){
   $clinit_EGTLeitungElm();
   pendingFlexible = false;
   $menuPerformed(theApp.commands, 'main', 'EGTLeitungElm');
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/7', 609);
-function Menus$8(){
+var Lcom_lushprojects_circuitjs1_client_Menus$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/8', 612);
+function Menus$9(){
 }
 
-defineClass(610, 1, $intern_152, Menus$8);
-_.execute_1 = function execute_64(){
+defineClass(613, 1, $intern_152, Menus$9);
+_.execute_1 = function execute_66(){
   $clinit_EGTLeitungElm();
   pendingFlexible = true;
   $menuPerformed(theApp.commands, 'main', 'EGTLeitungElm');
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Menus$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/8', 610);
-function Menus$9(val$art){
-  this.val$art2 = val$art;
-}
-
-defineClass(611, 1, $intern_152, Menus$9);
-_.execute_1 = function execute_65(){
-  setPendingLeiterArt(this.val$art2);
-  $menuPerformed(theApp.commands, 'main', 'EGTLeitungElm');
-}
-;
-_.val$art2 = 0;
-var Lcom_lushprojects_circuitjs1_client_Menus$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/9', 611);
+var Lcom_lushprojects_circuitjs1_client_Menus$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Menus/9', 613);
 function $$init_53(this$static){
   this$static.prevInputValue = false;
   this$static.retriggerable = false;
@@ -55056,14 +55207,14 @@ function MonostableElm_0(xa, ya, xb, yb, f, st){
   $reset_10(this);
 }
 
-defineClass(438, 17, $intern_86, MonostableElm, MonostableElm_0);
+defineClass(427, 17, $intern_86, MonostableElm, MonostableElm_0);
 _.dumpXml = function dumpXml_93(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_2(elem, 'rt', this.retriggerable);
   dumpAttr(elem, 'dl', this.delay);
 }
 ;
-_.execute_3 = function execute_66(){
+_.execute_3 = function execute_67(){
   if (this.pins[0].value_0 && this.prevInputValue != this.pins[0].value_0 && (this.retriggerable || !this.triggered)) {
     this.lastRisingEdge = sim_0.t;
     this.pins[1].value_0 = true;
@@ -55142,7 +55293,7 @@ _.lastRisingEdge = 0;
 _.prevInputValue = false;
 _.retriggerable = false;
 _.triggered = false;
-var Lcom_lushprojects_circuitjs1_client_MonostableElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MonostableElm', 438);
+var Lcom_lushprojects_circuitjs1_client_MonostableElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MonostableElm', 427);
 function $getTempColor_1(this$static, num){
   var c, temp, val, x_0;
   c = $getVoltageColor(this$static, this$static.volts[num * 2]);
@@ -55207,7 +55358,7 @@ function MotorProtectionSwitchElm_0(xa, ya, xb, yb, f, st){
   this.curcounts = initUnidimensionalArray(D_classLit, $intern_76, 7, 3, 15, 1);
 }
 
-defineClass(470, 8, $intern_86, MotorProtectionSwitchElm, MotorProtectionSwitchElm_0);
+defineClass(435, 8, $intern_86, MotorProtectionSwitchElm, MotorProtectionSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_55(){
   var i;
   for (i = 0; i != 3; i++)
@@ -55403,7 +55554,7 @@ _.undumpXml = function undumpXml_98(xml){
 _.blown = false;
 _.i2t = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_MotorProtectionSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MotorProtectionSwitchElm', 470);
+var Lcom_lushprojects_circuitjs1_client_MotorProtectionSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MotorProtectionSwitchElm', 435);
 function $anySelectedButMouse(this$static){
   var ce, ce$iterator;
   for (ce$iterator = new ArrayList$1(this$static.ui.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
@@ -55492,7 +55643,7 @@ function $doPopupMenu(this$static){
         $setEnabled_1(this$static.sim.menus.elmAddScopeMenuItem, this$static.mouseElm.canViewInScope());
       }
       $setEnabled_1(this$static.sim.menus.elmEditMenuItem, !!this$static.mouseElm.getEditInfo(0));
-      $setEnabled_1(this$static.sim.menus.elmSplitMenuItem, instanceOf(this$static.mouseElm, 85));
+      $setEnabled_1(this$static.sim.menus.elmSplitMenuItem, instanceOf(this$static.mouseElm, 86));
       $setEnabled_1(this$static.sim.menus.elmSliderMenuItem, $sliderItemEnabled(this$static.mouseElm));
       canFlipX = this$static.mouseElm.canFlipX();
       canFlipY = this$static.mouseElm.canFlipY();
@@ -55532,7 +55683,7 @@ function $doSelectAll(this$static){
 
 function $doSplit(this$static, ce){
   var px, py;
-  if (!instanceOf(ce, 85))
+  if (!instanceOf(ce, 86))
     return;
   px = $snapGrid_1(this$static, $inverseTransformX(this$static, this$static.menuX));
   py = $snapGrid_1(this$static, $inverseTransformY(this$static, this$static.menuY));
@@ -55548,14 +55699,14 @@ function $doSwitch(this$static, x_0, y_0){
     }
     return false;
   }
-  if (instanceOf(this$static.mouseElm, 291)) {
+  if (instanceOf(this$static.mouseElm, 287)) {
     if ($triggerAt(this$static.mouseElm)) {
       $needAnalyze(this$static.sim);
       return true;
     }
     return false;
   }
-  if (instanceOf(this$static.mouseElm, 287)) {
+  if (instanceOf(this$static.mouseElm, 281)) {
     ie = this$static.mouseElm;
     if (!$hitBody(ie, x_0, y_0))
       return false;
@@ -55571,7 +55722,7 @@ function $doSwitch(this$static, x_0, y_0){
     return false;
   se.toggleAt(x_0, y_0);
   se.momentary && (this$static.heldSwitchElm = se);
-  instanceOf(se, 211) || $needAnalyze(this$static.sim);
+  instanceOf(se, 210) || $needAnalyze(this$static.sim);
   return true;
 }
 
@@ -56015,7 +56166,7 @@ function $showContextPanel(this$static, x_0, y_0){
 
 function $sliderItemEnabled(elm){
   var ei, i;
-  if (instanceOf(elm, 290) || instanceOf(elm, 210))
+  if (instanceOf(elm, 285) || instanceOf(elm, 211))
     return false;
   for (i = 0;; i++) {
     ei = elm.getEditInfo(i);
@@ -56042,7 +56193,7 @@ function $splitLeadsAt(this$static, px, py){
   split_0 = false;
   for (i = this$static.ui.elmList.arrayList.array.length - 1; i >= 0; i--) {
     ce = $get_4(this$static.ui.elmList, i);
-    if (instanceOf(ce, 85))
+    if (instanceOf(ce, 86))
       continue;
     post = ce.getLeadPost(px, py);
     if (post < 0)
@@ -56063,7 +56214,7 @@ function $splitWireAt(this$static, px, py){
   split_0 = false;
   for (i = this$static.ui.elmList.arrayList.array.length - 1; i >= 0; i--) {
     ce = $get_4(this$static.ui.elmList, i);
-    if (!instanceOf(ce, 85))
+    if (!instanceOf(ce, 86))
       continue;
     we = ce;
     if (!we.pointOnWireInterior(px, py))
@@ -56205,7 +56356,7 @@ function doTouchHandlers(mm, cv){
 
 }
 
-defineClass(729, 1, {41:1, 1052:1, 1044:1, 300:1, 514:1, 203:1, 513:1, 134:1, 16:1}, MouseManager);
+defineClass(732, 1, {41:1, 1057:1, 1049:1, 300:1, 514:1, 203:1, 513:1, 134:1, 16:1}, MouseManager);
 _.longPress = function longPress(){
   $doPopupMenu(this);
 }
@@ -56402,7 +56553,7 @@ _.onMouseUp = function onMouseUp_1(e){
 _.onMouseWheel = function onMouseWheel_1(e){
   var zoomOnly;
   !!e.nativeEvent && (e.nativeEvent.preventDefault() , undefined);
-  zoomOnly = ($clinit_System() , lt(fromDouble_0(Date.now()), add_2(this.zoomTime, $intern_8)));
+  zoomOnly = ($clinit_System() , lt(fromDouble_0(Date.now()), add_2(this.zoomTime, $intern_23)));
   ($isReadOnly(this.ui) || !this.sim.menus.mouseWheelEditCheckItem.on) && (zoomOnly = true);
   zoomOnly || $scrollValues(this, (e.nativeEvent.clientX || 0) | 0, (e.nativeEvent.clientY || 0) | 0, $eventGetMouseWheelVelocityY(e.nativeEvent));
   if (instanceOf(this.mouseElm, 134) && !zoomOnly)
@@ -56453,16 +56604,16 @@ _.tempMouseMode = 6;
 _.wheelSensitivity = 1;
 _.zoomTime = 0;
 var lastSubcircuitMenuUpdate = 0;
-var Lcom_lushprojects_circuitjs1_client_MouseManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MouseManager', 729);
+var Lcom_lushprojects_circuitjs1_client_MouseManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MouseManager', 732);
 function MouseManager$1(){
 }
 
-defineClass(730, 1, $intern_65, MouseManager$1);
+defineClass(733, 1, $intern_65, MouseManager$1);
 _.onClose = function onClose_1(event_0){
   $watchSubmenus(false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_MouseManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MouseManager/1', 730);
+var Lcom_lushprojects_circuitjs1_client_MouseManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MouseManager/1', 733);
 function $readSelectValue_0(this$static){
   var i, sel;
   sel = 0;
@@ -56637,7 +56788,7 @@ function MultiplexerElm_0(xa, ya, xb, yb, f, st){
   $setupPins_44(this);
 }
 
-defineClass(449, 17, $intern_86, MultiplexerElm, MultiplexerElm_0);
+defineClass(490, 17, $intern_86, MultiplexerElm, MultiplexerElm_0);
 _.dumpXml = function dumpXml_95(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_0(elem, 'se', this.selectBitCount);
@@ -56645,7 +56796,7 @@ _.dumpXml = function dumpXml_95(doc, elem){
   this.dataBusWidth != 4 && dumpAttr_0(elem, 'dw', this.dataBusWidth);
 }
 ;
-_.execute_3 = function execute_67(){
+_.execute_3 = function execute_68(){
   var i, i0, selectedValue, strobed, val;
   selectedValue = $readSelectValue_0(this);
   if (this.inputMode == 2) {
@@ -56791,7 +56942,7 @@ _.outputPin = 0;
 _.selectBitCount = 0;
 _.selectPin = 0;
 _.strobe = 0;
-var Lcom_lushprojects_circuitjs1_client_MultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MultiplexerElm', 449);
+var Lcom_lushprojects_circuitjs1_client_MultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MultiplexerElm', 490);
 function $execute_0(this$static){
   $menuPerformed(theApp.commands, this$static.menuName, this$static.itemName);
 }
@@ -56806,7 +56957,7 @@ function MyCommand(name_0, item_0){
 }
 
 defineClass(22, 1, $intern_152, MyCommand);
-_.execute_1 = function execute_68(){
+_.execute_1 = function execute_69(){
   $execute_0(this);
 }
 ;
@@ -57174,7 +57325,7 @@ _.getDumpType = function getDumpType_115(){
 _.getEditInfo = function getEditInfo_63(n){
   var dm, ei, i;
   if (n == 0)
-    return $setDimensionless(new EditInfo_0('Beta/hFE', this.beta_0, 10, $intern_8));
+    return $setDimensionless(new EditInfo_0('Beta/hFE', this.beta_0, 10, $intern_23));
   if (n == 1) {
     ei = new EditInfo_0('', 0, -1, -1);
     ei.checkbox = new Checkbox_0('Swap E/C', (this.flags & 1) != 0);
@@ -57489,7 +57640,7 @@ function NandGateElm_0(xa, ya, xb, yb, f, st){
   AndGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(398, 284, $intern_86, NandGateElm, NandGateElm_0);
+defineClass(493, 295, $intern_86, NandGateElm, NandGateElm_0);
 _.getDumpType = function getDumpType_116(){
   return 151;
 }
@@ -57506,7 +57657,7 @@ _.isInverting = function isInverting_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_NandGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NandGateElm', 398);
+var Lcom_lushprojects_circuitjs1_client_NandGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NandGateElm', 493);
 function NoiseElm(xx, yy){
   RailElm_0.call(this, xx, yy, 6);
 }
@@ -57534,7 +57685,7 @@ function OrGateElm_0(xa, ya, xb, yb, f, st){
   GateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(231, 283, $intern_86, OrGateElm, OrGateElm_0);
+defineClass(231, 279, $intern_86, OrGateElm, OrGateElm_0);
 _.calcFunction = function calcFunction_0(){
   var f, i;
   f = false;
@@ -57624,7 +57775,7 @@ function NorGateElm_0(xa, ya, xb, yb, f, st){
   OrGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(495, 231, $intern_86, NorGateElm, NorGateElm_0);
+defineClass(396, 231, $intern_86, NorGateElm, NorGateElm_0);
 _.getDumpType = function getDumpType_118(){
   return 153;
 }
@@ -57641,7 +57792,7 @@ _.isInverting = function isInverting_1(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_NorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NorGateElm', 495);
+var Lcom_lushprojects_circuitjs1_client_NorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NorGateElm', 396);
 function $clinit_NortonAmpElm(){
   $clinit_NortonAmpElm = emptyMethod;
   modelExternalNodes_2 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [3, 1, 4]);
@@ -57676,7 +57827,7 @@ function initModel(){
   }
 }
 
-defineClass(938, 113, $intern_86, NortonAmpElm);
+defineClass(955, 113, $intern_86, NortonAmpElm);
 _.addRoutingObstacle = function addRoutingObstacle_16(router){
   $addRoutingObstacleWithLeads(this, router, this.opwidth);
 }
@@ -57787,7 +57938,7 @@ _.opheight = 0;
 _.opsize = 0;
 _.opwidth = 0;
 var modelDoc, modelElements, modelExternalNodes_2;
-var Lcom_lushprojects_circuitjs1_client_NortonAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NortonAmpElm', 938);
+var Lcom_lushprojects_circuitjs1_client_NortonAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NortonAmpElm', 955);
 function $clinit_OTAElm(){
   $clinit_OTAElm = emptyMethod;
   modelExternalNodes_3 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [7, 5, 15, 1, 13]);
@@ -57820,7 +57971,7 @@ function OTAElm_0(xa, ya, xb, yb, f, st){
   this.posVolt = $get_4(this.compElmList, 1).maxVoltage_0;
 }
 
-defineClass(445, 113, $intern_86, OTAElm, OTAElm_0);
+defineClass(415, 113, $intern_86, OTAElm, OTAElm_0);
 _.canFlipX = function canFlipX_3(){
   return false;
 }
@@ -57973,7 +58124,7 @@ _.curCount3 = 0;
 _.negVolt = 0;
 _.posVolt = 0;
 var modelExternalNodes_3, modelString_2 = 'RailElm 4\rRailElm 10\rNTransistorElm 1 2 3\rNTransistorElm 3 1 4\rNTransistorElm 3 3 4\rNTransistorElm 5 6 2\rNTransistorElm 7 8 2\rPTransistorElm 9 6 10\rPTransistorElm 9 9 10\rPTransistorElm 6 12 9\rPTransistorElm 11 8 10\rPTransistorElm 11 11 10\rPTransistorElm 8 13 11\rNTransistorElm 14 14 4\rNTransistorElm 14 12 4\rNTransistorElm 12 13 14\rNTransistorElm 15 15 5\rNTransistorElm 15 15 7';
-var Lcom_lushprojects_circuitjs1_client_OTAElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OTAElm', 445);
+var Lcom_lushprojects_circuitjs1_client_OTAElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OTAElm', 415);
 function OhmMeterElm(xx, yy){
   CurrentElm.call(this, xx, yy);
 }
@@ -57982,7 +58133,7 @@ function OhmMeterElm_0(xa, ya, xb, yb, f, st){
   CurrentElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(480, 209, $intern_110, OhmMeterElm, OhmMeterElm_0);
+defineClass(495, 213, $intern_110, OhmMeterElm, OhmMeterElm_0);
 _.canShowValueInScope = function canShowValueInScope_2(x_0){
   return x_0 == 2;
 }
@@ -58026,11 +58177,11 @@ _.setPoints = function setPoints_77(){
   $calcLeads(this, 26);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_OhmMeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OhmMeterElm', 480);
+var Lcom_lushprojects_circuitjs1_client_OhmMeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OhmMeterElm', 495);
 function $setGain(this$static){
   if ((this$static.flags & 8) != 0)
     return;
-  this$static.gain = (this$static.flags & 4) != 0?$intern_8:$intern_146;
+  this$static.gain = (this$static.flags & 4) != 0?$intern_23:$intern_146;
 }
 
 function $setSize_4(this$static, s){
@@ -58273,7 +58424,7 @@ function $clinit_OpAmpRealElm(){
   model741ExternalNodes = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [2, 3, 6, 7, 4]);
   lm324ExternalNodes = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [1, 13, 12, 4, 5]);
   lm324v2ExternalNodes = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [2, 1, 5, 3, 4]);
-  model741resistances = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_76, 7, 15, [50, 25, $intern_8, 50000, $intern_8, 5000, 50000, 50, 39000, 7500, 4500]);
+  model741resistances = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_76, 7, 15, [50, 25, $intern_23, 50000, $intern_23, 5000, 50000, 50, 39000, 7500, 4500]);
 }
 
 function $getCapacitor(this$static){
@@ -58384,7 +58535,7 @@ function OpAmpRealElm_0(xa, ya, xb, yb, f, st){
   $initModel(this);
 }
 
-defineClass(441, 113, $intern_86, OpAmpRealElm, OpAmpRealElm_0);
+defineClass(406, 113, $intern_86, OpAmpRealElm, OpAmpRealElm_0);
 _.canFlipX = function canFlipX_4(){
   return this.dy == 0;
 }
@@ -58543,13 +58694,13 @@ _.currentLimit = 0;
 _.modelType = 0;
 _.slewRate = 0;
 var lm324ExternalNodes, lm324ModelDump = '0 -1 -0 0 10000/0 0.000006/0 1 0 0 100/0 1 0 0 100/0 1e-11 0/0 0.000004/0 0.0001/0 1 0 0 100/0 1 0 0 100/0 1 0 0 100/0 1 0 0 100/0 25/0 -1 0 0 100/0 0.00005/0 -1 0 0 100/0 10000/0 1 0 0 100/0 -1 0 0 10000', lm324ModelString = 'TransistorElm 1 2 3\rCurrentElm 4 3\rTransistorElm 2 2 5\rTransistorElm 2 6 5\rCapacitorElm 6 7\rCurrentElm 4 8\rCurrentElm 4 7\rTransistorElm 8 4 9\rTransistorElm 7 4 10\rTransistorElm 10 4 11\rTransistorElm 11 7 12\rResistorElm 11 12\rTransistorElm 7 5 12\rCurrentElm 12 5\rTransistorElm 6 5 8\rResistorElm 9 5\rTransistorElm 9 7 5\rTransistorElm 13 6 3', lm324v2ExternalNodes, lm324v2ModelDump = '0 40000/0 5e-7/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 380/0 1700/0 5/0 -1 0 0 300 xlm324v2-qpa/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 40000/0 18/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 1.2e-7/0 6e-8/0 0.000001/0 300/0 -1 0 0 100 xlm324v2-qpq/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 300/0 -1 0 0 100 xlm324v2-qpq/2 4.8e-12 0 0/0 3/0 3000000000/0 2 -0.00001*(a-b)/0 0 0 -0.00156/0 0.000005/0 450000/0 300/0 -1 0 0 100 xlm324v2-qpq/0 300/0 -1 0 0 100 xlm324v2-qpq/2 8e-12 0 0/2 1e-12 0 0/2 1e-13 0 0/0 300000/2 2.3e-13 0 0/2 7.9e-13 0 0/2 7.9e-13 0 0/0 2 2*(a-b)/2 5e-14 0 0/0 25/0 1 0 0 100 xlm324v2-qnq/0 2 0.0003*(a-b)/0 0.001/0 0 0 -0.25/0 1000000/0 2 1*(a-b)/0 1000000/0 0 0 -0.55/0 1000000', lm324v2ModelString = 'ResistorElm 4 6\rCurrentElm 4 7\rResistorElm 4 29\rResistorElm 8 30\rResistorElm 9 31\rTransistorElm 30 29 31 \rResistorElm 4 32\rResistorElm 2 33\rResistorElm 10 34\rTransistorElm 33 32 34 \rResistorElm 9 35\rResistorElm 9 36\rResistorElm 11 37\rTransistorElm 36 35 37 \rResistorElm 10 38\rResistorElm 10 39\rResistorElm 11 40\rTransistorElm 39 38 40 \rResistorElm 12 41\rTransistorElm 13 41 4 \rResistorElm 13 42\rTransistorElm 13 42 4 \rResistorElm 4 43\rTransistorElm 12 43 14 \rResistorElm 3 44\rTransistorElm 14 44 6 \rResistorElm 15 45\rTransistorElm 6 45 4 \rResistorElm 3 46\rTransistorElm 15 46 16 \rResistorElm 3 47\rTransistorElm 16 47 17 \rResistorElm 17 16\rResistorElm 5 17\rResistorElm 4 48\rTransistorElm 15 48 5 \rResistorElm 15 49\rTransistorElm 17 49 5 \rCurrentElm 18 3\rCurrentElm 19 3\rCurrentElm 20 3\rResistorElm 11 50\rTransistorElm 18 50 3 \rResistorElm 14 51\rTransistorElm 19 51 3 \rResistorElm 5 52\rTransistorElm 7 52 4 \rResistorElm 15 53\rTransistorElm 20 53 3 \rCapacitorElm 21 22\rResistorElm 12 21\rResistorElm 12 15\rVCVSElm 3 0 23 8\rVoltageElm 23 1\rCurrentElm 3 4\rResistorElm 4 3\rResistorElm 12 54\rTransistorElm 9 54 11 \rResistorElm 13 55\rTransistorElm 10 55 11 \rCapacitorElm 12 13\rCapacitorElm 6 15\rCapacitorElm 3 24\rResistorElm 11 24\rCapacitorElm 1 2\rCapacitorElm 2 0\rCapacitorElm 1 0\rVCVSElm 15 0 22 0\rCapacitorElm 5 0\rResistorElm 25 56\rTransistorElm 25 56 0 \rVCCSElm 27 0 4 3\rCurrentElm 0 25\rVoltageElm 25 26\rResistorElm 0 26\rVCVSElm 28 26 27 0\rResistorElm 0 27\rVoltageElm 28 0\rResistorElm 0 28', model741ExternalNodes, model741String = 'NTransistorElm 3 8 9\rNTransistorElm 2 8 10\rPTransistorElm 11 12 9\rPTransistorElm 11 13 10\rNTransistorElm 14 12 1\rNTransistorElm 14 13 5\rNTransistorElm 12 7 14\rPTransistorElm 8 8 7\rPTransistorElm 8 11 7\rNTransistorElm 17 11 16\rNTransistorElm 17 17 4\rPTransistorElm 18 18 7\rPTransistorElm 18 20 7\rNTransistorElm 20 7 25\rNTransistorElm 13 22 24\rNTransistorElm 21 20 22\rNTransistorElm 25 20 6\rNTransistorElm 24 22 23\rPTransistorElm 22 4 15\rNTransistorElm 23 13 4\rCapacitorElm 13 20\rResistorElm 15 6\rResistorElm 6 25\rResistorElm 4 1\rResistorElm 4 14\rResistorElm 4 5\rResistorElm 4 16\rResistorElm 4 24\rResistorElm 4 23\rResistorElm 17 18\rResistorElm 22 21\rResistorElm 21 20\r', model741resistances;
-var Lcom_lushprojects_circuitjs1_client_OpAmpRealElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpRealElm', 441);
+var Lcom_lushprojects_circuitjs1_client_OpAmpRealElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpRealElm', 406);
 function OpAmpSwapElm(xx, yy){
   OpAmpElm.call(this, xx, yy);
   this.flags |= 1;
 }
 
-defineClass(940, 329, $intern_86, OpAmpSwapElm);
+defineClass(944, 329, $intern_86, OpAmpSwapElm);
 _.getDumpClass = function getDumpClass_10(){
   return Lcom_lushprojects_circuitjs1_client_OpAmpElm_2_classLit;
 }
@@ -58558,7 +58709,7 @@ _.getShortcut = function getShortcut_43(){
   return 65;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_OpAmpSwapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpSwapElm', 940);
+var Lcom_lushprojects_circuitjs1_client_OpAmpSwapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpSwapElm', 944);
 function $clinit_OptocouplerElm(){
   $clinit_OptocouplerElm = emptyMethod;
   modelExternalNodes_4 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [6, 2, 4, 5]);
@@ -58583,7 +58734,7 @@ function $initOptocoupler(this$static){
 function $setPin_0(this$static, n, px, py, dx, dy, dax, day, sx, sy){
   var pos, xa, ya;
   pos = n % 2;
-  if ((this$static.flags & $intern_20) != 0) {
+  if ((this$static.flags & $intern_25) != 0) {
     dx = -dx;
     dax = -dax;
     px += this$static.cspc2;
@@ -58618,7 +58769,7 @@ function $setPoints_46(this$static){
   $setPin_0(this$static, 1, x0, y0, 0, 1, -1, 0, 0, 0);
   $setPin_0(this$static, 2, x0, y0, 0, 1, 1, 0, xs - this$static.cspc2, 0);
   $setPin_0(this$static, 3, x0, y0, 0, 1, 1, 0, xs - this$static.cspc2, 0);
-  dx = (this$static.flags & $intern_20) != 0?-1:1;
+  dx = (this$static.flags & $intern_25) != 0?-1:1;
   $setPosition_0(this$static.diode, this$static.posts[0].x_0 + 32 * dx, this$static.posts[0].y_0, this$static.posts[1].x_0 + 32 * dx, this$static.posts[1].y_0);
   this$static.stubs[0] = $getPost(this$static.diode, 0);
   this$static.stubs[1] = $getPost(this$static.diode, 1);
@@ -58647,7 +58798,7 @@ function OptocouplerElm_0(xa, ya, xb, yb, f){
   $initOptocoupler(this);
 }
 
-defineClass(404, 113, $intern_86, OptocouplerElm, OptocouplerElm_0);
+defineClass(482, 113, $intern_86, OptocouplerElm, OptocouplerElm_0);
 _.canFlipXY = function canFlipXY_2(){
   return false;
 }
@@ -58668,7 +58819,7 @@ _.draw = function draw_69(g){
   $draw_2(this.transistor, g);
   $drawPosts(this, g);
   $setColor_0(g, lightGrayColor);
-  dx = (this.flags & $intern_20) != 0?-1:1;
+  dx = (this.flags & $intern_25) != 0?-1:1;
   sx = this.stubs[0].x_0 + 2 * dx;
   sy = (this.stubs[0].y_0 + this.stubs[1].y_0) / 2 | 0;
   for (i = 0; i != 2; i++) {
@@ -58699,7 +58850,7 @@ _.dumpXmlModel = function dumpXmlModel_3(doc){
 ;
 _.flipX = function flipX_13(center2, count){
   var xs;
-  this.flags ^= $intern_20;
+  this.flags ^= $intern_25;
   if (count != 1) {
     xs = 3 * this.cspc2;
     this.x_0 = center2 - this.x_0 - xs;
@@ -58799,7 +58950,7 @@ _.cspc = 0;
 _.cspc2 = 0;
 _.ctr = 0;
 var modelExternalNodes_4, modelString_3 = 'DiodeElm 6 1\rCCCSElm 1 2 3 4\rNTransistorElm 3 4 5';
-var Lcom_lushprojects_circuitjs1_client_OptocouplerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OptocouplerElm', 404);
+var Lcom_lushprojects_circuitjs1_client_OptocouplerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OptocouplerElm', 482);
 function OutputElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.scale_0 = 0;
@@ -58921,27 +59072,27 @@ function PDarlingtonElm(xx, yy){
   DarlingtonElm_0.call(this, xx, yy, true);
 }
 
-defineClass(943, 322, $intern_86, PDarlingtonElm);
+defineClass(951, 322, $intern_86, PDarlingtonElm);
 _.getDumpClass = function getDumpClass_11(){
   return Lcom_lushprojects_circuitjs1_client_DarlingtonElm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PDarlingtonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PDarlingtonElm', 943);
+var Lcom_lushprojects_circuitjs1_client_PDarlingtonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PDarlingtonElm', 951);
 function PJfetElm(xx, yy){
   JfetElm_0.call(this, xx, yy, true);
 }
 
-defineClass(868, 191, $intern_149, PJfetElm);
+defineClass(871, 191, $intern_149, PJfetElm);
 _.getDumpClass = function getDumpClass_12(){
   return Lcom_lushprojects_circuitjs1_client_JfetElm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PJfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PJfetElm', 868);
+var Lcom_lushprojects_circuitjs1_client_PJfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PJfetElm', 871);
 function PMosfetElm(xx, yy){
   MosfetElm_0.call(this, xx, yy, true);
 }
 
-defineClass(945, 131, $intern_147, PMosfetElm);
+defineClass(950, 131, $intern_147, PMosfetElm);
 _.getDumpClass = function getDumpClass_13(){
   return Lcom_lushprojects_circuitjs1_client_MosfetElm_2_classLit;
 }
@@ -58950,12 +59101,12 @@ _.getShortcut = function getShortcut_44(){
   return 80;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PMosfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PMosfetElm', 945);
+var Lcom_lushprojects_circuitjs1_client_PMosfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PMosfetElm', 950);
 function PTransistorElm(xx, yy){
   TransistorElm_0.call(this, xx, yy, true);
 }
 
-defineClass(942, 159, $intern_153, PTransistorElm);
+defineClass(945, 159, $intern_153, PTransistorElm);
 _.getDumpClass = function getDumpClass_14(){
   return Lcom_lushprojects_circuitjs1_client_TransistorElm_2_classLit;
 }
@@ -58964,7 +59115,7 @@ _.getShortcut = function getShortcut_45(){
   return 112;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PTransistorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PTransistorElm', 942);
+var Lcom_lushprojects_circuitjs1_client_PTransistorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PTransistorElm', 945);
 function PhaseCompElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -58975,7 +59126,7 @@ function PhaseCompElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(457, 17, $intern_86, PhaseCompElm, PhaseCompElm_0);
+defineClass(420, 17, $intern_86, PhaseCompElm, PhaseCompElm_0);
 _.doStep = function doStep_65(){
   var out;
   out = this.ff1?this.highVoltage:this.ff2?0:-1;
@@ -59032,7 +59183,7 @@ _.startIteration = function startIteration_43(){
 ;
 _.ff1 = false;
 _.ff2 = false;
-var Lcom_lushprojects_circuitjs1_client_PhaseCompElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PhaseCompElm', 457);
+var Lcom_lushprojects_circuitjs1_client_PhaseCompElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PhaseCompElm', 420);
 function $$init_56(this$static){
   this$static.data_0 = initUnidimensionalArray(Z_classLit, $intern_97, 7, 0, 16, 1);
   this$static.dataIndex = 0;
@@ -59081,7 +59232,7 @@ function PisoShiftElm_0(xa, ya, xb, yb, f, st){
   $setupPins_45(this);
 }
 
-defineClass(439, 17, $intern_86, PisoShiftElm, PisoShiftElm_0);
+defineClass(409, 17, $intern_86, PisoShiftElm, PisoShiftElm_0);
 _.defaultBitCount = function defaultBitCount_1(){
   return 8;
 }
@@ -59099,7 +59250,7 @@ _.dumpXmlState = function dumpXmlState_9(doc, elem){
   dumpAttr_1(elem, 'dt', writeBitsToString(newData));
 }
 ;
-_.execute_3 = function execute_69(){
+_.execute_3 = function execute_70(){
   var i;
   if (this.pins[0].value_0 != this.loadState) {
     this.loadState = this.pins[0].value_0;
@@ -59186,7 +59337,7 @@ _.clockState = false;
 _.dataIndex = 0;
 _.dataPinIndex = 0;
 _.loadState = false;
-var Lcom_lushprojects_circuitjs1_client_PisoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PisoShiftElm', 439);
+var Lcom_lushprojects_circuitjs1_client_PisoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PisoShiftElm', 409);
 function $equals(this$static, other){
   var result, that;
   result = false;
@@ -59247,7 +59398,7 @@ function PolarCapacitorElm_0(xa, ya, xb, yb, f, st){
   this.maxNegativeVoltage = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(500, 148, $intern_107, PolarCapacitorElm, PolarCapacitorElm_0);
+defineClass(484, 148, $intern_107, PolarCapacitorElm, PolarCapacitorElm_0);
 _.draw = function draw_71(g){
   var w;
   $draw(this, g);
@@ -59318,7 +59469,7 @@ _.undumpXml = function undumpXml_108(xml){
 }
 ;
 _.maxNegativeVoltage = 0;
-var Lcom_lushprojects_circuitjs1_client_PolarCapacitorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PolarCapacitorElm', 500);
+var Lcom_lushprojects_circuitjs1_client_PolarCapacitorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PolarCapacitorElm', 484);
 function $addPoint(this$static, x_0, y_0){
   var newLength;
   if (this$static.npoints >= this$static.xpoints.length || this$static.npoints >= this$static.ypoints.length) {
@@ -59345,15 +59496,15 @@ function Polygon(){
   this.ypoints = initUnidimensionalArray(I_classLit, $intern_26, 7, 4, 15, 1);
 }
 
-defineClass(213, 1, {213:1}, Polygon);
+defineClass(209, 1, {209:1}, Polygon);
 _.npoints = 0;
-var Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Polygon', 213);
+var Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Polygon', 209);
 function $createSlider_2(this$static){
   var ce, ce$iterator, pe, value_0, value0;
   if (this$static.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 210) && ce != this$static) {
+      if (instanceOf(ce, 211) && ce != this$static) {
         pe = ce;
         if (pe.link_0 == this$static.link_0 && !!pe.slider) {
           this$static.slider = pe.slider;
@@ -59379,7 +59530,7 @@ function $detachSlider(this$static){
   if (this$static.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 210) && ce != this$static) {
+      if (instanceOf(ce, 211) && ce != this$static) {
         pe = ce;
         if (pe.link_0 == this$static.link_0 && !pe.deleted) {
           pe.sliderOwner = true;
@@ -59445,7 +59596,7 @@ function $setPoints_47(this$static){
 
 function PotElm(xx, yy){
   CircuitElm.call(this, xx, yy);
-  this.maxResistance = $intern_8;
+  this.maxResistance = $intern_23;
   this.position = 0.5;
   this.sliderText = 'Resistance';
   this.flags = 1;
@@ -59462,7 +59613,7 @@ function PotElm_0(xa, ya, xb, yb, f, st){
   $createSlider_2(this);
 }
 
-defineClass(210, 8, {65:1, 134:1, 16:1, 106:1, 8:1, 11:1, 210:1}, PotElm, PotElm_0);
+defineClass(211, 8, {61:1, 134:1, 16:1, 84:1, 8:1, 11:1, 211:1}, PotElm, PotElm_0);
 _.calculateCurrent = function calculateCurrent_56(){
   if (this.resistance1 == 0)
     return;
@@ -59570,14 +59721,14 @@ _.dumpXml = function dumpXml_105(doc, elem){
   this.link_0 != 0 && dumpAttr_0(elem, 'li', this.link_0);
 }
 ;
-_.execute_1 = function execute_70(){
+_.execute_1 = function execute_71(){
   var ce, ce$iterator, pe;
   app_0.analyzeFlag = true;
   $setPoints_47(this);
   if (this.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 210) && ce != this) {
+      if (instanceOf(ce, 211) && ce != this) {
         pe = ce;
         pe.link_0 == this.link_0 && $setPoints_47(pe);
       }
@@ -59673,7 +59824,7 @@ _.setEditValue = function setEditValue_69(n, ei){
   n == 2 && (this.flags = $changeFlag(ei, this.flags, 1));
   if (n == 3) {
     $setLink(this, round_int(ei.value_0));
-    $setValue_2(this.slider, (value_0 = toInt_0(fromDouble_0($wnd.Math.round((this.position - $intern_156) / $intern_150))) , value_0));
+    $setValue_3(this.slider, (value_0 = toInt_0(fromDouble_0($wnd.Math.round((this.position - $intern_156) / $intern_150))) , value_0));
   }
 }
 ;
@@ -59701,7 +59852,7 @@ _.undumpXml = function undumpXml_109(xml){
   this.sliderText = $parseStringAttr(xml, 'sl', this.sliderText);
   $setLink(this, $parseIntAttr(xml, 'li', 0));
   value0 = (value_0 = toInt_0(fromDouble_0($wnd.Math.round((this.position - $intern_156) / $intern_150))) , value_0);
-  $setValue_2(this.slider, value0);
+  $setValue_3(this.slider, value0);
   $setText_0(this.label_0, this.sliderText);
 }
 ;
@@ -59718,7 +59869,7 @@ _.position = 0;
 _.resistance1 = 0;
 _.resistance2 = 0;
 _.sliderOwner = false;
-var Lcom_lushprojects_circuitjs1_client_PotElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PotElm', 210);
+var Lcom_lushprojects_circuitjs1_client_PotElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PotElm', 211);
 function $$init_57(this$static){
   this$static.rmsV = 0;
   this$static.binaryLevel = 0;
@@ -60002,7 +60153,7 @@ function PushSwitchElm(xx, yy){
   SwitchElm_1.call(this, xx, yy, true);
 }
 
-defineClass(952, 46, $intern_103, PushSwitchElm);
+defineClass(948, 46, $intern_103, PushSwitchElm);
 _.getDumpClass = function getDumpClass_15(){
   return Lcom_lushprojects_circuitjs1_client_SwitchElm_2_classLit;
 }
@@ -60011,7 +60162,7 @@ _.getShortcut = function getShortcut_47(){
   return 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PushSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PushSwitchElm', 952);
+var Lcom_lushprojects_circuitjs1_client_PushSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PushSwitchElm', 948);
 function $getBooleanValue(this$static, key, def){
   var val;
   val = $getStringValue(this$static.map_0, key);
@@ -60136,7 +60287,7 @@ function SRAMElm_0(xa, ya, xb, yb, f, st){
   (this.flags & 2) != 0 && (this.initialMap = new HashMap_1(this.map_0));
 }
 
-defineClass(281, 17, $intern_86, SRAMElm, SRAMElm_0);
+defineClass(291, 17, $intern_86, SRAMElm, SRAMElm_0);
 _.allowBus = function allowBus_8(){
   return true;
 }
@@ -60353,7 +60504,7 @@ _.dataBits = 0;
 _.dataNodes = 0;
 _.internalNodes = 0;
 var contentsOverride = null, fileNameOverride = null;
-var Lcom_lushprojects_circuitjs1_client_SRAMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMElm', 281);
+var Lcom_lushprojects_circuitjs1_client_SRAMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMElm', 291);
 function ROMElm(xx, yy){
   $clinit_ChipElm();
   SRAMElm.call(this, xx, yy);
@@ -60364,7 +60515,7 @@ function ROMElm_0(xa, ya, xb, yb, f, st){
   SRAMElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(394, 281, $intern_86, ROMElm, ROMElm_0);
+defineClass(500, 291, $intern_86, ROMElm, ROMElm_0);
 _.doStep = function doStep_67(){
   var data_0, dataObj, i, outputEnabled, p;
   outputEnabled = this.volts[0] < this.highVoltage / 2;
@@ -60414,7 +60565,7 @@ _.setupPins = function setupPins_56(){
 _.stepFinished = function stepFinished_24(){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ROMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ROMElm', 394);
+var Lcom_lushprojects_circuitjs1_client_ROMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ROMElm', 500);
 function $clinit_RSSpeicherElm(){
   $clinit_RSSpeicherElm = emptyMethod;
   $clinit_ChipElm();
@@ -60491,7 +60642,7 @@ function RSSpeicherElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(442, 17, $intern_86, RSSpeicherElm, RSSpeicherElm_0);
+defineClass(462, 17, $intern_86, RSSpeicherElm, RSSpeicherElm_0);
 _.drag = function drag_20(xx, yy){
   var minH, minW, nsx, nsy;
   xx = $snapGrid_0(app_0, xx);
@@ -60560,7 +60711,7 @@ _.dumpXml = function dumpXml_108(doc, elem){
   dumpAttr_0(elem, 'sy', this.sizeY);
 }
 ;
-_.execute_3 = function execute_71(){
+_.execute_3 = function execute_72(){
   var nq, q, r, s;
   if (this.justLoaded) {
     this.justLoaded = false;
@@ -60651,7 +60802,7 @@ _.useSmallGrid = function useSmallGrid_2(){
 ;
 _.justLoaded = false;
 var COL_HI_3, COL_LO_0;
-var Lcom_lushprojects_circuitjs1_client_RSSpeicherElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RSSpeicherElm', 442);
+var Lcom_lushprojects_circuitjs1_client_RSSpeicherElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RSSpeicherElm', 462);
 function $contains(this$static, X, Y){
   var h, w, x_0, y_0;
   w = this$static.width_0;
@@ -60875,7 +61026,7 @@ function RelayCoilElm_0(xa, ya, xb, yb, f, st){
   $allocNodes(this);
 }
 
-defineClass(461, 8, $intern_86, RelayCoilElm, RelayCoilElm_0);
+defineClass(438, 8, $intern_86, RelayCoilElm, RelayCoilElm_0);
 _.calculateCurrent = function calculateCurrent_58(){
   var voltdiff;
   voltdiff = this.volts[this.nCoil1] - this.volts[this.nCoil3];
@@ -61067,7 +61218,7 @@ _.startIteration = function startIteration_44(){
   var a, absCurrent, oldSwitchPosition;
   $startIteration_2(this.ind, this.volts[this.nCoil1] - this.volts[this.nCoil3]);
   absCurrent = $wnd.Math.abs(this.coilCurrent);
-  a = $wnd.Math.exp(-sim_0.timeStep * $intern_8);
+  a = $wnd.Math.exp(-sim_0.timeStep * $intern_23);
   this.avgCurrent = a * this.avgCurrent + (1 - a) * absCurrent;
   oldSwitchPosition = this.switchPosition;
   if (this.state == 0) {
@@ -61140,7 +61291,7 @@ _.switchingTime = 0;
 _.switchingTimeOff = 0;
 _.switchingTimeOn = 0;
 _.type_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_RelayCoilElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayCoilElm', 461);
+var Lcom_lushprojects_circuitjs1_client_RelayCoilElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayCoilElm', 438);
 function $setPoints_49(this$static){
   var ds, j;
   $setPoints(this$static);
@@ -61489,7 +61640,7 @@ function RelayElm_0(xa, ya, xb, yb, f, st){
   $postUndump(this);
 }
 
-defineClass(479, 8, $intern_86, RelayElm, RelayElm_0);
+defineClass(398, 8, $intern_86, RelayElm, RelayElm_0);
 _.calculateCurrent = function calculateCurrent_60(){
   var p, voltdiff;
   voltdiff = this.volts[this.nCoil1] - this.volts[this.nCoil3];
@@ -61846,7 +61997,7 @@ _.nCoil3 = 0;
 _.onState = false;
 _.openhs = 0;
 var lastModelName_3 = 'default';
-var Lcom_lushprojects_circuitjs1_client_RelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayElm', 479);
+var Lcom_lushprojects_circuitjs1_client_RelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayElm', 398);
 function $$init_60(this$static){
 }
 
@@ -62130,7 +62281,7 @@ function $setResistance(this$static, r){
 
 function ResistorElm(xx, yy){
   CircuitElm.call(this, xx, yy);
-  this.resistance = $intern_8;
+  this.resistance = $intern_23;
 }
 
 function ResistorElm_0(xa, ya, xb, yb, f, st){
@@ -62286,7 +62437,7 @@ _.defaultBitCount = function defaultBitCount_2(){
   return 10;
 }
 ;
-_.execute_3 = function execute_72(){
+_.execute_3 = function execute_73(){
   var i, running;
   if (this.justLoaded) {
     this.justLoaded = false;
@@ -62591,7 +62742,7 @@ function segmentDistanceSq(ax, ay, bx, by, gx, gy){
   return round_int(ex * ex + ey * ey);
 }
 
-defineClass(140, 85, {8:1, 11:1, 140:1, 85:1}, RoutedWireElm, RoutedWireElm_0);
+defineClass(140, 86, {8:1, 11:1, 140:1, 86:1}, RoutedWireElm, RoutedWireElm_0);
 _.split_0 = function split_3(mx, my){
   return $split(this, mx, my);
 }
@@ -62776,7 +62927,7 @@ function SCRElm_0(xa, ya, xb, yb, f, st){
   $setup_6(this);
 }
 
-defineClass(403, 8, $intern_86, SCRElm, SCRElm_0);
+defineClass(470, 8, $intern_86, SCRElm, SCRElm_0);
 _.calculateCurrent = function calculateCurrent_62(){
   this.ig = (this.volts[2] - this.volts[1]) / this.gresistance;
   this.ia = (this.volts[0] - this.volts[3]) / this.aresistance;
@@ -62985,7 +63136,7 @@ _.ig = 0;
 _.lastvac = 0;
 _.lastvag = 0;
 _.triggerI = 0;
-var Lcom_lushprojects_circuitjs1_client_SCRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SCRElm', 403);
+var Lcom_lushprojects_circuitjs1_client_SCRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SCRElm', 470);
 function $handle(){
   var oFiles = $doc.getElementById('EditDialogLoadFileElement').files, nFiles = oFiles.length;
   if (nFiles >= 1) {
@@ -63026,8 +63177,8 @@ function doLoadCallback_1(data_0, fileName){
   fileNameOverride = null;
 }
 
-defineClass(982, 981, $intern_143, SRAMLoadFile);
-var Lcom_lushprojects_circuitjs1_client_SRAMLoadFile_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMLoadFile', 982);
+defineClass(985, 984, $intern_143, SRAMLoadFile);
+var Lcom_lushprojects_circuitjs1_client_SRAMLoadFile_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMLoadFile', 985);
 function SchmittElm(xx, yy){
   InvertingSchmittElm.call(this, xx, yy);
 }
@@ -63036,7 +63187,7 @@ function SchmittElm_0(xa, ya, xb, yb, f, st){
   InvertingSchmittElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(397, 282, $intern_86, SchmittElm, SchmittElm_0);
+defineClass(451, 283, $intern_86, SchmittElm, SchmittElm_0);
 _.doStep = function doStep_72(){
   var maxStep, out;
   if (this.state) {
@@ -63106,7 +63257,7 @@ _.startIteration = function startIteration_46(){
 }
 ;
 _.lastOutputVoltage = 0;
-var Lcom_lushprojects_circuitjs1_client_SchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SchmittElm', 397);
+var Lcom_lushprojects_circuitjs1_client_SchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SchmittElm', 451);
 function $clinit_Scope(){
   $clinit_Scope = emptyMethod;
   multa = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_76, 7, 15, [2, 2.5, 2]);
@@ -63433,7 +63584,7 @@ function $drawCursor(this$static, g){
     return;
   if (!cursorScope)
     return;
-  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 7, 6, 1);
+  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 7, 6, 1);
   cursorX = -1;
   ct = 0;
   cursorValue = NaN;
@@ -63573,7 +63724,7 @@ function $drawPlot(this$static, g, plot, allPlotsSameUnits, selected, allSelecte
       if (minvy < minRangeLo || maxvy > minRangeHi) {
         this$static.reduceRange[plot.units] = false;
         minRangeLo = -1000;
-        minRangeHi = $intern_8;
+        minRangeHi = $intern_23;
       }
       if (ox != -1) {
         if (minvy == oy && maxvy == oy)
@@ -63788,7 +63939,7 @@ function $hasPlotValue(this$static, v){
   return false;
 }
 
-function $initialize(this$static){
+function $initialize_0(this$static){
   var i, plot;
   $resetGraph(this$static, false);
   this$static.scale_0[2] = this$static.scale_0[3] = this$static.scale_0[0] = this$static.scale_0[4] = 5;
@@ -63851,7 +64002,7 @@ function $needToRemove(this$static){
 function $onMouseWheel(this$static, e){
   this$static.wheelDeltaY += $eventGetMouseWheelVelocityY(e.nativeEvent) * this$static.app.mouse.wheelSensitivity;
   if (this$static.wheelDeltaY > 5) {
-    this$static.speed < $intern_20 && (this$static.speed *= 2);
+    this$static.speed < $intern_25 && (this$static.speed *= 2);
     $resetGraph(this$static, false);
     this$static.wheelDeltaY = 0;
   }
@@ -63933,7 +64084,7 @@ function $separate(this$static, arr, pos){
     sp = $get_4(this$static.visiblePlots, i);
     if (!!lastPlot && lastPlot.elm == sp.elm && lastPlot.value_0 == 0 && sp.value_0 == 3)
       continue;
-    $setValue_1(s, sp.value_0, sp.elm);
+    $setValue_2(s, sp.value_0, sp.elm);
     s.position = pos;
     arr[pos++] = s;
     lastPlot = sp;
@@ -63946,7 +64097,7 @@ function $separate(this$static, arr, pos){
 function $setElm(this$static, ce){
   this$static.plots = new Vector;
   instanceOf(ce, 159)?(this$static.plots = new Vector , $addValue(this$static, 6, ce)):(this$static.plots = new Vector , $addValue(this$static, 0, ce));
-  $initialize(this$static);
+  $initialize_0(this$static);
 }
 
 function $setManDivisions(this$static, d){
@@ -63994,7 +64145,7 @@ function $setRect(this$static, r){
 
 function $setSpeed(this$static, sp){
   sp < 1 && (sp = 1);
-  sp > $intern_20 && (sp = $intern_20);
+  sp > $intern_25 && (sp = $intern_25);
   this$static.speed = sp;
   $resetGraph(this$static, false);
 }
@@ -64008,7 +64159,7 @@ function $setTriggerMode(this$static, mode){
   $resetGraph(this$static, false);
 }
 
-function $setValue_0(this$static, val){
+function $setValue_1(this$static, val){
   var ce;
   if (this$static.plots.arrayList.array.length > 2 || this$static.plots.arrayList.array.length == 0)
     return;
@@ -64020,7 +64171,7 @@ function $setValue_0(this$static, val){
   $addValue(this$static, val, ce);
 }
 
-function $setValue_1(this$static, val, ce){
+function $setValue_2(this$static, val, ce){
   this$static.plots = new Vector;
   $addValue(this$static, val, ce);
 }
@@ -64038,7 +64189,7 @@ function $setValues(this$static, val, ival, ce, yelm){
     $add_11(this$static.plots, new ScopePlot_0(yelm, ce.getScopeUnits(ival), 0, $getManScaleFromMaxScale(this$static, ce.getScopeUnits(val), false)));
     return;
   }
-  $setValue_0(this$static, val);
+  $setValue_1(this$static, val);
 }
 
 function $showCurrent(this$static, b){
@@ -64125,7 +64276,7 @@ function $validDataCount(this$static, plot, ipa, w){
 function $viewingWire(this$static){
   var i;
   for (i = 0; i != this$static.plots.arrayList.array.length; i++)
-    if (instanceOf($get_4(this$static.plots, i).elm, 85))
+    if (instanceOf($get_4(this$static.plots, i).elm, 86))
       return true;
   return false;
 }
@@ -64144,7 +64295,7 @@ function Scope(app_, sim_){
   this.fftPlot = new ScopeFFT(this);
   this.overlays = new ScopeOverlays(this);
   this.serializer = new ScopeSerializer(this);
-  $initialize(this);
+  $initialize_0(this);
 }
 
 function downloadCSV(data_0, filename){
@@ -64210,7 +64361,7 @@ function ScopeCheckBox(text_0, menu){
   this.menuCmd = menu;
 }
 
-defineClass(67, 173, {179:1, 74:1, 123:1, 97:1, 126:1, 88:1, 101:1, 125:1, 72:1, 73:1, 75:1, 76:1, 78:1, 77:1, 79:1, 80:1, 81:1, 124:1, 99:1, 100:1, 98:1, 128:1, 129:1, 127:1, 89:1, 93:1, 91:1, 92:1, 90:1, 94:1, 105:1, 104:1, 103:1, 102:1, 33:1, 220:1, 30:1, 137:1, 64:1, 32:1, 236:1, 197:1, 173:1, 84:1, 120:1, 260:1, 217:1, 109:1, 119:1, 63:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 95:1, 121:1, 122:1, 96:1, 26:1, 28:1, 67:1}, ScopeCheckBox);
+defineClass(67, 173, {179:1, 75:1, 123:1, 98:1, 126:1, 89:1, 102:1, 125:1, 73:1, 74:1, 76:1, 77:1, 79:1, 78:1, 80:1, 81:1, 82:1, 124:1, 100:1, 101:1, 99:1, 128:1, 129:1, 127:1, 90:1, 94:1, 92:1, 93:1, 91:1, 95:1, 106:1, 105:1, 104:1, 103:1, 33:1, 220:1, 30:1, 137:1, 65:1, 32:1, 236:1, 197:1, 173:1, 85:1, 120:1, 260:1, 217:1, 109:1, 119:1, 64:1, 152:1, 55:1, 235:1, 27:1, 202:1, 34:1, 96:1, 121:1, 122:1, 97:1, 26:1, 28:1, 67:1}, ScopeCheckBox);
 var Lcom_lushprojects_circuitjs1_client_ScopeCheckBox_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeCheckBox', 67);
 function $skipNonzeroValues(this$static){
   var ip;
@@ -64544,12 +64695,12 @@ function ScopeFFT(scope_0){
   this.scope_0 = scope_0;
 }
 
-defineClass(795, 1, {}, ScopeFFT);
+defineClass(798, 1, {}, ScopeFFT);
 _.enabled = false;
 _.fftMaxMagnitude = 0;
 _.logSpectrum = false;
 _.showPhaseAngle = false;
-var Lcom_lushprojects_circuitjs1_client_ScopeFFT_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeFFT', 795);
+var Lcom_lushprojects_circuitjs1_client_ScopeFFT_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeFFT', 798);
 function $addScope(this$static, sc){
   sc.position < 0 && (sc.position = this$static.scopeCount);
   this$static.scopes[this$static.scopeCount++] = sc;
@@ -64843,7 +64994,7 @@ function max_2(a, b){
   return a > b?a:b;
 }
 
-defineClass(596, 1, {}, ScopeManager);
+defineClass(598, 1, {}, ScopeManager);
 _.menuPlot = -1;
 _.menuScope = -1;
 _.oldScopeCount = -1;
@@ -64851,13 +65002,13 @@ _.scopeCount = 0;
 _.scopeHeightFraction = 0.2;
 _.scopeMenuSelected = -1;
 _.scopeSelected = -1;
-var Lcom_lushprojects_circuitjs1_client_ScopeManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeManager', 596);
+var Lcom_lushprojects_circuitjs1_client_ScopeManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeManager', 598);
 function ScopeManager$1(this$0){
   this.this$01 = this$0;
   MenuBar_0.call(this, true);
 }
 
-defineClass(597, 59, $intern_66, ScopeManager$1);
+defineClass(599, 59, $intern_66, ScopeManager$1);
 _.onBrowserEvent = function onBrowserEvent_5(event_0){
   var currentItem, i, item_0;
   currentItem = -1;
@@ -64876,7 +65027,7 @@ _.onBrowserEvent = function onBrowserEvent_5(event_0){
   $onBrowserEvent_0(this, event_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeManager/1', 597);
+var Lcom_lushprojects_circuitjs1_client_ScopeManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeManager/1', 599);
 function $draw_5(this$static, g){
   var plot, t, ym, plot_0, mid, sdi, dutyLen, prevDuty, span_0;
   $setColor_0(g, whiteColor);
@@ -64916,7 +65067,7 @@ function $drawAverage(this$static, g){
 
 function $drawElmInfo(this$static, g){
   var i, info;
-  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 1, 6, 1);
+  info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 1, 6, 1);
   $getElm_0(this$static.scope_0).getInfo_0(info);
   for (i = 0; info[i] != null; i++)
     $drawInfoText_0(this$static, g, info[i]);
@@ -65075,110 +65226,110 @@ function lambda$7(sdi_0, mid_1, dutyLen_3){
   sdi_0.plot.maxValues[sdi_0.currentIp] > mid_1 && ++dutyLen_3[0];
 }
 
-defineClass(796, 1, {}, ScopeOverlays);
+defineClass(799, 1, {}, ScopeOverlays);
 _.textY = 0;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays', 796);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays', 799);
 function ScopeOverlays$lambda$0$Type(avg_0){
   this.avg_0 = avg_0;
 }
 
-defineClass(797, 1, {}, ScopeOverlays$lambda$0$Type);
+defineClass(800, 1, {}, ScopeOverlays$lambda$0$Type);
 _.run_0 = function run_4(){
   this.avg_0[0] = 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$0$Type', 797);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$0$Type', 800);
 function ScopeOverlays$lambda$1$Type(sdi_0, avg_1){
   this.sdi_0 = sdi_0;
   this.avg_1 = avg_1;
 }
 
-defineClass(798, 1, {}, ScopeOverlays$lambda$1$Type);
+defineClass(801, 1, {}, ScopeOverlays$lambda$1$Type);
 _.run_0 = function run_5(){
   lambda$1_0(this.sdi_0, this.avg_1);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$1$Type', 798);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$1$Type', 801);
 function ScopeOverlays$lambda$2$Type(endAvg_0, avg_1){
   this.endAvg_0 = endAvg_0;
   this.avg_1 = avg_1;
 }
 
-defineClass(799, 1, {}, ScopeOverlays$lambda$2$Type);
+defineClass(802, 1, {}, ScopeOverlays$lambda$2$Type);
 _.run_0 = function run_6(){
   this.endAvg_0[0] = this.avg_1[0];
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$2$Type', 799);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$2$Type', 802);
 function ScopeOverlays$lambda$3$Type(avg_0){
   this.avg_0 = avg_0;
 }
 
-defineClass(800, 1, {}, ScopeOverlays$lambda$3$Type);
+defineClass(803, 1, {}, ScopeOverlays$lambda$3$Type);
 _.run_0 = function run_7(){
   this.avg_0[0] = 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$3$Type', 800);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$3$Type', 803);
 function ScopeOverlays$lambda$4$Type(avg_0, sdi_1){
   this.avg_0 = avg_0;
   this.sdi_1 = sdi_1;
 }
 
-defineClass(801, 1, {}, ScopeOverlays$lambda$4$Type);
+defineClass(804, 1, {}, ScopeOverlays$lambda$4$Type);
 _.run_0 = function run_8(){
   lambda$4(this.avg_0, this.sdi_1);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$4$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$4$Type', 801);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$4$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$4$Type', 804);
 function ScopeOverlays$lambda$5$Type(endAvg_0, avg_1){
   this.endAvg_0 = endAvg_0;
   this.avg_1 = avg_1;
 }
 
-defineClass(802, 1, {}, ScopeOverlays$lambda$5$Type);
+defineClass(805, 1, {}, ScopeOverlays$lambda$5$Type);
 _.run_0 = function run_9(){
   this.endAvg_0[0] = this.avg_1[0];
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$5$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$5$Type', 802);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$5$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$5$Type', 805);
 function ScopeOverlays$lambda$6$Type(dutyLen_0){
   this.dutyLen_0 = dutyLen_0;
 }
 
-defineClass(803, 1, {}, ScopeOverlays$lambda$6$Type);
+defineClass(806, 1, {}, ScopeOverlays$lambda$6$Type);
 _.run_0 = function run_10(){
   this.dutyLen_0[0] = 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$6$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$6$Type', 803);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$6$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$6$Type', 806);
 function ScopeOverlays$lambda$7$Type(sdi_0, mid_1, dutyLen_3){
   this.sdi_0 = sdi_0;
   this.mid_1 = mid_1;
   this.dutyLen_3 = dutyLen_3;
 }
 
-defineClass(804, 1, {}, ScopeOverlays$lambda$7$Type);
+defineClass(807, 1, {}, ScopeOverlays$lambda$7$Type);
 _.run_0 = function run_11(){
   lambda$7(this.sdi_0, this.mid_1, this.dutyLen_3);
 }
 ;
 _.mid_1 = 0;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$7$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$7$Type', 804);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$7$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$7$Type', 807);
 function ScopeOverlays$lambda$8$Type(prevDuty_0, dutyLen_1){
   this.prevDuty_0 = prevDuty_0;
   this.dutyLen_1 = dutyLen_1;
 }
 
-defineClass(805, 1, {}, ScopeOverlays$lambda$8$Type);
+defineClass(808, 1, {}, ScopeOverlays$lambda$8$Type);
 _.run_0 = function run_12(){
   this.prevDuty_0[0] = this.dutyLen_1[0];
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$8$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$8$Type', 805);
+var Lcom_lushprojects_circuitjs1_client_ScopeOverlays$lambda$8$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeOverlays/lambda$8$Type', 808);
 function $clinit_ScopePlot(){
   $clinit_ScopePlot = emptyMethod;
-  colors = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['#FF0000', '#FF8000', '#FF00FF', '#7F00FF', '#0000FF', '#0080FF', '#FFFF00', '#00FFFF']);
+  colors = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['#FF0000', '#FF8000', '#FF00FF', '#7F00FF', '#0000FF', '#0080FF', '#FFFF00', '#00FFFF']);
 }
 
 function $$init_61(this$static){
@@ -65421,7 +65572,7 @@ function $draw_6(this$static, g){
   $drawSettingsWheel(this$static.scope_0, g);
   if (!$dialogIsShowing(this$static.scope_0.app.ui) && $contains(this$static.scope_0.rect_0, this$static.scope_0.app.mouse.mouseCursorX, this$static.scope_0.app.mouse.mouseCursorY) && this$static.scope_0.plots.arrayList.array.length >= 1 && px < this$static.scope_0.plots.arrayList.array.length && py < this$static.scope_0.plots.arrayList.array.length) {
     gridPx = $calcGridPx(this$static, this$static.scope_0.rect_0.width_0, this$static.scope_0.rect_0.height_0);
-    info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 2, 6, 1);
+    info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 2, 6, 1);
     spx = $get_4(this$static.scope_0.plots, px);
     spy = $get_4(this$static.scope_0.plots, py);
     if (this$static.scope_0.manualScale) {
@@ -65521,7 +65672,7 @@ function ScopePlot2d(scope_0){
   this.scaleY = 0.1;
 }
 
-defineClass(794, 1, {}, ScopePlot2d);
+defineClass(797, 1, {}, ScopePlot2d);
 _.alphaCounter = 0;
 _.draw_ox = 0;
 _.draw_oy = 0;
@@ -65541,7 +65692,7 @@ _.scaleR = 5;
 _.scaleX = 0;
 _.scaleY = 0;
 _.trailPersistence = 0;
-var Lcom_lushprojects_circuitjs1_client_ScopePlot2d_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePlot2d', 794);
+var Lcom_lushprojects_circuitjs1_client_ScopePlot2d_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePlot2d', 797);
 function $doScopePopupChecks(this$static, floating, canstack, cancombine, canunstack, s){
   $setState_1(this$static.maxScaleItem, s.maxScale);
   $setVisible(this$static.stackItem, !floating);
@@ -65569,8 +65720,8 @@ function ScopePopupMenu(){
   $addItem_0(this.m_0, new CheckboxAlignedMenuItem(LS('Properties...'), new MyCommand('scopepop', 'properties')));
 }
 
-defineClass(845, 1, {}, ScopePopupMenu);
-var Lcom_lushprojects_circuitjs1_client_ScopePopupMenu_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePopupMenu', 845);
+defineClass(847, 1, {}, ScopePopupMenu);
+var Lcom_lushprojects_circuitjs1_client_ScopePopupMenu_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePopupMenu', 847);
 function $addItemToGrid(this$static, g, scb){
   $setWidget_2(g, this$static.ny, this$static.nx, scb);
   if (++this$static.nx >= this$static.grid.numColumns) {
@@ -65774,12 +65925,12 @@ function $updateManualScaleUi(this$static){
       $setText_2(this$static.divisionsTextBox, '' + this$static.scope_0.manDivisions);
       $setEnabled(this$static.divisionsTextBox, true);
       $setText_0(this$static.positionLabel, 'CH ' + ('' + (this$static.plotSelection + 1)) + ' ' + LS('Position'));
-      $setValue_2(this$static.positionBar, p.manVPosition);
+      $setValue_3(this$static.positionBar, p.manVPosition);
       $setEnabled_0(this$static.dcButton, true);
       $enable(this$static.positionBar);
-      $setValue(this$static.dcButton, ($clinit_Boolean() , p.acCoupled?false:true));
+      $setValue_0(this$static.dcButton, ($clinit_Boolean() , p.acCoupled?false:true));
       $setEnabled_0(this$static.acButton, p.units == 0);
-      $setValue(this$static.acButton, p.acCoupled?true:false);
+      $setValue_0(this$static.acButton, p.acCoupled?true:false);
     }
      else {
       $setText_0(this$static.manualScaleId, '');
@@ -65807,58 +65958,58 @@ function $updateUi(this$static){
   $setVisible(this$static.vModep, $booleanValue(this$static.vScaleLabel.expanded));
   $updateRowVisibility(this$static.gridLabels);
   $setVisible_1(this$static.hScaleGrid.rowFormatter, 1, $booleanValue(this$static.hScaleLabel.expanded));
-  $setValue_2(this$static.speedBar, 10 - toInt_0(fromDouble_0($wnd.Math.round($wnd.Math.log(this$static.scope_0.speed) / $wnd.Math.log(2)))));
+  $setValue_3(this$static.speedBar, 10 - toInt_0(fromDouble_0($wnd.Math.round($wnd.Math.log(this$static.scope_0.speed) / $wnd.Math.log(2)))));
   if (this$static.voltageBox) {
-    $setValue(this$static.voltageBox, ($clinit_Boolean() , this$static.scope_0.showV && $hasPlotValue(this$static.scope_0, 0)?true:false));
-    $setValue(this$static.currentBox, this$static.scope_0.showI && $hasPlotValue(this$static.scope_0, 3)?true:false);
+    $setValue_0(this$static.voltageBox, ($clinit_Boolean() , this$static.scope_0.showV && $hasPlotValue(this$static.scope_0, 0)?true:false));
+    $setValue_0(this$static.currentBox, this$static.scope_0.showI && $hasPlotValue(this$static.scope_0, 3)?true:false);
   }
-  $setValue(this$static.powerBox, ($clinit_Boolean() , $hasPlotValue(this$static.scope_0, 7)?true:false));
-  $setValue(this$static.scaleBox, this$static.scope_0.showScale?true:false);
-  $setValue(this$static.peakBox, this$static.scope_0.showMax?true:false);
-  $setValue(this$static.negPeakBox, this$static.scope_0.showMin?true:false);
-  $setValue(this$static.p2pBox, this$static.scope_0.showP2P?true:false);
-  $setValue(this$static.freqBox, this$static.scope_0.showFreq?true:false);
-  $setValue(this$static.spectrumBox, this$static.scope_0.fftPlot.enabled?true:false);
-  $setValue(this$static.logSpectrumBox, this$static.scope_0.fftPlot.logSpectrum?true:false);
-  $setValue(this$static.rmsBox, this$static.scope_0.showRMS?true:false);
-  $setValue(this$static.averageBox, this$static.scope_0.showAverage?true:false);
-  $setValue(this$static.dutyBox, this$static.scope_0.showDutyCycle?true:false);
-  $setValue(this$static.phaseAngleBox, this$static.scope_0.fftPlot.showPhaseAngle?true:false);
-  $setValue(this$static.elmInfoBox, this$static.scope_0.showElmInfo?true:false);
+  $setValue_0(this$static.powerBox, ($clinit_Boolean() , $hasPlotValue(this$static.scope_0, 7)?true:false));
+  $setValue_0(this$static.scaleBox, this$static.scope_0.showScale?true:false);
+  $setValue_0(this$static.peakBox, this$static.scope_0.showMax?true:false);
+  $setValue_0(this$static.negPeakBox, this$static.scope_0.showMin?true:false);
+  $setValue_0(this$static.p2pBox, this$static.scope_0.showP2P?true:false);
+  $setValue_0(this$static.freqBox, this$static.scope_0.showFreq?true:false);
+  $setValue_0(this$static.spectrumBox, this$static.scope_0.fftPlot.enabled?true:false);
+  $setValue_0(this$static.logSpectrumBox, this$static.scope_0.fftPlot.logSpectrum?true:false);
+  $setValue_0(this$static.rmsBox, this$static.scope_0.showRMS?true:false);
+  $setValue_0(this$static.averageBox, this$static.scope_0.showAverage?true:false);
+  $setValue_0(this$static.dutyBox, this$static.scope_0.showDutyCycle?true:false);
+  $setValue_0(this$static.phaseAngleBox, this$static.scope_0.fftPlot.showPhaseAngle?true:false);
+  $setValue_0(this$static.elmInfoBox, this$static.scope_0.showElmInfo?true:false);
   $setEnabled_0(this$static.rmsBox, $canShowRMS(this$static.scope_0));
-  $setValue(this$static.viBox, this$static.scope_0.plot2d.enabled && !this$static.scope_0.plot2d.plotXY?true:false);
-  $setValue(this$static.xyBox, this$static.scope_0.plot2d.plotXY?true:false);
-  $setValue(this$static.resistanceBox, $hasPlotValue(this$static.scope_0, 2)?true:false);
+  $setValue_0(this$static.viBox, this$static.scope_0.plot2d.enabled && !this$static.scope_0.plot2d.plotXY?true:false);
+  $setValue_0(this$static.xyBox, this$static.scope_0.plot2d.plotXY?true:false);
+  $setValue_0(this$static.resistanceBox, $hasPlotValue(this$static.scope_0, 2)?true:false);
   $setEnabled_0(this$static.resistanceBox, (elm = $getSingleElm(this$static.scope_0) , !!elm && elm.canShowValueInScope(2)));
-  !!this$static.chargeBox && $setValue(this$static.chargeBox, $hasPlotValue(this$static.scope_0, 8)?true:false);
+  !!this$static.chargeBox && $setValue_0(this$static.chargeBox, $hasPlotValue(this$static.scope_0, 8)?true:false);
   if (this$static.vbeBox) {
-    $setValue(this$static.ibBox, $hasPlotValue(this$static.scope_0, 1)?true:false);
-    $setValue(this$static.icBox, $hasPlotValue(this$static.scope_0, 2)?true:false);
-    $setValue(this$static.ieBox, $hasPlotValue(this$static.scope_0, 3)?true:false);
-    $setValue(this$static.vbeBox, $hasPlotValue(this$static.scope_0, 4)?true:false);
-    $setValue(this$static.vbcBox, $hasPlotValue(this$static.scope_0, 5)?true:false);
-    $setValue(this$static.vceBox, $hasPlotValue(this$static.scope_0, 6)?true:false);
-    $setValue(this$static.vceIcBox, $isShowingVceAndIc(this$static.scope_0)?true:false);
+    $setValue_0(this$static.ibBox, $hasPlotValue(this$static.scope_0, 1)?true:false);
+    $setValue_0(this$static.icBox, $hasPlotValue(this$static.scope_0, 2)?true:false);
+    $setValue_0(this$static.ieBox, $hasPlotValue(this$static.scope_0, 3)?true:false);
+    $setValue_0(this$static.vbeBox, $hasPlotValue(this$static.scope_0, 4)?true:false);
+    $setValue_0(this$static.vbcBox, $hasPlotValue(this$static.scope_0, 5)?true:false);
+    $setValue_0(this$static.vceBox, $hasPlotValue(this$static.scope_0, 6)?true:false);
+    $setValue_0(this$static.vceIcBox, $isShowingVceAndIc(this$static.scope_0)?true:false);
   }
   if (this$static.scope_0.manualScale) {
-    $setValue(this$static.manualButton, true);
-    $setValue(this$static.autoButton, false);
-    $setValue(this$static.maxButton, false);
+    $setValue_0(this$static.manualButton, true);
+    $setValue_0(this$static.autoButton, false);
+    $setValue_0(this$static.maxButton, false);
     $setVisible(this$static.applyButton, true);
   }
    else {
-    $setValue(this$static.manualButton, false);
-    $setValue(this$static.autoButton, this$static.scope_0.maxScale?false:true);
-    $setValue(this$static.maxButton, this$static.scope_0.maxScale?true:false);
+    $setValue_0(this$static.manualButton, false);
+    $setValue_0(this$static.autoButton, this$static.scope_0.maxScale?false:true);
+    $setValue_0(this$static.maxButton, this$static.scope_0.maxScale?true:false);
     $setVisible(this$static.applyButton, false);
   }
   $updateManualScaleUi(this$static);
-  $setValue(this$static.trigFreeRunButton, this$static.scope_0.trigger.mode == 0?true:false);
-  $setValue(this$static.trigNormalButton, this$static.scope_0.trigger.mode == 1?true:false);
-  $setValue(this$static.trigAutoButton, this$static.scope_0.trigger.mode == 2?true:false);
+  $setValue_0(this$static.trigFreeRunButton, this$static.scope_0.trigger.mode == 0?true:false);
+  $setValue_0(this$static.trigNormalButton, this$static.scope_0.trigger.mode == 1?true:false);
+  $setValue_0(this$static.trigAutoButton, this$static.scope_0.trigger.mode == 2?true:false);
   trigActive = this$static.scope_0.trigger.mode != 0;
-  $setValue(this$static.trigRisingButton, this$static.scope_0.trigger.edge == 0?true:false);
-  $setValue(this$static.trigFallingButton, this$static.scope_0.trigger.edge == 1?true:false);
+  $setValue_0(this$static.trigRisingButton, this$static.scope_0.trigger.edge == 0?true:false);
+  $setValue_0(this$static.trigFallingButton, this$static.scope_0.trigger.edge == 1?true:false);
   $setEnabled_0(this$static.trigRisingButton, trigActive);
   $setEnabled_0(this$static.trigFallingButton, trigActive);
   $setText_2(this$static.triggerLevelTextBox, unitString(null, this$static.scope_0.trigger.level));
@@ -66162,7 +66313,7 @@ function trailStepsToSlider(steps){
   return toInt_0(fromDouble_0($wnd.Math.round($wnd.Math.log(steps) * $wnd.Math.LOG10E * 10)));
 }
 
-defineClass(371, 144, {33:1, 69:1, 143:1, 16:1, 30:1, 64:1, 32:1, 71:1, 63:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, ScopePropertiesDialog);
+defineClass(371, 144, {33:1, 69:1, 143:1, 16:1, 30:1, 65:1, 32:1, 72:1, 64:1, 55:1, 27:1, 47:1, 34:1, 54:1, 26:1, 28:1, 40:1, 116:1}, ScopePropertiesDialog);
 _.apply_0 = function apply_7(){
   return $apply_1(this);
 }
@@ -66187,29 +66338,29 @@ function ScopePropertiesDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(812, 1, $intern_68, ScopePropertiesDialog$1);
+defineClass(815, 1, $intern_68, ScopePropertiesDialog$1);
 _.onValueChange = function onValueChange_3(e){
   $setManualScale(this.this$01.scope_0, false, false);
   $setMaxScale(this.this$01.scope_0, false);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/1', 812);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/1', 815);
 function ScopePropertiesDialog$10(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(821, 1, $intern_152, ScopePropertiesDialog$10);
-_.execute_1 = function execute_73(){
+defineClass(824, 1, $intern_152, ScopePropertiesDialog$10);
+_.execute_1 = function execute_74(){
   $scrollbarChanged(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/10', 821);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/10', 824);
 function ScopePropertiesDialog$11(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(822, 1, $intern_68, ScopePropertiesDialog$11);
+defineClass(825, 1, $intern_68, ScopePropertiesDialog$11);
 _.onValueChange = function onValueChange_4(e){
   if ($booleanValue(e.value_0)) {
     $setTriggerMode(this.this$01.scope_0, 0);
@@ -66217,12 +66368,12 @@ _.onValueChange = function onValueChange_4(e){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$11_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/11', 822);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$11_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/11', 825);
 function ScopePropertiesDialog$12(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(823, 1, $intern_68, ScopePropertiesDialog$12);
+defineClass(826, 1, $intern_68, ScopePropertiesDialog$12);
 _.onValueChange = function onValueChange_5(e){
   if ($booleanValue(e.value_0)) {
     $setTriggerMode(this.this$01.scope_0, 1);
@@ -66230,12 +66381,12 @@ _.onValueChange = function onValueChange_5(e){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$12_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/12', 823);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$12_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/12', 826);
 function ScopePropertiesDialog$13(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(824, 1, $intern_68, ScopePropertiesDialog$13);
+defineClass(827, 1, $intern_68, ScopePropertiesDialog$13);
 _.onValueChange = function onValueChange_6(e){
   if ($booleanValue(e.value_0)) {
     $setTriggerMode(this.this$01.scope_0, 2);
@@ -66243,12 +66394,12 @@ _.onValueChange = function onValueChange_6(e){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$13_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/13', 824);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$13_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/13', 827);
 function ScopePropertiesDialog$14(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(825, 1, $intern_68, ScopePropertiesDialog$14);
+defineClass(828, 1, $intern_68, ScopePropertiesDialog$14);
 _.onValueChange = function onValueChange_7(e){
   if ($booleanValue(e.value_0)) {
     this.this$01.scope_0.trigger.edge = 0;
@@ -66256,12 +66407,12 @@ _.onValueChange = function onValueChange_7(e){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$14_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/14', 825);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$14_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/14', 828);
 function ScopePropertiesDialog$15(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(826, 1, $intern_68, ScopePropertiesDialog$15);
+defineClass(829, 1, $intern_68, ScopePropertiesDialog$15);
 _.onValueChange = function onValueChange_8(e){
   if ($booleanValue(e.value_0)) {
     this.this$01.scope_0.trigger.edge = 1;
@@ -66269,22 +66420,22 @@ _.onValueChange = function onValueChange_8(e){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$15_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/15', 826);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$15_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/15', 829);
 function ScopePropertiesDialog$16(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(827, 1, $intern_56, ScopePropertiesDialog$16);
+defineClass(830, 1, $intern_56, ScopePropertiesDialog$16);
 _.onClick = function onClick_30(event_0){
   $applyTriggerLevel(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$16_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/16', 827);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$16_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/16', 830);
 function ScopePropertiesDialog$17(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(828, 1, $intern_71, ScopePropertiesDialog$17);
+defineClass(831, 1, $intern_71, ScopePropertiesDialog$17);
 _.onChange = function onChange_5(e){
   var idx;
   idx = $getListBoxValue(this.this$01.xyPlotXBox);
@@ -66292,12 +66443,12 @@ _.onChange = function onChange_5(e){
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$17_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/17', 828);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$17_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/17', 831);
 function ScopePropertiesDialog$18(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(829, 1, $intern_71, ScopePropertiesDialog$18);
+defineClass(832, 1, $intern_71, ScopePropertiesDialog$18);
 _.onChange = function onChange_6(e){
   var idx;
   idx = $getListBoxValue(this.this$01.xyPlotYBox);
@@ -66305,185 +66456,185 @@ _.onChange = function onChange_6(e){
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$18_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/18', 829);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$18_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/18', 832);
 function ScopePropertiesDialog$19(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(830, 1, $intern_71, ScopePropertiesDialog$19);
+defineClass(833, 1, $intern_71, ScopePropertiesDialog$19);
 _.onChange = function onChange_7(e){
   this.this$01.scope_0.plot2d.plotBrightness = $getListBoxValue(this.this$01.xyBrightnessBox);
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$19_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/19', 830);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$19_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/19', 833);
 function ScopePropertiesDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(813, 1, $intern_68, ScopePropertiesDialog$2);
+defineClass(816, 1, $intern_68, ScopePropertiesDialog$2);
 _.onValueChange = function onValueChange_9(e){
   $setManualScale(this.this$01.scope_0, false, false);
   $setMaxScale(this.this$01.scope_0, true);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/2', 813);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/2', 816);
 function ScopePropertiesDialog$20(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(831, 1, $intern_71, ScopePropertiesDialog$20);
+defineClass(834, 1, $intern_71, ScopePropertiesDialog$20);
 _.onChange = function onChange_8(e){
   this.this$01.scope_0.plot2d.plotColorR = $getListBoxValue(this.this$01.xyRedBox);
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$20_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/20', 831);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$20_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/20', 834);
 function ScopePropertiesDialog$21(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(832, 1, $intern_71, ScopePropertiesDialog$21);
+defineClass(835, 1, $intern_71, ScopePropertiesDialog$21);
 _.onChange = function onChange_9(e){
   this.this$01.scope_0.plot2d.plotColorG = $getListBoxValue(this.this$01.xyGreenBox);
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$21_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/21', 832);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$21_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/21', 835);
 function ScopePropertiesDialog$22(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(833, 1, $intern_71, ScopePropertiesDialog$22);
+defineClass(836, 1, $intern_71, ScopePropertiesDialog$22);
 _.onChange = function onChange_10(e){
   this.this$01.scope_0.plot2d.plotColorB = $getListBoxValue(this.this$01.xyBlueBox);
   $resetGraph(this.this$01.scope_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$22_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/22', 833);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$22_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/22', 836);
 function ScopePropertiesDialog$23(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(834, 1, $intern_152, ScopePropertiesDialog$23);
-_.execute_1 = function execute_74(){
+defineClass(837, 1, $intern_152, ScopePropertiesDialog$23);
+_.execute_1 = function execute_75(){
   this.this$01.scope_0.plot2d.trailPersistence = trailSliderToSteps(this.this$01.trailBar.val_0);
   $setTrailLabel(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$23_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/23', 834);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$23_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/23', 837);
 function ScopePropertiesDialog$24(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(835, 1, $intern_56, ScopePropertiesDialog$24);
+defineClass(838, 1, $intern_56, ScopePropertiesDialog$24);
 _.onClick = function onClick_31(event_0){
   $apply_1(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$24_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/24', 835);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$24_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/24', 838);
 function ScopePropertiesDialog$25(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(836, 1, $intern_56, ScopePropertiesDialog$25);
+defineClass(839, 1, $intern_56, ScopePropertiesDialog$25);
 _.onClick = function onClick_32(event_0){
   $closeDialog_1(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$25_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/25', 836);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$25_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/25', 839);
 function ScopePropertiesDialog$26(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(837, 1, $intern_56, ScopePropertiesDialog$26);
+defineClass(840, 1, $intern_56, ScopePropertiesDialog$26);
 _.onClick = function onClick_33(event_0){
   $saveAsDefault(this.this$01.scope_0.serializer);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$26_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/26', 837);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$26_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/26', 840);
 function ScopePropertiesDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(814, 1, $intern_68, ScopePropertiesDialog$3);
+defineClass(817, 1, $intern_68, ScopePropertiesDialog$3);
 _.onValueChange = function onValueChange_10(e){
   $setManualScale(this.this$01.scope_0, true, true);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/3', 814);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/3', 817);
 function ScopePropertiesDialog$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(815, 1, $intern_68, ScopePropertiesDialog$4);
+defineClass(818, 1, $intern_68, ScopePropertiesDialog$4);
 _.onValueChange = function onValueChange_11(e){
   this.this$01.plotSelection < this.this$01.scope_0.visiblePlots.arrayList.array.length && $setAcCoupled($get_4(this.this$01.scope_0.visiblePlots, this.this$01.plotSelection), false);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/4', 815);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/4', 818);
 function ScopePropertiesDialog$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(816, 1, $intern_68, ScopePropertiesDialog$5);
+defineClass(819, 1, $intern_68, ScopePropertiesDialog$5);
 _.onValueChange = function onValueChange_12(e){
   this.this$01.plotSelection < this.this$01.scope_0.visiblePlots.arrayList.array.length && $setAcCoupled($get_4(this.this$01.scope_0.visiblePlots, this.this$01.plotSelection), true);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/5', 816);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/5', 819);
 function ScopePropertiesDialog$6(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(817, 1, $intern_152, ScopePropertiesDialog$6);
-_.execute_1 = function execute_75(){
+defineClass(820, 1, $intern_152, ScopePropertiesDialog$6);
+_.execute_1 = function execute_76(){
   $positionBarChanged(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/6', 817);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/6', 820);
 function ScopePropertiesDialog$7(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(818, 1, $intern_56, ScopePropertiesDialog$7);
+defineClass(821, 1, $intern_56, ScopePropertiesDialog$7);
 _.onClick = function onClick_34(event_0){
-  $setValue_2(this.this$01.positionBar, 0);
+  $setValue_3(this.this$01.positionBar, 0);
   $positionBarChanged(this.this$01);
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/7', 818);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/7', 821);
 function ScopePropertiesDialog$8(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(819, 1, $intern_56, ScopePropertiesDialog$8);
+defineClass(822, 1, $intern_56, ScopePropertiesDialog$8);
 _.onClick = function onClick_35(event_0){
   $apply_1(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/8', 819);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/8', 822);
 function ScopePropertiesDialog$9(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(820, 1, $intern_56, ScopePropertiesDialog$9);
+defineClass(823, 1, $intern_56, ScopePropertiesDialog$9);
 _.onClick = function onClick_36(event_0){
   $apply_1(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/9', 820);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/9', 823);
 function ScopePropertiesDialog$PlotClickHandler(this$0, n){
   this.this$01 = this$0;
   this.num = n;
 }
 
-defineClass(808, 1, $intern_56, ScopePropertiesDialog$PlotClickHandler);
+defineClass(811, 1, $intern_56, ScopePropertiesDialog$PlotClickHandler);
 _.onClick = function onClick_37(event_0){
   var i;
   this.this$01.plotSelection = this.num;
@@ -66494,12 +66645,12 @@ _.onClick = function onClick_37(event_0){
 }
 ;
 _.num = 0;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$PlotClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/PlotClickHandler', 808);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$PlotClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/PlotClickHandler', 811);
 function ScopePropertiesDialog$downClickHandler(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(809, 1, $intern_56, ScopePropertiesDialog$downClickHandler);
+defineClass(812, 1, $intern_56, ScopePropertiesDialog$downClickHandler);
 _.onClick = function onClick_38(event_0){
   var a, d, lasts, s;
   if (!this.this$01.scope_0.manualScale || this.this$01.plotSelection > this.this$01.scope_0.visiblePlots.arrayList.array.length)
@@ -66518,7 +66669,7 @@ _.onClick = function onClick_38(event_0){
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$downClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/downClickHandler', 809);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$downClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/downClickHandler', 812);
 function ScopePropertiesDialog$expandingLabel(this$0, s, ex){
   this.this$01 = this$0;
   this.expanded = ex;
@@ -66539,14 +66690,14 @@ function ScopePropertiesDialog$expandingLabel$1(this$1){
   this.this$11 = this$1;
 }
 
-defineClass(811, 1, $intern_56, ScopePropertiesDialog$expandingLabel$1);
+defineClass(814, 1, $intern_56, ScopePropertiesDialog$expandingLabel$1);
 _.onClick = function onClick_39(event_0){
   this.this$11.expanded = ($clinit_Boolean() , $booleanValue(this.this$11.expanded)?false:true);
   $setHTML(this.this$11.b, $booleanValue(this.this$11.expanded)?'-':'+');
   $updateUi(this.this$11.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$expandingLabel$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/expandingLabel/1', 811);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$expandingLabel$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/expandingLabel/1', 814);
 function $addLabel(this$static, s, e){
   var l_0;
   this$static.this$01.nx != 0 && ++this$static.this$01.ny;
@@ -66592,7 +66743,7 @@ function ScopePropertiesDialog$upClickHandler(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(810, 1, $intern_56, ScopePropertiesDialog$upClickHandler);
+defineClass(813, 1, $intern_56, ScopePropertiesDialog$upClickHandler);
 _.onClick = function onClick_40(event_0){
   var d, s;
   if (!this.this$01.scope_0.manualScale || this.this$01.plotSelection > this.this$01.scope_0.visiblePlots.arrayList.array.length)
@@ -66605,7 +66756,7 @@ _.onClick = function onClick_40(event_0){
   $updateUi(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$upClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/upClickHandler', 810);
+var Lcom_lushprojects_circuitjs1_client_ScopePropertiesDialog$upClickHandler_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopePropertiesDialog/upClickHandler', 813);
 function $dumpXml_11(this$static, doc, root){
   var elm, eno, f, flags, i, p, pelm, px, py, vPlot, xmlElm, number, number_0;
   vPlot = $get_4(this$static.scope_0.plots, 0);
@@ -66659,7 +66810,7 @@ function $dumpXml_11(this$static, doc, root){
 
 function $getFlags(this$static){
   var allPlotFlags, flags, p, p$iterator;
-  flags = (this$static.scope_0.showI?1:0) | (this$static.scope_0.showV?2:0) | (this$static.scope_0.showMax?0:4) | (this$static.scope_0.showFreq?8:0) | (this$static.scope_0.manualScale?524304:0) | (this$static.scope_0.plot2d.enabled?64:0) | (this$static.scope_0.plot2d.plotXY?128:0) | (this$static.scope_0.showMin?256:0) | (this$static.scope_0.showScale?512:0) | (this$static.scope_0.fftPlot.enabled?$intern_20:0) | (this$static.scope_0.maxScale?8192:0) | (this$static.scope_0.showRMS?$intern_43:0) | (this$static.scope_0.showDutyCycle?$intern_42:0) | (this$static.scope_0.fftPlot.logSpectrum?$intern_44:0) | (this$static.scope_0.showAverage?$intern_45:0) | (this$static.scope_0.showElmInfo?$intern_47:0) | (this$static.scope_0.showP2P?$intern_31:0) | (this$static.scope_0.fftPlot.showPhaseAngle?$intern_49:0);
+  flags = (this$static.scope_0.showI?1:0) | (this$static.scope_0.showV?2:0) | (this$static.scope_0.showMax?0:4) | (this$static.scope_0.showFreq?8:0) | (this$static.scope_0.manualScale?524304:0) | (this$static.scope_0.plot2d.enabled?64:0) | (this$static.scope_0.plot2d.plotXY?128:0) | (this$static.scope_0.showMin?256:0) | (this$static.scope_0.showScale?512:0) | (this$static.scope_0.fftPlot.enabled?$intern_25:0) | (this$static.scope_0.maxScale?8192:0) | (this$static.scope_0.showRMS?$intern_43:0) | (this$static.scope_0.showDutyCycle?$intern_42:0) | (this$static.scope_0.fftPlot.logSpectrum?$intern_44:0) | (this$static.scope_0.showAverage?$intern_45:0) | (this$static.scope_0.showElmInfo?$intern_47:0) | (this$static.scope_0.showP2P?$intern_31:0) | (this$static.scope_0.fftPlot.showPhaseAngle?$intern_49:0);
   flags |= $intern_40;
   allPlotFlags = 0;
   for (p$iterator = new ArrayList$1(this$static.scope_0.plots.arrayList); p$iterator.i < p$iterator.this$01.array.length;) {
@@ -66711,7 +66862,7 @@ function $setFlags(this$static, flags){
   this$static.scope_0.plot2d.plotXY = (flags & 128) != 0;
   this$static.scope_0.showMin = (flags & 256) != 0;
   this$static.scope_0.showScale = (flags & 512) != 0;
-  $show_1(this$static.scope_0.fftPlot, (flags & $intern_20) != 0);
+  $show_1(this$static.scope_0.fftPlot, (flags & $intern_25) != 0);
   this$static.scope_0.maxScale = (flags & 8192) != 0;
   this$static.scope_0.showRMS = (flags & $intern_43) != 0;
   this$static.scope_0.showDutyCycle = (flags & $intern_42) != 0;
@@ -66724,7 +66875,7 @@ function $setFlags(this$static, flags){
 
 function $undump_2(this$static, st){
   var ce, e, elm, flags, hasPlotFlags, i, ivalue, ne, p, plot2dFlag, plotFlags, sz, u, val, value_0, yElm, ye;
-  $initialize(this$static.scope_0);
+  $initialize_0(this$static.scope_0);
   e = (new Integer_0($nextToken(st))).value_0;
   if (e == -1)
     return;
@@ -66752,7 +66903,7 @@ function $undump_2(this$static, st){
       (flags & $intern_48) != 0 && (this$static.scope_0.manDivisions = ($clinit_Scope() , lastManDivisions = __parseAndValidateInt($nextToken(st), 10)));
       u = ce.getScopeUnits(value_0);
       u > 1 && (this$static.scope_0.scale_0[u] = __parseAndValidateDouble($nextToken(st)));
-      $setValue_0(this$static.scope_0, value_0);
+      $setValue_1(this$static.scope_0, value_0);
       while (this$static.scope_0.plots.arrayList.array.length > 1)
         $removeElementAt(this$static.scope_0.plots, 1);
       plotFlags = 0;
@@ -66878,8 +67029,8 @@ function importDecOrHex(s){
   return checkCriticalStringElementIndex(0, s.length) , s.charCodeAt(0) == 120?__parseAndValidateInt(s.substr(1), 16):__parseAndValidateInt(s, 10);
 }
 
-defineClass(806, 1, {}, ScopeSerializer);
-var Lcom_lushprojects_circuitjs1_client_ScopeSerializer_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeSerializer', 806);
+defineClass(809, 1, {}, ScopeSerializer);
+var Lcom_lushprojects_circuitjs1_client_ScopeSerializer_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeSerializer', 809);
 function $check(this$static, visiblePlots, plot2d, sim, rectWidth){
   var currentPtr, edgeCrossing, plot, val;
   if (this$static.mode == 0 || visiblePlots.arrayList.array.length == 0 || plot2d)
@@ -67013,7 +67164,7 @@ function $validDataCount_0(this$static, plot, ipa, w, scopePointCount){
 function ScopeTrigger(){
 }
 
-defineClass(807, 1, {}, ScopeTrigger);
+defineClass(810, 1, {}, ScopeTrigger);
 _.autoTimeout = 0;
 _.edge = 0;
 _.fired = false;
@@ -67026,7 +67177,7 @@ _.ptr = 0;
 _.state = 0;
 _.time = 0;
 _.waiting = false;
-var Lcom_lushprojects_circuitjs1_client_ScopeTrigger_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeTrigger', 807);
+var Lcom_lushprojects_circuitjs1_client_ScopeTrigger_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScopeTrigger', 810);
 function $clinit_ScrollValuePopup(){
   $clinit_ScrollValuePopup = emptyMethod;
   e12 = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_76, 7, 15, [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]);
@@ -67149,7 +67300,7 @@ function ScrollValuePopup(x_0, y_0, dy, e, s){
   $setPopupPositionAndShow(this, new ScrollValuePopup$1(this, x_0, y_0));
 }
 
-defineClass(972, 54, $intern_159, ScrollValuePopup);
+defineClass(975, 54, $intern_159, ScrollValuePopup);
 _.onMouseDown = function onMouseDown_2(e){
   var idx;
   $eventGetButton(e.nativeEvent) == 1 || $eventGetButton(e.nativeEvent) == 4?(idx = $getSelIdx(this) , $setElmValue(this, idx) , $hide(this, false)):($setElmValue(this, this.currentidx) , $hide(this, false));
@@ -67174,14 +67325,14 @@ _.maxpow = 0;
 _.minpow = 0;
 _.nvalues = 0;
 var e12;
-var Lcom_lushprojects_circuitjs1_client_ScrollValuePopup_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScrollValuePopup', 972);
+var Lcom_lushprojects_circuitjs1_client_ScrollValuePopup_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScrollValuePopup', 975);
 function ScrollValuePopup$1(this$0, val$x, val$y){
   this.this$01 = this$0;
   this.val$x2 = val$x;
   this.val$y3 = val$y;
 }
 
-defineClass(973, 1, {}, ScrollValuePopup$1);
+defineClass(976, 1, {}, ScrollValuePopup$1);
 _.setPosition = function setPosition_0(offsetWidth, offsetHeight){
   var left, top_0;
   left = $wnd.Math.max(0, this.val$x2 - (offsetWidth / 4 | 0));
@@ -67191,7 +67342,7 @@ _.setPosition = function setPosition_0(offsetWidth, offsetHeight){
 ;
 _.val$x2 = 0;
 _.val$y3 = 0;
-var Lcom_lushprojects_circuitjs1_client_ScrollValuePopup$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScrollValuePopup/1', 973);
+var Lcom_lushprojects_circuitjs1_client_ScrollValuePopup$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ScrollValuePopup/1', 976);
 function $calcValueFromPos(this$static, x_0){
   var v;
   v = this$static.min_0 + ((this$static.max_0 - this$static.min_0) * (x_0 - HMARGIN - SCROLLHEIGHT - BARMARGIN) / (this$static.VERTICALPANELWIDTH - 2 * (HMARGIN + SCROLLHEIGHT + BARMARGIN)) | 0);
@@ -67278,14 +67429,14 @@ function $enable(this$static){
 
 function $onMouseWheel_0(this$static, e){
   !!e.nativeEvent && (e.nativeEvent.preventDefault() , undefined);
-  this$static.enabled && $setValue_2(this$static, this$static.val_0 + ($eventGetMouseWheelVelocityY(e.nativeEvent) / 3 | 0));
+  this$static.enabled && $setValue_3(this$static, this$static.val_0 + ($eventGetMouseWheelVelocityY(e.nativeEvent) / 3 | 0));
 }
 
 function $setStepSize(this$static, step){
   this$static.stepSize = step;
 }
 
-function $setValue_2(this$static, i){
+function $setValue_3(this$static, i){
   i < this$static.min_0?(i = this$static.min_0):i > this$static.max_0 && (i = this$static.max_0);
   this$static.val_0 = i;
   $draw_7(this$static);
@@ -67341,7 +67492,7 @@ function Scrollbar_1(value_0, cmd, e){
   this.attachedElm = e;
 }
 
-defineClass(145, 1023, {41:1, 300:1, 514:1, 203:1, 261:1, 513:1, 134:1, 1041:1, 1042:1, 1043:1, 1040:1, 33:1, 16:1, 30:1, 32:1, 27:1, 34:1, 26:1, 28:1}, Scrollbar, Scrollbar_0, Scrollbar_1);
+defineClass(145, 1026, {41:1, 300:1, 514:1, 203:1, 261:1, 513:1, 134:1, 1046:1, 1047:1, 1048:1, 1045:1, 33:1, 16:1, 30:1, 32:1, 27:1, 34:1, 26:1, 28:1}, Scrollbar, Scrollbar_0, Scrollbar_1);
 _.onClick = function onClick_41(e){
   !!e.nativeEvent && (e.nativeEvent.preventDefault() , undefined);
 }
@@ -67495,56 +67646,56 @@ function SearchDialog(asim){
   $setFocus(this.textBox);
 }
 
-defineClass(748, 144, $intern_58, SearchDialog);
+defineClass(751, 144, $intern_58, SearchDialog);
 _.apply_0 = function apply_8(){
   return $apply_2(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog', 748);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog', 751);
 function SearchDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(749, 1, {1053:1, 16:1}, SearchDialog$1);
+defineClass(752, 1, {1058:1, 16:1}, SearchDialog$1);
 _.onKeyUp = function onKeyUp(ev){
   $search(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/1', 749);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/1', 752);
 function SearchDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(750, 1, {1044:1, 16:1}, SearchDialog$2);
+defineClass(753, 1, {1049:1, 16:1}, SearchDialog$2);
 _.onDoubleClick = function onDoubleClick_0(ev){
   $apply_2(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/2', 750);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/2', 753);
 function SearchDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(751, 1, $intern_56, SearchDialog$3);
+defineClass(754, 1, $intern_56, SearchDialog$3);
 _.onClick = function onClick_42(event_0){
   $apply_2(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/3', 751);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/3', 754);
 function SearchDialog$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(752, 1, $intern_56, SearchDialog$4);
+defineClass(755, 1, $intern_56, SearchDialog$4);
 _.onClick = function onClick_43(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/4', 752);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/4', 755);
 function SearchDialog$5(){
 }
 
-defineClass(753, 1, {}, SearchDialog$5);
+defineClass(756, 1, {}, SearchDialog$5);
 _.compare = function compare_3(a, b){
   return $compareTo(a, b);
 }
@@ -67553,7 +67704,7 @@ _.equals_0 = function equals_11(other){
   return this === other;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SearchDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/5', 753);
+var Lcom_lushprojects_circuitjs1_client_SearchDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SearchDialog/5', 756);
 function $$init_62(this$static){
   this$static.bitPosition = 0;
   this$static.bitCount = 0;
@@ -67630,7 +67781,7 @@ function SeqGenElm_0(xa, ya, xb, yb, f, st){
   this.bitCount > this.data_0.length * 32 && (this.bitCount = this.data_0.length * 32);
 }
 
-defineClass(498, 17, $intern_86, SeqGenElm, SeqGenElm_0);
+defineClass(452, 17, $intern_86, SeqGenElm, SeqGenElm_0);
 _.dumpXml = function dumpXml_116(doc, elem){
   var i, s;
   $dumpXml_0(this, elem);
@@ -67643,7 +67794,7 @@ _.dumpXml = function dumpXml_116(doc, elem){
   dumpAttr_1(elem, 'dt', s);
 }
 ;
-_.execute_3 = function execute_76(){
+_.execute_3 = function execute_77(){
   if ((this.flags & 8) != 0 && this.pins[2].value_0) {
     this.bitPosition = 0;
     this.clockstate = this.pins[0].value_0;
@@ -67749,7 +67900,7 @@ _.undumpXml = function undumpXml_120(xml){
 _.bitCount = 0;
 _.bitPosition = 0;
 _.clockstate = false;
-var Lcom_lushprojects_circuitjs1_client_SeqGenElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SeqGenElm', 498);
+var Lcom_lushprojects_circuitjs1_client_SeqGenElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SeqGenElm', 452);
 function $clinit_SevenSegDecoderElm(){
   $clinit_SevenSegDecoderElm = emptyMethod;
   $clinit_ChipElm();
@@ -67781,7 +67932,7 @@ function $setupPins_49(this$static){
   }
    else {
     for (i = 0; i < segCount0; i++) {
-      this$static.pins[i] = new ChipElm$Pin(this$static, i, 3, String.fromCharCode(97 + i & $intern_9));
+      this$static.pins[i] = new ChipElm$Pin(this$static, i, 3, String.fromCharCode(97 + i & $intern_8));
       this$static.pins[i].output = true;
     }
   }
@@ -67812,7 +67963,7 @@ function SevenSegDecoderElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(440, 17, $intern_86, SevenSegDecoderElm, SevenSegDecoderElm_0);
+defineClass(453, 17, $intern_86, SevenSegDecoderElm, SevenSegDecoderElm_0);
 _.allowBus = function allowBus_9(){
   return true;
 }
@@ -67822,7 +67973,7 @@ _.dumpXml = function dumpXml_117(doc, elem){
   dumpAttr_0(elem, 'sgt', this.segmentType);
 }
 ;
-_.execute_3 = function execute_77(){
+_.execute_3 = function execute_78(){
   var en, i, input_0, segCount, sym;
   segCount = $getSegmentCount(this);
   input_0 = 0;
@@ -67922,7 +68073,7 @@ _.undumpXml = function undumpXml_121(xml){
 ;
 _.segmentType = 0;
 var symbols, symbols14, symbols16;
-var Lcom_lushprojects_circuitjs1_client_SevenSegDecoderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegDecoderElm', 440);
+var Lcom_lushprojects_circuitjs1_client_SevenSegDecoderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegDecoderElm', 453);
 function $clinit_SevenSegElm(){
   $clinit_SevenSegElm = emptyMethod;
   $clinit_ChipElm();
@@ -68020,11 +68171,11 @@ function $setupPins_50(this$static){
     this$static.pinCount > this$static.sizeY * 2 && ++this$static.sizeY;
     this$static.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, this$static.pinCount, 0, 1);
     for (i = 0; i != segmentPinsOnLeftSide; i++)
-      this$static.pins[i] = new ChipElm$Pin(this$static, i, 2, String.fromCharCode(97 + i & $intern_9));
+      this$static.pins[i] = new ChipElm$Pin(this$static, i, 2, String.fromCharCode(97 + i & $intern_8));
     backwardCompatibility = this$static.segmentCount == 7 && this$static.diodeDirection == 0 && this$static.extraSegment == 0;
     s = backwardCompatibility?1:0;
     for (; i != this$static.segmentCount; i++)
-      this$static.pins[i] = new ChipElm$Pin(this$static, s++, backwardCompatibility?1:3, String.fromCharCode(97 + i & $intern_9));
+      this$static.pins[i] = new ChipElm$Pin(this$static, s++, backwardCompatibility?1:3, String.fromCharCode(97 + i & $intern_8));
     this$static.extraSegment == 1 && (this$static.pins[this$static.segmentCount - 1].text_0 = 'dp');
     if (this$static.commonPin > 0) {
       side = 3;
@@ -68063,7 +68214,7 @@ function SevenSegElm_0(xa, ya, xb, yb, f, st){
   $setPinCount(this);
 }
 
-defineClass(453, 17, $intern_86, SevenSegElm, SevenSegElm_0);
+defineClass(399, 17, $intern_86, SevenSegElm, SevenSegElm_0);
 _.allowBus = function allowBus_10(){
   return this.diodeDirection == 0;
 }
@@ -68256,7 +68407,7 @@ _.extraSegment = 0;
 _.pinCount = 0;
 _.segmentCount = 0;
 var display14, display16, display7;
-var Lcom_lushprojects_circuitjs1_client_SevenSegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegElm', 453);
+var Lcom_lushprojects_circuitjs1_client_SevenSegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegElm', 399);
 function $checkForDuplicates(this$static){
   var box, boxForShortcut, c, i, result, str;
   boxForShortcut = initUnidimensionalArray(Lcom_google_gwt_user_client_ui_TextBox_2_classLit, $intern_3, 130, 127, 0, 1);
@@ -68343,42 +68494,42 @@ function ShortcutsDialog(asim){
   $center(this);
 }
 
-defineClass(740, 144, $intern_58, ShortcutsDialog);
+defineClass(743, 144, $intern_58, ShortcutsDialog);
 _.enterPressed = function enterPressed_1(){
   $enterPressed_0(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog', 740);
+var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog', 743);
 function ShortcutsDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(741, 1, $intern_71, ShortcutsDialog$1);
+defineClass(744, 1, $intern_71, ShortcutsDialog$1);
 _.onChange = function onChange_11(ev){
   $checkForDuplicates(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/1', 741);
+var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/1', 744);
 function ShortcutsDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(742, 1, $intern_56, ShortcutsDialog$2);
+defineClass(745, 1, $intern_56, ShortcutsDialog$2);
 _.onClick = function onClick_44(event_0){
   $enterPressed_0(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/2', 742);
+var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/2', 745);
 function ShortcutsDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(743, 1, $intern_56, ShortcutsDialog$3);
+defineClass(746, 1, $intern_56, ShortcutsDialog$3);
 _.onClick = function onClick_45(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/3', 743);
+var Lcom_lushprojects_circuitjs1_client_ShortcutsDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ShortcutsDialog/3', 746);
 function $addChildElms(this$static, list){
   var ce, ce$iterator, childList, cn, cnl, i, nodeCount;
   for (ce$iterator = new ArrayList$1(list.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
@@ -68750,7 +68901,7 @@ function $detectBusWidths(this$static, list){
     changed = false;
     for (i1 = 0; i1 < list.arrayList.array.length; i1++) {
       ce = (checkArrayElementIndex(i1, list.arrayList.array.length) , $get_2(list.arrayList, i1));
-      if (instanceOf(ce, 85)) {
+      if (instanceOf(ce, 86)) {
         wire = ce;
         w1 = $get_1(widthMap, wire.point1);
         w2 = $get_1(widthMap, wire.point2);
@@ -68971,7 +69122,7 @@ function $getCircuitAsComposite(this$static){
     ce = $get_4(this$static.app.elmList, i);
     if (sel && !ce.selected_0)
       continue;
-    instanceOf(ce, 85) || instanceOf(ce, 140) || instanceOf(ce, 164) || instanceOf(ce, 15) || instanceOf(ce, 112) || instanceOf(ce, 166)?$add_8(extraList.arrayList, ce):$add_8(dumpList.arrayList, ce);
+    instanceOf(ce, 86) || instanceOf(ce, 140) || instanceOf(ce, 164) || instanceOf(ce, 15) || instanceOf(ce, 112) || instanceOf(ce, 166)?$add_8(extraList.arrayList, ce):$add_8(dumpList.arrayList, ce);
   }
   $addAll_0(dumpList.arrayList, extraList);
   for (i = 0; i != dumpList.arrayList.array.length; i++) {
@@ -69275,12 +69426,12 @@ function $runCircuit(this$static, didAnalyze){
     this$static.lastIterTime = tm;
     return;
   }
-  if (gte_0($intern_8, mul_0(steprate, sub_1(tm, this$static.lastIterTime))) && !didAnalyze)
+  if (gte_0($intern_23, mul_0(steprate, sub_1(tm, this$static.lastIterTime))) && !didAnalyze)
     return;
   delayWireProcessing = $canDelayWireProcessing(this$static.app.scopeManager);
   timeStepCountAtFrameStart = this$static.timeStepCount;
   goodIterations = 100;
-  frameTimeLimit = round_int($intern_8 / this$static.app.minFrameRate);
+  frameTimeLimit = round_int($intern_23 / this$static.app.minFrameRate);
   for (iter = 1;; iter++) {
     if (goodIterations >= 3 && this$static.timeStep < this$static.maxTimeStep) {
       this$static.timeStep = $wnd.Math.min(this$static.timeStep * 2, this$static.maxTimeStep);
@@ -69389,7 +69540,7 @@ function $runCircuit(this$static, didAnalyze){
     }
     tm = fromDouble_0(Date.now());
     lit = tm;
-    if (gte_0((this$static.timeStepCount - timeStepCountAtFrameStart) * $intern_8, mul_0(steprate, sub_1(tm, this$static.lastIterTime))) || gt(sub_1(tm, this$static.app.ui.lastFrameTime), frameTimeLimit))
+    if (gte_0((this$static.timeStepCount - timeStepCountAtFrameStart) * $intern_23, mul_0(steprate, sub_1(tm, this$static.lastIterTime))) || gt(sub_1(tm, this$static.app.ui.lastFrameTime), frameTimeLimit))
       break;
     if (!this$static.app.simRunning)
       break;
@@ -69774,7 +69925,7 @@ function pointKey(p){
   return p.x_0 + ',' + p.y_0 + ',' + p.z_0;
 }
 
-defineClass(554, 1, {}, SimulationManager);
+defineClass(555, 1, {}, SimulationManager);
 _.adjustTimeStep = false;
 _.circuitNonLinear = false;
 _.converged = false;
@@ -69791,7 +69942,7 @@ _.timeStepCount = 0;
 _.usingSparse = false;
 _.voltageSourceCount = 0;
 var theSim;
-var Lcom_lushprojects_circuitjs1_client_SimulationManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager', 554);
+var Lcom_lushprojects_circuitjs1_client_SimulationManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager', 555);
 function SimulationManager$NodeMapEntry(){
   this.node = null;
 }
@@ -69827,7 +69978,7 @@ var Lcom_lushprojects_circuitjs1_client_SimulationManager$WireSegment_2_classLit
 function SimulationManager$lambda$0$Type(){
 }
 
-defineClass(555, 1, {}, SimulationManager$lambda$0$Type);
+defineClass(556, 1, {}, SimulationManager$lambda$0$Type);
 _.equals_0 = function equals_12(other){
   return this === other;
 }
@@ -69836,11 +69987,11 @@ _.compare = function compare_4(arg0, arg1){
   return signum(arg0.y_0 - arg1.y_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$0$Type', 555);
+var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$0$Type', 556);
 function SimulationManager$lambda$1$Type(){
 }
 
-defineClass(556, 1, {}, SimulationManager$lambda$1$Type);
+defineClass(557, 1, {}, SimulationManager$lambda$1$Type);
 _.equals_0 = function equals_13(other){
   return this === other;
 }
@@ -69849,11 +70000,11 @@ _.compare = function compare_5(arg0, arg1){
   return signum(arg0.y_0 - arg1.y_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$1$Type', 556);
+var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$1$Type', 557);
 function SimulationManager$lambda$2$Type(){
 }
 
-defineClass(557, 1, {}, SimulationManager$lambda$2$Type);
+defineClass(558, 1, {}, SimulationManager$lambda$2$Type);
 _.equals_0 = function equals_14(other){
   return this === other;
 }
@@ -69862,11 +70013,11 @@ _.compare = function compare_6(arg0, arg1){
   return signum(arg0.x_0 - arg1.x_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$2$Type', 557);
+var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$2$Type', 558);
 function SimulationManager$lambda$3$Type(){
 }
 
-defineClass(558, 1, {}, SimulationManager$lambda$3$Type);
+defineClass(559, 1, {}, SimulationManager$lambda$3$Type);
 _.equals_0 = function equals_15(other){
   return this === other;
 }
@@ -69875,7 +70026,7 @@ _.compare = function compare_7(arg0, arg1){
   return signum(arg0.x_0 - arg1.x_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$3$Type', 558);
+var Lcom_lushprojects_circuitjs1_client_SimulationManager$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SimulationManager/lambda$3$Type', 559);
 function $setupPins_51(this$static){
   var i, pin, value_0;
   this$static.sizeX = this$static.bits + 1;
@@ -69910,7 +70061,7 @@ function SipoShiftElm_0(xa, ya, xb, yb, f, st){
     this.pins[2 + i].value_0 = data_0[i];
 }
 
-defineClass(466, 17, $intern_86, SipoShiftElm, SipoShiftElm_0);
+defineClass(422, 17, $intern_86, SipoShiftElm, SipoShiftElm_0);
 _.defaultBitCount = function defaultBitCount_3(){
   return 8;
 }
@@ -69928,7 +70079,7 @@ _.dumpXmlState = function dumpXmlState_13(doc, elem){
   dumpAttr_1(elem, 'dt', writeBitsToString(data_0));
 }
 ;
-_.execute_3 = function execute_78(){
+_.execute_3 = function execute_79(){
   var i;
   if (this.pins[1].value_0 != this.clockstate) {
     this.clockstate = this.pins[1].value_0;
@@ -69994,7 +70145,7 @@ _.undumpXml = function undumpXml_123(xml){
 }
 ;
 _.clockstate = false;
-var Lcom_lushprojects_circuitjs1_client_SipoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SipoShiftElm', 466);
+var Lcom_lushprojects_circuitjs1_client_SipoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SipoShiftElm', 422);
 function $apply_3(this$static){
   var adj, d, e, ei, i;
   for (i = 0; i != this$static.einfocount; i++) {
@@ -70175,69 +70326,69 @@ function SliderDialog(ce, f){
   $center(this);
 }
 
-defineClass(788, 144, $intern_58, SliderDialog);
+defineClass(791, 144, $intern_58, SliderDialog);
 _.apply_0 = function apply_9(){
   return $apply_3(this);
 }
 ;
 _.einfocount = 0;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog', 788);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog', 791);
 function SliderDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(789, 1, $intern_56, SliderDialog$1);
+defineClass(792, 1, $intern_56, SliderDialog$1);
 _.onClick = function onClick_46(event_0){
   $apply_3(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/1', 789);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/1', 792);
 function SliderDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(790, 1, $intern_56, SliderDialog$2);
+defineClass(793, 1, $intern_56, SliderDialog$2);
 _.onClick = function onClick_47(event_0){
   $apply_3(this.this$01);
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/2', 790);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/2', 793);
 function SliderDialog$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(791, 1, $intern_56, SliderDialog$3);
+defineClass(794, 1, $intern_56, SliderDialog$3);
 _.onClick = function onClick_48(event_0){
   $closeDialog(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/3', 791);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/3', 794);
 function SliderDialog$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(792, 1, $intern_68, SliderDialog$4);
+defineClass(795, 1, $intern_68, SliderDialog$4);
 _.onValueChange = function onValueChange_14(e){
   $itemStateChanged_0(this.this$01, e);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/4', 792);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/4', 795);
 function SliderDialog$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(793, 1, $intern_71, SliderDialog$5);
+defineClass(796, 1, $intern_71, SliderDialog$5);
 _.onChange = function onChange_12(e){
   $itemStateChanged_0(this.this$01, e);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SliderDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/5', 793);
+var Lcom_lushprojects_circuitjs1_client_SliderDialog$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SliderDialog/5', 796);
 function SparkGapElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.offresistance = $intern_33;
-  this.onresistance = $intern_8;
-  this.breakdown = $intern_8;
+  this.onresistance = $intern_23;
+  this.breakdown = $intern_23;
   this.holdcurrent = $intern_84;
   this.state = false;
 }
@@ -70250,7 +70401,7 @@ function SparkGapElm_0(xa, ya, xb, yb, f, st){
   this.holdcurrent = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(400, 8, $intern_86, SparkGapElm, SparkGapElm_0);
+defineClass(486, 8, $intern_86, SparkGapElm, SparkGapElm_0);
 _.calculateCurrent = function calculateCurrent_64(){
   var vd;
   vd = this.volts[0] - this.volts[1];
@@ -70360,12 +70511,12 @@ _.offresistance = 0;
 _.onresistance = 0;
 _.resistance = 0;
 _.state = false;
-var Lcom_lushprojects_circuitjs1_client_SparkGapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SparkGapElm', 400);
+var Lcom_lushprojects_circuitjs1_client_SparkGapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SparkGapElm', 486);
 function SquareRailElm(xx, yy){
   RailElm_0.call(this, xx, yy, 2);
 }
 
-defineClass(939, 52, $intern_93, SquareRailElm);
+defineClass(954, 52, $intern_93, SquareRailElm);
 _.getDumpClass = function getDumpClass_16(){
   return Lcom_lushprojects_circuitjs1_client_RailElm_2_classLit;
 }
@@ -70374,7 +70525,7 @@ _.getShortcut = function getShortcut_51(){
   return 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SquareRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SquareRailElm', 939);
+var Lcom_lushprojects_circuitjs1_client_SquareRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SquareRailElm', 954);
 function StopTriggerElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.triggerVoltage = 1;
@@ -70387,7 +70538,7 @@ function StopTriggerElm_0(xa, ya, xb, yb, f, st){
   this.delay = __parseAndValidateDouble($nextToken(st));
 }
 
-defineClass(446, 8, $intern_86, StopTriggerElm, StopTriggerElm_0);
+defineClass(426, 8, $intern_86, StopTriggerElm, StopTriggerElm_0);
 _.draw = function draw_84(g){
   var f, s, selected;
   g.context.save();
@@ -70496,7 +70647,7 @@ _.triggerTime = 0;
 _.triggerVoltage = 0;
 _.triggered = false;
 _.type_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_StopTriggerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'StopTriggerElm', 446);
+var Lcom_lushprojects_circuitjs1_client_StopTriggerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'StopTriggerElm', 426);
 function $countTokens(this$static){
   var count, delimiterCount, tmpPos, tokenFound;
   count = 0;
@@ -70583,14 +70734,14 @@ function $setContextInfo(this$static, modelName){
   $setVisible(this$static.contextSaveButton, this$static.hasContext);
   $setVisible(this$static.contextSaveCopyButton, this$static.hasContext);
   this$static.hasContext && $setText_0(this$static.contextLabel, LS('Editing: ') + ('' + modelName));
-  $updateVisibility(this$static);
+  $updateVisibility_0(this$static);
 }
 
 function $setSubcircuitPath(this$static, path){
   this$static.hasSubcircuit = path != null;
   $setVisible(this$static.subcircuitLabel, this$static.hasSubcircuit);
   this$static.hasSubcircuit && $setText_0(this$static.subcircuitLabel, path);
-  $updateVisibility(this$static);
+  $updateVisibility_0(this$static);
 }
 
 function $styleLabel(label_0){
@@ -70609,7 +70760,7 @@ function $updatePosition(this$static, top_0, width_0){
   style['width'] = width_0 + 'px';
 }
 
-function $updateVisibility(this$static){
+function $updateVisibility_0(this$static){
   var show;
   show = this$static.hasSubcircuit || this$static.hasContext;
   ($clinit_DOM() , this$static.element).style['display'] = (show?($clinit_Style$Display() , BLOCK):($clinit_Style$Display() , NONE_0)).getCssName();
@@ -70684,14 +70835,14 @@ function lambda$2(){
   $drawChip_0(dlg);
 }
 
-defineClass(725, 196, $intern_54, SubcircuitBar);
+defineClass(728, 196, $intern_54, SubcircuitBar);
 _.hasContext = false;
 _.hasSubcircuit = false;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitBar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar', 725);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitBar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar', 728);
 function SubcircuitBar$lambda$0$Type(){
 }
 
-defineClass(726, 1, $intern_56, SubcircuitBar$lambda$0$Type);
+defineClass(729, 1, $intern_56, SubcircuitBar$lambda$0$Type);
 _.onClick = function onClick_49(arg0){
   var app;
   app = theApp;
@@ -70699,25 +70850,25 @@ _.onClick = function onClick_49(arg0){
   $repaint(app.ui);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$0$Type', 726);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$0$Type', 729);
 function SubcircuitBar$lambda$1$Type(){
 }
 
-defineClass(727, 1, $intern_56, SubcircuitBar$lambda$1$Type);
+defineClass(730, 1, $intern_56, SubcircuitBar$lambda$1$Type);
 _.onClick = function onClick_50(arg0){
   lambda$1_1();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$1$Type', 727);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$1$Type', 730);
 function SubcircuitBar$lambda$2$Type(){
 }
 
-defineClass(728, 1, $intern_56, SubcircuitBar$lambda$2$Type);
+defineClass(731, 1, $intern_56, SubcircuitBar$lambda$2$Type);
 _.onClick = function onClick_51(arg0){
   lambda$2();
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$2$Type', 728);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitBar$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitBar/lambda$2$Type', 731);
 function $handleDelete(this$static){
   var confirm_0, model, selectedIndex, selectedSubcircuit, confirm_1;
   selectedIndex = $getElement(this$static.subcircuitListBox).selectedIndex;
@@ -70766,33 +70917,33 @@ function SubcircuitDialog(){
   $center(this);
 }
 
-defineClass(744, 144, $intern_58, SubcircuitDialog);
-var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog', 744);
+defineClass(747, 144, $intern_58, SubcircuitDialog);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog', 747);
 function SubcircuitDialog$0methodref$isBuiltin$Type(){
 }
 
-defineClass(745, 1, {}, SubcircuitDialog$0methodref$isBuiltin$Type);
-var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$0methodref$isBuiltin$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/0methodref$isBuiltin$Type', 745);
+defineClass(748, 1, {}, SubcircuitDialog$0methodref$isBuiltin$Type);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$0methodref$isBuiltin$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/0methodref$isBuiltin$Type', 748);
 function SubcircuitDialog$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(746, 1, $intern_56, SubcircuitDialog$1);
+defineClass(749, 1, $intern_56, SubcircuitDialog$1);
 _.onClick = function onClick_52(event_0){
   $handleDelete(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/1', 746);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/1', 749);
 function SubcircuitDialog$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(747, 1, $intern_56, SubcircuitDialog$2);
+defineClass(750, 1, $intern_56, SubcircuitDialog$2);
 _.onClick = function onClick_53(event_0){
   $hide_0(this.this$01, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/2', 747);
+var Lcom_lushprojects_circuitjs1_client_SubcircuitDialog$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SubcircuitDialog/2', 750);
 function $reset_13(this$static){
   this$static.frequency = this$static.minF;
   this$static.freqTime = 0;
@@ -70838,7 +70989,7 @@ function SweepElm_0(xa, ya, xb, yb, f, st){
   $reset_13(this);
 }
 
-defineClass(293, 8, {8:1, 11:1, 293:1}, SweepElm, SweepElm_0);
+defineClass(280, 8, {8:1, 11:1, 280:1}, SweepElm, SweepElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_21(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
   $addObstacle(router, this.point2.x_0 - 17, this.point2.y_0 - 17, this.point2.x_0 + 17, this.point2.y_0 + 17);
@@ -70861,7 +71012,7 @@ _.draw = function draw_85(g){
   $adjustBbox(this, xc - 17, yc - 17, xc + 17, yc + 17);
   tm = ($clinit_System() , fromDouble_0(Date.now()));
   tm = mod(tm, 2000);
-  compare_0(tm, $intern_8) > 0 && (tm = sub_1(2000, tm));
+  compare_0(tm, $intern_23) > 0 && (tm = sub_1(2000, tm));
   w = 1 + toDouble_0(tm) * 0.002;
   app_0.ui.app.simRunning && (w = 1 + 2 * (this.frequency - this.minF) / (this.maxF - this.minF));
   g.context.beginPath();
@@ -71036,7 +71187,7 @@ _.minF = 0;
 _.savedTimeStep = 0;
 _.sweepTime = 0;
 _.v = 0;
-var Lcom_lushprojects_circuitjs1_client_SweepElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SweepElm', 293);
+var Lcom_lushprojects_circuitjs1_client_SweepElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SweepElm', 280);
 function $setPoints_53(this$static){
   var hs, i;
   $setPoints_3(this$static);
@@ -71074,7 +71225,7 @@ function Switch2Elm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(292, 46, {8:1, 11:1, 292:1, 46:1}, Switch2Elm, Switch2Elm_0);
+defineClass(294, 46, {8:1, 11:1, 294:1, 46:1}, Switch2Elm, Switch2Elm_0);
 _.addRoutingObstacle = function addRoutingObstacle_22(router){
   var i, i0, pts;
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
@@ -71233,7 +71384,7 @@ _.toggle = function toggle_3(){
   if (this.link_0 != 0) {
     for (i = 0; i != sim_0.elmList.arrayList.array.length; i++) {
       o = $elementAt(sim_0.elmList, i);
-      if (instanceOf(o, 292)) {
+      if (instanceOf(o, 294)) {
         s2 = o;
         if (s2.link_0 == this.link_0) {
           pos = this.position;
@@ -71268,7 +71419,7 @@ _.validate = function validate_17(){
 _.link_0 = 0;
 _.positionFlipped = false;
 _.throwCount = 0;
-var Lcom_lushprojects_circuitjs1_client_Switch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Switch2Elm', 292);
+var Lcom_lushprojects_circuitjs1_client_Switch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Switch2Elm', 294);
 function $setupPins_52(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = 3;
@@ -71301,8 +71452,8 @@ function TFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.pins[2].value_0 = !this.pins[1].value_0;
 }
 
-defineClass(462, 17, $intern_86, TFlipFlopElm, TFlipFlopElm_0);
-_.execute_3 = function execute_79(){
+defineClass(411, 17, $intern_86, TFlipFlopElm, TFlipFlopElm_0);
+_.execute_3 = function execute_80(){
   this.pins[3].value_0 && !this.lastClock && this.pins[0].value_0 && (this.pins[1].value_0 = !this.pins[1].value_0);
   (this.flags & 4) != 0 && this.pins[5].value_0 && (this.pins[1].value_0 = true);
   ((this.flags & 2) != 0 || (this.flags & 4) != 0) && this.pins[4].value_0 && (this.pins[1].value_0 = false);
@@ -71366,7 +71517,7 @@ _.setupPins = function setupPins_63(){
   $setupPins_52(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_TFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TFlipFlopElm', 462);
+var Lcom_lushprojects_circuitjs1_client_TFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TFlipFlopElm', 411);
 function TappedTransformerElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.inductance = 4;
@@ -71411,7 +71562,7 @@ function TappedTransformerElm_0(xa, ya, xb, yb, f, st){
   this.a = initUnidimensionalArray(D_classLit, $intern_76, 7, 9, 15, 1);
 }
 
-defineClass(485, 8, $intern_86, TappedTransformerElm, TappedTransformerElm_0);
+defineClass(461, 8, $intern_86, TappedTransformerElm, TappedTransformerElm_0);
 _.calculateCurrent = function calculateCurrent_66(){
   var i, j;
   this.voltdiff[0] = this.volts[0] - this.volts[1];
@@ -71650,7 +71801,7 @@ _.couplingCoef = 0;
 _.flip = 0;
 _.inductance = 0;
 _.ratio = 0;
-var Lcom_lushprojects_circuitjs1_client_TappedTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TappedTransformerElm', 485);
+var Lcom_lushprojects_circuitjs1_client_TappedTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TappedTransformerElm', 461);
 var loadingTestCircuit = false;
 function $$init_63(this$static){
   this$static.zerocount = 0;
@@ -72007,7 +72158,7 @@ function TextElm_0(xa, ya, xb, yb, f, st){
   $split_0(this);
 }
 
-defineClass(434, 112, $intern_102, TextElm, TextElm_0);
+defineClass(488, 112, $intern_102, TextElm, TextElm_0);
 _.canViewInScope = function canViewInScope_5(){
   return false;
 }
@@ -72111,7 +72262,7 @@ _.undumpXml = function undumpXml_130(xml){
 }
 ;
 _.size_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TextElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TextElm', 434);
+var Lcom_lushprojects_circuitjs1_client_TextElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TextElm', 488);
 function $$init_64(this$static){
   this$static.t0 = 273.15;
   this$static.t25 = this$static.t0 + 25;
@@ -72178,7 +72329,7 @@ function ThermistorNTCElm_0(xa, ya, xb, yb, f, st){
   $createSlider_3(this);
 }
 
-defineClass(429, 8, $intern_151, ThermistorNTCElm, ThermistorNTCElm_0);
+defineClass(455, 8, $intern_151, ThermistorNTCElm, ThermistorNTCElm_0);
 _.calculateCurrent = function calculateCurrent_67(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -72245,7 +72396,7 @@ _.dumpXml = function dumpXml_127(doc, elem){
   dumpAttr_1(elem, 'st', this.sliderText);
 }
 ;
-_.execute_1 = function execute_80(){
+_.execute_1 = function execute_81(){
   app_0.analyzeFlag = true;
   $setPoints_54(this);
 }
@@ -72345,7 +72496,7 @@ _.resistance = 0;
 _.t0 = 0;
 _.t25 = 0;
 _.temperature = 0;
-var Lcom_lushprojects_circuitjs1_client_ThermistorNTCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThermistorNTCElm', 429);
+var Lcom_lushprojects_circuitjs1_client_ThermistorNTCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThermistorNTCElm', 455);
 function TimeDelayRelayElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -72364,7 +72515,7 @@ function TimeDelayRelayElm_0(xa, ya, xb, yb, f, st){
   this.offResistance = this.resistance = __parseAndValidateDouble($nextToken(st));
 }
 
-defineClass(491, 17, $intern_86, TimeDelayRelayElm, TimeDelayRelayElm_0);
+defineClass(497, 17, $intern_86, TimeDelayRelayElm, TimeDelayRelayElm_0);
 _.doStep = function doStep_77(){
   this.resistance = this.onState?this.onResistance:this.offResistance;
   $stampResistor(this.nodes[2], this.nodes[3], this.resistance);
@@ -72474,7 +72625,7 @@ _.onResistance = 0;
 _.onState = false;
 _.poweredState = false;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_TimeDelayRelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimeDelayRelayElm', 491);
+var Lcom_lushprojects_circuitjs1_client_TimeDelayRelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimeDelayRelayElm', 497);
 function $setupPins_53(this$static){
   this$static.sizeX = 3;
   this$static.sizeY = 5;
@@ -72502,7 +72653,7 @@ function TimerElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(448, 17, $intern_86, TimerElm, TimerElm_0);
+defineClass(443, 17, $intern_86, TimerElm, TimerElm_0);
 _.calculateCurrent = function calculateCurrent_68(){
   var groundVolts;
   this.pins[3].current = (this.volts[4] - this.volts[3]) / 5000;
@@ -72610,7 +72761,7 @@ _.startIteration = function startIteration_50(){
 ;
 _.out = false;
 _.triggerSuppressed = false;
-var Lcom_lushprojects_circuitjs1_client_TimerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimerElm', 448);
+var Lcom_lushprojects_circuitjs1_client_TimerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimerElm', 443);
 function $createButtonSet(this$static, info){
   var app, command, i, iconLabel, mainCommand, paletteContainer, paletteStyle, smallSvg, variantButton, variantStyle;
   mainCommand = new MyCommand('main', info[1]);
@@ -72744,19 +72895,19 @@ function Toolbar(){
   $add_2(this, (app3 = theApp , $createIconButton(this, "<svg><defs /><g transform='translate(-323.76,-71.18) scale(0.470588)'><path fill='none' stroke='currentColor' d=' M 688 176 L 708 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 708 164 L 708 188' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 736 176 L 716 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 716 164 L 716 188' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 691 176 A 3 3 0 1 1 690.9997392252899 175.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 739 176 A 3 3 0 1 1 738.9997392252899 175.96044522459943 Z' /><\/g><\/svg>", $getLabelTextForClass(app3.ui, 'CapacitorElm'), new MyCommand('main', 'CapacitorElm'))));
   $add_2(this, (app4 = theApp , $createIconButton(this, "<svg><g transform='translate(-101.59,-58.18) scale(0.405680)'><path fill='none' stroke='currentColor' d=' M 256 176 L 264 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 296 176 L 304 176' stroke-linecap='round' stroke-width='3' /><g transform='matrix(1,0,0,1,264,176) scale(1,1)'><path fill='none' stroke='currentColor' d=' M 0 0 L 0 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 10.666666666666666 0 L 10.666666666666666 0' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 10.666666666666666 0 L 10.666666666666668 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 21.333333333333332 0 L 21.333333333333332 0' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 21.333333333333332 0 L 21.333333333333336 6.53144959545255e-16 A 5.333333333333333 5.333333333333333 0 0 1 32 0 L 32 0' stroke-linecap='round' stroke-width='3' /><\/g><path fill='currentColor' stroke='currentColor' d=' M 259 176 A 3 3 0 1 1 258.99973922528994 175.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 307 176 A 3 3 0 1 1 306.99973922528994 175.96044522459943 Z' /><\/g><\/svg>", $getLabelTextForClass(app4.ui, 'InductorElm'), new MyCommand('main', 'InductorElm'))));
   $add_2(this, (app5 = theApp , $createIconButton(this, "<svg><defs /><g transform='translate(-323.76,-72.06) scale(0.470588)'><path fill='none' stroke='currentColor' d=' M 688 176 L 704 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 720 176 L 736 176' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 704 168 L 704 184 L 720 176 Z' /><path fill='none' stroke='currentColor' d=' M 720 168 L 720 184' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 691 176 A 3 3 0 1 1 690.9997392252899 175.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 739 176 A 3 3 0 1 1 738.9997392252899 175.96044522459943 Z' /><\/g><\/svg>", $getLabelTextForClass(app5.ui, 'DiodeElm'), new MyCommand('main', 'DiodeElm'))));
-  srcInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><defs /><g transform='scale(.8) translate(-122.00,-53.00) scale(0.500000)'><path fill='none' stroke='currentColor' d=' M 272 160 L 272 140' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 132 L 272 112' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 262 140 L 282 140' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 256 132 L 288 132' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 112 A 3 3 0 1 1 274.99973922528994 111.96044522459944 Z' /><\/g><\/svg>", 'DCVoltageElm', "<svg><g transform='translate(-104.09,-66.93) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 432 336 L 432 313' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 432 279 L 432 256' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.66 296 A 16.66 16.66 0 1 1 448.6599916700007 295.98334000277663' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 422 296 L 423 294 L 424 292 L 425 290 L 426 289 L 427 289 L 428 289 L 429 290 L 430 292 L 431 294 L 432 296 L 433 298 L 434 300 L 435 302 L 436 303 L 437 303 L 438 303 L 439 302 L 440 300 L 441 298 L 442 296' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'ACVoltageElm']);
+  srcInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><defs /><g transform='scale(.8) translate(-122.00,-53.00) scale(0.500000)'><path fill='none' stroke='currentColor' d=' M 272 160 L 272 140' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 132 L 272 112' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 262 140 L 282 140' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 256 132 L 288 132' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 112 A 3 3 0 1 1 274.99973922528994 111.96044522459944 Z' /><\/g><\/svg>", 'DCVoltageElm', "<svg><g transform='translate(-104.09,-66.93) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 432 336 L 432 313' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 432 279 L 432 256' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.66 296 A 16.66 16.66 0 1 1 448.6599916700007 295.98334000277663' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 422 296 L 423 294 L 424 292 L 425 290 L 426 289 L 427 289 L 428 289 L 429 290 L 430 292 L 431 294 L 432 296 L 433 298 L 434 300 L 435 302 L 436 303 L 437 303 L 438 303 L 439 302 L 440 300 L 441 298 L 442 296' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'ACVoltageElm']);
   $add_2(this, $createButtonSet(this, srcInfo));
   $add_2(this, (app6 = theApp , $createIconButton(this, "<svg><g><text style='user-select: none;' fill='currentColor' stroke='none' font-family='sans-serif' font-size='10px' font-style='normal' font-weight='normal' text-decoration='normal' x='2' y='11' text-anchor='start' dominant-baseline='central'>+5V<\/text><\/g><\/svg>", $getLabelTextForClass(app6.ui, 'RailElm'), new MyCommand('main', 'RailElm'))));
-  switchInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><defs /><g transform='translate(55.79,-100.42) scale(0.421053)'><path fill='none' stroke='currentColor' d=' M -128 272 L -120 272' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M -88 272 L -80 272' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M -120 272 L -88 256' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'SwitchElm', "<svg><g transform='translate(-242.27,-143.68) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 752 480 L 768 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 464 L 816 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 496 L 816 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 480 L 800 464' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'Switch2Elm', "<svg><g transform='translate(-242.27,-122.92) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 752 416 L 768 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 416 L 816 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 416 L 800 400' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 432 L 784 424' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AnalogSwitchElm', "<svg><g transform='translate(-237.08,-146.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 736 480 L 752 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 496 L 800 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 464 L 800 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 752 480 L 784 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 496 L 768 512' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AnalogSwitch2Elm']);
+  switchInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><defs /><g transform='translate(55.79,-100.42) scale(0.421053)'><path fill='none' stroke='currentColor' d=' M -128 272 L -120 272' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M -88 272 L -80 272' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M -120 272 L -88 256' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'SwitchElm', "<svg><g transform='translate(-242.27,-143.68) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 752 480 L 768 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 464 L 816 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 496 L 816 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 480 L 800 464' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'Switch2Elm', "<svg><g transform='translate(-242.27,-122.92) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 752 416 L 768 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 800 416 L 816 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 416 L 800 400' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 432 L 784 424' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AnalogSwitchElm', "<svg><g transform='translate(-237.08,-146.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 736 480 L 752 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 496 L 800 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 784 464 L 800 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 752 480 L 784 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 768 496 L 768 512' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AnalogSwitch2Elm']);
   $add_2(this, $createButtonSet(this, switchInfo));
-  opAmpInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><g transform='translate(-169.33,-86.13) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 640 352 L 654 352' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 640 384 L 654 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 706 368 L 720 368' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 654 336 L 654 400 L 706 368 Z' stroke-linecap='round' stroke-width='3' /><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='350' text-anchor='middle' dominant-baseline='central'>-<\/text><\/g><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='384' text-anchor='middle' dominant-baseline='central'>+<\/text><\/g><\/g><\/svg>", 'OpAmpElm', "<svg><g transform='translate(-169.33,-86.13) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 640 384 L 654 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 640 352 L 654 352' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 706 368 L 720 368' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 654 400 L 654 336 L 706 368 Z' stroke-linecap='round' stroke-width='3' /><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='382' text-anchor='middle' dominant-baseline='central'>-<\/text><\/g><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='352' text-anchor='middle' dominant-baseline='central'>+<\/text><\/g><\/g><\/svg>", 'OpAmpSwapElm']);
+  opAmpInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><g transform='translate(-169.33,-86.13) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 640 352 L 654 352' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 640 384 L 654 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 706 368 L 720 368' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 654 336 L 654 400 L 706 368 Z' stroke-linecap='round' stroke-width='3' /><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='350' text-anchor='middle' dominant-baseline='central'>-<\/text><\/g><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='384' text-anchor='middle' dominant-baseline='central'>+<\/text><\/g><\/g><\/svg>", 'OpAmpElm', "<svg><g transform='translate(-169.33,-86.13) scale(0.266667)'><path fill='none' stroke='currentColor' d=' M 640 384 L 654 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 640 352 L 654 352' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 706 368 L 720 368' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 654 400 L 654 336 L 706 368 Z' stroke-linecap='round' stroke-width='3' /><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='382' text-anchor='middle' dominant-baseline='central'>-<\/text><\/g><g><text fill='currentColor' stroke='currentColor' font-family='sans-serif' font-size='14px' font-style='normal' font-weight='normal' text-decoration='normal' x='664' y='352' text-anchor='middle' dominant-baseline='central'>+<\/text><\/g><\/g><\/svg>", 'OpAmpSwapElm']);
   $add_2(this, $createButtonSet(this, opAmpInfo));
-  transistorInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><defs /><g transform='translate(-107.73,-90.40) scale(0.533333)'><path fill='none' stroke='currentColor' d=' M 240 176 L 227 186' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 240 208 L 227 198' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 240 208 L 236 200 L 231 206 Z' /><path fill='none' stroke='currentColor' d=' M 208 192 L 224 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 224 176 L 227 176 L 227 208 L 224 208 Z' /><path fill='currentColor' stroke='currentColor' d=' M 211 192 A 3 3 0 1 1 210.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 243 176 A 3 3 0 1 1 242.99973922528991 175.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 243 208 A 3 3 0 1 1 242.99973922528991 207.96044522459943 Z' /><\/g><\/svg>", 'NTransistorElm', "<svg><defs /><g transform='translate(-116.27,-90.40) scale(0.533333)'><path fill='none' stroke='currentColor' d=' M 256 208 L 243 198' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 256 176 L 243 186' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 245 187 L 253 184 L 248 178 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 240 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 240 176 L 243 176 L 243 208 L 240 208 Z' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 259 208 A 3 3 0 1 1 258.99973922528994 207.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 259 176 A 3 3 0 1 1 258.99973922528994 175.96044522459943 Z' /><\/g><\/svg>", 'PTransistorElm']);
+  transistorInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><defs /><g transform='translate(-107.73,-90.40) scale(0.533333)'><path fill='none' stroke='currentColor' d=' M 240 176 L 227 186' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 240 208 L 227 198' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 240 208 L 236 200 L 231 206 Z' /><path fill='none' stroke='currentColor' d=' M 208 192 L 224 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 224 176 L 227 176 L 227 208 L 224 208 Z' /><path fill='currentColor' stroke='currentColor' d=' M 211 192 A 3 3 0 1 1 210.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 243 176 A 3 3 0 1 1 242.99973922528991 175.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 243 208 A 3 3 0 1 1 242.99973922528991 207.96044522459943 Z' /><\/g><\/svg>", 'NTransistorElm', "<svg><defs /><g transform='translate(-116.27,-90.40) scale(0.533333)'><path fill='none' stroke='currentColor' d=' M 256 208 L 243 198' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 256 176 L 243 186' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 245 187 L 253 184 L 248 178 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 240 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 240 176 L 243 176 L 243 208 L 240 208 Z' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 259 208 A 3 3 0 1 1 258.99973922528994 207.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 259 176 A 3 3 0 1 1 258.99973922528994 175.96044522459943 Z' /><\/g><\/svg>", 'PTransistorElm']);
   $add_2(this, $createButtonSet(this, transistorInfo));
-  fetInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><defs /><g transform='translate(-68.92,-50.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 272 208 L 250 208' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 203' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 197 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 192 L 250 187' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 181 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 213' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 176 L 250 171' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 192 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 250 192 L 262 197 L 262 187 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 244 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 244 184 L 244 200' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 272 160' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 224' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z' /><\/g><\/svg>", 'NMosfetElm', "<svg><defs /><g transform='translate(-68.92,-50.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 272 176 L 272 160' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 224' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 250 208' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 203' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 197 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 192 L 250 187' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 181 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 213' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 176 L 250 171' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 272 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 192 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 272 192 L 260 187 L 260 197 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 244 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 244 184 L 244 200' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><\/g><\/svg>", 'PMosfetElm']);
+  fetInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><defs /><g transform='translate(-68.92,-50.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 272 208 L 250 208' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 203' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 197 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 192 L 250 187' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 181 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 213' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 176 L 250 171' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 192 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 250 192 L 262 197 L 262 187 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 244 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 244 184 L 244 200' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 272 160' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 224' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z' /><\/g><\/svg>", 'NMosfetElm', "<svg><defs /><g transform='translate(-68.92,-50.27) scale(0.324324)'><path fill='none' stroke='currentColor' d=' M 272 176 L 272 160' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 272 224' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 208 L 250 208' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 203' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 197 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 192 L 250 187' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 181 L 250 176' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 208 L 250 213' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 250 176 L 250 171' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 176 L 272 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 272 192 L 250 192' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 272 192 L 260 187 L 260 197 Z' /><path fill='none' stroke='currentColor' d=' M 224 192 L 244 192' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 244 184 L 244 200' stroke-linecap='round' stroke-width='3' /><path fill='currentColor' stroke='currentColor' d=' M 275 160 A 3 3 0 1 1 274.99973922528994 159.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 275 224 A 3 3 0 1 1 274.99973922528994 223.96044522459943 Z' /><path fill='currentColor' stroke='currentColor' d=' M 227 192 A 3 3 0 1 1 226.99973922528991 191.96044522459943 Z' /><\/g><\/svg>", 'PMosfetElm']);
   $add_2(this, $createButtonSet(this, fetInfo));
   $add_2(this, (app = theApp , $createIconButton(this, "<svg><g transform='translate(-288.41,-166.76) scale(0.413793)'><path fill='none' stroke='currentColor' d=' M 704 432 L 712 432' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 746 432 L 752 432' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 712 416 L 712 448 L 739 432 Z' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 744.94 432 A 2.94 2.94 0 1 1 744.9399985300001 431.99706000049' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", $getLabelTextForClass(app.ui, 'InverterElm'), new MyCommand('main', 'InverterElm'))));
-  gateInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ["<svg><g transform='translate(-143.64,-130.55) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 400 L 414 400' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 384 L 414 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 392 L 456 392' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 414 378 L 428 378 A 14 14 0 0 1 428 406 L 414 406 Z' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AndGateElm', "<svg><g transform='translate(-143.64,-142.18) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 432 L 414 432' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 416 L 414 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 450 424 L 456 424' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 414 410 L 428 410 A 14 14 0 0 1 428 438 L 414 438 Z' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.94 424 A 2.94 2.94 0 1 1 448.93999853000014 423.99706000049' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'NandGateElm', "<svg><g transform='translate(-143.64,-153.82) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 464 L 414 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 448 L 414 448' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 456 L 456 456' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 442 L 422 442 C 434 445 434 445 442 456 C 434 467 434 467 422 470 L 413 470 C 416 456 416 456 413 442 Z' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'OrGateElm', "<svg><g transform='translate(-143.64,-165.45) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 496 L 414 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 480 L 414 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 450 488 L 456 488' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 474 L 422 474 C 434 477 434 477 442 488 C 434 499 434 499 422 502 L 413 502 C 416 488 416 488 413 474 Z' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.94 488 A 2.94 2.94 0 1 1 448.93999853000014 487.99706000049' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'NorGateElm', "<svg><g transform='translate(-143.64,-180.00) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 536 L 414 536' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 520 L 414 520' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 528 L 456 528' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 514 L 422 514 C 434 517 434 517 442 528 C 434 539 434 539 422 542 L 413 542 C 416 528 416 528 413 514 Z M 408 514 C 411 528 411 528 408 542' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'XorGateElm']);
+  gateInfo = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ["<svg><g transform='translate(-143.64,-130.55) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 400 L 414 400' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 384 L 414 384' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 392 L 456 392' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 414 378 L 428 378 A 14 14 0 0 1 428 406 L 414 406 Z' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'AndGateElm', "<svg><g transform='translate(-143.64,-142.18) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 432 L 414 432' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 416 L 414 416' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 450 424 L 456 424' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 414 410 L 428 410 A 14 14 0 0 1 428 438 L 414 438 Z' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.94 424 A 2.94 2.94 0 1 1 448.93999853000014 423.99706000049' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'NandGateElm', "<svg><g transform='translate(-143.64,-153.82) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 464 L 414 464' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 448 L 414 448' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 456 L 456 456' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 442 L 422 442 C 434 445 434 445 442 456 C 434 467 434 467 422 470 L 413 470 C 416 456 416 456 413 442 Z' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'OrGateElm', "<svg><g transform='translate(-143.64,-165.45) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 496 L 414 496' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 480 L 414 480' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 450 488 L 456 488' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 474 L 422 474 C 434 477 434 477 442 488 C 434 499 434 499 422 502 L 413 502 C 416 488 416 488 413 474 Z' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 448.94 488 A 2.94 2.94 0 1 1 448.93999853000014 487.99706000049' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'NorGateElm', "<svg><g transform='translate(-143.64,-180.00) scale(0.363636)'><path fill='none' stroke='currentColor' d=' M 400 536 L 414 536' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 400 520 L 414 520' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 442 528 L 456 528' stroke-linecap='round' stroke-width='3' /><path fill='none' stroke='currentColor' d=' M 413 514 L 422 514 C 434 517 434 517 442 528 C 434 539 434 539 422 542 L 413 542 C 416 528 416 528 413 514 Z M 408 514 C 411 528 411 528 408 542' stroke-linecap='round' stroke-width='3' /><\/g><\/svg>", 'XorGateElm']);
   $add_2(this, $createButtonSet(this, gateInfo));
   this.modeLabel = new Label_1('');
   $styleModeLabel(this.modeLabel);
@@ -72780,15 +72931,15 @@ function lambda$3(paletteContainer_0, iconLabel_1){
   paletteContainer_0.element.style['top'] = topOffset + 'px';
 }
 
-defineClass(706, 196, $intern_54, Toolbar);
-var Lcom_lushprojects_circuitjs1_client_Toolbar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar', 706);
+defineClass(709, 196, $intern_54, Toolbar);
+var Lcom_lushprojects_circuitjs1_client_Toolbar_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar', 709);
 function Toolbar$1(this$0, val$iconLabel, val$command){
   this.this$01 = this$0;
   this.val$iconLabel2 = val$iconLabel;
   this.val$command3 = val$command;
 }
 
-defineClass(709, 1, $intern_56, Toolbar$1);
+defineClass(712, 1, $intern_56, Toolbar$1);
 _.onClick = function onClick_54(event_0){
   $getElement(this.val$iconLabel2).style['color'] = '#333';
   if (this.val$iconLabel2 == this.this$01.activeButton) {
@@ -72799,27 +72950,27 @@ _.onClick = function onClick_54(event_0){
     $execute_0(this.val$command3);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/1', 709);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/1', 712);
 function Toolbar$lambda$0$Type(iconLabel_0){
   this.iconLabel_0 = iconLabel_0;
 }
 
-defineClass(707, 1, $intern_132, Toolbar$lambda$0$Type);
+defineClass(710, 1, $intern_132, Toolbar$lambda$0$Type);
 _.onMouseOver = function onMouseOver_3(arg0){
   lambda$0_0(this.iconLabel_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$0$Type', 707);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$0$Type', 710);
 function Toolbar$lambda$1$Type(iconLabel_0){
   this.iconLabel_0 = iconLabel_0;
 }
 
-defineClass(708, 1, $intern_133, Toolbar$lambda$1$Type);
+defineClass(711, 1, $intern_133, Toolbar$lambda$1$Type);
 _.onMouseOut = function onMouseOut_5(arg0){
   lambda$1_2(this.iconLabel_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$1$Type', 708);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$1$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$1$Type', 711);
 function Toolbar$lambda$2$Type($$outer_0, iconLabel_1, smallSvg_2, mainCommand_3, command_4, paletteContainer_5){
   this.$$outer_0 = $$outer_0;
   this.iconLabel_1 = iconLabel_1;
@@ -72829,53 +72980,53 @@ function Toolbar$lambda$2$Type($$outer_0, iconLabel_1, smallSvg_2, mainCommand_3
   this.paletteContainer_5 = paletteContainer_5;
 }
 
-defineClass(710, 1, $intern_56, Toolbar$lambda$2$Type);
+defineClass(713, 1, $intern_56, Toolbar$lambda$2$Type);
 _.onClick = function onClick_55(arg0){
   $lambda$2(this.$$outer_0, this.iconLabel_1, this.smallSvg_2, this.mainCommand_3, this.command_4, this.paletteContainer_5);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$2$Type', 710);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$2$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$2$Type', 713);
 function Toolbar$lambda$3$Type(paletteContainer_0, iconLabel_1){
   this.paletteContainer_0 = paletteContainer_0;
   this.iconLabel_1 = iconLabel_1;
 }
 
-defineClass(711, 1, $intern_132, Toolbar$lambda$3$Type);
+defineClass(714, 1, $intern_132, Toolbar$lambda$3$Type);
 _.onMouseOver = function onMouseOver_4(arg0){
   lambda$3(this.paletteContainer_0, this.iconLabel_1);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$3$Type', 711);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$3$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$3$Type', 714);
 function Toolbar$lambda$4$Type(paletteContainer_0){
   this.paletteContainer_0 = paletteContainer_0;
 }
 
-defineClass(712, 1, $intern_133, Toolbar$lambda$4$Type);
+defineClass(715, 1, $intern_133, Toolbar$lambda$4$Type);
 _.onMouseOut = function onMouseOut_6(arg0){
   $setVisible(this.paletteContainer_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$4$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$4$Type', 712);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$4$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$4$Type', 715);
 function Toolbar$lambda$5$Type(paletteContainer_0){
   this.paletteContainer_0 = paletteContainer_0;
 }
 
-defineClass(713, 1, $intern_132, Toolbar$lambda$5$Type);
+defineClass(716, 1, $intern_132, Toolbar$lambda$5$Type);
 _.onMouseOver = function onMouseOver_5(arg0){
   $setVisible(this.paletteContainer_0, true);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$5$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$5$Type', 713);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$5$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$5$Type', 716);
 function Toolbar$lambda$6$Type(paletteContainer_0){
   this.paletteContainer_0 = paletteContainer_0;
 }
 
-defineClass(714, 1, $intern_133, Toolbar$lambda$6$Type);
+defineClass(717, 1, $intern_133, Toolbar$lambda$6$Type);
 _.onMouseOut = function onMouseOut_7(arg0){
   $setVisible(this.paletteContainer_0, false);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$6$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$6$Type', 714);
+var Lcom_lushprojects_circuitjs1_client_Toolbar$lambda$6$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Toolbar/lambda$6$Type', 717);
 function $reset_14(this$static){
   if (sim_0.maxTimeStep == 0)
     return;
@@ -72909,7 +73060,7 @@ function $setPoints_55(this$static){
 
 function TransLineElm(xx, yy){
   CircuitElm.call(this, xx, yy);
-  this.delay = $intern_8 * sim_0.maxTimeStep;
+  this.delay = $intern_23 * sim_0.maxTimeStep;
   this.imped = 75;
   this.noDiagonal = true;
   $reset_14(this);
@@ -72925,7 +73076,7 @@ function TransLineElm_0(xa, ya, xb, yb, f, st){
   $reset_14(this);
 }
 
-defineClass(447, 8, $intern_86, TransLineElm, TransLineElm_0);
+defineClass(478, 8, $intern_86, TransLineElm, TransLineElm_0);
 _.canFlipX = function canFlipX_5(){
   return this.dy == 0;
 }
@@ -73150,7 +73301,7 @@ _.lastStepCount = 0;
 _.lenSteps = 0;
 _.ptr = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TransLineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransLineElm', 447);
+var Lcom_lushprojects_circuitjs1_client_TransLineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransLineElm', 478);
 function $calcEffectiveInductance_0(l0, i, isat){
   var ratio;
   if (isat <= 0)
@@ -73240,7 +73391,7 @@ function TransformerElm_0(xa, ya, xb, yb, f, st){
   this.polarity = (this.flags & 4) != 0?-1:1;
 }
 
-defineClass(426, 8, $intern_86, TransformerElm, TransformerElm_0);
+defineClass(393, 8, $intern_86, TransformerElm, TransformerElm_0);
 _.calculateCurrent = function calculateCurrent_69(){
   var voltdiff1, voltdiff2;
   voltdiff1 = this.volts[0] - this.volts[2];
@@ -73488,7 +73639,7 @@ _.polarity = 0;
 _.ratio = 0;
 _.saturationCurrent = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransformerElm', 426);
+var Lcom_lushprojects_circuitjs1_client_TransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransformerElm', 393);
 function $$init_65(this$static){
 }
 
@@ -73903,7 +74054,7 @@ function TriStateElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(460, 8, $intern_86, TriStateElm, TriStateElm_0);
+defineClass(457, 8, $intern_86, TriStateElm, TriStateElm_0);
 _.calculateCurrent = function calculateCurrent_70(){
   var current10, current31, i, intNode, outNode;
   this.current_0 = 0;
@@ -74138,7 +74289,7 @@ _.r_off = 0;
 _.r_off_ground = 0;
 _.r_on = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_TriStateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriStateElm', 460);
+var Lcom_lushprojects_circuitjs1_client_TriStateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriStateElm', 457);
 function $setDefaults_0(this$static){
   this$static.holdingI = 0.0082;
   this$static.triggerI = $intern_35;
@@ -74168,7 +74319,7 @@ function TriacElm_0(xa, ya, xb, yb, f, st){
   $setup_7(this);
 }
 
-defineClass(456, 8, $intern_86, TriacElm, TriacElm_0);
+defineClass(476, 8, $intern_86, TriacElm, TriacElm_0);
 _.calculateCurrent = function calculateCurrent_71(){
   this.aresistance == 0?(this.i2 = 0):(this.i2 = (this.volts[3] - this.volts[1]) / this.aresistance);
   this.ig = -(this.volts[1] - this.volts[2]) / this.cresistance;
@@ -74329,7 +74480,7 @@ _.setPoints = function setPoints_103(){
   this.gate = $newPointArray(2);
   $interpPoint2(this.lead1, this.lead2, this.plate1[0], this.plate1[1], 0, 16);
   $interpPoint2(this.lead1, this.lead2, this.plate2[0], this.plate2[1], 1, 16);
-  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 213, 2, 0, 1);
+  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 209, 2, 0, 1);
   for (i = 0; i != 2; i++) {
     sgn = -1 + i * 2;
     p1 = $interpPoint_0(this.lead1, this.lead2, i, 8 * sgn);
@@ -74381,7 +74532,7 @@ _.i2 = 0;
 _.ig = 0;
 _.state = false;
 _.triggerI = 0;
-var Lcom_lushprojects_circuitjs1_client_TriacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriacElm', 456);
+var Lcom_lushprojects_circuitjs1_client_TriacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriacElm', 476);
 function TriodeElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.mu = 93;
@@ -74397,7 +74548,7 @@ function TriodeElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(415, 8, $intern_86, TriodeElm, TriodeElm_0);
+defineClass(444, 8, $intern_86, TriodeElm, TriodeElm_0);
 _.canViewInScope = function canViewInScope_7(){
   return true;
 }
@@ -74629,7 +74780,7 @@ _.lastv0 = 0;
 _.lastv1 = 0;
 _.lastv2 = 0;
 _.mu = 0;
-var Lcom_lushprojects_circuitjs1_client_TriodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriodeElm', 415);
+var Lcom_lushprojects_circuitjs1_client_TriodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriodeElm', 444);
 function $limitStep_1(vnew, vold){
   if (vnew > vold + 1)
     return vold + 1;
@@ -74646,7 +74797,7 @@ function TunnelDiodeElm_0(xa, ya, xb, yb, f){
   CircuitElm_0.call(this, xa, ya, xb, yb, f);
 }
 
-defineClass(424, 8, $intern_86, TunnelDiodeElm, TunnelDiodeElm_0);
+defineClass(410, 8, $intern_86, TunnelDiodeElm, TunnelDiodeElm_0);
 _.calculateCurrent = function calculateCurrent_72(){
   var i0, voltdiff;
   voltdiff = this.volts[0] - this.volts[1];
@@ -74721,7 +74872,7 @@ _.stamp = function stamp_103(){
 }
 ;
 _.lastvoltdiff = 0;
-var Lcom_lushprojects_circuitjs1_client_TunnelDiodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TunnelDiodeElm', 424);
+var Lcom_lushprojects_circuitjs1_client_TunnelDiodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TunnelDiodeElm', 410);
 function $close_1(this$static, keepChanges){
   if (!keepChanges) {
     while (this$static.currentPnp != this$static.originalPnp)
@@ -74823,7 +74974,7 @@ function TypeScrollPopup$1(this$0, val$x, val$y){
   this.val$y3 = val$y;
 }
 
-defineClass(974, 1, {}, TypeScrollPopup$1);
+defineClass(977, 1, {}, TypeScrollPopup$1);
 _.setPosition = function setPosition_1(offsetWidth, offsetHeight){
   var left, top_0;
   left = $wnd.Math.max(0, this.val$x2 - (offsetWidth / 4 | 0));
@@ -74833,7 +74984,7 @@ _.setPosition = function setPosition_1(offsetWidth, offsetHeight){
 ;
 _.val$x2 = 0;
 _.val$y3 = 0;
-var Lcom_lushprojects_circuitjs1_client_TypeScrollPopup$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TypeScrollPopup/1', 974);
+var Lcom_lushprojects_circuitjs1_client_TypeScrollPopup$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TypeScrollPopup/1', 977);
 function $addWidgetToVerticalPanel_0(this$static, w){
   var i;
   if (!this$static.verticalPanel)
@@ -74956,7 +75107,7 @@ function $drawBottomArea(this$static, g){
     $drawString(g, this$static.app.stopMessage, 10, this$static.canvasHeight - 10);
   }
    else if (!this$static.hideInfoBox) {
-    info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 10, 6, 1);
+    info = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 10, 6, 1);
     if (this$static.mouse.mouseElm) {
       if (this$static.mouse.mousePost == -1) {
         this$static.mouse.mouseElm.getInfo_0(info);
@@ -75066,8 +75217,8 @@ function $getClassCheckItem_0(this$static, s, t){
   !elm && t.indexOf('Elm') >= 0 && (console.log("can't create class: " + t) , undefined);
   if (elm) {
     if (elm.getShortcut() > 0) {
-      shortcut += charToString(elm.getShortcut() & $intern_9);
-      this$static.app.shortcuts[elm.getShortcut()] != null && !$equals_1(this$static.app.shortcuts[elm.getShortcut()], t) && console_0('already have shortcut for ' + charToString(elm.getShortcut() & $intern_9) + ' ' + elm);
+      shortcut += charToString(elm.getShortcut() & $intern_8);
+      this$static.app.shortcuts[elm.getShortcut()] != null && !$equals_1(this$static.app.shortcuts[elm.getShortcut()], t) && console_0('already have shortcut for ' + charToString(elm.getShortcut() & $intern_8) + ' ' + elm);
       this$static.app.shortcuts[elm.getShortcut()] = t;
     }
     elm.delete_0();
@@ -75136,6 +75287,7 @@ function $init_3(this$static){
      else 
       throw toJs($e0);
   }
+  this$static.forceNoEdit = noEditing;
   euroRes?(euroSetting = true):usRes?(euroSetting = false):(euroSetting = $getOptionFromStorage('euroResistors', !weAreInUS(true)));
   this$static.layoutPanel = new DockLayoutPanel(($clinit_Style$Unit() , PX));
   this$static.app.menus = this$static.menus = new Menus(this$static.app);
@@ -75179,7 +75331,8 @@ function $init_3(this$static){
   $setState_1(this$static.menus.printableCheckItem, printable);
   $setCommand_0(this$static.menus.conventionCheckItem, new UIManager$5(this$static));
   $setState_1(this$static.menus.conventionCheckItem, convention);
-  $setState_1(this$static.menus.noEditCheckItem, noEditing);
+  $setCommand_0(this$static.menus.noEditCheckItem, new UIManager$6(this$static));
+  $setLayoutLocked(this$static, noEditing);
   $setState_1(this$static.menus.mouseWheelEditCheckItem, mouseWheelEdit);
   $loadShortcuts(this$static);
   $appendChild($getElement(this$static.layoutPanel), resolve(topPanelCheckbox));
@@ -75205,7 +75358,7 @@ function $init_3(this$static){
     $add_0(($clinit_RootPanel() , get_1()), new Label_1('Not working. You need a browser that supports the CANVAS element.'));
     return;
   }
-  addResizeHandler(new UIManager$6(this$static));
+  addResizeHandler(new UIManager$7(this$static));
   this$static.cvcontext = $getContext2d(this$static.cv);
   this$static.app.scopeManager = this$static.scopeManager = new ScopeManager(this$static.app);
   this$static.subcircuitBar = new SubcircuitBar;
@@ -75215,10 +75368,10 @@ function $init_3(this$static){
   $insert_0(this$static.layoutPanel, this$static.cv, ($clinit_DockLayoutPanel$Direction() , CENTER_0), 0);
   $add_5(this$static.verticalPanel, this$static.buttonPanel);
   this$static.buttonPanel.add_0(this$static.resetButton = new Button_1(LS('Reset')));
-  $addDomHandler(this$static.resetButton, new UIManager$7(this$static), ($clinit_ClickEvent() , $clinit_ClickEvent() , TYPE_1));
+  $addDomHandler(this$static.resetButton, new UIManager$8(this$static), ($clinit_ClickEvent() , $clinit_ClickEvent() , TYPE_1));
   $setStylePrimaryName(this$static.resetButton, 'topButton');
   this$static.buttonPanel.add_0(this$static.runStopButton = new Button_0(($clinit_SafeHtmlUtils() , new SafeHtmlString(LS('<Strong>RUN<\/Strong>&nbsp;/&nbsp;Stop')))));
-  $addDomHandler(this$static.runStopButton, new UIManager$8(this$static), (null , TYPE_1));
+  $addDomHandler(this$static.runStopButton, new UIManager$9(this$static), (null , TYPE_1));
   isSupported_1() && $add_5(this$static.verticalPanel, this$static.loadFileInput = new LoadFile(this$static.app));
   $add_5(this$static.verticalPanel, l_0 = new Label_1(LS('Simulation Speed')));
   setStyleName(l_0.element, 'topSpace', true);
@@ -75245,9 +75398,9 @@ function $init_3(this$static){
   $register_0(this$static.mouse, this$static.cv);
   $enableDisableMenuItems(this$static.mouse);
   $setiFrameHeight(this$static);
-  $addDomHandler(menuBar, new UIManager$9(this$static), (null , TYPE_1));
+  $addDomHandler(menuBar, new UIManager$10(this$static), (null , TYPE_1));
   addNativePreviewHandler(this$static.app);
-  addWindowClosingHandler(new UIManager$10(this$static));
+  addWindowClosingHandler(new UIManager$11(this$static));
 }
 
 function $isReadOnly(this$static){
@@ -75291,7 +75444,7 @@ function $loadShortcuts(this$static){
     for (j = 0; j != this$static.mainMenuItems.arrayList.array.length; j++) {
       if (maskUndefined($get_4(this$static.mainMenuItemNames, j)) === maskUndefined(className)) {
         item_0 = $get_4(this$static.mainMenuItems, j);
-        $setShortcut(item_0, String.fromCharCode(c & $intern_9));
+        $setShortcut(item_0, String.fromCharCode(c & $intern_8));
         break;
       }
     }
@@ -75355,7 +75508,7 @@ function $onPreviewNativeEvent(this$static, e){
   if (this$static.menus.noEditCheckItem.on || this$static.subcircuitStack.arrayList.array.length != 0)
     return;
   if ((t & 512) != 0) {
-    keyStr = String.fromCharCode(code_0 & $intern_9).toLowerCase();
+    keyStr = String.fromCharCode(code_0 & $intern_8).toLowerCase();
     released = false;
     for (i = 0; i != this$static.elmList.arrayList.array.length; i++) {
       ce = $get_4(this$static.elmList, i);
@@ -75468,7 +75621,7 @@ function $onPreviewNativeEvent(this$static, e){
   }
   if ((t & 256) != 0) {
     if (cc > 32 && cc < 127) {
-      keyStr = String.fromCharCode(cc & $intern_9).toLowerCase();
+      keyStr = String.fromCharCode(cc & $intern_8).toLowerCase();
       toggled = false;
       if (!e.nativeEvent.repeat) {
         for (i = 0; i != this$static.elmList.arrayList.array.length; i++) {
@@ -75477,7 +75630,7 @@ function $onPreviewNativeEvent(this$static, e){
             se = ce;
             if (se.keyShortcut != null && $equals_1(se.keyShortcut, keyStr)) {
               se.toggle();
-              instanceOf(se, 211) || $needAnalyze(this$static.app);
+              instanceOf(se, 210) || $needAnalyze(this$static.app);
               toggled = true;
             }
           }
@@ -75544,7 +75697,7 @@ function $removeWidgetFromVerticalPanel_0(this$static, w){
 function $repaint(this$static){
   if (!this$static.needsRepaint) {
     this$static.needsRepaint = true;
-    scheduleFixedDelayImpl(($clinit_SchedulerImpl() , new UIManager$11(this$static)), 16);
+    scheduleFixedDelayImpl(($clinit_SchedulerImpl() , new UIManager$12(this$static)), 16);
   }
 }
 
@@ -75601,7 +75754,7 @@ function $setCanvasSize(this$static){
     this$static.menus.toolbarCheckItem.on && (barTop += 40);
     $updatePosition(this$static.subcircuitBar, barTop, width_0);
   }
-  (this$static.app.transform_0[0] == 0 || ($clinit_System() , lt(sub_1(fromDouble_0(Date.now()), this$static.lastResizeTime), $intern_8))) && $centerCircuit(this$static);
+  (this$static.app.transform_0[0] == 0 || ($clinit_System() , lt(sub_1(fromDouble_0(Date.now()), this$static.lastResizeTime), $intern_23))) && $centerCircuit(this$static);
 }
 
 function $setCircuitArea(this$static){
@@ -75645,6 +75798,12 @@ function $setGrid(this$static){
   this$static.app.gridSize = this$static.menus.smallGridCheckItem.on?8:16;
   this$static.app.gridMask = ~(this$static.app.gridSize - 1);
   this$static.app.gridRound = (this$static.app.gridSize / 2 | 0) - 1;
+}
+
+function $setLayoutLocked(this$static, locked){
+  this$static.forceNoEdit && (locked = true);
+  $setState_1(this$static.menus.noEditCheckItem, locked);
+  !!this$static.menus.layoutLockCheckItem && $setState_1(this$static.menus.layoutLockCheckItem, locked);
 }
 
 function $setMouseMode_0(this$static, mode){
@@ -75801,7 +75960,7 @@ function $updateCircuit(this$static){
    else {
     this$static.lastTime = 0;
   }
-  if (gte_0(sub_1(sysTime, this$static.secTime), $intern_8)) {
+  if (gte_0(sub_1(sysTime, this$static.secTime), $intern_23)) {
     this$static.framerate = this$static.frames_0;
     this$static.steprate = this$static.steps;
     this$static.frames_0 = 0;
@@ -75966,10 +76125,11 @@ function min_2(a, b){
   return a < b?a:b;
 }
 
-defineClass(576, 1, {}, UIManager);
+defineClass(577, 1, {}, UIManager);
 _.canvasHeight = 0;
 _.canvasWidth = 0;
 _.contextPanel = null;
+_.forceNoEdit = false;
 _.framerate = 0;
 _.frames_0 = 0;
 _.hideInfoBox = false;
@@ -75983,42 +76143,52 @@ _.secTime = 0;
 _.steprate = 0;
 _.steps = 0;
 var VERTICALPANELWIDTH = 166, theUI;
-var Lcom_lushprojects_circuitjs1_client_UIManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager', 576);
+var Lcom_lushprojects_circuitjs1_client_UIManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager', 577);
 function UIManager$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(577, 1, $intern_152, UIManager$1);
-_.execute_1 = function execute_81(){
+defineClass(578, 1, $intern_152, UIManager$1);
+_.execute_1 = function execute_82(){
   $setOptionInStorage('euroResistors', this.this$01.menus.euroResistorCheckItem.on);
   $setEuroResistors(this.this$01.toolbar_0, this.this$01.menus.euroResistorCheckItem.on);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/1', 577);
+var Lcom_lushprojects_circuitjs1_client_UIManager$1_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/1', 578);
 function UIManager$10(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(586, 1, {16:1, 1050:1}, UIManager$10);
-var Lcom_lushprojects_circuitjs1_client_UIManager$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/10', 586);
+defineClass(587, 1, $intern_56, UIManager$10);
+_.onClick = function onClick_56(event_0){
+  $doMainMenuChecks(this.this$01.mouse);
+}
+;
+var Lcom_lushprojects_circuitjs1_client_UIManager$10_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/10', 587);
 function UIManager$11(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(587, 1, {}, UIManager$11);
-_.execute_0 = function execute_82(){
+defineClass(588, 1, {16:1, 1055:1}, UIManager$11);
+var Lcom_lushprojects_circuitjs1_client_UIManager$11_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/11', 588);
+function UIManager$12(this$0){
+  this.this$01 = this$0;
+}
+
+defineClass(589, 1, {}, UIManager$12);
+_.execute_0 = function execute_83(){
   $updateCircuit(this.this$01);
   this.this$01.needsRepaint = false;
   return false;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$11_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/11', 587);
+var Lcom_lushprojects_circuitjs1_client_UIManager$12_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/12', 589);
 function UIManager$2(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(578, 1, $intern_152, UIManager$2);
-_.execute_1 = function execute_83(){
+defineClass(579, 1, $intern_152, UIManager$2);
+_.execute_1 = function execute_84(){
   var ce, ce$iterator;
   $setOptionInStorage('euroGates', this.this$01.menus.euroGatesCheckItem.on);
   for (ce$iterator = new ArrayList$1(this.this$01.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
@@ -76027,84 +76197,84 @@ _.execute_1 = function execute_83(){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/2', 578);
+var Lcom_lushprojects_circuitjs1_client_UIManager$2_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/2', 579);
 function UIManager$3(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(579, 1, $intern_152, UIManager$3);
-_.execute_1 = function execute_84(){
+defineClass(580, 1, $intern_152, UIManager$3);
+_.execute_1 = function execute_85(){
   $setOptionInStorage('egtLivePulse', this.this$01.menus.egtLivePulseCheckItem.on);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/3', 579);
+var Lcom_lushprojects_circuitjs1_client_UIManager$3_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/3', 580);
 function UIManager$4(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(580, 1, $intern_152, UIManager$4);
-_.execute_1 = function execute_85(){
+defineClass(581, 1, $intern_152, UIManager$4);
+_.execute_1 = function execute_86(){
   var i;
   for (i = 0; i < this.this$01.scopeManager.scopeCount; i++)
     $setRect(this.this$01.scopeManager.scopes[i], this.this$01.scopeManager.scopes[i].rect_0);
   $setOptionInStorage('whiteBackground', this.this$01.menus.printableCheckItem.on);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/4', 580);
+var Lcom_lushprojects_circuitjs1_client_UIManager$4_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/4', 581);
 function UIManager$5(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(581, 1, $intern_152, UIManager$5);
-_.execute_1 = function execute_86(){
+defineClass(582, 1, $intern_152, UIManager$5);
+_.execute_1 = function execute_87(){
   var cc;
   $setOptionInStorage('conventionalCurrent', this.this$01.menus.conventionCheckItem.on);
   cc = $getHexValue(currentColor_0);
   ($equals_1(cc, '#ffff00') || $equals_1(cc, '#00ffff')) && (currentColor_0 = this.this$01.menus.conventionCheckItem.on?($clinit_Color() , yellow):($clinit_Color() , cyan));
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/5', 581);
+var Lcom_lushprojects_circuitjs1_client_UIManager$5_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/5', 582);
 function UIManager$6(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(582, 1, $intern_39, UIManager$6);
+defineClass(583, 1, $intern_152, UIManager$6);
+_.execute_1 = function execute_88(){
+  $setLayoutLocked(this.this$01, this.this$01.menus.noEditCheckItem.on);
+}
+;
+var Lcom_lushprojects_circuitjs1_client_UIManager$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/6', 583);
+function UIManager$7(this$0){
+  this.this$01 = this$0;
+}
+
+defineClass(584, 1, $intern_39, UIManager$7);
 _.onResize = function onResize_7(event_0){
   this.this$01.lastResizeTime = ($clinit_System() , fromDouble_0(Date.now()));
   $repaint(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$6_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/6', 582);
-function UIManager$7(this$0){
-  this.this$01 = this$0;
-}
-
-defineClass(583, 1, $intern_56, UIManager$7);
-_.onClick = function onClick_56(event_0){
-  $resetAction(this.this$01);
-}
-;
-var Lcom_lushprojects_circuitjs1_client_UIManager$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/7', 583);
+var Lcom_lushprojects_circuitjs1_client_UIManager$7_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/7', 584);
 function UIManager$8(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(584, 1, $intern_56, UIManager$8);
+defineClass(585, 1, $intern_56, UIManager$8);
 _.onClick = function onClick_57(event_0){
-  $setSimRunning_0(this.this$01, !this.this$01.app.simRunning);
+  $resetAction(this.this$01);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/8', 584);
+var Lcom_lushprojects_circuitjs1_client_UIManager$8_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/8', 585);
 function UIManager$9(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(585, 1, $intern_56, UIManager$9);
+defineClass(586, 1, $intern_56, UIManager$9);
 _.onClick = function onClick_58(event_0){
-  $doMainMenuChecks(this.this$01.mouse);
+  $setSimRunning_0(this.this$01, !this.this$01.app.simRunning);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_UIManager$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/9', 585);
+var Lcom_lushprojects_circuitjs1_client_UIManager$9_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UIManager/9', 586);
 function $doRecover(this$static){
   $pushUndo(this$static);
   $readCircuit_0(this$static.sim.loader, this$static.sim.recovery, 0);
@@ -76182,8 +76352,8 @@ function UndoManager(sim){
   this.redoStack = new Vector;
 }
 
-defineClass(588, 1, {}, UndoManager);
-var Lcom_lushprojects_circuitjs1_client_UndoManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UndoManager', 588);
+defineClass(590, 1, {}, UndoManager);
+var Lcom_lushprojects_circuitjs1_client_UndoManager_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UndoManager', 590);
 function UndoManager$UndoItem(this$0, d){
   this.dump_0 = d;
   this.scale_0 = this$0.sim.transform_0[0];
@@ -76222,7 +76392,7 @@ function UnijunctionElm_0(xa, ya, xb, yb, f){
   $setup_8(this);
 }
 
-defineClass(411, 113, $intern_86, UnijunctionElm, UnijunctionElm_0);
+defineClass(419, 113, $intern_86, UnijunctionElm, UnijunctionElm_0);
 _.draw = function draw_98(g){
   var ib1, ib2;
   $setBbox_0(this, this.point1, this.b1[0], 0);
@@ -76322,7 +76492,7 @@ _.curcountb1 = 0;
 _.curcountb2 = 0;
 _.curcounte = 0;
 var ujtExternalNodes, ujtModelDump = '2 x2n2646-emitter/0 0 0 0 0 0 0/2 2 1000*a/0 1000000/0 5 0.00028*(a-b)\\p0.00575*(c-d)*e/2 3.5e-11 0 0/0 38.15/0 2518', ujtModelString = 'DiodeElm 1 4\rVoltageElm 4 5\rCCVSElm 4 5 6 0\rResistorElm 0 6\rVCCSElm 5 7 5 7 6 7 5\rCapacitorElm 5 7\rResistorElm 7 2\rResistorElm 3 5';
-var Lcom_lushprojects_circuitjs1_client_UnijunctionElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UnijunctionElm', 411);
+var Lcom_lushprojects_circuitjs1_client_UnijunctionElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UnijunctionElm', 419);
 function VCOElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -76333,7 +76503,7 @@ function VCOElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(484, 17, $intern_86, VCOElm, VCOElm_0);
+defineClass(397, 17, $intern_86, VCOElm, VCOElm_0);
 _.doStep = function doStep_85(){
   var dir_0, vc, vo;
   vc = this.volts[3] - this.volts[2];
@@ -76415,7 +76585,7 @@ _.stamp = function stamp_104(){
 }
 ;
 _.cDir = 0;
-var Lcom_lushprojects_circuitjs1_client_VCOElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCOElm', 484);
+var Lcom_lushprojects_circuitjs1_client_VCOElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCOElm', 397);
 function VCVSElm(xx, yy){
   $clinit_ChipElm();
   VCCSElm.call(this, xx, yy);
@@ -76426,7 +76596,7 @@ function VCVSElm_0(xa, ya, xb, yb, f, st){
   VCCSElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(454, 187, $intern_86, VCVSElm, VCVSElm_0);
+defineClass(394, 187, $intern_86, VCVSElm, VCVSElm_0);
 _.doStep = function doStep_86(){
   var convergeLimit, dv, dx, i, rs, v, v0, v2, vn;
   convergeLimit = $getConvergeLimit();
@@ -76498,7 +76668,7 @@ _.setupPins = function setupPins_67(){
   this.sizeY = this.inputCount > 2?this.inputCount:2;
   this.pins = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_ChipElm$Pin_2_classLit, $intern_3, 9, this.inputCount + 2, 0, 1);
   for (i = 0; i != this.inputCount; i++)
-    this.pins[i] = new ChipElm$Pin(this, i, 2, String.fromCharCode(65 + i & $intern_9));
+    this.pins[i] = new ChipElm$Pin(this, i, 2, String.fromCharCode(65 + i & $intern_8));
   this.pins[this.inputCount] = new ChipElm$Pin(this, 0, 3, 'V+');
   this.pins[this.inputCount].output = true;
   this.pins[this.inputCount + 1] = new ChipElm$Pin(this, 1, 3, 'V-');
@@ -76515,7 +76685,7 @@ _.stepFinished = function stepFinished_30(){
   $updateLastValues(this.exprState, this.volts[this.inputCount] - this.volts[this.inputCount + 1]);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_VCVSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCVSElm', 454);
+var Lcom_lushprojects_circuitjs1_client_VCVSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCVSElm', 394);
 function $createSlider_4(this$static){
   var value_0;
   this$static.waveform = 7;
@@ -76541,7 +76711,7 @@ function VarRailElm_0(xa, ya, xb, yb, f, st){
   $createSlider_4(this);
 }
 
-defineClass(290, 52, {134:1, 16:1, 8:1, 11:1, 52:1, 290:1, 57:1}, VarRailElm, VarRailElm_0);
+defineClass(285, 52, {134:1, 16:1, 8:1, 11:1, 52:1, 285:1, 57:1}, VarRailElm, VarRailElm_0);
 _.delete_0 = function delete_6(){
   $removeWidgetFromVerticalPanel(app_0, this.label_0);
   $removeWidgetFromVerticalPanel(app_0, this.slider);
@@ -76606,10 +76776,10 @@ _.undumpXml = function undumpXml_138(xml){
   this.sliderText = $parseStringAttr(xml, 'st', this.sliderText);
   $setText_0(this.label_0, LS(this.sliderText));
   value_0 = round_int((this.frequency - this.bias) * 100 / (this.maxVoltage_0 - this.bias));
-  $setValue_2(this.slider, value_0);
+  $setValue_3(this.slider, value_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_VarRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VarRailElm', 290);
+var Lcom_lushprojects_circuitjs1_client_VarRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VarRailElm', 285);
 function VaractorElm(xx, yy){
   DiodeElm.call(this, xx, yy);
   this.baseCapacitance = 4.0E-12;
@@ -76621,7 +76791,7 @@ function VaractorElm_0(xa, ya, xb, yb, f, st){
   this.baseCapacitance = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(458, 160, $intern_117, VaractorElm, VaractorElm_0);
+defineClass(441, 160, $intern_117, VaractorElm, VaractorElm_0);
 _.calculateCurrent = function calculateCurrent_73(){
   this.current_0 = $calculateCurrent_0(this.diode, this.volts[0] - this.volts[this.diodeEndNode]);
   this.current_0 += this.capCurrent;
@@ -76659,7 +76829,7 @@ _.getDumpType = function getDumpType_167(){
 ;
 _.getEditInfo = function getEditInfo_93(n){
   if (n == 1)
-    return new EditInfo_0('Capacitance @ 0V (F)', this.baseCapacitance, 10, $intern_8);
+    return new EditInfo_0('Capacitance @ 0V (F)', this.baseCapacitance, 10, $intern_23);
   return $getEditInfo_2(this, n);
 }
 ;
@@ -76750,7 +76920,7 @@ _.capacitance = 0;
 _.capvoltdiff = 0;
 _.compResistance = 0;
 _.voltSourceValue = 0;
-var Lcom_lushprojects_circuitjs1_client_VaractorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VaractorElm', 458);
+var Lcom_lushprojects_circuitjs1_client_VaractorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VaractorElm', 441);
 function $setNodes(this$static, n1, n2){
   this$static.n1 = n1;
   this$static.n2 = n2;
@@ -76817,7 +76987,7 @@ function WattmeterElm_0(xa, ya, xb, yb, f, st){
   $setup_9(this);
 }
 
-defineClass(431, 8, $intern_86, WattmeterElm, WattmeterElm_0);
+defineClass(483, 8, $intern_86, WattmeterElm, WattmeterElm_0);
 _.canFlipX = function canFlipX_6(){
   return false;
 }
@@ -77041,7 +77211,7 @@ _.minP = 0;
 _.totalPower = 0;
 _.width_0 = 0;
 _.zerocount = 0;
-var Lcom_lushprojects_circuitjs1_client_WattmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WattmeterElm', 431);
+var Lcom_lushprojects_circuitjs1_client_WattmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WattmeterElm', 483);
 function addToList(map_0, k, w){
   var list;
   list = $get_1(map_0, valueOf_0(k));
@@ -77085,7 +77255,7 @@ function convertWires(sim){
   hasSelection = false;
   for (ce$iterator0 = new ArrayList$1(elmList.arrayList); ce$iterator0.i < ce$iterator0.this$01.array.length;) {
     ce = $next_4(ce$iterator0);
-    if (instanceOf(ce, 85) && !instanceOf(ce, 140) && ce.selected_0) {
+    if (instanceOf(ce, 86) && !instanceOf(ce, 140) && ce.selected_0) {
       hasSelection = true;
       break;
     }
@@ -77095,7 +77265,7 @@ function convertWires(sim){
     ce = $next_4(ce$iterator1);
     if (instanceOf(ce, 140))
       continue;
-    instanceOf(ce, 85) && (!hasSelection || ce.selected_0) && $add_8(wires, ce);
+    instanceOf(ce, 86) && (!hasSelection || ce.selected_0) && $add_8(wires, ce);
   }
   if (wires.array.length == 0)
     return;
@@ -77107,7 +77277,7 @@ function convertWires(sim){
   }
   for (ce$iterator = new ArrayList$1(elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
     ce = $next_4(ce$iterator);
-    if (instanceOf(ce, 85))
+    if (instanceOf(ce, 86))
       continue;
     for (i = 0; i < ce.getPostCount_0(); i++) {
       p = ce.getPost(i);
@@ -77736,8 +77906,8 @@ var Lcom_lushprojects_circuitjs1_client_WireRouter$Node_2_classLit = createForCl
 function WireRouter$lambda$0$Type(){
 }
 
-defineClass(858, 1, {}, WireRouter$lambda$0$Type);
-var Lcom_lushprojects_circuitjs1_client_WireRouter$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WireRouter/lambda$0$Type', 858);
+defineClass(860, 1, {}, WireRouter$lambda$0$Type);
+var Lcom_lushprojects_circuitjs1_client_WireRouter$lambda$0$Type_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WireRouter/lambda$0$Type', 860);
 function $getChildElements(this$static){
   var children, elements, i, node;
   elements = new ArrayList;
@@ -77816,10 +77986,10 @@ function $readCircuit_3(this$static, text_0, readFlags){
     sp = $parseDoubleAttr(this$static, 'ic', $getIterCount(this$static.app));
     sp2 = round_int($wnd.Math.log(10 * sp) * 24 + 61.5);
     ui = this$static.app.ui;
-    $setValue_2(ui.speedBar, sp2);
-    $setValue_2(ui.currentBar, $parseIntAttr(this$static, 'cb', ui.currentBar.val_0));
+    $setValue_3(ui.speedBar, sp2);
+    $setValue_3(ui.currentBar, $parseIntAttr(this$static, 'cb', ui.currentBar.val_0));
     voltageRange = $parseDoubleAttr(this$static, 'vr', voltageRange);
-    $setValue_2(ui.powerBar, $parseIntAttr(this$static, 'pb', ui.powerBar.val_0));
+    $setValue_3(ui.powerBar, $parseIntAttr(this$static, 'pb', ui.powerBar.val_0));
     sim.minTimeStep = $parseDoubleAttr(this$static, 'mts', sim.minTimeStep);
     sim.solverType = $parseIntAttr(this$static, 'st', sim.solverType);
     $setGrid(this$static.app.ui);
@@ -77926,6 +78096,7 @@ function $dumpCircuit_0(this$static){
   sim = this$static.app.sim;
   f |= sim.adjustTimeStep?64:0;
   f |= this$static.app.autoDCOnReset?128:0;
+  f |= menus.noEditCheckItem.on?256:0;
   checkAttr(root, 'f');
   $setAttribute_0(root, 'f', '' + f);
   dumpAttr(root, 'ts', sim.maxTimeStep);
@@ -78024,8 +78195,8 @@ function prettyPrint(node, indent){
   return sb.string;
 }
 
-defineClass(756, 1, {}, XMLSerializer_0);
-var Lcom_lushprojects_circuitjs1_client_XMLSerializer_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XMLSerializer', 756);
+defineClass(759, 1, {}, XMLSerializer_0);
+var Lcom_lushprojects_circuitjs1_client_XMLSerializer_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XMLSerializer', 759);
 function XorGateElm(xx, yy){
   OrGateElm.call(this, xx, yy);
 }
@@ -78078,7 +78249,7 @@ function XnorGateElm_0(xa, ya, xb, yb, f, st){
   XorGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(443, 201, $intern_164, XnorGateElm, XnorGateElm_0);
+defineClass(414, 201, $intern_164, XnorGateElm, XnorGateElm_0);
 _.getDumpType = function getDumpType_170(){
   return 431;
 }
@@ -78095,7 +78266,7 @@ _.isInverting = function isInverting_2(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_XnorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XnorGateElm', 443);
+var Lcom_lushprojects_circuitjs1_client_XnorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XnorGateElm', 414);
 function ZenerElm(xx, yy){
   DiodeElm.call(this, xx, yy);
   this.modelName = lastZenerModelName;
@@ -78114,7 +78285,7 @@ function ZenerElm_0(xa, ya, xb, yb, f, st){
   $setup_0(this);
 }
 
-defineClass(296, 160, {8:1, 160:1, 11:1, 296:1}, ZenerElm, ZenerElm_0);
+defineClass(292, 160, {8:1, 160:1, 11:1, 292:1}, ZenerElm, ZenerElm_0);
 _.draw = function draw_102(g){
   var v1, v2;
   $setBbox_0(this, this.point1, this.point2, 8);
@@ -78166,7 +78337,7 @@ _.setPoints = function setPoints_109(){
 }
 ;
 var lastZenerModelName = 'default-zener';
-var Lcom_lushprojects_circuitjs1_client_ZenerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ZenerElm', 296);
+var Lcom_lushprojects_circuitjs1_client_ZenerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ZenerElm', 292);
 function $language(){
   if (navigator.languages) {
     if (navigator.languages.length > 0) {
@@ -78254,7 +78425,7 @@ function convertUnicodeEscapes(input_0){
       hexCode = input_0.substr(i + 2, i + 6 - (i + 2));
       try {
         codePoint = __parseAndValidateInt(hexCode, 16);
-        $append_0(result, codePoint & $intern_9);
+        $append_0(result, codePoint & $intern_8);
         i += 6;
       }
        catch ($e0) {
@@ -78284,8 +78455,9 @@ _.onError = function onError_2(request, exception){
 }
 ;
 _.onResponseReceived = function onResponseReceived_2(request, response){
-  var localizationMap, text_0;
-  if (response.xmlHttpRequest.status == 200) {
+  var localizationMap, statusCode, text_0;
+  statusCode = response.xmlHttpRequest.status;
+  if ((statusCode == 1223?204:statusCode) == 200) {
     text_0 = response.xmlHttpRequest.responseText;
     localizationMap = $processLocale(text_0);
   }
@@ -78393,7 +78565,7 @@ function IGrowArray(){
 
 defineClass(333, 1, {}, IGrowArray);
 var Lcom_lushprojects_circuitjs1_client_matrix_IGrowArray_2_classLit = createForClass('com.lushprojects.circuitjs1.client.matrix', 'IGrowArray', 333);
-function $initialize_0(this$static, A){
+function $initialize_1(this$static, A){
   var i, m, n, o;
   m = A.numRows;
   n = A.numCols;
@@ -78467,7 +78639,7 @@ function $performLU(this$static, A){
 
 function $setA(this$static, A){
   this$static.AnumRows = A.numRows;
-  return $initialize_0(this$static, A) , $performLU(this$static, A);
+  return $initialize_1(this$static, A) , $performLU(this$static, A);
 }
 
 function $solve(this$static, B, X){
@@ -78640,9 +78812,9 @@ function solveU(U, x_0){
   }
 }
 
-defineClass(867, 1, {}, SparseLU);
+defineClass(869, 1, {}, SparseLU);
 _.AnumRows = 0;
-var Lcom_lushprojects_circuitjs1_client_matrix_SparseLU_2_classLit = createForClass('com.lushprojects.circuitjs1.client.matrix', 'SparseLU', 867);
+var Lcom_lushprojects_circuitjs1_client_matrix_SparseLU_2_classLit = createForClass('com.lushprojects.circuitjs1.client.matrix', 'SparseLU', 869);
 function LS(s){
   var ix, sm;
   if (s == null)
@@ -78732,10 +78904,10 @@ function buildStringInternal(sb, name_0, entry0, depth){
   sb.string += ': ';
   $append_1(sb, entry0.length_0);
   sb.string += '\n';
-  keys_0 = new AbstractMap$1(entry0.children);
+  keys_0 = new AbstractMap$1(entry0.children_0);
   for (key$iterator = (outerIter = new AbstractHashMap$EntrySetIterator((new AbstractHashMap$EntrySet(keys_0.this$01)).this$01) , new AbstractMap$1$1(outerIter)); key$iterator.val$outerIter2.hasNext;) {
     key = (entry = $next_2(key$iterator.val$outerIter2) , entry.getKey());
-    child = $getStringValue(entry0.children, key);
+    child = $getStringValue(entry0.children_0, key);
     buildStringInternal(sb, key, child, depth + 1);
   }
 }
@@ -78754,11 +78926,11 @@ function getTime_0(){
   }
 }
 
-defineClass(754, 1, {}, PerfMonitor);
-var Lcom_lushprojects_circuitjs1_client_util_PerfMonitor_2_classLit = createForClass('com.lushprojects.circuitjs1.client.util', 'PerfMonitor', 754);
+defineClass(757, 1, {}, PerfMonitor);
+var Lcom_lushprojects_circuitjs1_client_util_PerfMonitor_2_classLit = createForClass('com.lushprojects.circuitjs1.client.util', 'PerfMonitor', 757);
 function $AddChild(this$static, name_0, entry){
-  if (!$hasStringValue(this$static.children, name_0)) {
-    $putStringValue(this$static.children, name_0, entry);
+  if (!$hasStringValue(this$static.children_0, name_0)) {
+    $putStringValue(this$static.children_0, name_0, entry);
     return true;
   }
   return false;
@@ -78766,7 +78938,7 @@ function $AddChild(this$static, name_0, entry){
 
 function PerfMonitor$PerfEntry(p){
   this.parent_0 = p;
-  this.children = new HashMap;
+  this.children_0 = new HashMap;
 }
 
 defineClass(365, 1, {365:1}, PerfMonitor$PerfEntry);
@@ -78774,14 +78946,14 @@ _.endTime = 0;
 _.length_0 = 0;
 _.startTime = 0;
 var Lcom_lushprojects_circuitjs1_client_util_PerfMonitor$PerfEntry_2_classLit = createForClass('com.lushprojects.circuitjs1.client.util', 'PerfMonitor/PerfEntry', 365);
-defineClass(1012, 1, {});
-var Ljava_io_OutputStream_2_classLit = createForClass('java.io', 'OutputStream', 1012);
-defineClass(1013, 1012, {});
-var Ljava_io_FilterOutputStream_2_classLit = createForClass('java.io', 'FilterOutputStream', 1013);
+defineClass(1015, 1, {});
+var Ljava_io_OutputStream_2_classLit = createForClass('java.io', 'OutputStream', 1015);
+defineClass(1016, 1015, {});
+var Ljava_io_FilterOutputStream_2_classLit = createForClass('java.io', 'FilterOutputStream', 1016);
 function PrintStream(){
 }
 
-defineClass(529, 1013, {}, PrintStream);
+defineClass(529, 1016, {}, PrintStream);
 var Ljava_io_PrintStream_2_classLit = createForClass('java.io', 'PrintStream', 529);
 function $charAt(this$static, index_0){
   return $charAt_0(this$static.string, index_0);
@@ -78809,7 +78981,7 @@ function ArithmeticException(){
   RuntimeException_0.call(this, 'divide by zero');
 }
 
-defineClass(530, 86, $intern_7, ArithmeticException);
+defineClass(530, 87, $intern_7, ArithmeticException);
 var Ljava_lang_ArithmeticException_2_classLit = createForClass('java.lang', 'ArithmeticException', 530);
 function IndexOutOfBoundsException(){
   RuntimeException.call(this);
@@ -78819,7 +78991,7 @@ function IndexOutOfBoundsException_0(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(66, 86, $intern_7, IndexOutOfBoundsException, IndexOutOfBoundsException_0);
+defineClass(66, 87, $intern_7, IndexOutOfBoundsException, IndexOutOfBoundsException_0);
 var Ljava_lang_IndexOutOfBoundsException_2_classLit = createForClass('java.lang', 'IndexOutOfBoundsException', 66);
 function ArrayIndexOutOfBoundsException(){
   IndexOutOfBoundsException.call(this);
@@ -78886,12 +79058,12 @@ function isLowSurrogate(ch_0){
 function toChars(codePoint, dst, dstIndex){
   checkCriticalArgument(codePoint >= 0 && codePoint <= 1114111);
   if (codePoint >= $intern_44) {
-    dst[dstIndex++] = 55296 + (codePoint - $intern_44 >> 10 & 1023) & $intern_9;
-    dst[dstIndex] = 56320 + (codePoint - $intern_44 & 1023) & $intern_9;
+    dst[dstIndex++] = 55296 + (codePoint - $intern_44 >> 10 & 1023) & $intern_8;
+    dst[dstIndex] = 56320 + (codePoint - $intern_44 & 1023) & $intern_8;
     return 2;
   }
    else {
-    dst[dstIndex] = codePoint & $intern_9;
+    dst[dstIndex] = codePoint & $intern_8;
     return 1;
   }
 }
@@ -78964,7 +79136,7 @@ function IllegalArgumentException_0(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(56, 86, {3:1, 13:1, 56:1, 44:1}, IllegalArgumentException, IllegalArgumentException_0);
+defineClass(56, 87, {3:1, 13:1, 56:1, 44:1}, IllegalArgumentException, IllegalArgumentException_0);
 var Ljava_lang_IllegalArgumentException_2_classLit = createForClass('java.lang', 'IllegalArgumentException', 56);
 function IllegalStateException(){
   RuntimeException.call(this);
@@ -78974,7 +79146,7 @@ function IllegalStateException_0(s){
   RuntimeException_0.call(this, s);
 }
 
-defineClass(154, 86, $intern_7, IllegalStateException, IllegalStateException_0);
+defineClass(154, 87, $intern_7, IllegalStateException, IllegalStateException_0);
 var Ljava_lang_IllegalStateException_2_classLit = createForClass('java.lang', 'IllegalStateException', 154);
 function Integer(value_0){
   this.value_0 = value_0;
@@ -79158,7 +79330,7 @@ function tanh(x_0){
   }
 }
 
-defineClass(1077, 1, {});
+defineClass(1082, 1, {});
 function NullPointerException(){
   RuntimeException.call(this);
 }
@@ -79285,7 +79457,7 @@ function $replaceFirst(this$static, replace){
 function $split_1(this$static, regex, maxMatch){
   var compiled, count, lastNonEmpty, lastTrail, matchIndex, matchObj, out, trail;
   compiled = new RegExp(regex, 'g');
-  out = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_25, 2, 0, 6, 1);
+  out = initUnidimensionalArray(Ljava_lang_String_2_classLit, $intern_24, 2, 0, 6, 1);
   count = 0;
   trail = this$static;
   lastTrail = null;
@@ -79355,12 +79527,12 @@ function fromCharCode(array){
 function fromCodePoint(codePoint){
   var hiSurrogate, loSurrogate;
   if (codePoint >= $intern_44) {
-    hiSurrogate = 55296 + (codePoint - $intern_44 >> 10 & 1023) & $intern_9;
-    loSurrogate = 56320 + (codePoint - $intern_44 & 1023) & $intern_9;
+    hiSurrogate = 55296 + (codePoint - $intern_44 >> 10 & 1023) & $intern_8;
+    loSurrogate = 56320 + (codePoint - $intern_44 & 1023) & $intern_8;
     return String.fromCharCode(hiSurrogate) + ('' + String.fromCharCode(loSurrogate));
   }
    else {
-    return String.fromCharCode(codePoint & $intern_9);
+    return String.fromCharCode(codePoint & $intern_8);
   }
 }
 
@@ -79473,7 +79645,7 @@ function arraycopy(src_0, dest, len){
   len > 0 && copy_0(src_0, 0, dest, 0, len, true);
 }
 
-defineClass(1081, 1, {});
+defineClass(1086, 1, {});
 var err_0;
 function UnsupportedOperationException(){
   RuntimeException.call(this);
@@ -79483,7 +79655,7 @@ function UnsupportedOperationException_0(message){
   RuntimeException_0.call(this, message);
 }
 
-defineClass(221, 86, $intern_7, UnsupportedOperationException, UnsupportedOperationException_0);
+defineClass(221, 87, $intern_7, UnsupportedOperationException, UnsupportedOperationException_0);
 var Ljava_lang_UnsupportedOperationException_2_classLit = createForClass('java.lang', 'UnsupportedOperationException', 221);
 defineClass(222, 1, $intern_165);
 _.compareTo = function compareTo_6(that){
@@ -79614,7 +79786,7 @@ function getEntryValueOrNull(entry){
   return !entry?null:entry.getValue();
 }
 
-defineClass(1014, 1, {996:1});
+defineClass(1017, 1, {999:1});
 _.equals_0 = function equals_20(obj){
   var entry, entry$iterator, otherMap;
   if (obj === this) {
@@ -79650,7 +79822,7 @@ _.toString_0 = function toString_30(){
   return !joiner.builder?joiner.emptyValue:joiner.suffix.length == 0?joiner.builder.string:joiner.builder.string + ('' + joiner.suffix);
 }
 ;
-var Ljava_util_AbstractMap_2_classLit = createForClass('java.util', 'AbstractMap', 1014);
+var Ljava_util_AbstractMap_2_classLit = createForClass('java.util', 'AbstractMap', 1017);
 function $containsKey(this$static, key){
   return instanceOfString(key)?$hasStringValue(this$static, key):!!$getEntry(this$static.hashCodeMap, key);
 }
@@ -79693,9 +79865,9 @@ function $size(this$static){
   return this$static.hashCodeMap.size_0 + this$static.stringMap.size_0;
 }
 
-defineClass(266, 1014, {996:1});
+defineClass(266, 1017, {999:1});
 var Ljava_util_AbstractHashMap_2_classLit = createForClass('java.util', 'AbstractHashMap', 266);
-defineClass(1015, 155, $intern_167);
+defineClass(1018, 155, $intern_167);
 _.equals_0 = function equals_21(o){
   var other;
   if (o === this) {
@@ -79715,7 +79887,7 @@ _.hashCode_0 = function hashCode_15(){
   return hashCode_20(this);
 }
 ;
-var Ljava_util_AbstractSet_2_classLit = createForClass('java.util', 'AbstractSet', 1015);
+var Ljava_util_AbstractSet_2_classLit = createForClass('java.util', 'AbstractSet', 1018);
 function $contains_1(this$static, o){
   if (instanceOf(o, 259)) {
     return $containsEntry(this$static.this$01, o);
@@ -79727,7 +79899,7 @@ function AbstractHashMap$EntrySet(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(61, 1015, $intern_167, AbstractHashMap$EntrySet);
+defineClass(62, 1018, $intern_167, AbstractHashMap$EntrySet);
 _.contains_0 = function contains_0(o){
   return $contains_1(this, o);
 }
@@ -79750,7 +79922,7 @@ _.size_1 = function size_1(){
   return $size(this.this$01);
 }
 ;
-var Ljava_util_AbstractHashMap$EntrySet_2_classLit = createForClass('java.util', 'AbstractHashMap/EntrySet', 61);
+var Ljava_util_AbstractHashMap$EntrySet_2_classLit = createForClass('java.util', 'AbstractHashMap/EntrySet', 62);
 function $computeHasNext(this$static){
   if (this$static.current.hasNext_0()) {
     return true;
@@ -79789,7 +79961,7 @@ function AbstractHashMap$EntrySetIterator(this$0){
   this.$modCount = this$0.$modCount;
 }
 
-defineClass(62, 1, {}, AbstractHashMap$EntrySetIterator);
+defineClass(63, 1, {}, AbstractHashMap$EntrySetIterator);
 _.next_1 = function next_4(){
   return $next_2(this);
 }
@@ -79803,7 +79975,7 @@ _.remove_1 = function remove_15(){
 }
 ;
 _.hasNext = false;
-var Ljava_util_AbstractHashMap$EntrySetIterator_2_classLit = createForClass('java.util', 'AbstractHashMap/EntrySetIterator', 62);
+var Ljava_util_AbstractHashMap$EntrySetIterator_2_classLit = createForClass('java.util', 'AbstractHashMap/EntrySetIterator', 63);
 function $equals_2(this$static, o){
   var elem, elem$iterator, elemOther, iterOther, other;
   if (o === this$static) {
@@ -79915,7 +80087,7 @@ function AbstractMap$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(194, 1015, $intern_167, AbstractMap$1);
+defineClass(194, 1018, $intern_167, AbstractMap$1);
 _.contains_0 = function contains_1(key){
   return $containsKey(this.this$01, key);
 }
@@ -79998,7 +80170,7 @@ function AbstractMap$SimpleEntry(key, value_0){
 
 defineClass(532, 531, $intern_168, AbstractMap$SimpleEntry);
 var Ljava_util_AbstractMap$SimpleEntry_2_classLit = createForClass('java.util', 'AbstractMap/SimpleEntry', 532);
-defineClass(1020, 1, $intern_168);
+defineClass(1023, 1, $intern_168);
 _.equals_0 = function equals_24(other){
   var entry;
   if (!instanceOf(other, 259)) {
@@ -80016,14 +80188,14 @@ _.toString_0 = function toString_32(){
   return this.val$entry2.value[0] + '=' + $getValue_0(this);
 }
 ;
-var Ljava_util_AbstractMapEntry_2_classLit = createForClass('java.util', 'AbstractMapEntry', 1020);
-defineClass(1036, 155, $intern_166);
+var Ljava_util_AbstractMapEntry_2_classLit = createForClass('java.util', 'AbstractMapEntry', 1023);
+defineClass(1041, 155, $intern_166);
 _.add_1 = function add_14(o){
   checkCriticalState_0($offer(this, o), 'Unable to add element to queue');
   return true;
 }
 ;
-var Ljava_util_AbstractQueue_2_classLit = createForClass('java.util', 'AbstractQueue', 1036);
+var Ljava_util_AbstractQueue_2_classLit = createForClass('java.util', 'AbstractQueue', 1041);
 function $addFirst(this$static, e){
   checkCriticalNotNull(e);
   this$static.head_0 = this$static.head_0 - 1 & this$static.array.length - 1;
@@ -80140,7 +80312,7 @@ function checkConcurrentModification(expression){
   }
 }
 
-defineClass(865, 155, {4:1, 40:1, 155:1, 178:1}, ArrayDeque);
+defineClass(867, 155, {4:1, 40:1, 155:1, 178:1}, ArrayDeque);
 _.add_1 = function add_15(e){
   checkCriticalNotNull(e);
   this.array[this.tail] = e;
@@ -80171,7 +80343,7 @@ _.size_1 = function size_3(){
 ;
 _.head_0 = 0;
 _.tail = 0;
-var Ljava_util_ArrayDeque_2_classLit = createForClass('java.util', 'ArrayDeque', 865);
+var Ljava_util_ArrayDeque_2_classLit = createForClass('java.util', 'ArrayDeque', 867);
 function $next_3(this$static){
   var e;
   checkCriticalElement(this$static.currentIndex != this$static.fence);
@@ -80334,7 +80506,7 @@ function ArrayList_1(c){
   insertTo_0(this.array, 0, clone(c.array, c.array.length));
 }
 
-defineClass(38, 268, {3:1, 4:1, 40:1, 155:1, 268:1, 38:1, 178:1, 338:1, 998:1}, ArrayList, ArrayList_0, ArrayList_1);
+defineClass(38, 268, {3:1, 4:1, 40:1, 155:1, 268:1, 38:1, 178:1, 338:1, 1001:1}, ArrayList, ArrayList_0, ArrayList_1);
 _.add_2 = function add_16(index_0, o){
   $add_7(this, index_0, o);
 }
@@ -80520,7 +80692,7 @@ var EMPTY_LIST;
 function Collections$EmptyList(){
 }
 
-defineClass(551, 268, {3:1, 40:1, 155:1, 268:1, 178:1, 338:1, 998:1}, Collections$EmptyList);
+defineClass(552, 268, {3:1, 40:1, 155:1, 268:1, 178:1, 338:1, 1001:1}, Collections$EmptyList);
 _.contains_0 = function contains_4(object){
   return false;
 }
@@ -80542,7 +80714,7 @@ _.size_1 = function size_5(){
   return 0;
 }
 ;
-var Ljava_util_Collections$EmptyList_2_classLit = createForClass('java.util', 'Collections/EmptyList', 551);
+var Ljava_util_Collections$EmptyList_2_classLit = createForClass('java.util', 'Collections/EmptyList', 552);
 function $clinit_Collections$EmptyListIterator(){
   $clinit_Collections$EmptyListIterator = emptyMethod;
   INSTANCE_2 = new Collections$EmptyListIterator;
@@ -80551,7 +80723,7 @@ function $clinit_Collections$EmptyListIterator(){
 function Collections$EmptyListIterator(){
 }
 
-defineClass(552, 1, {}, Collections$EmptyListIterator);
+defineClass(553, 1, {}, Collections$EmptyListIterator);
 _.hasNext_0 = function hasNext_8(){
   return false;
 }
@@ -80573,7 +80745,7 @@ _.remove_1 = function remove_26(){
 }
 ;
 var INSTANCE_2;
-var Ljava_util_Collections$EmptyListIterator_2_classLit = createForClass('java.util', 'Collections/EmptyListIterator', 552);
+var Ljava_util_Collections$EmptyListIterator_2_classLit = createForClass('java.util', 'Collections/EmptyListIterator', 553);
 function $compare(a, b){
   return compare_9(a.fScore, b.fScore);
 }
@@ -80600,7 +80772,7 @@ var INTERNAL_NATURAL_ORDER;
 function Comparators$NaturalOrderComparator(){
 }
 
-defineClass(987, 1, {3:1}, Comparators$NaturalOrderComparator);
+defineClass(990, 1, {3:1}, Comparators$NaturalOrderComparator);
 _.compare = function compare_13(a, b){
   return checkCriticalNotNull(a) , compareTo_Ljava_lang_Object__I__devirtual$(a, (checkCriticalNotNull(b) , b));
 }
@@ -80609,7 +80781,7 @@ _.equals_0 = function equals_26(other){
   return this === other;
 }
 ;
-var Ljava_util_Comparators$NaturalOrderComparator_2_classLit = createForClass('java.util', 'Comparators/NaturalOrderComparator', 987);
+var Ljava_util_Comparators$NaturalOrderComparator_2_classLit = createForClass('java.util', 'Comparators/NaturalOrderComparator', 990);
 function checkStructuralChange(host, iterator){
   if (iterator.$modCount != host.$modCount) {
     throw toJs(new ConcurrentModificationException);
@@ -80631,7 +80803,7 @@ function ConcurrentModificationException(){
   RuntimeException.call(this);
 }
 
-defineClass(506, 86, $intern_7, ConcurrentModificationException);
+defineClass(506, 87, $intern_7, ConcurrentModificationException);
 var Ljava_util_ConcurrentModificationException_2_classLit = createForClass('java.util', 'ConcurrentModificationException', 506);
 function Date_0(){
   this.jsdate = new $wnd.Date;
@@ -80671,8 +80843,8 @@ _.toString_0 = function toString_33(){
 var Ljava_util_Date_2_classLit = createForClass('java.util', 'Date', 188);
 function $clinit_Date$StringData(){
   $clinit_Date$StringData = emptyMethod;
-  DAYS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
-  MONTHS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_25, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+  DAYS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']);
+  MONTHS = stampJavaTypeInfo(getClassLiteralForArray(Ljava_lang_String_2_classLit, 1), $intern_24, 2, 6, ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
 }
 
 var DAYS, MONTHS;
@@ -80695,7 +80867,7 @@ function HashMap_1(toBeCopied){
   $putAll(this, toBeCopied);
 }
 
-defineClass(42, 266, {3:1, 4:1, 42:1, 996:1}, HashMap, HashMap_0, HashMap_1);
+defineClass(42, 266, {3:1, 4:1, 42:1, 999:1}, HashMap, HashMap_0, HashMap_1);
 var Ljava_util_HashMap_2_classLit = createForClass('java.util', 'HashMap', 42);
 function $add_9(this$static, o){
   var old;
@@ -80720,7 +80892,7 @@ function HashSet_0(c){
   $addAll(this, c);
 }
 
-defineClass(158, 1015, {3:1, 4:1, 40:1, 155:1, 178:1, 158:1, 337:1}, HashSet, HashSet_0);
+defineClass(158, 1018, {3:1, 4:1, 40:1, 155:1, 178:1, 158:1, 337:1}, HashSet, HashSet_0);
 _.add_1 = function add_18(o){
   return $add_9(this, o);
 }
@@ -80815,13 +80987,13 @@ function InternalHashCodeMap(host){
   this.host = host;
 }
 
-defineClass(553, 1, $intern_73, InternalHashCodeMap);
+defineClass(554, 1, $intern_73, InternalHashCodeMap);
 _.iterator = function iterator_13(){
   return new InternalHashCodeMap$1(this);
 }
 ;
 _.size_0 = 0;
-var Ljava_util_InternalHashCodeMap_2_classLit = createForClass('java.util', 'InternalHashCodeMap', 553);
+var Ljava_util_InternalHashCodeMap_2_classLit = createForClass('java.util', 'InternalHashCodeMap', 554);
 function InternalHashCodeMap$1(this$0){
   this.this$01 = this$0;
   this.chains = this.this$01.backingMap.entries();
@@ -81028,14 +81200,14 @@ function InternalStringMap(host){
   this.host = host;
 }
 
-defineClass(549, 1, $intern_73, InternalStringMap);
+defineClass(550, 1, $intern_73, InternalStringMap);
 _.iterator = function iterator_14(){
   return new InternalStringMap$1(this);
 }
 ;
 _.size_0 = 0;
 _.valueMod = 0;
-var Ljava_util_InternalStringMap_2_classLit = createForClass('java.util', 'InternalStringMap', 549);
+var Ljava_util_InternalStringMap_2_classLit = createForClass('java.util', 'InternalStringMap', 550);
 function InternalStringMap$1(this$0){
   this.this$01 = this$0;
   this.entries_0 = this.this$01.backingMap.entries();
@@ -81069,7 +81241,7 @@ function InternalStringMap$2(this$0, val$entry, val$lastValueMod){
   this.val$lastValueMod3 = val$lastValueMod;
 }
 
-defineClass(550, 1020, $intern_168, InternalStringMap$2);
+defineClass(551, 1023, $intern_168, InternalStringMap$2);
 _.getKey = function getKey_0(){
   return this.val$entry2.value[0];
 }
@@ -81083,12 +81255,12 @@ _.setValue = function setValue_0(object){
 }
 ;
 _.val$lastValueMod3 = 0;
-var Ljava_util_InternalStringMap$2_2_classLit = createForClass('java.util', 'InternalStringMap/2', 550);
+var Ljava_util_InternalStringMap$2_2_classLit = createForClass('java.util', 'InternalStringMap/2', 551);
 function NoSuchElementException(){
   RuntimeException.call(this);
 }
 
-defineClass(172, 86, {3:1, 13:1, 44:1, 172:1}, NoSuchElementException);
+defineClass(172, 87, {3:1, 13:1, 44:1, 172:1}, NoSuchElementException);
 var Ljava_util_NoSuchElementException_2_classLit = createForClass('java.util', 'NoSuchElementException', 172);
 function equals_28(a, b){
   return maskUndefined(a) === maskUndefined(b) || a != null && equals_Ljava_lang_Object__Z__devirtual$(a, b);
@@ -81145,7 +81317,7 @@ function PriorityQueue(comparator){
   this.cmp = ($clinit_Comparators() , comparator);
 }
 
-defineClass(508, 1036, $intern_166, PriorityQueue);
+defineClass(508, 1041, $intern_166, PriorityQueue);
 _.contains_0 = function contains_6(o){
   return (o == null?-1:$indexOf_3(this.heap, o, 0)) != -1;
 }
@@ -81173,7 +81345,7 @@ function PriorityQueue$1(this$0){
   this.this$01 = this$0;
 }
 
-defineClass(978, 1, {}, PriorityQueue$1);
+defineClass(981, 1, {}, PriorityQueue$1);
 _.hasNext_0 = function hasNext_11(){
   return this.i < this.this$01.heap.array.length;
 }
@@ -81192,7 +81364,7 @@ _.remove_1 = function remove_31(){
 ;
 _.i = 0;
 _.last = -1;
-var Ljava_util_PriorityQueue$1_2_classLit = createForClass('java.util', 'PriorityQueue/1', 978);
+var Ljava_util_PriorityQueue$1_2_classLit = createForClass('java.util', 'PriorityQueue/1', 981);
 function $clinit_Random(){
   $clinit_Random = emptyMethod;
   var i, i0, twoToTheXMinus24Tmp, twoToTheXMinus48Tmp;
@@ -81246,11 +81418,11 @@ function Random(){
   this.seedlo = lo ^ $intern_169;
 }
 
-defineClass(593, 1, {}, Random);
+defineClass(595, 1, {}, Random);
 _.seedhi = 0;
 _.seedlo = 0;
 var twoToTheXMinus24, twoToTheXMinus48, uniqueSeed = 0;
-var Ljava_util_Random_2_classLit = createForClass('java.util', 'Random', 593);
+var Ljava_util_Random_2_classLit = createForClass('java.util', 'Random', 595);
 function $add_10(this$static, newElement){
   !this$static.builder?(this$static.builder = new StringBuilder_1(this$static.prefix)):$append_4(this$static.builder, this$static.delimiter);
   $append_3(this$static.builder, newElement);
@@ -81346,7 +81518,7 @@ function checkArrayElementIndex(index_0, size_0){
   }
 }
 
-defineClass(24, 268, {3:1, 4:1, 40:1, 155:1, 268:1, 178:1, 338:1, 998:1, 24:1}, Vector, Vector_0);
+defineClass(24, 268, {3:1, 4:1, 40:1, 155:1, 268:1, 178:1, 338:1, 1001:1, 24:1}, Vector, Vector_0);
 _.add_2 = function add_19(index_0, o){
   checkArrayElementIndex(index_0, this.arrayList.array.length + 1);
   $add_7(this.arrayList, index_0, o);
@@ -81429,7 +81601,7 @@ function setLength(array, length_0){
   array.length = length_0;
 }
 
-defineClass(1079, 1, {});
+defineClass(1084, 1, {});
 function stampJavaTypeInfo_1(array, referenceType){
   return stampJavaTypeInfo_0(array, referenceType);
 }
@@ -81481,7 +81653,7 @@ function $decodeString(bytes, ofs, len){
       throw toJs(new IndexOutOfBoundsException_0('Invalid UTF8 sequence'));
     }
   }
-  chars = initUnidimensionalArray(C_classLit, $intern_24, 7, charCount, 15, 1);
+  chars = initUnidimensionalArray(C_classLit, $intern_22, 7, charCount, 15, 1);
   outIdx = 0;
   count = 0;
   for (i = 0; i < len;) {
@@ -81561,7 +81733,7 @@ function $getBytes(str){
     i0 += ch_0 >= $intern_44?2:1;
     ch_0 < 128?++byteCount:ch_0 < $intern_41?(byteCount += 2):ch_0 < $intern_44?(byteCount += 3):ch_0 < $intern_48?(byteCount += 4):ch_0 < $intern_52 && (byteCount += 5);
   }
-  bytes = initUnidimensionalArray(B_classLit, $intern_24, 7, byteCount, 15, 1);
+  bytes = initUnidimensionalArray(B_classLit, $intern_22, 7, byteCount, 15, 1);
   out = 0;
   for (i = 0; i < n;) {
     ch_0 = codePointAt(str, i, str.length);
@@ -81661,7 +81833,7 @@ function setPropertySafe(map_0, key, value_0){
   }
 }
 
-defineClass(1076, 1, {});
+defineClass(1081, 1, {});
 function getHashCode(o){
   return o.$H || (o.$H = ++nextHashId);
 }
@@ -81724,7 +81896,7 @@ var D_classLit = createForPrimitive('double', 'D');
 var $entry = ($clinit_Impl() , entry_0);
 var gwtOnLoad = gwtOnLoad = gwtOnLoad_0;
 addInitFunctions(init);
-setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie10']]]);
+setGwtProperty('permProps', [[['locale', 'default'], ['user.agent', 'ie9']]]);
 $sendStats('moduleStartup', 'moduleEvalEnd');
 gwtOnLoad(__gwtModuleFunction.__errFn, __gwtModuleFunction.__moduleName, __gwtModuleFunction.__moduleBase, __gwtModuleFunction.__softPermutationId,__gwtModuleFunction.__computePropValue);
 $sendStats('moduleStartup', 'end');
