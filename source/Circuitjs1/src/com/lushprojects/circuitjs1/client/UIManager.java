@@ -78,6 +78,8 @@ public class UIManager {
     DockLayoutPanel layoutPanel;
     VerticalPanel verticalPanel;
     CellPanel buttonPanel;
+    Button layoutLockButton;
+    boolean layoutLockAvailable;
     Vector<CheckboxMenuItem> mainMenuItems = new Vector<CheckboxMenuItem>();
     Vector<String> mainMenuItemNames = new Vector<String>();
     Element sidePanelCheckboxLabel;
@@ -256,6 +258,7 @@ public class UIManager {
 	menus.conventionCheckItem.setState(convention);
 	menus.noEditCheckItem.setCommand(new Command() {
 	    public void execute() {
+		setLayoutLockAvailable(true);
 		setLayoutLocked(menus.noEditCheckItem.getState());
 	    }
 	});
@@ -323,6 +326,15 @@ public class UIManager {
 		setSimRunning(!simIsRunning());
 	    }
 	});
+	layoutLockButton = new Button();
+	layoutLockButton.setStyleName("egtLayoutLockButton");
+	layoutLockButton.addClickHandler(new ClickHandler() {
+	    public void onClick(ClickEvent event) {
+		setLayoutLocked(!menus.noEditCheckItem.getState());
+	    }
+	});
+	verticalPanel.add(layoutLockButton);
+	setLayoutLockAvailable(forceNoEdit);
 
 	
 /*
@@ -917,6 +929,29 @@ public class UIManager {
 	menus.noEditCheckItem.setState(locked);
 	if (menus.layoutLockCheckItem != null)
 	    menus.layoutLockCheckItem.setState(locked);
+	updateLayoutLockButton();
+    }
+
+    void setLayoutLockAvailable(boolean available) {
+	layoutLockAvailable = available || forceNoEdit;
+	if (layoutLockButton != null) {
+	    layoutLockButton.setVisible(layoutLockAvailable);
+	    updateLayoutLockButton();
+	}
+    }
+
+    private void updateLayoutLockButton() {
+	if (layoutLockButton == null)
+	    return;
+	boolean locked = menus.noEditCheckItem.getState();
+	String action = Locale.LS(locked ? "Unlock Layout" : "Lock Layout");
+	layoutLockButton.setHTML((locked ? "&#128274;&nbsp;" : "&#128275;&nbsp;") + action);
+	layoutLockButton.setTitle(action);
+	layoutLockButton.getElement().setAttribute("aria-label", action);
+	layoutLockButton.getElement().setAttribute("aria-pressed", locked ? "true" : "false");
+	layoutLockButton.setStyleName("egtLayoutLockButton");
+	if (locked)
+	    layoutLockButton.addStyleName("egtLayoutLockButton-locked");
     }
 
     void enableItems() {

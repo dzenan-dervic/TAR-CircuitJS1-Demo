@@ -22,9 +22,9 @@
   <EGTFupEingang x="-240 576 -208 608" f="1" ch="3" sps="A1"/>
   <EGTFupEingang x="-240 624 -208 656" f="1" ch="4" sps="A1"/>
   <EGTFupEingang x="-240 672 -208 704" f="1" ch="5" sps="A1"/>
-  <EGTFupEingang x="-240 720 -208 752" f="1" ch="6" frc="1" sps="A1"/>
+  <EGTFupEingang x="-240 720 -208 752" f="1" ch="6" sps="A1"/>
   <EGTFupEingang x="-240 768 -208 800" f="1" ch="7" sps="A1"/>
-  <EGTFupEingang x="-240 816 -208 848" f="1" ch="8" frc="1" sps="A1"/>
+  <EGTFupEingang x="-240 816 -208 848" f="1" ch="8" sps="A1"/>
   <EGTFupAusgang x="688 512 720 544" f="1" ch="1" sps="A1"/>
   <EGTFupAusgang x="688 560 720 592" f="1" ch="2" sps="A1"/>
   <EGTFupAusgang x="688 608 720 640" f="1" ch="3" sps="A1"/>

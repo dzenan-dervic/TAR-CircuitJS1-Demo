@@ -286,6 +286,7 @@
 "EGT Wire Follow Voltage Red"="EGT-Leitung: Rot nur bei Spannungs-Rot"
 "EGT Wire Voltage Pulse"="EGT-Leitung: Rot nur bei Spannungs-Rot"
 "Lock Layout"="Lage sperren"
+"Unlock Layout"="Lage entsperren"
 "EGT Installation"="EGT-Installation"
 "Einfach (L/Z)"="Einfach (L/Z)"
 "Flexibel (Knick)"="Flexibel (Knick)"

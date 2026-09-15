@@ -315,6 +315,7 @@ public class Menus {
 	egtMenuBar.addSeparator();
 	egtMenuBar.addItem(layoutLockCheckItem = new CheckboxMenuItem(Locale.LS("Lock Layout"),
 		new Command() { public void execute() {
+		    sim.ui.setLayoutLockAvailable(true);
 		    sim.ui.setLayoutLocked(layoutLockCheckItem.getState());
 		}
 	}));
