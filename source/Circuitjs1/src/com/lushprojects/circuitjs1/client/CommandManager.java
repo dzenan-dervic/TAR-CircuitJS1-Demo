@@ -36,9 +36,9 @@ public class CommandManager {
     	    newElectronWindow();
     	}
 	if (menu=="egt" && item=="hmi-tor")
-	    Window.Location.assign("egt-hmi-tor.html");
+	    openHmiInTopWindow("egt-hmi-tor.html");
 	if (menu=="egt" && item=="hmi-pumpe")
-	    Window.Location.assign("egt-hmi-pumpe.html");
+	    openHmiInTopWindow("egt-hmi-pumpe.html");
     	if (item=="save")
     	    electronSave(app.dumpCircuit());
     	if (item=="saveas")
@@ -645,6 +645,15 @@ public class CommandManager {
         
     static native void newElectronWindow() /*-{
         $wnd.newWindow();
+    }-*/;
+
+    static native void openHmiInTopWindow(String path) /*-{
+	var target = new URL(path, $wnd.location.href).href;
+	try {
+	    $wnd.top.location.assign(target);
+	} catch (e) {
+	    $wnd.location.assign(target);
+	}
     }-*/;
 
     static native void electronSaveAs(String dump) /*-{

@@ -3,7 +3,7 @@ var __gwtModuleFunction = $wnd.circuitjs1;
 var $sendStats = __gwtModuleFunction.__sendStats;
 $sendStats('moduleStartup', 'moduleEvalStart');
 var $gwt_version = "2.8.2";
-var $strongName = 'E81FD554803E6549AEFADF794697F7FE';
+var $strongName = '1BDD2B536548E0CA651751D07812AFC0';
 var $gwt = {};
 var $doc = $wnd.document;
 var $moduleName, $moduleBase;
@@ -7838,10 +7838,6 @@ _.getAssociatedType = function getAssociatedType_21(){
 _.message_0 = null;
 var TYPE_20;
 var Lcom_google_gwt_user_client_Window$ClosingEvent_2_classLit = createForClass('com.google.gwt.user.client', 'Window/ClosingEvent', 543);
-function assign(newURL){
-  $wnd.location.assign(newURL);
-}
-
 function Window$WindowHandlers(){
   HandlerManager.call(this, null);
 }
@@ -12699,7 +12695,7 @@ function $drawValues(this$static, g, s, hs){
   w = round_int($measureText(g.context, s).width);
   $setColor_0(g, whiteColor);
   ya = g.currentFontSize / 2 | 0;
-  if (instanceOf(this$static, 52) || instanceOf(this$static, 291)) {
+  if (instanceOf(this$static, 52) || instanceOf(this$static, 280)) {
     xc = this$static.x2;
     yc = this$static.y2;
   }
@@ -14370,7 +14366,7 @@ function ACRailElm(xx, yy){
   this.maxVoltage_0 = 120 * $wnd.Math.sqrt(2);
 }
 
-defineClass(951, 52, $intern_93, ACRailElm);
+defineClass(952, 52, $intern_93, ACRailElm);
 _.getDumpClass = function getDumpClass_0(){
   return Lcom_lushprojects_circuitjs1_client_RailElm_2_classLit;
 }
@@ -14379,18 +14375,18 @@ _.getShortcut = function getShortcut_1(){
   return 0;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ACRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACRailElm', 951);
+var Lcom_lushprojects_circuitjs1_client_ACRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACRailElm', 952);
 function ACVoltageElm(xx, yy){
   VoltageElm.call(this, xx, yy, 1);
   this.maxVoltage_0 = 120 * $wnd.Math.sqrt(2);
 }
 
-defineClass(953, 57, $intern_92, ACVoltageElm);
+defineClass(941, 57, $intern_92, ACVoltageElm);
 _.getDumpClass = function getDumpClass_1(){
   return Lcom_lushprojects_circuitjs1_client_VoltageElm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ACVoltageElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACVoltageElm', 953);
+var Lcom_lushprojects_circuitjs1_client_ACVoltageElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ACVoltageElm', 941);
 function $clinit_ChipElm(){
   $clinit_ChipElm = emptyMethod;
   sideFlipXY = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [2, 3, 0, 1]);
@@ -15071,7 +15067,7 @@ function ADCElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(408, 17, $intern_86, ADCElm, ADCElm_0);
+defineClass(406, 17, $intern_86, ADCElm, ADCElm_0);
 _.allowBus = function allowBus_0(){
   return true;
 }
@@ -15132,7 +15128,7 @@ _.setupPins = function setupPins(){
   $setupPins(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ADCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ADCElm', 408);
+var Lcom_lushprojects_circuitjs1_client_ADCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ADCElm', 406);
 function $drawWaveform_0(this$static, g, center){
   var xc, yc;
   $setColor_0(g, mouseElmRef == this$static || this$static.selected_0 || $containsKey(app_0.mouse.scopePlotRoles, this$static) || instanceOf(mouseElmRef, 16) && $getElm_0(mouseElmRef.elmScope) == this$static || $isOnHighlightedNet(this$static)?selectColor_0:($clinit_Color() , gray));
@@ -15162,7 +15158,7 @@ function AMElm_0(xa, ya, xb, yb, f, st){
   this.curcount_0 = 0;
 }
 
-defineClass(476, 8, $intern_86, AMElm, AMElm_0);
+defineClass(425, 8, $intern_86, AMElm, AMElm_0);
 _.doStep = function doStep_3(){
   var w;
   $updateVoltageSource(this.voltSource, (w = $intern_2 * (sim_0.t - this.freqTimeZero) , ($wnd.Math.sin(w * this.signalfreq) + 1) / 2 * $wnd.Math.sin(w * this.carrierfreq) * this.maxVoltage));
@@ -15274,7 +15270,7 @@ _.carrierfreq = 0;
 _.freqTimeZero = 0;
 _.maxVoltage = 0;
 _.signalfreq = 0;
-var Lcom_lushprojects_circuitjs1_client_AMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AMElm', 476);
+var Lcom_lushprojects_circuitjs1_client_AMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AMElm', 425);
 function AboutBox(){
   var sstor;
   PopupPanel.call(this);
@@ -15559,7 +15555,7 @@ function AmmeterElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(453, 8, $intern_86, AmmeterElm, AmmeterElm_0);
+defineClass(420, 8, $intern_86, AmmeterElm, AmmeterElm_0);
 _.draw = function draw_4(g){
   var plusPoint, s, w, width_0;
   $setVoltageColor(this, g, this.volts[0]);
@@ -15757,7 +15753,7 @@ _.scale_0 = 0;
 _.selectedValue = 0;
 _.total = 0;
 _.zerocount = 0;
-var Lcom_lushprojects_circuitjs1_client_AmmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AmmeterElm', 453);
+var Lcom_lushprojects_circuitjs1_client_AmmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AmmeterElm', 420);
 function $setupPins_0(this$static){
   var i;
   this$static.inputCount = 1 << this$static.selectBitCount;
@@ -15804,7 +15800,7 @@ function AnalogMuxElm_0(xa, ya, xb, yb, f, st){
   $setupPins_0(this);
 }
 
-defineClass(486, 17, $intern_86, AnalogMuxElm, AnalogMuxElm_0);
+defineClass(397, 17, $intern_86, AnalogMuxElm, AnalogMuxElm_0);
 _.calculateCurrent = function calculateCurrent_0(){
   var c, i, i0, i1, outputCurrent, r, selectedInput;
   selectedInput = 0;
@@ -15931,7 +15927,7 @@ _.r_off = 0;
 _.r_on = 0;
 _.selectBitCount = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_AnalogMuxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogMuxElm', 486);
+var Lcom_lushprojects_circuitjs1_client_AnalogMuxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogMuxElm', 397);
 function $setPoints_1(this$static){
   $setPoints(this$static);
   $calcLeads(this$static, 32);
@@ -15969,7 +15965,7 @@ function AnalogSwitchElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(281, 8, $intern_86, AnalogSwitchElm, AnalogSwitchElm_0);
+defineClass(288, 8, $intern_86, AnalogSwitchElm, AnalogSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_1(){
   if (this.resistance == 0)
     return;
@@ -16118,7 +16114,7 @@ _.r_off = 0;
 _.r_on = 0;
 _.resistance = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_AnalogSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitchElm', 281);
+var Lcom_lushprojects_circuitjs1_client_AnalogSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitchElm', 288);
 function AnalogSwitch2Elm(xx, yy){
   AnalogSwitchElm.call(this, xx, yy);
 }
@@ -16127,7 +16123,7 @@ function AnalogSwitch2Elm_0(xa, ya, xb, yb, f, st){
   AnalogSwitchElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(421, 281, $intern_86, AnalogSwitch2Elm, AnalogSwitch2Elm_0);
+defineClass(490, 288, $intern_86, AnalogSwitch2Elm, AnalogSwitch2Elm_0);
 _.calculateCurrent = function calculateCurrent_2(){
   this.open_0?(this.current_0 = (this.volts[0] - this.volts[2]) / this.r_on):(this.current_0 = (this.volts[0] - this.volts[1]) / this.r_on);
 }
@@ -16224,7 +16220,7 @@ _.stamp = function stamp_7(){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AnalogSwitch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitch2Elm', 421);
+var Lcom_lushprojects_circuitjs1_client_AnalogSwitch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AnalogSwitch2Elm', 490);
 function $createEuroGatePolygon(this$static){
   var pts;
   pts = $newPointArray(4);
@@ -16356,7 +16352,7 @@ function GateElm_0(xa, ya, xb, yb, f, st){
   $setupVolts(this);
 }
 
-defineClass(284, 8, $intern_86);
+defineClass(279, 8, $intern_86);
 _.addRoutingObstacle = function addRoutingObstacle_3(router){
   var hs2, i, leadDist, pa, pb;
   for (i = 0; i < this.inputCount; i++)
@@ -16551,7 +16547,7 @@ _.oscillationCount = 0;
 _.propagationDelay = 0;
 _.ww = 0;
 var lastHighVoltage = 5, lastSchmitt = false;
-var Lcom_lushprojects_circuitjs1_client_GateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GateElm', 284);
+var Lcom_lushprojects_circuitjs1_client_GateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GateElm', 279);
 function $ellipse(g, x_0, y_0, rx, ry, ro, sa, ea, ccw){
   rx >= 0 && ry >= 0 && g.ellipse(x_0, y_0, rx, ry, ro, sa, ea, ccw);
 }
@@ -16564,7 +16560,7 @@ function AndGateElm_0(xa, ya, xb, yb, f, st){
   GateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(297, 284, $intern_86, AndGateElm, AndGateElm_0);
+defineClass(289, 279, $intern_86, AndGateElm, AndGateElm_0);
 _.calcFunction = function calcFunction(){
   var f, i;
   f = true;
@@ -16630,7 +16626,7 @@ _.setPoints = function setPoints_8(){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_AndGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AndGateElm', 297);
+var Lcom_lushprojects_circuitjs1_client_AndGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AndGateElm', 289);
 function AntennaElm(xx, yy){
   RailElm_0.call(this, xx, yy, 1);
 }
@@ -16640,7 +16636,7 @@ function AntennaElm_0(xa, ya, xb, yb, f, st){
   this.waveform = 1;
 }
 
-defineClass(494, 52, $intern_93, AntennaElm, AntennaElm_0);
+defineClass(399, 52, $intern_93, AntennaElm, AntennaElm_0);
 _.drawRail = function drawRail_0(g){
   $drawRailText(this, g, 'Ant');
 }
@@ -16673,7 +16669,7 @@ _.stepFinished = function stepFinished_2(){
 }
 ;
 _.fmphase = 0;
-var Lcom_lushprojects_circuitjs1_client_AntennaElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AntennaElm', 494);
+var Lcom_lushprojects_circuitjs1_client_AntennaElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'AntennaElm', 399);
 function AudioFileEntry(){
 }
 
@@ -17272,7 +17268,7 @@ function BoxElm_0(xa, ya, xb, yb, f){
   $setBbox(this, this.x_0, this.y_0, this.x2, this.y2);
 }
 
-defineClass(482, 112, $intern_102, BoxElm, BoxElm_0);
+defineClass(478, 112, $intern_102, BoxElm, BoxElm_0);
 _.creationFailed = function creationFailed_0(){
   return $wnd.Math.abs(this.x2 - this.x_0) < 32 || $wnd.Math.abs(this.y2 - this.y_0) < 32;
 }
@@ -17329,7 +17325,7 @@ _.selectRect = function selectRect_0(r, add_0){
 _.setEditValue = function setEditValue_8(n, ei){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_BoxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BoxElm', 482);
+var Lcom_lushprojects_circuitjs1_client_BoxElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BoxElm', 478);
 function $dumpXml_2(this$static, elem){
   dumpAttr_1(elem, 'x', this$static.x_0 + ' ' + this$static.y_0 + ' ' + this$static.x2 + ' ' + this$static.y2);
   dumpAttr_0(elem, 'f', this$static.flags);
@@ -17439,7 +17435,7 @@ function SwitchElm_0(xa, ya, xb, yb, f, st){
   var str;
   CircuitElm_0.call(this, xa, ya, xb, yb, f);
   str = $nextToken(st);
-  $compareTo(str, 'true') == 0?(this.position = instanceOf(this, 212)?0:1):$compareTo(str, 'false') == 0?(this.position = instanceOf(this, 212)?1:0):(this.position = (new Integer_0(str)).value_0);
+  $compareTo(str, 'true') == 0?(this.position = instanceOf(this, 213)?0:1):$compareTo(str, 'false') == 0?(this.position = instanceOf(this, 213)?1:0):(this.position = (new Integer_0(str)).value_0);
   this.momentary = $booleanValue(($clinit_Boolean() , $equalsIgnoreCase('true', $nextToken(st))));
   this.posCount = 2;
   this.label_0 = null;
@@ -17600,7 +17596,7 @@ function BusLogicInputElm(xx, yy){
   this.loV = 0;
 }
 
-defineClass(945, 46, $intern_103, BusLogicInputElm);
+defineClass(948, 46, $intern_103, BusLogicInputElm);
 _.calculateCurrent = function calculateCurrent_4(){
 }
 ;
@@ -17769,7 +17765,7 @@ _.busWidth = 0;
 _.hiV = 0;
 _.loV = 0;
 _.value_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_BusLogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusLogicInputElm', 945);
+var Lcom_lushprojects_circuitjs1_client_BusLogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusLogicInputElm', 948);
 function $setupPins_1(this$static){
   var i, i0, ii;
   this$static.sizeX = 2;
@@ -17907,7 +17903,7 @@ function BusTransceiverElm(xx, yy){
   $setupPins_2(this);
 }
 
-defineClass(952, 17, $intern_86, BusTransceiverElm);
+defineClass(943, 17, $intern_86, BusTransceiverElm);
 _.allowBus = function allowBus_1(){
   return true;
 }
@@ -18024,7 +18020,7 @@ _.aNodes = 0;
 _.bNodes = 0;
 _.dataBits = 0;
 _.intNodes = 0;
-var Lcom_lushprojects_circuitjs1_client_BusTransceiverElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusTransceiverElm', 952);
+var Lcom_lushprojects_circuitjs1_client_BusTransceiverElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'BusTransceiverElm', 943);
 function CC2Elm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -18115,12 +18111,12 @@ function CC2NegElm(xx, yy){
   this.gain = -1;
 }
 
-defineClass(944, 331, $intern_86, CC2NegElm);
+defineClass(947, 331, $intern_86, CC2NegElm);
 _.getDumpClass = function getDumpClass_2(){
   return Lcom_lushprojects_circuitjs1_client_CC2Elm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CC2NegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2NegElm', 944);
+var Lcom_lushprojects_circuitjs1_client_CC2NegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CC2NegElm', 947);
 function $getConvergeLimit(){
   if (sim_0.subIterations < 10)
     return $intern_84;
@@ -18379,7 +18375,7 @@ function CCCSElm_0(xa, ya, xb, yb, f, st){
   $setupPins_3(this);
 }
 
-defineClass(330, 187, {330:1, 8:1, 11:1}, CCCSElm, CCCSElm_0);
+defineClass(329, 187, {329:1, 8:1, 11:1}, CCCSElm, CCCSElm_0);
 _.doStep = function doStep_10(){
   var convergeLimit, cur, dv, dx, i, rs, v, v0, v2;
   if (this.broken) {
@@ -18534,7 +18530,7 @@ _.stepFinished = function stepFinished_6(){
 ;
 _.inputPairCount = 0;
 var FLAG_SPICE = 2;
-var Lcom_lushprojects_circuitjs1_client_CCCSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CCCSElm', 330);
+var Lcom_lushprojects_circuitjs1_client_CCCSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CCCSElm', 329);
 function $setCurrentExprValue_0(this$static, n, cur){
   n == 0 && this$static.inputPairCount < 9 && (this$static.exprState.values[8] = cur);
   this$static.exprState.values[n] = cur;
@@ -20259,8 +20255,8 @@ function $menuPerformed(this$static, menu, item_0){
     $wnd.openFile != undefined?electronOpenFile():($doc.getElementById('LoadFileElement').click() , undefined);
   }
   item_0 == 'newwindow' && ($wnd.newWindow() , undefined);
-  menu == 'egt' && item_0 == 'hmi-tor' && assign('egt-hmi-tor.html');
-  menu == 'egt' && item_0 == 'hmi-pumpe' && assign('egt-hmi-pumpe.html');
+  menu == 'egt' && item_0 == 'hmi-tor' && openHmiInTopWindow('egt-hmi-tor.html');
+  menu == 'egt' && item_0 == 'hmi-pumpe' && openHmiInTopWindow('egt-hmi-pumpe.html');
   item_0 == 'save' && electronSave($dumpCircuit(this$static.app));
   item_0 == 'saveas' && electronSaveAs($dumpCircuit(this$static.app));
   item_0 == 'importfromtext' && (dialogShowing = new ImportFromTextDialog(this$static.app));
@@ -20535,6 +20531,16 @@ function electronSaveAsCallback(s){
   $allowSave(app.ui, true);
   app.savedFlag = true;
   $repaint(app.ui);
+}
+
+function openHmiInTopWindow(path){
+  var target = (new URL(path, $wnd.location.href)).href;
+  try {
+    $wnd.top.location.assign(target);
+  }
+   catch (e) {
+    $wnd.location.assign(target);
+  }
 }
 
 defineClass(593, 1, {}, CommandManager);
@@ -20924,7 +20930,7 @@ function ComparatorElm_0(xa, ya, xb, yb, f, st){
   $setSize_2(this, (f & 2) != 0?1:2);
 }
 
-defineClass(497, 113, $intern_86, ComparatorElm, ComparatorElm_0);
+defineClass(402, 113, $intern_86, ComparatorElm, ComparatorElm_0);
 _.draw = function draw_15(g){
   $setBbox_0(this, this.point1, this.point2, this.opheight * 2);
   $setVoltageColor(this, g, this.volts[0]);
@@ -21007,7 +21013,7 @@ _.opheight = 0;
 _.opsize = 0;
 _.opwidth = 0;
 var modelExternalNodes, modelString = 'OpAmpElm 1 2 3\rAnalogSwitchElm 4 5 3\rGroundElm 5';
-var Lcom_lushprojects_circuitjs1_client_ComparatorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ComparatorElm', 497);
+var Lcom_lushprojects_circuitjs1_client_ComparatorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ComparatorElm', 402);
 function $setupPins_5(this$static){
   var bitsY, p;
   this$static.sizeX = 2;
@@ -21053,7 +21059,7 @@ function Counter2Elm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(460, 17, $intern_86, Counter2Elm, Counter2Elm_0);
+defineClass(400, 17, $intern_86, Counter2Elm, Counter2Elm_0);
 _.allowBus = function allowBus_2(){
   return true;
 }
@@ -21169,7 +21175,7 @@ _.ent = 0;
 _.load = 0;
 _.modulus = 0;
 _.rco = 0;
-var Lcom_lushprojects_circuitjs1_client_Counter2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Counter2Elm', 460);
+var Lcom_lushprojects_circuitjs1_client_Counter2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Counter2Elm', 400);
 function $setupPins_6(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = this$static.bitOrder == 2?3:this$static.bits;
@@ -21205,7 +21211,7 @@ function CounterElm_0(xa, ya, xb, yb, f, st){
   this.pins[1].bubble = this.invertreset;
 }
 
-defineClass(436, 17, $intern_86, CounterElm, CounterElm_0);
+defineClass(492, 17, $intern_86, CounterElm, CounterElm_0);
 _.allowBus = function allowBus_3(){
   return true;
 }
@@ -21329,7 +21335,7 @@ _.undumpXml = function undumpXml_18(xml){
 ;
 _.invertreset = false;
 _.modulus = 0;
-var Lcom_lushprojects_circuitjs1_client_CounterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CounterElm', 436);
+var Lcom_lushprojects_circuitjs1_client_CounterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CounterElm', 492);
 function $setPoints_5(this$static){
   var dp, i, offset;
   $setPoints_3(this$static);
@@ -21373,7 +21379,7 @@ function CrossSwitchElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(457, 46, $intern_103, CrossSwitchElm, CrossSwitchElm_0);
+defineClass(443, 46, $intern_103, CrossSwitchElm, CrossSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_7(){
   var dst, i;
   if (this.resistance > 0)
@@ -21560,7 +21566,7 @@ _.validate = function validate_7(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_CrossSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrossSwitchElm', 457);
+var Lcom_lushprojects_circuitjs1_client_CrossSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrossSwitchElm', 443);
 function $clinit_CrystalElm(){
   $clinit_CrystalElm = emptyMethod;
   modelExternalNodes_0 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [1, 2]);
@@ -21604,7 +21610,7 @@ function CrystalElm_0(xa, ya, xb, yb, f, st){
   $initCrystal(this);
 }
 
-defineClass(458, 113, $intern_86, CrystalElm, CrystalElm_0);
+defineClass(472, 113, $intern_86, CrystalElm, CrystalElm_0);
 _.canViewInScope_0 = function canViewInScope_1(){
   return true;
 }
@@ -21735,7 +21741,7 @@ _.parallelCapacitance = 0;
 _.resistance = 0;
 _.seriesCapacitance = 0;
 var modelExternalNodes_0, modelString_0 = 'CapacitorElm 1 2\rCapacitorElm 1 3\rInductorElm 3 4\rResistorElm 4 2';
-var Lcom_lushprojects_circuitjs1_client_CrystalElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrystalElm', 458);
+var Lcom_lushprojects_circuitjs1_client_CrystalElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CrystalElm', 472);
 function $setBroken(this$static, b){
   this$static.broken = b && !(this$static.maxVoltage > 0);
 }
@@ -23298,7 +23304,7 @@ function CustomTransformerElm_0(xa, ya, xb, yb, f, st){
   $parseDescription(this, this.description, null);
 }
 
-defineClass(425, 8, $intern_86, CustomTransformerElm, CustomTransformerElm_0);
+defineClass(467, 8, $intern_86, CustomTransformerElm, CustomTransformerElm_0);
 _.calculateCurrent = function calculateCurrent_8(){
   var i, j, n, ni, val, voltdiff;
   for (i = 0; i != this.nodeCount; i++)
@@ -23565,7 +23571,7 @@ _.needDots = false;
 _.nodeCount = 0;
 _.primaryCoils = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_CustomTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CustomTransformerElm', 425);
+var Lcom_lushprojects_circuitjs1_client_CustomTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'CustomTransformerElm', 467);
 function $setupPins_8(this$static){
   var bitsY;
   this$static.sizeX = 2;
@@ -23589,7 +23595,7 @@ function DACElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(407, 17, $intern_86, DACElm, DACElm_0);
+defineClass(465, 17, $intern_86, DACElm, DACElm_0);
 _.allowBus = function allowBus_4(){
   return true;
 }
@@ -23650,7 +23656,7 @@ _.setupPins = function setupPins_11(){
   $setupPins_8(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_DACElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DACElm', 407);
+var Lcom_lushprojects_circuitjs1_client_DACElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DACElm', 465);
 function $$init_5(this$static){
   this$static.voltSources = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_VoltageSource_2_classLit, $intern_3, 136, 2, 0, 1);
 }
@@ -23707,7 +23713,7 @@ function drawThickerLine(g, pa, pb){
   g.context.lineWidth = 1;
 }
 
-defineClass(479, 8, $intern_86, DCMotorElm, DCMotorElm_0);
+defineClass(460, 8, $intern_86, DCMotorElm, DCMotorElm_0);
 _.calculateCurrent = function calculateCurrent_9(){
   this.coilCurrent = $calculateCurrent_4(this.ind, this.volts[0] - this.volts[2]);
   this.inertiaCurrent = $calculateCurrent_4(this.indInertia, this.volts[4] - this.volts[5]);
@@ -23888,7 +23894,7 @@ _.inertiaCurrent = 0;
 _.resistance = 0;
 _.speed = 0;
 _.tau = 0;
-var Lcom_lushprojects_circuitjs1_client_DCMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DCMotorElm', 479);
+var Lcom_lushprojects_circuitjs1_client_DCMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DCMotorElm', 460);
 function DCVoltageElm(xx, yy){
   VoltageElm.call(this, xx, yy, 0);
 }
@@ -23941,7 +23947,7 @@ function DFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.justLoaded = true;
 }
 
-defineClass(401, 17, $intern_86, DFlipFlopElm, DFlipFlopElm_0);
+defineClass(421, 17, $intern_86, DFlipFlopElm, DFlipFlopElm_0);
 _.execute_3 = function execute_21(){
   var isReset, isSet;
   if (this.justLoaded) {
@@ -24034,7 +24040,7 @@ _.setupPins = function setupPins_12(){
 }
 ;
 _.justLoaded = false;
-var Lcom_lushprojects_circuitjs1_client_DFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DFlipFlopElm', 401);
+var Lcom_lushprojects_circuitjs1_client_DFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DFlipFlopElm', 421);
 function $flip(this$static){
   this$static.dx == 0 && (this$static.x_0 = this$static.x2 = this$static.x_0 - round_int(this$static.dpx1 * 16 * 3));
   this$static.dy == 0 && (this$static.y_0 = this$static.y2 = this$static.y_0 - round_int(this$static.dpy1 * 16 * 3));
@@ -24085,7 +24091,7 @@ function DPDTSwitchElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(435, 46, $intern_103, DPDTSwitchElm, DPDTSwitchElm_0);
+defineClass(463, 46, $intern_103, DPDTSwitchElm, DPDTSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_10(){
   var i;
   if (this.resistance > 0)
@@ -24291,7 +24297,7 @@ _.validate = function validate_9(){
 }
 ;
 _.poleCount = 0;
-var Lcom_lushprojects_circuitjs1_client_DPDTSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DPDTSwitchElm', 435);
+var Lcom_lushprojects_circuitjs1_client_DPDTSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DPDTSwitchElm', 463);
 function $clinit_DarlingtonElm(){
   $clinit_DarlingtonElm = emptyMethod;
   modelExternalNodes_1 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [1, 2, 3]);
@@ -24656,7 +24662,7 @@ function DataRecorderElm_0(xa, ya, xb, yb, f, st){
   $setDataCount_0(this, __parseAndValidateInt($nextToken(st), 10));
 }
 
-defineClass(409, 8, $intern_86, DataRecorderElm, DataRecorderElm_0);
+defineClass(398, 8, $intern_86, DataRecorderElm, DataRecorderElm_0);
 _.draw = function draw_24(g){
   var f, s, selected;
   g.context.save();
@@ -24766,7 +24772,7 @@ _.dataCount = 0;
 _.dataFull = false;
 _.dataPtr = 0;
 _.lastTimeStepCount = 0;
-var Lcom_lushprojects_circuitjs1_client_DataRecorderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataRecorderElm', 409);
+var Lcom_lushprojects_circuitjs1_client_DataRecorderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DataRecorderElm', 398);
 function $readSelectValue(this$static){
   var i, sel;
   sel = 0;
@@ -24890,7 +24896,7 @@ function DeMultiplexerElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(429, 17, $intern_86, DeMultiplexerElm, DeMultiplexerElm_0);
+defineClass(474, 17, $intern_86, DeMultiplexerElm, DeMultiplexerElm_0);
 _.dumpXml = function dumpXml_27(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_0(elem, 'se', this.selectBitCount);
@@ -25017,7 +25023,7 @@ _.outputMode = 0;
 _.outputPin = 0;
 _.selectBitCount = 0;
 _.selectPin = 0;
-var Lcom_lushprojects_circuitjs1_client_DeMultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DeMultiplexerElm', 429);
+var Lcom_lushprojects_circuitjs1_client_DeMultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DeMultiplexerElm', 474);
 function $setupPins_11(this$static){
   this$static.sizeX = 3;
   this$static.sizeY = this$static.bitOrder == 2?2:this$static.bitCount;
@@ -25049,7 +25055,7 @@ function DecimalDisplayElm_0(xa, ya, xb, yb, f, st){
   $setupPins_11(this);
 }
 
-defineClass(477, 17, $intern_86, DecimalDisplayElm, DecimalDisplayElm_0);
+defineClass(416, 17, $intern_86, DecimalDisplayElm, DecimalDisplayElm_0);
 _.allowBus = function allowBus_5(){
   return true;
 }
@@ -25162,7 +25168,7 @@ _.undumpXml = function undumpXml_30(xml){
 ;
 _.bitCount = 0;
 _.displayMode = 0;
-var Lcom_lushprojects_circuitjs1_client_DecimalDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DecimalDisplayElm', 477);
+var Lcom_lushprojects_circuitjs1_client_DecimalDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DecimalDisplayElm', 416);
 function DelayBufferElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.noDiagonal = true;
@@ -25187,7 +25193,7 @@ function DelayBufferElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(468, 8, $intern_86, DelayBufferElm, DelayBufferElm_0);
+defineClass(453, 8, $intern_86, DelayBufferElm, DelayBufferElm_0);
 _.doStep = function doStep_18(){
   var inState, outState;
   inState = this.volts[0] > this.threshold;
@@ -25306,7 +25312,7 @@ _.delay = 0;
 _.delayEndTime = 0;
 _.highVoltage = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_DelayBufferElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DelayBufferElm', 468);
+var Lcom_lushprojects_circuitjs1_client_DelayBufferElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DelayBufferElm', 453);
 function $createDiodes(this$static){
   this$static.diode1 = new Diode(sim_0);
   this$static.diode2 = new Diode(sim_0);
@@ -25333,7 +25339,7 @@ function DiacElm_0(xa, ya, xb, yb, f, st){
   $createDiodes(this);
 }
 
-defineClass(403, 8, $intern_86, DiacElm, DiacElm_0);
+defineClass(444, 8, $intern_86, DiacElm, DiacElm_0);
 _.calculateCurrent = function calculateCurrent_11(){
   var r;
   r = this.state?this.onresistance:this.offresistance;
@@ -25431,7 +25437,7 @@ _.setPoints = function setPoints_24(){
   this.plate2 = $newPointArray(2);
   $interpPoint2(this.lead1, this.lead2, this.plate1[0], this.plate1[1], 0, 16);
   $interpPoint2(this.lead1, this.lead2, this.plate2[0], this.plate2[1], 1, 16);
-  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 211, 2, 0, 1);
+  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 212, 2, 0, 1);
   for (i = 0; i != 2; i++) {
     sgn = -1 + i * 2;
     p1 = $interpPoint_0(this.lead1, this.lead2, i, 8 * sgn);
@@ -25466,7 +25472,7 @@ _.holdcurrent = 0;
 _.offresistance = 0;
 _.onresistance = 0;
 _.state = false;
-var Lcom_lushprojects_circuitjs1_client_DiacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DiacElm', 403);
+var Lcom_lushprojects_circuitjs1_client_DiacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'DiacElm', 444);
 function $closeDialog(this$static){
   $hide_0(this$static, false);
   dialogShowing == this$static && (dialogShowing = null);
@@ -25615,7 +25621,7 @@ function $getEditInfo_2(this$static, n){
   var dm, ei, i;
   if (n == 0) {
     ei = new EditInfo_0('Model', 0, -1, -1);
-    this$static.models = getModelList_0(instanceOf(this$static, 296));
+    this$static.models = getModelList_0(instanceOf(this$static, 291));
     ei.choice = new Choice;
     for (i = 0; i != this$static.models.arrayList.array.length; i++) {
       dm = $get_4(this$static.models, i);
@@ -26195,7 +26201,7 @@ function EGTAbzweigdoseElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(447, 112, {8:1, 48:1, 11:1, 112:1}, EGTAbzweigdoseElm, EGTAbzweigdoseElm_0);
+defineClass(393, 112, {8:1, 48:1, 11:1, 112:1}, EGTAbzweigdoseElm, EGTAbzweigdoseElm_0);
 _.creationFailed = function creationFailed_1(){
   return $wnd.Math.abs(this.x2 - this.x_0) < 32 || $wnd.Math.abs(this.y2 - this.y_0) < 32;
 }
@@ -26335,7 +26341,7 @@ _.undumpXml = function undumpXml_34(xml){
   this.note = undumpXml_60(xml, this.note);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTAbzweigdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAbzweigdoseElm', 447);
+var Lcom_lushprojects_circuitjs1_client_EGTAbzweigdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAbzweigdoseElm', 393);
 function $reset_3(this$static){
   this$static.avgAbs = 0;
   this$static.on = false;
@@ -26375,11 +26381,11 @@ function $update_0(this$static, instantV, dt){
 function EGTAcLevelHold(){
 }
 
-defineClass(294, 1, {294:1}, EGTAcLevelHold);
+defineClass(282, 1, {282:1}, EGTAcLevelHold);
 _.avgAbs = 0;
 _.lowForS = 0;
 _.on = false;
-var Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAcLevelHold', 294);
+var Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAcLevelHold', 282);
 function $clinit_EGTAusschalterElm(){
   $clinit_EGTAusschalterElm = emptyMethod;
   COL_OPEN = new Color(255, 179, 71);
@@ -26548,7 +26554,7 @@ function EGTAusschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(420, 46, $intern_120, EGTAusschalterElm, EGTAusschalterElm_0);
+defineClass(458, 46, $intern_120, EGTAusschalterElm, EGTAusschalterElm_0);
 _.calculateCurrent = function calculateCurrent_13(){
   var r;
   if ((this.flags & $intern_43) != 0 || this.position == 1) {
@@ -26719,7 +26725,7 @@ _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
 var COL_OPEN;
-var Lcom_lushprojects_circuitjs1_client_EGTAusschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAusschalterElm', 420);
+var Lcom_lushprojects_circuitjs1_client_EGTAusschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTAusschalterElm', 458);
 function $$init_8(this$static){
   this$static.designation = 'B1';
   this$static.note = '';
@@ -26912,7 +26918,7 @@ function EGTBewegungsmelderElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(280, 17, {8:1, 280:1, 48:1, 11:1}, EGTBewegungsmelderElm, EGTBewegungsmelderElm_0);
+defineClass(286, 17, {8:1, 286:1, 48:1, 11:1}, EGTBewegungsmelderElm, EGTBewegungsmelderElm_0);
 _.calculateCurrent = function calculateCurrent_14(){
   clearPinCurrents(this.pins);
   this.supplyCurrent = (this.volts[0] - this.volts[1]) / this.resistance;
@@ -27119,7 +27125,7 @@ _.supplyCurCount = 0;
 _.supplyCurrent = 0;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTBewegungsmelderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTBewegungsmelderElm', 280);
+var Lcom_lushprojects_circuitjs1_client_EGTBewegungsmelderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTBewegungsmelderElm', 286);
 function assignOnPlace(ce){
   var cur, d, h, inherited, k;
   if (!instanceOf(ce, 48))
@@ -27376,7 +27382,7 @@ function getUnitTextRPM(v, u){
   return $format_0(new NumberFormat_0('#.##E000', $getDefaultNative()), v) + ' ' + u;
 }
 
-defineClass(289, 8, $intern_86, ThreePhaseMotorElm, ThreePhaseMotorElm_0);
+defineClass(281, 8, $intern_86, ThreePhaseMotorElm, ThreePhaseMotorElm_0);
 _.calculateCurrent = function calculateCurrent_15(){
   var i, j, n1, n2, ni, val, voltdiff;
   if (this.nodeCurrents == null)
@@ -27629,7 +27635,7 @@ _.filteredSpeed = 0;
 _.speed = 0;
 _.vs1value = 0;
 _.vs2value = 0;
-var Lcom_lushprojects_circuitjs1_client_ThreePhaseMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThreePhaseMotorElm', 289);
+var Lcom_lushprojects_circuitjs1_client_ThreePhaseMotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThreePhaseMotorElm', 281);
 function $clinit_EGTDrehstrommotorElm(){
   $clinit_EGTDrehstrommotorElm = emptyMethod;
   COL_ACCENT = new Color(74, 158, 255);
@@ -27986,7 +27992,7 @@ function relClose(a, b){
   return $wnd.Math.abs(a - b) / b < $intern_109;
 }
 
-defineClass(449, 289, $intern_128, EGTDrehstrommotorElm, EGTDrehstrommotorElm_0);
+defineClass(433, 281, $intern_128, EGTDrehstrommotorElm, EGTDrehstrommotorElm_0);
 _.draw = function draw_32(g){
   var cx, cy, dir_0, extra, i, labelSize, ntxt, r, rr, stTxt, stroke, subSize, tw, tx, ty, wireTxt;
   $setBbox_0(this, this.point1, this.point2, this.cr);
@@ -28135,7 +28141,8 @@ _.getEditInfo = function getEditInfo_30(n){
 _.getInfo_0 = function getInfo_39(arr){
   var iLine, rpm;
   arr[0] = LS('EGT-Drehstrommotor');
-  $getBasicInfo(this, arr);
+  arr[1] = 'I = ' + getUnitText($wnd.Math.abs(this.current_0), 'A', false);
+  arr[2] = 'Vd = ' + getUnitText($wnd.Math.abs(this.volts[0] - this.volts[1]), 'V', false);
   arr[3] = LS('Zustand') + ' = ' + $statusText(this);
   arr[4] = LS('Klemmung') + ' = ' + $wiringHintText(this);
   arr[5] = LS('Nennleistung') + ' = ' + getUnitText(this.ratedKw * $intern_23, LS('W'), false) + ', \u03B7 = ' + toInt_0(fromDouble_0($wnd.Math.round(clampEta(this.eta) * 100))) + ' %' + ', In \u2248 ' + getUnitText(this.ratedKw * $intern_23 / ($wnd.Math.sqrt(3) * 400 * clampEta(this.eta) * 0.8), 'A', false);
@@ -28260,7 +28267,7 @@ _.ratedKw = 0;
 _.showAdvanced = false;
 _.skipAdvancedThisApply = false;
 var COL_ACCENT, COL_IDLE;
-var Lcom_lushprojects_circuitjs1_client_EGTDrehstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstrommotorElm', 449);
+var Lcom_lushprojects_circuitjs1_client_EGTDrehstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstrommotorElm', 433);
 function $clinit_EGTDrehstromquelleElm(){
   $clinit_EGTDrehstromquelleElm = emptyMethod;
   $clinit_ChipElm();
@@ -28325,7 +28332,7 @@ function EGTDrehstromquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(440, 17, $intern_128, EGTDrehstromquelleElm, EGTDrehstromquelleElm_0);
+defineClass(418, 17, $intern_128, EGTDrehstromquelleElm, EGTDrehstromquelleElm_0);
 _.doStep = function doStep_23(){
   var i;
   for (i = 0; i < 3; i++)
@@ -28460,7 +28467,7 @@ _.undumpXml = function undumpXml_39(xml){
 _.frequency = 0;
 _.voltageRMS = 0;
 var PIN_COLORS, PIN_LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTDrehstromquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstromquelleElm', 440);
+var Lcom_lushprojects_circuitjs1_client_EGTDrehstromquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTDrehstromquelleElm', 418);
 function $clinit_EGTFupOperandElm(){
   $clinit_EGTFupOperandElm = emptyMethod;
   $clinit_ChipElm();
@@ -28854,7 +28861,7 @@ function EGTFupAusgangElm_0(xa, ya, xb, yb, f, st){
   EGTFupOperandElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(455, 149, $intern_131, EGTFupAusgangElm, EGTFupAusgangElm_0);
+defineClass(476, 149, $intern_131, EGTFupAusgangElm, EGTFupAusgangElm_0);
 _.getDumpType = function getDumpType_48(){
   return 468;
 }
@@ -28867,7 +28874,7 @@ _.isInputOperand = function isInputOperand(){
   return false;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupAusgangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupAusgangElm', 455);
+var Lcom_lushprojects_circuitjs1_client_EGTFupAusgangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupAusgangElm', 476);
 function $addBtn(this$static, svg, label_0, title_0, cls){
   var b, ic, ics, st, ts, tx;
   b = new FlowPanel;
@@ -28998,7 +29005,7 @@ function EGTFupEingangElm_0(xa, ya, xb, yb, f, st){
   EGTFupOperandElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(295, 149, {8:1, 295:1, 149:1, 11:1}, EGTFupEingangElm, EGTFupEingangElm_0);
+defineClass(296, 149, {8:1, 296:1, 149:1, 11:1}, EGTFupEingangElm, EGTFupEingangElm_0);
 _.getDumpType = function getDumpType_49(){
   return 467;
 }
@@ -29011,7 +29018,7 @@ _.isInputOperand = function isInputOperand_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupEingangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupEingangElm', 295);
+var Lcom_lushprojects_circuitjs1_client_EGTFupEingangElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupEingangElm', 296);
 function $clinit_EGTFupZeitElm(){
   $clinit_EGTFupZeitElm = emptyMethod;
   $clinit_ChipElm();
@@ -29095,7 +29102,7 @@ function EGTFupZeitElm_0(xa, ya, xb, yb, f, st){
   $initGeometry(this);
 }
 
-defineClass(279, 17, $intern_86);
+defineClass(292, 17, $intern_86);
 _.drag = function drag_6(xx, yy){
   $syncEndpoints_1(this);
 }
@@ -29269,7 +29276,7 @@ _.delay = 0;
 _.elapsed = 0;
 _.lastWallMs = 0;
 var COL_HI_0, COL_LO;
-var Lcom_lushprojects_circuitjs1_client_EGTFupZeitElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupZeitElm', 279);
+var Lcom_lushprojects_circuitjs1_client_EGTFupZeitElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupZeitElm', 292);
 function EGTFupTofElm(xx, yy){
   $clinit_EGTFupZeitElm();
   EGTFupZeitElm.call(this, xx, yy);
@@ -29280,7 +29287,7 @@ function EGTFupTofElm_0(xa, ya, xb, yb, f, st){
   EGTFupZeitElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(397, 279, $intern_86, EGTFupTofElm, EGTFupTofElm_0);
+defineClass(456, 292, $intern_86, EGTFupTofElm, EGTFupTofElm_0);
 _.getDumpType = function getDumpType_50(){
   return 477;
 }
@@ -29293,7 +29300,7 @@ _.isOnDelay = function isOnDelay(){
   return false;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupTofElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTofElm', 397);
+var Lcom_lushprojects_circuitjs1_client_EGTFupTofElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTofElm', 456);
 function EGTFupTonElm(xx, yy){
   $clinit_EGTFupZeitElm();
   EGTFupZeitElm.call(this, xx, yy);
@@ -29304,7 +29311,7 @@ function EGTFupTonElm_0(xa, ya, xb, yb, f, st){
   EGTFupZeitElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(396, 279, $intern_86, EGTFupTonElm, EGTFupTonElm_0);
+defineClass(455, 292, $intern_86, EGTFupTonElm, EGTFupTonElm_0);
 _.getDumpType = function getDumpType_51(){
   return 476;
 }
@@ -29317,7 +29324,7 @@ _.isOnDelay = function isOnDelay_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTFupTonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTonElm', 396);
+var Lcom_lushprojects_circuitjs1_client_EGTFupTonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTFupTonElm', 455);
 function $clinit_EGTGleichspannungsquelleElm(){
   $clinit_EGTGleichspannungsquelleElm = emptyMethod;
   $clinit_ChipElm();
@@ -29371,7 +29378,7 @@ function EGTGleichspannungsquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(437, 17, $intern_128, EGTGleichspannungsquelleElm, EGTGleichspannungsquelleElm_0);
+defineClass(496, 17, $intern_128, EGTGleichspannungsquelleElm, EGTGleichspannungsquelleElm_0);
 _.doStep = function doStep_25(){
   $updateVoltageSource(this.pins[0].voltSource, this.voltage);
   $updateVoltageSource(this.pins[1].voltSource, 0);
@@ -29491,7 +29498,7 @@ _.undumpXml = function undumpXml_42(xml){
 ;
 _.voltage = 0;
 var PIN_LABELS_0;
-var Lcom_lushprojects_circuitjs1_client_EGTGleichspannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichspannungsquelleElm', 437);
+var Lcom_lushprojects_circuitjs1_client_EGTGleichspannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichspannungsquelleElm', 496);
 function $clinit_EGTGleichstrommotorElm(){
   $clinit_EGTGleichstrommotorElm = emptyMethod;
   $clinit_ChipElm();
@@ -29783,7 +29790,7 @@ function EGTGleichstrommotorElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(495, 17, $intern_128, EGTGleichstrommotorElm, EGTGleichstrommotorElm_0);
+defineClass(469, 17, $intern_128, EGTGleichstrommotorElm, EGTGleichstrommotorElm_0);
 _.calculateCurrent = function calculateCurrent_16(){
   clearPinCurrents(this.pins);
   if (this.resistance <= 0) {
@@ -29987,7 +29994,7 @@ _.nom_v = 0;
 _.resistance = 0;
 _.speed = 0;
 var COL_ACCENT_0, COL_IDLE_0;
-var Lcom_lushprojects_circuitjs1_client_EGTGleichstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichstrommotorElm', 495);
+var Lcom_lushprojects_circuitjs1_client_EGTGleichstrommotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTGleichstrommotorElm', 469);
 function $clinit_EGTHilfsschalterblockElm(){
   $clinit_EGTHilfsschalterblockElm = emptyMethod;
   $clinit_ChipElm();
@@ -30176,7 +30183,7 @@ function EGTHilfsschalterblockElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(257, 17, {8:1, 48:1, 257:1, 11:1}, EGTHilfsschalterblockElm, EGTHilfsschalterblockElm_0);
+defineClass(254, 17, {8:1, 48:1, 254:1, 11:1}, EGTHilfsschalterblockElm, EGTHilfsschalterblockElm_0);
 _.calculateCurrent = function calculateCurrent_17(){
   var en, i;
   clearPinCurrents(this.pins);
@@ -30363,7 +30370,7 @@ _.undumpXml = function undumpXml_44(xml){
 _.nNc = 0;
 _.nNo = 0;
 var NC_BOT, NC_TOP, NO_BOT, NO_TOP;
-var Lcom_lushprojects_circuitjs1_client_EGTHilfsschalterblockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschalterblockElm', 257);
+var Lcom_lushprojects_circuitjs1_client_EGTHilfsschalterblockElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHilfsschalterblockElm', 254);
 function $clinit_EGTHilfsschuetzElm(){
   $clinit_EGTHilfsschuetzElm = emptyMethod;
   $clinit_ChipElm();
@@ -30951,7 +30958,7 @@ function EGTHmiGeberElm_0(xa, ya, xb, yb, f, st){
   this.funktion = $hasMoreTokens(st)?unescape_0($nextToken(st)):'';
 }
 
-defineClass(430, 205, {8:1, 48:1, 11:1, 205:1, 52:1, 57:1}, EGTHmiGeberElm, EGTHmiGeberElm_0);
+defineClass(419, 205, {8:1, 48:1, 11:1, 205:1, 52:1, 57:1}, EGTHmiGeberElm, EGTHmiGeberElm_0);
 _.draw = function draw_33(g){
   var addr, anchor, boxW, bx, by, dir_0, dx, dy, fkt, fx1, fx2, fy1, fy2, hi, ledX, ledY, len, t, tx, tx2, ty, ux, uy, vertical, wAddr, wFkt;
   g.context.save();
@@ -31108,7 +31115,7 @@ _.undumpXml = function undumpXml_47(xml){
 }
 ;
 var COL_HI_1, COL_LED_OFF;
-var Lcom_lushprojects_circuitjs1_client_EGTHmiGeberElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiGeberElm', 430);
+var Lcom_lushprojects_circuitjs1_client_EGTHmiGeberElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiGeberElm', 419);
 function $$init_17(this$static){
   this$static.busWidth = 1;
 }
@@ -31423,7 +31430,7 @@ function EGTHmiLastElm_0(xa, ya, xb, yb, f, st){
   this.flags |= 4;
 }
 
-defineClass(452, 164, {8:1, 48:1, 11:1, 164:1}, EGTHmiLastElm, EGTHmiLastElm_0);
+defineClass(468, 164, {8:1, 48:1, 11:1, 164:1}, EGTHmiLastElm, EGTHmiLastElm_0);
 _.draw = function draw_35(g){
   var addr, anchor, boxW, bx, by, dir_0, dx, dy, fkt, fx1, fx2, fy1, fy2, hi, ledX, ledY, len, t, tx, tx2, ty, ux, uy, vertical, wAddr, wFkt;
   g.context.save();
@@ -31583,7 +31590,7 @@ _.undumpXml = function undumpXml_49(xml){
 ;
 _.lastHiT = 0;
 var COL_HI_2, COL_LED_OFF_0;
-var Lcom_lushprojects_circuitjs1_client_EGTHmiLastElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiLastElm', 452);
+var Lcom_lushprojects_circuitjs1_client_EGTHmiLastElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTHmiLastElm', 468);
 function $$init_19(this$static){
   this$static.busWidth = 1;
 }
@@ -32740,7 +32747,7 @@ function EGTInstallationsleitungElm_0(xa, ya, xb, yb, f, st){
   this.flags &= -65537;
 }
 
-defineClass(470, 147, $intern_136, EGTInstallationsleitungElm, EGTInstallationsleitungElm_0);
+defineClass(430, 147, $intern_136, EGTInstallationsleitungElm, EGTInstallationsleitungElm_0);
 _.doDots = function doDots_1(g){
 }
 ;
@@ -32786,7 +32793,7 @@ _.setEditValue = function setEditValue_38(n, ei){
   }
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTInstallationsleitungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTInstallationsleitungElm', 470);
+var Lcom_lushprojects_circuitjs1_client_EGTInstallationsleitungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTInstallationsleitungElm', 430);
 function $clinit_EGTKlingelElm(){
   $clinit_EGTKlingelElm = emptyMethod;
   $clinit_ChipElm();
@@ -32944,7 +32951,7 @@ function EGTKlingelElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(393, 17, $intern_128, EGTKlingelElm, EGTKlingelElm_0);
+defineClass(441, 17, $intern_128, EGTKlingelElm, EGTKlingelElm_0);
 _.calculateCurrent = function calculateCurrent_20(){
   clearPinCurrents(this.pins);
   if ((this.flags & $intern_43) != 0 || this.resistance <= 0) {
@@ -33137,7 +33144,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var PIN_LABELS_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKlingelElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKlingelElm', 393);
+var Lcom_lushprojects_circuitjs1_client_EGTKlingelElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKlingelElm', 441);
 function $clinit_EGTKondensatormotorElm(){
   $clinit_EGTKondensatormotorElm = emptyMethod;
   $clinit_ChipElm();
@@ -33327,7 +33334,7 @@ function EGTKondensatormotorElm_0(xa, ya, xb, yb, f, st){
   $setPoints_0(this);
 }
 
-defineClass(432, 17, $intern_128, EGTKondensatormotorElm, EGTKondensatormotorElm_0);
+defineClass(500, 17, $intern_128, EGTKondensatormotorElm, EGTKondensatormotorElm_0);
 _.calculateCurrent = function calculateCurrent_21(){
   $calculateCurrent_1(this);
 }
@@ -33603,7 +33610,7 @@ _.rMain = 0;
 _.speed = 0;
 _.torque = 0;
 var COL_ACCENT_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorElm', 432);
+var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorElm', 500);
 function $clinit_EGTKondensatormotorKompaktElm(){
   $clinit_EGTKondensatormotorKompaktElm = emptyMethod;
   $clinit_ChipElm();
@@ -33802,7 +33809,7 @@ function EGTKondensatormotorKompaktElm_0(xa, ya, xb, yb, f, st){
   $syncEndpoints_5(this);
 }
 
-defineClass(444, 17, $intern_128, EGTKondensatormotorKompaktElm, EGTKondensatormotorKompaktElm_0);
+defineClass(407, 17, $intern_128, EGTKondensatormotorKompaktElm, EGTKondensatormotorKompaktElm_0);
 _.calculateCurrent = function calculateCurrent_22(){
   $calculateCurrent_2(this);
 }
@@ -34176,7 +34183,7 @@ _.showAdvanced = false;
 _.speed = 0;
 _.voltageSquaredEnvelope = 0;
 var COL_ACCENT_2, COL_IDLE_1;
-var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorKompaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorKompaktElm', 444);
+var Lcom_lushprojects_circuitjs1_client_EGTKondensatormotorKompaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKondensatormotorKompaktElm', 407);
 function $$init_24(this$static){
   this$static.designation = 'S3';
   this$static.note = '';
@@ -34402,7 +34409,7 @@ function EGTKreuzschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(491, 46, $intern_120, EGTKreuzschalterElm, EGTKreuzschalterElm_0);
+defineClass(432, 46, $intern_120, EGTKreuzschalterElm, EGTKreuzschalterElm_0);
 _.calculateCurrent = function calculateCurrent_23(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -34617,7 +34624,7 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTKreuzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKreuzschalterElm', 491);
+var Lcom_lushprojects_circuitjs1_client_EGTKreuzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTKreuzschalterElm', 432);
 function $clinit_EGTLeistungsschuetzElm(){
   $clinit_EGTLeistungsschuetzElm = emptyMethod;
   $clinit_ChipElm();
@@ -34806,7 +34813,7 @@ function EGTLeistungsschuetzElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(254, 17, {8:1, 48:1, 254:1, 342:1, 11:1}, EGTLeistungsschuetzElm, EGTLeistungsschuetzElm_0);
+defineClass(257, 17, {8:1, 48:1, 257:1, 342:1, 11:1}, EGTLeistungsschuetzElm, EGTLeistungsschuetzElm_0);
 _.calculateCurrent = function calculateCurrent_24(){
   var iNom;
   this.current_0 = $calculateCurrent_3(this.coilL, this.volts[0], this.volts[10]);
@@ -35061,7 +35068,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTLeistungsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeistungsschuetzElm', 254);
+var Lcom_lushprojects_circuitjs1_client_EGTLeistungsschuetzElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeistungsschuetzElm', 257);
 function $clinit_EGTLeuchteElm(){
   $clinit_EGTLeuchteElm = emptyMethod;
   $clinit_ChipElm();
@@ -35486,7 +35493,7 @@ function EGTLeuchteElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(282, 17, $intern_128, EGTLeuchteElm, EGTLeuchteElm_0);
+defineClass(293, 17, $intern_128, EGTLeuchteElm, EGTLeuchteElm_0);
 _.calculateCurrent = function calculateCurrent_25(){
   var n;
   clearPinCurrents(this.pins);
@@ -35686,7 +35693,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var COL_LIT, COL_MELD_RING, PIN_LABELS_2;
-var Lcom_lushprojects_circuitjs1_client_EGTLeuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeuchteElm', 282);
+var Lcom_lushprojects_circuitjs1_client_EGTLeuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTLeuchteElm', 293);
 function EGTMeldeleuchteElm(xx, yy){
   $clinit_EGTLeuchteElm();
   EGTLeuchteElm.call(this, xx, yy);
@@ -35718,7 +35725,7 @@ function EGTMeldeleuchteElm_0(xa, ya, xb, yb, f, st){
   $setPoints_0(this);
 }
 
-defineClass(423, 282, $intern_128, EGTMeldeleuchteElm, EGTMeldeleuchteElm_0);
+defineClass(494, 293, $intern_128, EGTMeldeleuchteElm, EGTMeldeleuchteElm_0);
 _.getChipEditInfo = function getChipEditInfo_25(n){
   if (n <= 1)
     return $getChipEditInfo_0(this, n);
@@ -35749,7 +35756,7 @@ _.undumpXml = function undumpXml_57(xml){
   $setPoints_0(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_EGTMeldeleuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMeldeleuchteElm', 423);
+var Lcom_lushprojects_circuitjs1_client_EGTMeldeleuchteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMeldeleuchteElm', 494);
 function $$init_27(this$static){
   this$static.variant = 0;
   this$static.qMask = 0;
@@ -35757,7 +35764,7 @@ function $$init_27(this$static){
   this$static.lcdIMask = 0;
   this$static.runEnable = true;
   this$static.supplyHold = new EGTAcLevelHold;
-  this$static.iHold = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit, $intern_3, 294, 8, 0, 1);
+  this$static.iHold = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_EGTAcLevelHold_2_classLit, $intern_3, 282, 8, 0, 1);
   this$static.designation = 'A1';
   this$static.note = '';
 }
@@ -37172,7 +37179,7 @@ function EGTMotorschutzschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(431, 17, $intern_128, EGTMotorschutzschalterElm, EGTMotorschutzschalterElm_0);
+defineClass(424, 17, $intern_128, EGTMotorschutzschalterElm, EGTMotorschutzschalterElm_0);
 _.calculateCurrent = function calculateCurrent_27(){
   var a, b, i;
   clearPinCurrents(this.pins);
@@ -37465,7 +37472,7 @@ _.tripReason = 0;
 _.tripTime = 0;
 _.tripped = false;
 var BOTTOM_LABELS, COL_GRAY, TOP_LABELS;
-var Lcom_lushprojects_circuitjs1_client_EGTMotorschutzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMotorschutzschalterElm', 431);
+var Lcom_lushprojects_circuitjs1_client_EGTMotorschutzschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTMotorschutzschalterElm', 424);
 function applyAt(d, n, ei){
   if (n != 1 || !ei || !ei.textf)
     return false;
@@ -38088,7 +38095,7 @@ function EGTSchuetzLeistungskontakteElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(210, 17, {8:1, 48:1, 210:1, 11:1}, EGTSchuetzLeistungskontakteElm, EGTSchuetzLeistungskontakteElm_0);
+defineClass(211, 17, {8:1, 48:1, 211:1, 11:1}, EGTSchuetzLeistungskontakteElm, EGTSchuetzLeistungskontakteElm_0);
 _.calculateCurrent = function calculateCurrent_29(){
   var closed_0, p;
   clearPinCurrents(this.pins);
@@ -38288,14 +38295,14 @@ _.undumpXml = function undumpXml_62(xml){
 }
 ;
 var BOT_LAB, TOP_LAB;
-var Lcom_lushprojects_circuitjs1_client_EGTSchuetzLeistungskontakteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzLeistungskontakteElm', 210);
+var Lcom_lushprojects_circuitjs1_client_EGTSchuetzLeistungskontakteElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzLeistungskontakteElm', 211);
 function $clinit_EGTSchuetzLink(){
   $clinit_EGTSchuetzLink = emptyMethod;
   energized = new HashMap;
 }
 
 function designationIfSchuetz(ce){
-  if (instanceOf(ce, 290) || instanceOf(ce, 254) || instanceOf(ce, 255) || instanceOf(ce, 192) || instanceOf(ce, 210) || instanceOf(ce, 257))
+  if (instanceOf(ce, 297) || instanceOf(ce, 257) || instanceOf(ce, 255) || instanceOf(ce, 192) || instanceOf(ce, 211) || instanceOf(ce, 254))
     return ce;
   return null;
 }
@@ -38347,7 +38354,7 @@ function markAuxTens(self_0, des, used){
       h = ce;
       $equals_1(normalize(h.designation), des) && markTens(used, h.contactNo);
     }
-     else if (instanceOf(ce, 254)) {
+     else if (instanceOf(ce, 257)) {
       $equals_1(normalize(ce.designation), des) && (used[1] = true);
     }
      else if (instanceOf(ce, 255)) {
@@ -38359,7 +38366,7 @@ function markAuxTens(self_0, des, used){
       for (c = 0; c < k.nNc; c++)
         markTens(used, tensOfTerminal(($clinit_EGTHilfsschuetzElm() , NC_TOP_0)[c]));
     }
-     else if (instanceOf(ce, 257)) {
+     else if (instanceOf(ce, 254)) {
       b = ce;
       if (!$equals_1(normalize(b.designation), des))
         continue;
@@ -38387,7 +38394,7 @@ function nextAuxSpawnX(host, des){
     if (ce == host)
       continue;
     d = null;
-    instanceOf(ce, 210)?(d = ce.designation):instanceOf(ce, 192) && (d = ce.designation);
+    instanceOf(ce, 211)?(d = ce.designation):instanceOf(ce, 192) && (d = ce.designation);
     if (d == null || !$equals_1(normalize(d), des))
       continue;
     nx = $snapGrid(ce.x2 + 16);
@@ -38511,7 +38518,7 @@ function $hasLeistungskontakte(this$static){
   des = normalize(this$static.designation);
   for (i = 0; i < app_0.elmList.arrayList.array.length; i++) {
     ce = $elementAt(app_0.elmList, i);
-    if (!instanceOf(ce, 210))
+    if (!instanceOf(ce, 211))
       continue;
     if ($equals_1(normalize(ce.designation), des))
       return true;
@@ -38530,7 +38537,7 @@ function $nextSpawnX(this$static){
     if (ce == this$static)
       continue;
     d = null;
-    instanceOf(ce, 210)?(d = ce.designation):instanceOf(ce, 192) && (d = ce.designation);
+    instanceOf(ce, 211)?(d = ce.designation):instanceOf(ce, 192) && (d = ce.designation);
     if (d == null || !$equals_1(normalize(d), des))
       continue;
     nx = $snapGrid(ce.x2 + 16);
@@ -38663,7 +38670,7 @@ function EGTSchuetzSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(290, 17, {8:1, 48:1, 342:1, 290:1, 11:1}, EGTSchuetzSpuleElm, EGTSchuetzSpuleElm_0);
+defineClass(297, 17, {8:1, 48:1, 342:1, 297:1, 11:1}, EGTSchuetzSpuleElm, EGTSchuetzSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_30(){
   var iNom;
   clearPinCurrents(this.pins);
@@ -38920,7 +38927,7 @@ _.energized = false;
 _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTSchuetzSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzSpuleElm', 290);
+var Lcom_lushprojects_circuitjs1_client_EGTSchuetzSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSchuetzSpuleElm', 297);
 function $clinit_EGTSerienschalterElm(){
   $clinit_EGTSerienschalterElm = emptyMethod;
   COL_OPEN_0 = new Color(255, 179, 71);
@@ -39093,7 +39100,7 @@ function EGTSerienschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(413, 46, $intern_120, EGTSerienschalterElm, EGTSerienschalterElm_0);
+defineClass(403, 46, $intern_120, EGTSerienschalterElm, EGTSerienschalterElm_0);
 _.calculateCurrent = function calculateCurrent_31(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -39302,7 +39309,7 @@ _.curcount2 = 0;
 _.current1 = 0;
 _.current2 = 0;
 var COL_OPEN_0;
-var Lcom_lushprojects_circuitjs1_client_EGTSerienschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSerienschalterElm', 413);
+var Lcom_lushprojects_circuitjs1_client_EGTSerienschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSerienschalterElm', 403);
 function $clinit_EGTSicherungElm(){
   $clinit_EGTSicherungElm = emptyMethod;
   $clinit_ChipElm();
@@ -39652,7 +39659,7 @@ function nearestIn(v){
   return best;
 }
 
-defineClass(404, 17, $intern_128, EGTSicherungElm, EGTSicherungElm_0);
+defineClass(437, 17, $intern_128, EGTSicherungElm, EGTSicherungElm_0);
 _.calculateCurrent = function calculateCurrent_32(){
   var a, b, i;
   clearPinCurrents(this.pins);
@@ -39926,7 +39933,7 @@ _.thermal = 0;
 _.tripReason = 0;
 _.tripped = false;
 var IN_A, MAG_MULT, TERM_BOT, TERM_TOP;
-var Lcom_lushprojects_circuitjs1_client_EGTSicherungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSicherungElm', 404);
+var Lcom_lushprojects_circuitjs1_client_EGTSicherungElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSicherungElm', 437);
 function $clinit_EGTSpannungsquelleElm(){
   $clinit_EGTSpannungsquelleElm = emptyMethod;
   $clinit_ChipElm();
@@ -39986,7 +39993,7 @@ function EGTSpannungsquelleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(395, 17, $intern_128, EGTSpannungsquelleElm, EGTSpannungsquelleElm_0);
+defineClass(423, 17, $intern_128, EGTSpannungsquelleElm, EGTSpannungsquelleElm_0);
 _.doStep = function doStep_39(){
   var vL;
   vL = $getLineVoltage(this);
@@ -40125,7 +40132,7 @@ _.undumpXml = function undumpXml_66(xml){
 _.frequency = 0;
 _.voltageRMS = 0;
 var PIN_LABELS_3;
-var Lcom_lushprojects_circuitjs1_client_EGTSpannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSpannungsquelleElm', 395);
+var Lcom_lushprojects_circuitjs1_client_EGTSpannungsquelleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSpannungsquelleElm', 423);
 function $clinit_EGTSteckdoseElm(){
   $clinit_EGTSteckdoseElm = emptyMethod;
   $clinit_ChipElm();
@@ -40270,7 +40277,7 @@ function EGTSteckdoseElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(412, 17, $intern_128, EGTSteckdoseElm, EGTSteckdoseElm_0);
+defineClass(435, 17, $intern_128, EGTSteckdoseElm, EGTSteckdoseElm_0);
 _.creationFailed = function creationFailed_12(){
   return this.sizeX < 3 || this.sizeY < 2;
 }
@@ -40421,7 +40428,7 @@ _.undumpXml = function undumpXml_67(xml){
 }
 ;
 var PIN_LABELS_4;
-var Lcom_lushprojects_circuitjs1_client_EGTSteckdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSteckdoseElm', 412);
+var Lcom_lushprojects_circuitjs1_client_EGTSteckdoseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTSteckdoseElm', 435);
 function $$init_36(this$static){
   this$static.designation = 'E1';
   this$static.note = '';
@@ -40515,7 +40522,7 @@ function EGTStromstossKontaktElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(487, 17, $intern_128, EGTStromstossKontaktElm, EGTStromstossKontaktElm_0);
+defineClass(466, 17, $intern_128, EGTStromstossKontaktElm, EGTStromstossKontaktElm_0);
 _.calculateCurrent = function calculateCurrent_33(){
   clearPinCurrents(this.pins);
   this.switchCurrent = 0;
@@ -40693,7 +40700,7 @@ _.undumpXml = function undumpXml_68(xml){
 ;
 _.switchCurCount = 0;
 _.switchCurrent = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossKontaktElm', 487);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossKontaktElm', 466);
 function $clinit_EGTStromstossLink(){
   $clinit_EGTStromstossLink = emptyMethod;
   latched = new HashMap;
@@ -40849,7 +40856,7 @@ function EGTStromstossSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(415, 17, $intern_128, EGTStromstossSpuleElm, EGTStromstossSpuleElm_0);
+defineClass(459, 17, $intern_128, EGTStromstossSpuleElm, EGTStromstossSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_34(){
   var iNom, vCoil;
   if ((this.flags & $intern_43) != 0) {
@@ -41116,7 +41123,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.wasCoilOn = false;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossSpuleElm', 415);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossSpuleElm', 459);
 function $$init_38(this$static){
   this$static.designation = 'E1';
   this$static.note = '';
@@ -41349,7 +41356,7 @@ function EGTStromstossschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(424, 17, $intern_128, EGTStromstossschalterElm, EGTStromstossschalterElm_0);
+defineClass(436, 17, $intern_128, EGTStromstossschalterElm, EGTStromstossschalterElm_0);
 _.calculateCurrent = function calculateCurrent_35(){
   var i, iNom, vCoil;
   clearPinCurrents(this.pins);
@@ -41614,7 +41621,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.wasCoilOn = false;
-var Lcom_lushprojects_circuitjs1_client_EGTStromstossschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossschalterElm', 424);
+var Lcom_lushprojects_circuitjs1_client_EGTStromstossschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTStromstossschalterElm', 436);
 function $clinit_EGTStyle(){
   $clinit_EGTStyle = emptyMethod;
   COL_L1 = new Color(139, 69, 19);
@@ -42592,7 +42599,7 @@ function EGTTasterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(398, 46, $intern_120, EGTTasterElm, EGTTasterElm_0);
+defineClass(498, 46, $intern_120, EGTTasterElm, EGTTasterElm_0);
 _.calculateCurrent = function calculateCurrent_36(){
   var r;
   if ((this.flags & $intern_43) != 0 || !((this.flags & $intern_46) != 0?this.position != 0:this.position == 0)) {
@@ -42777,7 +42784,7 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTTasterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTasterElm', 398);
+var Lcom_lushprojects_circuitjs1_client_EGTTasterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTasterElm', 498);
 function $$init_40(this$static){
   this$static.designation = 'Q1';
   this$static.note = '';
@@ -43012,7 +43019,7 @@ function EGTTreppenlichtElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(446, 17, $intern_128, EGTTreppenlichtElm, EGTTreppenlichtElm_0);
+defineClass(405, 17, $intern_128, EGTTreppenlichtElm, EGTTreppenlichtElm_0);
 _.calculateCurrent = function calculateCurrent_37(){
   var iNom, vCoil;
   clearPinCurrents(this.pins);
@@ -43248,7 +43255,7 @@ _.nom_v = 0;
 _.resistance = 0;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTTreppenlichtElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTreppenlichtElm', 446);
+var Lcom_lushprojects_circuitjs1_client_EGTTreppenlichtElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTreppenlichtElm', 405);
 function $clinit_EGTTueroeffnerElm(){
   $clinit_EGTTueroeffnerElm = emptyMethod;
   $clinit_ChipElm();
@@ -43391,7 +43398,7 @@ function EGTTueroeffnerElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(416, 17, $intern_128, EGTTueroeffnerElm, EGTTueroeffnerElm_0);
+defineClass(491, 17, $intern_128, EGTTueroeffnerElm, EGTTueroeffnerElm_0);
 _.calculateCurrent = function calculateCurrent_38(){
   clearPinCurrents(this.pins);
   if ((this.flags & $intern_43) != 0 || this.resistance <= 0) {
@@ -43584,7 +43591,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 var PIN_LABELS_5;
-var Lcom_lushprojects_circuitjs1_client_EGTTueroeffnerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTueroeffnerElm', 416);
+var Lcom_lushprojects_circuitjs1_client_EGTTueroeffnerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTTueroeffnerElm', 491);
 function $clinit_EGTUeberlastHeizleiterElm(){
   $clinit_EGTUeberlastHeizleiterElm = emptyMethod;
   $clinit_ChipElm();
@@ -43727,7 +43734,7 @@ function EGTUeberlastHeizleiterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(410, 17, $intern_140, EGTUeberlastHeizleiterElm, EGTUeberlastHeizleiterElm_0);
+defineClass(392, 17, $intern_140, EGTUeberlastHeizleiterElm, EGTUeberlastHeizleiterElm_0);
 _.calculateCurrent = function calculateCurrent_39(){
   clearPinCurrents(this.pins);
   this.poleCurrent[0] = (this.volts[0] - this.volts[1]) / $intern_99;
@@ -43961,7 +43968,7 @@ _.thermal = 0;
 _.tripTime = 0;
 _.tripped = false;
 var LABELS_0;
-var Lcom_lushprojects_circuitjs1_client_EGTUeberlastHeizleiterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastHeizleiterElm', 410);
+var Lcom_lushprojects_circuitjs1_client_EGTUeberlastHeizleiterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastHeizleiterElm', 392);
 function $$init_43(this$static){
   this$static.designation = 'F1';
   this$static.note = '';
@@ -44533,7 +44540,7 @@ function EGTUeberlastrelaisElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(498, 17, $intern_140, EGTUeberlastrelaisElm, EGTUeberlastrelaisElm_0);
+defineClass(428, 17, $intern_140, EGTUeberlastrelaisElm, EGTUeberlastrelaisElm_0);
 _.calculateCurrent = function calculateCurrent_41(){
   clearPinCurrents(this.pins);
   this.poleCurrent[0] = (this.volts[0] - this.volts[1]) / $intern_99;
@@ -44773,7 +44780,7 @@ _.thermal = 0;
 _.tripTime = 0;
 _.tripped = false;
 var LABELS_1;
-var Lcom_lushprojects_circuitjs1_client_EGTUeberlastrelaisElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastrelaisElm', 498);
+var Lcom_lushprojects_circuitjs1_client_EGTUeberlastrelaisElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTUeberlastrelaisElm', 428);
 function $$init_45(this$static){
   this$static.designation = 'S2';
   this$static.note = '';
@@ -44927,7 +44934,7 @@ function EGTWechselschalterElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(462, 46, $intern_120, EGTWechselschalterElm, EGTWechselschalterElm_0);
+defineClass(448, 46, $intern_120, EGTWechselschalterElm, EGTWechselschalterElm_0);
 _.calculateCurrent = function calculateCurrent_42(){
   var r;
   if ((this.flags & $intern_43) != 0) {
@@ -45120,7 +45127,7 @@ _.bodyBottom = 0;
 _.bodyLeft = 0;
 _.bodyRight = 0;
 _.bodyTop = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTWechselschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTWechselschalterElm', 462);
+var Lcom_lushprojects_circuitjs1_client_EGTWechselschalterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTWechselschalterElm', 448);
 function $$init_46(this$static){
   this$static.designation = 'K1';
   this$static.note = '';
@@ -45238,7 +45245,7 @@ function EGTZeitrelaisKontaktElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(292, 17, {8:1, 48:1, 292:1, 11:1}, EGTZeitrelaisKontaktElm, EGTZeitrelaisKontaktElm_0);
+defineClass(294, 17, {8:1, 48:1, 294:1, 11:1}, EGTZeitrelaisKontaktElm, EGTZeitrelaisKontaktElm_0);
 _.calculateCurrent = function calculateCurrent_43(){
   clearPinCurrents(this.pins);
   this.switchCurrent = 0;
@@ -45452,7 +45459,7 @@ _.undumpXml = function undumpXml_78(xml){
 ;
 _.switchCurCount = 0;
 _.switchCurrent = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisKontaktElm', 292);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisKontaktElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisKontaktElm', 294);
 function $clinit_EGTZeitrelaisLink(){
   $clinit_EGTZeitrelaisLink = emptyMethod;
   states = new HashMap;
@@ -45483,7 +45490,7 @@ function findCoil(des){
   list = app_0.elmList;
   for (i = 0; i < list.arrayList.array.length; i++) {
     ce = (checkArrayElementIndex(i, list.arrayList.array.length) , $get_2(list.arrayList, i));
-    if (instanceOf(ce, 285)) {
+    if (instanceOf(ce, 283)) {
       sp = ce;
       if ($equals_1(normalize_2(sp.designation), d))
         return sp;
@@ -45502,7 +45509,7 @@ function findContacts(des){
   list = app_0.elmList;
   for (i = 0; i < list.arrayList.array.length; i++) {
     ce = (checkArrayElementIndex(i, list.arrayList.array.length) , $get_2(list.arrayList, i));
-    if (instanceOf(ce, 292)) {
+    if (instanceOf(ce, 294)) {
       k = ce;
       $equals_1(normalize_2(k.designation), d) && $add_8(out.arrayList, k);
     }
@@ -45647,7 +45654,7 @@ var states;
 function EGTZeitrelaisLink$State(){
 }
 
-defineClass(441, 1, {441:1}, EGTZeitrelaisLink$State);
+defineClass(401, 1, {401:1}, EGTZeitrelaisLink$State);
 _.delay = 1;
 _.delayOff = $intern_109;
 _.lastWallMs = 0;
@@ -45655,7 +45662,7 @@ _.mode = 0;
 _.powered = false;
 _.timedOn = false;
 _.waitAccum = 0;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisLink$State_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisLink/State', 441);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisLink$State_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisLink/State', 401);
 function $$init_47(this$static){
   this$static.designation = 'K1';
   this$static.note = '';
@@ -45810,7 +45817,7 @@ function EGTZeitrelaisSpuleElm_0(xa, ya, xb, yb, f, st){
   this.note = readOptional(st);
 }
 
-defineClass(285, 17, {8:1, 48:1, 285:1, 11:1}, EGTZeitrelaisSpuleElm, EGTZeitrelaisSpuleElm_0);
+defineClass(283, 17, {8:1, 48:1, 283:1, 11:1}, EGTZeitrelaisSpuleElm, EGTZeitrelaisSpuleElm_0);
 _.calculateCurrent = function calculateCurrent_44(){
   var iNom;
   clearPinCurrents(this.pins);
@@ -46084,7 +46091,7 @@ _.nom_pow = 0;
 _.nom_v = 0;
 _.resistance = 0;
 _.skipTimeWrite = false;
-var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisSpuleElm', 285);
+var Lcom_lushprojects_circuitjs1_client_EGTZeitrelaisSpuleElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EGTZeitrelaisSpuleElm', 283);
 function $adjustChipSize(this$static, dx, dy){
   var i, i0, i1, needShift, p, pe;
   if (dx < 0) {
@@ -47612,452 +47619,137 @@ _.closeDialog = function closeDialog_3(){
 ;
 var Lcom_lushprojects_circuitjs1_client_EditTransistorModelDialog_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'EditTransistorModelDialog', 510);
 function $create(className, x1, y1){
-  if ($equals_1('BusSplitterElm', className)) {
-    return new BusSplitterElm(x1, y1);
+  if ($equals_1('NDarlingtonElm', className)) {
+    return new NDarlingtonElm(x1, y1);
   }
-  if ($equals_1('MotorProtectionSwitchElm', className)) {
-    return new MotorProtectionSwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTKlingelElm', className)) {
-    return new EGTKlingelElm(x1, y1);
-  }
-  if ($equals_1('OhmMeterElm', className)) {
-    return new OhmMeterElm(x1, y1);
-  }
-  if ($equals_1('EGTSpannungsquelleElm', className)) {
-    return new EGTSpannungsquelleElm(x1, y1);
-  }
-  if ($equals_1('EGTFupTofElm', className)) {
-    return new EGTFupTofElm(x1, y1);
-  }
-  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
-    return new EGTSchuetzLeistungskontakteElm(x1, y1);
-  }
-  if ($equals_1('EGTTasterElm', className)) {
-    return new EGTTasterElm(x1, y1);
-  }
-  if ($equals_1('TextElm', className)) {
-    return new TextElm(x1, y1);
-  }
-  if ($equals_1('VaractorElm', className)) {
-    return new VaractorElm(x1, y1);
-  }
-  if ($equals_1('DFlipFlopElm', className)) {
-    return new DFlipFlopElm(x1, y1);
-  }
-  if ($equals_1('LineElm', className)) {
-    return new LineElm(x1, y1);
-  }
-  if ($equals_1('CustomLogicElm', className)) {
-    return new CustomLogicElm(x1, y1);
-  }
-  if ($equals_1('DiacElm', className)) {
-    return new DiacElm(x1, y1);
-  }
-  if ($equals_1('EGTSicherungElm', className)) {
-    return new EGTSicherungElm(x1, y1);
-  }
-  if ($equals_1('SipoShiftElm', className)) {
-    return new SipoShiftElm(x1, y1);
-  }
-  if ($equals_1('OpAmpElm', className)) {
-    return new OpAmpElm(x1, y1);
-  }
-  if ($equals_1('DiodeElm', className)) {
-    return new DiodeElm(x1, y1);
-  }
-  if ($equals_1('CCCSElm', className)) {
-    return new CCCSElm(x1, y1);
-  }
-  if ($equals_1('MultiplexerElm', className)) {
-    return new MultiplexerElm(x1, y1);
-  }
-  if ($equals_1('DACElm', className)) {
-    return new DACElm(x1, y1);
-  }
-  if ($equals_1('ADCElm', className)) {
-    return new ADCElm(x1, y1);
-  }
-  if ($equals_1('EGTBewegungsmelderElm', className)) {
-    return new EGTBewegungsmelderElm(x1, y1);
-  }
-  if ($equals_1('NoiseElm', className)) {
-    return new NoiseElm(x1, y1);
-  }
-  if ($equals_1('AnalogSwitchElm', className)) {
-    return new AnalogSwitchElm(x1, y1);
-  }
-  if ($equals_1('DataRecorderElm', className)) {
-    return new DataRecorderElm(x1, y1);
+  if ($equals_1('EGTHilfsschalterblockElm', className)) {
+    return new EGTHilfsschalterblockElm(x1, y1);
   }
   if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
     return new EGTUeberlastHeizleiterElm(x1, y1);
   }
-  if ($equals_1('LDRElm', className)) {
-    return new LDRElm(x1, y1);
-  }
-  if ($equals_1('EGTSteckdoseElm', className)) {
-    return new EGTSteckdoseElm(x1, y1);
-  }
-  if ($equals_1('LogicInputElm', className)) {
-    return new LogicInputElm(x1, y1);
-  }
-  if ($equals_1('EGTSerienschalterElm', className)) {
-    return new EGTSerienschalterElm(x1, y1);
-  }
-  if ($equals_1('PDarlingtonElm', className)) {
-    return new PDarlingtonElm(x1, y1);
-  }
-  if ($equals_1('OTAElm', className)) {
-    return new OTAElm(x1, y1);
-  }
-  if ($equals_1('EGTFupTonElm', className)) {
-    return new EGTFupTonElm(x1, y1);
-  }
-  if ($equals_1('PTransistorElm', className)) {
-    return new PTransistorElm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossSpuleElm', className)) {
-    return new EGTStromstossSpuleElm(x1, y1);
-  }
-  if ($equals_1('EGTTueroeffnerElm', className)) {
-    return new EGTTueroeffnerElm(x1, y1);
-  }
-  if ($equals_1('OpAmpRealElm', className)) {
-    return new OpAmpRealElm(x1, y1);
-  }
-  if ($equals_1('PMosfetElm', className)) {
-    return new PMosfetElm(x1, y1);
-  }
-  if ($equals_1('SCRElm', className)) {
-    return new SCRElm(x1, y1);
-  }
-  if ($equals_1('OutputElm', className)) {
-    return new OutputElm(x1, y1);
-  }
-  if ($equals_1('EGTLeuchteElm', className)) {
-    return new EGTLeuchteElm(x1, y1);
-  }
-  if ($equals_1('NJfetElm', className)) {
-    return new NJfetElm(x1, y1);
-  }
-  if ($equals_1('StopTriggerElm', className)) {
-    return new StopTriggerElm(x1, y1);
-  }
-  if ($equals_1('CC2NegElm', className)) {
-    return new CC2NegElm(x1, y1);
-  }
-  if ($equals_1('DCVoltageElm', className)) {
-    return new DCVoltageElm(x1, y1);
-  }
-  if ($equals_1('EGTAusschalterElm', className)) {
-    return new EGTAusschalterElm(x1, y1);
-  }
-  if ($equals_1('AnalogSwitch2Elm', className)) {
-    return new AnalogSwitch2Elm(x1, y1);
-  }
-  if ($equals_1('TappedTransformerElm', className)) {
-    return new TappedTransformerElm(x1, y1);
-  }
-  if ($equals_1('MBBSwitchElm', className)) {
-    return new MBBSwitchElm(x1, y1);
-  }
-  if ($equals_1('EGTMeldeleuchteElm', className)) {
-    return new EGTMeldeleuchteElm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossschalterElm', className)) {
-    return new EGTStromstossschalterElm(x1, y1);
-  }
-  if ($equals_1('CurrentElm', className)) {
-    return new CurrentElm(x1, y1);
-  }
-  if ($equals_1('CC2Elm', className)) {
-    return new CC2Elm(x1, y1);
-  }
-  if ($equals_1('XorGateElm', className)) {
-    return new XorGateElm(x1, y1);
-  }
-  if ($equals_1('CustomTransformerElm', className)) {
-    return new CustomTransformerElm(x1, y1);
-  }
-  if ($equals_1('HalfAdderElm', className)) {
-    return new HalfAdderElm(x1, y1);
-  }
-  if ($equals_1('BusLogicInputElm', className)) {
-    return new BusLogicInputElm(x1, y1);
-  }
-  if ($equals_1('AudioInputElm', className)) {
-    return new AudioInputElm(x1, y1);
-  }
-  if ($equals_1('MonostableElm', className)) {
-    return new MonostableElm(x1, y1);
-  }
-  if ($equals_1('OptocouplerElm', className)) {
-    return new OptocouplerElm(x1, y1);
-  }
-  if ($equals_1('DeMultiplexerElm', className)) {
-    return new DeMultiplexerElm(x1, y1);
-  }
-  if ($equals_1('NTransistorElm', className)) {
-    return new NTransistorElm(x1, y1);
-  }
-  if ($equals_1('EGTHmiGeberElm', className)) {
-    return new EGTHmiGeberElm(x1, y1);
-  }
-  if ($equals_1('EGTMotorschutzschalterElm', className)) {
-    return new EGTMotorschutzschalterElm(x1, y1);
-  }
-  if ($equals_1('EGTKondensatormotorElm', className)) {
-    return new EGTKondensatormotorElm(x1, y1);
-  }
-  if ($equals_1('TimeDelayRelayElm', className)) {
-    return new TimeDelayRelayElm(x1, y1);
-  }
-  if ($equals_1('LEDElm', className)) {
-    return new LEDElm(x1, y1);
-  }
-  if ($equals_1('DPDTSwitchElm', className)) {
-    return new DPDTSwitchElm(x1, y1);
-  }
-  if ($equals_1('CounterElm', className)) {
-    return new CounterElm(x1, y1);
-  }
-  if ($equals_1('EGTGleichspannungsquelleElm', className)) {
-    return new EGTGleichspannungsquelleElm(x1, y1);
-  }
-  if ($equals_1('NorGateElm', className)) {
-    return new NorGateElm(x1, y1);
-  }
-  if ($equals_1('VCOElm', className)) {
-    return new VCOElm(x1, y1);
-  }
-  if ($equals_1('EGTDrehstromquelleElm', className)) {
-    return new EGTDrehstromquelleElm(x1, y1);
-  }
-  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
-    return new EGTZeitrelaisSpuleElm(x1, y1);
-  }
-  if ($equals_1('LampElm', className)) {
-    return new LampElm(x1, y1);
-  }
-  if ($equals_1('EGTLeistungsschuetzElm', className)) {
-    return new EGTLeistungsschuetzElm(x1, y1);
-  }
-  if ($equals_1('SparkGapElm', className)) {
-    return new SparkGapElm(x1, y1);
-  }
-  if ($equals_1('VarRailElm', className)) {
-    return new VarRailElm(x1, y1);
-  }
-  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
-    return new EGTKondensatormotorKompaktElm(x1, y1);
-  }
-  if ($equals_1('SRAMElm', className)) {
-    return new SRAMElm(x1, y1);
-  }
-  if ($equals_1('SchmittElm', className)) {
-    return new SchmittElm(x1, y1);
-  }
-  if ($equals_1('TestPointElm', className)) {
-    return new TestPointElm(x1, y1);
-  }
-  if ($equals_1('EGTTreppenlichtElm', className)) {
-    return new EGTTreppenlichtElm(x1, y1);
-  }
-  if ($equals_1('NortonAmpElm', className)) {
-    return new NortonAmpElm(x1, y1);
-  }
   if ($equals_1('EGTAbzweigdoseElm', className)) {
     return new EGTAbzweigdoseElm(x1, y1);
-  }
-  if ($equals_1('CCVSElm', className)) {
-    return new CCVSElm(x1, y1);
-  }
-  if ($equals_1('AudioOutputElm', className)) {
-    return new AudioOutputElm(x1, y1);
-  }
-  if ($equals_1('RelayCoilElm', className)) {
-    return new RelayCoilElm(x1, y1);
-  }
-  if ($equals_1('EGTDrehstrommotorElm', className)) {
-    return new EGTDrehstrommotorElm(x1, y1);
-  }
-  if ($equals_1('PisoShiftElm', className)) {
-    return new PisoShiftElm(x1, y1);
-  }
-  if ($equals_1('WattmeterElm', className)) {
-    return new WattmeterElm(x1, y1);
-  }
-  if ($equals_1('CustomCompositeChipElm', className)) {
-    return new CustomCompositeChipElm(x1, y1);
-  }
-  if ($equals_1('EGTSchuetzSpuleElm', className)) {
-    return new EGTSchuetzSpuleElm(x1, y1);
-  }
-  if ($equals_1('SweepElm', className)) {
-    return new SweepElm(x1, y1);
-  }
-  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
-    return new EGTZeitrelaisKontaktElm(x1, y1);
-  }
-  if ($equals_1('EGTHmiLastElm', className)) {
-    return new EGTHmiLastElm(x1, y1);
-  }
-  if ($equals_1('LabeledNodeElm', className)) {
-    return new LabeledNodeElm(x1, y1);
-  }
-  if ($equals_1('Switch2Elm', className)) {
-    return new Switch2Elm(x1, y1);
-  }
-  if ($equals_1('ProbeElm', className)) {
-    return new ProbeElm(x1, y1);
-  }
-  if ($equals_1('OpAmpSwapElm', className)) {
-    return new OpAmpSwapElm(x1, y1);
-  }
-  if ($equals_1('AmmeterElm', className)) {
-    return new AmmeterElm(x1, y1);
-  }
-  if ($equals_1('EGTMiniSpsElm', className)) {
-    return new EGTMiniSpsElm(x1, y1);
-  }
-  if ($equals_1('TunnelDiodeElm', className)) {
-    return new TunnelDiodeElm(x1, y1);
-  }
-  if ($equals_1('EGTFupEingangElm', className)) {
-    return new EGTFupEingangElm(x1, y1);
-  }
-  if ($equals_1('OrGateElm', className)) {
-    return new OrGateElm(x1, y1);
-  }
-  if ($equals_1('ROMElm', className)) {
-    return new ROMElm(x1, y1);
-  }
-  if ($equals_1('DataInputElm', className)) {
-    return new DataInputElm(x1, y1);
-  }
-  if ($equals_1('CrossSwitchElm', className)) {
-    return new CrossSwitchElm(x1, y1);
-  }
-  if ($equals_1('CrystalElm', className)) {
-    return new CrystalElm(x1, y1);
-  }
-  if ($equals_1('InstructionDisplayElm', className)) {
-    return new InstructionDisplayElm(x1, y1);
-  }
-  if ($equals_1('ThreePhaseMotorElm', className)) {
-    return new ThreePhaseMotorElm(x1, y1);
-  }
-  if ($equals_1('JKFlipFlopElm', className)) {
-    return new JKFlipFlopElm(x1, y1);
-  }
-  if ($equals_1('Counter2Elm', className)) {
-    return new Counter2Elm(x1, y1);
-  }
-  if ($equals_1('EGTHilfsschuetzElm', className)) {
-    return new EGTHilfsschuetzElm(x1, y1);
-  }
-  if ($equals_1('TimerElm', className)) {
-    return new TimerElm(x1, y1);
-  }
-  if ($equals_1('CustomCompositeElm', className)) {
-    return new CustomCompositeElm(x1, y1);
-  }
-  if ($equals_1('EGTWechselschalterElm', className)) {
-    return new EGTWechselschalterElm(x1, y1);
-  }
-  if ($equals_1('FullAdderElm', className)) {
-    return new FullAdderElm(x1, y1);
-  }
-  if ($equals_1('PotElm', className)) {
-    return new PotElm(x1, y1);
-  }
-  if ($equals_1('PolarCapacitorElm', className)) {
-    return new PolarCapacitorElm(x1, y1);
   }
   if ($equals_1('SevenSegElm', className)) {
     return new SevenSegElm(x1, y1);
   }
-  if ($equals_1('ClockElm', className)) {
-    return new ClockElm(x1, y1);
+  if ($equals_1('EGTHilfsschuetzElm', className)) {
+    return new EGTHilfsschuetzElm(x1, y1);
   }
-  if ($equals_1('FMElm', className)) {
-    return new FMElm(x1, y1);
+  if ($equals_1('LEDElm', className)) {
+    return new LEDElm(x1, y1);
   }
-  if ($equals_1('NDarlingtonElm', className)) {
-    return new NDarlingtonElm(x1, y1);
+  if ($equals_1('XorGateElm', className)) {
+    return new XorGateElm(x1, y1);
   }
-  if ($equals_1('PhaseCompElm', className)) {
-    return new PhaseCompElm(x1, y1);
+  if ($equals_1('SweepElm', className)) {
+    return new SweepElm(x1, y1);
   }
-  if ($equals_1('SquareRailElm', className)) {
-    return new SquareRailElm(x1, y1);
+  if ($equals_1('TimeDelayRelayElm', className)) {
+    return new TimeDelayRelayElm(x1, y1);
   }
-  if ($equals_1('ACRailElm', className)) {
-    return new ACRailElm(x1, y1);
+  if ($equals_1('AnalogMuxElm', className)) {
+    return new AnalogMuxElm(x1, y1);
   }
-  if ($equals_1('BusTransceiverElm', className)) {
-    return new BusTransceiverElm(x1, y1);
+  if ($equals_1('NoiseElm', className)) {
+    return new NoiseElm(x1, y1);
   }
-  if ($equals_1('DelayBufferElm', className)) {
-    return new DelayBufferElm(x1, y1);
-  }
-  if ($equals_1('FuseElm', className)) {
-    return new FuseElm(x1, y1);
-  }
-  if ($equals_1('EGTInstallationsleitungElm', className)) {
-    return new EGTInstallationsleitungElm(x1, y1);
-  }
-  if ($equals_1('InvertingSchmittElm', className)) {
-    return new InvertingSchmittElm(x1, y1);
-  }
-  if ($equals_1('SevenSegDecoderElm', className)) {
-    return new SevenSegDecoderElm(x1, y1);
+  if ($equals_1('ThreePhaseMotorElm', className)) {
+    return new ThreePhaseMotorElm(x1, y1);
   }
   if ($equals_1('RoutedWireElm', className)) {
     return new RoutedWireElm(x1, y1);
   }
-  if ($equals_1('TransformerElm', className)) {
-    return new TransformerElm(x1, y1);
+  if ($equals_1('AudioInputElm', className)) {
+    return new AudioInputElm(x1, y1);
   }
-  if ($equals_1('ACVoltageElm', className)) {
-    return new ACVoltageElm(x1, y1);
+  if ($equals_1('EGTMiniSpsElm', className)) {
+    return new EGTMiniSpsElm(x1, y1);
   }
-  if ($equals_1('InductorElm', className)) {
-    return new InductorElm(x1, y1);
+  if ($equals_1('DataRecorderElm', className)) {
+    return new DataRecorderElm(x1, y1);
+  }
+  if ($equals_1('AntennaElm', className)) {
+    return new AntennaElm(x1, y1);
+  }
+  if ($equals_1('Counter2Elm', className)) {
+    return new Counter2Elm(x1, y1);
+  }
+  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
+    return new EGTZeitrelaisSpuleElm(x1, y1);
+  }
+  if ($equals_1('ComparatorElm', className)) {
+    return new ComparatorElm(x1, y1);
+  }
+  if ($equals_1('LabeledNodeElm', className)) {
+    return new LabeledNodeElm(x1, y1);
+  }
+  if ($equals_1('DiodeElm', className)) {
+    return new DiodeElm(x1, y1);
+  }
+  if ($equals_1('EGTSerienschalterElm', className)) {
+    return new EGTSerienschalterElm(x1, y1);
+  }
+  if ($equals_1('RSSpeicherElm', className)) {
+    return new RSSpeicherElm(x1, y1);
+  }
+  if ($equals_1('EGTTreppenlichtElm', className)) {
+    return new EGTTreppenlichtElm(x1, y1);
+  }
+  if ($equals_1('ADCElm', className)) {
+    return new ADCElm(x1, y1);
+  }
+  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
+    return new EGTKondensatormotorKompaktElm(x1, y1);
+  }
+  if ($equals_1('MemristorElm', className)) {
+    return new MemristorElm(x1, y1);
+  }
+  if ($equals_1('ROMElm', className)) {
+    return new ROMElm(x1, y1);
+  }
+  if ($equals_1('SipoShiftElm', className)) {
+    return new SipoShiftElm(x1, y1);
+  }
+  if ($equals_1('PolarCapacitorElm', className)) {
+    return new PolarCapacitorElm(x1, y1);
+  }
+  if ($equals_1('SparkGapElm', className)) {
+    return new SparkGapElm(x1, y1);
   }
   if ($equals_1('TriStateElm', className)) {
     return new TriStateElm(x1, y1);
   }
-  if ($equals_1('ZenerElm', className)) {
-    return new ZenerElm(x1, y1);
+  if ($equals_1('Switch2Elm', className)) {
+    return new Switch2Elm(x1, y1);
   }
-  if ($equals_1('EGTLeitungElm', className)) {
-    return new EGTLeitungElm(x1, y1);
+  if ($equals_1('SRAMElm', className)) {
+    return new SRAMElm(x1, y1);
   }
-  if ($equals_1('PJfetElm', className)) {
-    return new PJfetElm(x1, y1);
+  if ($equals_1('EGTBewegungsmelderElm', className)) {
+    return new EGTBewegungsmelderElm(x1, y1);
   }
-  if ($equals_1('RelayContactElm', className)) {
-    return new RelayContactElm(x1, y1);
+  if ($equals_1('ACVoltageElm', className)) {
+    return new ACVoltageElm(x1, y1);
   }
-  if ($equals_1('TFlipFlopElm', className)) {
-    return new TFlipFlopElm(x1, y1);
+  if ($equals_1('TestPointElm', className)) {
+    return new TestPointElm(x1, y1);
   }
-  if ($equals_1('LatchElm', className)) {
-    return new LatchElm(x1, y1);
+  if ($equals_1('CCCSElm', className)) {
+    return new CCCSElm(x1, y1);
   }
-  if ($equals_1('AMElm', className)) {
-    return new AMElm(x1, y1);
+  if ($equals_1('GyratorElm', className)) {
+    return new GyratorElm(x1, y1);
   }
-  if ($equals_1('ExtVoltageElm', className)) {
-    return new ExtVoltageElm(x1, y1);
+  if ($equals_1('TimerElm', className)) {
+    return new TimerElm(x1, y1);
   }
-  if ($equals_1('EGTUeberlastKontaktElm', className)) {
-    return new EGTUeberlastKontaktElm(x1, y1);
+  if ($equals_1('NJfetElm', className)) {
+    return new NJfetElm(x1, y1);
   }
-  if ($equals_1('ScopeElm', className)) {
-    return new ScopeElm(x1, y1);
+  if ($equals_1('LDRElm', className)) {
+    return new LDRElm(x1, y1);
   }
   if ($equals_1('LogicOutputElm', className)) {
     return new LogicOutputElm(x1, y1);
@@ -48065,639 +47757,954 @@ function $create(className, x1, y1){
   if ($equals_1('DecimalDisplayElm', className)) {
     return new DecimalDisplayElm(x1, y1);
   }
-  if ($equals_1('EGTHilfsschalterblockElm', className)) {
-    return new EGTHilfsschalterblockElm(x1, y1);
+  if ($equals_1('BusTransceiverElm', className)) {
+    return new BusTransceiverElm(x1, y1);
   }
-  if ($equals_1('NandGateElm', className)) {
-    return new NandGateElm(x1, y1);
+  if ($equals_1('TFlipFlopElm', className)) {
+    return new TFlipFlopElm(x1, y1);
   }
-  if ($equals_1('DCMotorElm', className)) {
-    return new DCMotorElm(x1, y1);
+  if ($equals_1('EGTDrehstromquelleElm', className)) {
+    return new EGTDrehstromquelleElm(x1, y1);
   }
-  if ($equals_1('ThermistorNTCElm', className)) {
-    return new ThermistorNTCElm(x1, y1);
+  if ($equals_1('EGTHmiGeberElm', className)) {
+    return new EGTHmiGeberElm(x1, y1);
   }
-  if ($equals_1('TransLineElm', className)) {
-    return new TransLineElm(x1, y1);
+  if ($equals_1('MBBSwitchElm', className)) {
+    return new MBBSwitchElm(x1, y1);
   }
-  if ($equals_1('BoxElm', className)) {
-    return new BoxElm(x1, y1);
-  }
-  if ($equals_1('SwitchElm', className)) {
-    return new SwitchElm(x1, y1);
-  }
-  if ($equals_1('UnijunctionElm', className)) {
-    return new UnijunctionElm(x1, y1);
-  }
-  if ($equals_1('RelayElm', className)) {
-    return new RelayElm(x1, y1);
-  }
-  if ($equals_1('NMosfetElm', className)) {
-    return new NMosfetElm(x1, y1);
-  }
-  if ($equals_1('InverterElm', className)) {
-    return new InverterElm(x1, y1);
-  }
-  if ($equals_1('PushSwitchElm', className)) {
-    return new PushSwitchElm(x1, y1);
-  }
-  if ($equals_1('WireElm', className)) {
-    return new WireElm(x1, y1);
-  }
-  if ($equals_1('AnalogMuxElm', className)) {
-    return new AnalogMuxElm(x1, y1);
-  }
-  if ($equals_1('EGTStromstossKontaktElm', className)) {
-    return new EGTStromstossKontaktElm(x1, y1);
-  }
-  if ($equals_1('TriacElm', className)) {
-    return new TriacElm(x1, y1);
-  }
-  if ($equals_1('TriodeElm', className)) {
-    return new TriodeElm(x1, y1);
-  }
-  if ($equals_1('GraphicElm', className)) {
-    return new GraphicElm(x1, y1);
-  }
-  if ($equals_1('XnorGateElm', className)) {
-    return new XnorGateElm(x1, y1);
-  }
-  if ($equals_1('RingCounterElm', className)) {
-    return new RingCounterElm(x1, y1);
-  }
-  if ($equals_1('EGTFupAusgangElm', className)) {
-    return new EGTFupAusgangElm(x1, y1);
-  }
-  if ($equals_1('EGTKreuzschalterElm', className)) {
-    return new EGTKreuzschalterElm(x1, y1);
-  }
-  if ($equals_1('GroundElm', className)) {
-    return new GroundElm(x1, y1);
-  }
-  if ($equals_1('MemristorElm', className)) {
-    return new MemristorElm(x1, y1);
-  }
-  if ($equals_1('AndGateElm', className)) {
-    return new AndGateElm(x1, y1);
+  if ($equals_1('AmmeterElm', className)) {
+    return new AmmeterElm(x1, y1);
   }
   if ($equals_1('RailElm', className)) {
     return new RailElm(x1, y1);
   }
-  if ($equals_1('RSSpeicherElm', className)) {
-    return new RSSpeicherElm(x1, y1);
+  if ($equals_1('DFlipFlopElm', className)) {
+    return new DFlipFlopElm(x1, y1);
   }
-  if ($equals_1('AntennaElm', className)) {
-    return new AntennaElm(x1, y1);
+  if ($equals_1('MotorProtectionSwitchElm', className)) {
+    return new MotorProtectionSwitchElm(x1, y1);
   }
-  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
-    return new EGTSchuetzHilfskontaktElm(x1, y1);
+  if ($equals_1('AnalogSwitchElm', className)) {
+    return new AnalogSwitchElm(x1, y1);
   }
-  if ($equals_1('ResistorElm', className)) {
-    return new ResistorElm(x1, y1);
+  if ($equals_1('RelayContactElm', className)) {
+    return new RelayContactElm(x1, y1);
   }
-  if ($equals_1('EGTGleichstrommotorElm', className)) {
-    return new EGTGleichstrommotorElm(x1, y1);
+  if ($equals_1('EGTSpannungsquelleElm', className)) {
+    return new EGTSpannungsquelleElm(x1, y1);
   }
-  if ($equals_1('SeqGenElm', className)) {
-    return new SeqGenElm(x1, y1);
+  if ($equals_1('EGTMotorschutzschalterElm', className)) {
+    return new EGTMotorschutzschalterElm(x1, y1);
   }
-  if ($equals_1('ComparatorElm', className)) {
-    return new ComparatorElm(x1, y1);
+  if ($equals_1('AMElm', className)) {
+    return new AMElm(x1, y1);
   }
-  if ($equals_1('CapacitorElm', className)) {
-    return new CapacitorElm(x1, y1);
+  if ($equals_1('JKFlipFlopElm', className)) {
+    return new JKFlipFlopElm(x1, y1);
+  }
+  if ($equals_1('HalfAdderElm', className)) {
+    return new HalfAdderElm(x1, y1);
   }
   if ($equals_1('EGTUeberlastrelaisElm', className)) {
     return new EGTUeberlastrelaisElm(x1, y1);
   }
-  if ($equals_1('LEDArrayElm', className)) {
-    return new LEDArrayElm(x1, y1);
+  if ($equals_1('PTransistorElm', className)) {
+    return new PTransistorElm(x1, y1);
+  }
+  if ($equals_1('NandGateElm', className)) {
+    return new NandGateElm(x1, y1);
+  }
+  if ($equals_1('EGTInstallationsleitungElm', className)) {
+    return new EGTInstallationsleitungElm(x1, y1);
+  }
+  if ($equals_1('FMElm', className)) {
+    return new FMElm(x1, y1);
+  }
+  if ($equals_1('EGTKreuzschalterElm', className)) {
+    return new EGTKreuzschalterElm(x1, y1);
+  }
+  if ($equals_1('DataInputElm', className)) {
+    return new DataInputElm(x1, y1);
+  }
+  if ($equals_1('EGTDrehstrommotorElm', className)) {
+    return new EGTDrehstrommotorElm(x1, y1);
+  }
+  if ($equals_1('CurrentElm', className)) {
+    return new CurrentElm(x1, y1);
+  }
+  if ($equals_1('GroundElm', className)) {
+    return new GroundElm(x1, y1);
   }
   if ($equals_1('VCVSElm', className)) {
     return new VCVSElm(x1, y1);
   }
+  if ($equals_1('PDarlingtonElm', className)) {
+    return new PDarlingtonElm(x1, y1);
+  }
+  if ($equals_1('EGTSteckdoseElm', className)) {
+    return new EGTSteckdoseElm(x1, y1);
+  }
+  if ($equals_1('EGTStromstossschalterElm', className)) {
+    return new EGTStromstossschalterElm(x1, y1);
+  }
+  if ($equals_1('EGTSicherungElm', className)) {
+    return new EGTSicherungElm(x1, y1);
+  }
+  if ($equals_1('PotElm', className)) {
+    return new PotElm(x1, y1);
+  }
+  if ($equals_1('InductorElm', className)) {
+    return new InductorElm(x1, y1);
+  }
+  if ($equals_1('GraphicElm', className)) {
+    return new GraphicElm(x1, y1);
+  }
+  if ($equals_1('OrGateElm', className)) {
+    return new OrGateElm(x1, y1);
+  }
+  if ($equals_1('TextElm', className)) {
+    return new TextElm(x1, y1);
+  }
+  if ($equals_1('NorGateElm', className)) {
+    return new NorGateElm(x1, y1);
+  }
+  if ($equals_1('VarRailElm', className)) {
+    return new VarRailElm(x1, y1);
+  }
+  if ($equals_1('ZenerElm', className)) {
+    return new ZenerElm(x1, y1);
+  }
+  if ($equals_1('NTransistorElm', className)) {
+    return new NTransistorElm(x1, y1);
+  }
+  if ($equals_1('LatchElm', className)) {
+    return new LatchElm(x1, y1);
+  }
+  if ($equals_1('EGTKlingelElm', className)) {
+    return new EGTKlingelElm(x1, y1);
+  }
+  if ($equals_1('TriodeElm', className)) {
+    return new TriodeElm(x1, y1);
+  }
+  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
+    return new EGTSchuetzLeistungskontakteElm(x1, y1);
+  }
+  if ($equals_1('CrossSwitchElm', className)) {
+    return new CrossSwitchElm(x1, y1);
+  }
+  if ($equals_1('DiacElm', className)) {
+    return new DiacElm(x1, y1);
+  }
+  if ($equals_1('CustomCompositeChipElm', className)) {
+    return new CustomCompositeChipElm(x1, y1);
+  }
+  if ($equals_1('EGTLeitungElm', className)) {
+    return new EGTLeitungElm(x1, y1);
+  }
+  if ($equals_1('CapacitorElm', className)) {
+    return new CapacitorElm(x1, y1);
+  }
+  if ($equals_1('OpAmpSwapElm', className)) {
+    return new OpAmpSwapElm(x1, y1);
+  }
+  if ($equals_1('RelayElm', className)) {
+    return new RelayElm(x1, y1);
+  }
+  if ($equals_1('MultiplexerElm', className)) {
+    return new MultiplexerElm(x1, y1);
+  }
+  if ($equals_1('SwitchElm', className)) {
+    return new SwitchElm(x1, y1);
+  }
+  if ($equals_1('CustomLogicElm', className)) {
+    return new CustomLogicElm(x1, y1);
+  }
+  if ($equals_1('RelayCoilElm', className)) {
+    return new RelayCoilElm(x1, y1);
+  }
+  if ($equals_1('EGTWechselschalterElm', className)) {
+    return new EGTWechselschalterElm(x1, y1);
+  }
+  if ($equals_1('TriacElm', className)) {
+    return new TriacElm(x1, y1);
+  }
+  if ($equals_1('TunnelDiodeElm', className)) {
+    return new TunnelDiodeElm(x1, y1);
+  }
+  if ($equals_1('SCRElm', className)) {
+    return new SCRElm(x1, y1);
+  }
+  if ($equals_1('XnorGateElm', className)) {
+    return new XnorGateElm(x1, y1);
+  }
+  if ($equals_1('CC2NegElm', className)) {
+    return new CC2NegElm(x1, y1);
+  }
+  if ($equals_1('DelayBufferElm', className)) {
+    return new DelayBufferElm(x1, y1);
+  }
+  if ($equals_1('EGTUeberlastKontaktElm', className)) {
+    return new EGTUeberlastKontaktElm(x1, y1);
+  }
+  if ($equals_1('FuseElm', className)) {
+    return new FuseElm(x1, y1);
+  }
+  if ($equals_1('EGTFupTofElm', className)) {
+    return new EGTFupTofElm(x1, y1);
+  }
+  if ($equals_1('OptocouplerElm', className)) {
+    return new OptocouplerElm(x1, y1);
+  }
+  if ($equals_1('OutputElm', className)) {
+    return new OutputElm(x1, y1);
+  }
+  if ($equals_1('ResistorElm', className)) {
+    return new ResistorElm(x1, y1);
+  }
+  if ($equals_1('RingCounterElm', className)) {
+    return new RingCounterElm(x1, y1);
+  }
+  if ($equals_1('EGTAusschalterElm', className)) {
+    return new EGTAusschalterElm(x1, y1);
+  }
+  if ($equals_1('BusLogicInputElm', className)) {
+    return new BusLogicInputElm(x1, y1);
+  }
+  if ($equals_1('ClockElm', className)) {
+    return new ClockElm(x1, y1);
+  }
+  if ($equals_1('EGTStromstossSpuleElm', className)) {
+    return new EGTStromstossSpuleElm(x1, y1);
+  }
+  if ($equals_1('DCMotorElm', className)) {
+    return new DCMotorElm(x1, y1);
+  }
+  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
+    return new EGTSchuetzHilfskontaktElm(x1, y1);
+  }
+  if ($equals_1('VaractorElm', className)) {
+    return new VaractorElm(x1, y1);
+  }
+  if ($equals_1('PJfetElm', className)) {
+    return new PJfetElm(x1, y1);
+  }
+  if ($equals_1('ProbeElm', className)) {
+    return new ProbeElm(x1, y1);
+  }
+  if ($equals_1('OTAElm', className)) {
+    return new OTAElm(x1, y1);
+  }
+  if ($equals_1('CustomCompositeElm', className)) {
+    return new CustomCompositeElm(x1, y1);
+  }
+  if ($equals_1('DPDTSwitchElm', className)) {
+    return new DPDTSwitchElm(x1, y1);
+  }
+  if ($equals_1('OpAmpRealElm', className)) {
+    return new OpAmpRealElm(x1, y1);
+  }
+  if ($equals_1('SquareRailElm', className)) {
+    return new SquareRailElm(x1, y1);
+  }
+  if ($equals_1('DCVoltageElm', className)) {
+    return new DCVoltageElm(x1, y1);
+  }
+  if ($equals_1('AndGateElm', className)) {
+    return new AndGateElm(x1, y1);
+  }
+  if ($equals_1('CC2Elm', className)) {
+    return new CC2Elm(x1, y1);
+  }
+  if ($equals_1('LogicInputElm', className)) {
+    return new LogicInputElm(x1, y1);
+  }
+  if ($equals_1('DACElm', className)) {
+    return new DACElm(x1, y1);
+  }
+  if ($equals_1('EGTLeuchteElm', className)) {
+    return new EGTLeuchteElm(x1, y1);
+  }
+  if ($equals_1('EGTStromstossKontaktElm', className)) {
+    return new EGTStromstossKontaktElm(x1, y1);
+  }
+  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
+    return new EGTZeitrelaisKontaktElm(x1, y1);
+  }
+  if ($equals_1('CustomTransformerElm', className)) {
+    return new CustomTransformerElm(x1, y1);
+  }
+  if ($equals_1('EGTHmiLastElm', className)) {
+    return new EGTHmiLastElm(x1, y1);
+  }
+  if ($equals_1('OpAmpElm', className)) {
+    return new OpAmpElm(x1, y1);
+  }
+  if ($equals_1('PMosfetElm', className)) {
+    return new PMosfetElm(x1, y1);
+  }
+  if ($equals_1('EGTGleichstrommotorElm', className)) {
+    return new EGTGleichstrommotorElm(x1, y1);
+  }
   if ($equals_1('VCCSElm', className)) {
     return new VCCSElm(x1, y1);
   }
-  if ($equals_1('GyratorElm', className)) {
-    return new GyratorElm(x1, y1);
+  if ($equals_1('LineElm', className)) {
+    return new LineElm(x1, y1);
+  }
+  if ($equals_1('VCOElm', className)) {
+    return new VCOElm(x1, y1);
+  }
+  if ($equals_1('CrystalElm', className)) {
+    return new CrystalElm(x1, y1);
+  }
+  if ($equals_1('SchmittElm', className)) {
+    return new SchmittElm(x1, y1);
+  }
+  if ($equals_1('DeMultiplexerElm', className)) {
+    return new DeMultiplexerElm(x1, y1);
+  }
+  if ($equals_1('FullAdderElm', className)) {
+    return new FullAdderElm(x1, y1);
+  }
+  if ($equals_1('EGTFupAusgangElm', className)) {
+    return new EGTFupAusgangElm(x1, y1);
+  }
+  if ($equals_1('ACRailElm', className)) {
+    return new ACRailElm(x1, y1);
+  }
+  if ($equals_1('PhaseCompElm', className)) {
+    return new PhaseCompElm(x1, y1);
+  }
+  if ($equals_1('BoxElm', className)) {
+    return new BoxElm(x1, y1);
+  }
+  if ($equals_1('SevenSegDecoderElm', className)) {
+    return new SevenSegDecoderElm(x1, y1);
+  }
+  if ($equals_1('EGTLeistungsschuetzElm', className)) {
+    return new EGTLeistungsschuetzElm(x1, y1);
+  }
+  if ($equals_1('WattmeterElm', className)) {
+    return new WattmeterElm(x1, y1);
+  }
+  if ($equals_1('InverterElm', className)) {
+    return new InverterElm(x1, y1);
+  }
+  if ($equals_1('TransLineElm', className)) {
+    return new TransLineElm(x1, y1);
+  }
+  if ($equals_1('LampElm', className)) {
+    return new LampElm(x1, y1);
+  }
+  if ($equals_1('ThermistorNTCElm', className)) {
+    return new ThermistorNTCElm(x1, y1);
+  }
+  if ($equals_1('StopTriggerElm', className)) {
+    return new StopTriggerElm(x1, y1);
+  }
+  if ($equals_1('InstructionDisplayElm', className)) {
+    return new InstructionDisplayElm(x1, y1);
+  }
+  if ($equals_1('WireElm', className)) {
+    return new WireElm(x1, y1);
+  }
+  if ($equals_1('PushSwitchElm', className)) {
+    return new PushSwitchElm(x1, y1);
+  }
+  if ($equals_1('EGTSchuetzSpuleElm', className)) {
+    return new EGTSchuetzSpuleElm(x1, y1);
+  }
+  if ($equals_1('MonostableElm', className)) {
+    return new MonostableElm(x1, y1);
+  }
+  if ($equals_1('ExtVoltageElm', className)) {
+    return new ExtVoltageElm(x1, y1);
+  }
+  if ($equals_1('SeqGenElm', className)) {
+    return new SeqGenElm(x1, y1);
+  }
+  if ($equals_1('OhmMeterElm', className)) {
+    return new OhmMeterElm(x1, y1);
+  }
+  if ($equals_1('TappedTransformerElm', className)) {
+    return new TappedTransformerElm(x1, y1);
+  }
+  if ($equals_1('AnalogSwitch2Elm', className)) {
+    return new AnalogSwitch2Elm(x1, y1);
+  }
+  if ($equals_1('NMosfetElm', className)) {
+    return new NMosfetElm(x1, y1);
+  }
+  if ($equals_1('BusSplitterElm', className)) {
+    return new BusSplitterElm(x1, y1);
+  }
+  if ($equals_1('EGTTueroeffnerElm', className)) {
+    return new EGTTueroeffnerElm(x1, y1);
+  }
+  if ($equals_1('CounterElm', className)) {
+    return new CounterElm(x1, y1);
+  }
+  if ($equals_1('TransformerElm', className)) {
+    return new TransformerElm(x1, y1);
+  }
+  if ($equals_1('ScopeElm', className)) {
+    return new ScopeElm(x1, y1);
+  }
+  if ($equals_1('EGTFupTonElm', className)) {
+    return new EGTFupTonElm(x1, y1);
+  }
+  if ($equals_1('EGTMeldeleuchteElm', className)) {
+    return new EGTMeldeleuchteElm(x1, y1);
+  }
+  if ($equals_1('PisoShiftElm', className)) {
+    return new PisoShiftElm(x1, y1);
+  }
+  if ($equals_1('InvertingSchmittElm', className)) {
+    return new InvertingSchmittElm(x1, y1);
+  }
+  if ($equals_1('EGTGleichspannungsquelleElm', className)) {
+    return new EGTGleichspannungsquelleElm(x1, y1);
+  }
+  if ($equals_1('UnijunctionElm', className)) {
+    return new UnijunctionElm(x1, y1);
+  }
+  if ($equals_1('CCVSElm', className)) {
+    return new CCVSElm(x1, y1);
+  }
+  if ($equals_1('EGTTasterElm', className)) {
+    return new EGTTasterElm(x1, y1);
+  }
+  if ($equals_1('LEDArrayElm', className)) {
+    return new LEDArrayElm(x1, y1);
+  }
+  if ($equals_1('AudioOutputElm', className)) {
+    return new AudioOutputElm(x1, y1);
+  }
+  if ($equals_1('NortonAmpElm', className)) {
+    return new NortonAmpElm(x1, y1);
+  }
+  if ($equals_1('EGTKondensatormotorElm', className)) {
+    return new EGTKondensatormotorElm(x1, y1);
+  }
+  if ($equals_1('EGTFupEingangElm', className)) {
+    return new EGTFupEingangElm(x1, y1);
   }
   return null;
 }
 
 function $create_0(className, x1, y1, x2, y2, f, st){
-  if ($equals_1('BusSplitterElm', className)) {
-    return new BusSplitterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MotorProtectionSwitchElm', className)) {
-    return new MotorProtectionSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKlingelElm', className)) {
-    return new EGTKlingelElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OhmMeterElm', className)) {
-    return new OhmMeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSpannungsquelleElm', className)) {
-    return new EGTSpannungsquelleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupTofElm', className)) {
-    return new EGTFupTofElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
-    return new EGTSchuetzLeistungskontakteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTasterElm', className)) {
-    return new EGTTasterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TextElm', className)) {
-    return new TextElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VaractorElm', className)) {
-    return new VaractorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DFlipFlopElm', className)) {
-    return new DFlipFlopElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LineElm', className)) {
-    return new LineElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('CustomLogicElm', className)) {
-    return new CustomLogicElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DiacElm', className)) {
-    return new DiacElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSicherungElm', className)) {
-    return new EGTSicherungElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SipoShiftElm', className)) {
-    return new SipoShiftElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OpAmpElm', className)) {
-    return new OpAmpElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DiodeElm', className)) {
-    return new DiodeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CCCSElm', className)) {
-    return new CCCSElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MultiplexerElm', className)) {
-    return new MultiplexerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DACElm', className)) {
-    return new DACElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ADCElm', className)) {
-    return new ADCElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTBewegungsmelderElm', className)) {
-    return new EGTBewegungsmelderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('NoiseElm', className)) {
-    return new NoiseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AnalogSwitchElm', className)) {
-    return new AnalogSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DataRecorderElm', className)) {
-    return new DataRecorderElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTHilfsschalterblockElm', className)) {
+    return new EGTHilfsschalterblockElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('EGTUeberlastHeizleiterElm', className)) {
     return new EGTUeberlastHeizleiterElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('LDRElm', className)) {
-    return new LDRElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSteckdoseElm', className)) {
-    return new EGTSteckdoseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LogicInputElm', className)) {
-    return new LogicInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSerienschalterElm', className)) {
-    return new EGTSerienschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OTAElm', className)) {
-    return new OTAElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupTonElm', className)) {
-    return new EGTFupTonElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTStromstossSpuleElm', className)) {
-    return new EGTStromstossSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTueroeffnerElm', className)) {
-    return new EGTTueroeffnerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OpAmpRealElm', className)) {
-    return new OpAmpRealElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SCRElm', className)) {
-    return new SCRElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OutputElm', className)) {
-    return new OutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeuchteElm', className)) {
-    return new EGTLeuchteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('StopTriggerElm', className)) {
-    return new StopTriggerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTAusschalterElm', className)) {
-    return new EGTAusschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AnalogSwitch2Elm', className)) {
-    return new AnalogSwitch2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TappedTransformerElm', className)) {
-    return new TappedTransformerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DarlingtonElm', className)) {
-    return new DarlingtonElm(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MBBSwitchElm', className)) {
-    return new MBBSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMeldeleuchteElm', className)) {
-    return new EGTMeldeleuchteElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TransistorElm', className)) {
-    return new TransistorElm(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTStromstossschalterElm', className)) {
-    return new EGTStromstossschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CurrentElm', className)) {
-    return new CurrentElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CC2Elm', className)) {
-    return new CC2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('XorGateElm', className)) {
-    return new XorGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CustomTransformerElm', className)) {
-    return new CustomTransformerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('HalfAdderElm', className)) {
-    return new HalfAdderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AudioInputElm', className)) {
-    return new AudioInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MonostableElm', className)) {
-    return new MonostableElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OptocouplerElm', className)) {
-    return new OptocouplerElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('DeMultiplexerElm', className)) {
-    return new DeMultiplexerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHmiGeberElm', className)) {
-    return new EGTHmiGeberElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMotorschutzschalterElm', className)) {
-    return new EGTMotorschutzschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKondensatormotorElm', className)) {
-    return new EGTKondensatormotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TimeDelayRelayElm', className)) {
-    return new TimeDelayRelayElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LEDElm', className)) {
-    return new LEDElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DPDTSwitchElm', className)) {
-    return new DPDTSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CounterElm', className)) {
-    return new CounterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTGleichspannungsquelleElm', className)) {
-    return new EGTGleichspannungsquelleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('NorGateElm', className)) {
-    return new NorGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VCOElm', className)) {
-    return new VCOElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTDrehstromquelleElm', className)) {
-    return new EGTDrehstromquelleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
-    return new EGTZeitrelaisSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LampElm', className)) {
-    return new LampElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeistungsschuetzElm', className)) {
-    return new EGTLeistungsschuetzElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SparkGapElm', className)) {
-    return new SparkGapElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VarRailElm', className)) {
-    return new VarRailElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
-    return new EGTKondensatormotorKompaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SRAMElm', className)) {
-    return new SRAMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SchmittElm', className)) {
-    return new SchmittElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TestPointElm', className)) {
-    return new TestPointElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTTreppenlichtElm', className)) {
-    return new EGTTreppenlichtElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('JfetElm', className)) {
-    return new JfetElm(x1, y1, x2, y2, f, st);
-  }
   if ($equals_1('EGTAbzweigdoseElm', className)) {
     return new EGTAbzweigdoseElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CCVSElm', className)) {
-    return new CCVSElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AudioOutputElm', className)) {
-    return new AudioOutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RelayCoilElm', className)) {
-    return new RelayCoilElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTDrehstrommotorElm', className)) {
-    return new EGTDrehstrommotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PisoShiftElm', className)) {
-    return new PisoShiftElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('WattmeterElm', className)) {
-    return new WattmeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTSchuetzSpuleElm', className)) {
-    return new EGTSchuetzSpuleElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SweepElm', className)) {
-    return new SweepElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
-    return new EGTZeitrelaisKontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHmiLastElm', className)) {
-    return new EGTHmiLastElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LabeledNodeElm', className)) {
-    return new LabeledNodeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('Switch2Elm', className)) {
-    return new Switch2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ProbeElm', className)) {
-    return new ProbeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AmmeterElm', className)) {
-    return new AmmeterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTMiniSpsElm', className)) {
-    return new EGTMiniSpsElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TunnelDiodeElm', className)) {
-    return new TunnelDiodeElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('EGTFupEingangElm', className)) {
-    return new EGTFupEingangElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('OrGateElm', className)) {
-    return new OrGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ROMElm', className)) {
-    return new ROMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DataInputElm', className)) {
-    return new DataInputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CrossSwitchElm', className)) {
-    return new CrossSwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CrystalElm', className)) {
-    return new CrystalElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ThreePhaseMotorElm', className)) {
-    return new ThreePhaseMotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('JKFlipFlopElm', className)) {
-    return new JKFlipFlopElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('Counter2Elm', className)) {
-    return new Counter2Elm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHilfsschuetzElm', className)) {
-    return new EGTHilfsschuetzElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TimerElm', className)) {
-    return new TimerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('CustomCompositeElm', className)) {
-    return new CustomCompositeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTWechselschalterElm', className)) {
-    return new EGTWechselschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('FullAdderElm', className)) {
-    return new FullAdderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PotElm', className)) {
-    return new PotElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('PolarCapacitorElm', className)) {
-    return new PolarCapacitorElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('SevenSegElm', className)) {
     return new SevenSegElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('FMElm', className)) {
-    return new FMElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTHilfsschuetzElm', className)) {
+    return new EGTHilfsschuetzElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('PhaseCompElm', className)) {
-    return new PhaseCompElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('LEDElm', className)) {
+    return new LEDElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('DelayBufferElm', className)) {
-    return new DelayBufferElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('XorGateElm', className)) {
+    return new XorGateElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('FuseElm', className)) {
-    return new FuseElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('SweepElm', className)) {
+    return new SweepElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('EGTInstallationsleitungElm', className)) {
-    return new EGTInstallationsleitungElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InvertingSchmittElm', className)) {
-    return new InvertingSchmittElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SevenSegDecoderElm', className)) {
-    return new SevenSegDecoderElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TransformerElm', className)) {
-    return new TransformerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InductorElm', className)) {
-    return new InductorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TriStateElm', className)) {
-    return new TriStateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ZenerElm', className)) {
-    return new ZenerElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTLeitungElm', className)) {
-    return new EGTLeitungElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RelayContactElm', className)) {
-    return new RelayContactElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TFlipFlopElm', className)) {
-    return new TFlipFlopElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LatchElm', className)) {
-    return new LatchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AMElm', className)) {
-    return new AMElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ExtVoltageElm', className)) {
-    return new ExtVoltageElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTUeberlastKontaktElm', className)) {
-    return new EGTUeberlastKontaktElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ScopeElm', className)) {
-    return new ScopeElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('LogicOutputElm', className)) {
-    return new LogicOutputElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DecimalDisplayElm', className)) {
-    return new DecimalDisplayElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTHilfsschalterblockElm', className)) {
-    return new EGTHilfsschalterblockElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('NandGateElm', className)) {
-    return new NandGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('DCMotorElm', className)) {
-    return new DCMotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('ThermistorNTCElm', className)) {
-    return new ThermistorNTCElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('TransLineElm', className)) {
-    return new TransLineElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('BoxElm', className)) {
-    return new BoxElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('SwitchElm', className)) {
-    return new SwitchElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('VoltageElm', className)) {
-    return new VoltageElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('UnijunctionElm', className)) {
-    return new UnijunctionElm_0(x1, y1, x2, y2, f);
-  }
-  if ($equals_1('RelayElm', className)) {
-    return new RelayElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('InverterElm', className)) {
-    return new InverterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MosfetElm', className)) {
-    return new MosfetElm(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('WireElm', className)) {
-    return new WireElm_0(x1, y1, x2, y2, f);
+  if ($equals_1('TimeDelayRelayElm', className)) {
+    return new TimeDelayRelayElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('AnalogMuxElm', className)) {
     return new AnalogMuxElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('EGTStromstossKontaktElm', className)) {
-    return new EGTStromstossKontaktElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('NoiseElm', className)) {
+    return new NoiseElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('TriacElm', className)) {
-    return new TriacElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('ThreePhaseMotorElm', className)) {
+    return new ThreePhaseMotorElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('TriodeElm', className)) {
-    return new TriodeElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('AudioInputElm', className)) {
+    return new AudioInputElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('XnorGateElm', className)) {
-    return new XnorGateElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTMiniSpsElm', className)) {
+    return new EGTMiniSpsElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('RingCounterElm', className)) {
-    return new RingCounterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTFupAusgangElm', className)) {
-    return new EGTFupAusgangElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTKreuzschalterElm', className)) {
-    return new EGTKreuzschalterElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('GroundElm', className)) {
-    return new GroundElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('MemristorElm', className)) {
-    return new MemristorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('AndGateElm', className)) {
-    return new AndGateElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RailElm', className)) {
-    return new RailElm_1(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('RSSpeicherElm', className)) {
-    return new RSSpeicherElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('DataRecorderElm', className)) {
+    return new DataRecorderElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('AntennaElm', className)) {
     return new AntennaElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
-    return new EGTSchuetzHilfskontaktElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('Counter2Elm', className)) {
+    return new Counter2Elm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('ResistorElm', className)) {
-    return new ResistorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('EGTGleichstrommotorElm', className)) {
-    return new EGTGleichstrommotorElm_0(x1, y1, x2, y2, f, st);
-  }
-  if ($equals_1('SeqGenElm', className)) {
-    return new SeqGenElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('EGTZeitrelaisSpuleElm', className)) {
+    return new EGTZeitrelaisSpuleElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('ComparatorElm', className)) {
     return new ComparatorElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('CapacitorElm', className)) {
-    return new CapacitorElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('LabeledNodeElm', className)) {
+    return new LabeledNodeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DiodeElm', className)) {
+    return new DiodeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSerienschalterElm', className)) {
+    return new EGTSerienschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RSSpeicherElm', className)) {
+    return new RSSpeicherElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTreppenlichtElm', className)) {
+    return new EGTTreppenlichtElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ADCElm', className)) {
+    return new ADCElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKondensatormotorKompaktElm', className)) {
+    return new EGTKondensatormotorKompaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MemristorElm', className)) {
+    return new MemristorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ROMElm', className)) {
+    return new ROMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SipoShiftElm', className)) {
+    return new SipoShiftElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PolarCapacitorElm', className)) {
+    return new PolarCapacitorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SparkGapElm', className)) {
+    return new SparkGapElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriStateElm', className)) {
+    return new TriStateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('Switch2Elm', className)) {
+    return new Switch2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SRAMElm', className)) {
+    return new SRAMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTBewegungsmelderElm', className)) {
+    return new EGTBewegungsmelderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TransistorElm', className)) {
+    return new TransistorElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TestPointElm', className)) {
+    return new TestPointElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CCCSElm', className)) {
+    return new CCCSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TimerElm', className)) {
+    return new TimerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LDRElm', className)) {
+    return new LDRElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LogicOutputElm', className)) {
+    return new LogicOutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DarlingtonElm', className)) {
+    return new DarlingtonElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DecimalDisplayElm', className)) {
+    return new DecimalDisplayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TFlipFlopElm', className)) {
+    return new TFlipFlopElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTDrehstromquelleElm', className)) {
+    return new EGTDrehstromquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTHmiGeberElm', className)) {
+    return new EGTHmiGeberElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MBBSwitchElm', className)) {
+    return new MBBSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AmmeterElm', className)) {
+    return new AmmeterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RailElm', className)) {
+    return new RailElm_1(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DFlipFlopElm', className)) {
+    return new DFlipFlopElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MotorProtectionSwitchElm', className)) {
+    return new MotorProtectionSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AnalogSwitchElm', className)) {
+    return new AnalogSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayContactElm', className)) {
+    return new RelayContactElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSpannungsquelleElm', className)) {
+    return new EGTSpannungsquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTMotorschutzschalterElm', className)) {
+    return new EGTMotorschutzschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AMElm', className)) {
+    return new AMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('JKFlipFlopElm', className)) {
+    return new JKFlipFlopElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('HalfAdderElm', className)) {
+    return new HalfAdderElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('EGTUeberlastrelaisElm', className)) {
     return new EGTUeberlastrelaisElm_0(x1, y1, x2, y2, f, st);
   }
-  if ($equals_1('LEDArrayElm', className)) {
-    return new LEDArrayElm_0(x1, y1, x2, y2, f, st);
+  if ($equals_1('NandGateElm', className)) {
+    return new NandGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTInstallationsleitungElm', className)) {
+    return new EGTInstallationsleitungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FMElm', className)) {
+    return new FMElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKreuzschalterElm', className)) {
+    return new EGTKreuzschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DataInputElm', className)) {
+    return new DataInputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTDrehstrommotorElm', className)) {
+    return new EGTDrehstrommotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CurrentElm', className)) {
+    return new CurrentElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('GroundElm', className)) {
+    return new GroundElm_0(x1, y1, x2, y2, f, st);
   }
   if ($equals_1('VCVSElm', className)) {
     return new VCVSElm_0(x1, y1, x2, y2, f, st);
   }
+  if ($equals_1('EGTSteckdoseElm', className)) {
+    return new EGTSteckdoseElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTStromstossschalterElm', className)) {
+    return new EGTStromstossschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSicherungElm', className)) {
+    return new EGTSicherungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PotElm', className)) {
+    return new PotElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('InductorElm', className)) {
+    return new InductorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OrGateElm', className)) {
+    return new OrGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TextElm', className)) {
+    return new TextElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('NorGateElm', className)) {
+    return new NorGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VarRailElm', className)) {
+    return new VarRailElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ZenerElm', className)) {
+    return new ZenerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LatchElm', className)) {
+    return new LatchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKlingelElm', className)) {
+    return new EGTKlingelElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriodeElm', className)) {
+    return new TriodeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSchuetzLeistungskontakteElm', className)) {
+    return new EGTSchuetzLeistungskontakteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CrossSwitchElm', className)) {
+    return new CrossSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DiacElm', className)) {
+    return new DiacElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeitungElm', className)) {
+    return new EGTLeitungElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CapacitorElm', className)) {
+    return new CapacitorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayElm', className)) {
+    return new RelayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MultiplexerElm', className)) {
+    return new MultiplexerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SwitchElm', className)) {
+    return new SwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CustomLogicElm', className)) {
+    return new CustomLogicElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RelayCoilElm', className)) {
+    return new RelayCoilElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTWechselschalterElm', className)) {
+    return new EGTWechselschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TriacElm', className)) {
+    return new TriacElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TunnelDiodeElm', className)) {
+    return new TunnelDiodeElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('SCRElm', className)) {
+    return new SCRElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('XnorGateElm', className)) {
+    return new XnorGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DelayBufferElm', className)) {
+    return new DelayBufferElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTUeberlastKontaktElm', className)) {
+    return new EGTUeberlastKontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FuseElm', className)) {
+    return new FuseElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupTofElm', className)) {
+    return new EGTFupTofElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OptocouplerElm', className)) {
+    return new OptocouplerElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('OutputElm', className)) {
+    return new OutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ResistorElm', className)) {
+    return new ResistorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('RingCounterElm', className)) {
+    return new RingCounterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTAusschalterElm', className)) {
+    return new EGTAusschalterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTStromstossSpuleElm', className)) {
+    return new EGTStromstossSpuleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DCMotorElm', className)) {
+    return new DCMotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTSchuetzHilfskontaktElm', className)) {
+    return new EGTSchuetzHilfskontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VaractorElm', className)) {
+    return new VaractorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ProbeElm', className)) {
+    return new ProbeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OTAElm', className)) {
+    return new OTAElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CustomCompositeElm', className)) {
+    return new CustomCompositeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DPDTSwitchElm', className)) {
+    return new DPDTSwitchElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OpAmpRealElm', className)) {
+    return new OpAmpRealElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AndGateElm', className)) {
+    return new AndGateElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CC2Elm', className)) {
+    return new CC2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LogicInputElm', className)) {
+    return new LogicInputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DACElm', className)) {
+    return new DACElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeuchteElm', className)) {
+    return new EGTLeuchteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTStromstossKontaktElm', className)) {
+    return new EGTStromstossKontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTZeitrelaisKontaktElm', className)) {
+    return new EGTZeitrelaisKontaktElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CustomTransformerElm', className)) {
+    return new CustomTransformerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTHmiLastElm', className)) {
+    return new EGTHmiLastElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OpAmpElm', className)) {
+    return new OpAmpElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTGleichstrommotorElm', className)) {
+    return new EGTGleichstrommotorElm_0(x1, y1, x2, y2, f, st);
+  }
   if ($equals_1('VCCSElm', className)) {
     return new VCCSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LineElm', className)) {
+    return new LineElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('VCOElm', className)) {
+    return new VCOElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CrystalElm', className)) {
+    return new CrystalElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SchmittElm', className)) {
+    return new SchmittElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('DeMultiplexerElm', className)) {
+    return new DeMultiplexerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('FullAdderElm', className)) {
+    return new FullAdderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupAusgangElm', className)) {
+    return new EGTFupAusgangElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PhaseCompElm', className)) {
+    return new PhaseCompElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('BoxElm', className)) {
+    return new BoxElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('SevenSegDecoderElm', className)) {
+    return new SevenSegDecoderElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTLeistungsschuetzElm', className)) {
+    return new EGTLeistungsschuetzElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('WattmeterElm', className)) {
+    return new WattmeterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('InverterElm', className)) {
+    return new InverterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TransLineElm', className)) {
+    return new TransLineElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LampElm', className)) {
+    return new LampElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ThermistorNTCElm', className)) {
+    return new ThermistorNTCElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('StopTriggerElm', className)) {
+    return new StopTriggerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('WireElm', className)) {
+    return new WireElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('EGTSchuetzSpuleElm', className)) {
+    return new EGTSchuetzSpuleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MonostableElm', className)) {
+    return new MonostableElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ExtVoltageElm', className)) {
+    return new ExtVoltageElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('SeqGenElm', className)) {
+    return new SeqGenElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('OhmMeterElm', className)) {
+    return new OhmMeterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TappedTransformerElm', className)) {
+    return new TappedTransformerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AnalogSwitch2Elm', className)) {
+    return new AnalogSwitch2Elm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('BusSplitterElm', className)) {
+    return new BusSplitterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTueroeffnerElm', className)) {
+    return new EGTTueroeffnerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('CounterElm', className)) {
+    return new CounterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('TransformerElm', className)) {
+    return new TransformerElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('ScopeElm', className)) {
+    return new ScopeElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupTonElm', className)) {
+    return new EGTFupTonElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTMeldeleuchteElm', className)) {
+    return new EGTMeldeleuchteElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('PisoShiftElm', className)) {
+    return new PisoShiftElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('InvertingSchmittElm', className)) {
+    return new InvertingSchmittElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTGleichspannungsquelleElm', className)) {
+    return new EGTGleichspannungsquelleElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('UnijunctionElm', className)) {
+    return new UnijunctionElm_0(x1, y1, x2, y2, f);
+  }
+  if ($equals_1('CCVSElm', className)) {
+    return new CCVSElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTTasterElm', className)) {
+    return new EGTTasterElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('LEDArrayElm', className)) {
+    return new LEDArrayElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('AudioOutputElm', className)) {
+    return new AudioOutputElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('JfetElm', className)) {
+    return new JfetElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('VoltageElm', className)) {
+    return new VoltageElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTKondensatormotorElm', className)) {
+    return new EGTKondensatormotorElm_0(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('MosfetElm', className)) {
+    return new MosfetElm(x1, y1, x2, y2, f, st);
+  }
+  if ($equals_1('EGTFupEingangElm', className)) {
+    return new EGTFupEingangElm_0(x1, y1, x2, y2, f, st);
   }
   return null;
 }
@@ -49701,7 +49708,7 @@ function FMElm_0(xa, ya, xb, yb, f, st){
   this.curcount_0 = 0;
 }
 
-defineClass(466, 8, $intern_86, FMElm, FMElm_0);
+defineClass(431, 8, $intern_86, FMElm, FMElm_0);
 _.doStep = function doStep_50(){
   $updateVoltageSource(this.voltSource, $getVoltage(this));
 }
@@ -49820,7 +49827,7 @@ _.funcx = 0;
 _.lasttime = 0;
 _.maxVoltage = 0;
 _.signalfreq = 0;
-var Lcom_lushprojects_circuitjs1_client_FMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FMElm', 466);
+var Lcom_lushprojects_circuitjs1_client_FMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FMElm', 431);
 function $checkElm(this$static, n1, ce){
   var c, j, j0, k;
   if (ce == this$static.firstElm)
@@ -49942,7 +49949,7 @@ function FullAdderElm_0(xa, ya, xb, yb, f, st){
   $setupPins_40(this);
 }
 
-defineClass(463, 17, $intern_86, FullAdderElm, FullAdderElm_0);
+defineClass(475, 17, $intern_86, FullAdderElm, FullAdderElm_0);
 _.allowBus = function allowBus_6(){
   return (this.flags & 2) != 0;
 }
@@ -50001,7 +50008,7 @@ _.setupPins = function setupPins_46(){
 ;
 _.carryIn = 0;
 _.carryOut = 0;
-var Lcom_lushprojects_circuitjs1_client_FullAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FullAdderElm', 463);
+var Lcom_lushprojects_circuitjs1_client_FullAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FullAdderElm', 475);
 function $getTempColor(this$static){
   var c, temp, val, x_0;
   c = $getVoltageColor(this$static, this$static.volts[0]);
@@ -50046,7 +50053,7 @@ function FuseElm_0(xa, ya, xb, yb, f, st){
   this.blown = $booleanValue(($clinit_Boolean() , $equalsIgnoreCase('true', $nextToken(st))));
 }
 
-defineClass(469, 8, $intern_86, FuseElm, FuseElm_0);
+defineClass(454, 8, $intern_86, FuseElm, FuseElm_0);
 _.calculateCurrent = function calculateCurrent_45(){
   this.current_0 = (this.volts[0] - this.volts[1]) / (this.blown?$intern_33:this.resistance);
 }
@@ -50170,7 +50177,7 @@ _.blown = false;
 _.heat = 0;
 _.i2t = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_FuseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FuseElm', 469);
+var Lcom_lushprojects_circuitjs1_client_FuseElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'FuseElm', 454);
 function $clipRect(this$static, width_0, height){
   this$static.context.beginPath();
   $rect(this$static.context, 0, 0, width_0, height);
@@ -50477,7 +50484,7 @@ function GyratorElm(xx, yy){
   this.curcount = initUnidimensionalArray(D_classLit, $intern_76, 7, 2, 15, 1);
 }
 
-defineClass(955, 8, $intern_86, GyratorElm);
+defineClass(942, 8, $intern_86, GyratorElm);
 _.calculateCurrent = function calculateCurrent_46(){
   var g, v1, v2;
   g = 1 / this.gyrResistance;
@@ -50608,7 +50615,7 @@ _.stamp = function stamp_64(){
 _.flip = 0;
 _.gyrResistance = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_GyratorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GyratorElm', 955);
+var Lcom_lushprojects_circuitjs1_client_GyratorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'GyratorElm', 942);
 function HalfAdderElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -50619,7 +50626,7 @@ function HalfAdderElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(426, 17, $intern_86, HalfAdderElm, HalfAdderElm_0);
+defineClass(427, 17, $intern_86, HalfAdderElm, HalfAdderElm_0);
 _.execute_3 = function execute_53(){
   this.pins[0].value_0 = this.pins[2].value_0 ^ this.pins[3].value_0;
   this.pins[1].value_0 = this.pins[2].value_0 && this.pins[3].value_0;
@@ -50653,7 +50660,7 @@ _.setupPins = function setupPins_47(){
   this.pins[3] = new ChipElm$Pin(this, 1, 2, 'B');
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_HalfAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'HalfAdderElm', 426);
+var Lcom_lushprojects_circuitjs1_client_HalfAdderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'HalfAdderElm', 427);
 function $doExportAsSVG(this$static){
   if (!$initializeSVGScriptIfNecessary(this$static, 'doExportAsSVG')) {
     return;
@@ -51306,7 +51313,7 @@ function InstructionDisplayElm(xx, yy){
   $parseEntries(this, null);
 }
 
-defineClass(948, 8, $intern_86, InstructionDisplayElm);
+defineClass(953, 8, $intern_86, InstructionDisplayElm);
 _.addRoutingObstacle = function addRoutingObstacle_10(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.x2, this.y2);
   $addObstacle(router, this.x2 - 10, this.y2 - 10, this.x2 + 10, this.y2 + 10);
@@ -51442,7 +51449,7 @@ _.undumpXml = function undumpXml_84(xml){
 ;
 _.busWidth = 0;
 _.threshold = 0;
-var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm', 948);
+var Lcom_lushprojects_circuitjs1_client_InstructionDisplayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InstructionDisplayElm', 953);
 function $getText_0(this$static, value_0){
   var close_0, ep, es, expr, exprStr, intResult, open_0, pos, result, sb;
   sb = new StringBuilder;
@@ -51521,7 +51528,7 @@ function InverterElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(485, 8, $intern_86, InverterElm, InverterElm_0);
+defineClass(481, 8, $intern_86, InverterElm, InverterElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_11(router){
   $addRoutingObstacleWithLeads(this, router, 16);
 }
@@ -51651,7 +51658,7 @@ _.validate = function validate_12(){
 _.highVoltage = 0;
 _.lastOutputVoltage = 0;
 _.slewRate = 0;
-var Lcom_lushprojects_circuitjs1_client_InverterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InverterElm', 485);
+var Lcom_lushprojects_circuitjs1_client_InverterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InverterElm', 481);
 function $setPoints_41(this$static){
   var triPoints, ww;
   $setPoints(this$static);
@@ -51701,7 +51708,7 @@ function InvertingSchmittElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(288, 8, $intern_86, InvertingSchmittElm, InvertingSchmittElm_0);
+defineClass(295, 8, $intern_86, InvertingSchmittElm, InvertingSchmittElm_0);
 _.doStep = function doStep_54(){
   var maxStep, out, v0;
   v0 = this.volts[1];
@@ -51842,7 +51849,7 @@ _.lowerTrigger = 0;
 _.slewRate = 0;
 _.state = false;
 _.upperTrigger = 0;
-var Lcom_lushprojects_circuitjs1_client_InvertingSchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InvertingSchmittElm', 288);
+var Lcom_lushprojects_circuitjs1_client_InvertingSchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'InvertingSchmittElm', 295);
 function $setupPins_41(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = 3;
@@ -51875,7 +51882,7 @@ function JKFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.justLoaded = true;
 }
 
-defineClass(459, 17, $intern_86, JKFlipFlopElm, JKFlipFlopElm_0);
+defineClass(426, 17, $intern_86, JKFlipFlopElm, JKFlipFlopElm_0);
 _.execute_3 = function execute_54(){
   var q, transition;
   if (this.justLoaded) {
@@ -51953,7 +51960,7 @@ _.setupPins = function setupPins_48(){
 }
 ;
 _.justLoaded = false;
-var Lcom_lushprojects_circuitjs1_client_JKFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JKFlipFlopElm', 459);
+var Lcom_lushprojects_circuitjs1_client_JKFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'JKFlipFlopElm', 426);
 function $setupJSInterface(this$static){
   var that = this$static;
   $wnd.CircuitJS1 = {setSimRunning:$entry(function(run){
@@ -52835,7 +52842,7 @@ function LDRElm_0(xa, ya, xb, yb, f, st){
   $createSlider_1(this);
 }
 
-defineClass(411, 8, $intern_151, LDRElm, LDRElm_0);
+defineClass(415, 8, $intern_151, LDRElm, LDRElm_0);
 _.calculateCurrent = function calculateCurrent_49(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -52981,7 +52988,7 @@ _.maxLux = 0;
 _.minLux = 0;
 _.position = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_LDRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LDRElm', 411);
+var Lcom_lushprojects_circuitjs1_client_LDRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LDRElm', 415);
 function $setColor_2(this$static, g, p){
   var cc, w;
   if (this$static.currents == null) {
@@ -53217,7 +53224,7 @@ function LEDElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(434, 160, $intern_117, LEDElm, LEDElm_0);
+defineClass(395, 160, $intern_117, LEDElm, LEDElm_0);
 _.draw = function draw_55(g){
   var cc, cr, w;
   if (mouseElmRef == this || this.selected_0 || $containsKey(app_0.mouse.scopePlotRoles, this) || instanceOf(mouseElmRef, 16) && $getElm_0(mouseElmRef.elmScope) == this || $isOnHighlightedNet(this) || app_0.mouse.dragElm == this) {
@@ -53311,7 +53318,7 @@ _.colorG = 0;
 _.colorR = 0;
 _.maxBrightnessCurrent = 0;
 var lastLEDModelName = 'default-led';
-var Lcom_lushprojects_circuitjs1_client_LEDElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDElm', 434);
+var Lcom_lushprojects_circuitjs1_client_LEDElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LEDElm', 395);
 function LabeledNodeElm$LabelEntry(){
 }
 
@@ -53372,7 +53379,7 @@ function LampElm_0(xa, ya, xb, yb, f, st){
   $startIteration_3(this);
 }
 
-defineClass(442, 8, $intern_86, LampElm, LampElm_0);
+defineClass(483, 8, $intern_86, LampElm, LampElm_0);
 _.calculateCurrent = function calculateCurrent_51(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
   this.resistance == 0 && (this.current_0 = 0);
@@ -53517,7 +53524,7 @@ _.nom_v = 0;
 _.resistance = 0;
 _.temp = 0;
 _.warmTime = 0;
-var Lcom_lushprojects_circuitjs1_client_LampElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LampElm', 442);
+var Lcom_lushprojects_circuitjs1_client_LampElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LampElm', 483);
 function $$init_52(this$static){
   this$static.lastLoad = false;
 }
@@ -53609,7 +53616,7 @@ function LatchElm_0(xa, ya, xb, yb, f, st){
   $restoreOutputValues(this);
 }
 
-defineClass(475, 17, $intern_86, LatchElm, LatchElm_0);
+defineClass(440, 17, $intern_86, LatchElm, LatchElm_0);
 _.allowBus = function allowBus_7(){
   return true;
 }
@@ -53802,7 +53809,7 @@ _.oe1Pin = 0;
 _.oe2Pin = 0;
 _.resetPin = 0;
 _.setPin = 0;
-var Lcom_lushprojects_circuitjs1_client_LatchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LatchElm', 475);
+var Lcom_lushprojects_circuitjs1_client_LatchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LatchElm', 440);
 function LineElm(xx, yy){
   GraphicElm.call(this, xx, yy);
   this.x2 = xx;
@@ -53817,7 +53824,7 @@ function LineElm_0(xa, ya, xb, yb, f){
   $setBbox(this, this.x_0, this.y_0, this.x2, this.y2);
 }
 
-defineClass(402, 112, $intern_102, LineElm, LineElm_0);
+defineClass(470, 112, $intern_102, LineElm, LineElm_0);
 _.creationFailed = function creationFailed_16(){
   return hypot(this.x_0 - this.x2, this.y_0 - this.y2) < 16;
 }
@@ -53859,7 +53866,7 @@ _.getShortcut = function getShortcut_32(){
 _.setEditValue = function setEditValue_56(n, ei){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_LineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LineElm', 402);
+var Lcom_lushprojects_circuitjs1_client_LineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LineElm', 470);
 function LoadFile(s){
   FileUpload.call(this);
   sim_3 = s;
@@ -53931,7 +53938,7 @@ function LogicInputElm_0(xa, ya, xb, yb, f, st){
   (this.flags & 1) != 0 && (this.posCount = 3);
 }
 
-defineClass(212, 46, {8:1, 11:1, 212:1, 46:1}, LogicInputElm, LogicInputElm_0);
+defineClass(213, 46, {8:1, 11:1, 213:1, 46:1}, LogicInputElm, LogicInputElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_13(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
   $addObstacle(router, this.x2 - 10, this.y2 - 10, this.x2 + 10, this.y2 + 10);
@@ -54089,7 +54096,7 @@ _.validate = function validate_13(){
 ;
 _.hiV = 0;
 _.loV = 0;
-var Lcom_lushprojects_circuitjs1_client_LogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LogicInputElm', 212);
+var Lcom_lushprojects_circuitjs1_client_LogicInputElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'LogicInputElm', 213);
 function LogicOutputElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.threshold = 2.5;
@@ -54227,7 +54234,7 @@ function MBBSwitchElm_0(xa, ya, xb, yb, f, st){
   $setup_4(this);
 }
 
-defineClass(283, 46, {8:1, 11:1, 283:1, 46:1}, MBBSwitchElm, MBBSwitchElm_0);
+defineClass(287, 46, {8:1, 11:1, 287:1, 46:1}, MBBSwitchElm, MBBSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_53(){
   if (this.resistance > 0) {
     this.currents[0] = this.both || this.position == 0?(this.volts[0] - this.volts[1]) / this.resistance:0;
@@ -54383,7 +54390,7 @@ _.toggle = function toggle_2(){
   if (this.link_0 != 0) {
     for (i = 0; i != sim_0.elmList.arrayList.array.length; i++) {
       o = $elementAt(sim_0.elmList, i);
-      if (instanceOf(o, 283)) {
+      if (instanceOf(o, 287)) {
         s2 = o;
         s2.link_0 == this.link_0 && (s2.position = this.position);
       }
@@ -54420,7 +54427,7 @@ _.validate = function validate_14(){
 ;
 _.both = false;
 _.link_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_MBBSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MBBSwitchElm', 283);
+var Lcom_lushprojects_circuitjs1_client_MBBSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MBBSwitchElm', 287);
 function MemristorElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.r_on = 100;
@@ -54449,7 +54456,7 @@ function MemristorElm_0(xa, ya, xb, yb, f, st){
   this.resistance = 100;
 }
 
-defineClass(492, 8, $intern_86, MemristorElm, MemristorElm_0);
+defineClass(408, 8, $intern_86, MemristorElm, MemristorElm_0);
 _.calculateCurrent = function calculateCurrent_54(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -54584,7 +54591,7 @@ _.r_off = 0;
 _.r_on = 0;
 _.resistance = 0;
 _.totalWidth = 0;
-var Lcom_lushprojects_circuitjs1_client_MemristorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MemristorElm', 492);
+var Lcom_lushprojects_circuitjs1_client_MemristorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MemristorElm', 408);
 function $composeEgtLeitungSubmenu(this$static){
   var bar, i, mi;
   bar = new MenuBar_0(true);
@@ -55070,7 +55077,7 @@ function MonostableElm_0(xa, ya, xb, yb, f, st){
   $reset_10(this);
 }
 
-defineClass(427, 17, $intern_86, MonostableElm, MonostableElm_0);
+defineClass(486, 17, $intern_86, MonostableElm, MonostableElm_0);
 _.dumpXml = function dumpXml_93(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_2(elem, 'rt', this.retriggerable);
@@ -55156,7 +55163,7 @@ _.lastRisingEdge = 0;
 _.prevInputValue = false;
 _.retriggerable = false;
 _.triggered = false;
-var Lcom_lushprojects_circuitjs1_client_MonostableElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MonostableElm', 427);
+var Lcom_lushprojects_circuitjs1_client_MonostableElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MonostableElm', 486);
 function $getTempColor_1(this$static, num){
   var c, temp, val, x_0;
   c = $getVoltageColor(this$static, this$static.volts[num * 2]);
@@ -55221,7 +55228,7 @@ function MotorProtectionSwitchElm_0(xa, ya, xb, yb, f, st){
   this.curcounts = initUnidimensionalArray(D_classLit, $intern_76, 7, 3, 15, 1);
 }
 
-defineClass(392, 8, $intern_86, MotorProtectionSwitchElm, MotorProtectionSwitchElm_0);
+defineClass(422, 8, $intern_86, MotorProtectionSwitchElm, MotorProtectionSwitchElm_0);
 _.calculateCurrent = function calculateCurrent_55(){
   var i;
   for (i = 0; i != 3; i++)
@@ -55417,7 +55424,7 @@ _.undumpXml = function undumpXml_98(xml){
 _.blown = false;
 _.i2t = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_MotorProtectionSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MotorProtectionSwitchElm', 392);
+var Lcom_lushprojects_circuitjs1_client_MotorProtectionSwitchElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MotorProtectionSwitchElm', 422);
 function $anySelectedButMouse(this$static){
   var ce, ce$iterator;
   for (ce$iterator = new ArrayList$1(this$static.ui.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
@@ -55562,14 +55569,14 @@ function $doSwitch(this$static, x_0, y_0){
     }
     return false;
   }
-  if (instanceOf(this$static.mouseElm, 280)) {
+  if (instanceOf(this$static.mouseElm, 286)) {
     if ($triggerAt(this$static.mouseElm)) {
       $needAnalyze(this$static.sim);
       return true;
     }
     return false;
   }
-  if (instanceOf(this$static.mouseElm, 295)) {
+  if (instanceOf(this$static.mouseElm, 296)) {
     ie = this$static.mouseElm;
     if (!$hitBody(ie, x_0, y_0))
       return false;
@@ -55585,7 +55592,7 @@ function $doSwitch(this$static, x_0, y_0){
     return false;
   se.toggleAt(x_0, y_0);
   se.momentary && (this$static.heldSwitchElm = se);
-  instanceOf(se, 212) || $needAnalyze(this$static.sim);
+  instanceOf(se, 213) || $needAnalyze(this$static.sim);
   return true;
 }
 
@@ -56029,7 +56036,7 @@ function $showContextPanel(this$static, x_0, y_0){
 
 function $sliderItemEnabled(elm){
   var ei, i;
-  if (instanceOf(elm, 286) || instanceOf(elm, 213))
+  if (instanceOf(elm, 290) || instanceOf(elm, 210))
     return false;
   for (i = 0;; i++) {
     ei = elm.getEditInfo(i);
@@ -56651,7 +56658,7 @@ function MultiplexerElm_0(xa, ya, xb, yb, f, st){
   $setupPins_44(this);
 }
 
-defineClass(406, 17, $intern_86, MultiplexerElm, MultiplexerElm_0);
+defineClass(446, 17, $intern_86, MultiplexerElm, MultiplexerElm_0);
 _.dumpXml = function dumpXml_95(doc, elem){
   $dumpXml_0(this, elem);
   dumpAttr_0(elem, 'se', this.selectBitCount);
@@ -56805,7 +56812,7 @@ _.outputPin = 0;
 _.selectBitCount = 0;
 _.selectPin = 0;
 _.strobe = 0;
-var Lcom_lushprojects_circuitjs1_client_MultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MultiplexerElm', 406);
+var Lcom_lushprojects_circuitjs1_client_MultiplexerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'MultiplexerElm', 446);
 function $execute_0(this$static){
   $menuPerformed(theApp.commands, this$static.menuName, this$static.itemName);
 }
@@ -57503,7 +57510,7 @@ function NandGateElm_0(xa, ya, xb, yb, f, st){
   AndGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(478, 297, $intern_86, NandGateElm, NandGateElm_0);
+defineClass(429, 289, $intern_86, NandGateElm, NandGateElm_0);
 _.getDumpType = function getDumpType_116(){
   return 151;
 }
@@ -57520,7 +57527,7 @@ _.isInverting = function isInverting_0(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_NandGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NandGateElm', 478);
+var Lcom_lushprojects_circuitjs1_client_NandGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NandGateElm', 429);
 function NoiseElm(xx, yy){
   RailElm_0.call(this, xx, yy, 6);
 }
@@ -57548,7 +57555,7 @@ function OrGateElm_0(xa, ya, xb, yb, f, st){
   GateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(231, 284, $intern_86, OrGateElm, OrGateElm_0);
+defineClass(231, 279, $intern_86, OrGateElm, OrGateElm_0);
 _.calcFunction = function calcFunction_0(){
   var f, i;
   f = false;
@@ -57638,7 +57645,7 @@ function NorGateElm_0(xa, ya, xb, yb, f, st){
   OrGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(438, 231, $intern_86, NorGateElm, NorGateElm_0);
+defineClass(439, 231, $intern_86, NorGateElm, NorGateElm_0);
 _.getDumpType = function getDumpType_118(){
   return 153;
 }
@@ -57655,7 +57662,7 @@ _.isInverting = function isInverting_1(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_NorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NorGateElm', 438);
+var Lcom_lushprojects_circuitjs1_client_NorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NorGateElm', 439);
 function $clinit_NortonAmpElm(){
   $clinit_NortonAmpElm = emptyMethod;
   modelExternalNodes_2 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [3, 1, 4]);
@@ -57690,7 +57697,7 @@ function initModel(){
   }
 }
 
-defineClass(946, 113, $intern_86, NortonAmpElm);
+defineClass(955, 113, $intern_86, NortonAmpElm);
 _.addRoutingObstacle = function addRoutingObstacle_16(router){
   $addRoutingObstacleWithLeads(this, router, this.opwidth);
 }
@@ -57801,7 +57808,7 @@ _.opheight = 0;
 _.opsize = 0;
 _.opwidth = 0;
 var modelDoc, modelElements, modelExternalNodes_2;
-var Lcom_lushprojects_circuitjs1_client_NortonAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NortonAmpElm', 946);
+var Lcom_lushprojects_circuitjs1_client_NortonAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'NortonAmpElm', 955);
 function $clinit_OTAElm(){
   $clinit_OTAElm = emptyMethod;
   modelExternalNodes_3 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [7, 5, 15, 1, 13]);
@@ -57834,7 +57841,7 @@ function OTAElm_0(xa, ya, xb, yb, f, st){
   this.posVolt = $get_4(this.compElmList, 1).maxVoltage_0;
 }
 
-defineClass(414, 113, $intern_86, OTAElm, OTAElm_0);
+defineClass(462, 113, $intern_86, OTAElm, OTAElm_0);
 _.canFlipX = function canFlipX_3(){
   return false;
 }
@@ -57987,7 +57994,7 @@ _.curCount3 = 0;
 _.negVolt = 0;
 _.posVolt = 0;
 var modelExternalNodes_3, modelString_2 = 'RailElm 4\rRailElm 10\rNTransistorElm 1 2 3\rNTransistorElm 3 1 4\rNTransistorElm 3 3 4\rNTransistorElm 5 6 2\rNTransistorElm 7 8 2\rPTransistorElm 9 6 10\rPTransistorElm 9 9 10\rPTransistorElm 6 12 9\rPTransistorElm 11 8 10\rPTransistorElm 11 11 10\rPTransistorElm 8 13 11\rNTransistorElm 14 14 4\rNTransistorElm 14 12 4\rNTransistorElm 12 13 14\rNTransistorElm 15 15 5\rNTransistorElm 15 15 7';
-var Lcom_lushprojects_circuitjs1_client_OTAElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OTAElm', 414);
+var Lcom_lushprojects_circuitjs1_client_OTAElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OTAElm', 462);
 function OhmMeterElm(xx, yy){
   CurrentElm.call(this, xx, yy);
 }
@@ -57996,7 +58003,7 @@ function OhmMeterElm_0(xa, ya, xb, yb, f, st){
   CurrentElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(394, 209, $intern_110, OhmMeterElm, OhmMeterElm_0);
+defineClass(488, 209, $intern_110, OhmMeterElm, OhmMeterElm_0);
 _.canShowValueInScope = function canShowValueInScope_2(x_0){
   return x_0 == 2;
 }
@@ -58040,7 +58047,7 @@ _.setPoints = function setPoints_77(){
   $calcLeads(this, 26);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_OhmMeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OhmMeterElm', 394);
+var Lcom_lushprojects_circuitjs1_client_OhmMeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OhmMeterElm', 488);
 function $setGain(this$static){
   if ((this$static.flags & 8) != 0)
     return;
@@ -58086,7 +58093,7 @@ function OpAmpElm_0(xa, ya, xb, yb, f, st){
   $setGain(this);
 }
 
-defineClass(329, 8, $intern_86, OpAmpElm, OpAmpElm_0);
+defineClass(330, 8, $intern_86, OpAmpElm, OpAmpElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_17(router){
   $addRoutingObstacleWithLeads(this, router, this.opwidth);
 }
@@ -58281,7 +58288,7 @@ _.minOut = 0;
 _.opheight = 0;
 _.opsize = 0;
 _.opwidth = 0;
-var Lcom_lushprojects_circuitjs1_client_OpAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpElm', 329);
+var Lcom_lushprojects_circuitjs1_client_OpAmpElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpElm', 330);
 function $clinit_OpAmpRealElm(){
   $clinit_OpAmpRealElm = emptyMethod;
   model741ExternalNodes = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [2, 3, 6, 7, 4]);
@@ -58398,7 +58405,7 @@ function OpAmpRealElm_0(xa, ya, xb, yb, f, st){
   $initModel(this);
 }
 
-defineClass(417, 113, $intern_86, OpAmpRealElm, OpAmpRealElm_0);
+defineClass(464, 113, $intern_86, OpAmpRealElm, OpAmpRealElm_0);
 _.canFlipX = function canFlipX_4(){
   return this.dy == 0;
 }
@@ -58557,13 +58564,13 @@ _.currentLimit = 0;
 _.modelType = 0;
 _.slewRate = 0;
 var lm324ExternalNodes, lm324ModelDump = '0 -1 -0 0 10000/0 0.000006/0 1 0 0 100/0 1 0 0 100/0 1e-11 0/0 0.000004/0 0.0001/0 1 0 0 100/0 1 0 0 100/0 1 0 0 100/0 1 0 0 100/0 25/0 -1 0 0 100/0 0.00005/0 -1 0 0 100/0 10000/0 1 0 0 100/0 -1 0 0 10000', lm324ModelString = 'TransistorElm 1 2 3\rCurrentElm 4 3\rTransistorElm 2 2 5\rTransistorElm 2 6 5\rCapacitorElm 6 7\rCurrentElm 4 8\rCurrentElm 4 7\rTransistorElm 8 4 9\rTransistorElm 7 4 10\rTransistorElm 10 4 11\rTransistorElm 11 7 12\rResistorElm 11 12\rTransistorElm 7 5 12\rCurrentElm 12 5\rTransistorElm 6 5 8\rResistorElm 9 5\rTransistorElm 9 7 5\rTransistorElm 13 6 3', lm324v2ExternalNodes, lm324v2ModelDump = '0 40000/0 5e-7/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 380/0 1700/0 5/0 -1 0 0 300 xlm324v2-qpa/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 380/0 1700/0 5/0 -1 0 0 306 xlm324v2-qpi/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 25/0 1 0 0 100 xlm324v2-qnq/0 40000/0 18/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 1.2e-7/0 6e-8/0 0.000001/0 300/0 -1 0 0 100 xlm324v2-qpq/0 300/0 -1 0 0 100 xlm324v2-qpq/0 25/0 1 0 0 100 xlm324v2-qnq/0 300/0 -1 0 0 100 xlm324v2-qpq/2 4.8e-12 0 0/0 3/0 3000000000/0 2 -0.00001*(a-b)/0 0 0 -0.00156/0 0.000005/0 450000/0 300/0 -1 0 0 100 xlm324v2-qpq/0 300/0 -1 0 0 100 xlm324v2-qpq/2 8e-12 0 0/2 1e-12 0 0/2 1e-13 0 0/0 300000/2 2.3e-13 0 0/2 7.9e-13 0 0/2 7.9e-13 0 0/0 2 2*(a-b)/2 5e-14 0 0/0 25/0 1 0 0 100 xlm324v2-qnq/0 2 0.0003*(a-b)/0 0.001/0 0 0 -0.25/0 1000000/0 2 1*(a-b)/0 1000000/0 0 0 -0.55/0 1000000', lm324v2ModelString = 'ResistorElm 4 6\rCurrentElm 4 7\rResistorElm 4 29\rResistorElm 8 30\rResistorElm 9 31\rTransistorElm 30 29 31 \rResistorElm 4 32\rResistorElm 2 33\rResistorElm 10 34\rTransistorElm 33 32 34 \rResistorElm 9 35\rResistorElm 9 36\rResistorElm 11 37\rTransistorElm 36 35 37 \rResistorElm 10 38\rResistorElm 10 39\rResistorElm 11 40\rTransistorElm 39 38 40 \rResistorElm 12 41\rTransistorElm 13 41 4 \rResistorElm 13 42\rTransistorElm 13 42 4 \rResistorElm 4 43\rTransistorElm 12 43 14 \rResistorElm 3 44\rTransistorElm 14 44 6 \rResistorElm 15 45\rTransistorElm 6 45 4 \rResistorElm 3 46\rTransistorElm 15 46 16 \rResistorElm 3 47\rTransistorElm 16 47 17 \rResistorElm 17 16\rResistorElm 5 17\rResistorElm 4 48\rTransistorElm 15 48 5 \rResistorElm 15 49\rTransistorElm 17 49 5 \rCurrentElm 18 3\rCurrentElm 19 3\rCurrentElm 20 3\rResistorElm 11 50\rTransistorElm 18 50 3 \rResistorElm 14 51\rTransistorElm 19 51 3 \rResistorElm 5 52\rTransistorElm 7 52 4 \rResistorElm 15 53\rTransistorElm 20 53 3 \rCapacitorElm 21 22\rResistorElm 12 21\rResistorElm 12 15\rVCVSElm 3 0 23 8\rVoltageElm 23 1\rCurrentElm 3 4\rResistorElm 4 3\rResistorElm 12 54\rTransistorElm 9 54 11 \rResistorElm 13 55\rTransistorElm 10 55 11 \rCapacitorElm 12 13\rCapacitorElm 6 15\rCapacitorElm 3 24\rResistorElm 11 24\rCapacitorElm 1 2\rCapacitorElm 2 0\rCapacitorElm 1 0\rVCVSElm 15 0 22 0\rCapacitorElm 5 0\rResistorElm 25 56\rTransistorElm 25 56 0 \rVCCSElm 27 0 4 3\rCurrentElm 0 25\rVoltageElm 25 26\rResistorElm 0 26\rVCVSElm 28 26 27 0\rResistorElm 0 27\rVoltageElm 28 0\rResistorElm 0 28', model741ExternalNodes, model741String = 'NTransistorElm 3 8 9\rNTransistorElm 2 8 10\rPTransistorElm 11 12 9\rPTransistorElm 11 13 10\rNTransistorElm 14 12 1\rNTransistorElm 14 13 5\rNTransistorElm 12 7 14\rPTransistorElm 8 8 7\rPTransistorElm 8 11 7\rNTransistorElm 17 11 16\rNTransistorElm 17 17 4\rPTransistorElm 18 18 7\rPTransistorElm 18 20 7\rNTransistorElm 20 7 25\rNTransistorElm 13 22 24\rNTransistorElm 21 20 22\rNTransistorElm 25 20 6\rNTransistorElm 24 22 23\rPTransistorElm 22 4 15\rNTransistorElm 23 13 4\rCapacitorElm 13 20\rResistorElm 15 6\rResistorElm 6 25\rResistorElm 4 1\rResistorElm 4 14\rResistorElm 4 5\rResistorElm 4 16\rResistorElm 4 24\rResistorElm 4 23\rResistorElm 17 18\rResistorElm 22 21\rResistorElm 21 20\r', model741resistances;
-var Lcom_lushprojects_circuitjs1_client_OpAmpRealElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpRealElm', 417);
+var Lcom_lushprojects_circuitjs1_client_OpAmpRealElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpRealElm', 464);
 function OpAmpSwapElm(xx, yy){
   OpAmpElm.call(this, xx, yy);
   this.flags |= 1;
 }
 
-defineClass(947, 329, $intern_86, OpAmpSwapElm);
+defineClass(946, 330, $intern_86, OpAmpSwapElm);
 _.getDumpClass = function getDumpClass_10(){
   return Lcom_lushprojects_circuitjs1_client_OpAmpElm_2_classLit;
 }
@@ -58572,7 +58579,7 @@ _.getShortcut = function getShortcut_43(){
   return 65;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_OpAmpSwapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpSwapElm', 947);
+var Lcom_lushprojects_circuitjs1_client_OpAmpSwapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OpAmpSwapElm', 946);
 function $clinit_OptocouplerElm(){
   $clinit_OptocouplerElm = emptyMethod;
   modelExternalNodes_4 = stampJavaTypeInfo(getClassLiteralForArray(I_classLit, 1), $intern_26, 7, 15, [6, 2, 4, 5]);
@@ -58661,7 +58668,7 @@ function OptocouplerElm_0(xa, ya, xb, yb, f){
   $initOptocoupler(this);
 }
 
-defineClass(428, 113, $intern_86, OptocouplerElm, OptocouplerElm_0);
+defineClass(457, 113, $intern_86, OptocouplerElm, OptocouplerElm_0);
 _.canFlipXY = function canFlipXY_2(){
   return false;
 }
@@ -58813,7 +58820,7 @@ _.cspc = 0;
 _.cspc2 = 0;
 _.ctr = 0;
 var modelExternalNodes_4, modelString_3 = 'DiodeElm 6 1\rCCCSElm 1 2 3 4\rNTransistorElm 3 4 5';
-var Lcom_lushprojects_circuitjs1_client_OptocouplerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OptocouplerElm', 428);
+var Lcom_lushprojects_circuitjs1_client_OptocouplerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'OptocouplerElm', 457);
 function OutputElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.scale_0 = 0;
@@ -58935,12 +58942,12 @@ function PDarlingtonElm(xx, yy){
   DarlingtonElm_0.call(this, xx, yy, true);
 }
 
-defineClass(941, 322, $intern_86, PDarlingtonElm);
+defineClass(945, 322, $intern_86, PDarlingtonElm);
 _.getDumpClass = function getDumpClass_11(){
   return Lcom_lushprojects_circuitjs1_client_DarlingtonElm_2_classLit;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PDarlingtonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PDarlingtonElm', 941);
+var Lcom_lushprojects_circuitjs1_client_PDarlingtonElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PDarlingtonElm', 945);
 function PJfetElm(xx, yy){
   JfetElm_0.call(this, xx, yy, true);
 }
@@ -58955,7 +58962,7 @@ function PMosfetElm(xx, yy){
   MosfetElm_0.call(this, xx, yy, true);
 }
 
-defineClass(943, 131, $intern_147, PMosfetElm);
+defineClass(951, 131, $intern_147, PMosfetElm);
 _.getDumpClass = function getDumpClass_13(){
   return Lcom_lushprojects_circuitjs1_client_MosfetElm_2_classLit;
 }
@@ -58964,12 +58971,12 @@ _.getShortcut = function getShortcut_44(){
   return 80;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PMosfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PMosfetElm', 943);
+var Lcom_lushprojects_circuitjs1_client_PMosfetElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PMosfetElm', 951);
 function PTransistorElm(xx, yy){
   TransistorElm_0.call(this, xx, yy, true);
 }
 
-defineClass(942, 159, $intern_153, PTransistorElm);
+defineClass(944, 159, $intern_153, PTransistorElm);
 _.getDumpClass = function getDumpClass_14(){
   return Lcom_lushprojects_circuitjs1_client_TransistorElm_2_classLit;
 }
@@ -58978,7 +58985,7 @@ _.getShortcut = function getShortcut_45(){
   return 112;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_PTransistorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PTransistorElm', 942);
+var Lcom_lushprojects_circuitjs1_client_PTransistorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PTransistorElm', 944);
 function PhaseCompElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -58989,7 +58996,7 @@ function PhaseCompElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(467, 17, $intern_86, PhaseCompElm, PhaseCompElm_0);
+defineClass(477, 17, $intern_86, PhaseCompElm, PhaseCompElm_0);
 _.doStep = function doStep_65(){
   var out;
   out = this.ff1?this.highVoltage:this.ff2?0:-1;
@@ -59046,7 +59053,7 @@ _.startIteration = function startIteration_43(){
 ;
 _.ff1 = false;
 _.ff2 = false;
-var Lcom_lushprojects_circuitjs1_client_PhaseCompElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PhaseCompElm', 467);
+var Lcom_lushprojects_circuitjs1_client_PhaseCompElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PhaseCompElm', 477);
 function $$init_56(this$static){
   this$static.data_0 = initUnidimensionalArray(Z_classLit, $intern_97, 7, 0, 16, 1);
   this$static.dataIndex = 0;
@@ -59095,7 +59102,7 @@ function PisoShiftElm_0(xa, ya, xb, yb, f, st){
   $setupPins_45(this);
 }
 
-defineClass(450, 17, $intern_86, PisoShiftElm, PisoShiftElm_0);
+defineClass(495, 17, $intern_86, PisoShiftElm, PisoShiftElm_0);
 _.defaultBitCount = function defaultBitCount_1(){
   return 8;
 }
@@ -59200,7 +59207,7 @@ _.clockState = false;
 _.dataIndex = 0;
 _.dataPinIndex = 0;
 _.loadState = false;
-var Lcom_lushprojects_circuitjs1_client_PisoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PisoShiftElm', 450);
+var Lcom_lushprojects_circuitjs1_client_PisoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PisoShiftElm', 495);
 function $equals(this$static, other){
   var result, that;
   result = false;
@@ -59261,7 +59268,7 @@ function PolarCapacitorElm_0(xa, ya, xb, yb, f, st){
   this.maxNegativeVoltage = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(464, 148, $intern_107, PolarCapacitorElm, PolarCapacitorElm_0);
+defineClass(411, 148, $intern_107, PolarCapacitorElm, PolarCapacitorElm_0);
 _.draw = function draw_71(g){
   var w;
   $draw(this, g);
@@ -59332,7 +59339,7 @@ _.undumpXml = function undumpXml_108(xml){
 }
 ;
 _.maxNegativeVoltage = 0;
-var Lcom_lushprojects_circuitjs1_client_PolarCapacitorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PolarCapacitorElm', 464);
+var Lcom_lushprojects_circuitjs1_client_PolarCapacitorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PolarCapacitorElm', 411);
 function $addPoint(this$static, x_0, y_0){
   var newLength;
   if (this$static.npoints >= this$static.xpoints.length || this$static.npoints >= this$static.ypoints.length) {
@@ -59359,15 +59366,15 @@ function Polygon(){
   this.ypoints = initUnidimensionalArray(I_classLit, $intern_26, 7, 4, 15, 1);
 }
 
-defineClass(211, 1, {211:1}, Polygon);
+defineClass(212, 1, {212:1}, Polygon);
 _.npoints = 0;
-var Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Polygon', 211);
+var Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Polygon', 212);
 function $createSlider_2(this$static){
   var ce, ce$iterator, pe, value_0, value0;
   if (this$static.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 213) && ce != this$static) {
+      if (instanceOf(ce, 210) && ce != this$static) {
         pe = ce;
         if (pe.link_0 == this$static.link_0 && !!pe.slider) {
           this$static.slider = pe.slider;
@@ -59393,7 +59400,7 @@ function $detachSlider(this$static){
   if (this$static.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 213) && ce != this$static) {
+      if (instanceOf(ce, 210) && ce != this$static) {
         pe = ce;
         if (pe.link_0 == this$static.link_0 && !pe.deleted) {
           pe.sliderOwner = true;
@@ -59476,7 +59483,7 @@ function PotElm_0(xa, ya, xb, yb, f, st){
   $createSlider_2(this);
 }
 
-defineClass(213, 8, {61:1, 134:1, 15:1, 84:1, 8:1, 11:1, 213:1}, PotElm, PotElm_0);
+defineClass(210, 8, {61:1, 134:1, 15:1, 84:1, 8:1, 11:1, 210:1}, PotElm, PotElm_0);
 _.calculateCurrent = function calculateCurrent_56(){
   if (this.resistance1 == 0)
     return;
@@ -59591,7 +59598,7 @@ _.execute_1 = function execute_71(){
   if (this.link_0 != 0) {
     for (ce$iterator = new ArrayList$1(app_0.elmList.arrayList); ce$iterator.i < ce$iterator.this$01.array.length;) {
       ce = $next_4(ce$iterator);
-      if (instanceOf(ce, 213) && ce != this) {
+      if (instanceOf(ce, 210) && ce != this) {
         pe = ce;
         pe.link_0 == this.link_0 && $setPoints_47(pe);
       }
@@ -59732,7 +59739,7 @@ _.position = 0;
 _.resistance1 = 0;
 _.resistance2 = 0;
 _.sliderOwner = false;
-var Lcom_lushprojects_circuitjs1_client_PotElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PotElm', 213);
+var Lcom_lushprojects_circuitjs1_client_PotElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'PotElm', 210);
 function $$init_57(this$static){
   this$static.rmsV = 0;
   this$static.binaryLevel = 0;
@@ -60150,7 +60157,7 @@ function SRAMElm_0(xa, ya, xb, yb, f, st){
   (this.flags & 2) != 0 && (this.initialMap = new HashMap_1(this.map_0));
 }
 
-defineClass(287, 17, $intern_86, SRAMElm, SRAMElm_0);
+defineClass(284, 17, $intern_86, SRAMElm, SRAMElm_0);
 _.allowBus = function allowBus_8(){
   return true;
 }
@@ -60367,7 +60374,7 @@ _.dataBits = 0;
 _.dataNodes = 0;
 _.internalNodes = 0;
 var contentsOverride = null, fileNameOverride = null;
-var Lcom_lushprojects_circuitjs1_client_SRAMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMElm', 287);
+var Lcom_lushprojects_circuitjs1_client_SRAMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SRAMElm', 284);
 function ROMElm(xx, yy){
   $clinit_ChipElm();
   SRAMElm.call(this, xx, yy);
@@ -60378,7 +60385,7 @@ function ROMElm_0(xa, ya, xb, yb, f, st){
   SRAMElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(456, 287, $intern_86, ROMElm, ROMElm_0);
+defineClass(409, 284, $intern_86, ROMElm, ROMElm_0);
 _.doStep = function doStep_67(){
   var data_0, dataObj, i, outputEnabled, p;
   outputEnabled = this.volts[0] < this.highVoltage / 2;
@@ -60428,7 +60435,7 @@ _.setupPins = function setupPins_56(){
 _.stepFinished = function stepFinished_24(){
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_ROMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ROMElm', 456);
+var Lcom_lushprojects_circuitjs1_client_ROMElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ROMElm', 409);
 function $clinit_RSSpeicherElm(){
   $clinit_RSSpeicherElm = emptyMethod;
   $clinit_ChipElm();
@@ -60505,7 +60512,7 @@ function RSSpeicherElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(493, 17, $intern_86, RSSpeicherElm, RSSpeicherElm_0);
+defineClass(404, 17, $intern_86, RSSpeicherElm, RSSpeicherElm_0);
 _.drag = function drag_20(xx, yy){
   var minH, minW, nsx, nsy;
   xx = $snapGrid_0(app_0, xx);
@@ -60665,7 +60672,7 @@ _.useSmallGrid = function useSmallGrid_2(){
 ;
 _.justLoaded = false;
 var COL_HI_3, COL_LO_0;
-var Lcom_lushprojects_circuitjs1_client_RSSpeicherElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RSSpeicherElm', 493);
+var Lcom_lushprojects_circuitjs1_client_RSSpeicherElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RSSpeicherElm', 404);
 function $contains(this$static, X, Y){
   var h, w, x_0, y_0;
   w = this$static.width_0;
@@ -60889,7 +60896,7 @@ function RelayCoilElm_0(xa, ya, xb, yb, f, st){
   $allocNodes(this);
 }
 
-defineClass(448, 8, $intern_86, RelayCoilElm, RelayCoilElm_0);
+defineClass(447, 8, $intern_86, RelayCoilElm, RelayCoilElm_0);
 _.calculateCurrent = function calculateCurrent_58(){
   var voltdiff;
   voltdiff = this.volts[this.nCoil1] - this.volts[this.nCoil3];
@@ -61154,7 +61161,7 @@ _.switchingTime = 0;
 _.switchingTimeOff = 0;
 _.switchingTimeOn = 0;
 _.type_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_RelayCoilElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayCoilElm', 448);
+var Lcom_lushprojects_circuitjs1_client_RelayCoilElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayCoilElm', 447);
 function $setPoints_49(this$static){
   var ds, j;
   $setPoints(this$static);
@@ -61503,7 +61510,7 @@ function RelayElm_0(xa, ya, xb, yb, f, st){
   $postUndump(this);
 }
 
-defineClass(484, 8, $intern_86, RelayElm, RelayElm_0);
+defineClass(445, 8, $intern_86, RelayElm, RelayElm_0);
 _.calculateCurrent = function calculateCurrent_60(){
   var p, voltdiff;
   voltdiff = this.volts[this.nCoil1] - this.volts[this.nCoil3];
@@ -61860,7 +61867,7 @@ _.nCoil3 = 0;
 _.onState = false;
 _.openhs = 0;
 var lastModelName_3 = 'default';
-var Lcom_lushprojects_circuitjs1_client_RelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayElm', 484);
+var Lcom_lushprojects_circuitjs1_client_RelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'RelayElm', 445);
 function $$init_60(this$static){
 }
 
@@ -62790,7 +62797,7 @@ function SCRElm_0(xa, ya, xb, yb, f, st){
   $setup_6(this);
 }
 
-defineClass(418, 8, $intern_86, SCRElm, SCRElm_0);
+defineClass(451, 8, $intern_86, SCRElm, SCRElm_0);
 _.calculateCurrent = function calculateCurrent_62(){
   this.ig = (this.volts[2] - this.volts[1]) / this.gresistance;
   this.ia = (this.volts[0] - this.volts[3]) / this.aresistance;
@@ -62999,7 +63006,7 @@ _.ig = 0;
 _.lastvac = 0;
 _.lastvag = 0;
 _.triggerI = 0;
-var Lcom_lushprojects_circuitjs1_client_SCRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SCRElm', 418);
+var Lcom_lushprojects_circuitjs1_client_SCRElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SCRElm', 451);
 function $handle(){
   var oFiles = $doc.getElementById('EditDialogLoadFileElement').files, nFiles = oFiles.length;
   if (nFiles >= 1) {
@@ -63050,7 +63057,7 @@ function SchmittElm_0(xa, ya, xb, yb, f, st){
   InvertingSchmittElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(445, 288, $intern_86, SchmittElm, SchmittElm_0);
+defineClass(473, 295, $intern_86, SchmittElm, SchmittElm_0);
 _.doStep = function doStep_72(){
   var maxStep, out;
   if (this.state) {
@@ -63120,7 +63127,7 @@ _.startIteration = function startIteration_46(){
 }
 ;
 _.lastOutputVoltage = 0;
-var Lcom_lushprojects_circuitjs1_client_SchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SchmittElm', 445);
+var Lcom_lushprojects_circuitjs1_client_SchmittElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SchmittElm', 473);
 function $clinit_Scope(){
   $clinit_Scope = emptyMethod;
   multa = stampJavaTypeInfo(getClassLiteralForArray(D_classLit, 1), $intern_76, 7, 15, [2, 2.5, 2]);
@@ -67644,7 +67651,7 @@ function SeqGenElm_0(xa, ya, xb, yb, f, st){
   this.bitCount > this.data_0.length * 32 && (this.bitCount = this.data_0.length * 32);
 }
 
-defineClass(496, 17, $intern_86, SeqGenElm, SeqGenElm_0);
+defineClass(487, 17, $intern_86, SeqGenElm, SeqGenElm_0);
 _.dumpXml = function dumpXml_116(doc, elem){
   var i, s;
   $dumpXml_0(this, elem);
@@ -67763,7 +67770,7 @@ _.undumpXml = function undumpXml_120(xml){
 _.bitCount = 0;
 _.bitPosition = 0;
 _.clockstate = false;
-var Lcom_lushprojects_circuitjs1_client_SeqGenElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SeqGenElm', 496);
+var Lcom_lushprojects_circuitjs1_client_SeqGenElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SeqGenElm', 487);
 function $clinit_SevenSegDecoderElm(){
   $clinit_SevenSegDecoderElm = emptyMethod;
   $clinit_ChipElm();
@@ -67826,7 +67833,7 @@ function SevenSegDecoderElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(471, 17, $intern_86, SevenSegDecoderElm, SevenSegDecoderElm_0);
+defineClass(479, 17, $intern_86, SevenSegDecoderElm, SevenSegDecoderElm_0);
 _.allowBus = function allowBus_9(){
   return true;
 }
@@ -67936,7 +67943,7 @@ _.undumpXml = function undumpXml_121(xml){
 ;
 _.segmentType = 0;
 var symbols, symbols14, symbols16;
-var Lcom_lushprojects_circuitjs1_client_SevenSegDecoderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegDecoderElm', 471);
+var Lcom_lushprojects_circuitjs1_client_SevenSegDecoderElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegDecoderElm', 479);
 function $clinit_SevenSegElm(){
   $clinit_SevenSegElm = emptyMethod;
   $clinit_ChipElm();
@@ -68077,7 +68084,7 @@ function SevenSegElm_0(xa, ya, xb, yb, f, st){
   $setPinCount(this);
 }
 
-defineClass(465, 17, $intern_86, SevenSegElm, SevenSegElm_0);
+defineClass(394, 17, $intern_86, SevenSegElm, SevenSegElm_0);
 _.allowBus = function allowBus_10(){
   return this.diodeDirection == 0;
 }
@@ -68270,7 +68277,7 @@ _.extraSegment = 0;
 _.pinCount = 0;
 _.segmentCount = 0;
 var display14, display16, display7;
-var Lcom_lushprojects_circuitjs1_client_SevenSegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegElm', 465);
+var Lcom_lushprojects_circuitjs1_client_SevenSegElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SevenSegElm', 394);
 function $checkForDuplicates(this$static){
   var box, boxForShortcut, c, i, result, str;
   boxForShortcut = initUnidimensionalArray(Lcom_google_gwt_user_client_ui_TextBox_2_classLit, $intern_3, 130, 127, 0, 1);
@@ -69924,7 +69931,7 @@ function SipoShiftElm_0(xa, ya, xb, yb, f, st){
     this.pins[2 + i].value_0 = data_0[i];
 }
 
-defineClass(405, 17, $intern_86, SipoShiftElm, SipoShiftElm_0);
+defineClass(410, 17, $intern_86, SipoShiftElm, SipoShiftElm_0);
 _.defaultBitCount = function defaultBitCount_3(){
   return 8;
 }
@@ -70008,7 +70015,7 @@ _.undumpXml = function undumpXml_123(xml){
 }
 ;
 _.clockstate = false;
-var Lcom_lushprojects_circuitjs1_client_SipoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SipoShiftElm', 405);
+var Lcom_lushprojects_circuitjs1_client_SipoShiftElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SipoShiftElm', 410);
 function $apply_3(this$static){
   var adj, d, e, ei, i;
   for (i = 0; i != this$static.einfocount; i++) {
@@ -70264,7 +70271,7 @@ function SparkGapElm_0(xa, ya, xb, yb, f, st){
   this.holdcurrent = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(443, 8, $intern_86, SparkGapElm, SparkGapElm_0);
+defineClass(412, 8, $intern_86, SparkGapElm, SparkGapElm_0);
 _.calculateCurrent = function calculateCurrent_64(){
   var vd;
   vd = this.volts[0] - this.volts[1];
@@ -70374,7 +70381,7 @@ _.offresistance = 0;
 _.onresistance = 0;
 _.resistance = 0;
 _.state = false;
-var Lcom_lushprojects_circuitjs1_client_SparkGapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SparkGapElm', 443);
+var Lcom_lushprojects_circuitjs1_client_SparkGapElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SparkGapElm', 412);
 function SquareRailElm(xx, yy){
   RailElm_0.call(this, xx, yy, 2);
 }
@@ -70401,7 +70408,7 @@ function StopTriggerElm_0(xa, ya, xb, yb, f, st){
   this.delay = __parseAndValidateDouble($nextToken(st));
 }
 
-defineClass(419, 8, $intern_86, StopTriggerElm, StopTriggerElm_0);
+defineClass(485, 8, $intern_86, StopTriggerElm, StopTriggerElm_0);
 _.draw = function draw_84(g){
   var f, s, selected;
   g.context.save();
@@ -70510,7 +70517,7 @@ _.triggerTime = 0;
 _.triggerVoltage = 0;
 _.triggered = false;
 _.type_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_StopTriggerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'StopTriggerElm', 419);
+var Lcom_lushprojects_circuitjs1_client_StopTriggerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'StopTriggerElm', 485);
 function $countTokens(this$static){
   var count, delimiterCount, tmpPos, tokenFound;
   count = 0;
@@ -70852,7 +70859,7 @@ function SweepElm_0(xa, ya, xb, yb, f, st){
   $reset_13(this);
 }
 
-defineClass(291, 8, {8:1, 11:1, 291:1}, SweepElm, SweepElm_0);
+defineClass(280, 8, {8:1, 11:1, 280:1}, SweepElm, SweepElm_0);
 _.addRoutingObstacle = function addRoutingObstacle_21(router){
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
   $addObstacle(router, this.point2.x_0 - 17, this.point2.y_0 - 17, this.point2.x_0 + 17, this.point2.y_0 + 17);
@@ -71050,7 +71057,7 @@ _.minF = 0;
 _.savedTimeStep = 0;
 _.sweepTime = 0;
 _.v = 0;
-var Lcom_lushprojects_circuitjs1_client_SweepElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SweepElm', 291);
+var Lcom_lushprojects_circuitjs1_client_SweepElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'SweepElm', 280);
 function $setPoints_53(this$static){
   var hs, i;
   $setPoints_3(this$static);
@@ -71088,7 +71095,7 @@ function Switch2Elm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(293, 46, {8:1, 11:1, 293:1, 46:1}, Switch2Elm, Switch2Elm_0);
+defineClass(285, 46, {8:1, 11:1, 285:1, 46:1}, Switch2Elm, Switch2Elm_0);
 _.addRoutingObstacle = function addRoutingObstacle_22(router){
   var i, i0, pts;
   $addWire(router, this.point1.x_0, this.point1.y_0, this.lead1.x_0, this.lead1.y_0);
@@ -71247,7 +71254,7 @@ _.toggle = function toggle_3(){
   if (this.link_0 != 0) {
     for (i = 0; i != sim_0.elmList.arrayList.array.length; i++) {
       o = $elementAt(sim_0.elmList, i);
-      if (instanceOf(o, 293)) {
+      if (instanceOf(o, 285)) {
         s2 = o;
         if (s2.link_0 == this.link_0) {
           pos = this.position;
@@ -71282,7 +71289,7 @@ _.validate = function validate_17(){
 _.link_0 = 0;
 _.positionFlipped = false;
 _.throwCount = 0;
-var Lcom_lushprojects_circuitjs1_client_Switch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Switch2Elm', 293);
+var Lcom_lushprojects_circuitjs1_client_Switch2Elm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'Switch2Elm', 285);
 function $setupPins_52(this$static){
   this$static.sizeX = 2;
   this$static.sizeY = 3;
@@ -71315,7 +71322,7 @@ function TFlipFlopElm_0(xa, ya, xb, yb, f, st){
   this.pins[2].value_0 = !this.pins[1].value_0;
 }
 
-defineClass(474, 17, $intern_86, TFlipFlopElm, TFlipFlopElm_0);
+defineClass(417, 17, $intern_86, TFlipFlopElm, TFlipFlopElm_0);
 _.execute_3 = function execute_80(){
   this.pins[3].value_0 && !this.lastClock && this.pins[0].value_0 && (this.pins[1].value_0 = !this.pins[1].value_0);
   (this.flags & 4) != 0 && this.pins[5].value_0 && (this.pins[1].value_0 = true);
@@ -71380,7 +71387,7 @@ _.setupPins = function setupPins_63(){
   $setupPins_52(this);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_TFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TFlipFlopElm', 474);
+var Lcom_lushprojects_circuitjs1_client_TFlipFlopElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TFlipFlopElm', 417);
 function TappedTransformerElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.inductance = 4;
@@ -71425,7 +71432,7 @@ function TappedTransformerElm_0(xa, ya, xb, yb, f, st){
   this.a = initUnidimensionalArray(D_classLit, $intern_76, 7, 9, 15, 1);
 }
 
-defineClass(422, 8, $intern_86, TappedTransformerElm, TappedTransformerElm_0);
+defineClass(489, 8, $intern_86, TappedTransformerElm, TappedTransformerElm_0);
 _.calculateCurrent = function calculateCurrent_66(){
   var i, j;
   this.voltdiff[0] = this.volts[0] - this.volts[1];
@@ -71664,7 +71671,7 @@ _.couplingCoef = 0;
 _.flip = 0;
 _.inductance = 0;
 _.ratio = 0;
-var Lcom_lushprojects_circuitjs1_client_TappedTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TappedTransformerElm', 422);
+var Lcom_lushprojects_circuitjs1_client_TappedTransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TappedTransformerElm', 489);
 var loadingTestCircuit = false;
 function $$init_63(this$static){
   this$static.zerocount = 0;
@@ -72021,7 +72028,7 @@ function TextElm_0(xa, ya, xb, yb, f, st){
   $split_0(this);
 }
 
-defineClass(399, 112, $intern_102, TextElm, TextElm_0);
+defineClass(438, 112, $intern_102, TextElm, TextElm_0);
 _.canViewInScope = function canViewInScope_5(){
   return false;
 }
@@ -72125,7 +72132,7 @@ _.undumpXml = function undumpXml_130(xml){
 }
 ;
 _.size_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TextElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TextElm', 399);
+var Lcom_lushprojects_circuitjs1_client_TextElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TextElm', 438);
 function $$init_64(this$static){
   this$static.t0 = 273.15;
   this$static.t25 = this$static.t0 + 25;
@@ -72192,7 +72199,7 @@ function ThermistorNTCElm_0(xa, ya, xb, yb, f, st){
   $createSlider_3(this);
 }
 
-defineClass(480, 8, $intern_151, ThermistorNTCElm, ThermistorNTCElm_0);
+defineClass(484, 8, $intern_151, ThermistorNTCElm, ThermistorNTCElm_0);
 _.calculateCurrent = function calculateCurrent_67(){
   this.current_0 = (this.volts[0] - this.volts[1]) / this.resistance;
 }
@@ -72359,7 +72366,7 @@ _.resistance = 0;
 _.t0 = 0;
 _.t25 = 0;
 _.temperature = 0;
-var Lcom_lushprojects_circuitjs1_client_ThermistorNTCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThermistorNTCElm', 480);
+var Lcom_lushprojects_circuitjs1_client_ThermistorNTCElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ThermistorNTCElm', 484);
 function TimeDelayRelayElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -72378,7 +72385,7 @@ function TimeDelayRelayElm_0(xa, ya, xb, yb, f, st){
   this.offResistance = this.resistance = __parseAndValidateDouble($nextToken(st));
 }
 
-defineClass(433, 17, $intern_86, TimeDelayRelayElm, TimeDelayRelayElm_0);
+defineClass(396, 17, $intern_86, TimeDelayRelayElm, TimeDelayRelayElm_0);
 _.doStep = function doStep_77(){
   this.resistance = this.onState?this.onResistance:this.offResistance;
   $stampResistor(this.nodes[2], this.nodes[3], this.resistance);
@@ -72488,7 +72495,7 @@ _.onResistance = 0;
 _.onState = false;
 _.poweredState = false;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_TimeDelayRelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimeDelayRelayElm', 433);
+var Lcom_lushprojects_circuitjs1_client_TimeDelayRelayElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimeDelayRelayElm', 396);
 function $setupPins_53(this$static){
   this$static.sizeX = 3;
   this$static.sizeY = 5;
@@ -72516,7 +72523,7 @@ function TimerElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(461, 17, $intern_86, TimerElm, TimerElm_0);
+defineClass(414, 17, $intern_86, TimerElm, TimerElm_0);
 _.calculateCurrent = function calculateCurrent_68(){
   var groundVolts;
   this.pins[3].current = (this.volts[4] - this.volts[3]) / 5000;
@@ -72624,7 +72631,7 @@ _.startIteration = function startIteration_50(){
 ;
 _.out = false;
 _.triggerSuppressed = false;
-var Lcom_lushprojects_circuitjs1_client_TimerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimerElm', 461);
+var Lcom_lushprojects_circuitjs1_client_TimerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TimerElm', 414);
 function $createButtonSet(this$static, info){
   var app, command, i, iconLabel, mainCommand, paletteContainer, paletteStyle, smallSvg, variantButton, variantStyle;
   mainCommand = new MyCommand('main', info[1]);
@@ -72939,7 +72946,7 @@ function TransLineElm_0(xa, ya, xb, yb, f, st){
   $reset_14(this);
 }
 
-defineClass(481, 8, $intern_86, TransLineElm, TransLineElm_0);
+defineClass(482, 8, $intern_86, TransLineElm, TransLineElm_0);
 _.canFlipX = function canFlipX_5(){
   return this.dy == 0;
 }
@@ -73164,7 +73171,7 @@ _.lastStepCount = 0;
 _.lenSteps = 0;
 _.ptr = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TransLineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransLineElm', 481);
+var Lcom_lushprojects_circuitjs1_client_TransLineElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransLineElm', 482);
 function $calcEffectiveInductance_0(l0, i, isat){
   var ratio;
   if (isat <= 0)
@@ -73254,7 +73261,7 @@ function TransformerElm_0(xa, ya, xb, yb, f, st){
   this.polarity = (this.flags & 4) != 0?-1:1;
 }
 
-defineClass(472, 8, $intern_86, TransformerElm, TransformerElm_0);
+defineClass(493, 8, $intern_86, TransformerElm, TransformerElm_0);
 _.calculateCurrent = function calculateCurrent_69(){
   var voltdiff1, voltdiff2;
   voltdiff1 = this.volts[0] - this.volts[2];
@@ -73502,7 +73509,7 @@ _.polarity = 0;
 _.ratio = 0;
 _.saturationCurrent = 0;
 _.width_0 = 0;
-var Lcom_lushprojects_circuitjs1_client_TransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransformerElm', 472);
+var Lcom_lushprojects_circuitjs1_client_TransformerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TransformerElm', 493);
 function $$init_65(this$static){
 }
 
@@ -73917,7 +73924,7 @@ function TriStateElm_0(xa, ya, xb, yb, f, st){
   }
 }
 
-defineClass(473, 8, $intern_86, TriStateElm, TriStateElm_0);
+defineClass(413, 8, $intern_86, TriStateElm, TriStateElm_0);
 _.calculateCurrent = function calculateCurrent_70(){
   var current10, current31, i, intNode, outNode;
   this.current_0 = 0;
@@ -74152,7 +74159,7 @@ _.r_off = 0;
 _.r_off_ground = 0;
 _.r_on = 0;
 _.resistance = 0;
-var Lcom_lushprojects_circuitjs1_client_TriStateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriStateElm', 473);
+var Lcom_lushprojects_circuitjs1_client_TriStateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriStateElm', 413);
 function $setDefaults_0(this$static){
   this$static.holdingI = 0.0082;
   this$static.triggerI = $intern_35;
@@ -74182,7 +74189,7 @@ function TriacElm_0(xa, ya, xb, yb, f, st){
   $setup_7(this);
 }
 
-defineClass(488, 8, $intern_86, TriacElm, TriacElm_0);
+defineClass(449, 8, $intern_86, TriacElm, TriacElm_0);
 _.calculateCurrent = function calculateCurrent_71(){
   this.aresistance == 0?(this.i2 = 0):(this.i2 = (this.volts[3] - this.volts[1]) / this.aresistance);
   this.ig = -(this.volts[1] - this.volts[2]) / this.cresistance;
@@ -74343,7 +74350,7 @@ _.setPoints = function setPoints_103(){
   this.gate = $newPointArray(2);
   $interpPoint2(this.lead1, this.lead2, this.plate1[0], this.plate1[1], 0, 16);
   $interpPoint2(this.lead1, this.lead2, this.plate2[0], this.plate2[1], 1, 16);
-  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 211, 2, 0, 1);
+  this.arrows = initUnidimensionalArray(Lcom_lushprojects_circuitjs1_client_Polygon_2_classLit, $intern_3, 212, 2, 0, 1);
   for (i = 0; i != 2; i++) {
     sgn = -1 + i * 2;
     p1 = $interpPoint_0(this.lead1, this.lead2, i, 8 * sgn);
@@ -74395,7 +74402,7 @@ _.i2 = 0;
 _.ig = 0;
 _.state = false;
 _.triggerI = 0;
-var Lcom_lushprojects_circuitjs1_client_TriacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriacElm', 488);
+var Lcom_lushprojects_circuitjs1_client_TriacElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriacElm', 449);
 function TriodeElm(xx, yy){
   CircuitElm.call(this, xx, yy);
   this.mu = 93;
@@ -74411,7 +74418,7 @@ function TriodeElm_0(xa, ya, xb, yb, f, st){
   this.noDiagonal = true;
 }
 
-defineClass(489, 8, $intern_86, TriodeElm, TriodeElm_0);
+defineClass(442, 8, $intern_86, TriodeElm, TriodeElm_0);
 _.canViewInScope = function canViewInScope_7(){
   return true;
 }
@@ -74643,7 +74650,7 @@ _.lastv0 = 0;
 _.lastv1 = 0;
 _.lastv2 = 0;
 _.mu = 0;
-var Lcom_lushprojects_circuitjs1_client_TriodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriodeElm', 489);
+var Lcom_lushprojects_circuitjs1_client_TriodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TriodeElm', 442);
 function $limitStep_1(vnew, vold){
   if (vnew > vold + 1)
     return vold + 1;
@@ -74660,7 +74667,7 @@ function TunnelDiodeElm_0(xa, ya, xb, yb, f){
   CircuitElm_0.call(this, xa, ya, xb, yb, f);
 }
 
-defineClass(454, 8, $intern_86, TunnelDiodeElm, TunnelDiodeElm_0);
+defineClass(450, 8, $intern_86, TunnelDiodeElm, TunnelDiodeElm_0);
 _.calculateCurrent = function calculateCurrent_72(){
   var i0, voltdiff;
   voltdiff = this.volts[0] - this.volts[1];
@@ -74735,7 +74742,7 @@ _.stamp = function stamp_103(){
 }
 ;
 _.lastvoltdiff = 0;
-var Lcom_lushprojects_circuitjs1_client_TunnelDiodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TunnelDiodeElm', 454);
+var Lcom_lushprojects_circuitjs1_client_TunnelDiodeElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'TunnelDiodeElm', 450);
 function $close_1(this$static, keepChanges){
   if (!keepChanges) {
     while (this$static.currentPnp != this$static.originalPnp)
@@ -75498,7 +75505,7 @@ function $onPreviewNativeEvent(this$static, e){
             se = ce;
             if (se.keyShortcut != null && $equals_1(se.keyShortcut, keyStr)) {
               se.toggle();
-              instanceOf(se, 212) || $needAnalyze(this$static.app);
+              instanceOf(se, 213) || $needAnalyze(this$static.app);
               toggled = true;
             }
           }
@@ -76295,7 +76302,7 @@ function UnijunctionElm_0(xa, ya, xb, yb, f){
   $setup_8(this);
 }
 
-defineClass(483, 113, $intern_86, UnijunctionElm, UnijunctionElm_0);
+defineClass(497, 113, $intern_86, UnijunctionElm, UnijunctionElm_0);
 _.draw = function draw_98(g){
   var ib1, ib2;
   $setBbox_0(this, this.point1, this.b1[0], 0);
@@ -76395,7 +76402,7 @@ _.curcountb1 = 0;
 _.curcountb2 = 0;
 _.curcounte = 0;
 var ujtExternalNodes, ujtModelDump = '2 x2n2646-emitter/0 0 0 0 0 0 0/2 2 1000*a/0 1000000/0 5 0.00028*(a-b)\\p0.00575*(c-d)*e/2 3.5e-11 0 0/0 38.15/0 2518', ujtModelString = 'DiodeElm 1 4\rVoltageElm 4 5\rCCVSElm 4 5 6 0\rResistorElm 0 6\rVCCSElm 5 7 5 7 6 7 5\rCapacitorElm 5 7\rResistorElm 7 2\rResistorElm 3 5';
-var Lcom_lushprojects_circuitjs1_client_UnijunctionElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UnijunctionElm', 483);
+var Lcom_lushprojects_circuitjs1_client_UnijunctionElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'UnijunctionElm', 497);
 function VCOElm(xx, yy){
   $clinit_ChipElm();
   ChipElm.call(this, xx, yy);
@@ -76406,7 +76413,7 @@ function VCOElm_0(xa, ya, xb, yb, f, st){
   ChipElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(439, 17, $intern_86, VCOElm, VCOElm_0);
+defineClass(471, 17, $intern_86, VCOElm, VCOElm_0);
 _.doStep = function doStep_85(){
   var dir_0, vc, vo;
   vc = this.volts[3] - this.volts[2];
@@ -76488,7 +76495,7 @@ _.stamp = function stamp_104(){
 }
 ;
 _.cDir = 0;
-var Lcom_lushprojects_circuitjs1_client_VCOElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCOElm', 439);
+var Lcom_lushprojects_circuitjs1_client_VCOElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCOElm', 471);
 function VCVSElm(xx, yy){
   $clinit_ChipElm();
   VCCSElm.call(this, xx, yy);
@@ -76499,7 +76506,7 @@ function VCVSElm_0(xa, ya, xb, yb, f, st){
   VCCSElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(500, 187, $intern_86, VCVSElm, VCVSElm_0);
+defineClass(434, 187, $intern_86, VCVSElm, VCVSElm_0);
 _.doStep = function doStep_86(){
   var convergeLimit, dv, dx, i, rs, v, v0, v2, vn;
   convergeLimit = $getConvergeLimit();
@@ -76588,7 +76595,7 @@ _.stepFinished = function stepFinished_30(){
   $updateLastValues(this.exprState, this.volts[this.inputCount] - this.volts[this.inputCount + 1]);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_VCVSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCVSElm', 500);
+var Lcom_lushprojects_circuitjs1_client_VCVSElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VCVSElm', 434);
 function $createSlider_4(this$static){
   var value_0;
   this$static.waveform = 7;
@@ -76614,7 +76621,7 @@ function VarRailElm_0(xa, ya, xb, yb, f, st){
   $createSlider_4(this);
 }
 
-defineClass(286, 52, {134:1, 15:1, 8:1, 11:1, 52:1, 286:1, 57:1}, VarRailElm, VarRailElm_0);
+defineClass(290, 52, {134:1, 15:1, 8:1, 11:1, 52:1, 290:1, 57:1}, VarRailElm, VarRailElm_0);
 _.delete_0 = function delete_6(){
   $removeWidgetFromVerticalPanel(app_0, this.label_0);
   $removeWidgetFromVerticalPanel(app_0, this.slider);
@@ -76682,7 +76689,7 @@ _.undumpXml = function undumpXml_138(xml){
   $setValue_2(this.slider, value_0);
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_VarRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VarRailElm', 286);
+var Lcom_lushprojects_circuitjs1_client_VarRailElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VarRailElm', 290);
 function VaractorElm(xx, yy){
   DiodeElm.call(this, xx, yy);
   this.baseCapacitance = 4.0E-12;
@@ -76694,7 +76701,7 @@ function VaractorElm_0(xa, ya, xb, yb, f, st){
   this.baseCapacitance = $doubleValue(__parseAndValidateDouble($nextToken(st)));
 }
 
-defineClass(400, 160, $intern_117, VaractorElm, VaractorElm_0);
+defineClass(461, 160, $intern_117, VaractorElm, VaractorElm_0);
 _.calculateCurrent = function calculateCurrent_73(){
   this.current_0 = $calculateCurrent_0(this.diode, this.volts[0] - this.volts[this.diodeEndNode]);
   this.current_0 += this.capCurrent;
@@ -76823,7 +76830,7 @@ _.capacitance = 0;
 _.capvoltdiff = 0;
 _.compResistance = 0;
 _.voltSourceValue = 0;
-var Lcom_lushprojects_circuitjs1_client_VaractorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VaractorElm', 400);
+var Lcom_lushprojects_circuitjs1_client_VaractorElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'VaractorElm', 461);
 function $setNodes(this$static, n1, n2){
   this$static.n1 = n1;
   this$static.n2 = n2;
@@ -76890,7 +76897,7 @@ function WattmeterElm_0(xa, ya, xb, yb, f, st){
   $setup_9(this);
 }
 
-defineClass(451, 8, $intern_86, WattmeterElm, WattmeterElm_0);
+defineClass(480, 8, $intern_86, WattmeterElm, WattmeterElm_0);
 _.canFlipX = function canFlipX_6(){
   return false;
 }
@@ -77114,7 +77121,7 @@ _.minP = 0;
 _.totalPower = 0;
 _.width_0 = 0;
 _.zerocount = 0;
-var Lcom_lushprojects_circuitjs1_client_WattmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WattmeterElm', 451);
+var Lcom_lushprojects_circuitjs1_client_WattmeterElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'WattmeterElm', 480);
 function addToList(map_0, k, w){
   var list;
   list = $get_1(map_0, valueOf_0(k));
@@ -78152,7 +78159,7 @@ function XnorGateElm_0(xa, ya, xb, yb, f, st){
   XorGateElm_0.call(this, xa, ya, xb, yb, f, st);
 }
 
-defineClass(490, 201, $intern_164, XnorGateElm, XnorGateElm_0);
+defineClass(452, 201, $intern_164, XnorGateElm, XnorGateElm_0);
 _.getDumpType = function getDumpType_170(){
   return 431;
 }
@@ -78169,7 +78176,7 @@ _.isInverting = function isInverting_2(){
   return true;
 }
 ;
-var Lcom_lushprojects_circuitjs1_client_XnorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XnorGateElm', 490);
+var Lcom_lushprojects_circuitjs1_client_XnorGateElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'XnorGateElm', 452);
 function ZenerElm(xx, yy){
   DiodeElm.call(this, xx, yy);
   this.modelName = lastZenerModelName;
@@ -78188,7 +78195,7 @@ function ZenerElm_0(xa, ya, xb, yb, f, st){
   $setup_0(this);
 }
 
-defineClass(296, 160, {8:1, 160:1, 11:1, 296:1}, ZenerElm, ZenerElm_0);
+defineClass(291, 160, {8:1, 160:1, 11:1, 291:1}, ZenerElm, ZenerElm_0);
 _.draw = function draw_102(g){
   var v1, v2;
   $setBbox_0(this, this.point1, this.point2, 8);
@@ -78240,7 +78247,7 @@ _.setPoints = function setPoints_109(){
 }
 ;
 var lastZenerModelName = 'default-zener';
-var Lcom_lushprojects_circuitjs1_client_ZenerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ZenerElm', 296);
+var Lcom_lushprojects_circuitjs1_client_ZenerElm_2_classLit = createForClass('com.lushprojects.circuitjs1.client', 'ZenerElm', 291);
 function $language(){
   if (navigator.languages) {
     if (navigator.languages.length > 0) {

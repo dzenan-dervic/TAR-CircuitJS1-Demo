@@ -896,7 +896,10 @@
     this.classList.toggle("on", obstacle);
     this.textContent = obstacle ? "⚠ Hindernis entfernen" : "⚠ Hindernis stellen";
     writeExt("I6", !obstacle);
-    if (testOn() && obstacle) q2 = false;
+    if (testOn() && obstacle && q2) {
+      q2 = false;
+      if (pos < 99.5 && !fault && notAus) q1 = true;
+    }
   });
 
   function tick(now) {
