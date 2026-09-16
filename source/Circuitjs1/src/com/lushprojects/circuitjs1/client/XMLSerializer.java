@@ -119,10 +119,11 @@ class XMLSerializer {
         f |= sim.adjustTimeStep ? 64 : 0;
         f |= app.autoDCOnReset ? 128 : 0;
         f |= menus.noEditCheckItem.getState() ? 256 : 0;
-	XMLSerializer.dumpAttr(root, "f", f);
-	XMLSerializer.dumpAttr(root, "ts", sim.maxTimeStep);
-	XMLSerializer.dumpAttr(root, "ic", app.getIterCount());
 	UIManager ui = app.ui;
+	f |= ui.egtRealtimeAvailable ? 512 : 0;
+	XMLSerializer.dumpAttr(root, "f", f);
+	XMLSerializer.dumpAttr(root, "ts", ui.getMaxTimeStepForDump());
+	XMLSerializer.dumpAttr(root, "ic", ui.getIterCountForDump());
 	XMLSerializer.dumpAttr(root, "cb", ui.currentBar.getValue());
 	XMLSerializer.dumpAttr(root, "pb", ui.powerBar.getValue());
 	XMLSerializer.dumpAttr(root, "vr", CircuitElm.voltageRange);

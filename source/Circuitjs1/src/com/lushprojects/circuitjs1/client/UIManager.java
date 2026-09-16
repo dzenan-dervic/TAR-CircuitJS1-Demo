@@ -79,7 +79,12 @@ public class UIManager {
     VerticalPanel verticalPanel;
     CellPanel buttonPanel;
     Button layoutLockButton;
+    Button egtRealtimeButton;
     boolean layoutLockAvailable;
+    boolean egtRealtimeAvailable;
+    boolean egtRealtimeMode;
+    double egtNormalMaxTimeStep;
+    int egtNormalSpeedValue;
     Vector<CheckboxMenuItem> mainMenuItems = new Vector<CheckboxMenuItem>();
     Vector<String> mainMenuItemNames = new Vector<String>();
     Element sidePanelCheckboxLabel;
@@ -313,6 +318,8 @@ public class UIManager {
 	setToolbar(); // calls setCanvasSize()
 	layoutPanel.add(cv);
 	verticalPanel.add(buttonPanel);
+	buttonPanel.setWidth("100%");
+	buttonPanel.setStyleName("egtPrimaryControls");
 	buttonPanel.add(resetButton = new Button(Locale.LS("Reset")));
 	resetButton.addClickHandler(new ClickHandler() {
 	    public void onClick(ClickEvent event) {
@@ -326,6 +333,8 @@ public class UIManager {
 		setSimRunning(!simIsRunning());
 	    }
 	});
+	buttonPanel.setCellWidth(resetButton, "50%");
+	buttonPanel.setCellWidth(runStopButton, "50%");
 	layoutLockButton = new Button();
 	layoutLockButton.setStyleName("egtLayoutLockButton");
 	layoutLockButton.addClickHandler(new ClickHandler() {
@@ -335,6 +344,16 @@ public class UIManager {
 	});
 	verticalPanel.add(layoutLockButton);
 	setLayoutLockAvailable(forceNoEdit);
+
+	egtRealtimeButton = new Button();
+	egtRealtimeButton.setStyleName("egtRealtimeButton");
+	egtRealtimeButton.addClickHandler(new ClickHandler() {
+	    public void onClick(ClickEvent event) {
+		setEgtRealtimeMode(!egtRealtimeMode);
+	    }
+	});
+	verticalPanel.add(egtRealtimeButton);
+	setEgtRealtimeAvailable(false);
 
 	
 /*
@@ -952,6 +971,69 @@ public class UIManager {
 	layoutLockButton.setStyleName("egtLayoutLockButton");
 	if (locked)
 	    layoutLockButton.addStyleName("egtLayoutLockButton-locked");
+    }
+
+    void setEgtRealtimeAvailable(boolean available) {
+	if (egtRealtimeMode)
+	    setEgtRealtimeMode(false);
+	egtRealtimeAvailable = available;
+	if (egtRealtimeButton != null) {
+	    egtRealtimeButton.setVisible(available);
+	    updateEgtRealtimeButton();
+	}
+    }
+
+    boolean isEgtRealtimeMode() {
+	return egtRealtimeAvailable && egtRealtimeMode;
+    }
+
+    void setEgtRealtimeMode(boolean enabled) {
+	if (enabled && !egtRealtimeAvailable)
+	    return;
+	if (enabled == egtRealtimeMode) {
+	    updateEgtRealtimeButton();
+	    return;
+	}
+	if (enabled) {
+	    egtNormalMaxTimeStep = app.sim.maxTimeStep;
+	    egtNormalSpeedValue = speedBar.getValue();
+	    app.sim.maxTimeStep = app.sim.timeStep = .001;
+	    speedBar.setValue(161);
+	    speedBar.disable();
+	    egtRealtimeMode = true;
+	} else {
+	    egtRealtimeMode = false;
+	    app.sim.maxTimeStep = app.sim.timeStep = egtNormalMaxTimeStep;
+	    speedBar.enable();
+	    speedBar.setValue(egtNormalSpeedValue);
+	}
+	app.needAnalyze();
+	app.repaint();
+	updateEgtRealtimeButton();
+    }
+
+    double getMaxTimeStepForDump() {
+	return egtRealtimeMode ? egtNormalMaxTimeStep : app.sim.maxTimeStep;
+    }
+
+    double getIterCountForDump() {
+	int value = egtRealtimeMode ? egtNormalSpeedValue : speedBar.getValue();
+	if (value == 0)
+	    return 0;
+	return .1 * Math.exp((value - 61) / 24.);
+    }
+
+    private void updateEgtRealtimeButton() {
+	if (egtRealtimeButton == null)
+	    return;
+	String action = Locale.LS(egtRealtimeMode ? "Disable Realtime Mode" : "Enable Realtime Mode");
+	egtRealtimeButton.setText(action);
+	egtRealtimeButton.setTitle(action);
+	egtRealtimeButton.getElement().setAttribute("aria-label", action);
+	egtRealtimeButton.getElement().setAttribute("aria-pressed", egtRealtimeMode ? "true" : "false");
+	egtRealtimeButton.setStyleName("egtRealtimeButton");
+	if (egtRealtimeMode)
+	    egtRealtimeButton.addStyleName("egtRealtimeButton-active");
     }
 
     void enableItems() {

@@ -444,8 +444,9 @@ public class CirSim implements NativePreviewHandler {
 	f |= sim.adjustTimeStep ? 64 : 0;
 	f |= autoDCOnReset ? 128 : 0;
 	f |= menus.noEditCheckItem.getState() ? 256 : 0;
+	f |= ui.egtRealtimeAvailable ? 512 : 0;
 	String dump = "$ " + f + " " +
-	    sim.maxTimeStep + " " + getIterCount() + " " +
+	    ui.getMaxTimeStepForDump() + " " + ui.getIterCountForDump() + " " +
 	    ui.currentBar.getValue() + " " + CircuitElm.voltageRange + " " +
 	    ui.powerBar.getValue() + " " + sim.minTimeStep + "\n";
 	return dump;

@@ -275,6 +275,10 @@ public class CircuitLoader {
         menus.showValuesCheckItem.setState((flags & 16) == 0);
         sim.adjustTimeStep = (flags & 64) != 0;
         app.autoDCOnReset = (flags & 128) != 0;
+        // 512 = optionaler EGT-Echtzeitmodus; standardmäßig ausgeschaltet.
+        app.ui.setEgtRealtimeAvailable((flags & 512) != 0);
+        // 256 = Lage sperren (TAR-Dervic): Klick auf Taster bleibt, Verschieben aus.
+        // Dateien ohne Bit laden entsperrt. URL ?editable=false bleibt zwingend.
         app.ui.setLayoutLockAvailable((flags & 256) != 0);
         if (!app.ui.forceNoEdit)
             app.ui.setLayoutLocked((flags & 256) != 0);

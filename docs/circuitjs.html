@@ -125,6 +125,26 @@
     -moz-border-radius: 3px;
 }
 
+.egtPrimaryControls {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 5px 0 2px;
+    table-layout: fixed;
+}
+
+.egtPrimaryControls td {
+    padding: 0 4px;
+}
+
+.egtPrimaryControls .topButton,
+.egtPrimaryControls .topButton-red {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 36px;
+    margin: 0;
+    padding: 6px 3px;
+}
+
 .topButton {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -170,6 +190,33 @@
 
 .egtLayoutLockButton-locked:focus-visible {
     outline-color: #00ffff;
+}
+
+.egtRealtimeButton {
+    box-sizing: border-box;
+    width: calc(100% - 10px);
+    min-height: 44px;
+    margin: 0 5px 7px;
+    padding: 8px 6px;
+    color: #17324d;
+    background-color: #edf3f8;
+    border: 1px solid #55718b;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: small;
+    font-weight: 600;
+    touch-action: manipulation;
+}
+
+.egtRealtimeButton-active {
+    color: #ffffff;
+    background-color: #285777;
+    border-color: #1d415a;
+}
+
+.egtRealtimeButton:focus-visible {
+    outline: 3px solid #005fcc;
+    outline-offset: 2px;
 }
 
 .radioPanel label {

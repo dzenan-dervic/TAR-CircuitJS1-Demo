@@ -6,6 +6,7 @@ package com.lushprojects.circuitjs1.client;
 
 import com.google.gwt.xml.client.Document;
 import com.google.gwt.xml.client.Element;
+import com.google.gwt.user.client.Timer;
 import com.lushprojects.circuitjs1.client.util.Locale;
 
 /**
@@ -19,9 +20,12 @@ class EGTTasterElm extends SwitchElm implements EGTDesignatable {
     static final int MIN_W = 48;
     static final int MIN_H = 64;
     static final int LEAD_OUT = 16;
+    static final int REALTIME_MIN_PRESS_MS = 120;
 
     String designation = "S";
     String note = "";
+    long realtimePressStartedMs;
+    Timer realtimeReleaseTimer;
 
     public String egtDesignation() { return designation; }
     public void setEgtDesignation(String d) {
@@ -91,6 +95,53 @@ class EGTTasterElm extends SwitchElm implements EGTDesignatable {
     /** Leitend: Schließer nur gedrückt, Öffner in Ruhe. */
     boolean contactClosed() {
 	return isNC() ? !pressed() : pressed();
+    }
+
+    void toggle() {
+	cancelRealtimeRelease();
+	super.toggle();
+	realtimePressStartedMs = pressed() ? System.currentTimeMillis() : 0;
+    }
+
+    void mouseUp() {
+	if (!momentary || app == null || app.ui == null || !app.ui.isEgtRealtimeMode()) {
+	    super.mouseUp();
+	    return;
+	}
+	long elapsed = Math.max(0, System.currentTimeMillis() - realtimePressStartedMs);
+	int remaining = (int) Math.max(0, REALTIME_MIN_PRESS_MS - elapsed);
+	if (remaining == 0) {
+	    super.mouseUp();
+	    return;
+	}
+	realtimeReleaseTimer = new Timer() {
+	    public void run() {
+		realtimeReleaseTimer = null;
+		if (pressed()) {
+		    EGTTasterElm.super.toggle();
+		    realtimePressStartedMs = 0;
+		    if (app != null) {
+			app.needAnalyze();
+			app.repaint();
+		    }
+		}
+	    }
+	};
+	realtimeReleaseTimer.schedule(remaining);
+    }
+
+    void reset() {
+	cancelRealtimeRelease();
+	position = 1;
+	realtimePressStartedMs = 0;
+	super.reset();
+    }
+
+    private void cancelRealtimeRelease() {
+	if (realtimeReleaseTimer != null) {
+	    realtimeReleaseTimer.cancel();
+	    realtimeReleaseTimer = null;
+	}
     }
 
     void allocPosts() {
