@@ -1,0 +1,389 @@
+[
+  {
+    "category": "Passive Bauteile und Netz",
+    "items": [
+      {
+        "class": "WireElm",
+        "name": "Leitung",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Elektrisch direkt nutzbar; Leiterfarben und eine eindeutige Leiterkennzeichnung sind gemäß Unterrichtsstandard zu ergänzen.",
+        "priority": "Muss · I201, I204"
+      },
+      {
+        "class": "GroundElm",
+        "name": "Masse",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Nicht mit dem Schutzleiter PE gleichsetzen. Massebezug und Schutzleiterdarstellung müssen didaktisch getrennt bleiben.",
+        "priority": "Muss · I204, Q602"
+      },
+      {
+        "class": "ResistorElm",
+        "name": "Widerstand",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "Als elektrisches Grundelement ohne neue EGT-Symbolklasse nutzbar; europäische Darstellung beibehalten.",
+        "priority": "Basis · Z104"
+      },
+      {
+        "class": "CapacitorElm",
+        "name": "Kondensator",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "Für Kondensator-, Anlauf- und Steinmetzbeispiele einsetzbar; Parameterbereich im Unterrichtsbeispiel prüfen.",
+        "priority": "Muss · M505"
+      },
+      {
+        "class": "InductorElm",
+        "name": "Spule",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "Als Grundelement und für vereinfachte Ersatzschaltungen nutzbar; keine eigene EGT-Erweiterung erforderlich.",
+        "priority": "Basis · Z104"
+      },
+      {
+        "class": "FuseElm",
+        "name": "Sicherung",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Funktion und Symbol dürfen nicht mit Leitungsschutzschalter oder RCD gleichgesetzt werden; Auslöseverhalten dokumentieren.",
+        "priority": "Soll · Q602"
+      },
+      {
+        "class": "LabeledNodeElm",
+        "name": "Beschrifteter Knoten",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Für Klemmen-, Potential- und Leiterkennzeichnungen nutzen; deutsche Bezeichnungen und Betriebsmittelkennzeichen vorsehen.",
+        "priority": "Muss · Q602, S301"
+      }
+    ]
+  },
+  {
+    "category": "Spannungsquellen",
+    "items": [
+      {
+        "class": "DCVoltageElm",
+        "name": "Gleichspannungsquelle",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "Für Steuer- und Gleichstrommotorbeispiele verwendbar; Nennspannung im Beispiel eindeutig beschriften.",
+        "priority": "Muss · M505, Q602"
+      },
+      {
+        "class": "ACVoltageElm",
+        "name": "Wechselspannungsquelle",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Für 230-V-Beispiele nutzbar; Aufbau eines 400-V-Drehstromsystems, Phasenlage und Außenleiterbezeichnungen prüfen.",
+        "priority": "Muss · M501, Q602"
+      }
+    ]
+  },
+  {
+    "category": "Sensorik und Anzeige",
+    "items": [
+      {
+        "class": "LEDElm",
+        "name": "Leuchtdiode",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Als elektronische Anzeige nutzbar, jedoch nicht als Ersatz für Installationsleuchte oder Meldeleuchte behandeln.",
+        "priority": "Soll · I203, Q602"
+      },
+      {
+        "class": "ThermistorNTCElm",
+        "name": "NTC-Thermistor",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Kennlinie und Parameter für temperaturabhängige Beispiele prüfen; kein Ersatz für ein vollständiges Motorschutzmodell.",
+        "priority": "Soll · M506"
+      },
+      {
+        "class": "LDRElm",
+        "name": "Fotowiderstand (LDR)",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Für Außenlicht- und Helligkeitssteuerungen geeignet; Wertebereich und Kopplung an Logikfunktionen prüfen.",
+        "priority": "Soll · L403, LOGIK-09"
+      }
+    ]
+  },
+  {
+    "category": "Schalter, Relais und Schutzgeräte",
+    "items": [
+      {
+        "class": "SwitchElm",
+        "name": "Schalter (Schließer)",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Elektrisch nutzbar; Installationssymbol, Kontaktart und deutsche Bezeichnung eindeutig darstellen.",
+        "priority": "Muss · I202, I203"
+      },
+      {
+        "class": "Switch2Elm",
+        "name": "Wechselschalter",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Umschaltfunktion ist vorhanden; Anschlussbezeichnungen und installationsgerechte Darstellung prüfen.",
+        "priority": "Muss · I202"
+      },
+      {
+        "class": "PushSwitchElm",
+        "name": "Taster",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Tastfunktion nutzbar; Schließer/Öffner, Rückstellung und deutsche Betriebsmittelbezeichnung kenntlich machen.",
+        "priority": "Muss · I203, S302"
+      },
+      {
+        "class": "CrossSwitchElm",
+        "name": "Kreuzschalter",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Kontaktlogik, Anschlusszuordnung und IEC-orientierte Installationsdarstellung anhand der Referenzschaltung prüfen.",
+        "priority": "Muss · I202"
+      },
+      {
+        "class": "RelayElm",
+        "name": "Relais (gekoppelt)",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Gekoppelte Spule und Kontakte sind vorhanden; Eignung als didaktische Schütz-/Relaisdarstellung und Kontaktzuordnung prüfen.",
+        "priority": "Muss · S301"
+      },
+      {
+        "class": "RelayCoilElm",
+        "name": "Relais-/Schützspule",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Spule mit Betriebsmittelkennzeichen sowie Anschlussbezeichnungen A1/A2 darstellen und mit Kontakten koppeln.",
+        "priority": "Muss · S301"
+      },
+      {
+        "class": "RelayContactElm",
+        "name": "Relais-/Schützkontakt",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Kontaktart und Zuordnung zur Spule kenntlich machen; z. B. 13/14 für Schließer und 21/22 für Öffner.",
+        "priority": "Muss · S301, S302"
+      },
+      {
+        "class": "TimeDelayRelayElm",
+        "name": "Zeitrelais",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Anzugs- und Abfallverzögerung, Kontaktwechsel und Zeitparameter müssen für die Unterrichtsfälle geprüft werden.",
+        "priority": "Muss · S303"
+      },
+      {
+        "class": "EGTUeberlastrelaisElm",
+        "name": "EGT-Thermisches Überlastrelais (zusammen)",
+        "status": "umgesetzt",
+        "assessment": "Dump 472: drei Heizleiter 1–6 bleiben leitend; Auslösung öffnet 95–96 und schließt 97–98. Reset nur Edit-Button. Iset/tripTime editierbar.",
+        "priority": "Muss · S306, ANH-07"
+      },
+      {
+        "class": "EGTUeberlastHeizleiterElm",
+        "name": "EGT-Überlastrelais (Heizleiter)",
+        "status": "umgesetzt",
+        "assessment": "Dump 482: nur Bimetall 1/3/5–2/4/6 im Hauptstromkreis. Gleiches thermisches Modell wie 472. Kopplung zu Kontakten über Bezeichnung.",
+        "priority": "Muss · S306, ANH-07"
+      },
+      {
+        "class": "EGTUeberlastKontaktElm",
+        "name": "EGT-Überlastrelais-Kontakt",
+        "status": "umgesetzt",
+        "assessment": "Dump 483: Öffner 95–96 oder Schließer 97–98, potenzialfrei. Folgt der Auslösung gleicher Bezeichnung (F1).",
+        "priority": "Muss · S306, ANH-07"
+      },
+      {
+        "class": "MotorProtectionSwitchElm",
+        "name": "Motorschutzschalter",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Dreipolige Zuordnung, Auslösung, Hilfskontakt und Abgrenzung zum Motorschutzrelais fachlich verifizieren.",
+        "priority": "Soll · M506, ANH-08"
+      },
+      {
+        "class": "EGTMotorschutzschalterElm",
+        "name": "EGT-Motorschutzschalter (3-polig)",
+        "status": "umgesetzt",
+        "assessment": "Drei gemeinsam geschaltete Hauptpole mit Fachkunde-Symbol, einstellbarem thermischem und magnetischem Überstromschutz sowie gemeinsamem Reset. Dump 481; Upstream-Motorschutzschalter bleibt unverändert.",
+        "priority": "Soll · M506, ANH-08"
+      }
+    ]
+  },
+  {
+    "category": "Motoren, Verbraucher und Transformator",
+    "items": [
+      {
+        "class": "DCMotorElm",
+        "name": "Gleichstrommotor",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "Als vorhandenes Vergleichselement und für MOTOR-06 nutzbar; Motorart und Drehrichtung im Beispiel dokumentieren.",
+        "priority": "Muss · M505"
+      },
+      {
+        "class": "ThreePhaseMotorElm",
+        "name": "Drehstrom-Asynchronmotor",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Funktional auf Phasenfolge, Drehrichtung, Stern/Dreieck, Klemmen U1/V1/W1 und U2/V2/W2 sowie Schützkopplung prüfen.",
+        "priority": "Muss · M501–M504"
+      },
+      {
+        "class": "TransformerElm",
+        "name": "Transformator",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Für Kleinspannungs- und Klingelbeispiele nutzbar; Übersetzung, Anschlüsse und IEC-Darstellung prüfen.",
+        "priority": "Soll · I203, Q602"
+      },
+      {
+        "class": "LampElm",
+        "name": "Lampe / Leuchte",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Elektrisches Verbraucherverhalten nutzbar; Installationsleuchte und Meldeleuchte fachlich unterscheidbar darstellen.",
+        "priority": "Muss · I203"
+      }
+    ]
+  },
+  {
+    "category": "Logik und Funktionsplan",
+    "items": [
+      {
+        "class": "AndGateElm",
+        "name": "UND-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit & ist vorhanden und soll für EGT voreingestellt werden; sichtbaren Umschalter IEC/EU ↔ ANSI/US vorsehen und Eingangsanzahl skalierbar halten.",
+        "priority": "Muss · L401, L404"
+      },
+      {
+        "class": "OrGateElm",
+        "name": "ODER-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit ≥1 ist vorhanden und soll für EGT voreingestellt werden; Umschaltung zur ANSI-/US-Darstellung weiterhin ermöglichen.",
+        "priority": "Muss · L401"
+      },
+      {
+        "class": "NandGateElm",
+        "name": "NAND-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit & und Negationskreis ist vorhanden; für EGT voreinstellen und über den EU/US-Umschalter auswählbar halten.",
+        "priority": "Muss · L401"
+      },
+      {
+        "class": "NorGateElm",
+        "name": "NOR-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit ≥1 und Negationskreis ist vorhanden; für EGT voreinstellen und über den EU/US-Umschalter auswählbar halten.",
+        "priority": "Muss · L401"
+      },
+      {
+        "class": "XorGateElm",
+        "name": "Exklusiv-ODER-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit =1 ist vorhanden; für EGT voreinstellen und die ANSI-/US-Variante nur bei Bedarf über den Umschalter anzeigen.",
+        "priority": "Soll · L401"
+      },
+      {
+        "class": "InverterElm",
+        "name": "NICHT-Gatter",
+        "status": "vorhanden und direkt nutzbar",
+        "assessment": "IEC-Darstellung mit 1 und Negationskreis ist vorhanden; für EGT voreinstellen und die Umschaltung zur ANSI-/US-Darstellung beibehalten.",
+        "priority": "Muss · L401"
+      },
+      {
+        "class": "DelayBufferElm",
+        "name": "Verzögerungsbaustein",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Zeitverhalten und Parameter prüfen; nicht ohne Nachweis als vollständige Ein- oder Ausschaltverzögerung verwenden.",
+        "priority": "Muss · L403"
+      },
+      {
+        "class": "LatchElm",
+        "name": "Latch-Speicher",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Vorhanden als Mehrbit-Latch/Register (I/O + Takt, optional S/R), Chip-Rechteck. Erfüllt nicht den FUP-RS-Speicher (L402 / LOGIK-07). Eigenes Element RSSpeicherElm nutzen.",
+        "priority": "prüfen · L402 (Ist-Basis, kein Ersatz)"
+      },
+      {
+        "class": "RSSpeicherElm",
+        "name": "RS-Speicher (FUP)",
+        "status": "vorhanden",
+        "assessment": "FUP-Block SR/RS: asynchron S/R → Q/Q̅. Menü EGT, Dump 437.",
+        "priority": "Muss · L402"
+      },
+      {
+        "class": "EGTFupTonElm",
+        "name": "FUP-Einschaltverzögerung (TON)",
+        "status": "vorhanden",
+        "assessment": "IEC-FUP-Block mit I/Q und editierbarer Zeit T. I=1 startet die Wanduhr-Verzögerung bei laufender Simulation; Q=1 nach Ablauf. Normale CircuitJS-Leitungen; als reines Logiksignal ohne gelbe Strompunkte. Dump 476. Eigenständig, kein Ersatz für Zeitrelais-Spule/Kontakt.",
+        "priority": "Muss · L403 / LOGIK-09"
+      },
+      {
+        "class": "EGTFupTofElm",
+        "name": "FUP-Ausschaltverzögerung (TOF)",
+        "status": "vorhanden",
+        "assessment": "IEC-FUP-Block mit I/Q und editierbarer Zeit T. I=1 setzt Q sofort; nach I=0 bleibt Q für T aktiv. Wanduhr bei laufender Simulation. Normale CircuitJS-Leitungen; als reines Logiksignal ohne gelbe Strompunkte. Dump 477. Eigenständig, kein Ersatz für Zeitrelais-Spule/Kontakt.",
+        "priority": "Muss · L403 / LOGIK-09"
+      },
+      {
+        "class": "EGTMiniSpsElm",
+        "name": "Mini-SPS (LOGO Gerät)",
+        "status": "vorhanden",
+        "assessment": "Geräteansicht 8I/4Q oder 8I/8Q, Dump 466. I aus 230 V gegen N (Peak-Ein / 3 ms-Aus). Q-Schließer über FUP. LCD: RUN/STOP + I/Q-Bits (I = Klemme oder FUP-I-Klick). Tasten STOP/RUN = Betriebsart. Kein Editor im Display. Nutzerabnahme 2026-08-13.",
+        "priority": "Muss · L404"
+      },
+      {
+        "class": "EGTFupEingangElm",
+        "name": "FUP-Eingang I1…I8",
+        "status": "vorhanden",
+        "assessment": "Weißes Quadrat, Adresse oben, sichtbarer Anschlussstutzen rechts. Pegel aus Mini-SPS-Klemme In oder Klick. Dump 467. Verbindlich: Thevenin/Wired-OR (High 10 Ω auf 5 V, Low 1 MΩ), keine ideale Quelle 0/5 V gegen Masse — sonst Kurzschluss wenn mehrere I auf ein Q. Handoff 2026-08-13_mini-sps-fup.md Abschnitt FUP-I Wired-OR.",
+        "priority": "Muss · L404 / LOGIK-07"
+      },
+      {
+        "class": "EGTFupAusgangElm",
+        "name": "FUP-Ausgang Q1…Q8",
+        "status": "vorhanden",
+        "assessment": "Weißes Quadrat, Adresse oben, sichtbarer Anschlussstutzen links. Logikeingang setzt qMask. Dump 468. Q5–Q8 nur am 8I/8Q-Gerät. Mehrere FUP-I auf diesem Stift = ODER (Wired-OR).",
+        "priority": "Muss · L404 / LOGIK-07"
+      },
+      {
+        "class": "DFlipFlopElm",
+        "name": "D-Flipflop",
+        "status": "vorhanden, Chip-Darstellung",
+        "assessment": "Digital Chips → D Flip-Flop (D/Clock/Q/Q̅, optional S/R). Nutzbar für Digitaltechnik; kein FUP-RS-Speicher und kein IEC-FUP-Symbol.",
+        "priority": "prüfen · Kontext, nicht L402"
+      },
+      {
+        "class": "JKFlipFlopElm",
+        "name": "JK-Flipflop",
+        "status": "vorhanden, Chip-Darstellung",
+        "assessment": "Digital Chips → JK Flip-Flop. Kontext Digitaltechnik; nicht FUP-RS.",
+        "priority": "prüfen · Kontext"
+      },
+      {
+        "class": "TFlipFlopElm",
+        "name": "T-Flipflop",
+        "status": "vorhanden, Chip-Darstellung",
+        "assessment": "Digital Chips → T Flip-Flop. Kontext Digitaltechnik; nicht FUP-RS.",
+        "priority": "prüfen · Kontext"
+      },
+      {
+        "class": "MonostableElm",
+        "name": "Monoflop / Monostabiler Baustein",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Impuls- und Rückfallverhalten sowie Parametrierung für Unterrichtsaufgaben prüfen und dokumentieren.",
+        "priority": "Soll · L403"
+      },
+      {
+        "class": "TimerElm",
+        "name": "Timer-Baustein",
+        "status": "vorhanden, fachlich zu prüfen",
+        "assessment": "Ein-/Ausgänge, Zeitbasis und Verhalten mit den benötigten FUP-Zeitfunktionen abgleichen.",
+        "priority": "Muss · L403"
+      },
+      {
+        "class": "CustomLogicElm",
+        "name": "Benutzerdefinierter Logikblock",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Als Grundlage für mehrgliedrige Blöcke prüfen; Anschlussanzahl, Semantik und deutsche Beschriftung festlegen.",
+        "priority": "Muss · L404"
+      },
+      {
+        "class": "LogicInputElm",
+        "name": "Logikeingang",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Eingangswert vorhanden; deutsche E-Kennzeichnung und Kopplung an Schalter, Relais und Sensoren vorsehen.",
+        "priority": "Muss · L404, L405"
+      },
+      {
+        "class": "LogicOutputElm",
+        "name": "Logikausgang",
+        "status": "vorhanden, IEC-/EGT-Darstellung anzupassen",
+        "assessment": "Ausgangswert vorhanden; deutsche A-Kennzeichnung und Kopplung an Relais, Schütze und Verbraucher vorsehen.",
+        "priority": "Muss · L404, L405"
+      }
+    ]
+  }
+]

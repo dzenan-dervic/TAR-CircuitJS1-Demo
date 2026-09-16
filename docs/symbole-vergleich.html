@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TAR-Dervic — Symbolkatalog Ist vs. Planarten</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --ink: #1a1d23;
+      --muted: #5c6570;
+      --line: #d8dde4;
+      --accent: #0b5f8a;
+      --accent-soft: #e6f2f8;
+      --warn: #8a5a00;
+      --warn-bg: #fff6e5;
+      --miss: #6b7280;
+      --miss-bg: #eef0f3;
+      --ok: #1b6b3a;
+      --font: "Segoe UI", "IBM Plex Sans", system-ui, sans-serif;
+      --mono: "Cascadia Mono", "Consolas", ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 1.25rem 1.5rem 1rem;
+    }
+    header h1 {
+      margin: 0 0 0.35rem;
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+    }
+    header p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 68rem;
+      font-size: 0.95rem;
+    }
+
+    .legend {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      margin-top: 1rem;
+    }
+    .legend article {
+      background: var(--accent-soft);
+      border: 1px solid #c5dce8;
+      border-radius: 6px;
+      padding: 0.75rem 0.9rem;
+      font-size: 0.88rem;
+    }
+    .legend strong { color: var(--accent); }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(244, 245, 247, 0.96);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      align-items: center;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .nav a {
+      text-decoration: none;
+      color: var(--accent);
+      font-size: 0.82rem;
+      padding: 0.28rem 0.55rem;
+      border: 1px solid #b9d4e4;
+      border-radius: 999px;
+      background: var(--surface);
+    }
+    .nav a:hover { background: var(--accent-soft); }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      align-items: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .filters label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    main { padding: 1rem 1.5rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+    section { margin-top: 1.75rem; }
+    section h2 {
+      margin: 0 0 0.65rem;
+      font-size: 1.1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.35rem;
+      display: inline-block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 0.65rem 0.7rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      background: #eef2f6;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      font-weight: 650;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr.is-hidden { display: none; }
+
+    .meta .name { font-weight: 650; }
+    .meta .id {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+    .meta .status {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: var(--warn-bg);
+      color: var(--warn);
+    }
+    .meta .status.ok {
+      background: #e7f6ec;
+      color: var(--ok);
+    }
+    .meta .status.neu {
+      background: #ece8ff;
+      color: #4338a8;
+    }
+    .meta .note {
+      margin-top: 0.45rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .cell-img {
+      width: 9.5rem;
+      min-height: 5.5rem;
+    }
+    .thumb {
+      width: 9rem;
+      height: 5.2rem;
+      object-fit: contain;
+      background: #000000;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      display: block;
+    }
+    .placeholder {
+      width: 9rem;
+      min-height: 5.2rem;
+      border: 1px dashed #b0b8c2;
+      border-radius: 4px;
+      background: var(--miss-bg);
+      color: var(--miss);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.45rem;
+      font-size: 0.72rem;
+      line-height: 1.25;
+    }
+    .placeholder code {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      word-break: break-all;
+      color: var(--ink);
+    }
+    .upload-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+      margin-left: auto;
+    }
+    .upload-bar button,
+    .btn-upload {
+      font: inherit;
+      font-size: 0.78rem;
+      padding: 0.28rem 0.55rem;
+      border: 1px solid #b9d4e4;
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--accent);
+      cursor: pointer;
+    }
+    .upload-bar button:hover,
+    .btn-upload:hover { background: var(--accent-soft); }
+    .btn-upload {
+      margin-top: 0.35rem;
+      width: 100%;
+      max-width: 9rem;
+    }
+    .dir-status {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    .dir-status.ok { color: var(--ok); }
+    .cell-img.has-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+    .check-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+    .check-btn {
+      font: inherit;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.45rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--miss-bg);
+      color: var(--miss);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .check-btn[data-state="todo"] {
+      background: var(--miss-bg);
+      color: var(--miss);
+      border-color: #c5cad3;
+    }
+    .check-btn[data-state="progress"] {
+      background: var(--warn-bg);
+      color: var(--warn);
+      border-color: #e6c98a;
+    }
+    .check-btn[data-state="done"] {
+      background: #e7f6ec;
+      color: var(--ok);
+      border-color: #9fd4b0;
+    }
+    .check-btn[data-state="ignore"] {
+      background: #eceff3;
+      color: #6b7280;
+      border-color: #c5cad3;
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+    .check-btn[data-kind="cjs"] {
+      border-style: dashed;
+    }
+    .check-btn .mark {
+      font-weight: 700;
+      min-width: 0.9rem;
+      text-align: center;
+    }
+    tr[data-progress="done"] { background: #f3faf5; }
+    tr[data-progress="progress"] { background: #fffaf0; }
+    tr[data-progress="ignore"] { background: #f3f4f6; opacity: 0.78; }
+    .placeholder.ignored {
+      border-style: solid;
+      border-color: #c5cad3;
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    footer {
+      padding: 1rem 1.5rem 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--line);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 820px) {
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr {
+        border-bottom: 1px solid var(--line);
+        padding: 0.75rem 0;
+      }
+      td {
+        border: none;
+        padding: 0.35rem 0.7rem;
+      }
+      td::before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin-bottom: 0.25rem;
+      }
+      .cell-img { width: 100%; }
+      .thumb, .placeholder { width: 100%; max-width: 16rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Symbolkatalog — Ist (CircuitJS) vs. Planarten</h1>
+    <p>
+      Arbeitsübersicht für TAR-Dervic / EGT. Spalte <strong>Ist</strong> zeigt vorhandene CircuitJS-Vorschaubilder.
+      Spalten <strong>Zusammenhängend</strong> und <strong>Übersicht</strong> füllen sich automatisch, sobald PNGs unter
+      <code>docs/assets/symbole/…</code> abgelegt werden. Fokus laut Lehrergespräch: zusammenhängende Darstellung.
+    </p>
+    <div class="legend">
+      <article>
+        <strong>Zusammenhängende Darstellung</strong><br />
+        Allpolige Installationsoptik wie im Arbeitsblatt (Leiterfarben, Abzweigdose, Schalter/Leuchte sichtbar verbunden).
+      </article>
+      <article>
+        <strong>Übersichtsschaltplan</strong><br />
+        Einpolige / übersichtliche Planart — separat zeichnen; keine automatische Umwandlung geplant (I205).
+      </article>
+      <article>
+        <strong>Ignorieren</strong><br />
+        Pro Spur (ZH / Übersicht / CircuitJS): nicht erledigt → in Arbeit → fertig → <em>ignoriert</em>.
+        Für Bauteile ohne Installationsdarstellung (z. B. Kondensator).
+      </article>
+      <article>
+        <strong>CircuitJS (CJS)</strong><br />
+        Abhaken, wenn das Symbol in CircuitJS erledigt ist (EGT-Zeichnung importiert / Klasse angepasst / getestet).
+        Unabhängig von ZH/ÜS-PNGs.
+      </article>
+      <article>
+        <strong>Fortschritt</strong><br />
+        Gespeichert in <code>docs/assets/symbole/progress.json</code> (Repo → gilt nach Pull in jedem Browser).
+        Lokal zusätzlich im Browser als Cache. Nach Abhaken: <strong>Fortschritt speichern</strong> klicken.
+      </article>
+    </div>
+    <p id="gap-note" style="margin:0.85rem 0 0;font-size:0.88rem;color:var(--muted)"></p>
+  </header>
+
+  <div class="toolbar">
+    <nav class="nav" id="cat-nav" aria-label="Kategorien"></nav>
+    <div class="filters">
+      Filter:
+      <label><input type="radio" name="filter" value="all" checked /> alle</label>
+      <label><input type="radio" name="filter" value="ohne-ziel" /> ohne Zielbild</label>
+      <label><input type="radio" name="filter" value="fehlende-klasse" /> neue EGT-Symbole</label>
+      <label><input type="radio" name="filter" value="todo" /> nicht erledigt</label>
+      <label><input type="radio" name="filter" value="progress" /> in Arbeit</label>
+      <label><input type="radio" name="filter" value="done" /> fertig</label>
+      <label><input type="radio" name="filter" value="ignore" /> ignoriert</label>
+    </div>
+    <div class="upload-bar" id="upload-bar">
+      <button type="button" id="btn-dir-zh" title="Chrome/Edge: Ordner docs/assets/symbole/zusammenhaengend">Ordner Zusammenhängend…</button>
+      <button type="button" id="btn-dir-ue" title="Chrome/Edge: Ordner docs/assets/symbole/uebersicht">Ordner Übersicht…</button>
+      <button type="button" id="btn-save-progress" title="Schreibt/lädt docs/assets/symbole/progress.json">Fortschritt speichern</button>
+      <span class="dir-status" id="dir-status">Ordner: nicht verknüpft → Upload speichert als Download</span>
+    </div>
+  </div>
+
+  <main id="content"></main>
+
+  <footer>
+    Quelle Bauteile: <code>docs/bauteilbestand.json</code> (Muss) + fehlende Installationssymbole aus Lastenheft I202/I203.
+    Ist-Bilder: <code>docs/assets/bauteile/</code>. Fortschritt: <code>docs/assets/symbole/progress.json</code>.
+    Stand der Seite: lokal, kein Build nötig.
+  </footer>
+
+  <script>
+    /**
+     * id: Dateiname ohne .png für Ist / Zielbilder
+     * className: CircuitJS-Klasse oder null (neu)
+     * hasIst: Vorschaubild unter assets/bauteile erwartet
+     */
+    const SYMBOLS = [
+      // —— Netz / Leiter ——
+      {
+        category: "Netz und Leiter",
+        id: "WireElm",
+        className: "WireElm",
+        name: "Leitung (mit Leiterrollen L1/L2/L3/N/PE)",
+        status: "ok",
+        note: "Muss · I201, I204 — Workbench: Leiterfarben L1/L2/L3/N/PE (N blau, PE Zebra grün-gelb Standard). CircuitJS: EGTLeitungElm (Menü EGT, Dump 440) — Edit: Leiterart. WireElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Netz und Leiter",
+        id: "GroundElm",
+        className: "GroundElm",
+        name: "Masse",
+        status: "prüfen",
+        note: "Muss · I204 — nicht mit PE gleichsetzen.",
+        hasIst: true
+      },
+      {
+        category: "Netz und Leiter",
+        id: "LabeledNodeElm",
+        className: "LabeledNodeElm",
+        name: "Beschrifteter Knoten / Klemme",
+        status: "anzupassen",
+        note: "Muss · Q602, S301 — deutsche Betriebsmittelkennzeichen.",
+        hasIst: true
+      },
+      {
+        category: "Netz und Leiter",
+        id: "ACVoltageElm",
+        className: "ACVoltageElm",
+        name: "Wechselspannungsquelle",
+        status: "ok",
+        note: "Muss · M501 — Workbench ZH: L/N/PE farbig in Box; Übersicht: Kreis mit ~. CircuitJS: EGTSpannungsquelleElm (Menü EGT, Dump 438) — Edit: Übersichtsdarstellung. ACVoltageElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Netz und Leiter",
+        id: "ACVoltage3Elm",
+        className: null,
+        name: "Drehstrom-Spannungsquelle (L1/L2/L3/N/PE)",
+        status: "ok",
+        note: "Muss · M501 — Workbench ZH: 5 Adern farbig in Box; Übersicht: Kreis mit 3~. CircuitJS: EGTDrehstromquelleElm (Menü EGT, Dump 439, U_LN 230 V, 120°-System).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Netz und Leiter",
+        id: "DCVoltageElm",
+        className: "DCVoltageElm",
+        name: "Gleichspannungsquelle",
+        status: "ok",
+        note: "Muss · M505, Q602 — Workbench nur ZH (+/− in Box); Übersicht nicht vorgesehen. CircuitJS: EGTGleichspannungsquelleElm (Menü EGT, Dump 441). DCVoltageElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Netz und Leiter",
+        id: "CapacitorElm",
+        className: "CapacitorElm",
+        name: "Kondensator",
+        status: "ok",
+        note: "Muss · M505 — nur CircuitJS-Ist; keine ZH/Übersicht-Planart.",
+        hasIst: true,
+        defaultProgress: { zh: "ignore", ue: "ignore" }
+      },
+
+      // —— Installation ——
+      {
+        category: "Installation",
+        id: "SwitchElm",
+        className: "SwitchElm",
+        name: "Ausschalter (Schließer)",
+        status: "ok",
+        note: "Muss · I202 — Workbench ZH+Übersicht. CircuitJS: EGTAusschalterElm (Menü EGT, Dump 444) — Klick EIN/AUS; Übersicht 1 Anschluss. SwitchElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Serienschalter",
+        className: null,
+        name: "Serienschalter",
+        status: "ok",
+        note: "Muss · I202 — Workbench ZH+Übersicht. CircuitJS: EGTSerienschalterElm (Menü EGT, Dump 445) — zwei Wippen, Klick links/rechts.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Switch2Elm",
+        className: "Switch2Elm",
+        name: "Wechselschalter",
+        status: "ok",
+        note: "Muss · I202 — Workbench ZH+Übersicht. CircuitJS: EGTWechselschalterElm (Menü EGT, Dump 446) — Klick Stellung 1↔2. Switch2Elm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "CrossSwitchElm",
+        className: "CrossSwitchElm",
+        name: "Kreuzschalter",
+        status: "ok",
+        note: "Muss · I202 — Workbench ZH+Übersicht. CircuitJS: EGTKreuzschalterElm (Menü EGT, Dump 447) — Klick gerade↔Kreuz. CrossSwitchElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "PushSwitchElm",
+        className: "PushSwitchElm",
+        name: "Taster",
+        status: "ok",
+        note: "Muss · I202/I203 — Workbench ZH+Übersicht. CircuitJS: EGTTasterElm (Menü EGT, Dump 448) — hold=gedrückt; Edit „Leuchttaster“. PushSwitchElm unverändert.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "LampElm",
+        className: "LampElm",
+        name: "Leuchte / Lampe",
+        status: "ok",
+        note: "Muss · I203 — Workbench ZH (L/N an Kreis, PE auf Gehäuserand) + Übersicht X.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Abzweigdose",
+        className: null,
+        name: "Abzweigdose",
+        status: "ok",
+        note: "Muss · I203 — Workbench ZH (leerer Kasten) + Übersicht Kreis+Punkt; Leitungen über EGT-Leitung. CircuitJS: EGTAbzweigdoseElm (Menü EGT, Dump 442).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Steckdose",
+        className: null,
+        name: "Steckdose",
+        status: "ok",
+        note: "Muss · I203 — Workbench ZH (L/PE/N ∩) + Übersicht T+Bogen. CircuitJS: EGTSteckdoseElm (Menü EGT, Dump 443).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Bewegungsmelder",
+        className: "EGTBewegungsmelderElm",
+        name: "Bewegungsmelder (IR)",
+        status: "ok",
+        note: "Muss · I203 / INST-09 / MOD-INST-10 — Workbench PIR-Raute L/N/L′. CircuitJS Dump 473, Klick = Bewegung, Nachlauf im Edit.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Klingel",
+        className: null,
+        name: "Klingel / Gong",
+        status: "ok",
+        note: "Muss · I203 / INST-10 / MOD-INST-11 — Workbench ZH (K1, L/N an Beinchen, kein PE) + Übersicht (Kuppel+2 Beine).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Tueröffner",
+        className: null,
+        name: "Türöffner",
+        status: "ok",
+        note: "Muss · I203 / INST-10 / MOD-INST-12 — Workbench ZH (Y1 mittig, L oben/N unten, kein PE) + Übersicht (Spule/~ + Dreieck).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Stromstossschalter",
+        className: null,
+        name: "Stromstoßschalter (Referenz gekoppelt)",
+        status: "ok",
+        note: "Muss · S305 / MOD-REL-01 / I203 — Spule mit Stufenmarkierung + Schließer, gestrichelt; aufgelöste Teile darunter.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Stromstossschalter_Spule",
+        className: null,
+        name: "Stromstoßschalter — Spule",
+        status: "ok",
+        note: "Muss · S305 / MOD-REL-01 — Spule Stufenmarkierung; Kopplung über Bezeichnung (devices[tag].latched).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Stromstossschalter_Schliesser",
+        className: null,
+        name: "Stromstoßschalter — Schließer",
+        status: "ok",
+        note: "Muss · S305 / MOD-REL-01 — Schließer vom Stromstoßschalter (Import-Teil).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Stromstossschalter_Oeffner",
+        className: null,
+        name: "Stromstoßschalter — Öffner",
+        status: "ok",
+        note: "Muss · S305 / MOD-REL-01 — Öffner vom Stromstoßschalter (Import-Teil).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Stromstossrelais",
+        className: null,
+        name: "Stromstoßrelais (Alias → Stromstossschalter)",
+        status: "ok",
+        note: "Alias · siehe Stromstossschalter / _Spule / _Schliesser / _Oeffner.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Treppenlichtautomat",
+        className: null,
+        name: "Treppenlichtautomat",
+        status: "ok",
+        note: "Muss · S305 / MOD-REL-02 — Workbench + CircuitJS Dump 471: Spule Schrägstrich + Schließer Fallschirm, T/D, Vierleiter A1/A2 / L–Lampe.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "Meldeleuchte",
+        className: null,
+        name: "Meldeleuchte",
+        status: "ok",
+        note: "Muss · I203 — Workbench ZH+Übersicht (getrennt von LampElm).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Installation",
+        id: "RCD",
+        className: null,
+        name: "RCD / FI-Schutzschalter",
+        status: "neu",
+        note: "Soll / ANH-01 — im Lastenheft als fehlendes EGT-Bauteil genannt.",
+        hasIst: false
+      },
+
+      // —— Schütz / Relais ——
+      {
+        category: "Schütz und Relais",
+        id: "Leistungsschuetz",
+        className: null,
+        name: "Leistungsschütz (Referenz gekoppelt)",
+        status: "ok",
+        note: "Muss · S301 / MOD-SCH-01 — Referenz Box gekoppelt. Planarbeit: aufgelöste IDs Spule/Leistungskontakte/Hilfsschließer.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "LeistungsschuetzAB",
+        className: null,
+        name: "Leistungsschütz (Arbeitsblatt Referenz)",
+        status: "ok",
+        note: "Muss · S301 — Referenz gekoppelt; aufgelöste Darstellung bevorzugt für Stromlauf.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Leistungsschuetz_Spule",
+        className: null,
+        name: "Leistungsschütz — Spule",
+        status: "ok",
+        note: "Muss · S301 / MOD-SCH-01 — Steuerstrom A1/A2; Kopplung über Betriebsmittelkennzeichen (devices[tag].energized).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Leistungsschuetz_Leistungskontakte",
+        className: null,
+        name: "Leistungsschütz — Leistungskontakte",
+        status: "ok",
+        note: "Muss · S301 / MOD-SCH-01 — Hauptstrom 1–2/3–4/5–6; Zustand über gleiche Bezeichnung wie Spule.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Leistungsschuetz_Hilfsschliesser",
+        className: null,
+        name: "Leistungsschütz — Hilfsschließer",
+        status: "ok",
+        note: "Muss · S301 / MOD-SCH-01 — Hilfsschließer 13/14; gekoppelt über Bezeichnung.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Hilfsschuetz",
+        className: null,
+        name: "Hilfsschütz (gekoppelt)",
+        status: "ok",
+        note: "Muss · S301 / MOD-SCH-02 — Spule A1/A2 + konfigurierbare Hilfskontakte; CircuitJS Dump 457.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Hilfsschalterblock",
+        className: null,
+        name: "Hilfsschalterblock (ohne Spule)",
+        status: "ok",
+        note: "Muss · S301 — mechanische Kontakt-Erweiterung ohne A1/A2; CircuitJS Dump 458.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "RelayCoilElm",
+        className: "RelayCoilElm",
+        name: "Relais- / Schützspule",
+        status: "anzupassen",
+        note: "Muss · S301 — A1/A2, Betriebsmittelkennzeichen.",
+        hasIst: true
+      },
+      {
+        category: "Schütz und Relais",
+        id: "RelayContactElm",
+        className: "RelayContactElm",
+        name: "Relais- / Schützkontakt",
+        status: "anzupassen",
+        note: "Muss · S301, S302 — 13/14, 21/22.",
+        hasIst: true
+      },
+      {
+        category: "Schütz und Relais",
+        id: "RelayElm",
+        className: "RelayElm",
+        name: "Relais (gekoppelt)",
+        status: "prüfen",
+        note: "Muss · S301.",
+        hasIst: true
+      },
+      {
+        category: "Schütz und Relais",
+        id: "TimeDelayRelayElm",
+        className: "TimeDelayRelayElm",
+        name: "Zeitrelais (anzug-/abfallverzögert)",
+        status: "prüfen",
+        note: "Muss · S303.",
+        hasIst: false
+      },
+      {
+        category: "Schütz und Relais",
+        id: "ThermischesUeberlastrelais",
+        className: "EGTUeberlastrelaisElm",
+        name: "Thermisches Überlastrelais",
+        status: "ok",
+        note: "Muss · F260 / MOD-SCH-03 / ANH-07 — Kombi Dump 472 (1–6, 95–96, 97–98). Getrennt: Heizleiter 482 + Kontakt 483. Reset nur Edit.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Sicherung",
+        className: "EGTSicherungElm",
+        name: "Sicherung",
+        status: "neu",
+        note: "Muss · MOD-SCH-04 — Stromlaufplan Schaltmesser + Pfeil. CircuitJS Dump 474: LS-Verhalten IEC 60898-1 (In B/C/D, thermisch/magnetisch, Reset nur Edit).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "todo" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "Sicherung3p",
+        className: "EGTSicherungElm",
+        name: "Sicherung 3-polig",
+        status: "neu",
+        note: "Muss · MOD-SCH-04 — drei Messer + Pfeil, F1 in L1/L2/L3. Dieselbe Klasse Dump 474, Edit 3-polig.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "todo" }
+      },
+      {
+        category: "Schütz und Relais",
+        id: "MotorProtectionSwitchElm",
+        className: "MotorProtectionSwitchElm",
+        name: "Motorschutzschalter",
+        status: "prüfen",
+        note: "Soll · M506, ANH-08.",
+        hasIst: true
+      },
+
+      // —— Motoren ——
+      {
+        category: "Motoren und Verbraucher",
+        id: "ThreePhaseMotorElm",
+        className: "ThreePhaseMotorElm",
+        name: "Drehstrom-Asynchronmotor",
+        status: "ok",
+        note: "Muss · M501–M504 / M502 — ZH: kein Gehäuse; U1/V1/W1 und W2/V2/U2 direkt am Motorkreis + M/3~ + Drehpfeil. Übersicht: Kreis+M+3~+Pfeil. Workbench-Toggle Rechts/Links/Stillstand. CircuitJS-draw() später.",
+        hasIst: true,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Motoren und Verbraucher",
+        id: "ThreePhaseMotorElm_v2",
+        className: "ThreePhaseMotorElm",
+        name: "Drehstrom-Asynchronmotor v2",
+        status: "neu",
+        note: "Muss · M501–M504 / M502 — CircuitJS: EGTDrehstrommotorElm Dump 459 (Variante A, Bogenpfeil aus sign(filteredSpeed)); Upstream ThreePhaseMotorElm 427 unverändert. Workbench-Varianten B–E nur Vergleich.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Motoren und Verbraucher",
+        id: "Kondensatormotor",
+        className: null,
+        name: "Kondensatormotor",
+        status: "neu",
+        note: "Muss · M505 — MOTOR-05; oft vorhandenes Motormodell + Kondensator.",
+        hasIst: false
+      },
+      {
+        category: "Motoren und Verbraucher",
+        id: "DCMotorElm",
+        className: "EGTGleichstrommotorElm",
+        name: "Gleichstrommotor",
+        status: "ok",
+        note: "Muss · M505 / MOD-MOT-02 — Kreis+M mit Gleichstrom-Kennzeichen (=). Klemmen +/−. Polaritätsumkehr = Drehsinn. CircuitJS Dump 475 EGTGleichstrommotorElm (linear R=Un²/Pn, Default 24 V / 50 W). Upstream DCMotorElm 415 unverändert.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+
+      // —— Logik / FUP ——
+      {
+        category: "Logik und FUP",
+        id: "AndGateElm",
+        className: "AndGateElm",
+        name: "UND",
+        status: "ok",
+        note: "Muss · L401 — IEC &.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "OrGateElm",
+        className: "OrGateElm",
+        name: "ODER",
+        status: "ok",
+        note: "Muss · L401 — IEC ≥1.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "NandGateElm",
+        className: "NandGateElm",
+        name: "NAND",
+        status: "ok",
+        note: "Muss · L401.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "NorGateElm",
+        className: "NorGateElm",
+        name: "NOR",
+        status: "ok",
+        note: "Muss · L401.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "InverterElm",
+        className: "InverterElm",
+        name: "NICHT",
+        status: "ok",
+        note: "Muss · L401.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "MiniSps",
+        className: "EGTMiniSpsElm",
+        name: "Mini-SPS (LOGO Geräteansicht)",
+        status: "ok",
+        note: "Muss · L404 / MOD-LOG-01 — Gerät: L1/N, I1…I8, Q-Schließer. FUP daneben (I/Q-Operanden). LCD = RUN/STOP + nummerierte I/Q-Bits. Tasten STOP/RUN = Betriebsart. CircuitJS: EGTMiniSpsElm Dump 466. Abnahme 2026-08-13.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "FupEingang",
+        className: "EGTFupEingangElm",
+        name: "FUP-Eingang I1…I8",
+        status: "ok",
+        note: "Muss · L404 — Operand I: weißes Quadrat mit sichtbarem Anschlussstutzen rechts. Pegel aus Klemme oder Klick. Dump 467. CircuitJS: Thevenin/Wired-OR, keine ideale 0/5-V-Quelle (Kurzschluss bei mehreren I auf ein Q).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "FupAusgang",
+        className: "EGTFupAusgangElm",
+        name: "FUP-Ausgang Q1…Q8",
+        status: "ok",
+        note: "Muss · L404 — Operand Q: weißes Quadrat mit sichtbarem Anschlussstutzen links. Schreibt qMask → Schließer. Dump 468. Q5–Q8 nur bei 8I/8Q. Mehrere FUP-I auf diesem Stift = ODER.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "RSSpeicher",
+        className: "RSSpeicherElm",
+        name: "RS-Speicher (FUP)",
+        status: "ok",
+        note: "Muss · L402 / LOGIK-07 — FUP-Block SR/RS (S/R → Q). Nur FUP, Übersicht nicht vorgesehen. CircuitJS: RSSpeicherElm (Menü EGT, Dump 437). Dominanz: SR=Set (Standard) oder RS=Reset.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "FupTon",
+        className: "EGTFupTonElm",
+        name: "FUP-Einschaltverzögerung (TON)",
+        status: "ok",
+        note: "Muss · L403 / LOGIK-09 — I startet T, Q schaltet nach Ablauf. Wanduhr nur bei laufender Simulation; Pause friert. Normale CircuitJS-Leitungen, reines Logiksignal ohne gelbe Strompunkte. IEC-FUP, keine Übersicht. Dump 476.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "FupTof",
+        className: "EGTFupTofElm",
+        name: "FUP-Ausschaltverzögerung (TOF)",
+        status: "ok",
+        note: "Muss · L403 / LOGIK-09 — I setzt Q sofort; nach I=0 bleibt Q bis T aktiv. Wanduhr nur bei laufender Simulation; Pause friert. Normale CircuitJS-Leitungen, reines Logiksignal ohne gelbe Strompunkte. IEC-FUP, keine Übersicht. Dump 477.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "ignore", cjs: "done" }
+      },
+      {
+        category: "Logik und FUP",
+        id: "LatchElm",
+        className: "LatchElm",
+        name: "Latch / Register (Ist)",
+        status: "prüfen",
+        note: "Vorhanden · Digital Chips → Latch/Register — Mehrbit I/O + Takt (optional S/R). Chip-Rechteck, kein FUP-SR. Abgleich L402: fachlich ungeeignet als RS-Speicher.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "DFlipFlopElm",
+        className: "DFlipFlopElm",
+        name: "D-Flipflop",
+        status: "prüfen",
+        note: "Vorhanden · Digital Chips → D Flip-Flop — Pins D, Clock, Q, Q̅; optional Set/Reset. Chip-Darstellung (kein FUP). Nicht Ersatz für RS-Speicher L402.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "JKFlipFlopElm",
+        className: "JKFlipFlopElm",
+        name: "JK-Flipflop",
+        status: "prüfen",
+        note: "Vorhanden · Digital Chips → JK Flip-Flop — J/K/Clock/Q/Q̅; optional R. Chip-Darstellung. Kontext Digitaltechnik, nicht FUP-RS.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "TFlipFlopElm",
+        className: "TFlipFlopElm",
+        name: "T-Flipflop",
+        status: "prüfen",
+        note: "Vorhanden · Digital Chips → T Flip-Flop — T/Clock/Q/Q̅; optional S/R. Chip-Darstellung. Kontext Digitaltechnik, nicht FUP-RS.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "DelayBufferElm",
+        className: "DelayBufferElm",
+        name: "Verzögerungsbaustein",
+        status: "prüfen",
+        note: "Muss · L403.",
+        hasIst: false
+      },
+      {
+        category: "Logik und FUP",
+        id: "TimerElm",
+        className: "TimerElm",
+        name: "Timer / Zeitfunktion",
+        status: "prüfen",
+        note: "Muss · L403.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "CustomLogicElm",
+        className: "CustomLogicElm",
+        name: "Benutzerdefinierter Logikblock",
+        status: "anzupassen",
+        note: "Muss · L404 — mehrere Ein-/Ausgänge.",
+        hasIst: false
+      },
+      {
+        category: "Logik und FUP",
+        id: "LogicInputElm",
+        className: "LogicInputElm",
+        name: "Logikeingang",
+        status: "anzupassen",
+        note: "Muss · L404, L405.",
+        hasIst: true
+      },
+      {
+        category: "Logik und FUP",
+        id: "LogicOutputElm",
+        className: "LogicOutputElm",
+        name: "Logikausgang",
+        status: "anzupassen",
+        note: "Muss · L404, L405.",
+        hasIst: true
+      },
+
+      // —— Realsim (Relais.exe, Burkhard Brauer) — Referenzpalette, ganz unten ——
+      {
+        category: "Realsim",
+        id: "Realsim_Leitung",
+        className: null,
+        name: "Leitung",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik; Abgleich WireElm.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_TasterSchliesser",
+        className: null,
+        name: "Taster Schließer",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — NO-Taster; Abgleich PushSwitchElm.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_TasterOeffner",
+        className: null,
+        name: "Taster Öffner",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — NC-Taster.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_Schalter",
+        className: null,
+        name: "Schalter",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — rastend; Abgleich SwitchElm.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_Lampe",
+        className: null,
+        name: "Lampe",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — Abgleich LampElm / Meldeleuchte.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_Relais",
+        className: null,
+        name: "Relais (Spule)",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — Spule K… A1/A2; Abgleich RelayCoilElm.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_RelaisSchliesser",
+        className: null,
+        name: "Relais Schließer",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — NO; Abgleich RelayContactElm.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_RelaisOeffner",
+        className: null,
+        name: "Relais Öffner",
+        status: "ok",
+        note: "Workbench nach Relais.exe-Optik — NC.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisEin",
+        className: null,
+        name: "Zeitrelais einschaltverzögert",
+        status: "ok",
+        note: "Fachkunde 1:1 — Spule waagerecht 3×1, X links, Adern mittig, A1/A2 −90°; Abgleich TimeDelayRelayElm / S303.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisEinSchliesser",
+        className: null,
+        name: "Zeitrelais einschaltverzögert Schließer",
+        status: "ok",
+        note: "Fachkunde 1:1 — senkrecht NO, 7/8, Fallschirm (Halbkreis + zwei Linien ans Messer, Ansprech).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisEinOeffner",
+        className: null,
+        name: "Zeitrelais einschaltverzögert Öffner",
+        status: "ok",
+        note: "Fachkunde — NC: Ruhe=Querstrich+Messer am Strichende; betätigt=Messer weg; Fallschirm ( Ansprech.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisAus",
+        className: null,
+        name: "Zeitrelais ausschaltverzögert",
+        status: "ok",
+        note: "Fachkunde 1:1 — Spule waagerecht 3×1, linkes Feld gefüllt, Adern mittig; Abgleich TimeDelayRelayElm / S303.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisAusSchliesser",
+        className: null,
+        name: "Zeitrelais ausschaltverzögert Schließer",
+        status: "ok",
+        note: "Fachkunde/DIN — NO, 7/8, Fallschirm ) Rückfall (Bogen bauchig rechts).",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisAusOeffner",
+        className: null,
+        name: "Zeitrelais ausschaltverzögert Öffner",
+        status: "ok",
+        note: "Fachkunde — NC: Ruhe=Querstrich+Messer am Strichende; betätigt=Messer weg; Fallschirm ) Rückfall.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisKombi",
+        className: "EGTZeitrelaisSpuleElm",
+        name: "Zeitrelais ansprech- und rückfallverzögert",
+        status: "ok",
+        note: "Fachkunde Blatt 6.12 — kombinierte Spule; tAn = 0,50 s und tAb = 0,25 s; Dump 464 FLAG_COMBINED.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisKombiSchliesser",
+        className: "EGTZeitrelaisKontaktElm",
+        name: "Zeitrelais kombiniert Schließer",
+        status: "ok",
+        note: "Fachkunde — NO 7/8 mit gemeinsamer Kennzeichnung für Ansprech- und Rückfallverzögerung; Dump 465 FLAG_COMBINED.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisKombiOeffner",
+        className: "EGTZeitrelaisKontaktElm",
+        name: "Zeitrelais kombiniert Öffner",
+        status: "ok",
+        note: "Fachkunde — NC 7/8 mit gemeinsamer Kennzeichnung für Ansprech- und Rückfallverzögerung; Dump 465 FLAG_COMBINED + FLAG_NC.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisBlink",
+        className: "EGTZeitrelaisSpuleElm",
+        name: "Zeitrelais blinkend",
+        status: "ok",
+        note: "Fachkunde — leere Spule 3×1 mit versetzter A1/A2-Achse; Dump 464 FLAG_BLINK, Takt 0,25/0,25 s.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisBlinkSchliesser",
+        className: "EGTZeitrelaisKontaktElm",
+        name: "Zeitrelais blinkend Schließer",
+        status: "ok",
+        note: "Fachkunde — NO 7/8 mit S-Kurve und durchgehender Mittellinie; Dump 465 FLAG_BLINK.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      },
+      {
+        category: "Realsim",
+        id: "Realsim_ZeitrelaisBlinkOeffner",
+        className: "EGTZeitrelaisKontaktElm",
+        name: "Zeitrelais blinkend Öffner",
+        status: "ok",
+        note: "Fachkunde — NC 7/8 mit S-Kurve und durchgehender Mittellinie; Dump 465 FLAG_BLINK + FLAG_NC.",
+        hasIst: false,
+        defaultProgress: { zh: "done", ue: "done" }
+      }
+    ];
+
+    const IST_BASE = "assets/bauteile/";
+    const ZH_BASE = "assets/symbole/zusammenhaengend/";
+    const UE_BASE = "assets/symbole/uebersicht/";
+    const PROGRESS_URL = "assets/symbole/progress.json";
+    /** Browser-Cache (Arbeitskopie). Kanonische Datei: progress.json im Repo. */
+    const PROGRESS_KEY = "tar-symbole-progress-v2";
+    const PROGRESS_LEGACY_KEY = "tar-symbole-progress-v1";
+
+    const STATES = ["todo", "progress", "done", "ignore"];
+    const STATE_LABEL = {
+      todo: "nicht erledigt",
+      progress: "in Arbeit",
+      done: "fertig",
+      ignore: "ignoriert"
+    };
+    const STATE_MARK = {
+      todo: "○",
+      progress: "◐",
+      done: "✓",
+      ignore: "–"
+    };
+
+    /** @type {Record<string, { zh?: string, ue?: string, cjs?: string }>} */
+    let progressMap = {};
+    let progressDirty = false;
+    /** @type {FileSystemFileHandle|null} */
+    let progressFileHandle = null;
+
+    function loadProgressLocal() {
+      try {
+        return JSON.parse(localStorage.getItem(PROGRESS_KEY) || "{}") || {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveProgressLocal(map) {
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(map));
+    }
+
+    function loadProgress() {
+      return progressMap;
+    }
+
+    function saveProgress(map) {
+      progressMap = map;
+      progressDirty = true;
+      saveProgressLocal(map);
+      const btn = document.getElementById("btn-save-progress");
+      if (btn) btn.textContent = "Fortschritt speichern *";
+    }
+
+    function symbolById(id) {
+      return SYMBOLS.find((s) => s.id === id) || null;
+    }
+
+    function preferUserState(user, def) {
+      if (user === "done" || user === "progress" || user === "ignore") return user;
+      if (def === "done" || def === "ignore" || def === "progress" || def === "todo") return def;
+      return user || "todo";
+    }
+
+    function stripMeta(map) {
+      const out = {};
+      for (const [k, v] of Object.entries(map)) {
+        if (k.startsWith("_")) continue;
+        if (v && typeof v === "object") out[k] = { zh: v.zh, ue: v.ue, cjs: v.cjs };
+      }
+      return out;
+    }
+
+    function mergeProgress(base, overlay) {
+      const out = { ...base };
+      for (const [id, val] of Object.entries(overlay || {})) {
+        if (id.startsWith("_") || !val || typeof val !== "object") continue;
+        const cur = out[id] || {};
+        out[id] = {
+          zh: preferUserState(val.zh, cur.zh),
+          ue: preferUserState(val.ue, cur.ue),
+          cjs: preferUserState(val.cjs, cur.cjs)
+        };
+      }
+      return out;
+    }
+
+    function applyDefaultProgress(map) {
+      const out = { ...map };
+      for (const s of SYMBOLS) {
+        const def = s.defaultProgress;
+        if (!def) continue;
+        const cur = out[s.id] || {};
+        out[s.id] = {
+          zh: preferUserState(cur.zh, def.zh),
+          ue: preferUserState(cur.ue, def.ue),
+          cjs: preferUserState(cur.cjs, def.cjs)
+        };
+      }
+      return out;
+    }
+
+    async function initProgress() {
+      let fromFile = {};
+      try {
+        const res = await fetch(PROGRESS_URL + "?t=" + Date.now());
+        if (res.ok) fromFile = stripMeta(await res.json());
+      } catch {
+        /* offline / kein File */
+      }
+      // Legacy v1 → Cache
+      try {
+        const legacy = JSON.parse(localStorage.getItem(PROGRESS_LEGACY_KEY) || "null");
+        if (legacy && typeof legacy === "object") {
+          saveProgressLocal(mergeProgress(loadProgressLocal(), stripMeta(legacy)));
+        }
+      } catch {
+        /* ignore */
+      }
+      const local = stripMeta(loadProgressLocal());
+      // Datei = Basis (Repo), lokale Klicks oben drauf, dann Defaults für Lücken
+      progressMap = applyDefaultProgress(mergeProgress(fromFile, local));
+      saveProgressLocal(progressMap);
+      progressDirty = false;
+      const btn = document.getElementById("btn-save-progress");
+      if (btn) btn.textContent = "Fortschritt speichern";
+    }
+
+    function progressPayload() {
+      return {
+        _comment:
+          "Symbolkatalog-Fortschritt ZH/ÜS/CJS. States: todo | progress | done | ignore. CJS = in CircuitJS erledigt. Nach Änderung committen.",
+        _updated: new Date().toISOString().slice(0, 10) + " — Export aus symbole-vergleich.html",
+        ...stripMeta(progressMap)
+      };
+    }
+
+    async function exportProgressFile() {
+      const text = JSON.stringify(progressPayload(), null, 2) + "\n";
+      const blob = new Blob([text], { type: "application/json" });
+      try {
+        if (progressFileHandle) {
+          const w = await progressFileHandle.createWritable();
+          await w.write(blob);
+          await w.close();
+        } else if (window.showSaveFilePicker) {
+          progressFileHandle = await window.showSaveFilePicker({
+            suggestedName: "progress.json",
+            types: [{ description: "JSON", accept: { "application/json": [".json"] } }]
+          });
+          const w = await progressFileHandle.createWritable();
+          await w.write(blob);
+          await w.close();
+        } else {
+          const a = document.createElement("a");
+          a.href = URL.createObjectURL(blob);
+          a.download = "progress.json";
+          a.click();
+          URL.revokeObjectURL(a.href);
+          alert(
+            "progress.json heruntergeladen.\nBitte nach docs/assets/symbole/progress.json legen und committen."
+          );
+        }
+        progressDirty = false;
+        const btn = document.getElementById("btn-save-progress");
+        if (btn) btn.textContent = "Fortschritt speichern";
+        const el = document.getElementById("dir-status");
+        if (el) {
+          el.textContent = (el.textContent || "") + " · Fortschritt gespeichert";
+          el.classList.add("ok");
+        }
+      } catch (e) {
+        if (e && e.name !== "AbortError") console.warn(e);
+      }
+    }
+
+    function getItemProgress(id) {
+      const all = loadProgress();
+      const cur = all[id];
+      const def = symbolById(id)?.defaultProgress || {};
+      const zh = cur?.zh ?? def.zh ?? "todo";
+      const ue = cur?.ue ?? def.ue ?? "todo";
+      const cjs = cur?.cjs ?? def.cjs ?? "todo";
+      return {
+        zh: STATES.includes(zh) ? zh : "todo",
+        ue: STATES.includes(ue) ? ue : "todo",
+        cjs: STATES.includes(cjs) ? cjs : "todo"
+      };
+    }
+
+    function setItemProgress(id, kind, state) {
+      const all = loadProgress();
+      const cur = getItemProgress(id);
+      cur[kind] = state;
+      all[id] = cur;
+      saveProgress(all);
+      return cur;
+    }
+
+    function nextState(state) {
+      const i = STATES.indexOf(state);
+      return STATES[(i + 1) % STATES.length];
+    }
+
+    /** Ignorierte Spuren zählen nicht — alle ignoriert = Zeile „ignoriert“. */
+    function overallProgress(p) {
+      const active = [p.zh, p.ue, p.cjs].filter((s) => s !== "ignore");
+      if (active.length === 0) return "ignore";
+      if (active.every((s) => s === "done")) return "done";
+      if (active.every((s) => s === "todo")) return "todo";
+      return "progress";
+    }
+
+    function planLabel(kind) {
+      if (kind === "zh") return "ZH";
+      if (kind === "ue") return "ÜS";
+      if (kind === "cjs") return "CJS";
+      return kind;
+    }
+
+    function makeCheckBtn(symbolId, kind, state) {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "check-btn";
+      btn.dataset.kind = kind;
+      btn.dataset.state = state;
+      const plan = planLabel(kind);
+      btn.innerHTML = `<span class="mark">${STATE_MARK[state]}</span> ${plan}: ${STATE_LABEL[state]}`;
+      btn.title =
+        kind === "cjs"
+          ? "CircuitJS: nicht erledigt → in Arbeit → fertig → ignoriert (EGT importiert/angepasst/getestet)"
+          : "Klicken: nicht erledigt → in Arbeit → fertig → ignoriert";
+      btn.addEventListener("click", () => {
+        const next = nextState(btn.dataset.state);
+        const p = setItemProgress(symbolId, kind, next);
+        btn.dataset.state = next;
+        btn.innerHTML = `<span class="mark">${STATE_MARK[next]}</span> ${plan}: ${STATE_LABEL[next]}`;
+        const tr = btn.closest("tr");
+        if (tr) {
+          tr.dataset.progress = overallProgress(p);
+          if (kind === "zh" || kind === "ue") refreshZielCell(tr, kind);
+          markZielStatus(tr);
+          applyFilter();
+        }
+      });
+      return btn;
+    }
+
+    function makeCheckRow(symbolId) {
+      const p = getItemProgress(symbolId);
+      const row = document.createElement("div");
+      row.className = "check-row";
+      row.append(
+        makeCheckBtn(symbolId, "zh", p.zh),
+        makeCheckBtn(symbolId, "ue", p.ue),
+        makeCheckBtn(symbolId, "cjs", p.cjs)
+      );
+      return row;
+    }
+
+    /** @type {{ zh: FileSystemDirectoryHandle|null, ue: FileSystemDirectoryHandle|null }} */
+    const dirs = { zh: null, ue: null };
+
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp";
+    fileInput.hidden = true;
+    document.body.appendChild(fileInput);
+    /** @type {{ kind: 'zh'|'ue', id: string, wrap: HTMLElement }|null} */
+    let pendingUpload = null;
+
+    function statusClass(status) {
+      if (status === "ok") return "ok";
+      if (status === "neu") return "neu";
+      return "";
+    }
+
+    function statusLabel(status) {
+      if (status === "ok") return "vorhanden / nutzbar";
+      if (status === "neu") return "neu zu entwickeln";
+      if (status === "anzupassen") return "IEC-/EGT anzupassen";
+      if (status === "prüfen") return "fachlich prüfen";
+      return status;
+    }
+
+    function updateDirStatus() {
+      const el = document.getElementById("dir-status");
+      const parts = [];
+      if (dirs.zh) parts.push("Zusammenhängend ✓");
+      if (dirs.ue) parts.push("Übersicht ✓");
+      if (parts.length) {
+        el.textContent = "Ordner: " + parts.join(" · ");
+        el.classList.add("ok");
+      } else {
+        el.textContent = "Ordner: nicht verknüpft → Upload speichert als Download";
+        el.classList.remove("ok");
+      }
+    }
+
+    async function pickDir(kind) {
+      if (!window.showDirectoryPicker) {
+        alert("Ordner-Verknüpfung braucht Chrome oder Edge. Ohne sie: Upload → Datei wird heruntergeladen, dann in den Ordner legen.");
+        return;
+      }
+      try {
+        const handle = await window.showDirectoryPicker({ mode: "readwrite" });
+        dirs[kind] = handle;
+        updateDirStatus();
+      } catch (e) {
+        if (e && e.name !== "AbortError") console.warn(e);
+      }
+    }
+
+    function placeholder(pathHint) {
+      const el = document.createElement("div");
+      el.className = "placeholder";
+      el.innerHTML = `<span>Bild fehlt</span><code>${pathHint}</code>`;
+      return el;
+    }
+
+    function ignorePlaceholder(kind) {
+      const el = document.createElement("div");
+      el.className = "placeholder ignored";
+      const plan = kind === "zh" ? "Zusammenhängend" : "Übersicht";
+      el.innerHTML = `<span>ignoriert</span><code>keine ${plan}-Darstellung geplant</code>`;
+      return el;
+    }
+
+    function makeImg(src, pathHint) {
+      const wrap = document.createElement("div");
+      wrap.className = "cell-img";
+      const img = document.createElement("img");
+      img.className = "thumb";
+      img.alt = "";
+      img.loading = "lazy";
+      img.src = src;
+      img.onerror = () => {
+        wrap.replaceChildren(placeholder(pathHint));
+      };
+      wrap.appendChild(img);
+      return wrap;
+    }
+
+    function fillZielWrap(wrap, kind, symbolId) {
+      const pathHint = (kind === "zh" ? ZH_BASE : UE_BASE) + symbolId + ".png";
+      const p = getItemProgress(symbolId);
+      if (p[kind] === "ignore") {
+        wrap.replaceChildren(ignorePlaceholder(kind));
+        return;
+      }
+
+      const src = pathHint + "?t=" + Date.now();
+      const img = document.createElement("img");
+      img.className = "thumb";
+      img.alt = "";
+      img.loading = "lazy";
+      img.src = src;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn-upload";
+      btn.textContent = "Hochladen";
+      btn.addEventListener("click", () => {
+        pendingUpload = { kind, id: symbolId, wrap };
+        fileInput.value = "";
+        fileInput.click();
+      });
+
+      img.onerror = () => {
+        const ph = placeholder(pathHint);
+        wrap.replaceChildren(ph, btn);
+        const tr = wrap.closest("tr");
+        if (tr) markZielStatus(tr);
+      };
+      img.onload = () => {
+        wrap.replaceChildren(img, btn);
+        const tr = wrap.closest("tr");
+        if (tr) markZielStatus(tr);
+      };
+
+      wrap.replaceChildren(img, btn);
+    }
+
+    function makeZielCell(kind, symbolId) {
+      const wrap = document.createElement("div");
+      wrap.className = "cell-img has-upload";
+      wrap.dataset.ziel = "1";
+      wrap.dataset.kind = kind;
+      wrap.dataset.symbolId = symbolId;
+      fillZielWrap(wrap, kind, symbolId);
+      return wrap;
+    }
+
+    function refreshZielCell(tr, kind) {
+      const wrap = tr.querySelector(`[data-ziel="1"][data-kind="${kind}"]`);
+      if (!wrap) return;
+      fillZielWrap(wrap, kind, tr.dataset.id);
+    }
+
+    async function saveUpload(file, kind, symbolId, wrap) {
+      const name = symbolId + ".png";
+      let blob = file;
+      if (file.type && file.type !== "image/png") {
+        blob = await rasterToPngBlob(file);
+      }
+      const dir = dirs[kind];
+      if (dir) {
+        const fh = await dir.getFileHandle(name, { create: true });
+        const writable = await fh.createWritable();
+        await writable.write(blob);
+        await writable.close();
+      } else {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = name;
+        a.click();
+        URL.revokeObjectURL(url);
+        alert(
+          "Datei „" + name + "“ heruntergeladen.\nBitte nach docs/assets/symbole/" +
+            (kind === "zh" ? "zusammenhaengend" : "uebersicht") +
+            "/ legen (oder oben den Ordner verknüpfen)."
+        );
+      }
+      const previewUrl = URL.createObjectURL(blob instanceof Blob ? blob : file);
+      const img = document.createElement("img");
+      img.className = "thumb";
+      img.src = previewUrl;
+      img.alt = "";
+      const btn = wrap.querySelector(".btn-upload") || document.createElement("button");
+      btn.type = "button";
+      btn.className = "btn-upload";
+      btn.textContent = "Hochladen";
+      btn.onclick = () => {
+        pendingUpload = { kind, id: symbolId, wrap };
+        fileInput.value = "";
+        fileInput.click();
+      };
+      wrap.replaceChildren(img, btn);
+      const tr = wrap.closest("tr");
+      if (tr) {
+        tr.dataset.ohneZiel = wrap.parentElement?.parentElement?.querySelectorAll('[data-ziel="1"] .placeholder').length ? "1" : "0";
+        markZielStatus(tr);
+      }
+    }
+
+    function rasterToPngBlob(file) {
+      return new Promise((resolve, reject) => {
+        const url = URL.createObjectURL(file);
+        const img = new Image();
+        img.onload = () => {
+          const c = document.createElement("canvas");
+          c.width = img.naturalWidth;
+          c.height = img.naturalHeight;
+          c.getContext("2d").drawImage(img, 0, 0);
+          URL.revokeObjectURL(url);
+          c.toBlob((b) => (b ? resolve(b) : reject(new Error("PNG-Konvertierung fehlgeschlagen"))), "image/png");
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error("Bild konnte nicht gelesen werden"));
+        };
+        img.src = url;
+      });
+    }
+
+    fileInput.addEventListener("change", async () => {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file || !pendingUpload) return;
+      const { kind, id, wrap } = pendingUpload;
+      pendingUpload = null;
+      try {
+        await saveUpload(file, kind, id, wrap);
+      } catch (e) {
+        alert("Upload fehlgeschlagen: " + (e && e.message ? e.message : e));
+      }
+    });
+
+    function groupByCategory(items) {
+      const map = new Map();
+      for (const item of items) {
+        if (!map.has(item.category)) map.set(item.category, []);
+        map.get(item.category).push(item);
+      }
+      return map;
+    }
+
+    function slug(cat) {
+      return "cat-" + cat.toLowerCase().replace(/[^a-z0-9äöüß]+/gi, "-");
+    }
+
+    function renderGapNote() {
+      const el = document.getElementById("gap-note");
+      el.innerHTML =
+        "Abgleich Lastenheft: Kern-Muss-Symbole sind gelistet. Ergänzt u. a. Treppenlicht, Meldeleuchte, Leistungs-/Hilfsschütz, Kondensatormotor, RS-Speicher, RCD (Soll). " +
+        "Nicht als eigene Symbolzeile: reine Qualitäts-/Doku-IDs (Q/D) und Planarten-Umschaltung (I205).";
+    }
+
+    function render() {
+      const content = document.getElementById("content");
+      const nav = document.getElementById("cat-nav");
+      content.replaceChildren();
+      nav.replaceChildren();
+      renderGapNote();
+
+      const groups = groupByCategory(SYMBOLS);
+
+      for (const [category, items] of groups) {
+        const id = slug(category);
+        const a = document.createElement("a");
+        a.href = "#" + id;
+        a.textContent = category;
+        nav.appendChild(a);
+
+        const section = document.createElement("section");
+        section.id = id;
+        const h2 = document.createElement("h2");
+        h2.textContent = category;
+        section.appendChild(h2);
+
+        const table = document.createElement("table");
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Bauteil / Status</th>
+              <th>Ist (CircuitJS)</th>
+              <th>Zusammenhängend</th>
+              <th>Übersicht</th>
+            </tr>
+          </thead>
+        `;
+        const tbody = document.createElement("tbody");
+
+        for (const item of items) {
+          const istFile = (item.istId || item.id) + ".png";
+          const tr = document.createElement("tr");
+          tr.dataset.filterNeu = item.className ? "0" : "1";
+          tr.dataset.id = item.id;
+          const prog = getItemProgress(item.id);
+          tr.dataset.progress = overallProgress(prog);
+
+          const tdMeta = document.createElement("td");
+          tdMeta.dataset.label = "Bauteil / Status";
+          tdMeta.className = "meta";
+          tdMeta.innerHTML = `
+            <div class="name">${item.name}</div>
+            <div class="id">${item.className ? item.className : "— neue EGT-ID: " + item.id}</div>
+            <span class="status ${statusClass(item.status)}">${statusLabel(item.status)}</span>
+            <div class="note">${item.note || ""}</div>
+          `;
+          tdMeta.appendChild(makeCheckRow(item.id));
+
+          const tdIst = document.createElement("td");
+          tdIst.dataset.label = "Ist (CircuitJS)";
+          if (item.hasIst) {
+            tdIst.appendChild(makeImg(IST_BASE + istFile, IST_BASE + istFile));
+          } else if (item.className) {
+            tdIst.appendChild(placeholder(IST_BASE + item.className + ".png (noch kein Screenshot)"));
+          } else {
+            tdIst.appendChild(placeholder("kein CircuitJS-Ist — neu"));
+          }
+
+          const tdZh = document.createElement("td");
+          tdZh.dataset.label = "Zusammenhängend";
+          tdZh.appendChild(makeZielCell("zh", item.id));
+
+          const tdUe = document.createElement("td");
+          tdUe.dataset.label = "Übersicht";
+          tdUe.appendChild(makeZielCell("ue", item.id));
+
+          tr.append(tdMeta, tdIst, tdZh, tdUe);
+          tbody.appendChild(tr);
+          queueMicrotask(() => markZielStatus(tr));
+        }
+
+        table.appendChild(tbody);
+        section.appendChild(table);
+        content.appendChild(section);
+      }
+
+      applyFilter();
+    }
+
+    function markZielStatus(tr) {
+      const p = getItemProgress(tr.dataset.id);
+      let missing = false;
+      for (const kind of ["zh", "ue"]) {
+        if (p[kind] === "ignore") continue;
+        const wrap = tr.querySelector(`[data-ziel="1"][data-kind="${kind}"]`);
+        if (!wrap) continue;
+        if (wrap.querySelector(".placeholder:not(.ignored)")) missing = true;
+        else if (!wrap.querySelector("img")) missing = true;
+      }
+      tr.dataset.ohneZiel = missing ? "1" : "0";
+      applyFilter();
+    }
+
+    function applyFilter() {
+      const mode = document.querySelector('input[name="filter"]:checked')?.value || "all";
+      document.querySelectorAll("tbody tr").forEach((tr) => {
+        let show = true;
+        if (mode === "ohne-ziel") show = tr.dataset.ohneZiel === "1";
+        if (mode === "fehlende-klasse") show = tr.dataset.filterNeu === "1";
+        if (mode === "todo" || mode === "progress" || mode === "done" || mode === "ignore") {
+          show = tr.dataset.progress === mode;
+        }
+        tr.classList.toggle("is-hidden", !show);
+      });
+    }
+
+    document.querySelectorAll('input[name="filter"]').forEach((el) => {
+      el.addEventListener("change", applyFilter);
+    });
+    document.getElementById("btn-dir-zh").addEventListener("click", () => pickDir("zh"));
+    document.getElementById("btn-dir-ue").addEventListener("click", () => pickDir("ue"));
+    document.getElementById("btn-save-progress").addEventListener("click", () => exportProgressFile());
+
+    initProgress().then(() => render());
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+{
+  "_comment": "Symbolkatalog-Fortschritt ZH/ÜS/CJS. Quelle der Wahrheit im Repo. States: todo | progress | done | ignore. CJS = in CircuitJS erledigt (EGT-Import/Anpassung/Test).",
+  "_updated": "2026-08-23 — Sicherung Dump 474 CircuitJS (LS thermisch/magnetisch)",
+  "WireElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "ACVoltageElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "ACVoltage3Elm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "DCVoltageElm": {
+    "zh": "done",
+    "ue": "ignore",
+    "cjs": "done"
+  },
+  "CapacitorElm": {
+    "zh": "ignore",
+    "ue": "ignore",
+    "cjs": "todo"
+  },
+  "SwitchElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Serienschalter": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Switch2Elm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "CrossSwitchElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "PushSwitchElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "LampElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Abzweigdose": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Steckdose": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Meldeleuchte": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Klingel": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Tueröffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Stromstossschalter": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Stromstossschalter_Spule": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Stromstossschalter_Schliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Stromstossschalter_Oeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Stromstossrelais": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Treppenlichtautomat": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "ThermischesUeberlastrelais": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Sicherung": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Sicherung3p": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Bewegungsmelder": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Leistungsschuetz": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "LeistungsschuetzAB": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Leistungsschuetz_Spule": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Leistungsschuetz_Leistungskontakte": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Leistungsschuetz_Hilfsschliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Hilfsschuetz": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Hilfsschalterblock": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_Leitung": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_TasterSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_TasterOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_Schalter": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_Lampe": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_Relais": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_RelaisSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_RelaisOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "Realsim_ZeitrelaisEin": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisEinSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisEinOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisAus": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisAusSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisAusOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisKombi": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisKombiSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisKombiOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisBlink": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisBlinkSchliesser": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "Realsim_ZeitrelaisBlinkOeffner": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "ThreePhaseMotorElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "todo"
+  },
+  "ThreePhaseMotorElm_v2": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "DCMotorElm": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "RSSpeicher": {
+    "zh": "done",
+    "ue": "ignore",
+    "cjs": "done"
+  },
+  "MiniSps": {
+    "zh": "done",
+    "ue": "done",
+    "cjs": "done"
+  },
+  "FupEingang": {
+    "zh": "done",
+    "ue": "ignore",
+    "cjs": "done"
+  },
+  "FupAusgang": {
+    "zh": "done",
+    "ue": "ignore",
+    "cjs": "done"
+  },
+  "LatchElm": {
+    "zh": "todo",
+    "ue": "todo",
+    "cjs": "todo"
+  },
+  "DFlipFlopElm": {
+    "zh": "todo",
+    "ue": "todo",
+    "cjs": "todo"
+  },
+  "JKFlipFlopElm": {
+    "zh": "todo",
+    "ue": "todo",
+    "cjs": "todo"
+  },
+  "TFlipFlopElm": {
+    "zh": "todo",
+    "ue": "todo",
+    "cjs": "todo"
+  }
+}
