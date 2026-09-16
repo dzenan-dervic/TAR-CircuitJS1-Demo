@@ -33,7 +33,7 @@
     }
     .app {
       display: grid;
-      grid-template-columns: minmax(280px, 1fr) 8px minmax(440px, 1.15fr);
+      grid-template-columns: minmax(280px, 1fr) 12px minmax(440px, 1.15fr);
       height: 100%;
     }
     .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
@@ -52,10 +52,34 @@
     .sim-bar a:hover { border-color: var(--blue); }
     #circuitFrame { flex: 1; width: 100%; border: 0; background: #000; }
     .split {
-      cursor: col-resize; background: #1e293b;
-      border-left: 1px solid #334155; border-right: 1px solid #334155;
+      position: relative; z-index: 20;
+      justify-self: center; width: 44px; min-width: 44px;
+      cursor: col-resize; touch-action: none; user-select: none;
+      -webkit-user-select: none; outline: none;
     }
-    .split:hover { background: var(--blue); }
+    .split::before {
+      content: ""; position: absolute; inset: 0 20px;
+      background: #64748b;
+      box-shadow: 1px 0 0 #0f172a, -1px 0 0 #0f172a;
+      transition: background-color 120ms ease, box-shadow 120ms ease;
+    }
+    .split::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 18px; height: 64px; transform: translate(-50%, -50%);
+      border: 1px solid #94a3b8; border-radius: 9px;
+      background-color: #1e293b;
+      background-image: radial-gradient(circle, #e2e8f0 0 1.7px, transparent 2px);
+      background-position: center; background-size: 6px 12px;
+      box-shadow: 0 2px 8px #02061799;
+      transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+    }
+    .split:hover::before, .split:focus-visible::before, .split.is-dragging::before {
+      background: #60a5fa; box-shadow: 0 0 0 1px #2563eb, 0 0 12px #3b82f666;
+    }
+    .split:hover::after, .split:focus-visible::after, .split.is-dragging::after {
+      border-color: #bfdbfe; background-color: #2563eb;
+      transform: translate(-50%, -50%) scale(1.06);
+    }
     .hmi-pane { overflow: auto; background: var(--bg); }
     .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
 
@@ -590,8 +614,10 @@
     .dot.on-red { background: var(--red); box-shadow: 0 0 10px #ef4444, 0 0 18px #ef444466; }
 
     @media (max-width: 980px) {
-      .app { grid-template-columns: 1fr; grid-template-rows: 38vh 8px 1fr; }
-      .split { cursor: row-resize; }
+      .app { grid-template-columns: 1fr; grid-template-rows: 38vh 12px 1fr; }
+      .split { align-self: center; justify-self: stretch; width: auto; min-width: 0; height: 44px; cursor: row-resize; }
+      .split::before { inset: 20px 0; }
+      .split::after { width: 64px; height: 18px; }
       .grid, .io { grid-template-columns: 1fr; }
       .grid > .card:first-child { grid-column: 1; }
       header.top { margin: 0 -14px 14px; }
@@ -615,7 +641,7 @@
       </div>
       <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
     </section>
-    <div class="split" id="split" title="Teiler ziehen"></div>
+    <div class="split" id="split" role="separator" aria-label="Breite von CircuitJS und HMI anpassen" aria-orientation="vertical" aria-valuemin="28" aria-valuemax="72" aria-valuenow="47" tabindex="0" title="Teiler ziehen oder mit den Pfeiltasten verschieben"></div>
     <section class="hmi-pane">
   <div class="wrap">
     <header class="top">
@@ -1224,28 +1250,71 @@
 
   (function splitDrag() {
     var app = document.getElementById("app");
+    var simPane = app.querySelector(".sim-pane");
     var handle = document.getElementById("split");
     var drag = false;
+    function isVertical() {
+      return window.matchMedia("(max-width: 980px)").matches;
+    }
+    function currentPercent(vertical) {
+      var appRect = app.getBoundingClientRect();
+      var simRect = simPane.getBoundingClientRect();
+      return vertical ? (simRect.height / appRect.height) * 100 : (simRect.width / appRect.width) * 100;
+    }
+    function setSplit(value, vertical) {
+      var min = vertical ? 25 : 28;
+      var max = vertical ? 70 : 72;
+      value = Math.max(min, Math.min(max, value));
+      if (vertical) {
+        app.style.gridTemplateRows = value + "% 12px 1fr";
+        app.style.gridTemplateColumns = "1fr";
+        handle.setAttribute("aria-orientation", "horizontal");
+      } else {
+        app.style.gridTemplateColumns = value + "% 12px 1fr";
+        app.style.gridTemplateRows = "";
+        handle.setAttribute("aria-orientation", "vertical");
+      }
+      handle.setAttribute("aria-valuemin", String(min));
+      handle.setAttribute("aria-valuemax", String(max));
+      handle.setAttribute("aria-valuenow", String(Math.round(value)));
+      handle.setAttribute("aria-valuetext", "CircuitJS " + Math.round(value) + " Prozent");
+    }
+    function stopDrag() {
+      drag = false;
+      handle.classList.remove("is-dragging");
+    }
     handle.addEventListener("pointerdown", function (e) {
-      drag = true; handle.setPointerCapture(e.pointerId);
+      drag = true;
+      handle.classList.add("is-dragging");
+      handle.focus();
+      handle.setPointerCapture(e.pointerId);
+      e.preventDefault();
     });
-    handle.addEventListener("pointerup", function () { drag = false; });
+    handle.addEventListener("pointerup", stopDrag);
+    handle.addEventListener("pointercancel", stopDrag);
+    handle.addEventListener("lostpointercapture", stopDrag);
     handle.addEventListener("pointermove", function (e) {
       if (!drag) return;
       var r = app.getBoundingClientRect();
-      var vertical = window.matchMedia("(max-width: 980px)").matches;
+      var vertical = isVertical();
       if (vertical) {
         var y = ((e.clientY - r.top) / r.height) * 100;
-        y = Math.max(25, Math.min(70, y));
-        app.style.gridTemplateRows = y + "% 8px 1fr";
-        app.style.gridTemplateColumns = "1fr";
+        setSplit(y, true);
       } else {
         var x = ((e.clientX - r.left) / r.width) * 100;
-        x = Math.max(28, Math.min(72, x));
-        app.style.gridTemplateColumns = x + "% 8px 1fr";
-        app.style.gridTemplateRows = "";
+        setSplit(x, false);
       }
     });
+    handle.addEventListener("keydown", function (e) {
+      var vertical = isVertical();
+      var delta = 0;
+      if ((!vertical && e.key === "ArrowLeft") || (vertical && e.key === "ArrowUp")) delta = -2;
+      if ((!vertical && e.key === "ArrowRight") || (vertical && e.key === "ArrowDown")) delta = 2;
+      if (!delta) return;
+      setSplit(currentPercent(vertical) + delta, vertical);
+      e.preventDefault();
+    });
+    setSplit(currentPercent(isVertical()), isVertical());
   })();
 })();
 </script>
