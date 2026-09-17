@@ -6,7 +6,7 @@
 |---|---|
 | **Datum** | 2026-09-17 |
 | **Branch** | TAR-Dervic `main` uncommittet; Veröffentlichung in `TAR-CircuitJS1-Demo` |
-| **Commit** | Demo-Repo nach dieser Session |
+| **Commit** | Demo `7604e36` auf `TAR-CircuitJS1-Demo` main, gepusht |
 | **Git-Status** | Öffentliche Dateien in `.tmp_pages_publish/docs/` |
 | **Session** | Professionelle Farbvarianten für Pumpen-HMI, verlinkt im Lernhub |
 
@@ -26,6 +26,14 @@
 | `palette=kontrast` | Kontrast | Beamer/Tafel, hoher Kontrast |
 
 Alte Links `graphite` / `steel` / `light` werden intern auf `graphit` / `nacht` / `tag` umgebogen.
+
+Helle I/O-Zeilen (nicht Grau auf Grau):
+
+| Parameter | Name | I/O-Karten |
+|---|---|---|
+| `palette=tag` | Hell Panel | weiße Zeilen auf grauer Karte |
+| `palette=tag-rahmen` | Hell Rahmen | weiße Zeilen, dunkler Haarstrich |
+| `palette=tag-feld` | Hell Instrument | weiße Zeilen, stahlblauer Rahmen |
 
 ---
 

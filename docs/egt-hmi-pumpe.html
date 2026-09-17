@@ -37,22 +37,25 @@
       --knob: #4c5459;
       --knob-dot: #e8eaeb;
       --accent: #3b7088;
+      --row: #141618;
+      --row-line: #4c5459;
     }
-    html.palette-tag {
+    html.palette-tag,
+    html.palette-tag-rahmen,
+    html.palette-tag-feld {
       --bg: #e6e9eb;
       --panel: #f4f6f7;
-      --card: #ffffff;
       --ink: #d7dce0;
       --line: #b4bdc2;
       --text: #1c2429;
-      --muted: #5b666d;
+      --muted: #3f4b52;
       --blue: #2f6f88;
       --blue-btn: #2f6f88;
       --amber: #a05d20;
       --green: #217a43;
       --yellow: #9a7a1c;
       --red: #c13a34;
-      --led-off: #b4bdc2;
+      --led-off: #8b969d;
       --water: #3b7f97;
       --water-deep: #21586c;
       --water-hi: #6fb3c8;
@@ -68,6 +71,23 @@
       --knob: #b4bdc2;
       --knob-dot: #ffffff;
       --accent: #2f6f88;
+      --row: #ffffff;
+      --row-line: #5b666d;
+    }
+    html.palette-tag {
+      --card: #d8dee2;
+      --row: #ffffff;
+      --row-line: #7a868d;
+    }
+    html.palette-tag-rahmen {
+      --card: #ffffff;
+      --row: #ffffff;
+      --row-line: #1c2429;
+    }
+    html.palette-tag-feld {
+      --card: #ffffff;
+      --row: #ffffff;
+      --row-line: #2f6f88;
     }
     html.palette-graphit {
       --bg: #2a2c2b;
@@ -99,6 +119,8 @@
       --knob: #5b615e;
       --knob-dot: #eceeea;
       --accent: #4e736f;
+      --row: #1f2120;
+      --row-line: #5b615e;
     }
     html.palette-kontrast {
       --bg: #0e0e0e;
@@ -130,10 +152,14 @@
       --knob: #5a5a5a;
       --knob-dot: #ffffff;
       --accent: #1f7eab;
+      --row: #000000;
+      --row-line: #8a8a8a;
     }
     * { box-sizing: border-box; }
     html { color-scheme: dark; }
-    html.palette-tag { color-scheme: light; }
+    html.palette-tag,
+    html.palette-tag-rahmen,
+    html.palette-tag-feld { color-scheme: light; }
     html, body {
       margin: 0; height: 100%;
       background: var(--bg); color: var(--text);
@@ -710,12 +736,12 @@
     .io-col .k em { font-style: normal; color: var(--blue); font-weight: 700; }
     .io-row {
       display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      background: var(--ink); border: 1px solid var(--line); border-radius: 8px;
+      background: var(--row); border: 1px solid var(--row-line); border-radius: 8px;
       padding: 7px 8px; margin-bottom: 6px; font-size: 12px;
     }
     .io-row b { font-family: ui-monospace, Consolas, monospace; color: var(--blue); }
     .io-row.q b { color: var(--green); }
-    .io-row span.fn { color: var(--muted); font-size: 11px; }
+    .io-row span.fn { color: var(--text); font-size: 11px; }
     .dot {
       width: 12px; height: 12px; border-radius: 50%;
       background: var(--led-off); flex: none;
@@ -747,7 +773,7 @@
       var palette = params.get('palette');
       var alias = { graphite: 'graphit', steel: 'nacht', light: 'tag' };
       if (alias[palette]) palette = alias[palette];
-      if (['nacht', 'tag', 'graphit', 'kontrast'].indexOf(palette) !== -1) {
+      if (['nacht', 'tag', 'tag-rahmen', 'tag-feld', 'graphit', 'kontrast'].indexOf(palette) !== -1) {
         document.documentElement.classList.add('palette-' + palette);
       }
     }());
