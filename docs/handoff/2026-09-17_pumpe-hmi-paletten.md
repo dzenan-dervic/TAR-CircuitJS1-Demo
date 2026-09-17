@@ -137,26 +137,24 @@ Für die öffentliche Pumpen-HMI wurden vier Farbpaletten eingeführt. Sie ände
 
 | ID | Beschreibung | Schwere | Status |
 |---|---|---|---|
-| — | Tor-HMI hat diese Paletten noch nicht | niedrig | bewusst nicht |
+| — | Tor-HMI übernimmt Hell/Kontrast | — | erledigt, siehe `2026-09-17_tor-hmi-paletten.md` |
 
 ---
 
 ## Risiken, offene Fragen und bewusst nicht erledigt
 
-- Torsteuerung bleibt vorerst in der bisherigen Farbe.
 - Arbeitsrepo `TAR-Dervic` wurde für die Paletten nicht committed.
 
 ---
 
 ## Direkter Wiedereinstieg / Nächste Schritte
 
-1. Demo-Repo pushen, GitHub Pages abwarten.
-2. Bei Bedarf dieselben Tokens auf die Tor-HMI übertragen.
+1. Tor-Paletten: `docs/handoff/2026-09-17_tor-hmi-paletten.md`.
 
 **Zum Weiterarbeiten zuerst öffnen:**
 
-- `docs/handoff/2026-09-17_pumpe-hmi-paletten.md`
-- `.tmp_pages_publish/docs/egt-hmi-pumpe.html`
+- `docs/handoff/2026-09-17_tor-hmi-paletten.md`
+- `.tmp_pages_publish/docs/egt-hmi-tor.html`
 - `.tmp_pages_publish/docs/hub.html`
 
 ---
