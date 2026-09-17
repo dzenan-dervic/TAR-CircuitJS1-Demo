@@ -36,6 +36,10 @@
       grid-template-columns: minmax(280px, 1fr) 12px minmax(440px, 1.15fr);
       height: 100%;
     }
+    html.hmi-only .app { display: block; }
+    html.hmi-only .sim-pane, html.hmi-only .split { display: none; }
+    html.hmi-only .hmi-pane { height: 100%; }
+    html.hmi-only .wrap { max-width: 1180px; margin: 0 auto; }
     .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
     .sim-pane { display: flex; flex-direction: column; background: #020617; }
     .sim-bar {
@@ -628,6 +632,7 @@
   </style>
 </head>
 <body>
+  <script>if (new URLSearchParams(window.location.search).get('hmiOnly') === '1') document.documentElement.classList.add('hmi-only');</script>
   <div class="app" id="app">
     <section class="sim-pane">
       <div class="sim-bar">
@@ -847,6 +852,8 @@
   var betrieb = false, fuellen = false;
   var sim = null, linked = false;
   var iframe = document.getElementById("circuitFrame");
+  var hmiOnly = document.documentElement.classList.contains("hmi-only");
+  if (hmiOnly) document.getElementById("testMode").checked = true;
 
   function testOn() {
     return document.getElementById("testMode").checked;
@@ -896,6 +903,13 @@
     var txt = document.getElementById("cjsLinkTxt");
     var ledEl = document.getElementById("cjsLed");
     var label = document.getElementById("cjsLinkLabel");
+    if (hmiOnly) {
+      pill.title = "Eigenständiger HMI-Testbetrieb";
+      txt.className = "v with-led state-ok";
+      label.textContent = "HMI-Modus";
+      ledEl.className = "led on";
+      return;
+    }
     if (on) {
       pill.title = "Simulator-API gefunden";
       txt.className = "v with-led state-ok";
