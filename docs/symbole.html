@@ -6,63 +6,93 @@
   <meta name="description" content="Übersicht der EGT-Symbole und Funktionsbausteine im TAR-CircuitJS1-Projekt.">
   <title>EGT-Symbole im Projekt | TAR CircuitJS1</title>
   <link rel="icon" type="image/png" href="icon128.png">
-  <link rel="stylesheet" href="overview.css?v=20260917b">
+  <link rel="stylesheet" href="overview.css?v=20260917c">
 </head>
 <body class="list-stack">
   <header><div class="page"><a class="back" href="hub.html">← Zurück zum Hub</a></div></header>
   <main class="page">
     <h1>EGT-Symbole im Projekt</h1>
-    <p class="intro">Diese Übersicht fasst die für das Projekt verwendeten und erweiterten Symbole zusammen. Die Einteilung orientiert sich an den Unterrichtsbereichen und nicht an Java-Klassen.</p>
+    <p class="intro">Jedes Symbol aus dem EGT-Menü steht einzeln. Die Einteilung folgt den Unterrichtsbereichen, nicht den Java-Klassen.</p>
 
     <section>
       <h2>Installationstechnik</h2>
       <ul class="items">
-        <li><strong>Ausschalter und Wechselschalter</strong><span>Schalten einzelner Stromkreise und Umschalten</span></li>
-        <li><strong>Serienschalter und Kreuzschalter</strong><span>Mehrfach- und Kreuzschaltungen</span></li>
-        <li><strong>Taster</strong><span>Schließer und Öffner für Steuer- und Stromstoßschaltungen</span></li>
-        <li><strong>Leuchte, Steckdose und Abzweigdose</strong><span>Verbraucher und Installationspunkte</span></li>
-        <li><strong>Klingel, Türöffner und Bewegungsmelder</strong><span>Typische Geräte der Gebäudeinstallation</span></li>
+        <li><strong>Ausschalter</strong><span>rastend, Stromkreis ein und aus</span></li>
+        <li><strong>Wechselschalter</strong><span>Umschalten zwischen zwei Leitungen</span></li>
+        <li><strong>Serienschalter</strong><span>zwei Wippen, zwei Stromkreise</span></li>
+        <li><strong>Kreuzschalter</strong><span>Kreuzschaltung zwischen Wechselschaltern</span></li>
+        <li><strong>Taster</strong><span>tastend, Schließer oder Öffner</span></li>
+        <li><strong>Leuchte</strong><span>Verbraucher L/N</span></li>
+        <li><strong>Steckdose</strong><span>Schuko L/PE/N</span></li>
+        <li><strong>Abzweigdose</strong><span>Installationspunkt, nachträglich skalierbar</span></li>
+        <li><strong>Klingel</strong><span>Signalgeber L/N</span></li>
+        <li><strong>Türöffner</strong><span>Spule mit Dreieck, L/N</span></li>
+        <li><strong>Bewegungsmelder</strong><span>IR, Melder für die Gebäudeinstallation</span></li>
       </ul>
     </section>
 
     <section>
       <h2>Leiter, Netz und Schutz</h2>
       <ul class="items">
-        <li><strong>EGT-Leitungen</strong><span>Leiterkennzeichnung für L, N und PE</span></li>
-        <li><strong>Spannungsquellen</strong><span>Ein- und dreiphasige Versorgung</span></li>
-        <li><strong>Leitungsschutzschalter und Sicherung</strong><span>Schutzgeräte im Hauptstromkreis</span></li>
-        <li><strong>Überlastrelais und Motorschutzschalter</strong><span>Thermischer und magnetischer Motorschutz</span></li>
+        <li><strong>EGT-Leitung</strong><span>L, N, PE; Einfach oder mit Knick</span></li>
+        <li><strong>Installationsleitung</strong><span>Übersichtsleitung mit Aderzahl, ohne Strompunkte</span></li>
+        <li><strong>Spannungsquelle</strong><span>Wechselspannung L/N/PE</span></li>
+        <li><strong>Drehstromquelle</strong><span>L1/L2/L3/N/PE</span></li>
+        <li><strong>Gleichspannungsquelle</strong><span>Plus und Minus</span></li>
+        <li><strong>Sicherung</strong><span>Überstromschutz im Hauptstromkreis</span></li>
+        <li><strong>Überlastrelais</strong><span>thermisch, Kombi Heizleiter und Kontakte</span></li>
+        <li><strong>Überlastrelais-Heizleiter</strong><span>getrennte Heizleiter 1–6</span></li>
+        <li><strong>Überlastrelais-Kontakt</strong><span>Öffner 95–96, Schließer 97–98</span></li>
+        <li><strong>Motorschutzschalter</strong><span>3-polig, thermisch und magnetisch</span></li>
       </ul>
     </section>
 
     <section>
       <h2>Schalten, Relais und Zeit</h2>
       <ul class="items">
-        <li><strong>Schützspule und Leistungskontakte</strong><span>Zuordnung über Betriebsmittelkennzeichen</span></li>
-        <li><strong>Hilfskontakte</strong><span>Schließer und Öffner für Verriegelung und Selbsthaltung</span></li>
-        <li><strong>Stromstoßschalter</strong><span>Speichern eines Schaltzustands nach einem Impuls</span></li>
-        <li><strong>Zeitrelais</strong><span>Ein-, Aus- und Blinkfunktionen mit Spule und Kontakt</span></li>
+        <li><strong>Leistungsschütz</strong><span>gekoppelt, Spule und Leistungskontakte</span></li>
+        <li><strong>Hilfsschütz</strong><span>gekoppelt</span></li>
+        <li><strong>Hilfsschalterblock</strong><span>zusätzliche Hilfskontakte am Schütz</span></li>
+        <li><strong>Schütz-Spule</strong><span>A1/A2, Kopplung über Kennzeichen</span></li>
+        <li><strong>Schütz-Leistungskontakte</strong><span>Hauptkontakte, gleiche Bezeichnung wie die Spule</span></li>
+        <li><strong>Schütz-Hilfskontakt</strong><span>Schließer oder Öffner</span></li>
+        <li><strong>Stromstoßschalter</strong><span>zusammen, speichert nach Impuls</span></li>
+        <li><strong>Stromstoß-Spule</strong><span>getrennte Spule</span></li>
+        <li><strong>Stromstoß-Kontakt</strong><span>getrennter Kontakt</span></li>
+        <li><strong>Zeitrelais-Spule</strong><span>Ein, Aus, kombiniert, blinkend</span></li>
+        <li><strong>Zeitrelais-Kontakt</strong><span>zum Zeitrelais, gleiche Bezeichnung</span></li>
+        <li><strong>Treppenlichtautomat</strong><span>Treppenlicht mit Zeitfunktion</span></li>
       </ul>
     </section>
 
     <section>
       <h2>Motoren und Verbraucher</h2>
       <ul class="items">
-        <li><strong>Drehstrommotor</strong><span>Klemmen U1, V1, W1 sowie U2, V2, W2</span></li>
-        <li><strong>Kondensatormotor</strong><span>Hauptwicklung, Hilfswicklung und Betriebskondensator</span></li>
-        <li><strong>Gleichstrommotor</strong><span>Polarität und Drehrichtung</span></li>
-        <li><strong>Meldeleuchte</strong><span>Anzeige von Betrieb, Störung und Zuständen</span></li>
+        <li><strong>Drehstrommotor</strong><span>Asynchron, Klemmen U1 V1 W1 / U2 V2 W2</span></li>
+        <li><strong>Kondensatormotor vereinfacht</strong><span>L/N, interner Betriebskondensator</span></li>
+        <li><strong>Kondensatormotor Klemmbrett</strong><span>U1/U2/Z1/Z2, externer Kondensator</span></li>
+        <li><strong>Gleichstrommotor</strong><span>Plus/Minus, Polarität und Drehrichtung</span></li>
+        <li><strong>Meldeleuchte</strong><span>Anzeige Betrieb, Störung, Zustand</span></li>
       </ul>
     </section>
 
     <section>
       <h2>Mini-SPS und FUP</h2>
       <ul class="items">
-        <li><strong>Mini-SPS</strong><span>Geräteansicht mit 8 Eingängen und 4 oder 8 Ausgängen</span></li>
-        <li><strong>FUP-Eingänge und FUP-Ausgänge</strong><span>I1 bis I8 und Q1 bis Q8 als Verdrahtungspunkte</span></li>
-        <li><strong>Logikbausteine</strong><span>UND, ODER, NICHT, NAND, NOR und XOR</span></li>
-        <li><strong>RS-Speicher</strong><span>Setzen und Rücksetzen eines digitalen Zustands</span></li>
-        <li><strong>TON und TOF</strong><span>Ein- und Ausschaltverzögerung als FUP-Bausteine</span></li>
+        <li><strong>Mini-SPS</strong><span>8 Eingänge, 4 oder 8 Ausgänge</span></li>
+        <li><strong>FUP-Eingang</strong><span>I1 bis I8</span></li>
+        <li><strong>FUP-Ausgang</strong><span>Q1 bis Q8</span></li>
+        <li><strong>HMI-Geber</strong><span>Klemme I, nur Splitscreen Tor/Pumpe</span></li>
+        <li><strong>HMI-Ausgang</strong><span>Klemme Q, nur Splitscreen Tor/Pumpe</span></li>
+        <li><strong>UND</strong><span>UND-Verknüpfung</span></li>
+        <li><strong>ODER</strong><span>ODER-Verknüpfung</span></li>
+        <li><strong>NICHT</strong><span>Negation</span></li>
+        <li><strong>NAND</strong><span>NAND-Verknüpfung</span></li>
+        <li><strong>NOR</strong><span>NOR-Verknüpfung</span></li>
+        <li><strong>XOR</strong><span>Exklusiv-ODER</span></li>
+        <li><strong>RS-Speicher</strong><span>Setzen und Rücksetzen</span></li>
+        <li><strong>TON</strong><span>FUP-Einschaltverzögerung</span></li>
+        <li><strong>TOF</strong><span>FUP-Ausschaltverzögerung</span></li>
       </ul>
     </section>
   </main>
