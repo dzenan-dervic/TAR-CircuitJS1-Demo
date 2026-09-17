@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lernzugänge für TAR CircuitJS1: Simulator, HMI-Anlagen und Symbolübersichten.">
+  <title>TAR CircuitJS1 | Lernhub</title>
+  <link rel="icon" type="image/png" href="icon128.png">
+  <style>
+    :root {
+      --ink: #11253c;
+      --muted: #526577;
+      --paper: #f4f7f9;
+      --panel: #ffffff;
+      --line: #c8d4dc;
+      --rail: #9e551f;
+      --blue: #176da4;
+      --green: #19724b;
+      --focus: #e68a00;
+      --shadow: 0 14px 32px rgb(17 37 60 / 12%);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--paper); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, transparent 0 7.5%, rgb(158 85 31 / 7%) 7.5% 7.7%, transparent 7.7% 100%),
+        var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 4px;
+    }
+
+    .shell {
+      width: min(100% - 2rem, 72rem);
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: var(--ink);
+      color: #fff;
+      border-bottom: 4px solid var(--rail);
+    }
+
+    .site-header .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 4.25rem;
+    }
+
+    .wordmark {
+      margin: 0;
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .header-link {
+      color: #fff;
+      font-size: .95rem;
+      text-decoration-thickness: 2px;
+      text-underline-offset: .22em;
+    }
+
+    main { padding: clamp(2.4rem, 6vw, 5rem) 0 3.5rem; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 2rem;
+      align-items: end;
+      padding-bottom: clamp(2.25rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 .75rem;
+      color: var(--rail);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 15ch;
+      margin-bottom: 1rem;
+      font-size: clamp(2.1rem, 6vw, 4.3rem);
+      line-height: 1.04;
+      letter-spacing: -.045em;
+    }
+
+    .intro {
+      max-width: 55ch;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.14rem);
+    }
+
+    .signal-mark {
+      display: grid;
+      grid-template-columns: repeat(3, .8rem);
+      gap: .45rem;
+      padding-bottom: .45rem;
+    }
+
+    .signal-mark span {
+      width: .8rem;
+      height: .8rem;
+      border-radius: 50%;
+      background: var(--line);
+    }
+
+    .signal-mark span:first-child { background: var(--rail); }
+    .signal-mark span:nth-child(2) { background: var(--blue); }
+    .signal-mark span:last-child { background: var(--green); }
+
+    .section { padding-top: clamp(2.3rem, 5vw, 4rem); }
+
+    .section-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    h2 { margin-bottom: 0; font-size: clamp(1.35rem, 3vw, 1.8rem); }
+
+    .section-note { margin: 0; color: var(--muted); font-size: .95rem; }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .access-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 14.2rem;
+      padding: 1.35rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--blue);
+      box-shadow: var(--shadow);
+    }
+
+    .access-card[data-kind="anlage"] { border-top-color: var(--rail); }
+    .access-card[data-kind="material"] { border-top-color: var(--green); }
+
+    .card-number {
+      margin-bottom: 1.65rem;
+      color: var(--muted);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    h3 { margin-bottom: .6rem; font-size: 1.18rem; line-height: 1.22; }
+
+    .access-card p:not(.card-number) { color: var(--muted); }
+
+    .access-card a {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      width: fit-content;
+      margin-top: auto;
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration-thickness: 2px;
+      text-underline-offset: .22em;
+    }
+
+    .access-card a::after { content: "→"; font-size: 1.2em; }
+
+    .quick-start {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1.25rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding: 1.35rem;
+      background: var(--ink);
+      color: #fff;
+      border-left: 5px solid var(--rail);
+    }
+
+    .quick-start p { margin-bottom: 0; }
+
+    .quick-start a {
+      display: inline-block;
+      padding: .72rem 1rem;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid #fff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .quick-start a:hover { background: transparent; color: #fff; }
+
+    footer {
+      padding: 1.35rem 0 2rem;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    footer .shell { border-top: 1px solid var(--line); padding-top: 1.35rem; }
+
+    @media (max-width: 52rem) {
+      .access-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 38rem) {
+      .shell { width: min(100% - 1.25rem, 72rem); }
+      .site-header .shell, .hero, .section-heading, .quick-start { align-items: start; }
+      .hero, .quick-start { grid-template-columns: 1fr; }
+      .signal-mark { display: none; }
+      .section-heading { flex-direction: column; }
+      .access-grid { grid-template-columns: 1fr; }
+      .access-card { min-height: auto; }
+      .access-card a { margin-top: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="shell">
+      <p class="wordmark">TAR CircuitJS1</p>
+      <a class="header-link" href="circuitjs.html?lang=de&amp;IECGates=true">Simulator öffnen</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Energie- und Gebäudetechnik</p>
+        <h1 id="page-title">Dein Einstieg in die CircuitJS1-Lernumgebung.</h1>
+        <p class="intro">Starte den Simulator, teste die Anlagensteuerungen und sieh dir Symbole direkt im Browser an. Alles läuft ohne lokale Installation.</p>
+      </div>
+      <div class="signal-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+    </section>
+
+    <section class="section" aria-labelledby="anlagen-title">
+      <div class="section-heading">
+        <h2 id="anlagen-title">Anlagen testen</h2>
+        <p class="section-note">Interaktive Steuerungen mit HMI</p>
+      </div>
+      <div class="access-grid">
+        <article class="access-card" data-kind="anlage">
+          <p class="card-number">Anlage 01</p>
+          <h3>Torsteuerung</h3>
+          <p>Rolltor mit Mini-SPS, FUP und Anlagen-HMI bedienen.</p>
+          <a href="egt-hmi-tor.html">Torsteuerung starten</a>
+        </article>
+        <article class="access-card" data-kind="anlage">
+          <p class="card-number">Anlage 02</p>
+          <h3>Pumpensteuerung</h3>
+          <p>Pumpenanlage mit Mini-SPS und HMI untersuchen.</p>
+          <a href="egt-hmi-pumpe.html">Pumpensteuerung starten</a>
+        </article>
+        <article class="access-card">
+          <p class="card-number">Werkzeug</p>
+          <h3>CircuitJS1 Simulator</h3>
+          <p>Eigene Schaltungen öffnen, aufbauen und simulieren.</p>
+          <a href="circuitjs.html?lang=de&amp;IECGates=true">Simulator starten</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="material-title">
+      <div class="section-heading">
+        <h2 id="material-title">Nachschlagen und planen</h2>
+        <p class="section-note">Symbole und Bauteile im Überblick</p>
+      </div>
+      <div class="access-grid">
+        <article class="access-card" data-kind="material">
+          <p class="card-number">Werkbank</p>
+          <h3>Symbol-Workbench</h3>
+          <p>EGT-Symbole interaktiv ansehen und ihre Darstellung vergleichen.</p>
+          <a href="symbol-workbench.html">Workbench öffnen</a>
+        </article>
+        <article class="access-card" data-kind="material">
+          <p class="card-number">Übersicht</p>
+          <h3>Symbolvergleich</h3>
+          <p>Bauteile und ihre Symbole strukturiert gegenüberstellen.</p>
+          <a href="symbole-vergleich.html">Symbolvergleich öffnen</a>
+        </article>
+        <article class="access-card" data-kind="material">
+          <p class="card-number">Projekt</p>
+          <h3>Öffentliches Demo-Repository</h3>
+          <p>Quellstand der veröffentlichten Browser-Demo ansehen.</p>
+          <a href="https://github.com/dzenan-dervic/TAR-CircuitJS1-Demo">Repository öffnen</a>
+        </article>
+      </div>
+      <div class="quick-start">
+        <p><strong>Neu hier?</strong><br>Starte mit der Torsteuerung: Bedienung rechts, CircuitJS links.</p>
+        <a href="egt-hmi-tor.html">Mit Torsteuerung beginnen</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">TAR-Projekt · CircuitJS1-Erweiterung für Energie- und Gebäudetechnik</div>
+  </footer>
+</body>
+</html>
