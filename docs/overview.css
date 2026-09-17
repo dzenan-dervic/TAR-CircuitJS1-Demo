@@ -73,6 +73,10 @@ h2 {
   border-bottom: 1px solid var(--line);
 }
 
+body.list-stack .items {
+  grid-template-columns: 1fr;
+}
+
 .items strong { display: block; }
 .items span { display: block; color: var(--muted); font-size: .91rem; }
 
