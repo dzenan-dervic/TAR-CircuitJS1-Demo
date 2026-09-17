@@ -76,17 +76,6 @@ h2 {
 .items strong { display: block; }
 .items span { display: block; color: var(--muted); font-size: .91rem; }
 
-.note {
-  margin: 3rem 0 0;
-  padding-top: 1.15rem;
-  border-top: 1px solid var(--line);
-  color: var(--muted);
-  font-size: .94rem;
-  line-height: 1.45;
-}
-.note span { display: block; }
-.note span + span { margin-top: .4rem; }
-
 footer {
   padding: 1.1rem 0 2rem;
   border-top: 1px solid var(--line);
