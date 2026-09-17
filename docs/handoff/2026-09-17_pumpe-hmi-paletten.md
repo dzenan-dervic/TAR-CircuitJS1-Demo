@@ -25,6 +25,8 @@
 | `palette=graphit` | Graphit | Warmes Anthrazit, leicht grünlicher Metallton |
 | `palette=kontrast` | Kontrast | Beamer/Tafel, hoher Kontrast |
 
+Kopfleiste: Schalter **Hell / Kontrast** wechselt ohne Reload zwischen `tag-feld` und `kontrast`. Hub-Punkt 03 führt auf Hell Instrument; darunter nur noch die zwei Favoriten.
+
 Alte Links `graphite` / `steel` / `light` werden intern auf `graphit` / `nacht` / `tag` umgebogen.
 
 Helle I/O-Zeilen (nicht Grau auf Grau):

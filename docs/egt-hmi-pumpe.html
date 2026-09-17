@@ -262,6 +262,22 @@
       display: flex; gap: 8px; background: var(--ink); padding: 6px;
       border: 1px solid var(--line); border-radius: 12px;
     }
+    .theme-switch {
+      display: flex; flex: none;
+      border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    }
+    .theme-switch button {
+      appearance: none; min-height: 44px; padding: 0 14px;
+      border: 0; background: var(--card); color: var(--text);
+      font: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .theme-switch button + button { border-left: 1px solid var(--line); }
+    .theme-switch button[aria-pressed="true"] {
+      background: var(--accent); color: #fff;
+    }
+    .theme-switch button:focus-visible {
+      outline: 2px solid var(--blue); outline-offset: -2px;
+    }
     .badge {
       min-width: 110px; text-align: center;
       background: var(--card); border: 1px solid var(--line); border-radius: 8px;
@@ -807,6 +823,10 @@
             <h1>SPS-Pumpensteuerung</h1>
             <p><span>Werner-Siemens-Schule</span><span>EGT</span><span>Mini-SPS</span></p>
           </div>
+        </div>
+        <div class="theme-switch" role="group" aria-label="Darstellung">
+          <button type="button" id="themeHell" data-palette="tag-feld">Hell</button>
+          <button type="button" id="themeKontrast" data-palette="kontrast">Kontrast</button>
         </div>
         <div class="badges">
           <div class="badge" id="cjsLink" title="HTML-Vorschau ohne Simulator">
@@ -1473,6 +1493,40 @@
       e.preventDefault();
     });
     setSplit(currentPercent(isVertical()), isVertical());
+  })();
+
+  (function themeSwitch() {
+    var palettes = ['nacht', 'tag', 'tag-rahmen', 'tag-feld', 'graphit', 'kontrast'];
+    var buttons = document.querySelectorAll('.theme-switch [data-palette]');
+    if (!buttons.length) return;
+    function current() {
+      var html = document.documentElement;
+      for (var i = 0; i < palettes.length; i++) {
+        if (html.classList.contains('palette-' + palettes[i])) return palettes[i];
+      }
+      return '';
+    }
+    function sync() {
+      var now = current();
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-palette') === now ? 'true' : 'false');
+      }
+    }
+    function apply(name) {
+      var html = document.documentElement;
+      for (var i = 0; i < palettes.length; i++) html.classList.remove('palette-' + palettes[i]);
+      html.classList.add('palette-' + name);
+      var url = new URL(window.location.href);
+      url.searchParams.set('palette', name);
+      history.replaceState({}, '', url);
+      sync();
+    }
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        apply(this.getAttribute('data-palette'));
+      });
+    }
+    sync();
   })();
 })();
 </script>
