@@ -2901,22 +2901,24 @@
     },
     {
       id: "DCVoltageElm",
-      name: "Gleichspannungsquelle (+/−)",
+      name: "Gleichspannungsquelle (+/Masse)",
       cat: "Installation",
-      note: "M505 / Q602 — nur ZH: +/− farbig in Box. Übersichtsschaltplan nicht vorgesehen.",
+      note: "M505 / Q602 — nur ZH: Plus rot, Masse blau mit Massesymbol. Übersichtsschaltplan nicht vorgesehen.",
       drawZh(ox, oy) {
         const b = drawStdBox(ox, oy, [], "G1");
         const o = LEAD_OUT * grid;
         const xStart = b.x + 0.85 * grid;
         const xR = b.x + b.w + o;
-        const rows = [
-          { y: b.y + 1.35 * grid, lab: "+", c: "#C41E3A" },
-          { y: b.y + 2.65 * grid, lab: "−", c: COLORS.L2 },
-        ];
-        rows.forEach((r) => {
-          text(r.lab, b.x + 0.4 * grid, r.y, "center", 14);
-          drawConductor(xStart, r.y, xR, r.y, r.c, 3.5);
-        });
+        const plusY = b.y + 1.35 * grid;
+        const massY = b.y + 2.65 * grid;
+        text("+", b.x + 0.4 * grid, plusY, "center", 14);
+        drawConductor(xStart, plusY, xR, plusY, "#C41E3A", 3.5);
+
+        const massX = b.x + 0.4 * grid;
+        const massBarY = massY + 0.24 * grid;
+        drawConductor(massX, massY - 0.24 * grid, massX, massBarY, COLORS.N, 3.5);
+        drawConductor(massX - 0.28 * grid, massBarY, massX + 0.28 * grid, massBarY, COLORS.N, 3.5);
+        drawConductor(xStart, massY, xR, massY, COLORS.N, 3.5);
       },
       drawUs(ox, oy) {
         const { cx, cy } = usCenter(ox, oy);
