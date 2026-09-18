@@ -999,20 +999,32 @@
     else d.energized = !d.energized;
   }
 
+  /** CircuitJS EGTStyle.ncHook — kurzer oberer Querstrich nach rechts. */
+  function ncHook(span) {
+    if (span < 8) span = 8;
+    return Math.max(8, span * 32 / 100);
+  }
+  function ncTipX(cx, topY, bottomY, closed) {
+    const hook = ncHook(bottomY - topY);
+    return closed ? cx + hook : cx + hook + Math.max(6, (bottomY - topY) * 12 / 100);
+  }
+  function ncTipY(topY, bottomY, closed) {
+    return closed ? topY : topY + Math.max(3, (bottomY - topY) / 12);
+  }
+
   /**
-   * Öffner (NC): Lippe nur nach links am oberen Festkontakt (wie Fachkunde/Zeitrelais).
-   * Ruhe geschlossen (Messer an Lippe), betätigt offen nach links mit Lücke.
+   * Öffner (NC) wie CircuitJS EGTStyle.drawNcContact:
+   * Haken nach rechts, Arm ~18° nach oben rechts an die Hakenkuppe.
+   * closed = leitend (Ruhe).
    */
   function drawNcContact(cx, topY, bottomY, closed) {
-    const lip = Math.max(10, 0.55 * grid); // nur nach links
-    const tipOnLipX = cx - lip;
-    const bladeTipX = closed ? tipOnLipX : cx - Math.max(lip + 0.1 * grid, CONTACT_OPEN_DX * grid);
-    const bladeTipY = closed ? topY : topY + 0.35 * grid;
+    const hook = ncHook(bottomY - topY);
+    const tipX = ncTipX(cx, topY, bottomY, closed);
+    const tipY = ncTipY(topY, bottomY, closed);
     setStroke(COLORS.wire, 2.5);
     ctx.lineCap = "butt";
-    line(cx, topY, tipOnLipX, topY);
-    setStroke(closed ? COLORS.wire : "#ffb347", 2.5);
-    line(cx, bottomY, bladeTipX, bladeTipY);
+    line(cx, topY, cx + hook, topY);
+    line(cx, bottomY, tipX, tipY);
   }
 
   /**
@@ -1412,27 +1424,18 @@
     const openDx = CONTACT_OPEN_DX * grid;
 
     rsStroke(2);
-    // Zuleitungen + Knoten
     line(cx, topY - 0.7 * grid, cx, topY);
     line(cx, botY, cx, botY + 0.7 * grid);
     rsNode(cx, topY);
     rsNode(cx, botY);
 
-    // fester Kontakt oben (Querstrich)
-    line(cx - 7, topY, cx + 7, topY);
-
     let tipX, tipY;
     if (nc) {
-      // Öffner: Ruhe geschlossen (Messer am Querstrich), betätigt offen nach links
-      if (closed) {
-        tipX = cx;
-        tipY = topY;
-      } else {
-        tipX = cx - openDx;
-        tipY = topY + 0.2 * grid;
-      }
+      tipX = ncTipX(cx, topY, botY, closed);
+      tipY = ncTipY(topY, botY, closed);
+      drawNcContact(cx, topY, botY, closed);
     } else {
-      // Schließer: Ruhe offen nach links, betätigt geschlossen
+      line(cx - 7, topY, cx + 7, topY);
       if (closed) {
         tipX = cx;
         tipY = topY;
@@ -1440,10 +1443,9 @@
         tipX = cx - openDx;
         tipY = topY + 0.2 * grid;
       }
+      rsStroke(2.5);
+      line(cx, botY, tipX, tipY);
     }
-
-    rsStroke(2.5);
-    line(cx, botY, tipX, tipY);
 
     const midX = (cx + tipX) / 2;
     const midY = (botY + tipY) / 2;
@@ -1554,12 +1556,9 @@
   }
 
   /**
-   * Zeitrelais-Kontakt 1:1 Fachkunde:
-   * Schließer: offen = Messer schräg; zu = eine Gerade mit Adern.
-   * Öffner: immer Querstrich nach links.
-   *   Ruhe (closed): Messer liegt am linken Strichende an (Pfad über Strich).
-   *   Betätigt (!closed): Messer weg, Lücke unter dem Strich.
-   * Fallschirm am Messer. Ansprech `(`, Rückfall `)`.
+   * Zeitrelais-Kontakt wie CircuitJS EGTStyle.drawZeitContact:
+   * Schließer: offen = Messer nach links; zu = eine Gerade.
+   * Öffner: Haken nach rechts (drawNcContact). Fallschirm am Messer.
    */
   function drawDinZeitContact(cx, cy, opts = {}) {
     const nc = !!opts.nc;
@@ -1573,15 +1572,12 @@
     const botY = cy + 2.5 * g;
     const tipY = cy - 1.05 * g;
     const kneeY = cy + 0.95 * g;
-    const barLen = 0.7 * g;
 
     let tipX;
     let bladeTipY;
     if (nc) {
-      // Öffner: Spitze am Querstrich (Ruhe) bzw. darunter/links (betätigt)
-      tipX = axisX - barLen;
-      bladeTipY = closed ? tipY : tipY + 0.35 * g;
-      if (!closed) tipX = axisX - 0.95 * g;
+      tipX = ncTipX(axisX, tipY, kneeY, closed);
+      bladeTipY = ncTipY(tipY, kneeY, closed);
     } else {
       tipX = closed ? axisX : axisX - 0.64 * g;
       bladeTipY = tipY;
@@ -1592,16 +1588,12 @@
     ctx.lineJoin = "miter";
 
     if (!nc && closed) {
-      // Schließer zu: eine Gerade
       line(axisX, topY, axisX, botY);
     } else {
       line(axisX, topY, axisX, tipY);
       line(axisX, kneeY, axisX, botY);
-      line(axisX, kneeY, tipX, bladeTipY);
-    }
-
-    if (nc) {
-      line(axisX, tipY, axisX - barLen, tipY);
+      if (nc) drawNcContact(axisX, tipY, kneeY, closed);
+      else line(axisX, kneeY, tipX, bladeTipY);
     }
 
     const my = cy;
@@ -1664,11 +1656,13 @@
       drawPinLabelBeside(axisX, botY, "8");
     }
 
-    const left = Math.min(tipX, markLeft, nc ? axisX - barLen : tipX);
+    const hookW = nc ? ncHook(kneeY - tipY) : 0;
+    const left = Math.min(tipX, markLeft, axisX);
+    const right = Math.max(axisX + hookW, tipX);
     hitBox = {
       x: left - 0.35 * g,
       y: topY - 0.35 * g,
-      w: axisX - left + 0.7 * g,
+      w: right - left + 0.7 * g,
       h: botY - topY + 0.7 * g,
     };
   }
@@ -3321,12 +3315,11 @@
         const o = LEAD_OUT * grid;
         const top = b.y + 1.15 * grid;
         const pivotY = b.y + b.h - 1.15 * grid;
-        const lip = Math.max(10, 0.55 * grid);
         let bladeTipX;
         let bladeTipY;
         if (tasterNc) {
-          bladeTipX = closed ? px - lip : px - Math.max(lip + 0.1 * grid, CONTACT_OPEN_DX * grid);
-          bladeTipY = closed ? top : top + 0.35 * grid;
+          bladeTipX = ncTipX(px, top, pivotY, closed);
+          bladeTipY = ncTipY(top, pivotY, closed);
         } else {
           bladeTipX = closed ? px : px - 1.1 * grid;
           bladeTipY = closed ? top : top + 0.25 * grid;
@@ -4320,7 +4313,7 @@
       interactive: true,
       boxCols: 4,
       boxRows: 5,
-      note: "S305 / MOD-REL-01 — Öffner vom Stromstoßschalter: Lippe nur nach links am oberen Festkontakt; Messer öffnet nach links.",
+      note: "S305 / MOD-REL-01 — Öffner wie CircuitJS: Haken nach rechts, Arm ~18° nach oben rechts. Ruhe leitend, EIN öffnet.",
       drawZh(ox, oy) {
         const tag = getDeviceTag("Stromstossschalter_Oeffner");
         ensureDevice(tag, "impulse");
@@ -4590,7 +4583,7 @@
       interactive: true,
       boxCols: 4,
       boxRows: 5,
-      note: "Öffner wie übrige NC: hell (COLORS.wire), Lippe nur nach links, gleiche Länge CONTACT_HALF.",
+      note: "Öffner wie CircuitJS: Haken nach rechts, Arm ~18° nach oben rechts, hell (COLORS.wire).",
       drawZh(ox, oy) {
         const { cx, cy } = usCenter(ox, oy);
         const closed = !!switchClosed.Realsim_RelaisOeffner;
@@ -4669,7 +4662,7 @@
       interactive: true,
       boxCols: 5,
       boxRows: 6,
-      note: "Öffner NC: Ruhe=Querstrich+Messer am Strichende; betätigt=Messer weg; Fallschirm (.",
+      note: "Öffner NC wie CircuitJS: Haken nach rechts, Arm ~18°; Fallschirm (.",
       drawZh(ox, oy) {
         const { cx, cy } = usCenter(ox, oy);
         drawDinZeitContact(cx, cy, {
@@ -4739,7 +4732,7 @@
       interactive: true,
       boxCols: 5,
       boxRows: 6,
-      note: "Öffner NC: Ruhe=Querstrich+Messer am Strichende; betätigt=Messer weg; Fallschirm ).",
+      note: "Öffner NC wie CircuitJS: Haken nach rechts, Arm ~18°; Fallschirm ).",
       drawZh(ox, oy) {
         const { cx, cy } = usCenter(ox, oy);
         drawDinZeitContact(cx, cy, {
