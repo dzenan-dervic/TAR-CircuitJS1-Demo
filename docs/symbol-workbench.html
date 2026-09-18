@@ -200,6 +200,9 @@
           <label class="hint" id="optIlluminatedWrap" style="margin:6px 0" hidden>
             <input type="checkbox" id="optIlluminated" /> Leuchttaster (beleuchtet)
           </label>
+          <label class="hint" id="optTasterNcWrap" style="margin:6px 0" hidden>
+            <input type="checkbox" id="optTasterNc" /> Öffner (NC)
+          </label>
           <label class="hint" id="optDeviceTagWrap" style="margin:6px 0" hidden>
             Bezeichnung
             <input type="text" id="optDeviceTag" maxlength="12" style="width:4.5em;margin-left:6px" />
@@ -229,7 +232,7 @@
             </label>
             <p class="hint" style="margin:8px 0 4px">Zeichenvariante</p>
             <label class="hint" style="display:block;margin:2px 0">
-              <input type="radio" name="optMotorV2Variant" value="A" checked /> A — Normkreis + Bogenpfeil innen
+              <input type="radio" name="optMotorV2Variant" value="A" checked /> A — Normkreis + dreiflügeliger Lüfter
             </label>
             <label class="hint" style="display:block;margin:2px 0">
               <input type="radio" name="optMotorV2Variant" value="B" /> B — Rotor mit Markierungsnase
@@ -420,6 +423,8 @@
   const CONTACTOR_SYMBOL_IDS = DEVICE_SYMBOL_IDS; // Alias: Bezeichnung-UI + Toggle
   /** Taster-Option: Leuchttaster (Edit-Variante, kein eigenes Element) */
   let tasterIlluminated = false;
+  /** CircuitJS FLAG_TASTER_NC: Öffner, Ruhe geschlossen */
+  let tasterNc = false;
   /** Drehstrommotor: Preview Rechtslauf (cw) / Linkslauf (ccw) / Stillstand */
   let motorDir = "cw";
   /** Rotorwinkel für Workbench-Animation (rad) */
@@ -576,6 +581,22 @@
     ctx.fillStyle = COLORS.label;
     ctx.fillText(str, x, y);
   }
+
+  /** CircuitJS EGTStyle.drawPinLabelBeside — Text rechts/links neben dem Post, nicht auf der Ader. */
+  const PIN_LABEL_SIZE = 11;
+  const PIN_LABEL_PAD = 5;
+  function drawPinLabelBeside(x, y, str, right = true) {
+    if (!str) return;
+    ctx.save();
+    ctx.font = `${PIN_LABEL_SIZE}px sans-serif`;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#f2f2f2";
+    const tw = ctx.measureText(str).width;
+    const lx = right ? x + PIN_LABEL_PAD : x - PIN_LABEL_PAD - tw;
+    ctx.fillText(str, lx, y);
+    ctx.restore();
+  }
   function dashed(x1, y1, x2, y2, dash = [6, 4]) {
     ctx.save();
     ctx.setLineDash(dash);
@@ -607,10 +628,10 @@
       setStroke(COLORS.box, 1.5);
       circle(tx, ty, 3.5, false);
       if (t.name) {
-        const dx = t.side === "left" ? -(o + 6) : t.side === "right" ? o + 6 : 0;
-        const dy = t.side === "top" ? -(o + 10) : t.side === "bottom" ? o + 10 : 0;
-        const al = t.side === "left" ? "right" : t.side === "right" ? "left" : "center";
-        text(t.name, tx + dx, ty + dy, al, 11);
+        const postX = t.side === "left" ? tx - o : t.side === "right" ? tx + o : tx;
+        const postY = t.side === "top" ? ty - o : t.side === "bottom" ? ty + o : ty;
+        const right = t.side !== "right";
+        drawPinLabelBeside(postX, postY, t.name, right);
       }
     }
     if (label) text(label, x + w + 8, y + 10, "left", 13);
@@ -641,7 +662,7 @@
       line(peX, b.y - o, peX, b.y);
       setFill(COLORS.wire);
       circle(peX, b.y, 3.5, true);
-      text("PE", peX + 10, b.y - o - 10, "left", 11);
+      drawPinLabelBeside(peX, b.y - o, "PE");
       return;
     }
     if (mode === "side") {
@@ -652,12 +673,12 @@
         const endX = b.x + d * grid;
         line(b.x - o, peY, endX, peY);
         circle(endX, peY, 3.5, false);
-        text("PE", b.x - o - 8, peY + 4, "right", 11);
+        drawPinLabelBeside(b.x - o, peY, "PE", false);
       } else {
         const endX = b.x + b.w - d * grid;
         line(b.x + b.w + o, peY, endX, peY);
         circle(endX, peY, 3.5, false);
-        text("PE", b.x + b.w + o + 8, peY + 4, "left", 11);
+        drawPinLabelBeside(b.x + b.w + o, peY, "PE");
       }
       return;
     }
@@ -669,7 +690,7 @@
     const endY = b.y + depth * grid;
     line(peX, b.y - o, peX, endY);
     circle(peX, endY, 3.5, false);
-    text("PE", peX + 8, endY + 3, "left", 11);
+    drawPinLabelBeside(peX, b.y - o, "PE");
   }
 
   /**
@@ -1198,8 +1219,8 @@
     };
 
     if (labels) {
-      text("A1", cx, topLead - o - 10, "center", 12);
-      text("A2", cx, botLead + o + 12, "center", 12);
+      drawPinLabelBeside(cx, topLead - o, "A1");
+      drawPinLabelBeside(cx, botLead + o, "A2");
       text(deviceTag, cx + coilW / 2 + 10, cy - 4, "left", 13);
     }
     setStroke(COLORS.wire, 2.5);
@@ -1252,13 +1273,13 @@
     poles.forEach((p) => {
       if (labels) {
         if (style === "hook") {
-          text(p.phase, p.cx, topY - o - 22, "center", 12);
-          text(p.topN, p.cx, topY - o - 8, "center", 11);
-          text(p.botN, p.cx, botY + o + 8, "center", 11);
-          text(p.load, p.cx, botY + o + 22, "center", 12);
+          drawPinLabelBeside(p.cx, topY - o, p.phase);
+          drawPinLabelBeside(p.cx, topY - o + 12, p.topN);
+          drawPinLabelBeside(p.cx, botY + o, p.botN);
+          drawPinLabelBeside(p.cx, botY + o + 12, p.load);
         } else {
-          text(p.topN, p.cx, topY - o - 10, "center", 12);
-          text(p.botN, p.cx, botY + o + 12, "center", 12);
+          drawPinLabelBeside(p.cx, topY - o, p.topN);
+          drawPinLabelBeside(p.cx, botY + o, p.botN);
         }
       }
       setStroke(COLORS.wire, 2.5);
@@ -1300,8 +1321,8 @@
     };
 
     if (labels) {
-      text("13", cx, topY - o - 10, "center", 12);
-      text("14", cx, botY + o + 12, "center", 12);
+      drawPinLabelBeside(cx, topY - o, "13");
+      drawPinLabelBeside(cx, botY + o, "14");
       text(deviceTag, cx + 16, cy - 4, "left", 13);
     }
     setStroke(COLORS.wire, 2.5);
@@ -1527,8 +1548,8 @@
     }
 
     if (labels) {
-      text("A1", leadX + 7, y - lead, "left", 13);
-      text("A2", leadX + 7, y + h + lead, "left", 13);
+      drawPinLabelBeside(leadX, y - lead, "A1");
+      drawPinLabelBeside(leadX, y + h + lead, "A2");
     }
   }
 
@@ -1639,8 +1660,8 @@
     }
 
     if (labels) {
-      text("7", axisX + 7, topY, "left", 15);
-      text("8", axisX + 7, botY, "left", 15);
+      drawPinLabelBeside(axisX, topY, "7");
+      drawPinLabelBeside(axisX, botY, "8");
     }
 
     const left = Math.min(tipX, markLeft, nc ? axisX - barLen : tipX);
@@ -1752,10 +1773,10 @@
     drawNoContact(xs[4], topY, botY, tripped);
     drawMechLink(xs[0], xs[4], cy);
     if (labels) {
-      text("95", xs[3], boxT - 10, "center", 11);
-      text("96", xs[3], boxB + 14, "center", 11);
-      text("97", xs[4], boxT - 10, "center", 11);
-      text("98", xs[4], boxB + 14, "center", 11);
+      drawPinLabelBeside(xs[3], boxT, "95");
+      drawPinLabelBeside(xs[3], boxB, "96");
+      drawPinLabelBeside(xs[4], boxT, "97");
+      drawPinLabelBeside(xs[4], boxB, "98");
       text("F1", boxR + 10, cy - 10, "left", 12);
       text(tripped ? "ausgelöst" : "bereit", boxR + 10, cy + 10, "left", 11);
     }
@@ -1797,9 +1818,9 @@
     drawNoContact(sx, topY, botY, on);
     if (labels) {
       text("PIR", cx, cy - hr - 8, "center", 11);
-      text("L", lx, ly - 10, "center", 11);
-      text("N", lx, ny + 14, "center", 11);
-      text("L'", sx, ly - 10, "center", 11);
+      drawPinLabelBeside(lx, ly, "L");
+      drawPinLabelBeside(lx, ny, "N");
+      drawPinLabelBeside(sx, ly, "L'");
       text("B1", sx + 18, cy - 8, "left", 12);
       text(on ? "Nachlauf" : "Ruhe", sx + 18, cy + 10, "left", 11);
     }
@@ -2522,47 +2543,49 @@
     }
   }
 
-  /** Bogenpfeil um (cx,cy) auf Radius rr, Mitte aMid, Öffnung span, Umlaufsinn cw. */
-  function drawArcArrow(cx, cy, rr, aMid, span, cw, color, w = 2.2) {
-    const a0 = aMid - span / 2;
-    const a1 = aMid + span / 2;
-    setStroke(color, w);
-    ctx.beginPath();
-    if (cw) ctx.arc(cx, cy, rr, a0, a1, false);
-    else ctx.arc(cx, cy, rr, a1, a0, true);
-    ctx.stroke();
+  function drawMotorFan(cx, cy, r, { dir = "stop", markAngle = -Math.PI / 2 } = {}) {
+    const fanCy = cy - r * 0.1;
+    const hub = r * 0.14;
+    const rim = r * 0.55;
+    const curl = dir === "ccw" ? -1 : 1;
+    const blade = dir === "stop" ? "#666" : "#4a9eff";
 
-    const tipA = cw ? a1 : a0;
-    const tang = tipA + (cw ? Math.PI / 2 : -Math.PI / 2);
-    const tipX = cx + Math.cos(tipA) * rr;
-    const tipY = cy + Math.sin(tipA) * rr;
-    const ah = Math.max(7, rr * 0.26);
-    const bx = tipX - Math.cos(tang) * ah;
-    const by = tipY - Math.sin(tang) * ah;
-    const nx = -Math.sin(tang) * ah * 0.45;
-    const ny = Math.cos(tang) * ah * 0.45;
-    setFill(color);
-    ctx.beginPath();
-    ctx.moveTo(tipX, tipY);
-    ctx.lineTo(bx + nx, by + ny);
-    ctx.lineTo(bx - nx, by - ny);
-    ctx.closePath();
-    ctx.fill();
-  }
+    setFill(blade);
+    for (let i = 0; i < 3; i++) {
+      const a = markAngle + (i * 2 * Math.PI) / 3;
+      const rootA = a - curl * 0.34;
+      const tipA = a + curl * 0.38;
+      const backA = a + curl * 0.54;
+      ctx.beginPath();
+      ctx.moveTo(cx + Math.cos(rootA) * hub, fanCy + Math.sin(rootA) * hub);
+      ctx.bezierCurveTo(
+        cx + Math.cos(a - curl * 0.2) * r * 0.36,
+        fanCy + Math.sin(a - curl * 0.2) * r * 0.36,
+        cx + Math.cos(a + curl * 0.12) * r * 0.58,
+        fanCy + Math.sin(a + curl * 0.12) * r * 0.58,
+        cx + Math.cos(tipA) * rim,
+        fanCy + Math.sin(tipA) * rim,
+      );
+      ctx.bezierCurveTo(
+        cx + Math.cos(a + curl * 0.62) * r * 0.48,
+        fanCy + Math.sin(a + curl * 0.62) * r * 0.48,
+        cx + Math.cos(a + curl * 0.66) * r * 0.24,
+        fanCy + Math.sin(a + curl * 0.66) * r * 0.24,
+        cx + Math.cos(backA) * hub,
+        fanCy + Math.sin(backA) * hub,
+      );
+      ctx.closePath();
+      ctx.fill();
+    }
 
-  /** Gestrichelter Bogen ohne Spitze — Stillstand. */
-  function drawArcIdle(cx, cy, rr, aMid, span) {
-    setStroke("#666", 1.8);
-    ctx.save();
-    ctx.setLineDash([5, 4]);
-    ctx.beginPath();
-    ctx.arc(cx, cy, rr, aMid - span / 2, aMid + span / 2, false);
-    ctx.stroke();
-    ctx.restore();
+    setFill("#18222c");
+    circle(cx, fanCy, hub * 1.08, true);
+    setStroke(COLORS.wire, 1.8);
+    circle(cx, fanCy, hub * 1.08, false);
   }
 
   const MOTOR_V2_VARIANTS = {
-    A: "A — Normkreis + Bogenpfeil innen",
+    A: "A — Normkreis + dreiflügeliger Lüfter",
     B: "B — Rotor mit Markierungsnase",
     C: "C — rotierendes Segment",
     D: "D — Flügelrad (gekrümmt)",
@@ -2588,13 +2611,9 @@
     const labelSize = Math.max(12, Math.round(r * 0.44));
 
     if (variant === "A" || variant === "E") {
-      // Bogenpfeil innen, dreht mit markAngle; M / 3~ darüber
-      const rr = r * 0.82;
-      const span = Math.PI * 0.55;
-      if (running) drawArcArrow(cx, cy, rr, markAngle, span, cw, accent, 2.2);
-      else drawArcIdle(cx, cy, rr, markAngle, span);
-      text("M", cx, cy - r * 0.08, "center", labelSize);
-      text("3~", cx, cy + r * 0.32, "center", Math.max(10, Math.round(labelSize * 0.68)));
+      drawMotorFan(cx, cy, r, { dir, markAngle });
+      text("M", cx, cy - r * 0.1, "center", Math.max(10, Math.round(r * 0.24)));
+      text("3~", cx, cy + r * 0.66, "center", Math.max(10, Math.round(r * 0.25)));
       if (variant === "E") {
         const seqTxt =
           opts.phaseSeq === "L1L3L2" ? "L1-L3-L2" : opts.phaseSeq === "off" ? "ohne Spannung" : "L1-L2-L3";
@@ -2972,7 +2991,7 @@
           line(px, yTop - o, px, yEnd);
           // nach unten geöffnetes U (∩)
           drawOpenDownU(px, yEnd, arcR);
-          text(labs[i], px, yTop - o - 10, "center", 11);
+          drawPinLabelBeside(px, yTop - o, labs[i]);
         });
         // PE-Querstrich am Scheitel
         line(xs[1] - arcR * 0.95, yEnd, xs[1] + arcR * 0.95, yEnd);
@@ -3021,8 +3040,8 @@
         const midX = (px + bladeTipX) / 2;
         const midY = (pivotY + bladeTipY) / 2;
 
-        text("L", px, b.y - LEAD_OUT * grid - 10, "center", 11);
-        text("1", px, b.y + b.h + LEAD_OUT * grid + 10, "center", 11);
+        drawPinLabelBeside(px, b.y - LEAD_OUT * grid, "L");
+        drawPinLabelBeside(px, b.y + b.h + LEAD_OUT * grid, "1");
 
         setStroke(COLORS.wire, 2);
         line(px, b.y - LEAD_OUT * grid, px, top);
@@ -3067,9 +3086,9 @@
         const nodeY = pivotY;
         const o = LEAD_OUT * grid;
 
-        text("1", p1x, b.y - o - 10, "center", 11);
-        text("2", p2x, b.y - o - 10, "center", 11);
-        text("L", b.cx, b.y + b.h + o + 10, "center", 11);
+        drawPinLabelBeside(p1x, b.y - o, "1");
+        drawPinLabelBeside(p2x, b.y - o, "2");
+        drawPinLabelBeside(b.cx, b.y + b.h + o, "L");
 
         setStroke(COLORS.wire, 2);
         // gemeinsamer Pol unten → Knoten, Brücke zu beiden Drehpunkten
@@ -3213,10 +3232,10 @@
 
         // Klemmenbezeichnung nur Text (keine Punkte)
         const o = LEAD_OUT * grid;
-        text("1", nAx, b.y - o - 10, "center", 11);
-        text("2", nBx, b.y - o - 10, "center", 11);
-        text("3", pAx, b.y + b.h + o + 10, "center", 11);
-        text("4", pBx, b.y + b.h + o + 10, "center", 11);
+        drawPinLabelBeside(nAx, b.y - o, "1");
+        drawPinLabelBeside(nBx, b.y - o, "2");
+        drawPinLabelBeside(pAx, b.y + b.h + o, "3");
+        drawPinLabelBeside(pBx, b.y + b.h + o, "4");
 
         // Zuleitungen oben — durchgehende Linien, kein Knotenpunkt
         setStroke(col, 2.5);
@@ -3292,34 +3311,43 @@
       cat: "Installation",
       interactive: true,
       momentary: true,
-      note: "I202 — ZH: tastend, 1 oben / L unten. CircuitJS Dump 448: Edit Öffner (NC-Lippe, Ruhe zu) oder Schließer (Default); Leuchttaster.",
+      note: "I202 — ZH: tastend, 1 oben / L unten wie CircuitJS Dump 448. Öffner (NC-Lippe, Ruhe zu) oder Schließer; Leuchttaster.",
       drawZh(ox, oy) {
         const b = drawStdBox(ox, oy, [], "S");
         hitBox = { x: b.x, y: b.y, w: b.w, h: b.h };
-        const closed = switchClosed.PushSwitchElm;
-        // Kontaktstrecke mittig; offen: Messer \ nach links; gedrückt: nach innen
+        const pressed = switchClosed.PushSwitchElm;
+        const closed = tasterNc ? !pressed : pressed;
         const px = b.cx;
+        const o = LEAD_OUT * grid;
         const top = b.y + 1.15 * grid;
         const pivotY = b.y + b.h - 1.15 * grid;
-        const bladeTipX = closed ? px : px - 1.1 * grid;
-        const bladeTipY = closed ? top : top + 0.25 * grid;
+        const lip = Math.max(10, 0.55 * grid);
+        let bladeTipX;
+        let bladeTipY;
+        if (tasterNc) {
+          bladeTipX = closed ? px - lip : px - Math.max(lip + 0.1 * grid, CONTACT_OPEN_DX * grid);
+          bladeTipY = closed ? top : top + 0.35 * grid;
+        } else {
+          bladeTipX = closed ? px : px - 1.1 * grid;
+          bladeTipY = closed ? top : top + 0.25 * grid;
+        }
         const midX = (px + bladeTipX) / 2;
         const midY = (pivotY + bladeTipY) / 2;
 
-        text("L", px, b.y - LEAD_OUT * grid - 10, "center", 11);
-        text("1", px, b.y + b.h + LEAD_OUT * grid + 10, "center", 11);
+        drawPinLabelBeside(px, b.y - o, "1");
+        drawPinLabelBeside(px, b.y + b.h + o, "L");
 
         setStroke(COLORS.wire, 2);
-        // Zuleitung oben / Abgang unten (Stummel nach außen)
-        line(px, b.y - LEAD_OUT * grid, px, top);
-        line(px, pivotY, px, b.y + b.h + LEAD_OUT * grid);
-        // Kontaktquerstrich (kein Punkt)
-        line(px - 5, top, px + 5, top);
+        line(px, b.y - o, px, top);
+        line(px, pivotY, px, b.y + b.h + o);
+        if (tasterNc) {
+          drawNcContact(px, top, pivotY, closed);
+        } else {
+          line(px - 5, top, px + 5, top);
+          setStroke(closed ? COLORS.wire : "#ffb347", 2.5);
+          line(px, pivotY, bladeTipX, bladeTipY);
+        }
 
-        setStroke(closed ? COLORS.wire : "#ffb347", 2.5);
-        line(px, pivotY, bladeTipX, bladeTipY);
-
-        // Betätigung links am Messer: gestrichelt + T (tastend)
         drawTastBetaetigung(midX, midY, 1.4 * grid);
 
         // Leuchttaster: eingebaute Meldeleuchte oben rechts im Gehäuse
@@ -3333,8 +3361,14 @@
         }
 
         drawZhPe(b, { mode: "inside", side: "right", depth: 0.55 });
-        const stateTxt = closed ? "gedrückt" : "offen";
-        text(tasterIlluminated ? `${stateTxt} · beleuchtet` : stateTxt, b.x + b.w + 8, b.y + b.h - 8, "left", 11);
+        const kind = tasterNc ? "Öffner" : "Schließer";
+        const stateTxt = pressed
+          ? "gedrückt"
+          : tasterNc
+            ? "geschlossen"
+            : "offen";
+        const extra = tasterIlluminated ? " · beleuchtet" : "";
+        text(`${kind} · ${stateTxt}${extra}`, b.x + b.w + 8, b.y + b.h - 8, "left", 11);
       },
       drawUs(ox, oy) {
         const { cx, cy, r } = usCenter(ox, oy);
@@ -3345,8 +3379,15 @@
         }
         drawUsStem(cx, cy, r);
         drawUsHit(cx, cy, "S");
-        const stateTxt = switchClosed.PushSwitchElm ? "gedrückt" : "offen";
-        text(tasterIlluminated ? `${stateTxt} · Leuchttaster` : stateTxt, cx + 1.6 * grid, cy + 18, "left", 11);
+        const pressed = switchClosed.PushSwitchElm;
+        const kind = tasterNc ? "Öffner" : "Schließer";
+        const stateTxt = pressed
+          ? "gedrückt"
+          : tasterNc
+            ? "geschlossen"
+            : "offen";
+        const extra = tasterIlluminated ? " · Leuchttaster" : "";
+        text(`${kind} · ${stateTxt}${extra}`, cx + 1.6 * grid, cy + 18, "left", 11);
       },
     },
     {
@@ -3363,8 +3404,8 @@
         const lx = b.x + 0.45 * grid;
         const nx = b.x + b.w - 0.45 * grid;
 
-        text("L", lx, b.y - o - 10, "center", 11);
-        text("N", nx, b.y - o - 10, "center", 11);
+        drawPinLabelBeside(lx, b.y - o, "L");
+        drawPinLabelBeside(nx, b.y - o, "N");
 
         setStroke(COLORS.wire, 2.5);
         ctx.lineCap = "butt";
@@ -3409,8 +3450,8 @@
         const lx = b.x + 0.45 * grid;
         const nx = b.x + b.w - 0.45 * grid;
 
-        text("L", lx, b.y - o - 10, "center", 11);
-        text("N", nx, b.y - o - 10, "center", 11);
+        drawPinLabelBeside(lx, b.y - o, "L");
+        drawPinLabelBeside(nx, b.y - o, "N");
 
         setStroke(COLORS.wire, 2.5);
         ctx.lineCap = "butt";
@@ -3459,8 +3500,8 @@
         const lx = b.x + 0.45 * grid;
         const nx = b.x + b.w - 0.45 * grid;
 
-        text("L", lx, b.y - o - 10, "center", 11);
-        text("N", nx, b.y - o - 10, "center", 11);
+        drawPinLabelBeside(lx, b.y - o, "L");
+        drawPinLabelBeside(nx, b.y - o, "N");
 
         setStroke(COLORS.wire, 2.5);
         ctx.lineCap = "butt";
@@ -3508,8 +3549,8 @@
         const sy = b.cy - symH / 2;
         const coilBottom = sy + symH;
 
-        text("L", coilCx, b.y - o - 10, "center", 11);
-        text("N", coilCx, b.y + b.h + o + 12, "center", 11);
+        drawPinLabelBeside(coilCx, b.y - o, "L");
+        drawPinLabelBeside(coilCx, b.y + b.h + o, "N");
 
         setStroke(COLORS.wire, 2.5);
         ctx.lineCap = "butt";
@@ -3562,8 +3603,8 @@
         ];
         const auxCx = b.x + 8.3 * grid;
 
-        text("A1", coilCx, b.y - o - 10, "center", 11);
-        text("A2", coilCx, b.y + b.h + o + 12, "center", 11);
+        drawPinLabelBeside(coilCx, b.y - o, "A1");
+        drawPinLabelBeside(coilCx, b.y + b.h + o, "A2");
         setStroke(COLORS.wire, 2.5);
         ctx.lineCap = "butt";
         line(coilCx, b.y - o, coilCx, coilCy - coilH / 2);
@@ -3571,8 +3612,8 @@
         drawCoilSymbol(coilCx, coilCy, coilW, coilH, true);
 
         poles.forEach((p) => {
-          text(p.topLab, p.cx, b.y - o - 10, "center", 12);
-          text(p.botLab, p.cx, b.y + b.h + o + 12, "center", 12);
+          drawPinLabelBeside(p.cx, b.y - o, p.topLab);
+          drawPinLabelBeside(p.cx, b.y + b.h + o, p.botLab);
           setStroke(COLORS.wire, 2.5);
           ctx.lineCap = "butt";
           line(p.cx, b.y - o, p.cx, topY);
@@ -3580,8 +3621,8 @@
           drawNoContact(p.cx, topY, botY, closed);
         });
 
-        text("13", auxCx, b.y - o - 10, "center", 11);
-        text("14", auxCx, b.y + b.h + o + 12, "center", 11);
+        drawPinLabelBeside(auxCx, b.y - o, "13");
+        drawPinLabelBeside(auxCx, b.y + b.h + o, "14");
         setStroke(COLORS.wire, 2.5);
         line(auxCx, b.y - o, auxCx, topY);
         line(auxCx, botY, auxCx, b.y + b.h + o);
@@ -3842,7 +3883,7 @@
           const x = xs[i];
           const yPost = cy - r - leadLen;
           const yRim = rimY(x, true);
-          text(lab, x, yPost - o - 8, "center", 11);
+          drawPinLabelBeside(x, yPost - o, lab);
           drawConductor(x, yPost - o, x, yRim, wireC, 3.5);
           setFill(COLORS.wire);
           circle(x, yPost - o, 3.5, true);
@@ -3852,7 +3893,7 @@
           const x = xs[i];
           const yPost = cy + r + leadLen;
           const yRim = rimY(x, false);
-          text(lab, x, yPost + o + 8, "center", 11);
+          drawPinLabelBeside(x, yPost + o, lab);
           drawConductor(x, yRim, x, yPost + o, wireC, 3.5);
           setFill(COLORS.wire);
           circle(x, yPost + o, 3.5, true);
@@ -3896,7 +3937,7 @@
       interactive: true,
       boxCols: 6,
       boxRows: 7,
-      note: "M501–M504 / M502 — v2: Drehrichtung aus der Phasenfolge am Klemmbrett (L1-L2-L3 = Rechtslauf, L1-L3-L2 = Linkslauf, ohne Spannung = Stillstand). Obere Anschlüsse U1/V1/W1 weiß wie unten (W2/V2/U2); L1/L2/L3 nur Beschriftung. Klick schaltet die Phasenfolge weiter. Variante A (Export): Kreis+M+3~, Bogenpfeil innen animiert. Weitere Varianten B–E im Optionsfeld. Alter Eintrag bleibt unverändert. CircuitJS-draw() später aus sign(filteredSpeed).",
+      note: "M501–M504 / M502 — v2: Drehrichtung aus der Phasenfolge am Klemmbrett (L1-L2-L3 = Rechtslauf, L1-L3-L2 = Linkslauf, ohne Spannung = Stillstand). Obere Anschlüsse U1/V1/W1 weiß wie unten (W2/V2/U2); L1/L2/L3 nur Beschriftung. Klick schaltet die Phasenfolge weiter. Variante A (Export): Kreis mit dreiflügeligem, animiertem Motorlüfter; kein Laufpfeil.",
       drawZh(ox, oy) {
         const { cx, cy } = usCenter(ox, oy);
         const r = 1.45 * grid;
@@ -3925,8 +3966,8 @@
           const yPost = cy - r - leadLen;
           const yRim = rimY(x, true);
           const ph = phases[i];
-          text(lab, x, yPost - o - 9, "center", 11);
-          text(off ? "–" : ph.lab, x, yPost - o - 26, "center", 11);
+          drawPinLabelBeside(x, yPost - o, lab);
+          drawPinLabelBeside(x, yPost - o - 14, off ? "–" : ph.lab);
           // Anschlüsse oben wie unten: weiß (L1/L2/L3 nur als Beschriftung, nicht als Leiterfarbe)
           drawConductor(x, yPost - o, x, yRim, COLORS.wire, 3.5);
           setFill(COLORS.wire);
@@ -3937,7 +3978,7 @@
           const x = xs[i];
           const yPost = cy + r + leadLen;
           const yRim = rimY(x, false);
-          text(lab, x, yPost + o + 9, "center", 11);
+          drawPinLabelBeside(x, yPost + o, lab);
           drawConductor(x, yRim, x, yPost + o, COLORS.wire, 3.5);
           setFill(COLORS.wire);
           circle(x, yPost + o, 3.5, true);
@@ -4005,12 +4046,12 @@
         const yTop = cy - r - leadLen;
         const yBot = cy + r + leadLen;
 
-        text("+", cx - 14, yTop - o - 2, "center", 14);
+        drawPinLabelBeside(cx, yTop - o, "+", false);
         drawConductor(cx, yTop - o, cx, cy - r, "#c0392b", 3.5);
         setFill(COLORS.wire);
         circle(cx, yTop - o, 3.5, true);
 
-        text("−", cx - 14, yBot + o + 2, "center", 14);
+        drawPinLabelBeside(cx, yBot + o, "−", false);
         drawConductor(cx, cy + r, cx, yBot + o, "#1a1a1a", 3.5);
         setFill(COLORS.wire);
         circle(cx, yBot + o, 3.5, true);
@@ -4917,8 +4958,8 @@
       x1 = b.x + b.w - 1.0 * grid;
       const coilW = COIL_STD_W * grid;
       const coilH = COIL_STD_H * grid;
-      text("A1", coilCx, b.y - o - 10, "center", 11);
-      text("A2", coilCx, b.y + b.h + o + 12, "center", 11);
+      drawPinLabelBeside(coilCx, b.y - o, "A1");
+      drawPinLabelBeside(coilCx, b.y + b.h + o, "A2");
       setStroke(COLORS.wire, 2.5);
       ctx.lineCap = "butt";
       line(coilCx, b.y - o, coilCx, b.cy - coilH / 2);
@@ -4933,8 +4974,8 @@
     const xs = contacts.map((_, i) => (contacts.length === 1 ? (x0 + x1) / 2 : x0 + i * step));
     contacts.forEach((c, i) => {
       const px = xs[i];
-      text(c.lab[0], px, b.y - o - 10, "center", 11);
-      text(c.lab[1], px, b.y + b.h + o + 12, "center", 11);
+      drawPinLabelBeside(px, b.y - o, c.lab[0]);
+      drawPinLabelBeside(px, b.y + b.h + o, c.lab[1]);
       setStroke(COLORS.wire, 2.5);
       ctx.lineCap = "butt";
       line(px, b.y - o, px, topY);
@@ -4976,8 +5017,8 @@
       h: botY - topY + 2 * o + 56,
     };
 
-    text("A1", coilCx, topY - o - 10, "center", 12);
-    text("A2", coilCx, botY + o + 12, "center", 12);
+    drawPinLabelBeside(coilCx, topY - o, "A1");
+    drawPinLabelBeside(coilCx, botY + o, "A2");
     setStroke(COLORS.wire, 2.5);
     ctx.lineCap = "butt";
     line(coilCx, topY - o, coilCx, cy - coilH / 2);
@@ -4985,10 +5026,10 @@
     drawCoilSymbol(coilCx, cy, coilW, coilH, true);
 
     poles.forEach((p) => {
-      text(p.phase, p.cx, topY - o - 22, "center", 12);
-      text(p.topN, p.cx, topY - o - 8, "center", 11);
-      text(p.botN, p.cx, botY + o + 8, "center", 11);
-      text(p.load, p.cx, botY + o + 22, "center", 12);
+      drawPinLabelBeside(p.cx, topY - o - 12, p.phase);
+      drawPinLabelBeside(p.cx, topY - o, p.topN);
+      drawPinLabelBeside(p.cx, botY + o, p.botN);
+      drawPinLabelBeside(p.cx, botY + o + 12, p.load);
       setStroke(COLORS.wire, 2.5);
       line(p.cx, topY - o, p.cx, topY);
       line(p.cx, botY, p.cx, botY + o);
@@ -5263,6 +5304,7 @@
     document.getElementById("propNote").textContent = s ? s.note : "";
     const optBox = document.getElementById("propOptions");
     const optIllWrap = document.getElementById("optIlluminatedWrap");
+    const optNcWrap = document.getElementById("optTasterNcWrap");
     const optTagWrap = document.getElementById("optDeviceTagWrap");
     const optMotorWrap = document.getElementById("optMotorDirWrap");
     const optMotorV2Wrap = document.getElementById("optMotorV2Wrap");
@@ -5271,6 +5313,7 @@
     const optMiniSpsWrap = document.getElementById("optMiniSpsWrap");
     const optFupOpWrap = document.getElementById("optFupOpWrap");
     const showIll = s && s.id === "PushSwitchElm";
+    const showNc = showIll;
     const showTag = s && CONTACTOR_SYMBOL_IDS.has(s.id);
     const showMotor = s && (s.id === "ThreePhaseMotorElm" || s.id === "DCMotorElm");
     const showMotorV2 = s && s.id === "ThreePhaseMotorElm_v2";
@@ -5280,6 +5323,7 @@
     const showFupOp = s && (s.id === "FupEingang" || s.id === "FupAusgang");
     optBox.hidden = !(showIll || showTag || showMotor || showMotorV2 || showPe || showRs || showMiniSps || showFupOp);
     optIllWrap.hidden = !showIll;
+    optNcWrap.hidden = !showNc;
     optTagWrap.hidden = !showTag;
     optMotorWrap.hidden = !showMotor;
     optMotorV2Wrap.hidden = !showMotorV2;
@@ -5288,6 +5332,7 @@
     optMiniSpsWrap.hidden = !showMiniSps;
     optFupOpWrap.hidden = !showFupOp;
     optIllWrap.style.display = showIll ? "block" : "none";
+    optNcWrap.style.display = showNc ? "block" : "none";
     optTagWrap.style.display = showTag ? "block" : "none";
     optMotorWrap.style.display = showMotor ? "block" : "none";
     optMotorV2Wrap.style.display = showMotorV2 ? "block" : "none";
@@ -5319,6 +5364,7 @@
       }
     }
     if (showIll) document.getElementById("optIlluminated").checked = tasterIlluminated;
+    if (showNc) document.getElementById("optTasterNc").checked = tasterNc;
     if (showTag) document.getElementById("optDeviceTag").value = getDeviceTag(s.id);
     if (showMotor) {
       for (const el of document.querySelectorAll('input[name="optMotorDir"]')) {
@@ -5395,6 +5441,11 @@
   document.getElementById("btnExport").addEventListener("click", exportPng);
   document.getElementById("optIlluminated").addEventListener("change", (ev) => {
     tasterIlluminated = !!ev.target.checked;
+    updateProps();
+    redraw();
+  });
+  document.getElementById("optTasterNc").addEventListener("change", (ev) => {
+    tasterNc = !!ev.target.checked;
     updateProps();
     redraw();
   });
