@@ -526,46 +526,53 @@ class EGTDrehstrommotorElm extends ThreePhaseMotorElm implements EGTDesignatable
 	return Locale.LS("offen");
     }
 
-    void drawArcArrow(Graphics g, int cx, int cy, double rr, double aMid,
-		      double span, boolean cw, Color color, double w) {
-	double a0 = aMid - span / 2;
-	double a1 = aMid + span / 2;
-	g.setColor(color);
-	g.setLineWidth(w);
-	g.context.beginPath();
-	if (cw)
-	    g.context.arc(cx, cy, rr, a0, a1, false);
-	else
-	    g.context.arc(cx, cy, rr, a1, a0, true);
-	g.context.stroke();
+    /** Dreiflügeliger Motorlüfter; die Animation ersetzt den Laufpfeil. */
+    void drawMotorFan(Graphics g, int cx, int cy, double r, int dir,
+		      Color stroke) {
+	double hub = r * 0.16;
+	double rim = r * 0.70;
+	double curl = (dir < 0) ? -1 : 1;
+	Color blade = (dir == 0) ? COL_IDLE : COL_ACCENT;
 
-	double tipA = cw ? a1 : a0;
-	double tang = tipA + (cw ? Math.PI / 2 : -Math.PI / 2);
-	double tipX = cx + Math.cos(tipA) * rr;
-	double tipY = cy + Math.sin(tipA) * rr;
-	double ah = Math.max(7, rr * 0.26);
-	double bx = tipX - Math.cos(tang) * ah;
-	double by = tipY - Math.sin(tang) * ah;
-	double nx = -Math.sin(tang) * ah * 0.45;
-	double ny = Math.cos(tang) * ah * 0.45;
+	g.setColor(blade);
+	for (int i = 0; i < 3; i++) {
+	    double a = angle + i * 2 * Math.PI / 3;
+	    double rootA = a - curl * 0.34;
+	    double tipA = a + curl * 0.38;
+	    double backA = a + curl * 0.54;
+	    double x0 = cx + Math.cos(rootA) * hub;
+	    double y0 = cy + Math.sin(rootA) * hub;
+	    double xt = cx + Math.cos(tipA) * rim;
+	    double yt = cy + Math.sin(tipA) * rim;
+	    double xb = cx + Math.cos(backA) * hub;
+	    double yb = cy + Math.sin(backA) * hub;
+	    g.context.beginPath();
+	    g.context.moveTo(x0, y0);
+	    g.context.bezierCurveTo(
+		cx + Math.cos(a - curl * 0.20) * r * 0.46,
+		cy + Math.sin(a - curl * 0.20) * r * 0.46,
+		cx + Math.cos(a + curl * 0.12) * r * 0.74,
+		cy + Math.sin(a + curl * 0.12) * r * 0.74,
+		xt, yt);
+	    g.context.bezierCurveTo(
+		cx + Math.cos(a + curl * 0.62) * r * 0.61,
+		cy + Math.sin(a + curl * 0.62) * r * 0.61,
+		cx + Math.cos(a + curl * 0.66) * r * 0.30,
+		cy + Math.sin(a + curl * 0.66) * r * 0.30,
+		xb, yb);
+	    g.context.closePath();
+	    g.context.fill();
+	}
+
+	g.setColor(new Color(0x18, 0x22, 0x2c));
 	g.context.beginPath();
-	g.context.moveTo(tipX, tipY);
-	g.context.lineTo(bx + nx, by + ny);
-	g.context.lineTo(bx - nx, by - ny);
-	g.context.closePath();
+	g.context.arc(cx, cy, hub * 1.08, 0, 2 * Math.PI, false);
 	g.context.fill();
-	g.setLineWidth(1.0);
-    }
-
-    void drawArcIdle(Graphics g, int cx, int cy, double rr, double aMid,
-		     double span) {
-	g.setColor(COL_IDLE);
+	g.setColor(stroke);
 	g.setLineWidth(1.8);
-	g.setLineDash(5, 4);
 	g.context.beginPath();
-	g.context.arc(cx, cy, rr, aMid - span / 2, aMid + span / 2, false);
+	g.context.arc(cx, cy, hub * 1.08, 0, 2 * Math.PI, false);
 	g.context.stroke();
-	g.setLineDash(0, 0);
 	g.setLineWidth(1.0);
     }
 
@@ -588,8 +595,6 @@ class EGTDrehstrommotorElm extends ThreePhaseMotorElm implements EGTDesignatable
 	int cx = motorCenter.x;
 	int cy = motorCenter.y;
 	double r = cr;
-	/* Laufbogen (blau) innen; Stillstand-Bogen ebenfalls innen. */
-	double rr = r * 0.82;
 	setBbox(point1, point2, cr);
 	Color stroke = needsHighlight() ? selectColor : whiteColor;
 
@@ -602,21 +607,14 @@ class EGTDrehstrommotorElm extends ThreePhaseMotorElm implements EGTDesignatable
 	g.setLineWidth(1.0);
 
 	int dir = directionSign();
-	double span = Math.PI * 0.55;
-	if (dir != 0)
-	    drawArcArrow(g, cx, cy, rr, angle, span, dir > 0, COL_ACCENT, 2.2);
-	else
-	    drawArcIdle(g, cx, cy, rr, -Math.PI / 2, span);
+	drawMotorFan(g, cx, cy, r, dir, stroke);
 
-	int labelSize = Math.max(12, (int) Math.round(r * 0.44));
-	int subSize = Math.max(10, (int) Math.round(labelSize * 0.68));
+	int subSize = Math.max(10, (int) Math.round(r * 0.22));
 	g.setColor(stroke);
 	g.context.setTextAlign("center");
 	g.context.setTextBaseline("middle");
-	g.setFont(new Font("normal", 0, labelSize));
-	g.drawString("M", cx, (int) (cy - r * 0.08));
 	g.setFont(new Font("normal", 0, subSize));
-	g.drawString("3~", cx, (int) (cy + r * 0.32));
+	g.drawString("3~", cx, (int) (cy + r * 0.82));
 	g.context.setTextAlign("left");
 	g.context.setTextBaseline("alphabetic");
 

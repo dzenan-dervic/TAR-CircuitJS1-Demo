@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="de" class="mode-aufbau">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:,">
+<title>Schützwerkstatt · CircuitJS</title>
+<style>
+:root{--ink:#253134;--muted:#617074;--paper:#f8f9f7;--line:#d4dbd8;--accent:#007d7b;--scale:1}
+*{box-sizing:border-box}body{margin:0;background:#e5e8e5;color:var(--ink);font:14px/1.45 "Segoe UI",Arial,sans-serif}button,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #009f9c;outline-offset:3px}button{color:inherit}header{min-height:76px;padding:16px 26px;background:var(--paper);display:flex;gap:24px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}h1{font-size:21px;letter-spacing:-.6px;margin:0;font-weight:650}.sub{font-size:12px;color:var(--muted)}.identity{display:flex;gap:13px;align-items:center}.mark{width:34px;height:36px;border:2px solid var(--accent);position:relative}.mark:before,.mark:after{content:"";position:absolute;left:7px;right:7px;height:2px;background:var(--accent)}.mark:before{top:10px}.mark:after{bottom:10px}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.ui-btn{border:1px solid #c8d1cd;background:#fff;border-radius:5px;padding:8px 12px;font-size:12px;font-weight:600;min-height:36px}.ui-btn:hover{background:#edf1ed;border-color:#879c95}.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.primary:hover{background:#006764;color:#fff}.toolbar{display:flex;gap:20px;align-items:center;padding:11px 26px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}.tool-group{display:flex;gap:6px;align-items:center}.tool-label{font-size:11px;color:var(--muted);margin-right:6px}.add{padding:7px 10px;background:var(--paper);border:1px solid var(--line);border-radius:4px;font-size:12px;min-height:34px}.add:hover{border-color:var(--accent)}.add span{color:var(--accent);font-size:16px;margin-right:5px}.color{width:27px;height:27px;border-radius:50%;border:3px solid #fff;outline:1px solid #cbd1ce;background:var(--color);font-size:0}.color[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 238px;min-height:calc(100vh - 131px)}.workarea{min-width:0;padding:20px 24px 12px}.board-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.board-bar h2{font-size:13px;font-weight:600;margin:0}.board-bar select{background:transparent;border:1px solid #b5bfba;border-radius:4px;padding:5px;font-size:12px}.board-viewport{overflow:auto;border:1px solid #aab3ad;border-radius:6px;background:#cbd0c9}.stage-size{position:relative}.board{position:relative;width:6000px;height:3600px;transform:translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--scale));transform-origin:top left;isolation:isolate;background:linear-gradient(115deg,#d5d8d1,#bfc5bc);overflow:hidden}.board:before{content:"";position:absolute;inset:16px;border:1px solid #adb5a9;border-radius:3px;pointer-events:none}.mount-screw{position:absolute;width:17px;height:17px;border-radius:50%;background:linear-gradient(125deg,#eff1e7,#8b9486);border:1px solid #8a9385;box-shadow:0 1px 2px #4c574c55}.mount-screw:after{content:"";position:absolute;height:2px;background:#6a7466;left:3px;right:3px;top:7px;transform:rotate(-28deg)}.board-caption{position:absolute;left:56px;top:30px;font:11px Consolas,monospace;color:#515e51;letter-spacing:1px}.rail{position:absolute;left:42px;right:42px;top:262px;height:74px;border:1px solid #8c948a;background:linear-gradient(#a2aaa0 0 6%,#f0f0e6 7% 12%,#b9c0b2 14% 22%,#cdd1c2 24% 75%,#e6e8dc 77% 86%,#919a8c 88% 94%,#d1d7c7 95%);box-shadow:0 4px 5px #34412e40}.rail:before{content:"";position:absolute;inset:29px 12px;background:repeating-linear-gradient(90deg,transparent 0 16px,#85907e 17px 50px,transparent 51px 78px);border-radius:5px}.rail.second{top:614px}.module{position:absolute;user-select:none;touch-action:none;width:244px;z-index:2;isolation:isolate}.module.dragging{z-index:5}.handle{height:31px;display:flex;align-items:center;justify-content:space-between;padding:0 4px 5px 2px;cursor:grab;color:#394b41}.handle:active{cursor:grabbing}.handle-label{border:1px solid #a5b0a3;border-radius:2px;background:#f2f3e9;min-width:38px;padding:2px 6px;text-align:center;font:700 13px Consolas,monospace}.handle-name{margin-right:auto;margin-left:8px;font-size:9px;letter-spacing:.3px;white-space:nowrap}.remove{border:0;background:transparent;font-size:20px;padding:0 5px;color:#4f6055;line-height:24px}.face{position:relative;height:312px;border:1px solid #1f2828;border-radius:5px;background:linear-gradient(100deg,#495352 0%,#505956 36%,#444e4c 92%,#333d3a 93%);box-shadow:inset 2px 0 1px #79817a,inset -4px 0 #303a37,inset 0 2px #838d84,3px 5px 6px #2b372d59;color:#ecede4;cursor:grab}.face:before{content:"";position:absolute;inset:8px 6px;border:1px solid #303a36;border-radius:2px;pointer-events:none}.brand-strip{position:absolute;left:10px;right:10px;top:12px;display:flex;align-items:center;gap:7px;height:23px}.siemens{font-size:17px;font-weight:750;letter-spacing:.25px;line-height:22px;background:#008f8e;padding:0 4px;color:#fff}.sirius{font-weight:300;font-size:23px;letter-spacing:-.5px;color:#e0e3d9}.terminal-bank{position:absolute;left:9px;right:9px;height:57px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px}.terminal-bank.top{top:41px}.terminal-bank.bottom{bottom:29px}.terminal-cell{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}.terminal-bank.bottom .terminal-cell{flex-direction:column-reverse}.terminal-label{font-family:Arial,sans-serif;font-size:10px;line-height:14px;color:#f0f0e4;white-space:nowrap;pointer-events:none}.terminal-label small{font-size:8px;margin-left:2px}.term{position:relative;flex-shrink:0;width:35px;height:35px;border:1px solid #222a26;border-radius:50%;padding:0;background:radial-gradient(circle at 50% 48%,#171e19 0 62%,#59635b 64% 72%,#1d2721 74%);box-shadow:0 1px 0 #899186,inset 0 2px 3px #101813;z-index:8;cursor:crosshair;touch-action:none}.screw{pointer-events:none;position:absolute;inset:6px;border-radius:50%;background:conic-gradient(from 20deg,#a7ac8f,#e4e2bb 12%,#8d9278 24%,#cbd0ae 41%,#f2edd0 55%,#939982 73%,#d4d4b2 85%,#a7ac8f);box-shadow:inset 0 0 0 1px #757c65,0 1px 3px #000}.screw:before{content:"";position:absolute;left:10%;right:10%;height:18%;top:41%;background:#2a3228;box-shadow:0 1px #e8e3c4}.screw:after{content:"";position:absolute;width:18%;top:10%;bottom:10%;left:41%;background:#2a3228;box-shadow:1px 0 #d9d6b2}.term.connected:after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--cable,#d9bc32);border:2px solid #f7e6a0;box-shadow:0 1px 2px #0009;pointer-events:none}.terminal-bank .terminal-cell:nth-child(2) .screw{transform:rotate(39deg)}.terminal-bank .terminal-cell:nth-child(3) .screw{transform:rotate(77deg)}.terminal-bank .terminal-cell:nth-child(4) .screw{transform:rotate(18deg)}.terminal-bank .terminal-cell:last-child .terminal-label{font-size:11px}.mechanism{position:absolute;left:49px;top:106px;width:117px;height:82px;display:flex;align-items:flex-start;justify-content:space-between}.side-slot{height:74px;width:24px;border:1px solid #232d27;border-radius:3px;background:linear-gradient(90deg,#606b5f,#414e41);box-shadow:inset 1px 1px #798371}.side-slot:before{content:"";display:block;width:7px;height:21px;border-radius:4px;background:#263427;border:1px solid #87907b;margin:8px auto}.side-slot:after{content:"";display:block;width:13px;height:31px;background:#29352a;border-left:1px solid #89947f;margin:13px 0 0 9px}.plunger{width:47px;height:80px;border:1px solid #1e2b21;border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#53634f,#65765d 15%,#66755d 75%,#44563e);box-shadow:inset 0 2px #8c9d7d,1px 2px 2px #142216}.plunger:before{content:"";position:absolute;width:18px;height:32px;left:50%;margin-left:-9px;top:37px;background:#283728;border:1px solid #93a283;box-shadow:inset 3px 0 #3a4c34,inset -3px 0 #34462f}.plunger:after{content:"";display:block;width:23px;height:8px;border-left:4px solid #3d5239;border-right:4px solid #3d5239;margin:12px auto}.energized .plunger{transform:translateY(8px);transition:none}.vents{position:absolute;right:16px;top:110px;display:grid;gap:9px}.vents i{width:24px;height:10px;background:#18231c;border-top:2px solid #131d15;box-shadow:0 1px #778270}.vents i:first-child{height:19px;clip-path:polygon(0 0,100% 0,100% 40%,75% 40%,75% 100%,25% 100%,25% 40%,0 40%)}.nameplate{position:absolute;left:14px;top:194px;width:153px;height:28px;border:1px solid #1d2922;background:#778177;box-shadow:inset 1px 1px #a0a799,0 1px #7c8678;color:#e1e6da;display:flex;align-items:center;justify-content:space-between;padding:0 8px;font:10px Consolas,monospace}.nameplate strong{font-size:13px;letter-spacing:1px}.indicator{position:absolute;right:19px;top:198px;width:30px;height:16px;background:#1b271d;border:2px solid #788371;box-shadow:inset 0 1px 2px #000}.indicator:after{content:"";display:block;background:#b6bba1;width:16px;height:8px;margin:2px}.energized .indicator:after{transform:translateX(7px);background:#94d2a3}.series{position:absolute;bottom:8px;left:12px;font-size:14px;letter-spacing:-.5px}.coil-mark{position:absolute;bottom:9px;right:12px;font:10px Arial,sans-serif}.state-label{display:flex;justify-content:space-between;margin-top:10px;padding:0 3px;font-size:11px;color:#40503e}.state-label b{font-weight:500}.state-label span:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#647460;margin-right:6px}.energized .state-label span{color:#005635}.energized .state-label span:before{background:#00864c}.module.psu{width:166px}.psu .face{height:228px;background:linear-gradient(90deg,#e0e2d7,#f1f1e8 10%,#dadfd2 94%,#b2baac);color:#414e40;border-color:#899281;box-shadow:inset 1px 2px #fafbf0,3px 5px 5px #34412f44}.psu .face:before{border-color:#b1b9a8}.psu-brand{position:absolute;left:15px;top:15px;font-size:13px;font-weight:700;color:#007a79}.supply-name{position:absolute;top:42px;left:15px;font-size:11px}.supply-display{position:absolute;top:72px;left:14px;right:14px;background:#333f36;border:3px solid #a5af9a;color:#d1e9c7;font:26px Consolas,monospace;padding:8px 7px}.supply-display small{font-size:12px}.supply-vents{position:absolute;left:17px;right:17px;top:136px;height:19px;background:repeating-linear-gradient(90deg,#98a38f 0 3px,transparent 3px 8px)}.aux-bank{position:absolute;bottom:13px;left:12px;right:12px;display:flex;justify-content:space-around;gap:8px}.aux-bank .terminal-cell{gap:5px}.aux-bank .terminal-label{color:inherit;font-size:10px}.module.start,.module.stop{width:148px}.start .face,.stop .face{height:172px;background:linear-gradient(110deg,#e3e4d9,#c4cbba);border-color:#7c8973;color:#3e4a37;box-shadow:inset 2px 2px #f0f1e6,3px 5px 5px #34412f44}.push{position:absolute;left:43px;top:19px;width:62px;height:62px;border-radius:50%;border:6px solid #9ba491;background:radial-gradient(circle at 36% 30%,#3ba96a,#18773e 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #85c898;color:#fff;font-weight:700;font-size:12px;touch-action:none}.stop .push{background:radial-gradient(circle at 36% 30%,#e45c45,#b32b1b 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #f59a7f}.push.down{transform:translateY(3px);box-shadow:0 1px 0 #4c5843,inset 0 3px 6px #12281766}.module.motor{width:188px}.motor .face{height:172px;background:linear-gradient(90deg,#596968,#77817a 50%,#4a5c56)}.motor-housing{position:absolute;left:51px;top:15px;width:84px;height:84px;border:5px solid #8a9487;border-radius:50%;background:repeating-conic-gradient(#405049 0 7deg,#67766b 7deg 14deg);box-shadow:0 3px 4px #17261d;display:grid;place-items:center}.fan{width:60px;height:60px;border-radius:50%;background:conic-gradient(#bcc6b0 0 38deg,#283e31 38deg 120deg,#bcc6b0 120deg 158deg,#283e31 158deg 240deg,#bcc6b0 240deg 278deg,#283e31 278deg);border:5px solid #35473a;position:relative}.fan:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#cdd0bb}.running .fan{animation:spin .65s linear infinite}.reverse .fan{animation-direction:reverse}@keyframes spin{to{transform:rotate(360deg)}}.wires{position:absolute;inset:0;width:6000px;height:3600px;z-index:1;pointer-events:none;overflow:visible}.wire-shadow,.wire-line,.wire-highlight,.wire-hit,.wire-preview{fill:none;stroke-linecap:round;stroke-linejoin:round}.wire-shadow{stroke:#2730298c;stroke-width:7;transform:translateY(2px)}.wire-line{stroke-width:5}.wire-highlight{stroke:#ffffff4d;stroke-width:1.3;transform:translateY(-1px)}.wire-hit{stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:pointer}.wire-hit:hover{stroke:#007d7b33}.wire-preview{stroke:#008d87;stroke-width:3;stroke-dasharray:7 5}.hint-line{display:flex;justify-content:space-between;gap:20px;font-size:11px;color:#58665a;margin-top:12px;min-height:18px}.inspector{background:var(--paper);border-left:1px solid var(--line);padding:23px 20px}.inspector h2{font-size:13px;margin:0 0 17px}.inspector h3{font-size:11px;text-transform:uppercase;letter-spacing:.7px;font-weight:600;color:var(--muted);margin:22px 0 10px}.sim-status{display:flex;gap:9px;align-items:center;font-size:12px}.status-dot{width:8px;height:8px;background:#158556;border-radius:50%;flex-shrink:0}.status-dot.off{background:#7f8983}.status-dot.error{background:#be442f}.divider{border:0;border-top:1px solid var(--line);margin:22px 0}.detail-row{display:flex;justify-content:space-between;gap:10px;font-size:12px;padding:5px 0}.detail-row span{color:var(--muted)}.circuit-key{display:flex;justify-content:space-between;font:11px Consolas,monospace;color:#55645b;margin:14px 0}.contact-diagram{width:100%;height:45px;color:#647269}.empty{font-size:12px;color:#657169;line-height:1.7}.wire-list{max-height:248px;overflow:auto;display:grid;gap:5px}.wire-item{display:flex;align-items:center;gap:6px;font:10px Consolas,monospace;padding:6px 0;border-bottom:1px solid #e0e5df}.wire-item i{width:12px;height:4px;background:var(--cable);flex-shrink:0}.wire-item button{border:0;background:none;font-size:17px;margin-left:auto;padding:0 4px}.wire-list-title{display:flex;justify-content:space-between;align-items:center}.wire-list-title h3{margin:0}.text-btn{border:0;background:none;text-decoration:underline;font-size:11px;padding:8px 0;color:#5b6a60}.help{font-size:12px;line-height:1.7;margin-top:20px;color:#56665b}.help summary{cursor:pointer;font-weight:600}.help p{margin:9px 0}.notice{font-size:10px;color:#6a766d;margin-top:24px}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#253a30;color:#fff;padding:10px 18px;border-radius:5px;z-index:20;font-size:12px;max-width:90vw}.toast[hidden]{display:none}
+@media(min-width:1700px){.workarea{padding:24px 40px}.board-viewport{max-width:1440px;margin:auto}.board-bar,.hint-line{max-width:1440px;margin-left:auto;margin-right:auto}}
+@media(max-width:1050px){.workspace{grid-template-columns:1fr}.inspector{border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:0 32px}.inspector h2{grid-column:1/-1}.inspector .divider{display:none}.inspector .notice{grid-column:1/-1}.workarea{padding:16px}.toolbar{gap:12px}.board-viewport{max-height:74vh}}
+@media(max-width:620px){header{padding:14px 16px;align-items:flex-start;flex-direction:column;gap:12px}.toolbar{padding:10px 16px}.tool-group{flex-wrap:wrap}.tool-label{width:100%;margin-bottom:2px}.workarea{padding:13px 10px}.inspector{padding:20px 16px;grid-template-columns:1fr}.hint-line{flex-direction:column;gap:4px}.hint-line span:last-child{display:none}.board-bar h2{font-size:12px}.actions{gap:5px}.ui-btn{padding:7px 9px}.sub{font-size:11px}.board-viewport{max-height:65vh}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.handle,.state-label{position:relative;z-index:4;border-radius:3px}
+.state-label{background:#d8ddd4}
+.handle{height:36px;padding:0 4px 3px 3px;background:#eef1ea;border:1px solid #7e8b82;color:#142018;box-shadow:0 1px 0 #fff9,0 2px 3px #2a382e22}
+.handle-label{min-width:44px;padding:3px 8px;border:1px solid #3f4e46;border-radius:3px;background:#fff;color:#101a14;font:700 15px Consolas,monospace;letter-spacing:.2px}
+.handle-name{margin-right:auto;margin-left:8px;font-size:12px;font-weight:750;letter-spacing:.15px;color:#142018;white-space:nowrap}
+.remove{border:0;background:transparent;font-size:20px;padding:0 5px;color:#24332b;line-height:24px}
+.module.selected .face{outline:2px solid #007d7b;outline-offset:3px}
+.module-wires{position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;width:100%;height:100%}
+.module-wires .wire-hit{pointer-events:stroke}
+.wire-line.hot{stroke-width:8}
+.wire-shadow.hot{stroke:#007d7bcc;stroke-width:14}
+.wire-highlight.hot{stroke:#fff;stroke-width:2.2}
+.wire-hit.hot{stroke:#007d7b66}
+.wire-volt{fill:none;stroke:transparent;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
+.wire-shadow.volt-live{stroke:#c43328;stroke-width:9;transform:none}
+.wire-shadow.volt-live.hot{stroke:#c43328;stroke-width:10}
+.wire-shadow.volt-live.volt-red{stroke:#5a1410;stroke-width:10}
+.wire-shadow.volt-live.volt-red.hot{stroke:#5a1410;stroke-width:11}
+.wire-volt.volt-live.volt-red{stroke:#f4efe8;stroke-width:7.5}
+.view-controls #showVoltage[aria-pressed=true]{background:#fde8e4;border-color:#c43328;color:#8a2218}
+.view-controls #showCurrent[aria-pressed=true]{background:#f8f0c4;border-color:#c4a40a;color:#5c4a08}
+.wire-dots{position:absolute;inset:0;width:6000px;height:3600px;z-index:6;pointer-events:none;overflow:visible}
+.wire-dot{fill:#ffe14a;stroke:#2a2610;stroke-width:.7}
+.couplings{position:absolute;inset:0;width:6000px;height:3600px;pointer-events:none;z-index:0}
+.couplings path{fill:none;stroke:#55685e;stroke-width:2;stroke-dasharray:5 5}
+.module.auxiliary{width:180px}.auxiliary .face{height:174px;border-radius:3px;background:linear-gradient(110deg,#606c64,#46534a)}
+.auxiliary .terminal-bank{grid-template-columns:repeat(4,minmax(0,1fr));left:5px;right:5px;height:52px;gap:0}
+.auxiliary .terminal-bank.top{top:8px}.auxiliary .terminal-bank.bottom{bottom:9px}
+.auxiliary .terminal-label,.auxiliary .terminal-cell:last-child .terminal-label{font-size:10px}.auxiliary .terminal-label small{font-size:8px}
+.auxiliary .nameplate{top:68px;left:8px;width:114px;height:28px}.auxiliary .indicator{top:67px;right:10px;width:35px;height:15px}
+.auxiliary .indicator:after{width:21px;height:7px;margin:2px}.auxiliary.energized .indicator:after{transform:translateX(5px)}
+.auxiliary .block-code{position:absolute;right:8px;top:86px;width:42px;text-align:center;font:7px/10px Arial,sans-serif;letter-spacing:0;color:#d9dfcf;white-space:nowrap}
+.auxiliary .handle-name{font-size:12px;margin-left:6px;letter-spacing:.1px}.auxiliary .handle-label{min-width:40px}
+.motor .aux-bank{bottom:8px;left:14px;right:14px}
+.motor .terminal-label{font:800 20px/20px Arial,sans-serif;min-width:24px;text-align:center;color:#f6f8ee;text-shadow:0 1px 2px #101810cc}
+.toolbar .add{display:inline-flex;align-items:center;gap:6px;padding:3px 9px 3px 4px;min-height:36px;font-weight:650;line-height:1.15}
+.toolbar .add .glyph{display:block;width:24px;height:24px;margin:0;flex:none;border-radius:4px;overflow:hidden;box-shadow:inset 0 0 0 1px #1a24201a,0 1px 1px #2a382e18;font-size:0;color:inherit}
+.toolbar .add .glyph svg{display:block;width:24px;height:24px}
+.toolbar .tool-group:first-child{flex:1 1 420px;flex-wrap:wrap;min-width:0}
+.auxiliary .state-label{font-size:10px;gap:4px}.auxiliary .state-label b{font-size:9px}
+.module.start,.module.stop{width:156px}
+.start .face,.stop .face{height:296px;overflow:visible}
+.start,.stop{--push-color:#2f9a56;--push-ink:#fff;--signal-color:#eff6fb}
+.start .push,.stop .push{left:47px;top:10px;z-index:6;background:radial-gradient(circle at 36% 30%,color-mix(in srgb,var(--push-color) 78%,#fff),var(--push-color) 70%);color:var(--push-ink);border-color:color-mix(in srgb,var(--push-color) 45%,#9ba491);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px color-mix(in srgb,var(--push-color) 40%,#fff)}
+.taster-deck{position:absolute;left:6px;right:6px;top:76px;bottom:4px;display:flex;flex-direction:column;justify-content:space-between}
+.contact-row,.lamp-row{position:relative;display:grid;grid-template-columns:34px minmax(0,1fr) 34px;align-items:center;min-height:50px}
+.start .term,.stop .term{width:30px;height:30px}
+.start .terminal-label,.stop .terminal-label{font-size:9px;color:#3e4a37;line-height:11px}
+.start .terminal-cell,.stop .terminal-cell{gap:2px;position:relative;z-index:2}
+.contact-row{align-items:end;min-height:56px;overflow:visible}
+.contact-row .terminal-cell:nth-child(1){grid-column:1;grid-row:1}
+.contact-row .terminal-cell:nth-child(3){grid-column:3;grid-row:1}
+.mech-dash{position:absolute;left:50%;top:40px;height:80px;width:0;margin:0 0 0 -1px;border-left:2.4px dashed #2f3a32;z-index:4;pointer-events:none}
+.din-sym{pointer-events:none}
+.contact-row .din-sym{position:absolute;left:17px;right:17px;bottom:-14px;width:calc(100% - 34px);height:44px;display:block;z-index:3;overflow:visible}
+.din-sym path{stroke:#2f3a32;stroke-width:2.4;fill:none;stroke-linecap:butt;stroke-linejoin:miter}
+.din-no .act,.din-nc .act{display:none}
+.pressed .din-no .rest,.pressed .din-nc .rest{display:none}
+.pressed .din-no .act,.pressed .din-nc .act{display:block}
+.lamp-row{min-height:66px;overflow:visible}
+.lamp-row .lamp-leads{position:absolute;left:17px;right:17px;width:calc(100% - 34px);height:30px;top:50%;margin-top:-15px;z-index:3;overflow:visible}
+.lamp-cell{position:relative;display:grid;place-items:center;height:54px;z-index:5}
+.lamp-glow{position:absolute;width:48px;height:48px;border-radius:50%;pointer-events:none;background:transparent;z-index:0}
+.din-lamp{position:relative;z-index:1;width:52px;height:44px}
+.din-lamp .lamp-glass{fill:color-mix(in srgb,var(--signal-color,#b7bfaa) 22%,#c5cec0);stroke:#2f3a32;stroke-width:2.4}
+.din-lamp .lamp-x{stroke:#2f3a32;stroke-width:2.3;fill:none;stroke-linecap:round}
+.lamp-mark{font:700 10px Consolas,monospace;color:#3e4a37;pointer-events:none;letter-spacing:.4px}
+.lamp-cell .lamp-mark{position:absolute;bottom:0;z-index:1}
+.lit .lamp-glow{background:radial-gradient(circle,color-mix(in srgb,var(--signal-color) 88%,#fff) 0 20%,color-mix(in srgb,var(--signal-color) 70%,transparent) 48%,transparent 78%);box-shadow:0 0 14px 6px color-mix(in srgb,var(--signal-color) 55%,transparent),0 0 28px 10px color-mix(in srgb,var(--signal-color) 28%,transparent)}
+.lit .din-lamp .lamp-glass{fill:var(--signal-color,#fff4a8);stroke:color-mix(in srgb,var(--signal-color) 45%,#2f3a32)}
+.lit .din-lamp .lamp-x{stroke:color-mix(in srgb,var(--signal-color) 25%,#2a2418);stroke-width:2.5}
+.lit .lamp-mark{color:#3e4a37}
+.start .state-label,.stop .state-label{flex-direction:column;align-items:flex-start;gap:2px}
+.start .state-label b,.stop .state-label b{font-size:10px}
+.component-list{display:grid;gap:4px;max-height:208px;overflow:auto;margin:10px 0}
+.component-select{display:flex;gap:8px;align-items:center;border:1px solid #d5dcd6;background:#fff;text-align:left;padding:7px 8px;border-radius:3px;font-size:11px;min-height:34px}
+.component-select strong{min-width:23px}.component-select[aria-pressed=true]{border-color:#007d7b;background:#e4efea}
+.component-select small{margin-left:auto;color:#627568;font-size:9px}.selection-help{font-size:11px;color:#627568;margin:7px 0}
+#addAux{width:100%;font-size:11px}.coupling-note{font-size:10px;color:#56665b;margin:11px 0}
+@media(min-width:1051px){.workspace{height:calc(100vh - 143px);min-height:0}.inspector,.workarea{overflow-y:auto}}
+
+html,body{height:100%;overflow:hidden}
+body{height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr)}
+.workspace{position:relative;min-height:0;height:auto!important;overflow:hidden}
+.workarea{display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:0;min-height:0;overflow:hidden}
+.board-bar{position:relative;z-index:91;padding:10px 14px;margin:0;max-width:none;flex-wrap:wrap;background:#f1f3ef;border-bottom:1px solid #c1cbc3}
+.view-controls{display:flex;gap:5px;align-items:center;flex-wrap:wrap}.view-controls .ui-btn{min-height:32px;padding:5px 9px}
+.view-controls .ui-btn[aria-pressed=true]{background:#d9ebe2;border-color:#007d7b;color:#005d5b}
+.board-viewport{position:relative;min-height:0;max-height:none;max-width:none;width:100%;height:100%;margin:0;overflow:hidden;border:0;border-radius:0;touch-action:none;cursor:grab;overscroll-behavior:contain}
+.board-viewport.panning,.board-viewport.panning *{cursor:grabbing!important}.board-viewport.pan-mode *{cursor:grab!important}
+.stage-size{position:absolute;inset:0;pointer-events:none}.board{pointer-events:auto}
+.hint-line{padding:7px 14px;margin:0;max-width:none;background:#f1f3ef;border-top:1px solid #c1cbc3;font-size:11px}
+.inspector{min-height:0;overflow-y:auto}.workspace.hide-inspector{grid-template-columns:1fr}.workspace.hide-inspector .inspector{display:none}
+#zoom{min-width:78px;max-width:90px}.zoom-step{min-width:32px;font-size:17px}
+.app{display:grid;grid-template-columns:minmax(260px,1fr) 44px minmax(0,1.35fr);min-height:0;height:100%}
+.sim-pane,.hmi-pane{min-width:0;min-height:0}
+.sim-pane{display:flex;flex-direction:column;background:#1b1d1f}
+#circuitFrame{flex:1;width:100%;height:100%;border:0;background:#111}
+.split{position:relative;z-index:20;width:44px;min-width:44px;cursor:col-resize;touch-action:none;user-select:none;outline:none}
+.split:before{content:"";position:absolute;inset:0 20px;background:#8a9385}
+.split:after{content:"";position:absolute;left:50%;top:50%;width:18px;height:64px;transform:translate(-50%,-50%);border:1px solid #879c95;border-radius:9px;background:#fff}
+.hmi-pane{display:flex;flex-direction:column;min-height:0}
+.hmi-pane .workspace{flex:1;min-height:0;height:auto!important}
+html.view-stick .app{grid-template-columns:1fr}
+html.view-stick .split{display:none}
+html.view-stick .sim-pane{position:fixed;left:-12000px;top:0;width:960px;height:720px}
+html.mode-betrieb header{border-bottom-color:#1a7a48;box-shadow:inset 0 -3px 0 #158556}
+html.mode-aufbau header{box-shadow:inset 0 -3px 0 #8a9385}
+html.mode-betrieb .toolbar{background:#e7f4ec;border-bottom-color:#9cc9ad}
+html.mode-aufbau .toolbar{background:#f2f3ef}
+.view-btn[aria-pressed=true],.run-btn[aria-pressed=true]{background:#d9ebe2;border-color:#007d7b;color:#005d5b}
+.engine-tag{font-size:11px;color:#56665b;min-width:9rem}
+.dev-menu{position:fixed;z-index:40;min-width:232px;max-width:288px;background:#fff;border:1px solid #c8d1cd;border-radius:6px;box-shadow:0 10px 28px #1a2a2233;padding:12px 14px;font-size:12px;color:#253134}
+.dev-menu[hidden]{display:none}
+.dev-menu h3{margin:0 0 8px;font-size:13px;font-weight:650}
+.dev-menu .dev-note{color:#657169;margin:0 0 8px;line-height:1.5}
+.dev-menu label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0}
+.dev-menu input[type=number]{width:92px;padding:5px 6px;border:1px solid #c8d1cd;border-radius:4px;font:inherit}
+.dev-menu .tag-field{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:8px 0 12px}
+.dev-menu .tag-field>span{font-size:11px;color:#657169}
+.dev-menu .tag-row{display:flex;gap:6px;align-items:center}
+.dev-menu .tag-row select,.dev-menu .tag-prefix{min-width:52px;padding:5px 6px;border:1px solid #c8d1cd;border-radius:4px;background:#fff;font:700 13px Consolas,monospace}
+.dev-menu .tag-prefix{display:inline-block;text-align:center}
+.dev-menu .tag-row #devNumber{width:72px;font:700 13px Consolas,monospace}
+.dev-menu .presets{display:flex;gap:6px;margin:6px 0 4px}
+.dev-menu .presets button{flex:1}
+.dev-menu .color-field{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:10px 0}
+.dev-menu .color-field>span{font-size:11px;color:#657169}
+.dev-menu .color-swatches{display:flex;flex-wrap:wrap;gap:7px}
+.dev-menu .swatch{width:28px;height:28px;border-radius:50%;border:2px solid #fff;outline:1px solid #c5cec8;background:var(--swatch);padding:0;box-shadow:inset 0 0 0 1px #0002}
+.dev-menu .swatch[aria-pressed=true]{outline:2px solid #183f55;outline-offset:2px}
+.dev-menu .dev-actions{display:flex;gap:6px;justify-content:flex-end;margin-top:12px}
+#openSettings{width:100%;margin-top:10px;font-size:11px}
+@media(max-width:1050px){.workspace{grid-template-columns:1fr}.inspector{position:absolute;right:0;top:var(--viewbar-height,48px);bottom:0;width:260px;display:block;z-index:90;box-shadow:-4px 0 14px #233d2826;border-left:1px solid #c1cbc3}.board-bar{gap:7px}.board-bar h2{display:none}.workarea{padding:0}.hint-line span:last-child{display:none}}
+@media(max-width:620px){header{padding:10px 12px;gap:8px}.toolbar{padding:7px 12px;gap:8px}.board-bar{padding:7px 8px}.view-controls{gap:4px}.view-controls .ui-btn{font-size:11px;padding:5px 7px}.hint-line{padding:6px 8px}.tool-label{display:none}}
+
+.term:hover{outline:2px solid #b8c8be;outline-offset:2px}
+.term.pending,.term.direct-neighbor{outline:3px solid #438fff;outline-offset:2px}
+.term.wire-target{outline:4px solid #35e58b;outline-offset:5px}
+.term:focus-visible{box-shadow:0 0 0 1px #fff}
+
+.work-mode{margin-left:auto;display:inline-flex;align-items:stretch;border:2px solid #8a9385;background:#cfd6cf;padding:3px;gap:3px;border-radius:8px}
+.work-mode button{min-height:36px;min-width:88px;padding:0 16px;border:0;background:transparent;color:#3d4a44;font-size:13px;font-weight:800;border-radius:5px}
+.work-mode button[aria-pressed=true]{background:#3d4a44;color:#f3f5f0}
+html.mode-betrieb .work-mode{border-color:#127a46;background:#b7ddc4}
+html.mode-betrieb .work-mode #modeRun[aria-pressed=true]{background:#127a46;color:#fff}
+.board-title{display:flex;align-items:center;gap:10px;min-width:0}
+.mode-flag{font:700 12px Consolas,monospace;padding:3px 9px;border:1px solid #8a9385;background:#3d4a44;color:#f3f5f0;letter-spacing:.04em;white-space:nowrap}
+html.mode-betrieb .mode-flag{border-color:#127a46;background:#158556;color:#fff}
+html.mode-aufbau .board-bar{background:#eceee8}
+html.mode-betrieb .board-bar{background:#dff0e4;border-bottom-color:#9cc9ad}
+html.mode-betrieb .hint-line{background:#dff0e4;border-top-color:#9cc9ad}
+html.mode-aufbau .board-viewport{box-shadow:inset 0 0 0 3px #8a93854d}
+html.mode-betrieb .board-viewport{box-shadow:inset 0 0 0 3px #15855673}
+html.mode-aufbau .supply-display{color:#8d978c}
+html.mode-betrieb .supply-display{color:#c8f5b4}
+.simulation-controls{gap:8px}
+.simulation-controls .sim-state:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;background:#8a9385;vertical-align:middle}
+html.mode-betrieb .simulation-controls .sim-state:before{background:#158556;box-shadow:0 0 0 3px #15855633}
+html.sim-paused .simulation-controls .sim-state:before{background:#c9a227;box-shadow:none}
+.fault-banner{flex:none;background:#fff1ec;border-bottom:1px solid #d7a391;border-left:4px solid #a93820;color:#652614;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;font-size:13px;max-height:40vh;overflow:auto}
+.fault-banner[hidden]{display:none}.fault-banner .fault-copy{flex:1;min-width:0}.fault-banner strong{display:block;font-size:14px}.fault-banner p{margin:4px 0}.fault-banner #faultNextStep{font-weight:750}.fault-banner details{margin-top:6px;font-size:11px;overflow-wrap:anywhere}.fault-banner summary{cursor:pointer}.fault-actions{display:flex;flex-direction:column;gap:8px;flex:none;align-self:center}.fault-banner .ui-btn{flex:none;border-color:#ba7e69;color:#652614;background:#fffaf7}.fault-banner .fault-reset,.fault-banner .fault-reset:hover{background:#a93820;color:#fff;border-color:#8a2a16;font-weight:800;min-width:7.5rem;box-shadow:0 0 0 3px #a9382033}.fault-banner .fault-reset:hover{background:#8a2a16}.fault-icon{font-size:21px;line-height:1.2}
+html.fault-latched #simReset{background:#a93820;color:#fff;border-color:#8a2a16;font-weight:800;box-shadow:0 0 0 3px #a9382040;animation:resetPulse 1.4s ease-in-out infinite}
+@keyframes resetPulse{0%,100%{box-shadow:0 0 0 3px #a9382040}50%{box-shadow:0 0 0 7px #a938201f}}
+@media(max-width:620px){.fault-banner{flex-wrap:wrap;padding:10px 12px;gap:8px}.fault-banner .fault-copy{flex-basis:calc(100% - 34px)}.fault-actions{margin-left:29px;flex-direction:row;flex-wrap:wrap}}
+.simulation-controls .ui-btn{min-height:36px}
+.simulation-controls .sim-state{font-size:12px;min-width:7.5rem;font-weight:750;color:#3d4a44}
+html.mode-betrieb .simulation-controls .sim-state{color:#0f5c38}
+html.sim-paused .running .fan{animation-play-state:paused}
+html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
+@media(max-width:900px){.simulation-controls{margin-left:0}}
+
+/* Linear trainer: dimensions stay in board coordinates, including its sockets. */
+.module.lineardrive{width:1200px}
+.lineardrive .face{height:366px;background:#182633;border:2px solid #17222b;border-radius:5px;box-shadow:inset 0 1px #84909a,4px 7px 9px #26342955;overflow:hidden}
+.drive-mechanics{display:block;width:100%;height:192px;background:linear-gradient(#c3c9c3,#aab2ac);border-bottom:4px solid #0c1722;pointer-events:none}
+.drive-panel{display:flex;align-items:stretch;gap:19px;padding:15px 24px 10px;background:linear-gradient(105deg,#1e2c3b,#121c28);height:123px;color:#e5e9e9;box-shadow:inset 0 2px #475566}
+.drive-group{position:relative;min-width:0;flex:1}.drive-group.drive-power{flex:1.08}.drive-group.drive-supply{flex:.73}.drive-group.drive-spares{flex:1.45}
+.drive-group+.drive-group{border-left:1px solid #445363;padding-left:16px}
+.drive-group h3{margin:0;font:600 13px Arial,sans-serif;letter-spacing:.02em;color:#eef3f4;height:22px;white-space:nowrap}
+.drive-group h3 small{font-size:10px;font-weight:400;color:#a8b9c8}
+.drive-pins{display:flex;justify-content:space-between;gap:7px;position:absolute;left:0;right:0;bottom:0}.drive-group+.drive-group .drive-pins{left:16px}
+.drive-pin{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:30px;font:12px Arial,sans-serif;color:#eceded}
+.drive-pin .term{position:relative;width:33px;height:33px;margin:0;border:1px solid #101820;border-radius:50%;background:radial-gradient(circle at 36% 28%,#ffffff70,transparent 49%),var(--socket);box-shadow:inset 0 0 0 2px #ffffff30,inset 0 -3px 3px #0008,1px 2px 3px #0008;isolation:isolate}
+.drive-pin .term::before{content:'';position:absolute;inset:7px;border-radius:50%;background:radial-gradient(circle at 55% 70%,#303c47,#030709 70%);border:2px solid color-mix(in srgb,var(--socket) 70%,#12212c);box-shadow:0 0 0 1px #0008,inset 1px 2px 2px #000}
+.drive-pin .term::after{display:none}.drive-pin .term:focus-visible{outline:3px solid #74caff;outline-offset:3px}
+.drive-pin .term.pending,.drive-pin .term.direct-neighbor{outline:3px solid #4aa9ef;outline-offset:3px}.drive-pin .term.wire-target{outline:3px solid #70d79a;outline-offset:3px}
+.drive-pin .term.connected::after{display:block;content:'';position:absolute;inset:12px;background:var(--cable,#d2ae27);border-radius:50%;box-shadow:0 0 0 2px #18212b;z-index:1}
+.drive-symbol{position:absolute;left:16px;top:23px;width:calc(100% - 16px);height:40px;overflow:visible;fill:none;stroke:#d5dfe4;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
+.drive-symbol path{vector-effect:non-scaling-stroke}
+.drive-pin-name{font-size:13px;font-weight:600;line-height:16px}
+.drive-symbol .sensor-rest{display:block}.drive-symbol .sensor-active{display:none}
+.drive-group.active .sensor-rest{display:none}.drive-group.active .sensor-active{display:block}.drive-group.active h3{color:#9fe3a3}
+.drive-led{display:inline-block;width:7px;height:7px;background:#4b5a62;border-radius:50%;margin-right:5px;border:1px solid #060f18}.drive-group.active .drive-led{background:#8ce595;box-shadow:0 0 4px #80df8880}
+.drive-power .drive-mark{font:bold 16px Arial;color:#4b79a3;letter-spacing:.02em;margin-top:3px}.drive-spares .spare-hint{font-size:10px;color:#bdc8d0;display:block;margin-top:0}
+.drive-adjust{display:flex;align-items:center;gap:15px;padding:8px 24px;color:#bdcbd5;font:12px Arial,sans-serif;background:#14202c;height:47px;border-top:1px solid #435361}
+.drive-adjust label{white-space:nowrap}.drive-adjust input{width:100%;accent-color:#91aaba;cursor:ew-resize}.drive-adjust output{min-width:48px;text-align:right;color:#edf1f4;font-variant-numeric:tabular-nums}.drive-adjust .drive-limits{white-space:nowrap;font-size:11px}
+.lineardrive .state-label{padding-top:10px}.lineardrive .state-label b{font-weight:500}
+
+
+.module.lamp,.module.pilot{width:190px}
+.lamp .face,.pilot .face{height:212px;background:#f0f3f5;border:1px solid #a9b5bf;border-radius:10px;box-shadow:inset 0 0 0 5px #e1e7ec,0 3px 5px #182b3826}
+.lamp .aux-bank,.pilot .aux-bank{left:13px;right:13px;bottom:16px;gap:6px}
+.lamp .terminal-label,.pilot .terminal-label{color:#344a5c;font-weight:600}
+.lamp .term,.pilot .term{background:#263844;border-color:#798b99;box-shadow:inset 0 0 0 3px #aab7c1,0 1px 2px #172e3a30}
+.lamp .screw,.pilot .screw{background:linear-gradient(135deg,#edf2f5,#90a0aa);border-color:#71828b}
+.lamp .handle-label,.pilot .handle-label{background:#f8fafc;color:#263d50;border-color:#a7b5c1;border-radius:4px}
+.light-bezel{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:100px;height:100px;border-radius:50%;padding:6px;background:linear-gradient(145deg,#f9fbfc,#a1b0bb 55%,#e9eef2);border:1px solid #9aabb7;box-shadow:0 2px 3px #1f344b30}
+.light-lens{position:relative;width:100%;height:100%;border-radius:50%;border:3px solid #334553;background:radial-gradient(ellipse at 35% 24%,#fff,#dce4e9 68%,#b7c3cd);overflow:hidden}
+.light-lens::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1px solid #ffffff70}
+.light-lens svg{position:absolute;inset:18px;width:calc(100% - 36px);height:calc(100% - 36px);stroke:#71818c;stroke-width:1.5;fill:none}
+.pilot .light-bezel{width:78px;height:78px;top:32px;padding:5px}
+.pilot .light-lens{background:radial-gradient(ellipse at 35% 24%,color-mix(in srgb,var(--signal-color) 35%,white),color-mix(in srgb,var(--signal-color) 55%,#243344));border-color:#344858}
+.pilot .light-lens svg{stroke:color-mix(in srgb,var(--signal-color) 20%,white);inset:13px;width:calc(100% - 26px);height:calc(100% - 26px)}
+.lamp.lit .light-lens{background:radial-gradient(ellipse at 35% 25%,#fffef8,#fff3bc 65%,#ecc56e);box-shadow:0 0 0 2px #fff4bf,0 0 16px #edc96750}
+.lamp.lit .light-lens svg{stroke:#a28445}
+.pilot.lit .light-lens{background:radial-gradient(ellipse at 35% 25%,color-mix(in srgb,var(--signal-color) 20%,white),var(--signal-color) 65%);box-shadow:0 0 0 2px color-mix(in srgb,var(--signal-color) 50%,white),0 0 15px color-mix(in srgb,var(--signal-color) 40%,transparent)}
+.pilot.lit .light-lens svg{stroke:#263a48}
+.light-rating{position:absolute;top:125px;left:0;right:0;text-align:center;color:#526575;font-size:10px;letter-spacing:.2px}
+#devColor{width:100%;padding:9px;border:1px solid #a7b6c2;border-radius:5px;background:#fff;color:#223c4f;font:inherit}
+
+.module.emergency{width:220px}
+.emergency .face{height:338px;border:1px solid #283238;border-right:9px solid #30383c;border-radius:9px;background:linear-gradient(115deg,#ffd941,#f6bc16);box-shadow:inset 0 0 0 5px #ffdf5d,3px 5px 6px #22303935}
+.emergency-title{position:absolute;top:12px;left:0;right:0;text-align:center;font-size:12px;font-weight:750;letter-spacing:1.2px;color:#252d31}
+.emergency .face::before{content:'';position:absolute;top:31px;left:50%;transform:translateX(-50%);width:112px;height:112px;box-sizing:border-box;border-radius:50%;background:#232a2c;border:5px solid #ffe866;box-shadow:inset 0 4px 7px #0009,0 2px 1px #987008}
+.emergency .push{position:absolute;top:39px;left:50%;width:96px;height:96px;border-radius:50%;background:radial-gradient(ellipse at 36% 26%,#ff6b5d,#e12a2b 60%,#b5101a);border:1px solid #96171c;box-shadow:0 3px 0 #b21a22,0 7px 0 #98121c,0 12px 0 #7b1119,0 10px 8px #461c1970,inset 0 2px 3px #ffaaa16b;transform:translateX(-50%);color:#ffd0c7;font-size:27px;font-weight:400;z-index:5;transition:transform 140ms ease,box-shadow 140ms ease,background 140ms ease}
+.emergency .push::after{content:'';position:absolute;inset:8px;border-top:2px solid #ffffff35;border-radius:50%}
+.emergency .push.down{transform:translateX(-50%) scale(.9);box-shadow:0 1px 0 #780f18,0 2px 2px #38181966,inset 0 4px 8px #63071080;background:radial-gradient(ellipse at 40% 35%,#de4038,#a80d1b 75%)}
+.emergency .face::after{content:'EINGERASTET';position:absolute;top:145px;left:48px;right:40px;text-align:center;font-size:10px;font-weight:800;letter-spacing:.5px;color:#fff;background:#8e1520;border-radius:2px;line-height:15px;visibility:hidden;pointer-events:none}
+.emergency.pressed .face::after{visibility:visible}
+@media(prefers-reduced-motion:reduce){.emergency .push{transition:none}}
+.emergency-unlock{position:absolute;top:159px;left:37px;right:29px;padding:5px 4px;border:1px solid #977613;border-radius:5px;background:#fff0af;color:#333024;font-size:11px;font-weight:600;z-index:5}
+.emergency .taster-deck{top:198px;bottom:22px;left:17px;right:17px}
+.emergency .terminal-cell{position:relative;z-index:4;gap:3px}
+.emergency .terminal-label{color:#343128;font-size:11px;font-weight:600}
+.emergency .term{width:34px;height:34px;background:#25323b;border-color:#71808a;box-shadow:inset 0 0 0 3px #aab6bf}
+.emergency .mech-dash{top:25px;height:66px;border-color:#544729;z-index:2}
+.emergency .contact-row{min-height:44px}
+.emergency .contact-row .din-sym{bottom:-7px;z-index:3}
+.emergency .case-screw{position:absolute;width:14px;height:14px;border-radius:50%;background:linear-gradient(130deg,#edf2ed,#849398);border:1px solid #718084;top:17px;left:12px}
+.emergency .case-screw::after{content:'+';position:absolute;inset:-5px 0 0;text-align:center;font-size:17px;color:#3d4a52}
+.emergency .case-screw.right{left:auto;right:11px}
+.emergency .state-label{flex-direction:column;align-items:flex-start;gap:3px;font-size:10px}
+.emergency.pressed .module-state{color:#a32022;font-weight:650}
+
+.module.selector{width:320px}
+.selector .face{height:224px;background:linear-gradient(125deg,#f2f5f7,#dbe2e7);border:1px solid #9eacb7;border-radius:8px;box-shadow:inset 0 0 0 5px #e7ecef,2px 4px 5px #263b492f}
+.selector-caption{position:absolute;top:16px;left:18px;font-size:12px;font-weight:600;color:#3a4d5d}
+.selector-choices{position:absolute;left:16px;top:42px;width:128px;display:flex;justify-content:space-between;z-index:5}
+.selector-choices button{width:34px;height:29px;border:1px solid transparent;border-radius:4px;background:transparent;font-size:13px;color:#435563}
+.selector-choices button[aria-pressed=true]{border-color:#648397;background:#d4e4ec;color:#183f55;font-weight:700}
+.selector-knob{position:absolute;left:34px;top:87px;width:94px;height:94px;border-radius:50%;border:6px solid #aebcc6;background:radial-gradient(circle at 40% 30%,#34404a,#131c24 75%);box-shadow:0 0 0 1px #718591,inset 0 0 0 2px #07111b,0 3px 4px #1e364741;padding:0;z-index:5}
+.selector-grip{position:absolute;left:27px;top:4px;width:28px;height:73px;border-radius:7px;background:linear-gradient(90deg,#0c131b,#37424a 52%,#101a24);border:1px solid #101a22;box-shadow:2px 2px 4px #0008;transform:rotate(var(--selector-angle,0deg));transform-origin:center}
+.selector-grip::before{content:'';position:absolute;left:5px;right:5px;top:5px;height:28px;background:#edf2f5;border-radius:3px 3px 1px 1px;box-shadow:inset 0 -2px #a5b5bf}
+.selector-coupling{position:absolute;left:118px;right:50px;top:133px;border-top:2.2px dashed #3a4d5a;z-index:2;pointer-events:none}
+.selector-contact{position:absolute;top:22px;bottom:20px;width:48px;display:flex;flex-direction:column;justify-content:space-between;align-items:center}
+.selector-contact.a{left:169px}.selector-contact.b{right:20px}
+.selector-contact .terminal-cell{position:relative;z-index:3;gap:2px}.selector-contact .terminal-cell:first-child{flex-direction:column-reverse}
+.selector .term{width:35px;height:35px;background:#223442;border-color:#8495a0;box-shadow:inset 0 0 0 3px #adbac3}
+.selector .terminal-label{font-size:11px;color:#293f50;font-weight:600;background:#e5ebef;padding:0 2px}
+.selector-contact svg{position:absolute;inset:0;width:48px;height:100%;fill:none;stroke:#3a4d5a;stroke-width:2;pointer-events:none;z-index:1}
+.selector-contact .closed{display:none}.selector-contact.active .closed{display:block}.selector-contact.active .open{display:none}
+.selector .state-label{font-size:10px;flex-direction:column;align-items:flex-start;gap:3px}
+</style>
+</head>
+<body>
+<header><div class="identity"><div class="mark" aria-hidden="true"></div><div><h1>Schützwerkstatt</h1><div class="sub">Aufbau ohne Spannung · Betrieb schaltet 24 V</div></div></div><div class="actions"><span class="engine-tag" id="engineTag">Lädt CircuitJS…</span><button class="ui-btn view-btn" id="viewCompare" aria-pressed="true">Vergleichen</button><button class="ui-btn view-btn" id="viewStick" aria-pressed="false">Stecken</button><button class="ui-btn" id="undo" disabled>Rückgängig</button><button class="ui-btn" id="save">HTML speichern</button><button class="ui-btn" id="clearBoard">Fläche leeren</button><button class="ui-btn primary" id="demo">Selbsthaltung laden</button></div></header>
+<div class="toolbar"><div class="tool-group"><span class="tool-label">Bauteil hinzufügen</span><button class="add" data-add="contactor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#505956"/><rect x="3" y="3" width="13" height="6" fill="#008f8e"/><rect x="17" y="4" width="8" height="4" fill="#d5d8ce"/><circle cx="7" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="7" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="22" r="2.4" fill="#d7d9c4"/></svg></i>Leistungsschütz</button><button class="add" data-add="psu"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e8eadc"/><rect x="4" y="6" width="20" height="11" rx="1" fill="#2f3b32"/><rect x="6" y="9" width="11" height="5" fill="#9dce8a"/><circle cx="8.5" cy="22" r="2.3" fill="#c9cbb8"/><circle cx="19.5" cy="22" r="2.3" fill="#c9cbb8"/></svg></i>Netzteil</button><button class="add" data-add="start"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#d5d9c8"/><circle cx="14" cy="12" r="7.2" fill="#2f9a56" stroke="#7f8c74" stroke-width="2"/><circle cx="14" cy="12" r="3" fill="#58c07f"/><circle cx="8" cy="23" r="2" fill="#4a5544"/><circle cx="20" cy="23" r="2" fill="#4a5544"/></svg></i>Taster</button><button class="add" data-add="selector"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e4e8ec"/><circle cx="14" cy="13" r="8" fill="#6a7680" stroke="#3d4a52" stroke-width="1.5"/><path d="M14 13 L20 8" stroke="#f4f6f8" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="22" width="6" height="3" rx="1" fill="#c13c42"/><rect x="18" y="22" width="6" height="3" rx="1" fill="#238cc9"/></svg></i>Drehschalter</button><button class="add" data-add="emergency"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#f0c31a"/><circle cx="14" cy="13" r="8" fill="#d92325"/><circle cx="14" cy="13" r="4.4" fill="#ef4a42"/><rect x="6" y="22" width="16" height="3" rx="1" fill="#2a3236"/></svg></i>Not-Aus</button><button class="add" data-add="motor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#5d6866"/><circle cx="14" cy="12" r="8" fill="#3a4a43" stroke="#8a9487" stroke-width="2"/><path d="M14 12 L14 5.8 M14 12 L19.4 15.2 M14 12 L8.6 15.2" stroke="#c5cbb8" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="12" r="2.2" fill="#d5d8c4"/><circle cx="8" cy="23" r="2.2" fill="#d7d9c4"/><circle cx="20" cy="23" r="2.2" fill="#d7d9c4"/></svg></i>Motor</button><button class="add" data-add="lineardrive"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#182633"/><rect x="3" y="8" width="22" height="4" rx="1" fill="#9aa6ae"/><rect x="11" y="5" width="6" height="10" rx="1" fill="#4a79a0"/><rect x="4" y="18" width="5" height="6" rx="1" fill="#c13c42"/><rect x="12" y="18" width="5" height="6" rx="1" fill="#2e9b76"/><rect x="20" y="18" width="4" height="6" rx="1" fill="#e1c837"/></svg></i>Linearantrieb</button><button class="add" data-add="lamp"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#f7fafc" stroke="#5a6b78" stroke-width="2"/><path d="M9 7.2 L19 17 M19 7.2 L9 17" stroke="#7a8b96" stroke-width="1.8"/><circle cx="7" cy="23" r="2" fill="#263844"/><circle cx="14" cy="23" r="2" fill="#263844"/><circle cx="21" cy="23" r="2" fill="#263844"/></svg></i>Lampe</button><button class="add" data-add="pilot"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#37ce70" stroke="#334553" stroke-width="2"/><circle cx="11.2" cy="9.2" r="2.3" fill="#fff" fill-opacity=".55"/><circle cx="8" cy="23" r="2" fill="#263844"/><circle cx="20" cy="23" r="2" fill="#263844"/></svg></i>Meldeleuchte</button></div><div class="tool-group" aria-label="Leitungsfarbe"><span class="tool-label">Leitung</span><button class="color" style="--color:#d2ae27" data-color="#d2ae27" aria-label="Gelbe Leitung" aria-pressed="true"></button><button class="color" style="--color:#bb4234" data-color="#bb4234" aria-label="Rote Leitung" aria-pressed="false"></button><button class="color" style="--color:#347caa" data-color="#347caa" aria-label="Blaue Leitung" aria-pressed="false"></button><button class="color" style="--color:#384540" data-color="#384540" aria-label="Schwarze Leitung" aria-pressed="false"></button></div><div class="tool-group work-mode" role="radiogroup" aria-label="Betriebsart"><button type="button" id="modeRun" aria-pressed="false" title="Spannung ein. Simulation läuft.">Betrieb</button><button type="button" id="modeBuild" aria-pressed="true" title="Spannung aus. Verdrahten und umbenennen.">Aufbau</button></div><div class="tool-group simulation-controls" role="group" aria-label="Simulation"><span class="sim-state" id="simState" role="status">Aufbau</span><button class="ui-btn" id="simPause" disabled>Einfrieren</button><button class="ui-btn" id="simReset" disabled>Reset</button></div></div>
+<div class="app" id="app">
+<div class="sim-pane"><iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe></div>
+<div class="split" id="split" role="separator" aria-orientation="vertical" tabindex="0"></div>
+<div class="hmi-pane">
+<section id="faultBanner" class="fault-banner" aria-label="Simulationsfehler" hidden><span class="fault-icon" aria-hidden="true">⚠</span><div class="fault-copy"><div role="alert" aria-atomic="true"><strong id="faultTitle">Kurzschluss</strong><p id="faultExplanation"></p><p id="faultNextStep">Zuerst den Aufbau ändern (Kurzschluss auftrennen). Danach Reset — sonst bleibt die Simulation stehen.</p></div><details><summary>Technische Meldung</summary><p id="faultTechnical"></p></details></div><div class="fault-actions"><button type="button" class="ui-btn fault-reset" id="faultReset">Reset</button><button type="button" class="ui-btn" id="faultEdit">Aufbau ändern</button></div></section>
+<div class="workspace"><main class="workarea"><div class="board-bar"><div class="board-title"><h2>Montageplatte</h2><span class="mode-flag" id="modeFlag">Spannung AUS</span></div><div class="view-controls"><button class="ui-btn" id="panTool" aria-pressed="false" title="Ansicht verschieben, auch mit Leertaste oder mittlerer Maustaste">Hand</button><button class="ui-btn zoom-step" id="zoomOut" aria-label="Herauszoomen">−</button><select id="zoom" aria-label="Vergrößerung"><option value="custom">100 %</option><option value="0.2">20 %</option><option value="0.5">50 %</option><option value="0.75">75 %</option><option value="1">100 %</option><option value="1.5">150 %</option><option value="2">200 %</option><option value="2.5">250 %</option></select><button class="ui-btn zoom-step" id="zoomIn" aria-label="Hineinzoomen">+</button><button class="ui-btn" id="fitScene">Alle Bauteile</button><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Rote Umrandung an Leitungen mit Spannung; auf roten Adern mit hellem Kontrast">Spannung</button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Laufende Stromwürfel wie in CircuitJS">Strom</button><button class="ui-btn" id="toggleInspector" aria-expanded="true">Details ausblenden</button></div></div><div class="board-viewport" id="viewport"><div class="stage-size" id="stage"><div class="board" id="board"><span class="board-caption">24 V DC / STEUERUNGSTECHNIK</span><i class="mount-screw" style="left:28px;top:27px"></i><i class="mount-screw" style="right:28px;top:27px"></i><i class="mount-screw" style="left:28px;bottom:27px"></i><i class="mount-screw" style="right:28px;bottom:27px"></i><div class="rail"></div><div class="rail second"></div><svg class="couplings" id="couplings" viewBox="0 0 6000 3600" aria-hidden="true"></svg><svg class="wires" id="wires" viewBox="0 0 6000 3600" aria-label="Verbindungsleitungen"></svg><svg class="wire-dots" id="wire-dots" viewBox="0 0 6000 3600" aria-hidden="true"></svg></div></div></div><div class="hint-line"><span id="hint" role="status">Klemme ziehen oder zwei Klemmen nacheinander anklicken.</span><span>Mausrad: Zoom · Freie Fläche ziehen: Ansicht bewegen</span></div></main>
+<aside class="inspector"><h2>Aufbau &amp; Verbindungen</h2><section><div class="sim-status"><i class="status-dot" id="statusDot"></i><span id="simStatus" role="status">Aufbau · Spannung aus</span></div><hr class="divider"><h3>Bauteile auswählen</h3><p class="selection-help">Anklicken holt auch verdeckte Bauteile nach vorne.</p><div class="component-list" id="componentList"></div><button class="ui-btn" id="addAux">Hilfskontakte ergänzen</button><h3 id="detailTitle">Leistungsschütz</h3><div id="componentDetails"></div><p class="coupling-note">Gestrichelte Linie = mechanische Kopplung. Hilfskontakte folgen ihrem Leistungsschütz.</p></section><section><hr class="divider"><div class="wire-list-title"><h3>Leitungen <span id="count">0</span></h3><button id="clear" class="text-btn" disabled>Alle löschen</button></div><div class="wire-list" id="wireList"></div><details class="help" open><summary>So funktioniert’s</summary><p>Die Montagefläche bietet 6.000 × 3.600 Einheiten Platz. Freie Fläche ziehen oder mit gedrückter Leertaste ziehen, um die Ansicht zu bewegen. Mit dem Mausrad am Zeiger zoomen. „Alle Bauteile“ bringt deinen Aufbau zurück ins Bild.</p><p>Jeder Leistungsschütz hat einen separat verschiebbaren Hilfskontaktblock. Beide tragen dieselbe K-Nummer.</p><p>Am Gehäuse oder am Bauteilnamen ziehen, um ein Bauteil zu verschieben. Mit fokussiertem Bauteilnamen geht das auch über die Pfeiltasten.</p><p>Eine Schraubklemme mit einer anderen verbinden: ziehen oder beide anklicken. Leitungen lassen sich durch Anklicken entfernen. „Spannung“ zeigt eine rote Umrandung an Adern mit Potenzial. Rote Leitungen bekommen zusätzlich eine helle Kontrastlage. „Strom“ zeigt laufende Würfel in Stromrichtung, sobald CircuitJS einen Strom liefert.</p><p>Blauer Ring: ausgewählte und direkt verbundene Klemmen. Grüner Ring: mögliches Leitungsziel. Esc beendet die Auswahl.</p><p>Zuerst Aufbau: Spannung aus, verdrahten und umbenennen. Dann Betrieb: Spannung ein, Taster wirken. Einfrieren hält die Zeit, Spannung bleibt. Änderungen an der Verdrahtung im Betrieb setzen die Rast zurück. Bei Kurzschluss zuerst den Aufbau ändern, danach Reset.</p><p>„Selbsthaltung laden“ verdrahtet das Beispiel. Danach Betrieb einschalten, S1 über 13–14 starten, S2 über 21–22 unterbrechen. Jeder Taster hat beide Kontakte.</p><p>Rechtsklick auf ein Gerät öffnet die Einstellungen. Dort änderst du die Kennzeichnung (Schütz Q oder K, Taster S, Meldeleuchte P, Lampe E) und beim Netzteil die DC-Spannung. Die Klemmen bleiben +24 / 0 V, der Solver nimmt den neuen Wert.</p><p>Jeder Taster hat Schließer 13–14 und Öffner 21–22 plus Meldeleuchte X1/X2. Ein Druck betätigt beide Kontakte gleichzeitig, wie am Tableau.</p></details><button class="text-btn" id="reset">Grundaufbau laden</button></section><p class="notice">Elektrische Zustände kommen aus CircuitJS. Die Vorschau-Logik bleibt aus, sobald die Engine verbunden ist.</p></aside></div>
+</div>
+</div>
+<div class="toast" id="toast" role="status" hidden></div>
+<div class="dev-menu" id="devMenu" hidden role="dialog" aria-labelledby="devTitle">
+  <h3 id="devTitle">Einstellungen</h3>
+  <p class="dev-note" id="devNote"></p>
+  <div id="devFields"></div>
+  <div class="dev-actions">
+    <button class="ui-btn" id="devCancel" type="button">Schließen</button>
+    <button class="ui-btn primary" id="devApply" type="button">Übernehmen</button>
+  </div>
+</div>
+<script type="application/json" id="saved-state">null</script>
+<script>
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const board = $('#board'), svg = $('#wires'), dots = $('#wire-dots'), viewport = $('#viewport');
+  const sourceHTML = '<!doctype html>\n' + document.documentElement.outerHTML;
+  const NS = 'http://www.w3.org/2000/svg';
+  const BOARD_W=6000, BOARD_H=3600;
+  const contacts={contactor:[['1','2','NO'],['3','4','NO'],['5','6','NO'],['13','14','NO']],auxiliary:[['53','54','NO'],['61','62','NC'],['71','72','NC'],['83','84','NO']]};
+  const types = {contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B'};
+  let modules=[], wires=[], history=[], pending=null, gesture=null, scale=1, color='#d2ae27', powered=false, toastTimer, persistTimer, booting=true;
+  const STORE_KEY='workshopRecovery:v1:egt-hmi-stecken';
+  const skipStore=new URLSearchParams(location.search).has('test')||new URLSearchParams(location.search).has('fresh');
+  let states={},selectedId=null,nextZ=2,wireTarget=null;
+  let camera={x:0,y:0},viewDrag=null,handMode=false,spaceHeld=false,ignorePanClick=false,viewReady=false;
+  let engine=null,engineOk=false,iframeId=0,simMode='aufbau',viewMode='compare',syncTimer=null,lastSnap=null,importSeq=0,lastImportedSig='',liveRaf=0,editTarget=null,latchedFault=null,recoveryTime=null,showVoltage=false,showCurrent=false;
+  const VOLT_STORE=STORE_KEY+':showVoltage';
+  const CURRENT_STORE=STORE_KEY+':showCurrent';
+  const LIVE_V=2;
+  const I_DOT=1e-4;
+  const DOT_SP=48;
+  const DOT_SIZE=8;
+  const DOT_SPEED=0.25;
+  const DOT_ADD_MAX=12;
+  let dotPos=[];
+  const displayName=m=>m.type==='auxiliary'?m.parent+' Hilfskontakte':m.id;
+  const shortName=m=>m.type==='auxiliary'?m.parent:m.id;
+  const fmtV=v=>{const n=Number(v);return (Number.isFinite(n)?n:24).toFixed(1);};
+  const signalColors={green:['Grün','#37ce70'],red:['Rot','#f05252'],amber:['Gelb','#f4ca43'],blue:['Blau','#459af5'],white:['Weiß','#eff6fb'],orange:['Orange','#f79536']};
+  const buttonColors={green:['Grün','#2f9a56','#fff','I'],red:['Rot','#c43328','#fff','O'],black:['Schwarz','#1d262c','#fff',''],white:['Weiß','#eef3f6','#1d262c','I'],yellow:['Gelb','#e6c21a','#1d262c','I']};
+  const isLight=m=>m.type==='lamp'||m.type==='pilot';
+  const isCombinedTaster=m=>m.type==='start'||m.type==='stop';
+  const tagPrefixes={contactor:['Q','K'],psu:['G'],motor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S']};
+  const defaultPrefix=type=>type==='contactor'?'Q':type==='psu'?'G':(type==='motor'||type==='lineardrive')?'M':type==='lamp'?'E':type==='pilot'?'P':'S';
+  function splitTag(id){const hit=String(id||'').match(/^([A-Za-z]+)(\d+)$/);return hit?{prefix:hit[1],n:Number(hit[2])}:{prefix:'',n:1};}
+  function nextId(prefix){let n=1;while(modules.some(m=>m.id===prefix+n))n++;return prefix+n;}
+  function rewriteTerm(key,from,to){if(key===from)return to;if(key.startsWith(from+'.'))return to+key.slice(from.length);return key;}
+  function remount(m){
+    const z=m.z,pressed=m.pressed,latched=m.latched;
+    m.el?.remove();
+    renderModule(m);
+    if(Number.isFinite(z)){m.z=z;m.el.style.zIndex=z;}
+    m.pressed=pressed;m.latched=latched;
+    if(m.type==='selector')paintSelector(m);
+    if(m.type==='lineardrive')paintDrive(m,lastSnap);
+    if(m.type==='start'||m.type==='stop'||m.type==='emergency')paintTaster(m);
+    paintDeviceFace(m);
+  }
+  function renameModule(m,next){
+    if(next===m.id)return true;
+    if(modules.some(x=>x.id===next)){say(next+' ist schon vergeben.');return false;}
+    const from=m.id,aux=modules.find(x=>x.parent===from);
+    const auxFrom=aux?.id,auxTo=next+'H';
+    if(aux&&modules.some(x=>x!==aux&&x.id===auxTo)){say(auxTo+' ist schon vergeben.');return false;}
+    wires.forEach(w=>{w.a=rewriteTerm(w.a,from,next);w.b=rewriteTerm(w.b,from,next);if(aux){w.a=rewriteTerm(w.a,auxFrom,auxTo);w.b=rewriteTerm(w.b,auxFrom,auxTo);}});
+    if(selectedId===from)selectedId=next;
+    m.id=next;
+    if(aux){aux.id=auxTo;aux.parent=next;}
+    remount(m);
+    if(aux)remount(aux);
+    lastImportedSig='';
+    return true;
+  }
+  function rebuildAfterRename(id){
+    if(!engine||!engineOk){say(id+' übernommen.');return;}
+    clearTimeout(syncTimer);
+    try{
+      if(engine.setRunning)engine.setRunning(false);
+      const api=typeof engine.resetSimulation==='function'?engine.resetSimulation.bind(engine):engine.loadProject.bind(engine);
+      const raw=api(projectPayload());
+      const result=typeof raw==='string'?JSON.parse(raw):raw;
+      if(!result||!result.ok){
+        engineOk=false;
+        setEngineTag(result&&result.error?result.error:'Import fehlgeschlagen',true);
+        evaluate();
+        say('Schild zeigt '+id+', CircuitJS hat den Kreis nicht übernommen. Aufbau prüfen.');
+        return;
+      }
+      engineOk=true;
+      lastImportedSig=topologySig();
+      applyPresses();
+      if(engine.setRunning)engine.setRunning(wantEngineRun());
+      applySnapshot();
+      renderSimControls();
+      say(id+' übernommen. Simulation neu aufgebaut.');
+    }catch(e){
+      engineOk=false;
+      lastImportedSig='';
+      setEngineTag(String(e),true);
+      evaluate();
+      say('Umbenennen fehlgeschlagen: '+(e.message||e));
+    }
+  }
+  function tagFieldHtml(m){
+    const base=tagPrefixes[m.type];
+    if(!base)return '';
+    const {prefix,n}=splitTag(m.id);
+    const letters=base.includes(prefix)||!prefix?base.slice():base.concat(prefix);
+    const current=letters.includes(prefix)?prefix:letters[0];
+    const select=letters.length===1?'<span class="tag-prefix">'+letters[0]+'</span><input type="hidden" id="devPrefix" value="'+letters[0]+'">':'<select id="devPrefix" aria-label="Kennbuchstabe">'+letters.map(p=>'<option value="'+p+'"'+(p===current?' selected':'')+'>'+p+'</option>').join('')+'</select>';
+    return '<div class="tag-field"><span>Kennzeichnung</span><div class="tag-row">'+select+'<input id="devNumber" type="number" min="1" max="99" step="1" value="'+(n||1)+'" aria-label="Kennnummer"></div></div>';
+  }
+  function readTag(m){
+    if(!tagPrefixes[m.type]||!$('#devPrefix')||!$('#devNumber'))return null;
+    const prefix=$('#devPrefix').value,n=Number($('#devNumber').value);
+    const allowed=new Set(tagPrefixes[m.type]);
+    const current=splitTag(m.id).prefix;if(current)allowed.add(current);
+    if(!allowed.has(prefix))return {ok:false,error:'Buchstabe nicht zulässig.'};
+    if(!Number.isInteger(n)||n<1||n>99)return {ok:false,error:'Nummer 1 bis 99.'};
+    const id=prefix+n;
+    if(id!==m.id&&modules.some(x=>x.id===id))return {ok:false,error:id+' ist schon vergeben.'};
+    return {ok:true,id};
+  }
+  function defaultNom(m){
+    if(m.type==='psu'&&!Number.isFinite(m.voltage))m.voltage=24;
+    if(m.type==='contactor'){if(!Number.isFinite(m.nomV))m.nomV=24;if(!Number.isFinite(m.nomP))m.nomP=4;}
+    if(m.type==='motor'||m.type==='lineardrive'){if(!Number.isFinite(m.nomV))m.nomV=24;if(!Number.isFinite(m.nomP))m.nomP=50;}
+    if(isLight(m)){if(!Number.isFinite(m.nomV))m.nomV=24;if(!Number.isFinite(m.nomP))m.nomP=m.type==='lamp'?10:1.5;}
+    if(m.type==='lineardrive')m.slide=Math.max(0,Math.min(1,Number.isFinite(m.slide)?m.slide:.5));
+    if(m.type==='pilot'&&!signalColors[m.signalColor])m.signalColor='green';
+    if(isCombinedTaster(m)){
+      if(!buttonColors[m.buttonColor])m.buttonColor=m.type==='stop'?'red':'green';
+      if(!signalColors[m.signalColor])m.signalColor='white';
+    }
+    if(m.type==='emergency'){m.latched=!!m.latched;m.pressed=m.latched;}
+    if(m.type==='selector'&&![-1,0,1].includes(m.selection))m.selection=0;
+    return m;
+  }
+  function paintDeviceFace(m){
+    defaultNom(m);
+    if(isLight(m)&&m.el)m.el.querySelector('.light-rating').textContent=m.nomV+' V · '+m.nomP+' W';
+    if(m.type==='pilot'&&m.el){m.el.style.setProperty('--signal-color',signalColors[m.signalColor][1]);m.el.querySelector('.light-lens').setAttribute('aria-label','Meldeleuchte '+signalColors[m.signalColor][0]);}
+    if(isCombinedTaster(m)&&m.el){
+      const [name,hex,ink,mark]=buttonColors[m.buttonColor];
+      m.el.style.setProperty('--push-color',hex);
+      m.el.style.setProperty('--push-ink',ink);
+      m.el.style.setProperty('--signal-color',signalColors[m.signalColor][1]);
+      const push=m.el.querySelector('.push');
+      if(push){push.textContent=mark;push.setAttribute('aria-label',m.id+' Taster '+name+' gedrückt halten');}
+    }
+    if(m.type==='psu'){
+      const disp=m.el&&m.el.querySelector('.supply-display');
+      if(disp)disp.innerHTML=(powered?fmtV(m.voltage):'0.0')+' <small>V</small>';
+    }
+    if(m.type==='contactor'){
+      const mark=m.el&&m.el.querySelector('.coil-mark');
+      if(mark)mark.textContent='DC '+(m.nomV||24)+' V';
+    }
+  }
+  function data(){return {modules:modules.map(({el,pressed,...m})=>m),wires:wires.map(w=>({...w})),powered,view:{x:camera.x,y:camera.y,scale}};}
+  function persist(){if(skipStore)return;try{localStorage.setItem(STORE_KEY,JSON.stringify({v:1,savedAt:Date.now(),payload:data()}));}catch(e){}}
+  function schedulePersist(){if(booting||skipStore)return;clearTimeout(persistTimer);persistTimer=setTimeout(persist,400);}
+  function loadStored(){if(skipStore)return null;try{const raw=JSON.parse(localStorage.getItem(STORE_KEY)||'null');if(raw&&raw.payload&&Array.isArray(raw.payload.modules)&&Array.isArray(raw.payload.wires))return raw.payload;}catch(e){}return null;}
+  function remember(){history.push(JSON.stringify(data()));if(history.length>60)history.shift();$('#undo').disabled=false;}
+  function say(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,3200);}
+  function terminal(m,name,label,direction){return `<div class="terminal-cell"><span class="terminal-label">${label}</span><button class="term" data-key="${m.id}.${name}" data-direction="${direction}" aria-label="${displayName(m)} Anschluss ${name}" title="${displayName(m)} · ${name}"><span class="screw"></span></button></div>`;}
+  function lampTag(m){const n=String(m.id).replace(/\D/g,'');return 'P'+(n||'1');}
+  function dinNo(){return '<svg class="din-sym din-no" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 H38 M70 15 H100"/><path class="rest" d="M38 15 L66 4"/><path class="act" d="M38 15 H70"/></svg>';}
+  function dinNc(){return '<svg class="din-sym din-nc" viewBox="0 0 100 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 H40 M72 15 H100"/><path d="M72 15 V31"/><path class="rest" d="M40 15 L72 31"/><path class="act" d="M40 15 L58 42"/></svg>';}
+  function dinLamp(tag){return '<span class="lamp-cell"><span class="lamp-glow" aria-hidden="true"></span><svg class="din-sym din-lamp" viewBox="0 0 48 40" aria-hidden="true"><circle class="lamp-glass" cx="24" cy="17" r="13"/><path class="lamp-x" d="M15 8 L33 26 M33 8 L15 26"/></svg><span class="lamp-mark">'+tag+'</span></span>';}
+  const driveFrames=new WeakMap();
+  function driveSocket(m,pin,label,tone,description){
+    return `<div class="drive-pin">${/^B[4-7]$/.test(pin)?`<span class="drive-pin-name">${pin}</span>`:''}<button class="term" style="--socket:${tone}" data-key="${m.id}.${pin}" data-direction="bottom" aria-label="${m.id} ${description||pin}" title="${m.id} · ${description||pin}"></button><span>${label}</span></div>`;
+  }
+  function driveFace(m){
+    const id='drive-'+m.id;
+    const socket=(pin,label,tone,description)=>driveSocket(m,pin,label,tone,description);
+    const changeover='<svg class="drive-symbol" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M10 40 V2 H63 V10 M50 40 V19 H59 M90 40 V19 H78"/><path class="sensor-rest" d="M63 10 L59 19"/><path class="sensor-active" d="M63 10 L78 19"/></svg>';
+    const sensors=[1,2,3].map((n)=>`<div class="drive-group drive-sensor" data-sensor="${n}"><h3><i class="drive-led"></i>B${n} <small>${['links','Mitte','rechts'][n-1]}</small></h3>${changeover}<div class="drive-pins">${['11','12','14'].map(pin=>socket('B'+n+'_'+pin,pin,'#e1c837','B'+n+' · '+pin+(pin==='11'?' gemeinsam':pin==='12'?' Öffner':' Schließer'))).join('')}</div></div>`).join('');
+    const bolts=(xs,y)=>xs.map(x=>`<g transform="translate(${x} ${y})"><circle r="4.2" fill="#77818a"/><circle r="3" fill="#c9d2d4"/><path d="M-1.5 -1.5 L1.5 1.5" stroke="#43515e" stroke-width="1.4"/></g>`).join('');
+    return `<svg class="drive-mechanics" viewBox="0 0 1200 192" aria-label="24-Volt-Motor mit Spindel, zwei Führungsstangen, Schlitten und Handrad" role="img">
+      <defs>
+        <linearGradient id="${id}-steel" x2="0" y2="1"><stop stop-color="#73838e"/><stop offset=".18" stop-color="#d5dfe2"/><stop offset=".36" stop-color="#fafcfa"/><stop offset=".55" stop-color="#aebbc3"/><stop offset=".8" stop-color="#637582"/><stop offset="1" stop-color="#273f50"/></linearGradient>
+        <linearGradient id="${id}-alloy" x2=".25" y2="1"><stop stop-color="#eef2f1"/><stop offset=".44" stop-color="#ccd5d8"/><stop offset="1" stop-color="#8e9da7"/></linearGradient>
+        <linearGradient id="${id}-blue" x2="0" y2="1"><stop stop-color="#21679b"/><stop offset=".22" stop-color="#155785"/><stop offset="1" stop-color="#082944"/></linearGradient>
+        <pattern id="${id}-thread" width="7" height="20" patternUnits="userSpaceOnUse"><path d="M-4 20 L3 0 M3 20 L10 0" stroke="#d5dce1" stroke-width="1.7"/><path d="M-1 20 L6 0" stroke="#0e1d2a" stroke-width="2"/></pattern>
+        <pattern id="${id}-knurl" width="5" height="6" patternUnits="userSpaceOnUse"><path d="M0 0 L5 6 M5 0 L0 6" stroke="#727f87" stroke-width=".6"/></pattern>
+      </defs>
+      <path d="M31 161 H1167 V185 H31Z" fill="#091c2c"/><path d="M31 161 H1167 L1153 152 H41Z" fill="#284c6d"/>
+      <rect x="29" y="57" width="148" height="80" rx="30" fill="url(#${id}-steel)" stroke="#4b616e" stroke-width="2"/>
+      <ellipse cx="43" cy="97" rx="18" ry="38" fill="#7e949f" stroke="#ccd4d4" stroke-width="2"/>
+      <rect x="66" y="60" width="59" height="74" rx="3" fill="#d7dcda" stroke="#88969d"/><text x="94" y="85" text-anchor="middle" fill="#223948" font-size="11" font-family="Arial">DC MOTOR</text><text x="94" y="104" text-anchor="middle" fill="#223948" font-size="14" font-family="Arial">24 V</text><path d="M77 113 H111 M77 117 H104 M77 121 H110" stroke="#7b8b92"/>
+      <rect x="134" y="56" width="37" height="82" rx="4" fill="url(#${id}-blue)" stroke="#14324a"/>
+      <rect x="164" y="82" width="60" height="29" rx="8" fill="url(#${id}-steel)" stroke="#75868e"/><path d="M186 83 V109 M200 83 V109" stroke="#405866" stroke-width="3"/>
+      <rect x="205" y="39" width="36" height="129" rx="3" fill="url(#${id}-blue)" stroke="#09253b" stroke-width="2"/>
+      <rect x="235" y="58" width="862" height="16" rx="8" fill="url(#${id}-steel)" stroke="#6c8794"/>
+      <rect x="235" y="92" width="862" height="18" rx="6" fill="url(#${id}-steel)"/><rect x="235" y="92" width="862" height="18" rx="6" fill="url(#${id}-thread)"/>
+      <rect x="235" y="136" width="862" height="18" rx="9" fill="url(#${id}-steel)" stroke="#6c8794"/>
+      <path d="M250 176 H1082" stroke="#537184"/>
+      ${Array.from({length:31},(_,i)=>`<path d="M${263+i*27} 176 v${i%5===0?7:4}" stroke="#aab9c1"/>`).join('')}
+      ${[278,663,1048].map((x,i)=>`<g class="drive-sensor-marker" data-marker="${i+1}"><rect x="${x-15}" y="155" width="30" height="15" rx="2" fill="#233c4a" stroke="#768b94"/><circle class="sensor-light" cx="${x-6}" cy="162" r="3" fill="#5f727b"/><text x="${x+6}" y="166" fill="#c9d4d9" font-size="9" text-anchor="middle">B${i+1}</text></g>`).join('')}
+      <g class="drive-carriage" transform="translate(${m.slide*704} 0)">
+        <path d="M245 62 L259 42 H397 L405 62 V144 L391 158 H245Z" fill="#617984" stroke="#415d6b"/>
+        <path d="M245 62 L259 42 H397 L383 62Z" fill="#e3e9e9"/>
+        <rect x="245" y="62" width="138" height="96" rx="2" fill="url(#${id}-alloy)" stroke="#aebec7"/>
+        <path d="M383 62 L397 42 L405 62 V144 L383 158Z" fill="#91a3ad"/>
+        ${bolts([266,300,334,366],76)}${bolts([266,300,334,366],139)}
+        <rect x="274" y="88" width="79" height="40" rx="2" fill="#c0cdd2" stroke="#90a3af"/><text x="314" y="113" text-anchor="middle" fill="#536c7a" font-size="13" font-family="Arial">${m.id}</text>
+        <path d="M310 162 l5 8 5-8" fill="#d79d3e"/>
+      </g>
+      <rect x="1090" y="39" width="43" height="132" rx="3" fill="url(#${id}-blue)" stroke="#0b2b42" stroke-width="2"/>
+      ${bolts([216,1111],51)}${bolts([216,1111],155)}
+      <rect x="1133" y="79" width="21" height="40" fill="url(#${id}-steel)"/>
+      <g class="drive-wheel" transform="translate(1161 99)"><circle r="34" fill="url(#${id}-steel)" stroke="#c5d1d5" stroke-width="2"/><circle r="29" fill="url(#${id}-knurl)" stroke="#647b8a"/><circle r="23" fill="url(#${id}-alloy)" stroke="#f1f3ed"/><g class="drive-wheel-index"><circle cx="0" cy="-15" r="3" fill="#344e61"/><path d="M0 -22 V-27" stroke="#263b4b" stroke-width="2"/></g></g>
+    </svg><div class="drive-panel">
+      <div class="drive-group drive-power"><h3>MOTOR 24 VDC</h3><div class="drive-mark">LINEAR TRAINER</div><div class="drive-pins">${socket('+','+','#c13c42','Motor +')}${socket('−','−','#238cc9','Motor −')}${socket('PE','⏚','#c5be36','PE · separate Gehäuseklemme')}</div></div>
+      ${sensors}
+      <div class="drive-group drive-supply"><h3>24 VDC</h3><div class="drive-pins">${socket('24V','1 +','#c13c42','Sensorversorgung + · reserviert')}${socket('0V','2 −','#238cc9','Sensorversorgung − · reserviert')}</div></div>
+      <div class="drive-group drive-spares"><h3><small>Belegung noch offen</small></h3><div class="drive-pins">${[4,5,6,7].map(n=>socket('B'+n,'3',n<6?'#2e9b76':'#e0e5e3','B'+n+' · reserviert, ohne Sensorfunktion')).join('')}</div></div>
+    </div><div class="drive-adjust"><label for="${id}-position">Schlitten von Hand</label><span class="drive-limits">B1 · links</span><input id="${id}-position" class="drive-position" type="range" min="0" max="1000" step="1" value="${Math.round(m.slide*1000)}" aria-label="${m.id} Schlittenposition von Hand"><span class="drive-limits">rechts · B3</span><output class="drive-position-value">${Math.round(m.slide*100)} %</output></div>`;
+  }
+  function paintDrive(m,snap){
+    const st=snap?.motors?.[m.id]||{}, previous=driveFrames.get(m);
+    const dt=snap&&previous&&previous.revision===snap.revision?Math.max(0,Math.min(.1,snap.time-previous.time)):0;
+    const live=!!snap?.running&&!latchedFault&&!!st.running;
+    const voltage=(snap?.terminals?.[m.id+'.+']||0)-(snap?.terminals?.[m.id+'.−']||0);
+    const before=m.slide;
+    if(live)m.slide=Math.max(0,Math.min(1,m.slide+dt*.1*Math.min(2,Math.abs(voltage)/(m.nomV||24))*(st.reverse?-1:1)));
+    const angle=(previous?.angle||0)+(m.slide-before)*7200;
+    driveFrames.set(m,{time:snap?.time||0,revision:snap?.revision,angle});
+    m.el.querySelector('.drive-carriage').setAttribute('transform',`translate(${m.slide*704} 0)`);
+    m.el.querySelector('.drive-wheel-index').setAttribute('transform',`rotate(${angle})`);
+    m.el.querySelector('pattern[id$="-thread"]').setAttribute('patternTransform',`translate(${angle/30%7} 0)`);
+    const sensors=[m.slide<=.03,Math.abs(m.slide-.5)<=.035,m.slide>=.97];
+    sensors.forEach((active,i)=>{m.el.querySelector(`[data-sensor="${i+1}"]`).classList.toggle('active',active);m.el.querySelector(`[data-marker="${i+1}"] .sensor-light`).setAttribute('fill',active?'#a3e98d':'#5f727b');});
+    if(engineOk&&engine.setDrivePosition)engine.setDrivePosition(m.id,m.slide);
+    const slider=m.el.querySelector('.drive-position');slider.value=Math.round(m.slide*1000);slider.disabled=live;
+    m.el.querySelector('.drive-position-value').textContent=Math.round(m.slide*100)+' %';
+    const end=m.slide===0?'links':m.slide===1?'rechts':null;
+    const label=m.el.querySelector('.module-state');
+    if(label)label.textContent=!engineOk?'Wartet auf Engine':simMode==='aufbau'?'Spannung aus':simMode==='paused'||!snap?.running?'Eingefroren':live?(end?'Anschlag '+end+' · Motor bestromt':st.reverse?'Fährt nach links':'Fährt nach rechts'):'Stillstand';
+  }
+  function paintSelector(m){
+    m.el.style.setProperty('--selector-angle',(m.selection*42)+'deg');
+    m.el.querySelectorAll('[data-selection]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.selection)===m.selection)));
+    m.el.querySelector('.selector-contact.a').classList.toggle('active',m.selection===-1);
+    m.el.querySelector('.selector-contact.b').classList.toggle('active',m.selection===1);
+    const selected=m.selection===-1?'A':m.selection===1?'B':'0';
+    m.el.querySelector('.selector-knob').setAttribute('aria-label',m.id+' Drehschalter Stellung '+selected+' · nächste Stellung');
+    m.el.querySelector('.module-state').textContent=selected+' · '+(m.selection===-1?'13–14 geschlossen':m.selection===1?'23–24 geschlossen':'beide offen');
+  }
+  function face(m){
+    if(m.type==='selector'){
+      const pair=(side,top,bottom)=>`<div class="selector-contact ${side}">${terminal(m,top,top,'top')}<svg viewBox="0 0 48 180" preserveAspectRatio="none" aria-hidden="true"><path d="M24 18 V83 M24 131 V162"/><path class="open" d="M24 131 L${side==='a'?38:10} 90"/><path class="closed" d="M24 131 V83"/></svg>${terminal(m,bottom,bottom,'bottom')}</div>`;
+      return `<span class="selector-caption">Schalterstellung</span><div class="selector-choices" role="group" aria-label="${m.id} Schalterstellung">${[[-1,'A'],[0,'0'],[1,'B']].map(([v,label])=>`<button type="button" data-selection="${v}" aria-label="${m.id} Stellung ${label}">${label}</button>`).join('')}</div><button class="selector-knob" type="button"><span class="selector-grip"></span></button><i class="selector-coupling" aria-hidden="true"></i>${pair('a','13','14')}${pair('b','23','24')}`;
+    }
+    if(m.type==='lineardrive')return driveFace(m);
+    if(isLight(m)){
+      const pins=m.type==='lamp'?[['L','L / +'],['PE','PE'],['N','N / −']]:[['X1','X1'],['X2','X2']];
+      return `<div class="light-bezel"><div class="light-lens"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M11 11 L37 37 M37 11 L11 37"/></svg></div></div><span class="light-rating">${m.nomV} V · ${m.nomP} W</span><div class="aux-bank">${pins.map(([pin,label])=>terminal(m,pin,label,'bottom')).join('')}</div>`;
+    }
+    if(m.type==='contactor'||m.type==='auxiliary'){
+      const aux=m.type==='auxiliary';
+      const bank=bottom=>{
+        const pins=contacts[m.type].map(([a,b,kind],i)=>{
+          const n=bottom?b:a;
+          return [n,!aux&&i<3?n+'<small>/'+(bottom?'T':'L')+(i+1)+'</small>':n+'<small>'+kind+'</small>'];
+        });
+        if(!aux)pins.push([bottom?'A2':'A1',bottom?'A2−':'A1+']);
+        return `<div class="terminal-bank ${bottom?'bottom':'top'}">${pins.map(([n,l])=>terminal(m,n,l,bottom?'bottom':'top')).join('')}</div>`;
+      };
+      if(aux)return `${bank(false)}<div class="nameplate"><strong>${m.parent}</strong><span>SIEMENS</span></div><div class="indicator" aria-hidden="true"></div><span class="block-code">2 NO · 2 NC</span>${bank(true)}`;
+      return `<div class="brand-strip"><span class="siemens">SIEMENS</span><span class="sirius">SIRIUS</span></div>${bank(false)}<div class="mechanism" aria-hidden="true"><div class="side-slot"></div><div class="plunger"></div><div class="side-slot"></div></div><div class="vents" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="nameplate"><strong>${m.id}</strong><span>3P + 1 NO</span></div><div class="indicator" aria-hidden="true"></div>${bank(true)}<span class="series">3RT20</span><span class="coil-mark">DC ${Number.isFinite(m.nomV)?m.nomV:24} V</span>`;
+    }
+    const bank=`<div class="aux-bank">${(m.type==='psu'?[['+24','+24 V'],['0V','0 V']]:m.type==='motor'?[['+','+'],['−','−']]:[]).map(([n,l])=>terminal(m,n,l,'bottom')).join('')}</div>`;
+    if(m.type==='psu')return `<div class="psu-brand">DC POWER</div><div class="supply-name">Steuerspannungsversorgung</div><div class="supply-display">${fmtV(m.voltage)} <small>V</small></div><div class="supply-vents"></div>${bank}`;
+    if(m.type==='motor')return `<div class="motor-housing"><div class="fan"></div></div>${bank}`;
+    if(m.type==='emergency')return `<span class="case-screw" aria-hidden="true"></span><span class="case-screw right" aria-hidden="true"></span><span class="emergency-title">NOT-AUS</span><button class="push" aria-label="${m.id} Not-Aus betätigen" aria-pressed="${!!m.latched}">↻</button><button class="emergency-unlock" type="button" ${m.latched?'':'disabled'}>↻ Entriegeln</button><div class="taster-deck"><i class="mech-dash" aria-hidden="true"></i><div class="contact-row">${terminal(m,'21','21 NC','left')}${dinNc()}${terminal(m,'22','22 NC','right')}</div><div class="contact-row">${terminal(m,'13','13 NO','left')}${dinNo()}${terminal(m,'14','14 NO','right')}</div></div>`;
+    const p=lampTag(m);
+    const [name,,,mark]=buttonColors[m.buttonColor]||buttonColors.green;
+    return `<button class="push" aria-label="${m.id} Taster ${name} gedrückt halten">${mark}</button><div class="taster-deck"><i class="mech-dash" aria-hidden="true"></i><div class="contact-row">${terminal(m,'13','13','left')}${dinNo()}${terminal(m,'14','14','right')}</div><div class="contact-row">${terminal(m,'21','21','left')}${dinNc()}${terminal(m,'22','22','right')}</div><div class="lamp-row">${terminal(m,'X1','','left')}${dinLamp(p)}${terminal(m,'X2','','right')}<svg class="din-sym lamp-leads" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 H100"/></svg></div></div>`;
+  }
+  function renderModule(m){
+    defaultNom(m);
+    const el=document.createElement('div');m.el=el;el.className='module '+m.type;el.dataset.id=m.id;
+    el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-name">${types[m.type]}</span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><b>${m.type==='contactor'?'3 Leistungskontakte + 1 NO':m.type==='auxiliary'?'Gekoppelt an '+m.parent:m.type==='psu'?'Versorgung':m.type==='lineardrive'?'B1 links · B2 Mitte · B3 rechts · Wechselkontakte 11 / 12 / 14':isLight(m)?(m.type==='lamp'?'Leuchte':'Signalleuchte'):m.type==='selector'?'2 getrennte Schließer · rastend':m.type==='emergency'?'1 Öffner · 1 Schließer':m.type==='motor'?'Verbraucher':'13–14 · 21–22 · '+lampTag(m)}</b><span class="module-state"></span></div>`;
+    const overlay=document.createElementNS(NS,'svg');overlay.classList.add('module-wires');overlay.setAttribute('aria-hidden','true');el.appendChild(overlay);
+    if(!Number.isFinite(m.z))m.z=nextZ++;nextZ=Math.max(nextZ,m.z+1);el.style.zIndex=m.z;
+    board.appendChild(el);position(m);paintDeviceFace(m);
+    el.querySelector('.remove').onclick=()=>removeModule(m);
+    el.querySelector('.handle-label').onkeydown=e=>{const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]}[e.key];if(!delta)return;e.preventDefault();remember();selectModule(m.id);move(m,m.x+delta[0],m.y+delta[1]);draw();};
+    el.addEventListener('pointerdown',e=>{
+      if(e.button!==0||e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices'))return;
+      cancel();remember();selectModule(m.id);gesture={kind:'module',m,x:e.clientX,y:e.clientY,startX:m.x,startY:m.y,pointerId:e.pointerId};el.classList.add('dragging');el.setPointerCapture(e.pointerId);e.preventDefault();
+    });
+    el.querySelectorAll('.term').forEach(t=>{
+      t.addEventListener('pointerdown',e=>{if(e.button!==0||gesture)return;e.stopPropagation();gesture={kind:'wire',key:t.dataset.key,x:e.clientX,y:e.clientY,moved:false,pointerId:e.pointerId};t.setPointerCapture(e.pointerId);updateWireTarget(e);});
+      t.addEventListener('click',e=>{if(e.detail!==0)return;choose(t.dataset.key);});
+      t.addEventListener('lostpointercapture',e=>{if(gesture?.kind==='wire'&&gesture.pointerId===e.pointerId&&!gesture.moved)cancel();});
+      t.addEventListener('focus',()=>{wireTarget=canConnect(wireSource(),t.dataset.key)?t.dataset.key:null;mark();});
+      t.addEventListener('blur',()=>{if(wireTarget===t.dataset.key){wireTarget=null;mark();}});
+    });
+    if(m.type==='lineardrive'){
+      paintDrive(m,lastSnap);
+      const slider=el.querySelector('.drive-position');
+      slider.addEventListener('pointerdown',()=>remember());
+      slider.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','Home','End','PageUp','PageDown'].includes(e.key))remember();});
+      slider.addEventListener('input',()=>{m.slide=Number(slider.value)/1000;driveFrames.delete(m);paintDrive(m,lastSnap);});
+    }
+    if(m.type==='selector'){
+      const set=value=>{if(value===m.selection)return;remember();m.selection=value;if(engine?.setSelector)engine.setSelector(m.id,value);paintSelector(m);refreshLive();};
+      el.querySelectorAll('[data-selection]').forEach(b=>b.onclick=()=>set(Number(b.dataset.selection)));
+      const knob=el.querySelector('.selector-knob');
+      knob.onclick=()=>set(m.selection===0?1:m.selection===1?-1:0);
+      knob.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home'].includes(e.key))return;e.preventDefault();set(e.key==='Home'?0:Math.max(-1,Math.min(1,m.selection+(e.key==='ArrowLeft'?-1:1))));};
+      paintSelector(m);
+    }
+    const push=el.querySelector('.push');
+    if(m.type==='emergency'){
+      const latch=active=>{if(m.latched===active)return;remember();m.latched=active;m.pressed=active;if(engine)engine.setPressed(m.id,active);paintTaster(m);refreshLive();};
+      push.onclick=()=>latch(true);
+      el.querySelector('.emergency-unlock').onclick=()=>latch(false);
+      paintTaster(m);
+    }else if(push){
+      const press=()=>{m.pressed=true;push.classList.add('down');m.el.classList.add('pressed');if(engine){engine.setPressed(m.id,true);if(engine.setRealtime)engine.setRealtime(true);}paintTaster(m);refreshLive();};
+      const release=()=>{if(!m.pressed)return;m.pressed=false;push.classList.remove('down');m.el.classList.remove('pressed');if(engine)engine.setPressed(m.id,false);paintTaster(m);refreshLive();};
+      push.onpointerdown=e=>{if(e.button!==0)return;e.preventDefault();push.setPointerCapture(e.pointerId);press();};
+      push.onpointerup=release;push.onpointercancel=release;push.onlostpointercapture=release;push.onblur=release;
+      push.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();press();}};
+      push.onkeyup=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();release();}};
+    }
+    el.addEventListener('contextmenu',e=>{
+      e.preventDefault();
+      e.stopPropagation();
+      selectModule(m.id);
+      openSettings(m,e.clientX,e.clientY);
+    });
+  }
+  function selectModule(id,focus=false){
+    const m=modules.find(m=>m.id===id);if(!m)return;
+    selectedId=id;m.z=nextZ++;m.el.style.zIndex=m.z;
+    modules.forEach(x=>x.el.classList.toggle('selected',x===m));
+    renderComponents();
+    if(focus){reveal(m);m.el.querySelector('.handle-label').focus({preventScroll:true});}
+  }
+  function removeModule(m){
+    remember();cancel();const removed=new Set(modules.filter(x=>x===m||x.parent===m.id).map(x=>x.id));
+    wires=wires.filter(w=>!removed.has(w.a.split('.')[0])&&!removed.has(w.b.split('.')[0]));
+    modules=modules.filter(x=>{if(removed.has(x.id)){x.el.remove();return false;}return true;});
+    if(removed.has(selectedId))selectedId=modules.find(x=>x.type==='contactor')?.id||modules[0]?.id||null;
+    update();
+  }
+  function createAux(parent){
+    if(modules.some(m=>m.type==='auxiliary'&&m.parent===parent.id))return null;
+    const aux={id:parent.id+'H',type:'auxiliary',parent:parent.id,x:Math.min(BOARD_W-204,parent.x+264),y:parent.y+70};
+    modules.push(aux);renderModule(aux);move(aux,aux.x,aux.y);return aux;
+  }
+  function renderComponents(){
+    const list=$('#componentList'),scrollTop=list.scrollTop;list.replaceChildren();
+    modules.forEach(m=>{
+      const b=document.createElement('button');b.className='component-select';b.setAttribute('aria-pressed',String(selectedId===m.id));
+      b.setAttribute('aria-label',displayName(m)+' nach vorne holen');
+      b.innerHTML=`<strong>${shortName(m)}</strong><span>${m.type==='auxiliary'?'Hilfskontakte':m.type==='contactor'?'Leistungsschütz':types[m.type]}</span>`;
+      b.onclick=()=>selectModule(m.id,true);list.appendChild(b);m.el.classList.toggle('selected',selectedId===m.id);
+    });
+    list.scrollTop=scrollTop;
+    const m=modules.find(m=>m.id===selectedId);
+    const parent=m?.type==='contactor'?m:modules.find(x=>x.id===m?.parent);
+    $('#addAux').disabled=!parent||modules.some(x=>x.type==='auxiliary'&&x.parent===parent.id);
+    $('#addAux').textContent=parent?'Hilfskontakte für '+parent.id+' ergänzen':'Leistungsschütz auswählen';
+    $('#detailTitle').textContent=m?displayName(m):'Kein Bauteil ausgewählt';
+    const details=$('#componentDetails');
+    if(!m){details.textContent='Ein Bauteil hinzufügen.';return;}
+    const rows=m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B4–B7 + Versorgung','Reservierte Buchsen'],['Modell','10 s Verfahrzeit bei Nennspannung'],['PE','Separate Gehäuseklemme']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
+    details.innerHTML=rows.map(([label,value])=>`<div class="detail-row"><span>${label}</span><b>${value}</b></div>`).join('')+'<button class="ui-btn" id="openSettings" type="button">Einstellungen</button>';
+    $('#openSettings').onclick=()=>{const r=m.el.getBoundingClientRect();openSettings(m,r.right-8,r.top+32);};
+  }
+  function colorField(field,label,palette,current){
+    return '<div class="color-field"><span>'+label+'</span><div class="color-swatches" data-field="'+field+'">'+Object.entries(palette).map(([key,entry])=>'<button type="button" class="swatch" data-value="'+key+'" aria-pressed="'+String(key===current)+'" aria-label="'+entry[0]+'" title="'+entry[0]+'" style="--swatch:'+entry[1]+'"></button>').join('')+'</div></div>';
+  }
+  function bindColorSwatches(m,root){
+    root.querySelectorAll('.color-swatches').forEach(group=>{
+      group.querySelectorAll('.swatch').forEach(b=>{
+        b.onclick=()=>{
+          const field=group.dataset.field,key=b.dataset.value,palette=field==='buttonColor'?buttonColors:signalColors;
+          if(!palette[key]||m[field]===key)return;
+          remember();
+          m[field]=key;
+          group.querySelectorAll('.swatch').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
+          paintDeviceFace(m);
+          renderComponents();
+          say(m.id+': '+(field==='buttonColor'?'Tasterfarbe ':'Leuchtfarbe ')+palette[key][0]);
+        };
+      });
+    });
+  }
+  function closeDevMenu(){
+    const menu=$('#devMenu');
+    if(menu)menu.hidden=true;
+    editTarget=null;
+  }
+  function openSettings(m,x,y){
+    defaultNom(m);
+    editTarget=m;
+    const menu=$('#devMenu'), note=$('#devNote'), fields=$('#devFields'), apply=$('#devApply');
+    $('#devTitle').textContent=displayName(m)+' · Einstellungen';
+    note.hidden=false;
+    if(m.type==='lineardrive'){
+      note.textContent='Vereinfachtes 24-V-Lehrmodell: B1 links, B2 Mitte, B3 rechts. 11–12 ist in Ruhe geschlossen, 11–14 bei Betätigung. Die Fahrt folgt CircuitJS; am mechanischen Anschlag stoppt der Schlitten, der Motor bleibt elektrisch bestromt. Keine Blockierstrom- oder Encoder-Nachbildung. B4–B7 und deren Versorgung sind bis zur geklärten Belegung nur separate Buchsen.';
+      fields.innerHTML='';apply.hidden=true;
+    }else if(m.type==='psu'){
+      note.textContent='Klemmen bleiben +24 / 0 V. CircuitJS nimmt den eingestellten Wert. Spule und Motor müssen zur Spannung passen.';
+      fields.innerHTML='<label>Spannung (V)<input id="devVolt" type="number" min="1" max="400" step="0.1" value="'+m.voltage+'"></label><div class="presets"><button type="button" class="ui-btn" data-v="12">12 V</button><button type="button" class="ui-btn" data-v="24">24 V</button><button type="button" class="ui-btn" data-v="48">48 V</button></div>';
+      fields.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{$('#devVolt').value=b.dataset.v;});
+      apply.hidden=false;
+    }else if(m.type==='contactor'){
+      note.textContent='Kennzeichnung Q oder K. Hilfskontakte folgen automatisch. Spulennennwerte; Leistungskontakte bleiben unverändert.';
+      fields.innerHTML='<label>Spulenspannung (V)<input id="devNomV" type="number" min="1" max="400" step="0.1" value="'+m.nomV+'"></label><label>Spulenleistung (VA)<input id="devNomP" type="number" min="0.1" max="200" step="0.1" value="'+m.nomP+'"></label>';
+      apply.hidden=false;
+    }else if(m.type==='motor'||isLight(m)){
+      note.textContent=isLight(m)?'Nenndaten der Leuchte. Sie leuchtet bei geschlossenem Stromkreis; die Versorgung berechnet CircuitJS.':'Nenndaten des Gleichstrommotors.';
+      fields.innerHTML='<label>Nennspannung (V)<input id="devNomV" type="number" min="1" max="400" step="0.1" value="'+m.nomV+'"></label><label>Nennleistung (W)<input id="devNomP" type="number" min="1" max="2000" step="1" value="'+m.nomP+'"></label>';
+      if(m.type==='pilot')fields.innerHTML+=colorField('signalColor','Leuchtfarbe',signalColors,m.signalColor);
+      apply.hidden=false;
+    }else if(isCombinedTaster(m)){
+      note.textContent='Ein Druck betätigt Schließer 13–14 und Öffner 21–22 gleichzeitig. Tasterfarbe und Meldeleuchte sind nur Optik, die Kontakte bleiben dieselben.';
+      fields.innerHTML=colorField('buttonColor','Tasterfarbe',buttonColors,m.buttonColor)+colorField('signalColor','Meldeleuchte',signalColors,m.signalColor);
+      apply.hidden=true;
+    }else{
+      note.textContent=m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
+      fields.innerHTML='';
+      apply.hidden=true;
+    }
+    if(tagPrefixes[m.type]){
+      fields.insertAdjacentHTML('afterbegin',tagFieldHtml(m));
+      apply.hidden=false;
+    }
+    bindColorSwatches(m,fields);
+    menu.hidden=false;
+    const pad=8,w=menu.offsetWidth,h=menu.offsetHeight;
+    menu.style.left=Math.min(innerWidth-w-pad,Math.max(pad,x))+'px';
+    menu.style.top=Math.min(innerHeight-h-pad,Math.max(pad,y))+'px';
+    const first=[...menu.querySelectorAll('input,select')].find(el=>el.type!=='hidden');
+    if(first)first.focus();
+  }
+  function applySettings(){
+    const m=editTarget;if(!m)return;
+    const tag=readTag(m);
+    if(tag&&!tag.ok){say(tag.error);return;}
+    remember();
+    defaultNom(m);
+    if(m.type==='psu'&&$('#devVolt')){
+      const v=Number($('#devVolt').value);
+      if(!Number.isFinite(v)||v<1){say('Spannung muss mindestens 1 V sein.');return;}
+      m.voltage=v;
+      if(engine&&engine.setPsuVoltage)engine.setPsuVoltage(m.id,v);
+      else lastImportedSig='';
+    }else if($('#devNomV')&&$('#devNomP')&&(m.type==='contactor'||m.type==='motor'||m.type==='lineardrive'||isLight(m))){
+      const nv=Number($('#devNomV').value),np=Number($('#devNomP').value);
+      if(!Number.isFinite(nv)||nv<1||!Number.isFinite(np)||np<=0){say('Nennwerte prüfen.');return;}
+      m.nomV=nv;m.nomP=np;
+      if(engine&&engine.setRatings)engine.setRatings(m.id,nv,np);
+      else lastImportedSig='';
+    }
+    const renamed=tag&&tag.id!==m.id;
+    if(renamed&&!renameModule(m,tag.id))return;
+    paintDeviceFace(m);
+    closeDevMenu();
+    if(renamed){
+      update();
+      rebuildAfterRename(tag.id);
+      return;
+    }
+    renderComponents();
+    scheduleSync();
+    if(engineOk)applySnapshot();
+    say(m.id+' übernommen.');
+  }
+  function position(m){m.el.style.left=m.x+'px';m.el.style.top=m.y+'px';}
+  function move(m,x,y){m.x=Math.max(24,Math.min(BOARD_W-24-m.el.offsetWidth,x));m.y=Math.max(61,Math.min(BOARD_H-36-m.el.offsetHeight,y));position(m);}
+  function term(key){return [...board.querySelectorAll('.term')].find(t=>t.dataset.key===key);}
+  function point(key){const t=term(key);if(!t)return null;const r=t.getBoundingClientRect(),b=board.getBoundingClientRect();return{x:(r.left+r.width/2-b.left)/scale,y:(r.top+r.height/2-b.top)/scale,d:t.dataset.direction,id:t.closest('.module').dataset.id};}
+  function localPoint(e){const b=board.getBoundingClientRect();return{x:(e.clientX-b.left)/scale,y:(e.clientY-b.top)/scale,d:'free'};}
+  function wireSource(){return gesture?.kind==='wire'?(gesture.moved?gesture.key:pending||gesture.key):pending;}
+  function directlyConnected(a,b){return wires.some(w=>w.a===a&&w.b===b||w.a===b&&w.b===a);}
+  function canConnect(a,b){return !!a&&!!b&&a!==b&&!!term(a)&&!!term(b)&&!directlyConnected(a,b);}
+  function nearestTerm(cx,cy,source){
+    if(!source)return null;
+    let best=null,bestD=56;
+    board.querySelectorAll('.term').forEach(t=>{
+      const key=t.dataset.key;
+      if(key===source||!canConnect(source,key))return;
+      const r=t.getBoundingClientRect();
+      const d=Math.hypot(cx-(r.left+r.width/2),cy-(r.top+r.height/2));
+      if(d<=bestD){bestD=d;best=t;}
+    });
+    return best;
+  }
+  function updateWireTarget(e){
+    const target=nearestTerm(e.clientX,e.clientY,wireSource());
+    wireTarget=target?target.dataset.key:null;
+    mark();
+  }
+  function choose(key){wireTarget=null;if(!pending){pending=key;$('#hint').textContent=key+' gewählt · Blaue Ringe: direkt verbundene Klemmen. Ziel anklicken, Esc bricht ab.';}else if(pending===key){cancel();return;}else{const created=connect(pending,key);pending=null;$('#hint').textContent=created?'Verbindung erstellt · Weitere Klemmen verbinden.':defaultHint();}mark();draw();}
+  function connect(a,b){if(a===b||!term(a)||!term(b))return false;if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}remember();wires.push({a,b,color});update();return true;}
+  function cancel(){pending=null;gesture=null;wireTarget=null;viewDrag=null;viewport.classList.remove('panning');board.querySelectorAll('.dragging').forEach(e=>e.classList.remove('dragging'));paintHint();mark();draw();}
+  document.addEventListener('pointermove',e=>{
+    if(!gesture){if(pending){updateWireTarget(e);draw(wireTarget?point(wireTarget):localPoint(e));}return;}if(e.pointerId!==gesture.pointerId)return;
+    if(gesture.kind==='module'){move(gesture.m,gesture.startX+(e.clientX-gesture.x)/scale,gesture.startY+(e.clientY-gesture.y)/scale);draw();}
+    else{if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>4)gesture.moved=true;if(gesture.moved){pending=null;updateWireTarget(e);gesture.target=wireTarget;draw(wireTarget?point(wireTarget):localPoint(e),gesture.key);}}
+  });
+  document.addEventListener('pointerup',e=>{
+    if(!gesture||e.pointerId!==gesture.pointerId)return;
+    const g=gesture;
+    if(g.kind==='module'){gesture=null;g.m.el.classList.remove('dragging');move(g.m,Math.round(g.m.x/4)*4,Math.round(g.m.y/4)*4);draw();return;}
+    if(g.moved){
+      const snap=nearestTerm(e.clientX,e.clientY,g.key);
+      const dest=(snap&&snap.dataset.key)||g.target;
+      if(dest&&canConnect(g.key,dest))connect(g.key,dest);
+      else say('Leitung auf einer Schraubklemme loslassen.');
+      cancel();
+      return;
+    }
+    gesture=null;
+    choose(g.key);
+  });
+  document.addEventListener('pointercancel',cancel);
+  viewport.addEventListener('pointerleave',()=>{if(gesture?.kind==='wire')return;wireTarget=null;mark();});
+  document.addEventListener('pointerout',e=>{if(gesture?.kind==='wire'||e.relatedTarget)return;wireTarget=null;mark();});
+  window.addEventListener('blur',()=>{cancel();modules.forEach(m=>{if(!m.pressed||m.type==='emergency')return;m.pressed=false;if(engine)engine.setPressed(m.id,false);paintTaster(m);});if(engineOk)applySnapshot();});
+  function mark(){
+    const source=wireSource(),neighbors=new Set();
+    if(source)wires.forEach(w=>{if(w.a===source)neighbors.add(w.b);if(w.b===source)neighbors.add(w.a);});
+    board.querySelectorAll('.term').forEach(t=>{const key=t.dataset.key,attached=wires.find(w=>w.a===key||w.b===key);t.classList.toggle('connected',!!attached);t.classList.toggle('pending',source===key);t.classList.toggle('direct-neighbor',neighbors.has(key));t.classList.toggle('wire-target',wireTarget===key&&canConnect(source,key));t.style.setProperty('--cable',attached?.color||color);});
+  }
+  function routeBetween(a,b,boxes,lane){
+    const xs=[...new Set([a.x,b.x,20,BOARD_W-20,...boxes.flatMap(r=>[r.l-lane,r.r+lane])])].filter(x=>x>=8&&x<=BOARD_W-8).sort((a,b)=>a-b);
+    const ys=[...new Set([a.y,b.y,20,BOARD_H-16,...boxes.flatMap(r=>[r.t-lane,r.b+lane])])].filter(y=>y>=8&&y<=BOARD_H-8).sort((a,b)=>a-b);
+    const inside=(x,y)=>boxes.some(r=>x>r.l&&x<r.r&&y>r.t&&y<r.b);
+    const blocked=(x,y,u,v)=>boxes.some(r=>x===u?x>r.l&&x<r.r&&Math.max(y,v)>r.t&&Math.min(y,v)<r.b:y>r.t&&y<r.b&&Math.max(x,u)>r.l&&Math.min(x,u)<r.r);
+    const start={i:xs.indexOf(a.x),j:ys.indexOf(a.y),dir:'',cost:0,prev:null};
+    const queue=[start],best=new Map();let end=null;
+    while(queue.length){
+      let winner=0;for(let i=1;i<queue.length;i++){const score=n=>n.cost+Math.abs(xs[n.i]-b.x)+Math.abs(ys[n.j]-b.y);if(score(queue[i])<score(queue[winner]))winner=i;}
+      const n=queue.splice(winner,1)[0],x=xs[n.i],y=ys[n.j];
+      if(x===b.x&&y===b.y){end=n;break;}
+      for(const [di,dj,dir] of [[-1,0,'h'],[1,0,'h'],[0,-1,'v'],[0,1,'v']]){
+        const i=n.i+di,j=n.j+dj;if(i<0||j<0||i>=xs.length||j>=ys.length)continue;
+        const u=xs[i],v=ys[j];if(inside(u,v)||blocked(x,y,u,v))continue;
+        const cost=n.cost+Math.abs(x-u)+Math.abs(y-v)+(n.dir&&n.dir!==dir?18:0),key=i+','+j+','+dir;
+        if(best.has(key)&&best.get(key)<=cost)continue;best.set(key,cost);queue.push({i,j,dir,cost,prev:n});
+      }
+    }
+    if(!end)return [[a.x,a.y],[a.x,b.y],[b.x,b.y]];
+    const result=[];for(let n=end;n;n=n.prev)result.unshift([xs[n.i],ys[n.j]]);return result;
+  }
+  function pathFor(a,b,index,w){
+    const lane=12+(index%4)*14;
+    const boxes=modules.map(m=>({id:m.id,l:m.x-9,r:m.x+m.el.offsetWidth+9,t:m.y-5,b:m.y+31+m.el.querySelector('.face').offsetHeight+23}));
+    const jogOf=key=>{
+      if(!w||!key)return 0;
+      const mates=wires.filter(x=>x.a===key||x.b===key);
+      if(mates.length<2)return 0;
+      return (mates.indexOf(w)-(mates.length-1)/2)*14;
+    };
+    const exit=(p,jog)=>{
+      const r=boxes.find(box=>box.id===p.id);
+      if(p.d==='top')return {x:p.x+jog,y:r.t-lane};
+      if(p.d==='left')return {x:r.l-lane,y:p.y+jog};
+      if(p.d==='right')return {x:r.r+lane,y:p.y+jog};
+      return {x:p.x+jog,y:r.b+lane};
+    };
+    const first=exit(a,w?jogOf(w.a):0);
+    if(b.d==='free'){
+      if(a.d==='left'||a.d==='right')return `M${a.x} ${a.y} C${first.x} ${a.y} ${b.x} ${b.y} ${b.x} ${b.y}`;
+      return `M${a.x} ${a.y} C${a.x} ${first.y} ${b.x} ${b.y} ${b.x} ${b.y}`;
+    }
+    const last=exit(b,w?jogOf(w.b):0);let points=[[a.x,a.y],...routeBetween(first,last,boxes,lane),[b.x,b.y]];
+    points=points.filter((p,i)=>!i||p[0]!==points[i-1][0]||p[1]!==points[i-1][1]);
+    for(let i=points.length-2;i>0;i--)if((points[i-1][0]===points[i][0]&&points[i][0]===points[i+1][0])||(points[i-1][1]===points[i][1]&&points[i][1]===points[i+1][1]))points.splice(i,1);
+    let d=`M${points[0][0]} ${points[0][1]}`;
+    for(let i=1;i<points.length-1;i++){const p=points[i],prev=points[i-1],next=points[i+1],aLen=Math.hypot(p[0]-prev[0],p[1]-prev[1]),bLen=Math.hypot(next[0]-p[0],next[1]-p[1]),r=Math.min(10,aLen/2,bLen/2);d+=` L${p[0]-(p[0]-prev[0])/aLen*r} ${p[1]-(p[1]-prev[1])/aLen*r} Q${p[0]} ${p[1]} ${p[0]+(next[0]-p[0])/bLen*r} ${p[1]+(next[1]-p[1])/bLen*r}`;}
+    return d+` L${b.x} ${b.y}`;
+  }
+  function path(d,cls,c){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('class',cls);if(c)p.setAttribute('stroke',c);return p;}
+  function removeWire(i){remember();wires.splice(i,1);update();}
+  function draw(preview,start=pending){
+    svg.replaceChildren();
+    const overlays=new Map();
+    modules.forEach(m=>{const layer=m.el.querySelector('.module-wires');layer.replaceChildren();layer.setAttribute('viewBox',`${m.x} ${m.y} ${m.el.offsetWidth} ${m.el.offsetHeight}`);overlays.set(m.id,layer);});
+    const tag=(p,i)=>{p.dataset.wire=String(i);return p;};
+    const paint=(target,d,c,i)=>target.append(tag(path(d,'wire-shadow'),i),tag(path(d,'wire-volt'),i),tag(path(d,'wire-line',c),i),tag(path(d,'wire-highlight'),i));
+    const setHot=(i,on)=>document.querySelectorAll('[data-wire="'+i+'"]').forEach(el=>el.classList.toggle('hot',on));
+    wires.forEach((w,i)=>{
+      const a=point(w.a),b=point(w.b);if(!a||!b)return;const d=pathFor(a,b,i,w);paint(svg,d,w.color,i);
+      const hitOn=target=>{
+        const hit=tag(path(d,'wire-hit'),i);
+        hit.onpointerdown=e=>e.stopPropagation();
+        hit.onclick=e=>{e.stopPropagation();removeWire(i);};
+        hit.onpointerenter=()=>setHot(i,true);
+        hit.onpointerleave=e=>{const n=e.relatedTarget&&e.relatedTarget.closest&&e.relatedTarget.closest('[data-wire]');if(n&&n.dataset.wire===String(i))return;setHot(i,false);};
+        target.append(hit);
+      };
+      hitOn(svg);
+      for(const id of new Set([a.id,b.id])){paint(overlays.get(id),d,w.color,i);hitOn(overlays.get(id));}
+    });
+    if(start&&preview){const a=point(start);if(a){const d=pathFor(a,preview,0);svg.append(path(d,'wire-preview'));overlays.get(a.id).append(path(d,'wire-preview'));}}
+    const coupling=$('#couplings');coupling.replaceChildren();
+    modules.filter(m=>m.type==='auxiliary').forEach(m=>{const parent=modules.find(p=>p.id===m.parent);if(!parent)return;const left=m.x>parent.x;
+      const a={x:parent.x+(left?parent.el.offsetWidth:0),y:parent.y+190},b={x:m.x+(left?0:m.el.offsetWidth),y:m.y+118};
+      coupling.append(path(`M${a.x} ${a.y} L${b.x} ${b.y}`,'mechanical-link'));
+    });
+    paintWireVoltage(lastSnap);
+    paintWireCurrent(lastSnap);
+  }
+  function isRedCable(c){
+    const m=String(c||'').match(/^#?([0-9a-f]{6})$/i);
+    if(!m)return false;
+    const n=parseInt(m[1],16),r=(n>>16)&255,g=(n>>8)&255,b=n&255;
+    return r>140&&r>g+40&&r>b+40;
+  }
+  function wireHasVoltage(w,snap){
+    if(!showVoltage||!powered||!snap)return false;
+    const terms=snap.terminals||{};
+    const live=key=>{const v=Number(terms[key]);return Number.isFinite(v)&&Math.abs(v)>=LIVE_V;};
+    return live(w.a)||live(w.b);
+  }
+  function paintWireVoltage(snap){
+    wires.forEach((w,i)=>{
+      const on=wireHasVoltage(w,snap);
+      const red=on&&isRedCable(w.color);
+      document.querySelectorAll('[data-wire="'+i+'"]').forEach(el=>{
+        if(!el.classList.contains('wire-shadow')&&!el.classList.contains('wire-volt'))return;
+        el.classList.toggle('volt-live',on);
+        el.classList.toggle('volt-red',red);
+      });
+    });
+  }
+  function setShowVoltage(on){
+    showVoltage=!!on;
+    const btn=$('#showVoltage');
+    if(btn)btn.setAttribute('aria-pressed',String(showVoltage));
+    paintWireVoltage(lastSnap);
+    if(!skipStore)try{localStorage.setItem(VOLT_STORE,showVoltage?'1':'0');}catch(e){}
+  }
+  function wireCurrentOf(w,snap){
+    if(!showCurrent||!powered||!snap)return 0;
+    const i=Number((snap.wireCurrents||{})[w.a+'|'+w.b]);
+    return Number.isFinite(i)?i:0;
+  }
+  function paintWireCurrent(snap){
+    if(!dots)return;
+    dots.replaceChildren();
+    if(!showCurrent||!powered||!snap){dotPos=[];return;}
+    const running=!!snap.running;
+    const raw=Number(snap.currentMult);
+    const m=Number.isFinite(raw)&&raw!==0?raw:25;
+    wires.forEach((w,i)=>{
+      const cur=wireCurrentOf(w,snap);
+      if(Math.abs(cur)<I_DOT){dotPos[i]=0;return;}
+      if(running){
+        let add=cur*m*DOT_SPEED;
+        if(add>DOT_ADD_MAX)add=DOT_ADD_MAX;
+        else if(add<-DOT_ADD_MAX)add=-DOT_ADD_MAX;
+        dotPos[i]=(dotPos[i]||0)+add;
+      }
+      const path=svg.querySelector('.wire-line[data-wire="'+i+'"]');
+      if(!path||typeof path.getTotalLength!=='function')return;
+      const len=path.getTotalLength();
+      if(len<8)return;
+      let pos=(dotPos[i]||0)%DOT_SP;
+      if(pos<0)pos+=DOT_SP;
+      const reverse=cur<0;
+      const half=DOT_SIZE/2;
+      for(let d=pos;d<len;d+=DOT_SP){
+        const pt=path.getPointAtLength(reverse?len-d:d);
+        const r=document.createElementNS(NS,'rect');
+        r.setAttribute('class','wire-dot');
+        r.setAttribute('x',pt.x-half);
+        r.setAttribute('y',pt.y-half);
+        r.setAttribute('width',String(DOT_SIZE));
+        r.setAttribute('height',String(DOT_SIZE));
+        dots.append(r);
+      }
+    });
+  }
+  function setShowCurrent(on){
+    showCurrent=!!on;
+    const btn=$('#showCurrent');
+    if(btn)btn.setAttribute('aria-pressed',String(showCurrent));
+    paintWireCurrent(lastSnap);
+    if(!skipStore)try{localStorage.setItem(CURRENT_STORE,showCurrent?'1':'0');}catch(e){}
+  }
+  function graph(current){
+    const g=new Map(),link=(a,b)=>{if(!g.has(a))g.set(a,new Set());if(!g.has(b))g.set(b,new Set());g.get(a).add(b);g.get(b).add(a);};
+    wires.forEach(w=>link(w.a,w.b));
+    modules.forEach(m=>{
+      if(m.type==='selector'&&m.selection!==0)link(m.id+(m.selection===-1?'.13':'.23'),m.id+(m.selection===-1?'.14':'.24'));
+      if(m.type==='start'||m.type==='stop'||m.type==='emergency'){
+        if(m.pressed)link(m.id+'.13',m.id+'.14');
+        else link(m.id+'.21',m.id+'.22');
+      }
+      if(contacts[m.type]){
+        const on=!!current[m.type==='auxiliary'?m.parent:m.id];
+        contacts[m.type].forEach(([a,b,kind])=>{if(kind==='NO'?on:!on)link(m.id+'.'+a,m.id+'.'+b);});
+      }
+    });return g;
+  }
+  function reachable(g,key){const seen=new Set([key]),q=[key];for(let i=0;i<q.length;i++)for(const x of g.get(q[i])||[])if(!seen.has(x)){seen.add(x);q.push(x);}return seen;}
+  function evaluate(){
+    if(engineOk){applySnapshot();return;}
+    paintWireVoltage(null);
+    paintWireCurrent(null);
+    modules.forEach(m=>{
+      const label=m.el.querySelector('.module-state');
+      if(contacts[m.type]){m.el.classList.remove('energized');if(label)label.textContent='Wartet auf Engine';}
+      if(m.type==='motor'||m.type==='lineardrive'){m.el.classList.remove('running','reverse');if(label)label.textContent='Wartet auf Engine';}
+      if(isLight(m)){m.el.classList.remove('lit');if(label)label.textContent='Wartet auf Engine';}
+      if(m.type==='lineardrive')paintDrive(m,null);
+      if(m.type==='psu'&&label)label.textContent='Wartet auf Engine';
+      if((m.type==='start'||m.type==='stop'||m.type==='emergency')&&label)label.textContent=m.pressed?'NO zu · NC auf':'NO auf · NC zu';
+    });
+    renderSimControls();
+    $('#simStatus').textContent=engine?'CircuitJS ohne Werkstatt-Bridge':'Keine Verbindung zu CircuitJS';
+    $('#statusDot').className='status-dot error';
+  }
+  function paintTaster(m){
+    if(!m.el)return;
+    m.el.classList.toggle('pressed',!!m.pressed);
+    m.el.querySelector('.push')?.classList.toggle('down',!!m.pressed);
+    const label=m.el.querySelector('.module-state');
+    if(m.type==='emergency'){m.el.querySelector('.push').setAttribute('aria-pressed',String(m.latched));m.el.querySelector('.emergency-unlock').disabled=!m.latched;if(label)label.textContent=m.latched?'Eingerastet · NC offen · NO zu':'Entriegelt · NC zu · NO offen';return;}
+    if(label)label.textContent=m.pressed?'NO zu · NC auf':'NO auf · NC zu';
+  }
+  function update(){mark();draw();evaluate();renderComponents();$('#count').textContent=wires.length;$('#clear').disabled=!wires.length;const list=$('#wireList');list.replaceChildren();if(!wires.length){list.innerHTML='<p class="empty">Noch keine Leitungen.<br>Verbinde zwei Schraubklemmen oder lade die Selbsthaltung.</p>';}else wires.forEach((w,i)=>{const row=document.createElement('div');row.className='wire-item';row.style.setProperty('--cable',w.color);row.innerHTML=`<i></i><span>${w.a} ↔ ${w.b}</span><button aria-label="Leitung ${w.a} zu ${w.b} entfernen">×</button>`;row.querySelector('button').onclick=()=>removeWire(i);list.appendChild(row);});scheduleSync();schedulePersist();}
+  function liveMode(){return simMode==='betrieb'||simMode==='paused';}
+  function defaultHint(){
+    if(simMode==='aufbau')return 'Aufbau · Spannung aus. Klemmen verbinden, dann Betrieb einschalten.';
+    if(simMode==='paused')return 'Eingefroren · Spannung bleibt. Fortsetzen oder Aufbau (Spannung aus).';
+    return 'Betrieb · Spannung an. Ändern der Verdrahtung setzt die Rast zurück.';
+  }
+  function paintHint(){
+    const el=$('#hint'),line=el&&el.parentElement;
+    if(!el)return;
+    if(pending||gesture)return;
+    el.textContent=defaultHint();
+    if(line)line.classList.toggle('live',liveMode());
+  }
+  function wantEngineRun(){return engineOk&&!latchedFault&&simMode==='betrieb';}
+  function detectWorkshopShort(snap){
+    if(!powered||!snap)return null;
+    // A just-operated contact can still have the previous solver voltages.
+    // A short requires a conductive path across a source, without a load.
+    const current=Object.fromEntries(Object.entries(snap.coils||{}).map(([id,coil])=>[id,!!coil.energized]));
+    const conductors=graph(current);
+    const link=(a,b)=>{if(!conductors.has(a))conductors.set(a,new Set());if(!conductors.has(b))conductors.set(b,new Set());conductors.get(a).add(b);conductors.get(b).add(a);};
+    modules.filter(m=>m.type==='lineardrive').forEach(m=>{
+      [m.slide<=.03,Math.abs(m.slide-.5)<=.035,m.slide>=.97].forEach((active,i)=>{
+        link(`${m.id}.B${i+1}_11`,`${m.id}.B${i+1}_${active?'14':'12'}`);
+      });
+    });
+    for(const supply of modules.filter(m=>m.type==='psu')){
+      if(reachable(conductors,supply.id+'.+24').has(supply.id+'.0V')){
+        return {code:'SHORT_CIRCUIT',message:'Kurzschluss',componentIds:[supply.id]};
+      }
+    }
+    return null;
+  }
+  function haltOnFault(fault){
+    if(!fault)return;
+    latchedFault=fault;
+    recoveryTime=null;
+    if(engine&&engine.setRunning)engine.setRunning(false);
+  }
+  function topologySig(){
+    const parts=modules.map(m=>m.id+':'+m.type+':'+(m.parent||'')).slice().sort();
+    const links=wires.map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
+    return parts.join(',')+'|'+links.join(',');
+  }
+  function readEngineSnap(){
+    if(!engine||!engine.readSnapshot)return null;
+    try{const raw=engine.readSnapshot();const snap=typeof raw==='string'?JSON.parse(raw):raw;return snap&&snap.ok?snap:null;}catch(e){return null;}
+  }
+  function engineHasBoard(){
+    const snap=readEngineSnap();
+    if(!snap||!modules.length)return false;
+    return modules.every(m=>{
+      if(m.type==='contactor')return !!(snap.coils&&snap.coils[m.id]);
+      if(m.type==='psu')return !!(snap.supplies&&snap.supplies[m.id]);
+      if(m.type==='motor'||m.type==='lineardrive')return !!(snap.motors&&snap.motors[m.id]);
+      return true;
+    });
+  }
+  function setEngineTag(text,err){$('#engineTag').textContent=text;$('#engineTag').style.color=err?'#be442f':'#56665b';}
+  function projectPayload(){
+    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.map(m=>({id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
+  }
+  function scheduleSync(){
+    if(!engine||!engineOk)return;
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(syncEngine,80);
+  }
+  function applyPresses(){
+    modules.forEach(m=>{if(m.type==='selector'&&engine.setSelector)engine.setSelector(m.id,m.selection);});
+    modules.forEach(m=>{if((m.type==='start'||m.type==='stop'||m.type==='emergency')&&engine.setPressed)engine.setPressed(m.id,!!m.pressed);});
+    if(engine.setSupplyOn)engine.setSupplyOn(powered);
+    if(engine.setRealtime)engine.setRealtime(true);
+  }
+  function syncEngine(force){
+    if(gesture||pending){scheduleSync();return;}
+    if(!engine||!engine.version){engineOk=false;setEngineTag('Bridge fehlt',true);evaluate();return;}
+    const sig=topologySig();
+    if(!force&&sig===lastImportedSig&&engineHasBoard()){
+      applyPresses();
+      if(engine.setRunning)engine.setRunning(wantEngineRun());
+      applySnapshot();
+      return;
+    }
+    try{
+      const raw=engine.loadProject(projectPayload());
+      const result=typeof raw==='string'?JSON.parse(raw):raw;
+      if(!result||!result.ok){engineOk=false;setEngineTag(result&&result.error?result.error:'Import fehlgeschlagen',true);evaluate();return;}
+      engineOk=true;
+      lastImportedSig=sig;
+      applyPresses();
+      if(engine.setRunning)engine.setRunning(wantEngineRun());
+      applySnapshot();
+    }catch(e){engineOk=false;lastImportedSig='';setEngineTag(String(e),true);evaluate();}
+  }
+  function applyLive(){
+    if(!engineOk)return;
+    if(liveRaf)return;
+    liveRaf=requestAnimationFrame(function(){liveRaf=0;applySnapshot();});
+  }
+  function refreshLive(){
+    if(!engineOk)return;
+    applyLive();
+    setTimeout(function(){if(engineOk)applySnapshot();},50);
+  }
+  function applySnapshot(){
+    if(!engine||!engine.readSnapshot)return;
+    let snap;try{const raw=engine.readSnapshot();snap=typeof raw==='string'?JSON.parse(raw):raw;}catch(e){return;}
+    if(!snap||!snap.ok)return;
+    lastSnap=snap;
+    const short=detectWorkshopShort(snap);
+    if(snap.fault){
+      const msg=String(snap.fault.message||'');
+      haltOnFault(short&&(/singul|kurzschluss|short/i.test(msg)||snap.fault.code==='SHORT_CIRCUIT')?short:snap.fault);
+    }else if(short)haltOnFault(short);
+    else if(recoveryTime!==null&&snap.running&&snap.time>recoveryTime){latchedFault=null;recoveryTime=null;}
+    renderSimControls();
+    const coils=snap.coils||{}, motors=snap.motors||{}, contactsSnap=snap.contacts||{};
+    modules.forEach(m=>{
+      const label=m.el.querySelector('.module-state');
+      if(m.type==='contactor'||m.type==='auxiliary'){
+        const id=m.type==='auxiliary'?m.parent:m.id;
+        const coil=coils[id]||{};
+        const on=!!coil.energized;
+        m.el.classList.toggle('energized',on);
+        if(label)label.textContent=on?'Angezogen':'Abgefallen';
+      }
+      if(isLight(m)){const on=!!snap.lamps?.[m.id]?.on;m.el.classList.toggle('lit',on);if(label)label.textContent=on?'Leuchtet':'Aus';}
+      if(m.type==='selector')paintSelector(m);
+      if(m.type==='lineardrive')paintDrive(m,snap);
+      if(m.type==='motor'){
+        const st=motors[m.id]||{};
+        m.el.classList.toggle('running',!!st.running);
+        m.el.classList.toggle('reverse',!!st.reverse);
+        if(label)label.textContent=st.reverse?'Linkslauf':st.running?'Rechtslauf':'Stillstand';
+      }
+      if(m.type==='psu'){
+        const snapPsu=(snap.supplies||{})[m.id]||{};
+        const shown=powered?(Number.isFinite(snapPsu.voltage)?snapPsu.voltage:m.voltage):0;
+        const disp=m.el.querySelector('.supply-display');
+        if(disp)disp.innerHTML=fmtV(shown)+' <small>V</small>';
+        if(label)label.textContent=powered?(snap.running?'Eingeschaltet':'Bereit'):'Aus';
+      }
+      if(m.type==='start'||m.type==='stop'||m.type==='emergency'){
+        m.el.classList.toggle('pressed',!!m.pressed);
+        const lamp=(snap.lamps||{})[m.id]||{};
+        m.el.classList.toggle('lit',!!lamp.on);
+        if(m.type==='emergency')paintTaster(m);else if(label)label.textContent=m.pressed?'NO zu · NC auf':'NO auf · NC zu';
+      }
+    });
+    const pulled=modules.filter(x=>x.type==='contactor'&&coils[x.id]?.energized).map(x=>x.id);
+    $('#simStatus').textContent=latchedFault?(latchedFault.message==='Kurzschluss'?'Kurzschluss · Reset nötig':'CircuitJS: '+latchedFault.message):simMode==='aufbau'?'Aufbau · Spannung aus':simMode==='paused'?(pulled.length?pulled.join(', ')+' angezogen · eingefroren':'Eingefroren · Spannung bleibt'):!powered?'Betrieb · Spannung aus':pulled.length?'Betrieb · '+pulled.join(', ')+' angezogen':'Betrieb · Spannung an';
+    $('#statusDot').className='status-dot'+(latchedFault?' error':!powered||simMode==='aufbau'||!snap.running?' off':'');
+    const flag=$('#modeFlag');
+    if(flag)flag.textContent=simMode==='aufbau'?'Spannung AUS':simMode==='paused'?'Eingefroren · AN':'Spannung AN';
+    paintWireVoltage(snap);
+    paintWireCurrent(snap);
+    void contactsSnap;
+  }
+  function setView(mode){
+    viewMode=mode;
+    document.documentElement.classList.toggle('view-stick',mode==='stick');
+    $('#viewCompare').setAttribute('aria-pressed',String(mode==='compare'));
+    $('#viewStick').setAttribute('aria-pressed',String(mode==='stick'));
+  }
+  function renderSimControls(){
+    renderFaultBanner();
+    const ready=engineOk&&!!engine?.setRunning;
+    document.documentElement.classList.toggle('mode-aufbau',simMode==='aufbau');
+    document.documentElement.classList.toggle('mode-betrieb',liveMode());
+    document.documentElement.classList.toggle('sim-paused',simMode==='paused');
+    const pauseEl=$('#simPause'),buildEl=$('#modeBuild'),runEl=$('#modeRun');
+    if(buildEl)buildEl.setAttribute('aria-pressed',String(simMode==='aufbau'));
+    if(runEl){
+      runEl.setAttribute('aria-pressed',String(liveMode()));
+      runEl.disabled=!ready||!!latchedFault;
+    }
+    if(pauseEl){
+      pauseEl.disabled=!ready||simMode==='aufbau'||!!latchedFault;
+      pauseEl.textContent=simMode==='paused'?'Fortsetzen':'Einfrieren';
+      pauseEl.setAttribute('aria-pressed',String(simMode==='paused'));
+    }
+    $('#simReset').disabled=!ready||typeof engine.resetSimulation!=='function';
+    $('#simReset').title=ready&&typeof engine.resetSimulation!=='function'?'CircuitJS-Build mit Reset-Schnittstelle erforderlich':'';
+    const status=latchedFault?'Fehler':!ready?'Nicht verbunden':simMode==='aufbau'?'Aufbau':simMode==='paused'?'Eingefroren':'Betrieb';
+    $('#simState').textContent=status;
+    setEngineTag(latchedFault?'CircuitJS-Fehler':ready?'Verbunden · '+status:'Keine Verbindung',!!latchedFault||!ready);
+    paintHint();
+  }
+  function setWorkMode(mode){
+    if(!engineOk){say('CircuitJS ist nicht verbunden.');return;}
+    if(mode==='betrieb'&&latchedFault){say('Nach einem Kurzschluss zuerst Reset.');return;}
+    clearTimeout(syncTimer);cancel();
+    try{
+      if(mode==='aufbau'){
+        simMode='aufbau';
+        powered=false;
+        if(engine.setSupplyOn)engine.setSupplyOn(false);
+        if(engine.setRunning)engine.setRunning(false);
+        applySnapshot();
+        say('Aufbau: Spannung aus. Verdrahten und umbenennen, danach Betrieb.');
+      }else if(mode==='paused'){
+        if(simMode==='aufbau'){setWorkMode('betrieb');return;}
+        simMode='paused';
+        powered=true;
+        if(engine.setSupplyOn)engine.setSupplyOn(true);
+        if(engine.setRunning)engine.setRunning(false);
+        applySnapshot();
+        say('Eingefroren: Spannung bleibt, Zeit steht.');
+      }else{
+        powered=true;
+        simMode='betrieb';
+        if(engine.setSupplyOn)engine.setSupplyOn(true);
+        syncEngine(!engineHasBoard());
+        if(!engineOk)return;
+        applyPresses();
+        recoveryTime=lastSnap?.time??0;
+        engine.setRunning(true);
+        applySnapshot();
+        say('Betrieb: Spannung an. Taster wirken. Ändern setzt die Rast zurück.');
+      }
+    }catch(e){engineOk=false;renderSimControls();say('CircuitJS-Steuerung fehlgeschlagen: '+e.message);}
+  }
+  function renderFaultBanner(){
+    const banner=$('#faultBanner');
+    banner.hidden=!latchedFault;
+    document.documentElement.classList.toggle('fault-latched',!!latchedFault);
+    if(!latchedFault)return;
+    const message=String(latchedFault.message||'Keine Detailmeldung verfügbar.');
+    const short=latchedFault.code==='SHORT_CIRCUIT'||/kurzschluss/i.test(message);
+    const where=(latchedFault.componentIds||[]).filter(Boolean);
+    let title=short?'Kurzschluss':'Simulation angehalten';
+    let explanation='CircuitJS kann die Schaltung nicht weiter berechnen. Prüfe die Verbindungen und die eingestellten Bauteilwerte.';
+    let next='Zuerst den Aufbau ändern (Kurzschluss auftrennen). Danach Reset — sonst bleibt die Simulation stehen.';
+    if(short){
+      explanation=(where.length?'Kurzschluss an '+where.join(', ')+'. ':'')+'+24 V und 0 V sind ohne Verbraucher verbunden (keine Spule, Lampe oder Motor dazwischen). Das ist ein Kurzschluss. Die Simulation ist angehalten.';
+    }else if(/singul|singular/i.test(message))explanation='Die Schaltung ist so nicht berechenbar. Oft steckt ein Kurzschluss oder zwei Quellen gegeneinander dahinter.';
+    else if(/converg|konverg/i.test(message))explanation='Die Berechnung findet keinen stabilen Zustand. Prüfe die Verdrahtung und die Bauteilwerte.';
+    else if(/wire loop|drahtschleife|leitungsschleife/i.test(message))explanation='CircuitJS meldet eine geschlossene Schleife aus idealen Leitungen. Prüfe doppelte und ringförmige Verbindungen.';
+    if($('#faultTitle').textContent!==title)$('#faultTitle').textContent=title;
+    if($('#faultExplanation').textContent!==explanation)$('#faultExplanation').textContent=explanation;
+    if($('#faultNextStep').textContent!==next)$('#faultNextStep').textContent=next;
+    if($('#faultTechnical').textContent!==message)$('#faultTechnical').textContent=message;
+    $('#faultEdit').disabled=!engineOk;
+    if($('#faultReset'))$('#faultReset').disabled=!engineOk||typeof engine?.resetSimulation!=='function';
+  }
+  function resetSimulation(){
+    if(!engineOk||typeof engine.resetSimulation!=='function')return;
+    clearTimeout(syncTimer);cancel();closeDevMenu();
+    try{
+      latchedFault=null;recoveryTime=0;
+      modules.forEach(m=>{m.pressed=m.type==='emergency'?!!m.latched:false;if(m.type==='lineardrive'){m.slide=.5;driveFrames.delete(m);}paintTaster(m);});
+      const raw=engine.resetSimulation(projectPayload());
+      const result=typeof raw==='string'?JSON.parse(raw):raw;
+      if(!result?.ok){say(result?.error||'Reset fehlgeschlagen.');return;}
+      if(simMode==='paused')simMode='betrieb';
+      lastImportedSig=topologySig();
+      applyPresses();
+      if(engine.setRunning)engine.setRunning(wantEngineRun());
+      applySnapshot();
+      say(latchedFault?'Reset ausgeführt. Der Fehler liegt noch in der Verdrahtung.':simMode==='aufbau'?'Reset. Spannung bleibt aus — Betrieb einschalten.':'Reset. Spannung an, Simulation läuft.');
+    }catch(e){engineOk=false;renderSimControls();say('Reset fehlgeschlagen: '+e.message);}
+  }
+  function applyView(){
+    const pad=48,w=viewport.clientWidth,h=viewport.clientHeight;
+    camera.x=Math.min(pad,Math.max(w-BOARD_W*scale-pad,camera.x));
+    camera.y=Math.min(pad,Math.max(h-BOARD_H*scale-pad,camera.y));
+    board.style.setProperty('--scale',scale);board.style.setProperty('--pan-x',camera.x+'px');board.style.setProperty('--pan-y',camera.y+'px');
+    $('#zoom').options[0].textContent=Math.round(scale*100)+' %';$('#zoom').value='custom';
+    $('#zoomOut').disabled=scale<=.15;$('#zoomIn').disabled=scale>=2.5;
+  }
+  function zoomAt(value,x=viewport.clientWidth/2,y=viewport.clientHeight/2){
+    const world={x:(x-camera.x)/scale,y:(y-camera.y)/scale};
+    scale=Math.max(.15,Math.min(2.5,value));camera={x:x-world.x*scale,y:y-world.y*scale};applyView();
+  }
+  function fit(){
+    const left=modules.length?Math.min(...modules.map(m=>m.x)):24,top=modules.length?Math.min(...modules.map(m=>m.y)):61;
+    const right=modules.length?Math.max(...modules.map(m=>m.x+m.el.offsetWidth)):1700,bottom=modules.length?Math.max(...modules.map(m=>m.y+m.el.offsetHeight)):780;
+    scale=Math.max(.15,Math.min(1.2,(viewport.clientWidth-72)/(right-left),(viewport.clientHeight-72)/(bottom-top)));
+    camera={x:(viewport.clientWidth-(right-left)*scale)/2-left*scale,y:(viewport.clientHeight-(bottom-top)*scale)/2-top*scale};
+    applyView();viewReady=true;
+  }
+  function reveal(m){
+    const w=m.el.offsetWidth*scale,h=m.el.offsetHeight*scale;
+    if(w>viewport.clientWidth-40||h>viewport.clientHeight-40)scale=Math.min(scale,(viewport.clientWidth-40)/m.el.offsetWidth,(viewport.clientHeight-40)/m.el.offsetHeight);
+    camera={x:viewport.clientWidth/2-(m.x+m.el.offsetWidth/2)*scale,y:viewport.clientHeight/2-(m.y+m.el.offsetHeight/2)*scale};applyView();
+  }
+  viewport.addEventListener('wheel',e=>{
+    e.preventDefault();if(gesture||viewDrag)return;
+    const r=viewport.getBoundingClientRect(),units=e.deltaMode===1?16:e.deltaMode===2?viewport.clientHeight:1;
+    zoomAt(scale*Math.exp(-Math.max(-300,Math.min(300,e.deltaY*units))*.002),e.clientX-r.left,e.clientY-r.top);
+  },{passive:false});
+  viewport.addEventListener('pointerdown',e=>{
+    if(e.button!==0&&e.button!==1)return;
+    const blank=!e.target.closest('.module,.wire-hit');
+    if(!blank&&!handMode&&!spaceHeld&&e.button!==1)return;
+    cancel();ignorePanClick=false;viewDrag={id:e.pointerId,x:e.clientX,y:e.clientY,cx:camera.x,cy:camera.y,moved:false};
+    viewport.setPointerCapture(e.pointerId);viewport.classList.add('panning');e.preventDefault();e.stopPropagation();
+  },true);
+  viewport.addEventListener('pointermove',e=>{
+    if(!viewDrag||e.pointerId!==viewDrag.id)return;e.stopPropagation();
+    const dx=e.clientX-viewDrag.x,dy=e.clientY-viewDrag.y;viewDrag.moved ||= Math.hypot(dx,dy)>3;
+    camera={x:viewDrag.cx+dx,y:viewDrag.cy+dy};applyView();
+  },true);
+  viewport.addEventListener('pointerup',e=>{
+    if(!viewDrag||e.pointerId!==viewDrag.id)return;ignorePanClick=viewDrag.moved||handMode||spaceHeld;viewDrag=null;
+    viewport.classList.remove('panning');e.preventDefault();e.stopPropagation();
+  },true);
+  viewport.addEventListener('lostpointercapture',()=>{viewDrag=null;viewport.classList.remove('panning');});
+  viewport.addEventListener('click',e=>{if(ignorePanClick||handMode||spaceHeld){e.stopPropagation();e.preventDefault();ignorePanClick=false;}},true);
+  viewport.addEventListener('auxclick',e=>{if(e.button===1)e.preventDefault();});
+  const editable=e=>e.target.closest('input,textarea,select,button,[contenteditable=true]');
+  document.addEventListener('keydown',e=>{if(e.code==='Space'&&!editable(e)){e.preventDefault();spaceHeld=true;viewport.classList.add('pan-mode');}});
+  document.addEventListener('keyup',e=>{if(e.code==='Space'){spaceHeld=false;viewport.classList.toggle('pan-mode',handMode);}});
+  window.addEventListener('blur',()=>{spaceHeld=false;viewport.classList.toggle('pan-mode',handMode);});
+  $('#panTool').onclick=()=>{cancel();handMode=!handMode;$('#panTool').setAttribute('aria-pressed',String(handMode));viewport.classList.toggle('pan-mode',handMode||spaceHeld);};
+  $('#showVoltage').onclick=()=>setShowVoltage(!showVoltage);
+  $('#showCurrent').onclick=()=>setShowCurrent(!showCurrent);
+  $('#zoomIn').onclick=()=>{cancel();zoomAt(scale*1.25);};$('#zoomOut').onclick=()=>{cancel();zoomAt(scale/1.25);};
+  $('#fitScene').onclick=()=>{cancel();fit();};
+  const workspace=$('.workspace');if(innerWidth<=1050)workspace.classList.add('hide-inspector');
+  function inspectorLabel(){const shown=!workspace.classList.contains('hide-inspector');$('#toggleInspector').textContent=shown?'Details ausblenden':'Details';$('#toggleInspector').setAttribute('aria-expanded',String(shown));}
+  $('#toggleInspector').onclick=()=>{workspace.classList.toggle('hide-inspector');inspectorLabel();};inspectorLabel();
+  new ResizeObserver(()=>workspace.style.setProperty('--viewbar-height',$('.board-bar').offsetHeight+'px')).observe($('.board-bar'));
+  matchMedia('(max-width:1050px)').addEventListener('change',e=>{workspace.classList.toggle('hide-inspector',e.matches);inspectorLabel();requestAnimationFrame(fit);});
+  function restore(d,keepMode){
+    cancel();closeDevMenu();
+    board.querySelectorAll('.module').forEach(e=>e.remove());
+    modules=d.modules.map(m=>defaultNom({...m,pressed:false}));
+    wires=d.wires.map(w=>({...w}));
+    if(keepMode)powered=liveMode();
+    else{powered=false;simMode='aufbau';}
+    lastImportedSig='';
+    states={};nextZ=2;modules.forEach(renderModule);
+    if(!modules.some(m=>m.id===selectedId))selectedId=modules.find(m=>m.type==='contactor')?.id||null;
+    update();
+    if(engineOk){clearTimeout(syncTimer);syncEngine(true);}
+    if(d.view&&Number.isFinite(d.view.scale)&&Number.isFinite(d.view.x)&&Number.isFinite(d.view.y)){scale=Math.max(.15,Math.min(2.5,d.view.scale));camera={x:d.view.x,y:d.view.y};applyView();viewReady=true;}
+    else fit();
+  }
+  function initial(){
+    const result=[{id:'G1',type:'psu',x:60,y:120,voltage:24}];
+    [268,740,1212].forEach((x,i)=>{const id='Q'+(i+1);result.push({id,type:'contactor',x,y:109,nomV:24,nomP:4},{id:id+'H',type:'auxiliary',parent:id,x:x+264,y:179});});
+    result.push({id:'S1',type:'start',x:334,y:526},{id:'S2',type:'stop',x:660,y:526},{id:'M1',type:'motor',x:1280,y:526,nomV:24,nomP:50});
+    result.push({id:'M2',type:'lineardrive',x:268,y:975,nomV:24,nomP:50,slide:.5});
+    return {modules:result,wires:[],powered:true};
+  }
+  $('#demo').onclick=()=>{remember();const d=initial();const pairs=[['G1.+24','S2.21','#bb4234'],['S2.22','S1.13'],['S1.14','Q1.A1'],['Q1.A2','G1.0V','#347caa'],['S1.13','Q1H.53'],['S1.14','Q1H.54'],['G1.+24','Q1.1','#bb4234'],['Q1.2','M1.+'],['M1.−','G1.0V','#347caa']];d.wires=pairs.map(([a,b,c])=>({a,b,color:c||'#d2ae27'}));restore(d);say('Selbsthaltung geladen. Betrieb einschalten, dann S1 starten, S2 unterbrechen.');};
+  $('#reset').onclick=()=>{remember();restore(initial());say('Grundaufbau geladen. Spannung aus — danach Betrieb.');};
+  $('#clearBoard').onclick=()=>{if(!modules.length&&!wires.length){say('Montagefläche ist schon leer.');return;}if(!confirm('Montagefläche leeren?\nAlle Geräte und Leitungen werden entfernt.'))return;remember();restore({modules:[],wires:[]});persist();say('Montagefläche geleert.');};
+  $('#clear').onclick=()=>{remember();cancel();wires=[];update();};
+  $('#undo').onclick=()=>{if(!history.length)return;restore(JSON.parse(history.pop()),true);$('#undo').disabled=!history.length;};
+  document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
+    remember();const type=b.dataset.add,prefix=defaultPrefix(type);
+    const m={id:nextId(prefix),type,x:Math.max(24,Math.min(BOARD_W-510,(viewport.clientWidth/2-camera.x)/scale-122)),y:Math.max(61,Math.min(BOARD_H-420,(viewport.clientHeight/2-camera.y)/scale-170))};
+    if(type==='psu')m.voltage=24;
+    if(type==='contactor'){m.nomV=24;m.nomP=4;}
+    if(type==='motor'||type==='lineardrive'){m.nomV=24;m.nomP=50;}
+    if(type==='lineardrive'){m.x=Math.max(24,Math.min(BOARD_W-1224,m.x));m.slide=.5;}
+    modules.push(m);renderModule(m);if(type==='contactor')createAux(m);selectModule(m.id);update();
+    say(m.id+(type==='contactor'?' mit gekoppelten Hilfskontakten':'')+' hinzugefügt.');
+  });
+  $('#addAux').onclick=()=>{const m=modules.find(m=>m.id===selectedId);const parent=m?.type==='contactor'?m:modules.find(x=>x.id===m?.parent);if(!parent||modules.some(x=>x.parent===parent.id))return;remember();const aux=createAux(parent);selectModule(aux.id);update();};
+  document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{color=b.dataset.color;document.querySelectorAll('[data-color]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));});
+  $('#zoom').onchange=()=>{if($('#zoom').value!=='custom'){const value=Number($('#zoom').value);cancel();zoomAt(value);}};new ResizeObserver(()=>{if(!viewReady)fit();else applyView();}).observe(viewport);
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeDevMenu();cancel();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();$('#undo').click();}});
+  board.addEventListener('click',e=>{if(e.target===board)cancel();});
+  $('#devCancel').onclick=closeDevMenu;
+  $('#devApply').onclick=applySettings;
+  $('#devMenu').addEventListener('keydown',e=>{if(e.key==='Enter'&&editTarget&&!$('#devApply').hidden){e.preventDefault();applySettings();}});
+  document.addEventListener('pointerdown',e=>{
+    const menu=$('#devMenu');
+    if(!menu||menu.hidden)return;
+    if(e.target.closest('#devMenu'))return;
+    closeDevMenu();
+  },true);
+  board.addEventListener('contextmenu',e=>{if(!e.target.closest('.module'))e.preventDefault();});
+  $('#save').onclick=()=>{const json=JSON.stringify(data()).replace(/</g,'\\u003c');const html=sourceHTML.replace(/(<script type="application\/json" id="saved-state">)[\s\S]*?(<\/script>)/,(_,a,b)=>a+json+b);const url=URL.createObjectURL(new Blob([html],{type:'text/html;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='schuetzwerkstatt.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);say('HTML mit deinem aktuellen Aufbau gespeichert.');};
+  let saved=null;try{saved=JSON.parse($('#saved-state').textContent);}catch{}
+  restore((saved&&Array.isArray(saved.modules))?saved:loadStored()||initial());
+  if(!skipStore){try{if(localStorage.getItem(VOLT_STORE)==='1')setShowVoltage(true);if(localStorage.getItem(CURRENT_STORE)==='1')setShowCurrent(true);}catch(e){}}
+  booting=false;
+  persist();
+  window.addEventListener('pagehide',persist);
+  $('#viewCompare').onclick=()=>setView('compare');
+  $('#viewStick').onclick=()=>setView('stick');
+  $('#modeBuild').onclick=()=>setWorkMode('aufbau');
+  $('#modeRun').onclick=()=>setWorkMode('betrieb');
+  $('#simPause').onclick=()=>setWorkMode(simMode==='paused'?'betrieb':'paused');
+  $('#simReset').onclick=resetSimulation;
+  $('#faultReset').onclick=resetSimulation;
+  $('#faultEdit').onclick=()=>{setWorkMode('aufbau');$('#modeBuild').focus({preventScroll:true});};
+  (function splitDrag(){
+    const appEl=$('#app'), handle=$('#split'), simPane=appEl.querySelector('.sim-pane');
+    let dragging=false,startX=0,startFrac=0;
+    const min=0.22,max=0.72;
+    function frac(){const w=appEl.getBoundingClientRect().width;const sim=simPane.getBoundingClientRect().width;return Math.min(max,Math.max(min,sim/w));}
+    function apply(value){appEl.style.gridTemplateColumns=`minmax(220px,${value}fr) 44px minmax(0,${1-value}fr)`;}
+    handle.addEventListener('pointerdown',e=>{if(document.documentElement.classList.contains('view-stick'))return;dragging=true;startX=e.clientX;startFrac=frac();handle.setPointerCapture(e.pointerId);});
+    handle.addEventListener('pointermove',e=>{if(!dragging)return;const w=appEl.getBoundingClientRect().width;apply(Math.min(max,Math.max(min,startFrac+(e.clientX-startX)/w)));});
+    handle.addEventListener('pointerup',()=>{dragging=false;});
+    handle.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')apply(frac()-0.02);if(e.key==='ArrowRight')apply(frac()+0.02);});
+  })();
+  (function loadEngine(){
+    const iframe=$('#circuitFrame');
+    iframeId=Date.now();
+    function attached(){
+      try{
+        const api=iframe.contentWindow&&iframe.contentWindow.CircuitJS1;
+        if(!api||!api.workbench)return false;
+        engine=api.workbench;
+        engineOk=true;
+        if(engine.setRealtime)engine.setRealtime(true);
+        else if(api.setMaxTimeStep)api.setMaxTimeStep(0.001);
+        api.onupdate=function(){if(engineOk)applyLive();};
+        setEngineTag('Verbunden · Aufbau');
+        lastImportedSig='';
+        syncEngine(true);
+        return true;
+      }catch(e){return false;}
+    }
+    function wait(n){if(attached())return;if(n>0)setTimeout(()=>wait(n-1),400);else {engineOk=false;setEngineTag('Verbindung verloren',true);evaluate();}}
+    iframe.onload=function(){
+      try{iframe.contentWindow.oncircuitjsloaded=attached;}catch(e){}
+      wait(60);
+    };
+    iframe.src='circuitjs.html?cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
+  })();
+})();
+</script>
+</body>
+</html>

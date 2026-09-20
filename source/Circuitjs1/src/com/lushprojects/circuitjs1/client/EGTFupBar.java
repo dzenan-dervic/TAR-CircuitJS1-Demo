@@ -159,12 +159,20 @@ class EGTFupBar extends FlowPanel {
     }
 
     static String svgTimer(String type) {
+	boolean ton = "TON".equals(type);
+	String wave = ton
+		? "<polyline points='5,10 7,10 7,5.5 18.5,5.5 18.5,10 20,10' fill='none' stroke='currentColor' stroke-width='1.3'/>"
+		  + "<polyline points='5,17.5 7,17.5 7,15 7,17.5 13,17.5 13,11.5 16.5,11.5 16.5,17.5 20,17.5' fill='none' stroke='currentColor' stroke-width='1.3'/>"
+		  + "<line x1='7' y1='10' x2='7' y2='12.5' stroke='currentColor' stroke-width='1.3'/>"
+		: "<polyline points='5,10 7.7,10 7.7,5.5 10.4,5.5 10.4,10 20,10' fill='none' stroke='currentColor' stroke-width='1.3'/>"
+		  + "<polyline points='5,17.5 7.7,17.5 7.7,11.5 18.1,11.5 18.1,17.5 20,17.5' fill='none' stroke='currentColor' stroke-width='1.3'/>"
+		  + "<line x1='10.4' y1='11.5' x2='10.4' y2='14.2' stroke='currentColor' stroke-width='1.3'/>"
+		  + "<line x1='10.4' y1='15.3' x2='10.4' y2='17.5' stroke='currentColor' stroke-width='1.3'/>";
 	return svgWrap(
 		"<rect x='3' y='3.5' width='18' height='17' fill='#fff' stroke='currentColor' stroke-width='1.5'/>"
 		+ "<line x1='1' y1='12' x2='3' y2='12' stroke='currentColor' stroke-width='1.4'/>"
 		+ "<line x1='21' y1='12' x2='23.5' y2='12' stroke='currentColor' stroke-width='1.4'/>"
-		+ "<text x='12' y='11' text-anchor='middle' font-size='6.4' font-family='sans-serif' font-weight='bold' fill='currentColor'>"
-		+ type + "</text><text x='12' y='18' text-anchor='middle' font-size='5.5' font-family='sans-serif' fill='currentColor'>T</text>");
+		+ wave);
     }
 
     static String svgFupI() {

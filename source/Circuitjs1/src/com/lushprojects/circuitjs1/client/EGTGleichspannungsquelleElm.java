@@ -1,16 +1,16 @@
 /*
-    TAR-Dervic EGT extension: Gleichspannungsquelle +/− (ZH), M505 / Q602
+    TAR-Dervic EGT extension: Gleichspannungsquelle +/Masse (ZH), M505 / Q602
     Upstream DCVoltageElm bleibt unverändert.
 */
 
 package com.lushprojects.circuitjs1.client;
 
 /**
- * EGT DC supply: ZH box with + (red) / − (black+outline). Posts on the right.
- * No Übersicht (Workbench: ue = ignore). − = 0 V vs ground.
+ * EGT DC supply: ZH box with + (red) / Masse (blue). Posts on the right.
+ * No Übersicht (Workbench: ue = ignore). Masse = 0 V vs ground.
  */
 class EGTGleichspannungsquelleElm extends ChipElm implements EGTDesignatable {
-    static final String[] PIN_LABELS = { "+", "−" };
+    static final String[] PIN_LABELS = { "+", "Masse" };
 
     double voltage = 24;
     String designation = "G1";
@@ -77,7 +77,7 @@ class EGTGleichspannungsquelleElm extends ChipElm implements EGTDesignatable {
 
 	for (int i = 0; i < 2; i++) {
 	    Pin p = pins[i];
-	    Color c = (i == 0) ? EGTStyle.COL_LIVE_PULSE : EGTStyle.COL_L2;
+	    Color c = (i == 0) ? EGTStyle.COL_LIVE_PULSE : EGTStyle.COL_N;
 	    EGTStyle.drawConductor(g, p.stub.x, p.stub.y, p.post.x, p.post.y,
 				   c, 3.5);
 	    p.curcount = updateDotCount(p.current, p.curcount);
@@ -104,15 +104,29 @@ class EGTGleichspannungsquelleElm extends ChipElm implements EGTDesignatable {
 	for (int i = 0; i < 2; i++) {
 	    Pin p = pins[i];
 	    int y = p.stub.y;
-	    g.setColor(whiteColor);
-	    g.setFont(fLabel);
-	    int tw = (int) g.context.measureText(PIN_LABELS[i]).getWidth();
-	    g.context.setTextBaseline("middle");
-	    g.drawString(PIN_LABELS[i], left + labelPad, y);
-	    g.context.setTextBaseline("alphabetic");
-
-	    int xStart = left + labelPad + tw + 4;
-	    Color c = (i == 0) ? EGTStyle.COL_LIVE_PULSE : EGTStyle.COL_L2;
+	    int xStart;
+	    Color c;
+	    if (i == 0) {
+		g.setColor(whiteColor);
+		g.setFont(fLabel);
+		int tw = (int) g.context.measureText(PIN_LABELS[i]).getWidth();
+		g.context.setTextBaseline("middle");
+		g.drawString(PIN_LABELS[i], left + labelPad, y);
+		g.context.setTextBaseline("alphabetic");
+		xStart = left + labelPad + tw + 4;
+		c = EGTStyle.COL_LIVE_PULSE;
+	    } else {
+		c = EGTStyle.COL_N;
+		int stem = 4;
+		int bar = 5;
+		int massX = left + labelPad + bar;
+		int barY = y + stem;
+		EGTStyle.drawConductor(g, massX, y - stem, massX, barY,
+				       whiteColor, 2);
+		EGTStyle.drawConductor(g, massX - bar, barY, massX + bar, barY,
+				       whiteColor, 2);
+		xStart = massX + bar + 5;
+	    }
 	    EGTStyle.drawConductor(g, xStart, y, p.stub.x, y, c, 3.5);
 	}
     }
@@ -144,7 +158,7 @@ class EGTGleichspannungsquelleElm extends ChipElm implements EGTDesignatable {
 	arr[0] = getChipName() + " (" + designation + ")";
 	arr[1] = "U = " + getUnitText(voltage, "V");
 	arr[2] = "+ = " + getVoltageText(volts[0]);
-	arr[3] = "− = " + getVoltageText(volts[1]);
+	arr[3] = "Masse = " + getVoltageText(volts[1]);
     }
 
     public EditInfo getChipEditInfo(int n) {

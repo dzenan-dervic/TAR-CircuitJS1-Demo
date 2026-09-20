@@ -1,4 +1,21 @@
 <cir f="257" ts="0.00002" ic="10.20027730826997" cb="50" pb="50" vr="5" mts="5e-11">
-  <x x="304 32 320 32" f="4" si="16" te="Freies Steckbrett - Mini-SPS"/>
-  <EGTMiniSps x="208 80 720 432" f="0" sx="16" sy="11" var="1" qm="0" re="1" des="A1"/>
+  <x x="-176 -112 176 -112" f="4" si="18" te="Freie FUP-Arbeitsfläche - Mini-SPS A1 intern verbunden"/>
+  <x x="-176 416 176 416" f="4" si="13" te="FUP-Bausteine in der freien Mitte platzieren und verdrahten"/>
+  <EGTMiniSps x="0 0 0 0" f="0" sx="16" sy="11" var="1" qm="0" re="1" des="A1" bg="1"/>
+  <EGTFupEingang x="-320 -32 -288 0" f="1" ch="1" sps="A1"/>
+  <EGTFupEingang x="-320 16 -288 48" f="1" ch="2" sps="A1"/>
+  <EGTFupEingang x="-320 64 -288 96" f="1" ch="3" sps="A1"/>
+  <EGTFupEingang x="-320 112 -288 144" f="1" ch="4" sps="A1"/>
+  <EGTFupEingang x="-320 160 -288 192" f="1" ch="5" sps="A1"/>
+  <EGTFupEingang x="-320 208 -288 240" f="1" ch="6" sps="A1"/>
+  <EGTFupEingang x="-320 256 -288 288" f="1" ch="7" sps="A1"/>
+  <EGTFupEingang x="-320 304 -288 336" f="1" ch="8" sps="A1"/>
+  <EGTFupAusgang x="288 -32 320 0" f="1" ch="1" sps="A1"/>
+  <EGTFupAusgang x="288 16 320 48" f="1" ch="2" sps="A1"/>
+  <EGTFupAusgang x="288 64 320 96" f="1" ch="3" sps="A1"/>
+  <EGTFupAusgang x="288 112 320 144" f="1" ch="4" sps="A1"/>
+  <EGTFupAusgang x="288 160 320 192" f="1" ch="5" sps="A1"/>
+  <EGTFupAusgang x="288 208 320 240" f="1" ch="6" sps="A1"/>
+  <EGTFupAusgang x="288 256 320 288" f="1" ch="7" sps="A1"/>
+  <EGTFupAusgang x="288 304 320 336" f="1" ch="8" sps="A1"/>
 </cir>

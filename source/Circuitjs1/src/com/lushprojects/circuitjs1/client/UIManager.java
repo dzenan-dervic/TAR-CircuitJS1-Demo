@@ -92,7 +92,7 @@ public class UIManager {
     LoadFile loadFileInput;
     Frame iFrame;
     Vector<CircuitElm> elmList;
-    /** URL ?editable=false cannot be unlocked by a circuit flag. */
+    /** URL ?editable=false: Lage bleibt gesperrt, Schaltungsflag darf nicht entsperren. */
     boolean forceNoEdit = false;
 
     // stack of enclosing subcircuits when viewing composite internals

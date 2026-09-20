@@ -85,16 +85,14 @@ abstract class EGTFupZeitElm extends ChipElm {
     }
 
     /**
-     * Die elektrischen Posts bleiben auf den bekannten äußeren Koordinaten.
-     * Der IEC-Kasten wird nach innen gezogen; so entsteht ein sichtbarer,
-     * längerer Anschlussstutzen ohne alte Verdrahtungen zu verschieben.
+     * IEC-Kasten nach innen, I/Q als Stutzen. Posts bleiben auf der
+     * ChipElm-Rasterzeile von Pin(1), sonst liegen 16-Raster-Leitungen
+     * 8 px neben dem Anschluss.
      */
     void setPoints() {
 	super.setPoints();
-	if (pins == null || rectPointsX == null)
+	if (pins == null || rectPointsX == null || rectPointsY == null)
 	    return;
-	// Kleinere Stutzen als bei I/Q: TON/TOF behalten genug Innenraum für
-	// Kennung und Zeitwert, die Anschlussstelle bleibt dennoch klar sichtbar.
 	int lead = Math.max(8, cspc);
 	int left = rectPointsX[0] + lead;
 	int right = rectPointsX[2] - lead;
@@ -110,6 +108,22 @@ abstract class EGTFupZeitElm extends ChipElm {
 	}
 	setBbox(Math.min(left, pins[0].post.x) - 4, rectPointsY[0] - 4,
 		Math.max(right, pins[1].post.x) + 4, rectPointsY[2] + 4);
+    }
+
+    boolean timingActive() {
+	if (pins == null || pins.length < 2)
+	    return false;
+	return isOnDelay()
+		? pins[0].value && !pins[1].value
+		: !pins[0].value && pins[1].value;
+    }
+
+    /** Wie Zeitrelais-Kontakt: Ablauf nur während der Verzögerung. */
+    String timerLabel() {
+	if (!timingActive())
+	    return null;
+	return CircuitElm.getUnitText(elapsed, "s") + " / "
+		+ CircuitElm.getUnitText(delay, "s");
     }
 
     void drag(int xx, int yy) {
@@ -191,49 +205,114 @@ abstract class EGTFupZeitElm extends ChipElm {
 	int x0 = Math.min(rectPointsX[0], rectPointsX[2]);
 	int y0 = Math.min(rectPointsY[0], rectPointsY[1]);
 	int x1 = Math.max(rectPointsX[0], rectPointsX[2]);
-        int y1 = Math.max(rectPointsY[0], rectPointsY[2]);
+	int y1 = Math.max(rectPointsY[0], rectPointsY[2]);
 	int bw = Math.max(1, x1 - x0);
 	int bh = Math.max(1, y1 - y0);
 
-	g.setColor(needsHighlight() ? selectColor : whiteColor);
-	drawThickPolygon(g, rectPointsX, rectPointsY, 4);
-	int fsz = Math.max(9, Math.min(15, Math.min(bw, bh) / 5));
 	for (int i = 0; i < pins.length; i++) {
 	    Pin p = pins[i];
 	    boolean hi = p.output ? p.value : volts[i] > getThreshold();
 	    g.setColor(hi ? COL_HI : COL_LO);
 	    drawThickLine(g, p.post, p.stub);
-	    g.setColor(needsHighlight() ? selectColor : whiteColor);
-	    g.setFont(new Font("normal", 0, fsz));
-	    int sw = (int) g.context.measureText(p.text).getWidth();
-	    int tx = p.side == flippedXSide(SIDE_W) ? x0 + 4 : x1 - 4 - sw;
-	    g.drawString(p.text, tx, p.post.y + (int) g.currentFontSize / 3);
 	}
 
-	String type = isOnDelay() ? "TON" : "TOF";
-	int titleSize = Math.max(10, Math.min(17, bh / 4));
-	g.setColor(needsHighlight() ? selectColor : whiteColor);
-	g.setFont(new Font("normal", 0, titleSize));
-	int tw = (int) g.context.measureText(type).getWidth();
-	g.drawString(type, (x0 + x1 - tw) / 2, y0 + titleSize + 2);
-	int infoSize = Math.max(8, Math.min(9, bh / 6));
+	Color ink = needsHighlight() ? selectColor : whiteColor;
+	g.setColor(ink);
+	drawThickPolygon(g, rectPointsX, rectPointsY, 4);
+
+	int infoSize = Math.max(8, Math.min(9, bh / 8));
+	int waveTop = y0 + 4;
+	int waveBot = y1 - infoSize - 4;
+	drawLogoWaveform(g, x0 + 4, waveTop, x1 - 4, waveBot, isOnDelay(), ink);
+
+	g.setColor(ink);
 	g.setFont(new Font("normal", 0, infoSize));
-	// Kurz halten, damit die Zeitangabe auch bei den sichtbaren Anschluss-
-	// stutzen innerhalb des IEC-Blocks lesbar bleibt (z. B. "T=0,5s").
 	long tenths = Math.round(delay * 10);
 	String delayText = "T=" + (tenths / 10) + "," + Math.abs(tenths % 10) + "s";
 	int dw = (int) g.context.measureText(delayText).getWidth();
-        // Untere Zeile: ausreichend Abstand zu den I/Q-Kennzeichen.
-        g.drawString(delayText, (x0 + x1 - dw) / 2, y1 - 3);
-	if ((isOnDelay() && pins[0].value && !pins[1].value)
-		|| (!isOnDelay() && !pins[0].value && pins[1].value)) {
-	    String progress = CircuitElm.getUnitText(elapsed, "s");
-	    int pw = (int) g.context.measureText(progress).getWidth();
-	    g.setColor(COL_HI);
-	    g.drawString(progress, (x0 + x1 - pw) / 2, y0 + titleSize + infoSize + 4);
+	g.drawString(delayText, (x0 + x1 - dw) / 2, y1 - 3);
+	String tl = timerLabel();
+	if (tl != null) {
+	    g.setFont(EGTStyle.pinLabelFont());
+	    int tw = (int) g.context.measureText(tl).getWidth();
+	    int ty = y1 + 14;
+	    g.drawString(tl, (x0 + x1 - tw) / 2, ty);
+	    adjustBbox(Math.min(x0, pins[0].post.x) - 4, y0 - 4,
+		       Math.max(x1, pins[1].post.x) + 4, ty + 6);
 	}
 	drawPosts(g);
 	g.restore();
+    }
+
+    /**
+     * LOGO-Zeitdiagramm ohne Füllung.
+     * TON: oben langer Trigger, unten Startstrich dann verzögerter Impuls.
+     * TOF: oben kurzer Trigger, unten langer Impuls, T-Strich an der Fallflanke.
+     */
+    void drawLogoWaveform(Graphics g, int left, int top, int right, int bot,
+			  boolean onDelay, Color ink) {
+	int w = right - left;
+	int h = bot - top;
+	if (w < 16 || h < 14)
+	    return;
+	int gap = Math.max(4, h / 7);
+	int topHi = top + 1;
+	int topLo = top + h * 42 / 100;
+	int botHi = topLo + gap;
+	int botLo = bot - 1;
+	int tick = Math.max(4, (botLo - botHi) / 3);
+	g.setColor(ink);
+	g.setLineWidth(2.2);
+	g.context.setLineCap("butt");
+	g.context.setLineJoin("miter");
+	if (onDelay) {
+	    int inRise = left + w * 16 / 100;
+	    int inFall = left + w * 84 / 100;
+	    int delayedRise = left + w * 58 / 100;
+	    int delayedFall = left + w * 74 / 100;
+	    int down = 8;
+	    drawPulse(g, left, topLo, inRise, topHi, inFall, right);
+	    g.drawLine(inRise, topLo + down, inRise, topLo + tick + down);
+	    g.context.beginPath();
+	    g.context.moveTo(left, botLo);
+	    g.context.lineTo(inRise, botLo);
+	    g.context.lineTo(inRise, botLo - tick);
+	    g.context.lineTo(inRise, botLo);
+	    g.context.lineTo(delayedRise, botLo);
+	    g.context.lineTo(delayedRise, botHi);
+	    g.context.lineTo(delayedFall, botHi);
+	    g.context.lineTo(delayedFall, botLo);
+	    g.context.lineTo(right, botLo);
+	    g.context.stroke();
+	} else {
+	    int trgRise = left + w * 18 / 100;
+	    int trgFall = left + w * 36 / 100;
+	    int qFall = left + w * 87 / 100;
+	    int amp = botLo - botHi;
+	    int hang = Math.max(4, amp * 45 / 100);
+	    int up = Math.max(4, amp * 37 / 100);
+	    if (hang + up + 2 > amp) {
+		hang = amp / 2 - 1;
+		up = amp / 2 - 1;
+	    }
+	    drawPulse(g, left, topLo, trgRise, topHi, trgFall, right);
+	    drawPulse(g, left, botLo, trgRise, botHi, qFall, right);
+	    g.drawLine(trgFall, botHi, trgFall, botHi + hang);
+	    g.drawLine(trgFall, botLo - up, trgFall, botLo);
+	}
+	g.setLineWidth(1.0);
+    }
+
+    void drawPulse(Graphics g, int x0, int yLo, int xRise, int yHi, int xFall,
+		   int x1) {
+	g.context.beginPath();
+	g.context.moveTo(x0, yLo);
+	g.context.lineTo(xRise, yLo);
+	g.context.lineTo(xRise, yHi);
+	g.context.lineTo(xFall, yHi);
+	g.context.lineTo(xFall, yLo);
+	g.context.lineTo(x1, yLo);
+	g.context.stroke();
     }
 
     String dump() {
@@ -274,12 +353,9 @@ abstract class EGTFupZeitElm extends ChipElm {
 	arr[1] = "I = " + (pins[0].value ? "1" : "0");
 	arr[2] = "Q = " + (pins[1].value ? "1" : "0");
 	arr[3] = "T = " + CircuitElm.getUnitText(delay, "s");
-	boolean waiting = isOnDelay()
-		? pins[0].value && !pins[1].value
-		: !pins[0].value && pins[1].value;
-	if (waiting)
-	    arr[4] = CircuitElm.getUnitText(elapsed, "s") + " / "
-		    + CircuitElm.getUnitText(delay, "s");
+	String tl = timerLabel();
+	if (tl != null)
+	    arr[4] = tl;
     }
 }
 

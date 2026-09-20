@@ -21,11 +21,27 @@ package com.lushprojects.circuitjs1.client;
 
 import java.util.Vector;
 import com.google.gwt.storage.client.Storage;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HorizontalPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.VerticalPanel;
+import com.lushprojects.circuitjs1.client.util.Locale;
 
 public class UndoManager {
 
+    private static final String LEGACY_RECOVERY_KEY = "circuitRecovery";
+    private static final String PREVIOUS_RECOVERY_KEY_PREFIX = "circuitRecovery:";
+    private static final String RECOVERY_KEY_PREFIX = "circuitRecovery:v2:";
+    private static final String RECOVERY_TIME_SUFFIX = ":savedAt";
+
     CirSim sim;
     Vector<UndoItem> undoStack, redoStack;
+    String recoveryKey;
+    boolean recoveryPromptHandled;
 
     UndoManager(CirSim sim) {
 	this.sim = sim;
@@ -81,9 +97,12 @@ public class UndoManager {
     }
 
     void doRecover() {
+	if (sim.recovery == null)
+	    return;
 	pushUndo();
 	sim.loader.readCircuit(sim.recovery);
 	sim.allowSave(false);
+	sim.unsavedChanges = true;
 	sim.menus.recoverItem.setEnabled(false);
     }
 
@@ -98,13 +117,155 @@ public class UndoManager {
     	if (stor == null)
     		return;
     	String s = sim.dumpCircuit();
-    	stor.setItem("circuitRecovery", s);
+	stor.setItem(getRecoveryKey(), s);
+	stor.setItem(getRecoveryKey() + RECOVERY_TIME_SUFFIX,
+		Long.toString(System.currentTimeMillis()));
+	sim.recovery = s;
+	if (sim.menus != null && sim.menus.recoverItem != null)
+	    sim.menus.recoverItem.setEnabled(true);
     }
 
     void readRecovery() {
 	Storage stor = Storage.getLocalStorageIfSupported();
 	if (stor == null)
 		return;
-	sim.recovery = stor.getItem("circuitRecovery");
+	clearObsoleteRecovery(stor);
+	sim.recovery = stor.getItem(getRecoveryKey());
+	if (sim.menus != null && sim.menus.recoverItem != null)
+	    sim.menus.recoverItem.setEnabled(sim.recovery != null);
     }
+
+    void clearObsoleteRecovery(Storage stor) {
+	stor.removeItem(LEGACY_RECOVERY_KEY);
+	String previousKey = PREVIOUS_RECOVERY_KEY_PREFIX + getRecoveryContext();
+	stor.removeItem(previousKey);
+	stor.removeItem(previousKey + RECOVERY_TIME_SUFFIX);
+    }
+
+    void scheduleRecoveryPrompt() {
+	if (sim.recovery == null) {
+	    recoveryPromptHandled = true;
+	    return;
+	}
+	new Timer() {
+	    int attempts;
+
+	    @Override
+	    public void run() {
+		if (recoveryPromptHandled)
+		    return;
+		if (sim.elmList.size() == 0 && attempts++ < 20) {
+		    schedule(250);
+		    return;
+		}
+		promptForRecovery();
+	    }
+	}.schedule(300);
+    }
+
+    void promptForRecovery() {
+	if (recoveryPromptHandled || sim.recovery == null)
+	    return;
+	recoveryPromptHandled = true;
+	if (sim.recovery.equals(sim.dumpCircuit())) {
+	    clearRecovery();
+	    return;
+	}
+
+	Storage stor = Storage.getLocalStorageIfSupported();
+	String savedAt = stor == null ? null
+		: formatRecoveryTimestamp(stor.getItem(getRecoveryKey() + RECOVERY_TIME_SUFFIX));
+	showRecoveryDialog(savedAt);
+    }
+
+    void showRecoveryDialog(String savedAt) {
+	final Dialog dialog = new Dialog();
+	dialog.setText(Locale.LS("Restore Auto-Save"));
+	dialog.setGlassEnabled(true);
+
+	VerticalPanel panel = new VerticalPanel();
+	panel.setSpacing(12);
+	panel.setWidth("340px");
+	panel.add(new Label(Locale.LS("An auto-saved draft was found.")));
+	if (savedAt != null)
+	    panel.add(new Label(Locale.LS("Saved:") + " " + savedAt));
+	panel.add(new Label(Locale.LS("Restore this draft?")));
+
+	HorizontalPanel buttons = new HorizontalPanel();
+	buttons.setSpacing(8);
+	Button discardButton = new Button(Locale.LS("Discard"));
+	Button restoreButton = new Button(Locale.LS("Restore"));
+	discardButton.setWidth("120px");
+	restoreButton.setWidth("120px");
+	buttons.add(discardButton);
+	buttons.add(restoreButton);
+	panel.add(buttons);
+	panel.setCellHorizontalAlignment(buttons, HasHorizontalAlignment.ALIGN_RIGHT);
+
+	discardButton.addClickHandler(new ClickHandler() {
+	    @Override
+	    public void onClick(ClickEvent event) {
+		dialog.hide();
+		clearRecovery();
+	    }
+	});
+	restoreButton.addClickHandler(new ClickHandler() {
+	    @Override
+	    public void onClick(ClickEvent event) {
+		dialog.hide();
+		doRecover();
+	    }
+	});
+
+	dialog.setWidget(panel);
+	dialog.center();
+	restoreButton.setFocus(true);
+    }
+
+    void clearRecovery() {
+	Storage stor = Storage.getLocalStorageIfSupported();
+	if (stor != null) {
+	    stor.removeItem(getRecoveryKey());
+	    stor.removeItem(getRecoveryKey() + RECOVERY_TIME_SUFFIX);
+	}
+	sim.recovery = null;
+	if (sim.menus != null && sim.menus.recoverItem != null)
+	    sim.menus.recoverItem.setEnabled(false);
+    }
+
+    String getRecoveryKey() {
+	if (recoveryKey == null)
+	    recoveryKey = RECOVERY_KEY_PREFIX + getRecoveryContext();
+	return recoveryKey;
+    }
+
+    private static native String getRecoveryContext() /*-{
+	var path = $wnd.location.pathname || "circuitjs";
+	var search = $wnd.location.search || "";
+	try {
+	    if ($wnd.parent && $wnd.parent !== $wnd) {
+		var parentPath = $wnd.parent.location.pathname || "";
+		if (parentPath.indexOf("egt-hmi-tor") >= 0)
+		    return "egt-hmi-tor";
+		if (parentPath.indexOf("egt-hmi-pumpe") >= 0)
+		    return "egt-hmi-pumpe";
+		if (parentPath.indexOf("egt-hmi-stecken") >= 0)
+		    return "egt-hmi-stecken";
+	    }
+	} catch (e) {
+	}
+	var match = search.match(/[?&]startCircuit=([^&]+)/);
+	if (match)
+	    return path + "|startCircuit=" + decodeURIComponent(match[1]);
+	return path + "|workspace";
+    }-*/;
+
+    private static native String formatRecoveryTimestamp(String timestamp) /*-{
+	if (!timestamp)
+	    return null;
+	var value = Number(timestamp);
+	if (!isFinite(value))
+	    return null;
+	return new Date(value).toLocaleString();
+    }-*/;
 }

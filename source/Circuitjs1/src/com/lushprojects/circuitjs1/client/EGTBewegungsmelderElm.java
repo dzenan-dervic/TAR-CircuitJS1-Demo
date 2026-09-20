@@ -286,17 +286,14 @@ class EGTBewegungsmelderElm extends ChipElm implements EGTDesignatable {
 	int sx = pins[N_SW].post.x;
 	int cy = (top + bottom) / 2;
 	int hr = Math.max(10, Math.min(right - left, bottom - top) * 22 / 100);
-	int dx = (lx + sx) / 2;
+	int dx = lx;
 	int dy = cy;
 
 	g.setColor(stroke);
 	g.setLineWidth(2.5);
 	g.context.setLineCap("butt");
-	g.drawLine(lx, pins[N_L].post.y, lx, dy);
-	g.drawLine(nx, dy, nx, pins[N_N].post.y);
-	g.drawLine(lx, dy, dx - hr, dy);
-	g.drawLine(dx + hr, dy, sx, dy);
-	g.drawLine(sx, dy, sx, pins[N_SW].post.y);
+	g.drawLine(lx, pins[N_L].post.y, lx, dy - hr);
+	g.drawLine(nx, dy + hr, nx, pins[N_N].post.y);
 
 	g.drawLine(dx, dy - hr, dx + hr, dy);
 	g.drawLine(dx + hr, dy, dx, dy + hr);
@@ -304,8 +301,12 @@ class EGTBewegungsmelderElm extends ChipElm implements EGTDesignatable {
 	g.drawLine(dx - hr, dy, dx, dy - hr);
 	g.drawLine(dx, dy - hr, dx, dy + hr);
 
-	int topY = dy - Math.max(8, hr / 3);
-	int botY = dy + Math.max(10, hr / 2);
+	int botY = dy;
+	int topY = pins[N_SW].post.y + Math.max(10, hr / 2);
+	if (topY >= botY - 8)
+	    topY = botY - Math.max(14, hr);
+	g.drawLine(dx + hr, dy, sx, dy);
+	g.drawLine(sx, pins[N_SW].post.y, sx, topY);
 	boolean closed = contactClosed();
 	EGTStyle.drawNoContact(g, sx, topY, botY, closed, stroke);
 
@@ -317,8 +318,8 @@ class EGTBewegungsmelderElm extends ChipElm implements EGTDesignatable {
 	EGTStyle.drawPinLabelBeside(g, this, pins[N_SW].post.x,
 				    pins[N_SW].post.y, "L'", whiteColor);
 	g.setFont(EGTStyle.pinLabelFont());
-	g.context.setTextAlign("center");
-	g.drawString("PIR", dx, dy - hr - 6);
+	g.context.setTextAlign("right");
+	g.drawString("PIR", dx - hr - 6, dy);
 	g.context.setTextAlign("left");
 	int[] ab = EGTStyle.drawHousingAnno(g, this, left, top, right, bottom,
 		whiteColor, designation, timerLabel(), null);
@@ -326,8 +327,8 @@ class EGTBewegungsmelderElm extends ChipElm implements EGTDesignatable {
 	g.setLineWidth(1.0);
 
 	supplyCurCount = updateDotCount(supplyCurrent, supplyCurCount);
-	drawDots(g, pins[N_L].post, new Point(lx, dy), supplyCurCount);
-	drawDots(g, new Point(nx, dy), pins[N_N].post, supplyCurCount);
+	drawDots(g, pins[N_L].post, new Point(lx, dy - hr), supplyCurCount);
+	drawDots(g, new Point(nx, dy + hr), pins[N_N].post, supplyCurCount);
 	if (closed) {
 	    contactCurCount = updateDotCount(contactCurrent, contactCurCount);
 	    drawDots(g, new Point(dx + hr, dy), pins[N_SW].post,

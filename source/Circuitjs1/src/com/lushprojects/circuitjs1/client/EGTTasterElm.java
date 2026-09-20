@@ -103,6 +103,12 @@ class EGTTasterElm extends SwitchElm implements EGTDesignatable {
 	realtimePressStartedMs = pressed() ? System.currentTimeMillis() : 0;
     }
 
+    void setWorkbenchPressed(boolean down) {
+	cancelRealtimeRelease();
+	position = down ? 0 : 1;
+	realtimePressStartedMs = down ? System.currentTimeMillis() : 0;
+    }
+
     void mouseUp() {
 	if (!momentary || app == null || app.ui == null || !app.ui.isEgtRealtimeMode()) {
 	    super.mouseUp();

@@ -234,6 +234,10 @@ class EGTAcLevelHold {
     }
 
     boolean update(double instantV, double dt) {
+	return update(instantV, dt, ON_V, OPEN_V);
+    }
+
+    boolean update(double instantV, double dt, double onV, double openV) {
 	if (dt <= 0) {
 	    reset();
 	    return false;
@@ -246,14 +250,14 @@ class EGTAcLevelHold {
 	    a = 1;
 	avgAbs = a * avgAbs + (1 - a) * abs;
 	double ht = dt < HOLD_DT_MAX ? dt : HOLD_DT_MAX;
-	if (abs < OPEN_V)
+	if (abs < openV)
 	    lowForS += ht;
 	else
 	    lowForS = 0;
 	if (!on) {
-	    if (abs >= ON_V || avgAbs >= ON_V) {
+	    if (abs >= onV || avgAbs >= onV) {
 		on = true;
-		avgAbs = avgAbs < ON_V ? ON_V : avgAbs;
+		avgAbs = avgAbs < onV ? onV : avgAbs;
 		lowForS = 0;
 	    }
 	} else if (lowForS >= OPEN_HOLD_S) {

@@ -25,6 +25,9 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     static final double R_ON = EGTSchuetzLink.R_ON;
     /** Interne Versorgung ~3 W bei 230 V. Ohne N folgt N an L1, |u|≈0. */
     static final double R_SUPPLY = 230 * 230 / 3.0;
+    static final double DEFAULT_INPUT_ON_V = 80;
+    static final double MIN_INPUT_ON_V = 1;
+    static final double MAX_INPUT_ON_V = 400;
 
     int variant = VARIANT_4Q;
     int qMask = 0;
@@ -39,6 +42,11 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     double qCurCount[];
     EGTAcLevelHold supplyHold = new EGTAcLevelHold();
     EGTAcLevelHold iHold[] = new EGTAcLevelHold[N_IN];
+    double inputOnVoltage = DEFAULT_INPUT_ON_V;
+    /** Unsichtbarer Logiktraeger fuer reine FUP-Arbeitsflaechen. */
+    boolean backgroundFupHost;
+    /** Von der HTML-HMI gesetztes Prozessabbild I1...I8 im Hintergrundmodus. */
+    int hmiInputMask;
     /** IEC 81346: A = allgemeines Betriebsmittel / SPS. Q1–Q8 bleiben Ausgänge. */
     String designation = "A1";
     String note = "";
@@ -89,8 +97,33 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	allocQArrays();
 	allocIHolds();
     
-	note = EGTNote.readOptional(st);
+	while (st.hasMoreTokens()) {
+	    String token = st.nextToken();
+	    if (token.startsWith("spsin=")) {
+		try {
+		    inputOnVoltage = validInputOnVoltage(
+			    Double.parseDouble(token.substring(6)));
+		} catch (NumberFormatException e) {
+		    inputOnVoltage = DEFAULT_INPUT_ON_V;
+		}
+	    } else if (token.equals("bg=1")) {
+		backgroundFupHost = true;
+	    } else if (note.length() == 0) {
+		note = EGTNote.clamp(CustomLogicModel.unescape(token));
+	    }
+	}
+	if (backgroundFupHost) {
+	    layoutPins();
+	    allocNodes();
+	    syncEndpoints();
+	}
 }
+
+    static double validInputOnVoltage(double value) {
+	return !Double.isNaN(value) && !Double.isInfinite(value)
+		&& value >= MIN_INPUT_ON_V && value <= MAX_INPUT_ON_V
+		? value : DEFAULT_INPUT_ON_V;
+    }
 
     void allocIHolds() {
 	for (int i = 0; i < N_IN; i++) {
@@ -102,6 +135,42 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     int getIMask() { return iMask; }
     int getLcdIMask() { return lcdIMask; }
     boolean isRun() { return run; }
+    boolean isBackgroundFupHost() { return backgroundFupHost; }
+
+    boolean setHmiInputVoltage(String name, double voltage) {
+	if (!backgroundFupHost || name == null || name.length() < 2
+		|| name.charAt(0) != 'I')
+	    return false;
+	int channel;
+	try {
+	    channel = Integer.parseInt(name.substring(1));
+	} catch (NumberFormatException e) {
+	    return false;
+	}
+	if (channel < 1 || channel > N_IN)
+	    return false;
+	int bit = 1 << (channel - 1);
+	if (Math.abs(voltage) >= inputOnVoltage)
+	    hmiInputMask |= bit;
+	else
+	    hmiInputMask &= ~bit;
+	return true;
+    }
+
+    double getHmiOutputVoltage(String name) {
+	if (!backgroundFupHost || name == null || name.length() < 2
+		|| name.charAt(0) != 'Q')
+	    return Double.NaN;
+	int channel;
+	try {
+	    channel = Integer.parseInt(name.substring(1));
+	} catch (NumberFormatException e) {
+	    return Double.NaN;
+	}
+	if (channel < 1 || channel > nOut())
+	    return Double.NaN;
+	return qClosed(channel - 1) ? 230 : 0;
+    }
 
     void applyForcedI(int bits) {
 	lcdIMask = iMask;
@@ -120,6 +189,13 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
      */
     void senseAcLevels(double dt) {
 	allocIHolds();
+	if (backgroundFupHost) {
+	    supplyOk = true;
+	    run = runEnable;
+	    iMask = run ? hmiInputMask : 0;
+	    lcdIMask = iMask;
+	    return;
+	}
 	if (volts == null || volts.length < N_TOP) {
 	    run = false;
 	    supplyOk = false;
@@ -138,7 +214,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	    return;
 	}
 	for (int i = 0; i < N_IN; i++) {
-	    if (iHold[i].update(volts[2 + i] - vN, dt))
+	    if (iHold[i].update(volts[2 + i] - vN, dt,
+		    inputOnVoltage, inputOnVoltage * 0.25))
 		iMask |= 1 << i;
 	}
 	lcdIMask = iMask;
@@ -160,7 +237,7 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     boolean isDigitalChip() { return false; }
     String getChipName() { return "EGT-Mini-SPS"; }
 
-    int getPostCount() { return N_TOP + 2 * nOut(); }
+    int getPostCount() { return backgroundFupHost ? 0 : N_TOP + 2 * nOut(); }
     int getVoltageSourceCount() { return 0; }
 
     int qPin1(int qi) { return N_TOP + qi * 2; }
@@ -185,6 +262,10 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 
     void setupPins() {
 	applyVariantSize();
+	if (backgroundFupHost) {
+	    pins = new Pin[0];
+	    return;
+	}
 	pins = new Pin[getPostCount()];
 	String[] topLabs = new String[N_TOP];
 	topLabs[0] = "L1";
@@ -302,6 +383,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     boolean toggleAt(int mx, int my) {
+	if (backgroundFupHost)
+	    return false;
 	int[] stop = new int[4];
 	int[] runBtn = new int[4];
 	keypadStopRunRects(stop, runBtn);
@@ -332,6 +415,12 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     void setPoints() {
+	if (backgroundFupHost) {
+	    x2 = x;
+	    y2 = y;
+	    boundingBox.setBounds(0, 0, 0, 0);
+	    return;
+	}
 	super.setPoints();
 	if (cspc < 1 || pins == null)
 	    return;
@@ -386,6 +475,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     boolean getConnection(int n1, int n2) {
+	if (backgroundFupHost)
+	    return false;
 	if ((n1 == 0 && n2 == 1) || (n1 == 1 && n2 == 0))
 	    return true;
 	int nOut = nOut();
@@ -405,6 +496,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
      * derselben Matrix liegt (sonst LabeledNode 0 V trotz qMask).
      */
     boolean getMatrixConnection(int n1, int n2) {
+	if (backgroundFupHost)
+	    return false;
 	if ((n1 == 0 && n2 == 1) || (n1 == 1 && n2 == 0))
 	    return true;
 	int nOut = nOut();
@@ -419,6 +512,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     boolean nonLinear() { return true; }
 
     void stamp() {
+	if (backgroundFupHost)
+	    return;
 	sim.stampResistor(nodes[0], nodes[1], R_SUPPLY);
 	int nOut = nOut();
 	for (int qi = 0; qi < nOut; qi++) {
@@ -436,6 +531,7 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	super.reset();
 	iMask = 0;
 	lcdIMask = 0;
+	hmiInputMask = 0;
 	supplyOk = false;
 	run = false;
 	supplyHold.reset();
@@ -445,6 +541,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     void doStep() {
+	if (backgroundFupHost)
+	    return;
 	int nOut = nOut();
 	for (int qi = 0; qi < nOut; qi++) {
 	    if (qClosed(qi))
@@ -457,6 +555,10 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     void calculateCurrent() {
+	if (backgroundFupHost) {
+	    current = 0;
+	    return;
+	}
 	int nOut = nOut();
 	double iSup = (volts[0] - volts[1]) / R_SUPPLY;
 	current = iSup;
@@ -496,6 +598,8 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     }
 
     void drawChip(Graphics g) {
+	if (backgroundFupHost)
+	    return;
 	g.save();
 	try {
 	    int[] b = new int[4];
@@ -842,7 +946,9 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
     String dump() {
 	return super.dump() + " " + sizeX + " " + sizeY + " " + variant + " "
 		+ qMask + " " + (runEnable ? 1 : 0) + " "
-		+ CustomLogicModel.escape(designation) + EGTNote.dumpSuffix(note);
+		+ CustomLogicModel.escape(designation) + EGTNote.dumpSuffix(note)
+		+ (inputOnVoltage == DEFAULT_INPUT_ON_V ? "" : " spsin=" + inputOnVoltage)
+		+ (backgroundFupHost ? " bg=1" : "");
     }
 
     void dumpXml(com.google.gwt.xml.client.Document doc,
@@ -854,6 +960,10 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	XMLSerializer.dumpAttr(elem, "qm", qMask);
 	XMLSerializer.dumpAttr(elem, "re", runEnable ? 1 : 0);
 	XMLSerializer.dumpAttr(elem, "des", designation);
+	if (inputOnVoltage != DEFAULT_INPUT_ON_V)
+	    XMLSerializer.dumpAttr(elem, "spsin", inputOnVoltage);
+	if (backgroundFupHost)
+	    XMLSerializer.dumpAttr(elem, "bg", 1);
 	EGTNote.dumpXml(elem, note);
     }
 
@@ -865,6 +975,9 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	qMask = xml.parseIntAttr("qm", 0);
 	runEnable = xml.parseIntAttr("re", 1) != 0;
 	designation = xml.parseStringAttr("des", designation);
+	inputOnVoltage = validInputOnVoltage(
+		xml.parseDoubleAttr("spsin", DEFAULT_INPUT_ON_V));
+	backgroundFupHost = xml.parseIntAttr("bg", 0) != 0;
 	note = EGTNote.undumpXml(xml, note);
 	setSize(2);
 	applyVariantSize();
@@ -883,6 +996,7 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 		+ (variant == VARIANT_8Q ? " 8I/8Q" : " 8I/4Q");
 	arr[1] = run ? "RUN" : (runEnable ? "STOP (L1/N)" : "STOP (Taste)");
 	arr[2] = "I=" + bitString(iMask, N_IN) + "  Q=" + bitString(qMask, nOut());
+	arr[3] = "I1-I8 EIN ab |U(I-N)| = " + inputOnVoltage + " V";
     }
 
     String bitString(int mask, int n) {
@@ -904,6 +1018,10 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	    return ei;
 	}
 	if (n == 2) {
+	    return new EditInfo("Eingang EIN ab (V), I1-I8", inputOnVoltage)
+		    .setPositive().disallowSliders();
+	}
+	if (n == 3) {
 	    EditInfo ei = new EditInfo("", 0, -1, -1);
 	    ei.button = new Button(Locale.LS("FUP-Operanden anlegen"));
 	    return ei;
@@ -929,7 +1047,28 @@ class EGTMiniSpsElm extends ChipElm implements EGTDesignatable {
 	    }
 	    return;
 	}
-	if (n == 2)
+	if (n == 2) {
+	    double value;
+	    try {
+		value = Double.parseDouble(ei.textf.getText().trim().replace(',', '.'));
+	    } catch (NumberFormatException e) {
+		ei.setError("1 bis 400 V eingeben");
+		return;
+	    }
+	    if (Double.isNaN(value) || Double.isInfinite(value)
+		    || value < MIN_INPUT_ON_V || value > MAX_INPUT_ON_V) {
+		ei.setError("1 bis 400 V eingeben");
+		return;
+	    }
+	    ei.value = value;
+	    if (inputOnVoltage != value) {
+		inputOnVoltage = value;
+		for (int i = 0; i < N_IN; i++)
+		    iHold[i].reset();
+	    }
+	    return;
+	}
+	if (n == 3)
 	    spawnFupOperands();
     }
 

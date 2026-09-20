@@ -6,6 +6,7 @@ Dieses Repository enthält die statische, im Browser ausführbare Demo der Circu
 - [CircuitJS1 auf Deutsch starten](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/?lang=de&IECGates=true)
 - [Torsteuerung mit HMI](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/egt-hmi-tor.html)
 - [Pumpensteuerung mit HMI](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/egt-hmi-pumpe.html)
+- [Schützwerkstatt (Steckoberfläche)](https://dzenan-dervic.github.io/TAR-CircuitJS1-Demo/egt-hmi-stecken.html)
 
 Die Website liegt in `docs/`. Der zugehörige bearbeitbare Java-/GWT-Quellcode, die Build-Konfiguration und die statischen Ausgangsdateien liegen in `source/Circuitjs1/`. Die kompilierten JavaScript-Dateien unter `docs/circuitjs1/` wurden aus diesem Quellcode erstellt. Die Demo-Dateien wurden für GitHub Pages um die lokale PWA-Registrierung gekürzt; die Schaltungssimulation selbst ist unverändert.
 

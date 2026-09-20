@@ -16,6 +16,8 @@
   <EGTHmiLast x="352 208 352 256" f="4" te="Q4" fkt="Hupe / Störung"/>
   <EGTHmiLast x="416 208 416 256" f="4" te="Q5" fkt="Ampel rot"/>
   <EGTHmiLast x="480 208 480 256" f="4" te="Q6" fkt="Ampel grün"/>
+  <EGTHmiLast x="544 208 544 256" f="4" te="Q7" fkt="P1 grün"/>
+  <EGTHmiLast x="608 208 608 256" f="4" te="Q8" fkt="P2 rot"/>
   <x x="-271 420 -118 423" f="4" si="14" te="FUP I/Q - frei verdrahten"/>
   <EGTFupEingang x="-240 480 -208 512" f="1" ch="1" sps="A1"/>
   <EGTFupEingang x="-240 528 -208 560" f="1" ch="2" sps="A1"/>
@@ -35,6 +37,8 @@
   <EGTFupAusgang x="688 848 720 880" f="1" ch="8" sps="A1"/>
   <egtleitung x="-160 -208 176 -208" f="65536" role="3" bez="N" col="#c0392b"/>
   <egtleitung x="176 -144 176 -208" f="0" role="3" bez="N" col="#c0392b"/>
+  <egtleitung x="576 208 576 224" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="512 224 512 208" f="0" role="0" bez="L1" col="#c0392b"/>
   <egtleitung x="448 208 448 224" f="0" role="0" bez="L1" col="#c0392b"/>
   <egtleitung x="384 224 384 208" f="0" role="0" bez="L1" col="#c0392b"/>
   <egtleitung x="320 224 320 208" f="0" role="0" bez="L1" col="#c0392b"/>
@@ -49,5 +53,7 @@
   <egtleitung x="256 224 320 224" f="0" role="0" bez="L1" col="#c0392b"/>
   <egtleitung x="320 224 384 224" f="0" role="0" bez="L1" col="#c0392b"/>
   <egtleitung x="384 224 448 224" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="448 224 512 224" f="0" role="0" bez="L1" col="#c0392b"/>
+  <egtleitung x="512 224 576 224" f="0" role="0" bez="L1" col="#c0392b"/>
   <b x="-272 -304 698 351" f="0"/>
 </cir>

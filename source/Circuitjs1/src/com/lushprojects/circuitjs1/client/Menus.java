@@ -264,7 +264,7 @@ public class Menus {
 		"EGT-Installationsleitung (Übersicht)", "EGTInstallationsleitungElm",
 		"EGT-Spannungsquelle (L/N/PE)", "EGTSpannungsquelleElm",
 		"EGT-Drehstromquelle (L1/L2/L3/N/PE)", "EGTDrehstromquelleElm",
-		"EGT-Gleichspannungsquelle (+/−)", "EGTGleichspannungsquelleElm",
+		"EGT-Gleichspannungsquelle (+/Masse)", "EGTGleichspannungsquelleElm",
 		"EGT-Abzweigdose", "EGTAbzweigdoseElm",
 		"EGT-Steckdose (Schuko)", "EGTSteckdoseElm",
 		"EGT-Ausschalter (rastend)", "EGTAusschalterElm",
@@ -323,6 +323,8 @@ public class Menus {
 		new MyCommand("egt", "hmi-tor")));
 	egtMenuBar.addItem(new MenuItem(Locale.LS("Pumpensteuerung"),
 		new MyCommand("egt", "hmi-pumpe")));
+	egtMenuBar.addItem(new MenuItem(Locale.LS("Schützwerkstatt"),
+		new MyCommand("egt", "hmi-stecken")));
 	menuBar.addItem(Locale.LS("EGT"), egtMenuBar);
 
 	mainMenuBar = new MenuBar(true);

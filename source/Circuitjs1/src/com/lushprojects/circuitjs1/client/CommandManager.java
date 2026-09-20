@@ -39,6 +39,8 @@ public class CommandManager {
 	    openHmiInTopWindow("egt-hmi-tor.html");
 	if (menu=="egt" && item=="hmi-pumpe")
 	    openHmiInTopWindow("egt-hmi-pumpe.html");
+	if (menu=="egt" && item=="hmi-stecken")
+	    openHmiInTopWindow("egt-hmi-stecken.html");
     	if (item=="save")
     	    electronSave(app.dumpCircuit());
     	if (item=="saveas")
