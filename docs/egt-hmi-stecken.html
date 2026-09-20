@@ -185,8 +185,8 @@ html.fault-latched #simReset{background:#a93820;color:#fff;border-color:#8a2a16;
 .simulation-controls .ui-btn{min-height:36px}
 .simulation-controls .sim-state{font-size:12px;min-width:7.5rem;font-weight:750;color:#3d4a44}
 html.mode-betrieb .simulation-controls .sim-state{color:#0f5c38}
-html.sim-paused .running .fan{animation-play-state:paused}
-html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
+html.sim-paused .running .fan,html.mode-aufbau .running .fan,html.fault-latched .running .fan{animation-play-state:paused}
+html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plunger,html.mode-aufbau .indicator:after,html.fault-latched .plunger,html.fault-latched .indicator:after{transition:none}
 @media(max-width:900px){.simulation-controls{margin-left:0}}
 
 /* Linear trainer: dimensions stay in board coordinates, including its sockets. */
@@ -519,7 +519,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
   function paintDrive(m,snap){
     const st=snap?.motors?.[m.id]||{}, previous=driveFrames.get(m);
     const dt=snap&&previous&&previous.revision===snap.revision?Math.max(0,Math.min(.1,snap.time-previous.time)):0;
-    const live=!!snap?.running&&!latchedFault&&!!st.running;
+    const live=plantLive()&&simMode==='betrieb'&&!!snap?.running&&!!st.running;
     const voltage=(snap?.terminals?.[m.id+'.+']||0)-(snap?.terminals?.[m.id+'.−']||0);
     const before=m.slide;
     if(live)m.slide=Math.max(0,Math.min(1,m.slide+dt*.1*Math.min(2,Math.abs(voltage)/(m.nomV||24))*(st.reverse?-1:1)));
@@ -1044,6 +1044,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
     if(line)line.classList.toggle('live',liveMode());
   }
   function wantEngineRun(){return engineOk&&!latchedFault&&simMode==='betrieb';}
+  function plantLive(){return powered&&!latchedFault&&simMode!=='aufbau';}
   function detectWorkshopShort(snap){
     if(!powered||!snap)return null;
     // A just-operated contact can still have the previous solver voltages.
@@ -1065,9 +1066,22 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
   }
   function haltOnFault(fault){
     if(!fault)return;
+    const first=!latchedFault;
     latchedFault=fault;
     recoveryTime=null;
-    if(engine&&engine.setRunning)engine.setRunning(false);
+    simMode='aufbau';
+    powered=false;
+    if(!engine)return;
+    try{
+      if(first&&engine.loadProject){
+        const raw=engine.loadProject(projectPayload());
+        const result=typeof raw==='string'?JSON.parse(raw):raw;
+        if(result&&result.ok)lastImportedSig=topologySig();
+      }
+      if(engine.setSupplyOn)engine.setSupplyOn(false);
+      if(engine.setRunning)engine.setRunning(false);
+    }catch(e){}
+    if(first)say('Kurzschluss: Spannung aus. Nichts läuft mehr. Auftrennen, dann Reset.');
   }
   function topologySig(){
     const parts=modules.map(m=>m.id+':'+m.type+':'+(m.parent||'')).slice().sort();
@@ -1152,18 +1166,18 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
       if(m.type==='contactor'||m.type==='auxiliary'){
         const id=m.type==='auxiliary'?m.parent:m.id;
         const coil=coils[id]||{};
-        const on=!!coil.energized;
+        const on=plantLive()&&!!coil.energized;
         m.el.classList.toggle('energized',on);
         if(label)label.textContent=on?'Angezogen':'Abgefallen';
       }
-      if(isLight(m)){const on=!!snap.lamps?.[m.id]?.on;m.el.classList.toggle('lit',on);if(label)label.textContent=on?'Leuchtet':'Aus';}
+      if(isLight(m)){const on=plantLive()&&!!snap.lamps?.[m.id]?.on;m.el.classList.toggle('lit',on);if(label)label.textContent=on?'Leuchtet':'Aus';}
       if(m.type==='selector')paintSelector(m);
       if(m.type==='lineardrive')paintDrive(m,snap);
       if(m.type==='motor'){
         const st=motors[m.id]||{};
-        m.el.classList.toggle('running',!!st.running);
-        m.el.classList.toggle('reverse',!!st.reverse);
-        if(label)label.textContent=st.reverse?'Linkslauf':st.running?'Rechtslauf':'Stillstand';
+        m.el.classList.toggle('running',plantLive()&&!!st.running);
+        m.el.classList.toggle('reverse',plantLive()&&!!st.reverse);
+        if(label)label.textContent=!plantLive()?'Stillstand':st.reverse?'Linkslauf':st.running?'Rechtslauf':'Stillstand';
       }
       if(m.type==='psu'){
         const snapPsu=(snap.supplies||{})[m.id]||{};
@@ -1175,7 +1189,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
       if(m.type==='start'||m.type==='stop'||m.type==='emergency'){
         m.el.classList.toggle('pressed',!!m.pressed);
         const lamp=(snap.lamps||{})[m.id]||{};
-        m.el.classList.toggle('lit',!!lamp.on);
+        m.el.classList.toggle('lit',plantLive()&&!!lamp.on);
         if(m.type==='emergency')paintTaster(m);else if(label)label.textContent=m.pressed?'NO zu · NC auf':'NO auf · NC zu';
       }
     });
@@ -1262,9 +1276,9 @@ html.sim-paused .plunger,html.sim-paused .indicator:after{transition:none}
     const where=(latchedFault.componentIds||[]).filter(Boolean);
     let title=short?'Kurzschluss':'Simulation angehalten';
     let explanation='CircuitJS kann die Schaltung nicht weiter berechnen. Prüfe die Verbindungen und die eingestellten Bauteilwerte.';
-    let next='Zuerst den Aufbau ändern (Kurzschluss auftrennen). Danach Reset — sonst bleibt die Simulation stehen.';
+    let next='Kurzschluss auftrennen. Danach Reset. Erst dann wieder Betrieb — sonst bleibt die Anlage aus.';
     if(short){
-      explanation=(where.length?'Kurzschluss an '+where.join(', ')+'. ':'')+'+24 V und 0 V sind ohne Verbraucher verbunden (keine Spule, Lampe oder Motor dazwischen). Das ist ein Kurzschluss. Die Simulation ist angehalten.';
+      explanation=(where.length?'Kurzschluss an '+where.join(', ')+'. ':'')+'Das ist ein Kurzschluss. +24 V und 0 V sind ohne Verbraucher verbunden (keine Spule, Lampe oder Motor dazwischen). Die Anlage ist in den Aufbau gegangen: Spannung aus, Motor und Verbraucher stehen.';
     }else if(/singul|singular/i.test(message))explanation='Die Schaltung ist so nicht berechenbar. Oft steckt ein Kurzschluss oder zwei Quellen gegeneinander dahinter.';
     else if(/converg|konverg/i.test(message))explanation='Die Berechnung findet keinen stabilen Zustand. Prüfe die Verdrahtung und die Bauteilwerte.';
     else if(/wire loop|drahtschleife|leitungsschleife/i.test(message))explanation='CircuitJS meldet eine geschlossene Schleife aus idealen Leitungen. Prüfe doppelte und ringförmige Verbindungen.';
