@@ -304,10 +304,27 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 .selector-contact .closed{display:none}.selector-contact.active .closed{display:block}.selector-contact.active .open{display:none}
 .selector .state-label{font-size:10px;flex-direction:column;align-items:flex-start;gap:3px}
 </style>
+<style>
+.module.terminal,.module.bus{width:280px}
+.module.terminal .face,.module.bus .face{height:auto;min-height:0;padding:8px 8px 12px;background:#d7d2c4;color:#243028;box-shadow:2px 3px 5px #2b372d33}
+.module.terminal .terminal-label,.module.bus .terminal-label{color:#243028}
+.terminal-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px}
+.clamp{display:flex;flex-direction:column;align-items:center;background:#ece7da;border:1px solid #8d887c;padding:3px 0 4px}
+.clamp-bridge{width:2px;height:8px;background:#6d675c}
+.clamp .terminal-cell:last-child .terminal-label{display:none}
+.rail-face{display:flex;flex-direction:column;gap:6px}
+.rail-bar{display:grid;grid-template-columns:46px 1fr;align-items:center;gap:4px;padding:4px;background:#f4f1ea;border-radius:3px}
+.rail-bar.plus{box-shadow:inset 4px 0 0 #bb4234}
+.rail-bar.zero{box-shadow:inset 4px 0 0 #347caa}
+.rail-bar.pe{box-shadow:inset 4px 0 0 #1f7a3a}
+.rail-name{font:700 11px/1.1 "Segoe UI",Arial,sans-serif;text-align:center}
+.rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
+.rail-screws{display:flex;justify-content:space-between;gap:2px}
+</style>
 </head>
 <body>
-<header><div class="identity"><div class="mark" aria-hidden="true"></div><div><h1>Schützwerkstatt</h1><div class="sub">Aufbau ohne Spannung · Betrieb schaltet 24 V</div></div></div><div class="actions"><span class="engine-tag" id="engineTag">Lädt CircuitJS…</span><button class="ui-btn view-btn" id="viewCompare" aria-pressed="true">Vergleichen</button><button class="ui-btn view-btn" id="viewStick" aria-pressed="false">Stecken</button><button class="ui-btn" id="undo" disabled>Rückgängig</button><button class="ui-btn" id="clearBoard">Fläche leeren</button><button class="ui-btn primary" id="demo">Selbsthaltung laden</button></div></header>
-<div class="toolbar"><div class="tool-group"><span class="tool-label">Bauteil hinzufügen</span><button class="add" data-add="contactor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#505956"/><rect x="3" y="3" width="13" height="6" fill="#008f8e"/><rect x="17" y="4" width="8" height="4" fill="#d5d8ce"/><circle cx="7" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="7" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="22" r="2.4" fill="#d7d9c4"/></svg></i>Leistungsschütz</button><button class="add" data-add="psu"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e8eadc"/><rect x="4" y="6" width="20" height="11" rx="1" fill="#2f3b32"/><rect x="6" y="9" width="11" height="5" fill="#9dce8a"/><circle cx="8.5" cy="22" r="2.3" fill="#c9cbb8"/><circle cx="19.5" cy="22" r="2.3" fill="#c9cbb8"/></svg></i>Netzteil</button><button class="add" data-add="start"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#d5d9c8"/><circle cx="14" cy="12" r="7.2" fill="#2f9a56" stroke="#7f8c74" stroke-width="2"/><circle cx="14" cy="12" r="3" fill="#58c07f"/><circle cx="8" cy="23" r="2" fill="#4a5544"/><circle cx="20" cy="23" r="2" fill="#4a5544"/></svg></i>Taster</button><button class="add" data-add="selector"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e4e8ec"/><circle cx="14" cy="13" r="8" fill="#6a7680" stroke="#3d4a52" stroke-width="1.5"/><path d="M14 13 L20 8" stroke="#f4f6f8" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="22" width="6" height="3" rx="1" fill="#c13c42"/><rect x="18" y="22" width="6" height="3" rx="1" fill="#238cc9"/></svg></i>Drehschalter</button><button class="add" data-add="emergency"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#f0c31a"/><circle cx="14" cy="13" r="8" fill="#d92325"/><circle cx="14" cy="13" r="4.4" fill="#ef4a42"/><rect x="6" y="22" width="16" height="3" rx="1" fill="#2a3236"/></svg></i>Not-Aus</button><button class="add" data-add="motor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#5d6866"/><circle cx="14" cy="12" r="8" fill="#3a4a43" stroke="#8a9487" stroke-width="2"/><path d="M14 12 L14 5.8 M14 12 L19.4 15.2 M14 12 L8.6 15.2" stroke="#c5cbb8" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="12" r="2.2" fill="#d5d8c4"/><circle cx="8" cy="23" r="2.2" fill="#d7d9c4"/><circle cx="20" cy="23" r="2.2" fill="#d7d9c4"/></svg></i>Motor</button><button class="add" data-add="lineardrive"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#182633"/><rect x="3" y="8" width="22" height="4" rx="1" fill="#9aa6ae"/><rect x="11" y="5" width="6" height="10" rx="1" fill="#4a79a0"/><rect x="4" y="18" width="5" height="6" rx="1" fill="#c13c42"/><rect x="12" y="18" width="5" height="6" rx="1" fill="#2e9b76"/><rect x="20" y="18" width="4" height="6" rx="1" fill="#e1c837"/></svg></i>Linearantrieb</button><button class="add" data-add="lamp"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#f7fafc" stroke="#5a6b78" stroke-width="2"/><path d="M9 7.2 L19 17 M19 7.2 L9 17" stroke="#7a8b96" stroke-width="1.8"/><circle cx="7" cy="23" r="2" fill="#263844"/><circle cx="14" cy="23" r="2" fill="#263844"/><circle cx="21" cy="23" r="2" fill="#263844"/></svg></i>Lampe</button><button class="add" data-add="pilot"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#37ce70" stroke="#334553" stroke-width="2"/><circle cx="11.2" cy="9.2" r="2.3" fill="#fff" fill-opacity=".55"/><circle cx="8" cy="23" r="2" fill="#263844"/><circle cx="20" cy="23" r="2" fill="#263844"/></svg></i>Meldeleuchte</button></div><div class="tool-group" aria-label="Leitungsfarbe"><span class="tool-label">Leitung</span><button class="color" style="--color:#d2ae27" data-color="#d2ae27" aria-label="Gelbe Leitung" aria-pressed="true"></button><button class="color" style="--color:#bb4234" data-color="#bb4234" aria-label="Rote Leitung" aria-pressed="false"></button><button class="color" style="--color:#347caa" data-color="#347caa" aria-label="Blaue Leitung" aria-pressed="false"></button><button class="color" style="--color:#384540" data-color="#384540" aria-label="Schwarze Leitung" aria-pressed="false"></button></div><div class="tool-group work-mode" role="radiogroup" aria-label="Betriebsart"><button type="button" id="modeRun" aria-pressed="false" title="Spannung ein. Simulation läuft.">Betrieb</button><button type="button" id="modeBuild" aria-pressed="true" title="Spannung aus. Verdrahten und umbenennen.">Aufbau</button></div><div class="tool-group simulation-controls" role="group" aria-label="Simulation"><span class="sim-state" id="simState" role="status">Aufbau</span><button class="ui-btn" id="simPause" disabled>Einfrieren</button><button class="ui-btn" id="simReset" disabled>Reset</button></div></div>
+<header><div class="identity"><div class="mark" aria-hidden="true"></div><div><h1>Schützwerkstatt</h1><div class="sub">Aufbau ohne Spannung · Betrieb schaltet 24 V</div></div></div><div class="actions"><span class="engine-tag" id="engineTag">Lädt CircuitJS…</span><button class="ui-btn view-btn" id="viewCompare" aria-pressed="true">Vergleichen</button><button class="ui-btn view-btn" id="viewStick" aria-pressed="false">Stecken</button><button class="ui-btn" id="undo" disabled>Rückgängig</button><button class="ui-btn" id="saveProject">Projekt speichern</button><button class="ui-btn" id="openProject">Projekt öffnen</button><input id="projectFile" type="file" accept="application/json,.json" hidden><button class="ui-btn" id="clearBoard">Fläche leeren</button><button class="ui-btn primary" id="demo">Selbsthaltung laden</button></div></header>
+<div class="toolbar"><div class="tool-group"><span class="tool-label">Bauteil hinzufügen</span><button class="add" data-add="contactor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#505956"/><rect x="3" y="3" width="13" height="6" fill="#008f8e"/><rect x="17" y="4" width="8" height="4" fill="#d5d8ce"/><circle cx="7" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="14" r="2.4" fill="#d7d9c4"/><circle cx="7" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="14" cy="22" r="2.4" fill="#d7d9c4"/><circle cx="21" cy="22" r="2.4" fill="#d7d9c4"/></svg></i>Leistungsschütz</button><button class="add" data-add="psu"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e8eadc"/><rect x="4" y="6" width="20" height="11" rx="1" fill="#2f3b32"/><rect x="6" y="9" width="11" height="5" fill="#9dce8a"/><circle cx="8.5" cy="22" r="2.3" fill="#c9cbb8"/><circle cx="19.5" cy="22" r="2.3" fill="#c9cbb8"/></svg></i>Netzteil</button><button class="add" data-add="start"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#d5d9c8"/><circle cx="14" cy="12" r="7.2" fill="#2f9a56" stroke="#7f8c74" stroke-width="2"/><circle cx="14" cy="12" r="3" fill="#58c07f"/><circle cx="8" cy="23" r="2" fill="#4a5544"/><circle cx="20" cy="23" r="2" fill="#4a5544"/></svg></i>Taster</button><button class="add" data-add="selector"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#e4e8ec"/><circle cx="14" cy="13" r="8" fill="#6a7680" stroke="#3d4a52" stroke-width="1.5"/><path d="M14 13 L20 8" stroke="#f4f6f8" stroke-width="2.2" stroke-linecap="round"/><rect x="4" y="22" width="6" height="3" rx="1" fill="#c13c42"/><rect x="18" y="22" width="6" height="3" rx="1" fill="#238cc9"/></svg></i>Drehschalter</button><button class="add" data-add="emergency"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#f0c31a"/><circle cx="14" cy="13" r="8" fill="#d92325"/><circle cx="14" cy="13" r="4.4" fill="#ef4a42"/><rect x="6" y="22" width="16" height="3" rx="1" fill="#2a3236"/></svg></i>Not-Aus</button><button class="add" data-add="motor"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#5d6866"/><circle cx="14" cy="12" r="8" fill="#3a4a43" stroke="#8a9487" stroke-width="2"/><path d="M14 12 L14 5.8 M14 12 L19.4 15.2 M14 12 L8.6 15.2" stroke="#c5cbb8" stroke-width="2" stroke-linecap="round"/><circle cx="14" cy="12" r="2.2" fill="#d5d8c4"/><circle cx="8" cy="23" r="2.2" fill="#d7d9c4"/><circle cx="20" cy="23" r="2.2" fill="#d7d9c4"/></svg></i>Motor</button><button class="add" data-add="lineardrive"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#182633"/><rect x="3" y="8" width="22" height="4" rx="1" fill="#9aa6ae"/><rect x="11" y="5" width="6" height="10" rx="1" fill="#4a79a0"/><rect x="4" y="18" width="5" height="6" rx="1" fill="#c13c42"/><rect x="12" y="18" width="5" height="6" rx="1" fill="#2e9b76"/><rect x="20" y="18" width="4" height="6" rx="1" fill="#e1c837"/></svg></i>Linearantrieb</button><button class="add" data-add="lamp"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#f7fafc" stroke="#5a6b78" stroke-width="2"/><path d="M9 7.2 L19 17 M19 7.2 L9 17" stroke="#7a8b96" stroke-width="1.8"/><circle cx="7" cy="23" r="2" fill="#263844"/><circle cx="14" cy="23" r="2" fill="#263844"/><circle cx="21" cy="23" r="2" fill="#263844"/></svg></i>Lampe</button><button class="add" data-add="pilot"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#eef2f5"/><circle cx="14" cy="12" r="8" fill="#37ce70" stroke="#334553" stroke-width="2"/><circle cx="11.2" cy="9.2" r="2.3" fill="#fff" fill-opacity=".55"/><circle cx="8" cy="23" r="2" fill="#263844"/><circle cx="20" cy="23" r="2" fill="#263844"/></svg></i>Meldeleuchte</button><button class="add" data-add="terminal"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#d7d2c4"/><rect x="3" y="6" width="4" height="16" fill="#ece7da" stroke="#6d675c"/><rect x="9" y="6" width="4" height="16" fill="#ece7da" stroke="#6d675c"/><rect x="15" y="6" width="4" height="16" fill="#ece7da" stroke="#6d675c"/><rect x="21" y="6" width="4" height="16" fill="#ece7da" stroke="#6d675c"/><circle cx="5" cy="9" r="1.1" fill="#243028"/><circle cx="11" cy="9" r="1.1" fill="#243028"/><circle cx="17" cy="9" r="1.1" fill="#243028"/><circle cx="23" cy="9" r="1.1" fill="#243028"/></svg></i>Reihenklemme</button><button class="add" data-add="rail"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28"><rect width="28" height="28" rx="3" fill="#f4f1ea"/><rect x="3" y="5" width="22" height="4" fill="#bb4234"/><rect x="3" y="12" width="22" height="4" fill="#347caa"/><rect x="3" y="19" width="22" height="4" fill="#1f7a3a"/><circle cx="8" cy="7" r="1" fill="#f4f1ea"/><circle cx="14" cy="7" r="1" fill="#f4f1ea"/><circle cx="20" cy="7" r="1" fill="#f4f1ea"/><circle cx="8" cy="14" r="1" fill="#f4f1ea"/><circle cx="14" cy="14" r="1" fill="#f4f1ea"/><circle cx="20" cy="14" r="1" fill="#f4f1ea"/></svg></i>Potenzialschiene</button></div><div class="tool-group" aria-label="Leitungsfarbe"><span class="tool-label">Leitung</span><button class="color" style="--color:#d2ae27" data-color="#d2ae27" aria-label="Gelbe Leitung" aria-pressed="true"></button><button class="color" style="--color:#bb4234" data-color="#bb4234" aria-label="Rote Leitung" aria-pressed="false"></button><button class="color" style="--color:#347caa" data-color="#347caa" aria-label="Blaue Leitung" aria-pressed="false"></button><button class="color" style="--color:#384540" data-color="#384540" aria-label="Schwarze Leitung" aria-pressed="false"></button></div><div class="tool-group work-mode" role="radiogroup" aria-label="Betriebsart"><button type="button" id="modeRun" aria-pressed="false" title="Spannung ein. Simulation läuft.">Betrieb</button><button type="button" id="modeBuild" aria-pressed="true" title="Spannung aus. Verdrahten und umbenennen.">Aufbau</button></div><div class="tool-group simulation-controls" role="group" aria-label="Simulation"><span class="sim-state" id="simState" role="status">Aufbau</span><button class="ui-btn" id="simPause" disabled>Einfrieren</button><button class="ui-btn" id="simReset" disabled>Reset</button></div></div>
 <div class="app" id="app">
 <div class="sim-pane"><iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe></div>
 <div class="split" id="split" role="separator" aria-orientation="vertical" tabindex="0"></div>
@@ -323,7 +340,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 <button class="text-btn" id="reset">Grundaufbau laden</button>
 <p class="notice">Elektrische Zustände kommen aus CircuitJS. Die Vorschau-Logik bleibt aus, sobald die Engine verbunden ist.</p>
 </aside>
-<dialog class="help-dialog" id="helpDialog" aria-labelledby="helpTitle"><div class="inspector-head"><h2 id="helpTitle">So funktioniert’s</h2><button type="button" class="ui-btn" id="closeHelp">Schließen</button></div><p>Die Montagefläche bietet 6.000 × 3.600 Einheiten Platz. Freie Fläche ziehen oder mit gedrückter Leertaste ziehen, um die Ansicht zu bewegen. Mit dem Mausrad am Zeiger zoomen. „Alle Bauteile“ bringt deinen Aufbau zurück ins Bild.</p><p>Jeder Leistungsschütz hat einen separat verschiebbaren Hilfskontaktblock. Beide tragen dieselbe K-Nummer.</p><p>Am Gehäuse oder am Bauteilnamen ziehen, um ein Bauteil zu verschieben. Mit fokussiertem Bauteilnamen geht das auch über die Pfeiltasten.</p><p>Eine Schraubklemme mit einer anderen verbinden: ziehen oder beide anklicken. Leitung anklicken, um ihre Anschlüsse und Farbe rechts zu bearbeiten. Löschen mit Entf oder „Leitung löschen“. „Spannung“ zeigt eine rote Umrandung an Adern mit Potenzial. Rote Leitungen bekommen zusätzlich eine helle Kontrastlage. „Strom“ zeigt laufende Würfel in Stromrichtung, sobald CircuitJS einen Strom liefert.</p><p>Blauer Ring: ausgewählte und direkt verbundene Klemmen. Grüner Ring: mögliches Leitungsziel. Esc beendet die Auswahl.</p><p>Zuerst Aufbau: Spannung aus, verdrahten und umbenennen. Dann Betrieb: Spannung ein, Taster wirken. Einfrieren hält die Zeit, Spannung bleibt. Änderungen an der Verdrahtung im Betrieb setzen die Rast zurück. Bei Kurzschluss zuerst den Aufbau ändern, danach Reset.</p><p>„Selbsthaltung laden“ verdrahtet das Beispiel. Danach Betrieb einschalten, S1 über 13–14 starten, S2 über 21–22 unterbrechen. Jeder Taster hat beide Kontakte.</p><p>Ein Klick auf ein Gerät zeigt seine Einstellungen rechts. Dort änderst du die Kennzeichnung (Schütz Q oder K, Taster S, Meldeleuchte P, Lampe E) und beim Netzteil die DC-Spannung. Die Klemmen bleiben +24 / 0 V, der Solver nimmt den neuen Wert.</p><p>Jeder Taster hat Schließer 13–14 und Öffner 21–22 plus Meldeleuchte X1/X2. Ein Druck betätigt beide Kontakte gleichzeitig, wie am Tableau.</p></dialog></div>
+<dialog class="help-dialog" id="helpDialog" aria-labelledby="helpTitle"><div class="inspector-head"><h2 id="helpTitle">So funktioniert’s</h2><button type="button" class="ui-btn" id="closeHelp">Schließen</button></div><p>Die Montagefläche bietet 6.000 × 3.600 Einheiten Platz. Freie Fläche ziehen oder mit gedrückter Leertaste ziehen, um die Ansicht zu bewegen. Mit dem Mausrad am Zeiger zoomen. „Alle Bauteile“ bringt deinen Aufbau zurück ins Bild.</p><p>Jeder Leistungsschütz hat einen separat verschiebbaren Hilfskontaktblock. Beide tragen dieselbe K-Nummer.</p><p>Am Gehäuse oder am Bauteilnamen ziehen, um ein Bauteil zu verschieben. Mit fokussiertem Bauteilnamen geht das auch über die Pfeiltasten.</p><p>Eine Schraubklemme mit einer anderen verbinden: ziehen oder beide anklicken. Leitung anklicken, um ihre Anschlüsse und Farbe rechts zu bearbeiten. Löschen mit Entf oder „Leitung löschen“. „Spannung“ zeigt eine rote Umrandung an Adern mit Potenzial. Rote Leitungen bekommen zusätzlich eine helle Kontrastlage. „Strom“ zeigt laufende Würfel in Stromrichtung, sobald CircuitJS einen Strom liefert.</p><p>Blauer Ring: ausgewählte und direkt verbundene Klemmen. Grüner Ring: mögliches Leitungsziel. Esc beendet die Auswahl.</p><p>Zuerst Aufbau: Spannung aus, verdrahten und umbenennen. Dann Betrieb: Spannung ein, Taster wirken. Einfrieren hält die Zeit, Spannung bleibt. Eine geänderte Ader im Betrieb oder beim Einfrieren baut die Simulation neu auf: angezogene Schütze fallen ab. Bei Kurzschluss zuerst den Aufbau ändern, danach Reset.</p><p>„Selbsthaltung laden“ verdrahtet das Beispiel. Danach Betrieb einschalten, S1 über 13–14 starten, S2 über 21–22 unterbrechen. Jeder Taster hat beide Kontakte.</p><p>Ein Klick auf ein Gerät zeigt seine Einstellungen rechts. Dort änderst du die Kennzeichnung (Schütz Q oder K, Taster S, Meldeleuchte P, Lampe E, Klemme X) und beim Netzteil die DC-Spannung. Die Klemmen bleiben +24 / 0 V, der Solver nimmt den neuen Wert.</p><p>Die Reihenklemme verbindet je die obere mit der unteren Schraube. Die sechs Klemmen sind untereinander offen. Die Potenzialschiene hat drei getrennte Leisten +24, 0 V und PE. Schrauben einer Leiste sind intern verbunden. PE liegt nicht auf 0 V.</p><p>Jeder Taster hat Schließer 13–14 und Öffner 21–22 plus Meldeleuchte X1/X2. Ein Druck betätigt beide Kontakte gleichzeitig, wie am Tableau.</p></dialog></div>
 </div>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -345,7 +362,8 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   const NS = 'http://www.w3.org/2000/svg';
   const BOARD_W=6000, BOARD_H=3600;
   const contacts={contactor:[['1','2','NO'],['3','4','NO'],['5','6','NO'],['13','14','NO']],auxiliary:[['53','54','NO'],['61','62','NC'],['71','72','NC'],['83','84','NO']]};
-  const types = {contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B'};
+  const TERMINAL_POLES=6, RAIL_SCREWS=5;
+  const types = {contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B',terminal:'REIHENKLEMME',rail:'POTENZIALSCHIENE'};
   let modules=[], wires=[], history=[], pending=null, gesture=null, scale=1, color='#d2ae27', powered=false, toastTimer, persistTimer, booting=true, recoveryMemory=null;
   const STORE_KEY='workshopRecovery:v1:egt-hmi-stecken';
   const skipStore=new URLSearchParams(location.search).has('test')||new URLSearchParams(location.search).has('fresh');
@@ -378,8 +396,8 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   const buttonColors={green:['Grün','#2f9a56','#fff','I'],red:['Rot','#c43328','#fff','O'],black:['Schwarz','#1d262c','#fff',''],white:['Weiß','#eef3f6','#1d262c','I'],yellow:['Gelb','#e6c21a','#1d262c','I']};
   const isLight=m=>m.type==='lamp'||m.type==='pilot';
   const isCombinedTaster=m=>m.type==='start'||m.type==='stop';
-  const tagPrefixes={contactor:['Q','K'],psu:['G'],motor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S']};
-  const defaultPrefix=type=>type==='contactor'?'Q':type==='psu'?'G':(type==='motor'||type==='lineardrive')?'M':type==='lamp'?'E':type==='pilot'?'P':'S';
+  const tagPrefixes={contactor:['Q','K'],psu:['G'],motor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S'],terminal:['X'],rail:['X']};
+  const defaultPrefix=type=>type==='contactor'?'Q':type==='psu'?'G':(type==='motor'||type==='lineardrive')?'M':type==='lamp'?'E':type==='pilot'?'P':(type==='terminal'||type==='rail')?'X':'S';
   function splitTag(id){const hit=String(id||'').match(/^([A-Za-z]+)(\d+)$/);return hit?{prefix:hit[1],n:Number(hit[2])}:{prefix:'',n:1};}
   function nextId(prefix){let n=1;while(modules.some(m=>m.id===prefix+n))n++;return prefix+n;}
   function rewriteTerm(key,from,to){if(key===from)return to;if(key.startsWith(from+'.'))return to+key.slice(from.length);return key;}
@@ -589,6 +607,14 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     m.el.querySelector('.module-state').textContent=selected+' · '+(m.selection===-1?'13–14 geschlossen':m.selection===1?'23–24 geschlossen':'beide offen');
   }
   function face(m){
+    if(m.type==='terminal'){
+      const clamps=Array.from({length:TERMINAL_POLES},(_,i)=>{const n=i+1;return `<div class="clamp">${terminal(m,n+'o',String(n),'top')}<span class="clamp-bridge" aria-hidden="true"></span>${terminal(m,n+'u','','bottom')}</div>`;}).join('');
+      return `<div class="terminal-strip" aria-label="${m.id} Reihenklemme">${clamps}</div>`;
+    }
+    if(m.type==='rail'){
+      const bars=[['+24','+24 V','plus'],['0V','0 V','zero'],['PE','PE','pe']];
+      return `<div class="rail-face">${bars.map(([key,label,cls])=>`<div class="rail-bar ${cls}"><span class="rail-name">${label}</span><div class="rail-screws">${Array.from({length:RAIL_SCREWS},(_,i)=>terminal(m,key+'.'+(i+1),String(i+1),'bottom')).join('')}</div></div>`).join('')}</div>`;
+    }
     if(m.type==='selector'){
       const pair=(side,top,bottom)=>`<div class="selector-contact ${side}">${terminal(m,top,top,'top')}<svg viewBox="0 0 48 180" preserveAspectRatio="none" aria-hidden="true"><path d="M24 18 V83 M24 131 V162"/><path class="open" d="M24 131 L${side==='a'?38:10} 90"/><path class="closed" d="M24 131 V83"/></svg>${terminal(m,bottom,bottom,'bottom')}</div>`;
       return `<span class="selector-caption">Schalterstellung</span><div class="selector-choices" role="group" aria-label="${m.id} Schalterstellung">${[[-1,'A'],[0,'0'],[1,'B']].map(([v,label])=>`<button type="button" data-selection="${v}" aria-label="${m.id} Stellung ${label}">${label}</button>`).join('')}</div><button class="selector-knob" type="button"><span class="selector-grip"></span></button><i class="selector-coupling" aria-hidden="true"></i>${pair('a','13','14')}${pair('b','23','24')}`;
@@ -621,8 +647,8 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   }
   function renderModule(m){
     defaultNom(m);
-    const el=document.createElement('div');m.el=el;el.className='module '+m.type;el.dataset.id=m.id;
-    el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-name">${types[m.type]}</span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><b>${m.type==='contactor'?'3 Leistungskontakte + 1 NO':m.type==='auxiliary'?'Gekoppelt an '+m.parent:m.type==='psu'?'Versorgung':m.type==='lineardrive'?'B1 links · B2 Mitte · B3 rechts · Wechselkontakte 11 / 12 / 14':isLight(m)?(m.type==='lamp'?'Leuchte':'Signalleuchte'):m.type==='selector'?'2 getrennte Schließer · rastend':m.type==='emergency'?'1 Öffner · 1 Schließer':m.type==='motor'?'Verbraucher':'13–14 · 21–22 · '+lampTag(m)}</b><span class="module-state"></span></div>`;
+    const el=document.createElement('div');m.el=el;el.className='module '+(m.type==='rail'?'bus':m.type);el.dataset.id=m.id;
+    el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-name">${types[m.type]}</span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><b>${m.type==='terminal'?'6 Durchgangsklemmen · oben mit unten verbunden':m.type==='rail'?'+24 · 0 V · PE, je 5 Schrauben':m.type==='contactor'?'3 Leistungskontakte + 1 NO':m.type==='auxiliary'?'Gekoppelt an '+m.parent:m.type==='psu'?'Versorgung':m.type==='lineardrive'?'B1 links · B2 Mitte · B3 rechts · Wechselkontakte 11 / 12 / 14':isLight(m)?(m.type==='lamp'?'Leuchte':'Signalleuchte'):m.type==='selector'?'2 getrennte Schließer · rastend':m.type==='emergency'?'1 Öffner · 1 Schließer':m.type==='motor'?'Verbraucher':'13–14 · 21–22 · '+lampTag(m)}</b><span class="module-state"></span></div>`;
     const overlay=document.createElementNS(NS,'svg');overlay.classList.add('module-wires');overlay.setAttribute('aria-hidden','true');el.appendChild(overlay);
     if(!Number.isFinite(m.z))m.z=nextZ++;nextZ=Math.max(nextZ,m.z+1);el.style.zIndex=m.z;
     board.appendChild(el);position(m);paintDeviceFace(m);
@@ -737,7 +763,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     if(selectedWire&&!wires.includes(selectedWire))selectedWire=null;
     if(selectedWire){renderWireDetails();renderWires();return;}
     if(!m){closeDevMenu();details.innerHTML='<p class="empty">Bauteil oder Leitung auswählen, um Eigenschaften zu bearbeiten.</p>';renderWires();return;}
-    const rows=m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B4–B7 + Versorgung','Reservierte Buchsen'],['Modell','10 s Verfahrzeit bei Nennspannung'],['PE','Separate Gehäuseklemme']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
+    const rows=m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B4–B7 + Versorgung','Reservierte Buchsen'],['Modell','10 s Verfahrzeit bei Nennspannung'],['PE','Separate Gehäuseklemme']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis 6, jede für sich'],['Oben o / unten u','dieselbe Klemme'],['Brücke','keine']]:m.type==='rail'?[['+24','5 Schrauben, eine Schiene'],['0 V','5 Schrauben, getrennt von +24'],['PE','5 Schrauben, nicht auf 0 V']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
 details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten</summary>'+rows.map(([label,value])=>`<div class="detail-row"><span>${label}</span><b>${value}</b></div>`).join('')+'</details><button class="ui-btn" id="openSettings" type="button">Einstellungen</button>';
     $('#openSettings').onclick=()=>{const r=m.el.getBoundingClientRect();openSettings(m,r.right-8,r.top+32);};
     $('#openSettings').hidden=true;
@@ -839,7 +865,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       fields.innerHTML=colorField('buttonColor','Tasterfarbe',buttonColors,m.buttonColor)+colorField('signalColor','Meldeleuchte',signalColors,m.signalColor);
       apply.hidden=true;
     }else{
-      note.textContent=m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
+      note.textContent=m.type==='terminal'?'Jede Klemme verbindet oben (o) mit unten (u). Die sechs Klemmen sind untereinander nicht verbunden.':m.type==='rail'?'Drei getrennte Schienen. Alle Schrauben einer Schiene sind intern verbunden. PE liegt nicht auf 0 V.':m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
       fields.innerHTML='';
       apply.hidden=true;
     }
@@ -895,7 +921,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function localPoint(e){const b=board.getBoundingClientRect();return{x:(e.clientX-b.left)/scale,y:(e.clientY-b.top)/scale,d:'free'};}
   function wireSource(){return gesture?.kind==='wire'?(gesture.moved?gesture.key:pending||gesture.key):pending;}
   function directlyConnected(a,b){return wires.some(w=>w.a===a&&w.b===b||w.a===b&&w.b===a);}
-  function canConnect(a,b){return !!a&&!!b&&a!==b&&!!term(a)&&!!term(b)&&!directlyConnected(a,b);}
+  function canConnect(a,b){return !!a&&!!b&&a!==b&&!!term(a)&&!!term(b)&&!directlyConnected(a,b)&&!internallyCommon(a,b);}
   function nearestTerm(cx,cy,source){
     if(!source)return null;
     let best=null,bestD=56;
@@ -913,8 +939,23 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     wireTarget=target?target.dataset.key:null;
     mark();
   }
-  function choose(key){wireTarget=null;if(!pending){pending=key;$('#hint').textContent=key+' gewählt · Blaue Ringe: direkt verbundene Klemmen. Ziel anklicken, Esc bricht ab.';}else if(pending===key){cancel();return;}else{const created=connect(pending,key);pending=null;$('#hint').textContent=created?'Verbindung erstellt · Weitere Klemmen verbinden.':defaultHint();}mark();draw();}
-  function connect(a,b){if(a===b||!term(a)||!term(b))return false;if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}remember();wires.push({a,b,color});update();return true;}
+  function choose(key){wireTarget=null;if(!pending){pending=key;$('#hint').textContent=key+' gewählt · Blaue Ringe: direkt verbundene Klemmen. Ziel anklicken, Esc bricht ab.';}else if(pending===key){cancel();return;}else{const created=connect(pending,key);pending=null;$('#hint').textContent=created?(liveMode()?'Verbindung erstellt. Angezoogene Schütze fallen ab.':'Verbindung erstellt · Weitere Klemmen verbinden.'):defaultHint();}mark();draw();}
+  function clampGroup(key){
+    const dot=String(key).indexOf('.');
+    if(dot<0)return '';
+    const id=key.slice(0,dot),rest=key.slice(dot+1),m=modules.find(x=>x.id===id);
+    if(!m)return '';
+    if(m.type==='terminal'){const hit=rest.match(/^(\d+)[ou]$/);return hit?id+'#'+hit[1]:'';}
+    if(m.type==='rail'){const hit=rest.match(/^(\+24|0V|PE)\.\d+$/);return hit?id+'#'+hit[1]:'';}
+    return '';
+  }
+  function internallyCommon(a,b){const ga=clampGroup(a),gb=clampGroup(b);return !!ga&&ga===gb;}
+  function connect(a,b){
+    if(a===b||!term(a)||!term(b))return false;
+    if(internallyCommon(a,b)){const id=a.slice(0,a.indexOf('.'));const m=modules.find(x=>x.id===id);say(m&&m.type==='rail'?'Diese Schrauben liegen auf derselben Schiene.':'Oben und unten sind an dieser Klemme schon verbunden.');return false;}
+    if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}
+    remember();wires.push({a,b,color});update();noteWiringReset();return true;
+  }
   function cancel(){pending=null;gesture=null;wireTarget=null;viewDrag=null;viewport.classList.remove('panning');board.querySelectorAll('.dragging').forEach(e=>e.classList.remove('dragging'));paintHint();mark();draw();}
   document.addEventListener('pointermove',e=>{
     if(!gesture){if(pending){updateWireTarget(e);draw(wireTarget?point(wireTarget):localPoint(e));}return;}if(e.pointerId!==gesture.pointerId)return;
@@ -995,7 +1036,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     return d+` L${b.x} ${b.y}`;
   }
   function path(d,cls,c){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('class',cls);if(c)p.setAttribute('stroke',c);return p;}
-  function removeWire(i){if(i<0)return;remember();if(wires[i]===selectedWire)selectedWire=null;wires.splice(i,1);update();}
+  function removeWire(i){if(i<0)return;remember();if(wires[i]===selectedWire)selectedWire=null;wires.splice(i,1);update();noteWiringReset();}
   function draw(preview,start=pending){
     svg.replaceChildren();
     const overlays=new Map();
@@ -1107,6 +1148,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const g=new Map(),link=(a,b)=>{if(!g.has(a))g.set(a,new Set());if(!g.has(b))g.set(b,new Set());g.get(a).add(b);g.get(b).add(a);};
     wires.forEach(w=>link(w.a,w.b));
     modules.forEach(m=>{
+      if(m.type==='terminal')for(let n=1;n<=TERMINAL_POLES;n++)link(m.id+'.'+n+'o',m.id+'.'+n+'u');
+      if(m.type==='rail')for(const bar of ['+24','0V','PE'])for(let n=2;n<=RAIL_SCREWS;n++)link(m.id+'.'+bar+'.1',m.id+'.'+bar+'.'+n);
       if(m.type==='selector'&&m.selection!==0)link(m.id+(m.selection===-1?'.13':'.23'),m.id+(m.selection===-1?'.14':'.24'));
       if(m.type==='start'||m.type==='stop'||m.type==='emergency'){
         if(m.pressed)link(m.id+'.13',m.id+'.14');
@@ -1148,9 +1191,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function liveMode(){return simMode==='betrieb'||simMode==='paused';}
   function defaultHint(){
     if(simMode==='aufbau')return 'Aufbau · Spannung aus. Klemmen verbinden, dann Betrieb einschalten.';
-    if(simMode==='paused')return 'Eingefroren · Spannung bleibt. Fortsetzen oder Aufbau (Spannung aus).';
-    return 'Betrieb · Spannung an. Ändern der Verdrahtung setzt die Rast zurück.';
+    if(simMode==='paused')return 'Eingefroren · Spannung bleibt. Eine geänderte Ader lässt angezogene Schütze abfallen.';
+    return 'Betrieb · Spannung an. Eine geänderte Ader lässt angezogene Schütze abfallen.';
   }
+  function noteWiringReset(){if(liveMode())say('Ader geändert. Angezoogene Schütze fallen ab, die Simulation wird neu aufgebaut.');}
   function paintHint(){
     const el=$('#hint'),line=el&&el.parentElement;
     if(!el)return;
@@ -1276,7 +1320,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   function setEngineTag(text,err){$('#engineTag').textContent=text;$('#engineTag').style.color=err?'#be442f':'#56665b';}
   function projectPayload(){
-    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.map(m=>({id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
+    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.map(m=>({id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,poles:m.type==='terminal'?TERMINAL_POLES:0,screws:m.type==='rail'?RAIL_SCREWS:0})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
   }
   function scheduleSync(){
     if(!engine||!engineOk)return;
@@ -1435,7 +1479,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
         recoveryTime=lastSnap?.time??0;
         engine.setRunning(true);
         applySnapshot();
-        say('Betrieb: Spannung an. Taster wirken. Ändern setzt die Rast zurück.');
+        say('Betrieb: Spannung an. Taster wirken. Eine geänderte Ader lässt angezogene Schütze abfallen.');
       }
     }catch(e){engineOk=false;renderSimControls();say('CircuitJS-Steuerung fehlgeschlagen: '+e.message);}
   }
@@ -1595,7 +1639,42 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   $('#demo').onclick=()=>{remember();const d=initial();const pairs=[['G1.+24','S2.21','#bb4234'],['S2.22','S1.13'],['S1.14','Q1.A1'],['Q1.A2','G1.0V','#347caa'],['S1.13','Q1H.53'],['S1.14','Q1H.54'],['G1.+24','Q1.1','#bb4234'],['Q1.2','M1.+'],['M1.−','G1.0V','#347caa']];d.wires=pairs.map(([a,b,c])=>({a,b,color:c||'#d2ae27'}));restore(d);say('Selbsthaltung geladen. Betrieb einschalten, dann S1 starten, S2 unterbrechen.');};
   $('#reset').onclick=()=>{remember();restore(initial());say('Grundaufbau geladen. Spannung aus — danach Betrieb.');};
   $('#clearBoard').onclick=()=>{if(!modules.length&&!wires.length){say('Montagefläche ist schon leer.');return;}if(!confirm('Montagefläche leeren?\nAlle Geräte und Leitungen werden entfernt.'))return;remember();restore({modules:[],wires:[]});persist();say('Montagefläche geleert.');};
-  $('#clear').onclick=()=>{remember();cancel();wires=[];update();};
+  $('#clear').onclick=()=>{if(!wires.length)return;remember();cancel();wires=[];update();noteWiringReset();};
+  function projectDocument(){const d=data();return {kind:'schuetzwerkstatt',schema:1,savedAt:new Date().toISOString(),modules:d.modules,wires:d.wires,view:d.view};}
+  function saveProjectFile(){
+    const blob=new Blob([JSON.stringify(projectDocument(),null,2)],{type:'application/json'});
+    const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='schuetzwerkstatt.json';a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    say('Projektdatei gespeichert. Auf einem anderen Rechner mit Projekt öffnen laden.');
+  }
+  function readProjectFile(file){
+    const reader=new FileReader();
+    reader.onload=()=>{
+      try{
+        const raw=JSON.parse(String(reader.result||''));
+        const payload=raw&&raw.payload&&Array.isArray(raw.payload.modules)?raw.payload:raw;
+        if(!payload||!Array.isArray(payload.modules)||!Array.isArray(payload.wires)){say('Keine Schützwerkstatt-Datei.');return;}
+        if(payload.kind&&payload.kind!=='schuetzwerkstatt'){say('Keine Schützwerkstatt-Datei.');return;}
+        if(payload.schema!=null&&Number(payload.schema)!==1){say('Dateiformat wird nicht gelesen.');return;}
+        const known=new Set(Object.keys(types));
+        if(payload.modules.some(m=>!m||typeof m.id!=='string'||!known.has(m.type)||!Number.isFinite(Number(m.x))||!Number.isFinite(Number(m.y)))){say('Datei enthält ein unbekanntes oder unvollständiges Bauteil.');return;}
+        const ids=new Set(payload.modules.map(m=>m.id));
+        if(ids.size!==payload.modules.length){say('Datei enthält doppelte Kennzeichen.');return;}
+        if(payload.modules.some(m=>m.type==='auxiliary'&&!ids.has(m.parent))){say('Hilfskontakt ohne Leistungsschütz.');return;}
+        const nextWires=payload.wires.map(w=>({a:String(w&&w.a||''),b:String(w&&w.b||''),color:w&&w.color||'#d2ae27'}));
+        if(nextWires.some(w=>!w.a||!w.b)){say('Datei enthält eine Leitung ohne Klemme.');return;}
+        const owner=key=>{const d=key.indexOf('.');return d<0?key:key.slice(0,d);};
+        if(nextWires.some(w=>!ids.has(owner(w.a))||!ids.has(owner(w.b)))){say('Datei enthält eine Leitung zu einem fehlenden Bauteil.');return;}
+        remember();
+        restore({modules:payload.modules.map(m=>({...m,x:Number(m.x),y:Number(m.y)})),wires:nextWires,view:payload.view});
+        say('Projekt geladen. Spannung aus — danach Betrieb.');
+      }catch(e){say('Datei lässt sich nicht lesen.');}
+    };
+    reader.readAsText(file);
+  }
+  $('#saveProject').onclick=saveProjectFile;
+  $('#openProject').onclick=()=>{$('#projectFile').value='';$('#projectFile').click();};
+  $('#projectFile').onchange=()=>{const file=$('#projectFile').files&&$('#projectFile').files[0];if(file)readProjectFile(file);};
   $('#undo').onclick=()=>{
     if(!history.length)return;
     const prev=JSON.parse(history.pop());

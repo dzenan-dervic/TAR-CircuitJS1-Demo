@@ -7,3 +7,5 @@ Die Steckoberfläche liegt unter `egt-hmi-stecken.html`. CircuitJS ist der Solve
 Einstieg intern: [Hub intern](../hub-intern.html) · [Schützwerkstatt](../egt-hmi-stecken.html)
 
 Lehrer-Link bleibt `hub.html` ohne diesen Eintrag.
+
+Aktueller Pages-Stand: [2026-09-22_schuetzwerkstatt.md](2026-09-22_schuetzwerkstatt.md).

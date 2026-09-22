@@ -543,6 +543,31 @@ class EGTWorkbenchBridge {
 	    addTasterStation(id, designation.length() == 0 ? id : designation, !"emergency".equals(type));
 	    return;
 	}
+	if ("terminal".equals(type)) {
+	    int poles = (int) getNum(c, "poles", 6);
+	    if (poles < 1)
+		poles = 1;
+	    if (poles > 12)
+		poles = 12;
+	    for (int i = 1; i <= poles; i++)
+		bindCommon(new String[] { id + "." + i + "o", id + "." + i + "u" });
+	    return;
+	}
+	if ("rail".equals(type)) {
+	    int screws = (int) getNum(c, "screws", 5);
+	    if (screws < 2)
+		screws = 2;
+	    if (screws > 8)
+		screws = 8;
+	    String[] bars = { "+24", "0V", "PE" };
+	    for (int b = 0; b < bars.length; b++) {
+		String[] keys = new String[screws];
+		for (int i = 1; i <= screws; i++)
+		    keys[i - 1] = id + "." + bars[b] + "." + i;
+		bindCommon(keys);
+	    }
+	    return;
+	}
         if ("lamp".equals(type) || "pilot".equals(type)) {
             boolean pilot = "pilot".equals(type);
             EGTLeuchteElm light = pilot ? new EGTMeldeleuchteElm(nextX(), nextY()) : new EGTLeuchteElm(nextX(), nextY());
@@ -688,6 +713,16 @@ class EGTWorkbenchBridge {
 	terminals.put(key, new Term(elm, post));
     }
 
+    /** Mehrere Schrauben, ein Knoten. OutputElm trägt den Post, ohne Last. */
+    private void bindCommon(String[] keys) {
+	OutputElm node = new OutputElm(nextX(), nextY());
+	node.x2 = node.x + 32;
+	addElm(node);
+	for (int i = 0; i < keys.length; i++)
+	    bind(keys[i], node, 0);
+	bump();
+    }
+
     private int nextX() { return ORIGIN_X + placeCol * STEP_X; }
     private int nextY() { return ORIGIN_Y + placeRow * STEP_Y; }
 
@@ -703,7 +738,8 @@ class EGTWorkbenchBridge {
 	return "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "lineardrive".equals(type)
-                || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type);
+                || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)
+		|| "terminal".equals(type) || "rail".equals(type);
     }
 
     private static String termOwner(String key) {
