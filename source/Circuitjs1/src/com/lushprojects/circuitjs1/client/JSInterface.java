@@ -68,6 +68,7 @@ public class JSInterface {
     void workbenchSetSupplyOn(boolean on) { workbench.setSupplyOn(on); }
     boolean workbenchSetPsuVoltage(String id, double v) { return workbench.setPsuVoltage(id, v); }
     boolean workbenchSetRatings(String id, double nomV, double nomP) { return workbench.setRatings(id, nomV, nomP); }
+    boolean workbenchSetAcMotorRatings(String id, double kw, double eta) { return workbench.setAcMotorRatings(id, kw, eta); }
     void workbenchSetRealtime(boolean on) {
 	app.ui.setEgtRealtimeAvailable(true);
 	app.ui.setEgtRealtimeMode(on);
@@ -113,6 +114,7 @@ public class JSInterface {
 		setSupplyOn: $entry(function(on) { that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetSupplyOn(Z)(!!on); }),
 		setPsuVoltage: $entry(function(id, v) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetPsuVoltage(Ljava/lang/String;D)(id, +v); }),
 		setRatings: $entry(function(id, nv, np) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetRatings(Ljava/lang/String;DD)(id, +nv, +np); }),
+		setAcMotorRatings: $entry(function(id, kw, eta) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetAcMotorRatings(Ljava/lang/String;DD)(id, +kw, +eta); }),
 		setRealtime: $entry(function(on) { that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetRealtime(Z)(!!on); }),
 		readSnapshot: $entry(function() { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchReadSnapshot()(); })
 	    }

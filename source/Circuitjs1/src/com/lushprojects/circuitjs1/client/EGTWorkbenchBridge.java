@@ -41,6 +41,7 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTLeistungsschuetzElm> contactors;
     HashMap<String, EGTSchuetzHilfskontaktElm> auxContacts;
     HashMap<String, EGTGleichstrommotorElm> motors;
+    HashMap<String, EGTDrehstrommotorElm> acMotors;
     HashMap<String, EGTWechselschalterElm> driveSensors;
     HashMap<String, EGTGleichspannungsquelleElm> psus;
     HashMap<String, Double> psuSetpoint;
@@ -65,6 +66,7 @@ class EGTWorkbenchBridge {
 	contactors = new HashMap<String, EGTLeistungsschuetzElm>();
 	auxContacts = new HashMap<String, EGTSchuetzHilfskontaktElm>();
 	motors = new HashMap<String, EGTGleichstrommotorElm>();
+	acMotors = new HashMap<String, EGTDrehstrommotorElm>();
 	driveSensors = new HashMap<String, EGTWechselschalterElm>();
 	psus = new HashMap<String, EGTGleichspannungsquelleElm>();
 	psuSetpoint = new HashMap<String, Double>();
@@ -265,6 +267,22 @@ class EGTWorkbenchBridge {
 	return false;
     }
 
+    boolean setAcMotorRatings(String id, double kw, double eta) {
+	if (id == null || !acMotors.containsKey(id))
+	    return false;
+	EGTDrehstrommotorElm m = acMotors.get(id);
+	if (kw < EGTDrehstrommotorElm.P_MIN_KW)
+	    kw = EGTDrehstrommotorElm.P_MIN_KW;
+	if (kw > EGTDrehstrommotorElm.P_MAX_KW)
+	    kw = EGTDrehstrommotorElm.P_MAX_KW;
+	m.ratedKw = kw;
+	m.eta = EGTDrehstrommotorElm.parseEtaToken(eta);
+	m.applyRatedPower();
+	app.needAnalyze();
+	app.repaint();
+	return true;
+    }
+
     private double setpointOf(String id) {
 	Double v = psuSetpoint.get(id);
 	return v == null ? 24 : v.doubleValue();
@@ -311,6 +329,17 @@ class EGTWorkbenchBridge {
 		max = abs;
 	}
 	return max;
+    }
+
+    private double acLineCurrent(EGTDrehstrommotorElm m) {
+	if (m == null)
+	    return 0;
+	double i = m.envIu;
+	if (m.envIv > i)
+	    i = m.envIv;
+	if (m.envIw > i)
+	    i = m.envIw;
+	return i;
     }
 
     String readSnapshot() {
@@ -414,6 +443,22 @@ class EGTWorkbenchBridge {
 	    sb.append("\"current\":").append(jsonNum(i));
 	    sb.append(",\"running\":").append(Math.abs(i) >= EGTGleichstrommotorElm.I_RUN);
 	    sb.append(",\"reverse\":").append(i < -EGTGleichstrommotorElm.I_RUN);
+	    sb.append(",\"kind\":\"dc\"");
+	    sb.append('}');
+	}
+	for (String id : acMotors.keySet()) {
+	    EGTDrehstrommotorElm m = acMotors.get(id);
+	    if (!first)
+		sb.append(',');
+	    first = false;
+	    int dir = m.directionSign();
+	    sb.append('"').append(esc(id)).append("\":{");
+	    sb.append("\"kind\":\"ac3\"");
+	    sb.append(",\"current\":").append(jsonNum(acLineCurrent(m)));
+	    sb.append(",\"running\":").append(dir != 0);
+	    sb.append(",\"reverse\":").append(dir < 0);
+	    sb.append(",\"wiring\":\"").append(esc(m.wiringHintText())).append('"');
+	    sb.append(",\"status\":\"").append(esc(m.statusText())).append('"');
 	    sb.append('}');
 	}
 	sb.append("},\"supplies\":{");
@@ -701,6 +746,38 @@ class EGTWorkbenchBridge {
                 }
                 setDrivePosition(id, getNum(c, "slide", .5));
             }
+	    return;
+	}
+	if ("acmotor".equals(type)) {
+	    EGTDrehstrommotorElm m = new EGTDrehstrommotorElm(nextX(), nextY());
+	    m.x2 = m.x + 128;
+	    m.y2 = m.y;
+	    m.setEgtDesignation(designation.length() == 0 ? id : designation);
+	    double kw = getNum(c, "ratedKw", EGTDrehstrommotorElm.P_REF_KW);
+	    double eta = getNum(c, "eta", EGTDrehstrommotorElm.DEF_ETA);
+	    if (kw < EGTDrehstrommotorElm.P_MIN_KW)
+		kw = EGTDrehstrommotorElm.P_MIN_KW;
+	    if (kw > EGTDrehstrommotorElm.P_MAX_KW)
+		kw = EGTDrehstrommotorElm.P_MAX_KW;
+	    m.ratedKw = kw;
+	    m.eta = EGTDrehstrommotorElm.parseEtaToken(eta);
+	    m.applyRatedPower();
+	    m.setPoints();
+	    addElm(m);
+	    acMotors.put(id, m);
+	    bind(id + ".U1", m, 0);
+	    bind(id + ".U2", m, 1);
+	    bind(id + ".V1", m, 2);
+	    bind(id + ".V2", m, 3);
+	    bind(id + ".W1", m, 4);
+	    bind(id + ".W2", m, 5);
+	    bump();
+	    OutputElm pe = new OutputElm(nextX(), nextY());
+	    pe.x2 = pe.x + 32;
+	    addElm(pe);
+	    bind(id + ".PE", pe, 0);
+	    bump();
+	    return;
 	}
     }
 
@@ -819,7 +896,7 @@ class EGTWorkbenchBridge {
     private static boolean validType(String type) {
 	return "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
-		|| "stop".equals(type) || "motor".equals(type) || "lineardrive".equals(type)
+		|| "stop".equals(type) || "motor".equals(type) || "acmotor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)
 		|| "terminal".equals(type) || "rail".equals(type);
     }
