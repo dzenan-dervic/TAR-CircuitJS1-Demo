@@ -11,3 +11,8 @@ Einstieg intern: [Hub intern](../hub-intern.html) · [Schützwerkstatt](../egt-h
 - Frischer GWT-Cache, sonst kennt das Iframe `mains` nicht
 
 24-V-Selbsthaltung, Reihenklemme und Potenzialschiene bleiben.
+
+## Bridge (22.09. später)
+
+Stecken darf das CircuitJS-Iframe nicht nach `left:-12000px` schieben (Safari lädt es dann nicht). `circuitjs.html?v=20260922bridge` plus `nocache.js?v=…`. Alte `*.cache.js` bleiben liegen, falls ein Telefon noch den vorigen nocache hat.
+

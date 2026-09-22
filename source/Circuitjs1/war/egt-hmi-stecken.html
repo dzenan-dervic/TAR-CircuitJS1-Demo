@@ -139,7 +139,7 @@ body{height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr)}
 .hmi-pane .workspace{flex:1;min-height:0;height:auto!important}
 html.view-stick .app{grid-template-columns:1fr!important}
 html.view-stick .split{display:none}
-html.view-stick .sim-pane{position:fixed;left:-12000px;top:0;width:960px;height:720px}
+html.view-stick .sim-pane{position:fixed;left:0;bottom:0;width:320px;height:240px;opacity:.01;pointer-events:none;z-index:0;overflow:hidden}
 html.mode-betrieb header{border-bottom-color:#1a7a48;box-shadow:inset 0 -3px 0 #158556}
 html.mode-aufbau header{box-shadow:inset 0 -3px 0 #8a9385}
 html.mode-betrieb .toolbar{background:#e7f4ec;border-bottom-color:#9cc9ad}
@@ -1799,9 +1799,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     function wait(n){if(attached())return;if(n>0)setTimeout(()=>wait(n-1),400);else {engineOk=false;setEngineTag('Verbindung verloren',true);evaluate();}}
     iframe.onload=function(){
       try{iframe.contentWindow.oncircuitjsloaded=attached;}catch(e){}
-      wait(60);
+      wait(150);
     };
-    iframe.src='circuitjs.html?cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
+    iframe.src='circuitjs.html?v=20260922bridge&cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
   })();
   if(skipStore)window.__workshop={present:getFaultPresentation,recovery:()=>recoveryMemory};
 })();
