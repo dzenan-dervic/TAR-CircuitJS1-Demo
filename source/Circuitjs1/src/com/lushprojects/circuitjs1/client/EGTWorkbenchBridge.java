@@ -39,6 +39,7 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTTasterElm[]> selectors;
     HashMap<String, EGTLeuchteElm> lamps;
     HashMap<String, EGTLeistungsschuetzElm> contactors;
+    HashMap<String, EGTSchuetzSpuleElm> relays;
     HashMap<String, EGTSchuetzHilfskontaktElm> auxContacts;
     HashMap<String, EGTGleichstrommotorElm> motors;
     HashMap<String, EGTDrehstrommotorElm> acMotors;
@@ -64,6 +65,7 @@ class EGTWorkbenchBridge {
 	selectors = new HashMap<String, EGTTasterElm[]>();
 	lamps = new HashMap<String, EGTLeuchteElm>();
 	contactors = new HashMap<String, EGTLeistungsschuetzElm>();
+        relays = new HashMap<String, EGTSchuetzSpuleElm>();
 	auxContacts = new HashMap<String, EGTSchuetzHilfskontaktElm>();
 	motors = new HashMap<String, EGTGleichstrommotorElm>();
 	acMotors = new HashMap<String, EGTDrehstrommotorElm>();
@@ -246,6 +248,15 @@ class EGTWorkbenchBridge {
 	    app.repaint();
 	    return true;
 	}
+        EGTSchuetzSpuleElm relay = relays.get(id);
+        if (relay != null) {
+            relay.nom_v = nomV;
+            relay.nom_pow = nomP;
+            relay.updateResistance();
+            app.needAnalyze();
+            app.repaint();
+            return true;
+        }
 	EGTGleichstrommotorElm m = motors.get(id);
 	if (m != null) {
 	    m.nom_v = nomV;
@@ -386,6 +397,17 @@ class EGTWorkbenchBridge {
 	    sb.append(",\"current\":").append(jsonNum(k.getCurrent()));
 	    sb.append('}');
 	}
+        for (String id : relays.keySet()) {
+            EGTSchuetzSpuleElm k = relays.get(id);
+            if (!first) sb.append(',');
+            first = false;
+            sb.append('"').append(esc(id)).append("\":{");
+            sb.append("\"energized\":").append(k.coilEnergized());
+            sb.append(",\"a1\":").append(jsonNum(k.getVoltageJS(0)));
+            sb.append(",\"a2\":").append(jsonNum(k.getVoltageJS(1)));
+            sb.append(",\"current\":").append(jsonNum(k.getCurrent()));
+            sb.append('}');
+        }
 	sb.append("},\"contacts\":{");
 	first = true;
 	for (String id : contactors.keySet()) {
@@ -526,6 +548,19 @@ class EGTWorkbenchBridge {
 		return "Doppelte id " + id;
 	    if (!validType(type))
 		return "Unbekannter Typ " + type;
+            if ("relay".equals(type)) {
+                JavaScriptObject config = getObj(c, "relayContacts");
+                if (config == null || getLen(config) < 1 || getLen(config) > 4) return id + ": 1 bis 4 Kontakte erforderlich";
+                HashMap<Integer, Boolean> numbers = new HashMap<Integer, Boolean>();
+                for (int j = 0; j < getLen(config); j++) {
+                    JavaScriptObject contact = getAt(config, j);
+                    double number = getNum(contact, "number", 0);
+                    String kind = getStr(contact, "kind", "");
+                    if (number < 1 || number > 9 || number != (int)number || numbers.containsKey((int)number)
+                            || !("NO".equals(kind) || "NC".equals(kind))) return id + ": Kontaktart oder Kontaktnummer ungültig";
+                    numbers.put((int)number, Boolean.TRUE);
+                }
+            }
 	    types.put(id, type);
 	    if ("auxiliary".equals(type)) {
 		String parent = getStr(c, "parentId", getStr(c, "parent", ""));
@@ -586,6 +621,25 @@ class EGTWorkbenchBridge {
 	String id = getStr(c, "id", "");
 	String type = getStr(c, "type", "");
 	String designation = getStr(c, "designation", id);
+        if ("relay".equals(type)) {
+            EGTSchuetzSpuleElm k = new EGTSchuetzSpuleElm(nextX(), nextY());
+            k.setEgtDesignation(designation);
+            k.nom_v = getNum(c, "nomV", COIL_V);
+            k.nom_pow = getNum(c, "nomP", COIL_P);
+            k.updateResistance();
+            k.syncEndpoints();
+            addElm(k);
+            relays.put(id, k);
+            bind(id + ".A1", k, 0);
+            bind(id + ".A2", k, 1);
+            bump();
+            JavaScriptObject config = getObj(c, "relayContacts");
+            for (int i = 0; i < getLen(config); i++) {
+                JavaScriptObject contact = getAt(config, i);
+                addAux(id, designation, (int)getNum(contact, "number", i + 1), "NC".equals(getStr(contact, "kind", "NO")));
+            }
+            return;
+        }
 	if ("contactor".equals(type)) {
 	    EGTLeistungsschuetzElm k = new EGTLeistungsschuetzElm(nextX(), nextY());
 	    k.setEgtDesignation(designation.length() == 0 ? id : designation);
@@ -676,8 +730,18 @@ class EGTWorkbenchBridge {
 		poles = 1;
 	    if (poles > 12)
 		poles = 12;
-	    for (int i = 1; i <= poles; i++)
-		bindCommon(new String[] { id + "." + i + "o", id + "." + i + "u" });
+	    int span = (int) getNum(c, "span", 1);
+	    if (span != 2 && span != 4)
+		span = 1;
+	    for (int start = 1; start <= poles; start += span) {
+		int count = Math.min(span, poles - start + 1);
+		String[] keys = new String[count * 2];
+		for (int i = 0; i < count; i++) {
+		    keys[i * 2] = id + "." + (start + i) + "o";
+		    keys[i * 2 + 1] = id + "." + (start + i) + "u";
+		}
+		bindCommon(keys);
+	    }
 	    return;
 	}
 	if ("rail".equals(type)) {
@@ -894,7 +958,7 @@ class EGTWorkbenchBridge {
     }
 
     private static boolean validType(String type) {
-	return "contactor".equals(type) || "auxiliary".equals(type)
+	return "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "acmotor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)
