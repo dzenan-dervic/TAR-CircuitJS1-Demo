@@ -44,6 +44,8 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTWechselschalterElm> driveSensors;
     HashMap<String, EGTGleichspannungsquelleElm> psus;
     HashMap<String, Double> psuSetpoint;
+    HashMap<String, EGTDrehstromquelleElm> mains;
+    HashMap<String, Double> mainsSetpoint;
     HashMap<String, WireElm> wireElms;
     boolean supplyOn = true;
 
@@ -66,6 +68,8 @@ class EGTWorkbenchBridge {
 	driveSensors = new HashMap<String, EGTWechselschalterElm>();
 	psus = new HashMap<String, EGTGleichspannungsquelleElm>();
 	psuSetpoint = new HashMap<String, Double>();
+	mains = new HashMap<String, EGTDrehstromquelleElm>();
+	mainsSetpoint = new HashMap<String, Double>();
 	wireElms = new HashMap<String, WireElm>();
 	placeCol = 0;
 	placeRow = 0;
@@ -189,23 +193,39 @@ class EGTWorkbenchBridge {
 	    EGTGleichspannungsquelleElm g = psus.get(id);
 	    g.voltage = on ? setpointOf(id) : 0;
 	}
+	for (String id : mains.keySet()) {
+	    EGTDrehstromquelleElm g = mains.get(id);
+	    g.voltageRMS = on ? lineToPhase(mainsLineOf(id)) : 0;
+	}
 	updateVoltageRange();
 	app.needAnalyze();
 	app.repaint();
     }
 
     boolean setPsuVoltage(String id, double v) {
-	if (id == null || !psus.containsKey(id))
+	if (id == null)
 	    return false;
 	if (v < 1)
 	    v = 1;
-	psuSetpoint.put(id, Double.valueOf(v));
-	if (supplyOn)
-	    psus.get(id).voltage = v;
-	updateVoltageRange();
-	app.needAnalyze();
-	app.repaint();
-	return true;
+	if (psus.containsKey(id)) {
+	    psuSetpoint.put(id, Double.valueOf(v));
+	    if (supplyOn)
+		psus.get(id).voltage = v;
+	    updateVoltageRange();
+	    app.needAnalyze();
+	    app.repaint();
+	    return true;
+	}
+	if (mains.containsKey(id)) {
+	    mainsSetpoint.put(id, Double.valueOf(v));
+	    if (supplyOn)
+		mains.get(id).voltageRMS = lineToPhase(v);
+	    updateVoltageRange();
+	    app.needAnalyze();
+	    app.repaint();
+	    return true;
+	}
+	return false;
     }
 
     boolean setRatings(String id, double nomV, double nomP) {
@@ -250,10 +270,25 @@ class EGTWorkbenchBridge {
 	return v == null ? 24 : v.doubleValue();
     }
 
+    private double mainsLineOf(String id) {
+	Double v = mainsSetpoint.get(id);
+	return v == null ? 400 : v.doubleValue();
+    }
+
+    /** U_LL → U_LN. 400 V 3~ ergibt 230 V gegen N. */
+    private static double lineToPhase(double uLL) {
+	return uLL / Math.sqrt(3);
+    }
+
     private void updateVoltageRange() {
 	double max = 24;
 	for (String id : psuSetpoint.keySet()) {
 	    double v = setpointOf(id);
+	    if (v > max)
+		max = v;
+	}
+	for (String id : mainsSetpoint.keySet()) {
+	    double v = mainsLineOf(id);
 	    if (v > max)
 		max = v;
 	}
@@ -264,6 +299,18 @@ class EGTWorkbenchBridge {
 	if (g == null || g.pins == null || g.pins.length == 0)
 	    return 0;
 	return g.pins[0].current;
+    }
+
+    private double mainsCurrent(EGTDrehstromquelleElm g) {
+	if (g == null || g.pins == null || g.pins.length < 3)
+	    return 0;
+	double max = 0;
+	for (int i = 0; i < 3; i++) {
+	    double abs = Math.abs(g.pins[i].current);
+	    if (abs > max)
+		max = abs;
+	}
+	return max;
     }
 
     String readSnapshot() {
@@ -377,9 +424,24 @@ class EGTWorkbenchBridge {
 		sb.append(',');
 	    first = false;
 	    sb.append('"').append(esc(id)).append("\":{");
-	    sb.append("\"set\":").append(jsonNum(setpointOf(id)));
+	    sb.append("\"kind\":\"dc\"");
+	    sb.append(",\"set\":").append(jsonNum(setpointOf(id)));
 	    sb.append(",\"voltage\":").append(jsonNum(g.voltage));
 	    sb.append(",\"current\":").append(jsonNum(supplyCurrent(g)));
+	    sb.append('}');
+	}
+	for (String id : mains.keySet()) {
+	    EGTDrehstromquelleElm g = mains.get(id);
+	    if (!first)
+		sb.append(',');
+	    first = false;
+	    double uLL = mainsLineOf(id);
+	    sb.append('"').append(esc(id)).append("\":{");
+	    sb.append("\"kind\":\"ac400\"");
+	    sb.append(",\"set\":").append(jsonNum(uLL));
+	    sb.append(",\"voltage\":").append(jsonNum(g.voltageRMS));
+	    sb.append(",\"uLL\":").append(jsonNum(uLL));
+	    sb.append(",\"current\":").append(jsonNum(mainsCurrent(g)));
 	    sb.append('}');
 	}
 	sb.append("},\"lamps\":{");
@@ -522,6 +584,26 @@ class EGTWorkbenchBridge {
 	    psuSetpoint.put(id, Double.valueOf(set));
 	    bind(id + ".+24", g, 0);
 	    bind(id + ".0V", g, 1);
+	    bump();
+	    return;
+	}
+	if ("mains".equals(type)) {
+	    EGTDrehstromquelleElm g = new EGTDrehstromquelleElm(nextX(), nextY());
+	    g.setEgtDesignation(designation.length() == 0 ? id : designation);
+	    double uLL = getNum(c, "voltage", 400);
+	    if (uLL < 1)
+		uLL = 1;
+	    g.voltageRMS = wantSupply ? lineToPhase(uLL) : 0;
+	    g.frequency = 50;
+	    g.setPoints();
+	    addElm(g);
+	    mains.put(id, g);
+	    mainsSetpoint.put(id, Double.valueOf(uLL));
+	    bind(id + ".L1", g, 0);
+	    bind(id + ".L2", g, 1);
+	    bind(id + ".L3", g, 2);
+	    bind(id + ".N", g, 3);
+	    bind(id + ".PE", g, 4);
 	    bump();
 	    return;
 	}
@@ -736,7 +818,7 @@ class EGTWorkbenchBridge {
 
     private static boolean validType(String type) {
 	return "contactor".equals(type) || "auxiliary".equals(type)
-		|| "psu".equals(type) || "start".equals(type)
+		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)
 		|| "terminal".equals(type) || "rail".equals(type);
