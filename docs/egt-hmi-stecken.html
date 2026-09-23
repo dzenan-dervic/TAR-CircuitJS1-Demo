@@ -11,7 +11,7 @@
 <title>Schützwerkstatt · CircuitJS</title>
 <style>
 :root{--ink:#253134;--muted:#617074;--paper:#f8f9f7;--line:#d4dbd8;--accent:#007d7b;--scale:1}
-*{box-sizing:border-box}body{margin:0;background:#e5e8e5;color:var(--ink);font:14px/1.45 "Segoe UI",Arial,sans-serif}button,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #009f9c;outline-offset:3px}button{color:inherit}header{min-height:76px;padding:16px 26px;background:var(--paper);display:flex;gap:24px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}h1{font-size:21px;letter-spacing:-.6px;margin:0;font-weight:650}.sub{font-size:12px;color:var(--muted)}.identity{display:flex;gap:13px;align-items:center}.mark{width:34px;height:36px;border:2px solid var(--accent);position:relative}.mark:before,.mark:after{content:"";position:absolute;left:7px;right:7px;height:2px;background:var(--accent)}.mark:before{top:10px}.mark:after{bottom:10px}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.ui-btn{border:1px solid #c8d1cd;background:#fff;border-radius:5px;padding:8px 12px;font-size:12px;font-weight:600;min-height:36px}.ui-btn:hover{background:#edf1ed;border-color:#879c95}.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.primary:hover{background:#006764;color:#fff}.toolbar{display:flex;gap:20px;align-items:center;padding:11px 26px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}.tool-group{display:flex;gap:6px;align-items:center}.tool-label{font-size:11px;color:var(--muted);margin-right:6px}.add{padding:7px 10px;background:var(--paper);border:1px solid var(--line);border-radius:4px;font-size:12px;min-height:34px}.add:hover{border-color:var(--accent)}.add span{color:var(--accent);font-size:16px;margin-right:5px}.color{width:27px;height:27px;border-radius:50%;border:3px solid #fff;outline:1px solid #cbd1ce;background:var(--color);font-size:0}.color[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}.wire-colors{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.inspector .wire-colors{max-width:210px}.color.pe{background:repeating-linear-gradient(45deg,#e6c21a 0 5px,#2f7d38 5px 10px)}.color.own{background:conic-gradient(#c43328,#e6c21a,#2f7d38,#347caa,#6b3f24,#c43328);overflow:hidden;padding:0}.color.own input{opacity:0;width:100%;height:100%;border:0;padding:0;cursor:pointer}.color.own.picked{outline:2px solid var(--ink);outline-offset:2px}.wire-colors .color{display:inline-flex;align-items:center;justify-content:center;flex:0 0 27px}#wireColors{max-width:236px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 238px;min-height:calc(100vh - 131px)}.workarea{min-width:0;padding:20px 24px 12px}.board-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.board-bar h2{font-size:13px;font-weight:600;margin:0}.board-bar select{background:transparent;border:1px solid #b5bfba;border-radius:4px;padding:5px;font-size:12px}.board-viewport{overflow:auto;border:1px solid #aab3ad;border-radius:6px;background:#cbd0c9}.stage-size{position:relative}.board{position:relative;width:6000px;height:3600px;transform:translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--scale));transform-origin:top left;isolation:isolate;background:linear-gradient(115deg,#d5d8d1,#bfc5bc);overflow:hidden}.board:before{content:"";position:absolute;inset:16px;border:1px solid #adb5a9;border-radius:3px;pointer-events:none}.mount-screw{position:absolute;width:17px;height:17px;border-radius:50%;background:linear-gradient(125deg,#eff1e7,#8b9486);border:1px solid #8a9385;box-shadow:0 1px 2px #4c574c55}.mount-screw:after{content:"";position:absolute;height:2px;background:#6a7466;left:3px;right:3px;top:7px;transform:rotate(-28deg)}.board-caption{position:absolute;left:56px;top:30px;font:11px Consolas,monospace;color:#515e51;letter-spacing:1px}.rail{position:absolute;left:42px;right:42px;top:262px;height:74px;border:1px solid #8c948a;background:linear-gradient(#a2aaa0 0 6%,#f0f0e6 7% 12%,#b9c0b2 14% 22%,#cdd1c2 24% 75%,#e6e8dc 77% 86%,#919a8c 88% 94%,#d1d7c7 95%);box-shadow:0 4px 5px #34412e40}.rail:before{content:"";position:absolute;inset:29px 12px;background:repeating-linear-gradient(90deg,transparent 0 16px,#85907e 17px 50px,transparent 51px 78px);border-radius:5px}.rail.second{top:614px}.module{position:absolute;user-select:none;touch-action:none;width:244px;z-index:2;isolation:isolate}.module.dragging{z-index:5}.handle{height:31px;display:flex;align-items:center;justify-content:space-between;padding:0 4px 5px 2px;cursor:grab;color:#394b41}.handle:active{cursor:grabbing}.handle-label{border:1px solid #a5b0a3;border-radius:2px;background:#f2f3e9;min-width:38px;padding:2px 6px;text-align:center;font:700 13px Consolas,monospace}.handle-name{margin-right:auto;margin-left:8px;font-size:9px;letter-spacing:.3px;white-space:nowrap}.remove{border:0;background:transparent;font-size:20px;padding:0 5px;color:#4f6055;line-height:24px}.face{position:relative;height:312px;border:1px solid #1f2828;border-radius:5px;background:linear-gradient(100deg,#495352 0%,#505956 36%,#444e4c 92%,#333d3a 93%);box-shadow:inset 2px 0 1px #79817a,inset -4px 0 #303a37,inset 0 2px #838d84,3px 5px 6px #2b372d59;color:#ecede4;cursor:grab}.face:before{content:"";position:absolute;inset:8px 6px;border:1px solid #303a36;border-radius:2px;pointer-events:none}.brand-strip{position:absolute;left:10px;right:10px;top:12px;display:flex;align-items:center;gap:7px;height:23px}.siemens{font-size:17px;font-weight:750;letter-spacing:.25px;line-height:22px;background:#008f8e;padding:0 4px;color:#fff}.sirius{font-weight:300;font-size:23px;letter-spacing:-.5px;color:#e0e3d9}.terminal-bank{position:absolute;left:9px;right:9px;height:57px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px}.terminal-bank.top{top:41px}.terminal-bank.bottom{bottom:29px}.terminal-cell{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}.terminal-bank.bottom .terminal-cell{flex-direction:column-reverse}.terminal-label{font-family:Arial,sans-serif;font-size:10px;line-height:14px;color:#f0f0e4;white-space:nowrap;pointer-events:none}.terminal-label small{font-size:8px;margin-left:2px}.term{position:relative;flex-shrink:0;width:35px;height:35px;border:1px solid #222a26;border-radius:50%;padding:0;background:radial-gradient(circle at 50% 48%,#171e19 0 62%,#59635b 64% 72%,#1d2721 74%);box-shadow:0 1px 0 #899186,inset 0 2px 3px #101813;z-index:8;cursor:crosshair;touch-action:none}.screw{pointer-events:none;position:absolute;inset:6px;border-radius:50%;background:conic-gradient(from 20deg,#a7ac8f,#e4e2bb 12%,#8d9278 24%,#cbd0ae 41%,#f2edd0 55%,#939982 73%,#d4d4b2 85%,#a7ac8f);box-shadow:inset 0 0 0 1px #757c65,0 1px 3px #000}.screw:before{content:"";position:absolute;left:10%;right:10%;height:18%;top:41%;background:#2a3228;box-shadow:0 1px #e8e3c4}.screw:after{content:"";position:absolute;width:18%;top:10%;bottom:10%;left:41%;background:#2a3228;box-shadow:1px 0 #d9d6b2}.term.connected:after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--cable,#d9bc32);border:2px solid #f7e6a0;box-shadow:0 1px 2px #0009;pointer-events:none}.terminal-bank .terminal-cell:nth-child(2) .screw{transform:rotate(39deg)}.terminal-bank .terminal-cell:nth-child(3) .screw{transform:rotate(77deg)}.terminal-bank .terminal-cell:nth-child(4) .screw{transform:rotate(18deg)}.terminal-bank .terminal-cell:last-child .terminal-label{font-size:11px}.mechanism{position:absolute;left:49px;top:106px;width:117px;height:82px;display:flex;align-items:flex-start;justify-content:space-between}.side-slot{height:74px;width:24px;border:1px solid #232d27;border-radius:3px;background:linear-gradient(90deg,#606b5f,#414e41);box-shadow:inset 1px 1px #798371}.side-slot:before{content:"";display:block;width:7px;height:21px;border-radius:4px;background:#263427;border:1px solid #87907b;margin:8px auto}.side-slot:after{content:"";display:block;width:13px;height:31px;background:#29352a;border-left:1px solid #89947f;margin:13px 0 0 9px}.plunger{width:47px;height:80px;border:1px solid #1e2b21;border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#53634f,#65765d 15%,#66755d 75%,#44563e);box-shadow:inset 0 2px #8c9d7d,1px 2px 2px #142216}.plunger:before{content:"";position:absolute;width:18px;height:32px;left:50%;margin-left:-9px;top:37px;background:#283728;border:1px solid #93a283;box-shadow:inset 3px 0 #3a4c34,inset -3px 0 #34462f}.plunger:after{content:"";display:block;width:23px;height:8px;border-left:4px solid #3d5239;border-right:4px solid #3d5239;margin:12px auto}.energized .plunger{transform:translateY(8px);transition:none}.vents{position:absolute;right:16px;top:110px;display:grid;gap:9px}.vents i{width:24px;height:10px;background:#18231c;border-top:2px solid #131d15;box-shadow:0 1px #778270}.vents i:first-child{height:19px;clip-path:polygon(0 0,100% 0,100% 40%,75% 40%,75% 100%,25% 100%,25% 40%,0 40%)}.nameplate{position:absolute;left:14px;top:194px;width:153px;height:28px;border:1px solid #1d2922;background:#778177;box-shadow:inset 1px 1px #a0a799,0 1px #7c8678;color:#e1e6da;display:flex;align-items:center;justify-content:space-between;padding:0 8px;font:10px Consolas,monospace}.nameplate strong{font-size:13px;letter-spacing:1px}.indicator{position:absolute;right:19px;top:198px;width:30px;height:16px;background:#1b271d;border:2px solid #788371;box-shadow:inset 0 1px 2px #000}.indicator:after{content:"";display:block;background:#b6bba1;width:16px;height:8px;margin:2px}.energized .indicator:after{transform:translateX(7px);background:#94d2a3}.series{position:absolute;bottom:8px;left:12px;font-size:14px;letter-spacing:-.5px}.coil-mark{position:absolute;bottom:9px;right:12px;font:10px Arial,sans-serif}.state-label{display:flex;justify-content:space-between;margin-top:10px;padding:0 3px;font-size:11px;color:#40503e}.state-label b{font-weight:500}.state-label span:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#647460;margin-right:6px}.energized .state-label span{color:#005635}.energized .state-label span:before{background:#00864c}.module.psu{width:166px}.module.mains{width:276px}.module.acmotor{width:298px}.psu .face{height:228px;background:linear-gradient(90deg,#e0e2d7,#f1f1e8 10%,#dadfd2 94%,#b2baac);color:#414e40;border-color:#899281;box-shadow:inset 1px 2px #fafbf0,3px 5px 5px #34412f44}.mains .face{height:248px;background:linear-gradient(90deg,#d8dce0,#eef1f4 12%,#cfd5db 94%,#9aa3ab);color:#2c3640;border-color:#7b8690;box-shadow:inset 1px 2px #f7f9fb,3px 5px 5px #1c283044}.mains .face:before{border-color:#a7b0b8}.mains .psu-brand{color:#0b5cab}.supply-ln{position:absolute;top:118px;left:15px;right:15px;font-size:10px;color:#3d4a44}.mains .supply-vents{top:148px}.mains .aux-bank{gap:4px;left:8px;right:8px}.mains .term.phase-l1{background:#6b3e24;border-color:#c4a484;box-shadow:inset 0 0 0 3px #d7b89a}.mains .term.phase-l2{background:#1a1a1a;border-color:#6a6a6a;box-shadow:inset 0 0 0 3px #8a8a8a}.mains .term.phase-l3{background:#6d6d6d;border-color:#b0b0b0;box-shadow:inset 0 0 0 3px #cfcfcf}.mains .term.phase-n{background:#1d4e89;border-color:#7eb0e0;box-shadow:inset 0 0 0 3px #9cc4ea}.mains .term.phase-pe{background:repeating-linear-gradient(45deg,#c5be36 0 5px,#1a1a1a 5px 10px);border-color:#6a8a3a;box-shadow:inset 0 0 0 2px #e6e0a8}.psu .face:before{border-color:#b1b9a8}.psu-brand{position:absolute;left:15px;top:15px;font-size:13px;font-weight:700;color:#007a79}.supply-name{position:absolute;top:42px;left:15px;font-size:11px}.supply-display{position:absolute;top:72px;left:14px;right:14px;background:#333f36;border:3px solid #a5af9a;color:#d1e9c7;font:26px Consolas,monospace;padding:8px 7px}.supply-display small{font-size:12px}.supply-vents{position:absolute;left:17px;right:17px;top:136px;height:19px;background:repeating-linear-gradient(90deg,#98a38f 0 3px,transparent 3px 8px)}.aux-bank{position:absolute;bottom:13px;left:12px;right:12px;display:flex;justify-content:space-around;gap:8px}.aux-bank .terminal-cell{gap:5px}.aux-bank .terminal-label{color:inherit;font-size:10px}.module.start,.module.stop{width:148px}.start .face,.stop .face{height:172px;background:linear-gradient(110deg,#e3e4d9,#c4cbba);border-color:#7c8973;color:#3e4a37;box-shadow:inset 2px 2px #f0f1e6,3px 5px 5px #34412f44}.push{position:absolute;left:43px;top:19px;width:62px;height:62px;border-radius:50%;border:6px solid #9ba491;background:radial-gradient(circle at 36% 30%,#3ba96a,#18773e 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #85c898;color:#fff;font-weight:700;font-size:12px;touch-action:none}.stop .push{background:radial-gradient(circle at 36% 30%,#e45c45,#b32b1b 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #f59a7f}.push.down{transform:translateY(3px);box-shadow:0 1px 0 #4c5843,inset 0 3px 6px #12281766}.module.motor{width:188px}.motor .face{height:172px;background:linear-gradient(90deg,#596968,#77817a 50%,#4a5c56)}.motor-housing{position:absolute;left:51px;top:15px;width:84px;height:84px;border:5px solid #8a9487;border-radius:50%;background:repeating-conic-gradient(#405049 0 7deg,#67766b 7deg 14deg);box-shadow:0 3px 4px #17261d;display:grid;place-items:center}.fan{width:60px;height:60px;border-radius:50%;background:conic-gradient(#bcc6b0 0 38deg,#283e31 38deg 120deg,#bcc6b0 120deg 158deg,#283e31 158deg 240deg,#bcc6b0 240deg 278deg,#283e31 278deg);border:5px solid #35473a;position:relative}.fan:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#cdd0bb}.running .fan{animation:spin .65s linear infinite}.acmotor .face{height:354px;background:#e7edf1;color:#273e50;border:1px solid #718694;box-shadow:inset 0 0 0 5px #f7f9fa,3px 4px 5px #26394a30}
+*{box-sizing:border-box}body{margin:0;background:#e5e8e5;color:var(--ink);font:14px/1.45 "Segoe UI",Arial,sans-serif}button,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:default}button:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #009f9c;outline-offset:3px}button{color:inherit}header{min-height:76px;padding:16px 26px;background:var(--paper);display:flex;gap:24px;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}h1{font-size:21px;letter-spacing:-.6px;margin:0;font-weight:650}.sub{font-size:12px;color:var(--muted)}.identity{display:flex;gap:13px;align-items:center}.mark{width:34px;height:36px;border:2px solid var(--accent);position:relative}.mark:before,.mark:after{content:"";position:absolute;left:7px;right:7px;height:2px;background:var(--accent)}.mark:before{top:10px}.mark:after{bottom:10px}.actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.ui-btn{border:1px solid #c8d1cd;background:#fff;border-radius:5px;padding:8px 12px;font-size:12px;font-weight:600;min-height:36px}.ui-btn:hover{background:#edf1ed;border-color:#879c95}.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.primary:hover{background:#006764;color:#fff}.toolbar{display:flex;gap:20px;align-items:center;padding:11px 26px;background:#fff;border-bottom:1px solid var(--line);flex-wrap:wrap}.tool-group{display:flex;gap:6px;align-items:center}.tool-label{font-size:11px;color:var(--muted);margin-right:6px}.add{padding:7px 10px;background:var(--paper);border:1px solid var(--line);border-radius:4px;font-size:12px;min-height:34px}.add:hover{border-color:var(--accent)}.add span{color:var(--accent);font-size:16px;margin-right:5px}.color{width:27px;height:27px;border-radius:50%;border:3px solid #fff;outline:1px solid #cbd1ce;background:var(--color);font-size:0}.color[aria-pressed=true]{outline:2px solid var(--ink);outline-offset:2px}.wire-colors{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.inspector .wire-colors{max-width:210px}.color.pe{background:repeating-linear-gradient(45deg,#e6c21a 0 5px,#2f7d38 5px 10px)}.color.own{background:conic-gradient(#c43328,#e6c21a,#2f7d38,#347caa,#6b3f24,#c43328);overflow:hidden;padding:0}.color.own input{opacity:0;width:100%;height:100%;border:0;padding:0;cursor:pointer}.color.own.picked{outline:2px solid var(--ink);outline-offset:2px}.wire-colors .color{display:inline-flex;align-items:center;justify-content:center;flex:0 0 27px}#wireColors{flex-wrap:nowrap;max-width:none;flex:0 0 auto}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 238px;min-height:calc(100vh - 131px)}.workarea{min-width:0;padding:20px 24px 12px}.board-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.board-bar h2{font-size:13px;font-weight:600;margin:0}.board-bar select{background:transparent;border:1px solid #b5bfba;border-radius:4px;padding:5px;font-size:12px}.board-viewport{overflow:auto;border:1px solid #aab3ad;border-radius:6px;background:#cbd0c9}.stage-size{position:relative}.board{position:relative;width:6000px;height:3600px;transform:translate(var(--pan-x,0px),var(--pan-y,0px)) scale(var(--scale));transform-origin:top left;isolation:isolate;background:linear-gradient(115deg,#d5d8d1,#bfc5bc);overflow:hidden}.board:before{content:"";position:absolute;inset:16px;border:1px solid #adb5a9;border-radius:3px;pointer-events:none}.mount-screw{position:absolute;width:17px;height:17px;border-radius:50%;background:linear-gradient(125deg,#eff1e7,#8b9486);border:1px solid #8a9385;box-shadow:0 1px 2px #4c574c55}.mount-screw:after{content:"";position:absolute;height:2px;background:#6a7466;left:3px;right:3px;top:7px;transform:rotate(-28deg)}.board-caption{position:absolute;left:56px;top:30px;font:11px Consolas,monospace;color:#515e51;letter-spacing:1px}.rail{position:absolute;left:42px;right:42px;top:262px;height:74px;border:1px solid #8c948a;background:linear-gradient(#a2aaa0 0 6%,#f0f0e6 7% 12%,#b9c0b2 14% 22%,#cdd1c2 24% 75%,#e6e8dc 77% 86%,#919a8c 88% 94%,#d1d7c7 95%);box-shadow:0 4px 5px #34412e40}.rail:before{content:"";position:absolute;inset:29px 12px;background:repeating-linear-gradient(90deg,transparent 0 16px,#85907e 17px 50px,transparent 51px 78px);border-radius:5px}.rail.second{top:614px}.module{position:absolute;user-select:none;touch-action:none;width:244px;z-index:2;isolation:isolate}.module.dragging{z-index:5}.handle{height:31px;display:flex;align-items:center;justify-content:space-between;padding:0 4px 5px 2px;cursor:grab;color:#394b41}.handle:active{cursor:grabbing}.handle-label{border:1px solid #a5b0a3;border-radius:2px;background:#f2f3e9;min-width:38px;padding:2px 6px;text-align:center;font:700 13px Consolas,monospace}.handle-name{margin-right:auto;margin-left:8px;font-size:9px;letter-spacing:.3px;white-space:nowrap}.remove{border:0;background:transparent;font-size:20px;padding:0 5px;color:#4f6055;line-height:24px}.face{position:relative;height:312px;border:1px solid #1f2828;border-radius:5px;background:linear-gradient(100deg,#495352 0%,#505956 36%,#444e4c 92%,#333d3a 93%);box-shadow:inset 2px 0 1px #79817a,inset -4px 0 #303a37,inset 0 2px #838d84,3px 5px 6px #2b372d59;color:#ecede4;cursor:grab}.face:before{content:"";position:absolute;inset:8px 6px;border:1px solid #303a36;border-radius:2px;pointer-events:none}.brand-strip{position:absolute;left:10px;right:10px;top:12px;display:flex;align-items:center;gap:7px;height:23px}.siemens{font-size:17px;font-weight:750;letter-spacing:.25px;line-height:22px;background:#008f8e;padding:0 4px;color:#fff}.sirius{font-weight:300;font-size:23px;letter-spacing:-.5px;color:#e0e3d9}.terminal-bank{position:absolute;left:9px;right:9px;height:57px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:1px}.terminal-bank.top{top:41px}.terminal-bank.bottom{bottom:29px}.terminal-cell{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}.terminal-bank.bottom .terminal-cell{flex-direction:column-reverse}.terminal-label{font-family:Arial,sans-serif;font-size:10px;line-height:14px;color:#f0f0e4;white-space:nowrap;pointer-events:none}.terminal-label small{font-size:8px;margin-left:2px}.term{position:relative;flex-shrink:0;width:35px;height:35px;border:1px solid #222a26;border-radius:50%;padding:0;background:radial-gradient(circle at 50% 48%,#171e19 0 62%,#59635b 64% 72%,#1d2721 74%);box-shadow:0 1px 0 #899186,inset 0 2px 3px #101813;z-index:8;cursor:crosshair;touch-action:none}.screw{pointer-events:none;position:absolute;inset:6px;border-radius:50%;background:conic-gradient(from 20deg,#a7ac8f,#e4e2bb 12%,#8d9278 24%,#cbd0ae 41%,#f2edd0 55%,#939982 73%,#d4d4b2 85%,#a7ac8f);box-shadow:inset 0 0 0 1px #757c65,0 1px 3px #000}.screw:before{content:"";position:absolute;left:10%;right:10%;height:18%;top:41%;background:#2a3228;box-shadow:0 1px #e8e3c4}.screw:after{content:"";position:absolute;width:18%;top:10%;bottom:10%;left:41%;background:#2a3228;box-shadow:1px 0 #d9d6b2}.term.connected:after{content:"";position:absolute;inset:11px;border-radius:50%;background:var(--cable,#d9bc32);border:2px solid #f7e6a0;box-shadow:0 1px 2px #0009;pointer-events:none}.terminal-bank .terminal-cell:nth-child(2) .screw{transform:rotate(39deg)}.terminal-bank .terminal-cell:nth-child(3) .screw{transform:rotate(77deg)}.terminal-bank .terminal-cell:nth-child(4) .screw{transform:rotate(18deg)}.terminal-bank .terminal-cell:last-child .terminal-label{font-size:11px}.mechanism{position:absolute;left:49px;top:106px;width:117px;height:82px;display:flex;align-items:flex-start;justify-content:space-between}.side-slot{height:74px;width:24px;border:1px solid #232d27;border-radius:3px;background:linear-gradient(90deg,#606b5f,#414e41);box-shadow:inset 1px 1px #798371}.side-slot:before{content:"";display:block;width:7px;height:21px;border-radius:4px;background:#263427;border:1px solid #87907b;margin:8px auto}.side-slot:after{content:"";display:block;width:13px;height:31px;background:#29352a;border-left:1px solid #89947f;margin:13px 0 0 9px}.plunger{width:47px;height:80px;border:1px solid #1e2b21;border-radius:5px 5px 2px 2px;background:linear-gradient(90deg,#53634f,#65765d 15%,#66755d 75%,#44563e);box-shadow:inset 0 2px #8c9d7d,1px 2px 2px #142216}.plunger:before{content:"";position:absolute;width:18px;height:32px;left:50%;margin-left:-9px;top:37px;background:#283728;border:1px solid #93a283;box-shadow:inset 3px 0 #3a4c34,inset -3px 0 #34462f}.plunger:after{content:"";display:block;width:23px;height:8px;border-left:4px solid #3d5239;border-right:4px solid #3d5239;margin:12px auto}.energized .plunger{transform:translateY(8px);transition:none}.vents{position:absolute;right:16px;top:110px;display:grid;gap:9px}.vents i{width:24px;height:10px;background:#18231c;border-top:2px solid #131d15;box-shadow:0 1px #778270}.vents i:first-child{height:19px;clip-path:polygon(0 0,100% 0,100% 40%,75% 40%,75% 100%,25% 100%,25% 40%,0 40%)}.nameplate{position:absolute;left:14px;top:194px;width:153px;height:28px;border:1px solid #1d2922;background:#778177;box-shadow:inset 1px 1px #a0a799,0 1px #7c8678;color:#e1e6da;display:flex;align-items:center;justify-content:space-between;padding:0 8px;font:10px Consolas,monospace}.nameplate strong{font-size:13px;letter-spacing:1px}.indicator{position:absolute;right:19px;top:198px;width:30px;height:16px;background:#1b271d;border:2px solid #788371;box-shadow:inset 0 1px 2px #000}.indicator:after{content:"";display:block;background:#b6bba1;width:16px;height:8px;margin:2px}.energized .indicator:after{transform:translateX(7px);background:#94d2a3}.series{position:absolute;bottom:8px;left:12px;font-size:14px;letter-spacing:-.5px}.coil-mark{position:absolute;bottom:9px;right:12px;font:10px Arial,sans-serif}.state-label{display:flex;justify-content:space-between;margin-top:10px;padding:0 3px;font-size:11px;color:#40503e}.state-label b{font-weight:500}.state-label span:before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:#647460;margin-right:6px}.energized .state-label span{color:#005635}.energized .state-label span:before{background:#00864c}.module.psu{width:166px}.module.mains{width:276px}.module.acmotor{width:298px}.psu .face{height:228px;background:linear-gradient(90deg,#e0e2d7,#f1f1e8 10%,#dadfd2 94%,#b2baac);color:#414e40;border-color:#899281;box-shadow:inset 1px 2px #fafbf0,3px 5px 5px #34412f44}.mains .face{height:248px;background:linear-gradient(90deg,#d8dce0,#eef1f4 12%,#cfd5db 94%,#9aa3ab);color:#2c3640;border-color:#7b8690;box-shadow:inset 1px 2px #f7f9fb,3px 5px 5px #1c283044}.mains .face:before{border-color:#a7b0b8}.mains .psu-brand{color:#0b5cab}.supply-ln{position:absolute;top:118px;left:15px;right:15px;font-size:10px;color:#3d4a44}.mains .supply-vents{top:148px}.mains .aux-bank{gap:4px;left:8px;right:8px}.mains .term.phase-l1{background:#6b3e24;border-color:#c4a484;box-shadow:inset 0 0 0 3px #d7b89a}.mains .term.phase-l2{background:#1a1a1a;border-color:#6a6a6a;box-shadow:inset 0 0 0 3px #8a8a8a}.mains .term.phase-l3{background:#6d6d6d;border-color:#b0b0b0;box-shadow:inset 0 0 0 3px #cfcfcf}.mains .term.phase-n{background:#1d4e89;border-color:#7eb0e0;box-shadow:inset 0 0 0 3px #9cc4ea}.mains .term.phase-pe{background:repeating-linear-gradient(45deg,#c5be36 0 5px,#1a1a1a 5px 10px);border-color:#6a8a3a;box-shadow:inset 0 0 0 2px #e6e0a8}.psu .face:before{border-color:#b1b9a8}.psu-brand{position:absolute;left:15px;top:15px;font-size:13px;font-weight:700;color:#007a79}.supply-name{position:absolute;top:42px;left:15px;font-size:11px}.supply-display{position:absolute;top:72px;left:14px;right:14px;background:#333f36;border:3px solid #a5af9a;color:#d1e9c7;font:26px Consolas,monospace;padding:8px 7px}.supply-display small{font-size:12px}.supply-vents{position:absolute;left:17px;right:17px;top:136px;height:19px;background:repeating-linear-gradient(90deg,#98a38f 0 3px,transparent 3px 8px)}.aux-bank{position:absolute;bottom:13px;left:12px;right:12px;display:flex;justify-content:space-around;gap:8px}.aux-bank .terminal-cell{gap:5px}.aux-bank .terminal-label{color:inherit;font-size:10px}.module.start,.module.stop{width:148px}.start .face,.stop .face{height:172px;background:linear-gradient(110deg,#e3e4d9,#c4cbba);border-color:#7c8973;color:#3e4a37;box-shadow:inset 2px 2px #f0f1e6,3px 5px 5px #34412f44}.push{position:absolute;left:43px;top:19px;width:62px;height:62px;border-radius:50%;border:6px solid #9ba491;background:radial-gradient(circle at 36% 30%,#3ba96a,#18773e 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #85c898;color:#fff;font-weight:700;font-size:12px;touch-action:none}.stop .push{background:radial-gradient(circle at 36% 30%,#e45c45,#b32b1b 70%);box-shadow:0 4px 0 #4c5843,0 5px 4px #283a2b66,inset 0 1px 2px #f59a7f}.push.down{transform:translateY(3px);box-shadow:0 1px 0 #4c5843,inset 0 3px 6px #12281766}.module.motor{width:188px}.motor .face{height:172px;background:linear-gradient(90deg,#596968,#77817a 50%,#4a5c56)}.motor-housing{position:absolute;left:51px;top:15px;width:84px;height:84px;border:5px solid #8a9487;border-radius:50%;background:repeating-conic-gradient(#405049 0 7deg,#67766b 7deg 14deg);box-shadow:0 3px 4px #17261d;display:grid;place-items:center}.fan{width:60px;height:60px;border-radius:50%;background:conic-gradient(#bcc6b0 0 38deg,#283e31 38deg 120deg,#bcc6b0 120deg 158deg,#283e31 158deg 240deg,#bcc6b0 240deg 278deg,#283e31 278deg);border:5px solid #35473a;position:relative}.fan:after{content:"";position:absolute;inset:18px;border-radius:50%;background:#cdd0bb}.running .fan{animation:spin .65s linear infinite}.acmotor .face{height:354px;background:#e7edf1;color:#273e50;border:1px solid #718694;box-shadow:inset 0 0 0 5px #f7f9fa,3px 4px 5px #26394a30}
 .acmotor .face::before{inset:8px;border-color:#c1cdd5;pointer-events:none}
 .ac-illustration{position:absolute;left:0;top:7px;width:100%;height:162px;pointer-events:none}
 .acmotor .ac-rotor{position:absolute;left:44px;top:70px;width:50px;height:50px;pointer-events:none}
@@ -172,7 +172,7 @@ input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .wire-hit.wire-selected{stroke:#007d7b66}.wire-endpoints{overflow-wrap:anywhere;font:12px Consolas,monospace}#deleteSelectedWire{display:block;margin-top:16px}.wire-item .wire-select{font:inherit;text-align:left;padding:4px 0;text-decoration:underline;margin:0}.wire-select[aria-pressed=true]{color:#006764;font-weight:bold}
 .dev-menu h3{margin:0 0 8px;font-size:13px;font-weight:650}
 .dev-menu .dev-note{color:#657169;margin:0 0 8px;line-height:1.5}
-.dev-menu label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0}
+.dev-menu label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:8px 0}.dev-menu label[hidden]{display:none}
 .dev-menu input[type=number]{width:92px;padding:5px 6px;border:1px solid #c8d1cd;border-radius:4px;font:inherit}
 .dev-menu .tag-field{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:8px 0 12px}
 .dev-menu .tag-field>span{font-size:11px;color:#657169}
@@ -247,7 +247,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 .drive-pin .term.connected::after{display:block;content:'';position:absolute;inset:12px;background:var(--cable,#d2ae27);border-radius:50%;box-shadow:0 0 0 2px #18212b;z-index:1}
 .drive-symbol{position:absolute;left:16px;top:23px;width:calc(100% - 16px);height:40px;overflow:visible;fill:none;stroke:#d5dfe4;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 .drive-symbol path{vector-effect:non-scaling-stroke}
-.drive-pin-name{font-size:13px;font-weight:600;line-height:16px}
+.drive-pin[data-pulse] .drive-pin-name::before{content:'';display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:50%;background:#4b5a62;border:1px solid #060f18;vertical-align:1px}.drive-pin[data-pulse].high .drive-pin-name{color:#9fe3a3}.drive-pin[data-pulse].high .drive-pin-name::before{background:#8ce595;box-shadow:0 0 4px #80df8880}.drive-takt{font-weight:650;font-variant-numeric:tabular-nums}
 .drive-symbol .sensor-rest{display:block}.drive-symbol .sensor-active{display:none}
 .drive-group.active .sensor-rest{display:none}.drive-group.active .sensor-active{display:block}.drive-group.active h3{color:#9fe3a3}
 .drive-led{display:inline-block;width:7px;height:7px;background:#4b5a62;border-radius:50%;margin-right:5px;border:1px solid #060f18}.drive-group.active .drive-led{background:#8ce595;box-shadow:0 0 4px #80df8880}
@@ -675,7 +675,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   function dinLamp(tag){return '<span class="lamp-cell"><span class="lamp-glow" aria-hidden="true"></span><svg class="din-sym din-lamp" viewBox="0 0 48 40" aria-hidden="true"><circle class="lamp-glass" cx="24" cy="17" r="13"/><path class="lamp-x" d="M15 8 L33 26 M33 8 L15 26"/></svg><span class="lamp-mark">'+tag+'</span></span>';}
   const driveFrames=new WeakMap();
   function driveSocket(m,pin,label,tone,description){
-    return `<div class="drive-pin">${/^B[4-7]$/.test(pin)?`<span class="drive-pin-name">${pin}</span>`:''}<button class="term" style="--socket:${tone}" data-key="${m.id}.${pin}" data-direction="bottom" aria-label="${m.id} ${description||pin}" title="${m.id} · ${description||pin}"></button><span>${label}</span></div>`;
+    return `<div class="drive-pin"${/^B[4-7]$/.test(pin)?` data-pulse="${pin}"`:''}>${/^B[4-7]$/.test(pin)?`<span class="drive-pin-name">${pin}</span>`:''}<button class="term" style="--socket:${tone}" data-key="${m.id}.${pin}" data-direction="bottom" aria-label="${m.id} ${description||pin}" title="${m.id} · ${description||pin}"></button><span>${label}</span></div>`;
   }
   function driveFace(m){
     const id='drive-'+m.id;
@@ -721,9 +721,18 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     </svg><div class="drive-panel">
       <div class="drive-group drive-power"><h3>MOTOR 24 VDC</h3><div class="drive-mark">LINEAR TRAINER</div><div class="drive-pins">${socket('+','+','#c13c42','Motor +')}${socket('−','−','#238cc9','Motor −')}${socket('PE','⏚','#c5be36','PE · separate Gehäuseklemme')}</div></div>
       ${sensors}
-      <div class="drive-group drive-supply"><h3>24 VDC</h3><div class="drive-pins">${socket('24V','1 +','#c13c42','Sensorversorgung + · reserviert')}${socket('0V','2 −','#238cc9','Sensorversorgung − · reserviert')}</div></div>
-      <div class="drive-group drive-spares"><h3><small>Belegung noch offen</small></h3><div class="drive-pins">${[4,5,6,7].map(n=>socket('B'+n,'3',n<6?'#2e9b76':'#e0e5e3','B'+n+' · reserviert, ohne Sensorfunktion')).join('')}</div></div>
+      <div class="drive-group drive-supply"><h3>24 VDC</h3><div class="drive-pins">${socket('24V','1 +','#c13c42','Geberversorgung +')}${socket('0V','2 −','#238cc9','Geberversorgung −')}</div></div>
+      <div class="drive-group drive-spares"><h3>Taktgeber <b class="drive-takt">0</b></h3><div class="drive-pins">${[['B4','Spur A'],['B5','Spur A invertiert'],['B6','Spur B'],['B7','Spur B invertiert']].map((pin,i)=>socket(pin[0],'3',i<2?'#2e9b76':'#e0e5e3',pin[1]+' · Pin 3')).join('')}</div></div>
     </div><div class="drive-adjust"><label for="${id}-position">Schlitten von Hand</label><span class="drive-limits">B1 · links</span><input id="${id}-position" class="drive-position" type="range" min="0" max="1000" step="1" value="${Math.round(m.slide*1000)}" aria-label="${m.id} Schlittenposition von Hand"><span class="drive-limits">rechts · B3</span><output class="drive-position-value">${Math.round(m.slide*100)} %</output></div>`;
+  }
+  function drivePulses(slide){
+    const step=Math.min(79,Math.floor(Math.max(0,Math.min(1,slide))*80));
+    const quad=step&3,a=quad===1||quad===2,b=quad===2||quad===3;
+    return {step,high:[a,!a,b,!b]};
+  }
+  function linkDrive(m,link){
+    [m.slide<=.03,Math.abs(m.slide-.5)<=.035,m.slide>=.97].forEach((active,i)=>link(m.id+'.B'+(i+1)+'_11',m.id+'.B'+(i+1)+(active?'_14':'_12')));
+    drivePulses(m.slide).high.forEach((on,i)=>link(m.id+'.B'+(i+4),m.id+'.'+(on?'24V':'0V')));
   }
   function paintDrive(m,snap){
     const st=snap?.motors?.[m.id]||{}, previous=driveFrames.get(m);
@@ -739,6 +748,9 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     m.el.querySelector('pattern[id$="-thread"]').setAttribute('patternTransform',`translate(${angle/30%7} 0)`);
     const sensors=[m.slide<=.03,Math.abs(m.slide-.5)<=.035,m.slide>=.97];
     sensors.forEach((active,i)=>{m.el.querySelector(`[data-sensor="${i+1}"]`).classList.toggle('active',active);m.el.querySelector(`[data-marker="${i+1}"] .sensor-light`).setAttribute('fill',active?'#a3e98d':'#5f727b');});
+    const pulses=drivePulses(m.slide);
+    pulses.high.forEach((on,i)=>m.el.querySelector(`[data-pulse="B${i+4}"]`)?.classList.toggle('high',on));
+    const takt=m.el.querySelector('.drive-takt');if(takt)takt.textContent=String(Math.floor(pulses.step/4));
     if(engineOk&&engine.setDrivePosition)engine.setDrivePosition(m.id,m.slide);
     const slider=m.el.querySelector('.drive-position');slider.value=Math.round(m.slide*1000);slider.disabled=live;
     m.el.querySelector('.drive-position-value').textContent=Math.round(m.slide*100)+' %';
@@ -778,7 +790,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
         const a=m.probeRed,b=m.probeBlack,valid=!!a&&!!b&&!!term(a)&&!!term(b);
         points='V: '+(a||'offen')+'\nCOM: '+(b||'offen');
         if(valid&&!powered){
-          if(!continuity){continuity=graph({},true);const link=(a,b)=>{if(!continuity.has(a))continuity.set(a,new Set());if(!continuity.has(b))continuity.set(b,new Set());continuity.get(a).add(b);continuity.get(b).add(a);};modules.filter(x=>x.type==='lineardrive').forEach(x=>[x.slide<=.03,Math.abs(x.slide-.5)<=.035,x.slide>=.97].forEach((active,i)=>link(x.id+'.B'+(i+1)+'_11',x.id+'.B'+(i+1)+(active?'_14':'_12'))));}
+          if(!continuity){continuity=graph({},true);modules.filter(x=>x.type==='lineardrive').forEach(x=>linkDrive(x,(a,b)=>{if(!continuity.has(a))continuity.set(a,new Set());if(!continuity.has(b))continuity.set(b,new Set());continuity.get(a).add(b);continuity.get(b).add(a);}));}
           const closed=reachable(continuity,a).has(b);value=closed?'DURCHGANG':'OFFEN';note='Leitungen & Kontakte · ohne Lastprüfung';
         }else if(valid&&snap&&!latchedFault&&Number.isFinite(terms[a])&&Number.isFinite(terms[b])){
           value=(terms[a]-terms[b]).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' V';note='Spannungsdifferenz · Momentanwert';
@@ -806,7 +818,9 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   const isMeter=m=>m.type==='voltmeter'||m.type==='ammeter';
   const relayPairs=m=>(m.relayContacts||[]).map(c=>[String(c.number*10+(c.kind==='NC'?1:3)),String(c.number*10+(c.kind==='NC'?2:4)),c.kind]);
   function paintProtection(m,st){
-    if(st){
+    if(st&&m.pendingProtection){
+      if(!!st.on===!!m.protectionOn&&!!st.tripped===!!m.protectionTripped){m.protectionReason=Number(st.reason)||0;m.pendingProtection='';m.protectionSent=false;}
+    }else if(st){
       if(m.protectionOn!==st.on||m.protectionTripped!==st.tripped||m.protectionReason!==st.reason){m.protectionOn=st.on;m.protectionTripped=st.tripped;m.protectionReason=st.reason;schedulePersist();}
     }
     const on=m.protectionOn&&!m.protectionTripped;
@@ -816,15 +830,35 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     const switchButton=m.el.querySelector('.protection-switch');switchButton.disabled=m.protectionTripped;switchButton.setAttribute('aria-pressed',String(on));switchButton.setAttribute('aria-label',m.id+(on?' ausschalten':' einschalten'));
     m.el.querySelector('[data-protection="reset"]').disabled=!m.protectionTripped;
     const test=$('#devMenu [data-protection="test"]');
+    const resetMenu=$('#devMenu [data-protection="reset"]');
     if(test&&selectedId===m.id)test.disabled=!!m.protectionTripped;
+    if(resetMenu&&selectedId===m.id)resetMenu.hidden=!m.protectionTripped;
     m.el.querySelector('.protection-current').textContent=(st&&on?Number(st.current||0).toFixed(2):'0.00')+' A';
     m.el.querySelector('.module-state').textContent=m.protectionTripped?(m.protectionReason===2?'Magnetisch ausgelöst':'Thermisch / Test ausgelöst'):on?'Geschlossen':'Getrennt';
   }
+  function applyProtectionLocal(m,action){
+    if(action==='on'&&!m.protectionTripped)m.protectionOn=true;
+    if(action==='off')m.protectionOn=false;
+    if(action==='reset'){m.protectionOn=false;m.protectionTripped=false;m.protectionReason=0;}
+    if(action==='test'){m.protectionTripped=true;m.protectionReason=1;}
+  }
+  function flushProtection(){
+    if(!engineOk||!engine?.setProtection)return;
+    modules.forEach(m=>{
+      if(!isProtection(m)||!m.pendingProtection||m.protectionSent)return;
+      if(engine.setProtection(m.id,m.pendingProtection))m.protectionSent=true;
+    });
+  }
   function operateProtection(m,action){
     remember();
-    if(engineOk&&engine?.setProtection){engine.setProtection(m.id,action);refreshLive();}
-    else{if(action==='on'&&!m.protectionTripped)m.protectionOn=true;if(action==='off')m.protectionOn=false;if(action==='reset'){m.protectionOn=false;m.protectionTripped=false;m.protectionReason=0;}if(action==='test'){m.protectionTripped=true;m.protectionReason=1;}paintProtection(m);}
+    applyProtectionLocal(m,action);
+    m.pendingProtection=action;
+    m.protectionSent=false;
+    if(engineOk&&engine?.setProtection&&engine.setProtection(m.id,action))m.protectionSent=true;
+    paintProtection(m);
     schedulePersist();
+    if(m.protectionSent)refreshLive();
+    else scheduleSync();
   }
   function paintTimer(m,snap){
     const state=snap?.timers?.[m.id],on=!!state?.on,waiting=!!state?.waiting;
@@ -920,7 +954,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     if(m.type==='terminal')el.style.width=Math.max(220,36+terminalPoles(m)*46+Math.ceil(terminalPoles(m)/terminalSpan(m))*8)+'px';
     if(m.type==='breaker'&&m.poles===3){el.style.width='198px';el.classList.add('poles-3');}
     if(m.type==='rail')el.style.width=(railScrews(m)>5?420:280)+'px';
-    el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-name">${types[m.type]}</span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><b>${m.type==='timer'?'15 gemeinsam · 16 NC · 18 NO':isProtection(m)?(m.type==='motorprotection'?'3 Pole · 1 NO + 1 NC':'Leitungsschutzschalter'):isMeter(m)?'Messleitungen · nicht im Stromkreis':m.type==='relay'?'A1 / A2 · eigene Spule':m.type==='terminal'?terminalCaption(m):m.type==='rail'?railCaption(m):m.type==='contactor'?'3 Leistungskontakte + 1 NO':m.type==='auxiliary'?'Gekoppelt an '+m.parent:m.type==='psu'?'Versorgung 24 V DC':m.type==='mains'?'L1 L2 L3 N PE · TN am Ursprung':m.type==='lineardrive'?'B1 links · B2 Mitte · B3 rechts · Wechselkontakte 11 / 12 / 14':isLight(m)?(m.type==='lamp'?'Leuchte':'Signalleuchte'):m.type==='selector'?'2 getrennte Schließer · rastend':m.type==='emergency'?'1 Öffner · 1 Schließer':m.type==='acmotor'?'U1 V1 W1 · U2 V2 W2 · Stern oder Dreieck':m.type==='motor'?'Verbraucher':'13–14 · 21–22 · '+lampTag(m)}</b><span class="module-state"></span></div>`;
+    el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-name">${types[m.type]}</span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><b>${m.type==='timer'?'15 gemeinsam · 16 NC · 18 NO':isProtection(m)?(m.type==='motorprotection'?'3 Pole · 1 NO + 1 NC':'Leitungsschutzschalter'):isMeter(m)?'Messleitungen · nicht im Stromkreis':m.type==='relay'?'A1 / A2 · eigene Spule':m.type==='terminal'?terminalCaption(m):m.type==='rail'?railCaption(m):m.type==='contactor'?'3 Leistungskontakte + 1 NO':m.type==='auxiliary'?'Gekoppelt an '+m.parent:m.type==='psu'?'Versorgung 24 V DC':m.type==='mains'?'L1 L2 L3 N PE · TN am Ursprung':m.type==='lineardrive'?'B1–B3 Endschalter · Taktgeber B4–B7':isLight(m)?(m.type==='lamp'?'Leuchte':'Signalleuchte'):m.type==='selector'?'2 getrennte Schließer · rastend':m.type==='emergency'?'1 Öffner · 1 Schließer':m.type==='acmotor'?'U1 V1 W1 · U2 V2 W2 · Stern oder Dreieck':m.type==='motor'?'Verbraucher':'13–14 · 21–22 · '+lampTag(m)}</b><span class="module-state"></span></div>`;
     const overlay=document.createElementNS(NS,'svg');overlay.classList.add('module-wires');overlay.setAttribute('aria-hidden','true');el.appendChild(overlay);
     if(!Number.isFinite(m.z))m.z=nextZ++;nextZ=Math.max(nextZ,m.z+1);el.style.zIndex=m.z;
     board.appendChild(el);position(m);paintDeviceFace(m);
@@ -1006,7 +1040,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
   function partKind(m){return m.type==='auxiliary'?'Hilfskontakte':m.type==='contactor'?'Hauptschütz':types[m.type];}
   function partBlob(m){return [m.id,displayName(m),shortName(m),partKind(m),m.parent||''].join(' ').toLowerCase();}
   function inspectorRows(m){
-    return m.type==='timer'?[['Spule','A1 / A2 · '+(m.nomV||24)+' V'],['Gemeinsam','15'],['Ruhe','15–16'],['Arbeit','15–18'],['Funktion',timerModes[m.timerMode]||timerModes[0]]]:m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='mains'?[['U_LL',fmtV(m.voltage)+' V'],['U_LN',fmtV(m.voltage/Math.sqrt(3))+' V'],['Frequenz','50 Hz'],['Klemmen','L1 / L2 / L3 / N / PE'],['N–PE','intern verbunden']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B4–B7 + Versorgung','Reservierte Buchsen'],['Modell','10 s Verfahrzeit bei Nennspannung'],['PE','Separate Gehäuseklemme']]:m.type==='acmotor'?[['Netz','400 V 3~'],['Nennleistung',(m.ratedKw||1.5)+' kW'],['Wirkungsgrad',Math.round((m.eta||0.8)*100)+' %'],['Zuleitung','U1 · V1 · W1'],['Wicklung','U2 · V2 · W2'],['PE','Gehäuse, nicht an der Wicklung']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis '+terminalPoles(m)],['Oben / unten','dieselbe Nummer'],['Rand',terminalSpan(m)===2?'Paare, eine Verbindung':terminalSpan(m)===4?'je 4, eine Verbindung':'keine Brücke']]:m.type==='rail'?[['+24',railScrews(m)+' Schrauben, eine Schiene'],['0 V',railScrews(m)+' Schrauben, getrennt von +24'],['PE',railScrews(m)+' Schrauben, nicht auf 0 V']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
+    return m.type==='timer'?[['Spule','A1 / A2 · '+(m.nomV||24)+' V'],['Gemeinsam','15'],['Ruhe','15–16'],['Arbeit','15–18'],['Funktion',timerModes[m.timerMode]||timerModes[0]]]:m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='mains'?[['U_LL',fmtV(m.voltage)+' V'],['U_LN',fmtV(m.voltage/Math.sqrt(3))+' V'],['Frequenz','50 Hz'],['Klemmen','L1 / L2 / L3 / N / PE'],['N–PE','intern verbunden']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B4–B7','Taktgeber · A /A B /B'],['Versorgung','24 V nur für den Geber'],['Modell','10 s bei Nennspannung · 20 Takte'],['PE','Separate Gehäuseklemme']]:m.type==='acmotor'?[['Netz','400 V 3~'],['Nennleistung',(m.ratedKw||1.5)+' kW'],['Wirkungsgrad',Math.round((m.eta||0.8)*100)+' %'],['Zuleitung','U1 · V1 · W1'],['Wicklung','U2 · V2 · W2'],['PE','Gehäuse, nicht an der Wicklung']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis '+terminalPoles(m)],['Oben / unten','dieselbe Nummer'],['Rand',terminalSpan(m)===2?'Paare, eine Verbindung':terminalSpan(m)===4?'je 4, eine Verbindung':'keine Brücke']]:m.type==='rail'?[['+24',railScrews(m)+' Schrauben, eine Schiene'],['0 V',railScrews(m)+' Schrauben, getrennt von +24'],['PE',railScrews(m)+' Schrauben, nicht auf 0 V']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
   }
   function refreshInspectorRows(m){
     const box=$('#componentDetails .terminal-info');
@@ -1062,7 +1096,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     openSettings(m,0,0,false);
     const actions=document.createElement('div');actions.className='property-actions';
     if(m.type==='auxiliary'){const owner=document.createElement('button');owner.className='ui-btn';owner.textContent='Hauptschütz bearbeiten';owner.onclick=()=>selectModule(m.parent,true);actions.append(owner);}
-    if(isProtection(m)){const test=document.createElement('button');test.className='ui-btn';test.dataset.protection='test';test.title='Mechanische Testauslösung';test.textContent='TEST';test.disabled=!!m.protectionTripped;test.onclick=()=>operateProtection(m,'test');actions.append(test);}
+    if(isProtection(m)){const test=document.createElement('button');test.className='ui-btn';test.dataset.protection='test';test.title='Mechanische Testauslösung';test.textContent='TEST';test.disabled=!!m.protectionTripped;test.onclick=()=>operateProtection(m,'test');const reset=document.createElement('button');reset.className='ui-btn';reset.dataset.protection='reset';reset.title='Nach der Auslösung wieder einschaltbereit';reset.textContent='Rückstellen';reset.hidden=!m.protectionTripped;reset.onclick=()=>operateProtection(m,'reset');actions.append(test,reset);}
     const copy=document.createElement('button');copy.className='ui-btn';copy.textContent='Duplizieren';copy.disabled=m.type==='auxiliary';copy.onclick=()=>{remember();const clone={...m,id:nextId(defaultPrefix(m.type)),el:undefined,pressed:false,latched:false,selection:0,x:Math.min(BOARD_W-300,m.x+280),y:m.y+30};modules.push(clone);renderModule(clone);move(clone,clone.x,clone.y);if(m.type==='contactor'&&modules.some(x=>x.parent===m.id))createAux(clone);selectModule(clone.id);update();};
     const remove=document.createElement('button');remove.className='ui-btn';remove.textContent='Bauteil löschen';remove.onclick=()=>removeModule(m);actions.append(copy,remove);$('#devMenu').append(actions);
     renderWires();
@@ -1179,7 +1213,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(m.type==='breaker'){$('#devCurve').value=m.characteristic;$('#devProtectionPoles').value=m.poles;$('#devCapacity').value=m.breakingCapacity;}
       apply.hidden=false;
     }else if(m.type==='lineardrive'){
-      note.textContent='Vereinfachtes 24-V-Lehrmodell: B1 links, B2 Mitte, B3 rechts. 11–12 ist in Ruhe geschlossen, 11–14 bei Betätigung. Die Fahrt folgt CircuitJS; am mechanischen Anschlag stoppt der Schlitten, der Motor bleibt elektrisch bestromt. Keine Blockierstrom- oder Encoder-Nachbildung. B4–B7 und deren Versorgung sind bis zur geklärten Belegung nur separate Buchsen.';
+      note.textContent='Vereinfachtes 24-V-Lehrmodell: B1 links, B2 Mitte, B3 rechts. 11–12 ist in Ruhe geschlossen, 11–14 bei Betätigung. B4 ist Spur A, B5 die invertierte Spur, B6 Spur B, B7 die invertierte Spur. 20 Takte über den ganzen Weg. Die 24-V-Buchsen speisen nur den Geber. Die Fahrt folgt CircuitJS; am Anschlag stoppt der Schlitten, der Motor bleibt bestromt.';
       fields.innerHTML='';apply.hidden=true;
     }else if(m.type==='psu'){
       note.textContent='Klemmen bleiben +24 / 0 V. CircuitJS nimmt den eingestellten Wert. Spule und Motor müssen zur Spannung passen.';
@@ -1514,6 +1548,128 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(!end)return [[a.x,a.y],[a.x,b.y],[b.x,b.y]];
     const result=[];for(let n=end;n;n=n.prev)result.unshift([xs[n.i],ys[n.j]]);return result;
   }
+  function moduleBoxes(){
+    return modules.filter(m=>m.el&&m.el.querySelector('.face')).map(m=>({id:m.id,l:m.x-9,r:m.x+m.el.offsetWidth+9,t:m.y-5,b:m.y+31+m.el.querySelector('.face').offsetHeight+23}));
+  }
+  function jogOf(w,key){
+    if(!w||!key)return 0;
+    const mates=wires.filter(x=>x.a===key||x.b===key);
+    if(mates.length<2)return 0;
+    return (mates.indexOf(w)-(mates.length-1)/2)*14;
+  }
+  function exitPoint(p,jog,boxes){
+    const r=boxes.find(box=>box.id===p.id),lane=18;
+    if(!r)return {x:p.x,y:p.y};
+    if(p.d==='top')return {x:p.x+jog,y:r.t-lane};
+    if(p.d==='left')return {x:r.l-lane,y:p.y+jog};
+    if(p.d==='right')return {x:r.r+lane,y:p.y+jog};
+    return {x:p.x+jog,y:r.b+lane};
+  }
+  function tidyPoints(points){
+    points=points.filter((p,i)=>!i||Math.abs(p[0]-points[i-1][0])>.5||Math.abs(p[1]-points[i-1][1])>.5);
+    for(let i=points.length-2;i>0;i--)if((Math.abs(points[i-1][0]-points[i][0])<.5&&Math.abs(points[i][0]-points[i+1][0])<.5)||(Math.abs(points[i-1][1]-points[i][1])<.5&&Math.abs(points[i][1]-points[i+1][1])<.5))points.splice(i,1);
+    return points;
+  }
+  function routePoints(a,b,w,boxes){
+    const first=exitPoint(a,w?jogOf(w,w.a):0,boxes),last=exitPoint(b,w?jogOf(w,w.b):0,boxes);
+    return tidyPoints([[a.x,a.y],...routeBetween(first,last,boxes,18),[b.x,b.y]]);
+  }
+  function orthoPath(points){
+    let d=`M${points[0][0]} ${points[0][1]}`;
+    for(let i=1;i<points.length-1;i++){
+      const p=points[i],prev=points[i-1],next=points[i+1],aLen=Math.hypot(p[0]-prev[0],p[1]-prev[1]),bLen=Math.hypot(next[0]-p[0],next[1]-p[1]),r=Math.min(10,aLen/2,bLen/2);
+      if(aLen<1||bLen<1){d+=` L${p[0]} ${p[1]}`;continue;}
+      d+=` L${p[0]-(p[0]-prev[0])/aLen*r} ${p[1]-(p[1]-prev[1])/aLen*r} Q${p[0]} ${p[1]} ${p[0]+(next[0]-p[0])/bLen*r} ${p[1]+(next[1]-p[1])/bLen*r}`;
+    }
+    return d+` L${points[points.length-1][0]} ${points[points.length-1][1]}`;
+  }
+  function segmentHits(horizontal,pos,spanA,spanB,boxes,margin){
+    const pad=margin==null?8:margin;
+    return boxes.some(r=>horizontal?pos>r.t-pad&&pos<r.b+pad&&spanB>r.l+1&&spanA<r.r-1:pos>r.l-pad&&pos<r.r+pad&&spanB>r.t+1&&spanA<r.b-1);
+  }
+  // Dieselbe Spur: nebeneinander legen, sonst decken sich die Adern. Klemmen bleiben.
+  function spreadBundles(routes,boxes){
+    const occupied=(pts,horizontal,pos,spanA,spanB)=>{
+      for(let n=1;n<pts.length-2;n++){
+        const c=pts[n],d=pts[n+1];
+        if(horizontal){
+          if(Math.abs(c[1]-d[1])>.5||Math.abs(c[1]-pos)>8)continue;
+          if(Math.min(spanB,Math.max(c[0],d[0]))-Math.max(spanA,Math.min(c[0],d[0]))>16)return true;
+        }else if(Math.abs(c[0]-d[0])<.5&&Math.abs(c[0]-pos)<=8&&Math.min(spanB,Math.max(c[1],d[1]))-Math.max(spanA,Math.min(c[1],d[1]))>16)return true;
+      }
+      return false;
+    };
+    const run=horizontal=>{
+      const segs=[];
+      routes.forEach((pts,wi)=>{
+        for(let i=1;i<pts.length-2;i++){
+          const a=pts[i],b=pts[i+1];
+          const straight=horizontal?Math.abs(a[1]-b[1])<.5&&Math.abs(a[0]-b[0])>28:Math.abs(a[0]-b[0])<.5&&Math.abs(a[1]-b[1])>28;
+          if(!straight)continue;
+          const prev=pts[i-1],next=pts[i+2];
+          const prevOk=i===1||(horizontal?Math.abs(prev[0]-a[0])<.5:Math.abs(prev[1]-a[1])<.5);
+          const nextOk=i+1===pts.length-2||(horizontal?Math.abs(next[0]-b[0])<.5:Math.abs(next[1]-b[1])<.5);
+          if(!prevOk||!nextOk)continue;
+          const span=horizontal?[a[0],b[0]]:[a[1],b[1]];
+          segs.push({wi,i,p:horizontal?a[1]:a[0],a:Math.min(span[0],span[1]),b:Math.max(span[0],span[1])});
+        }
+      });
+      const parent=segs.map((_,i)=>i);
+      const find=i=>parent[i]===i?i:(parent[i]=find(parent[i]));
+      for(let i=0;i<segs.length;i++)for(let j=i+1;j<segs.length;j++){
+        if(segs[i].wi===segs[j].wi||Math.abs(segs[i].p-segs[j].p)>22)continue;
+        if(Math.min(segs[i].b,segs[j].b)-Math.max(segs[i].a,segs[j].a)<=16)continue;
+        const x=find(i),y=find(j);if(x!==y)parent[x]=y;
+      }
+      const groups=new Map();
+      segs.forEach((s,i)=>{const r=find(i);if(!groups.has(r))groups.set(r,[]);groups.get(r).push(s);});
+      groups.forEach(group=>{
+        const by=new Map();
+        group.forEach(s=>{if(!by.has(s.wi))by.set(s.wi,[]);by.get(s.wi).push(s);});
+        const ids=[...by.keys()].sort((a,b)=>a-b);
+        if(ids.length<2)return;
+        const origin=ids.reduce((sum,wi)=>sum+by.get(wi)[0].p,0)/ids.length;
+        const clear=(pos,margin)=>ids.every((wi,k)=>by.get(wi).every(s=>{
+          if(segmentHits(horizontal,pos[k],s.a,s.b,boxes,margin))return false;
+          return !routes.some((pts,other)=>other!==wi&&!ids.includes(other)&&occupied(pts,horizontal,pos[k],s.a,s.b));
+        }));
+        let chosen=null;
+        for(const margin of [8,2]){
+          for(const pitch of [12,8]){
+            const base=ids.map((_,k)=>(k-(ids.length-1)/2)*pitch);
+            for(let step=0;step<=ids.length+6&&!chosen;step++){
+              for(const sign of step?[1,-1]:[0]){
+                const pos=base.map(o=>origin+o+sign*step*pitch);
+                if(clear(pos,margin)){chosen=pos;break;}
+              }
+            }
+            if(chosen)break;
+          }
+          if(chosen)break;
+        }
+        if(!chosen){
+          const used=[],axis=horizontal?1:0,pitch=10;
+          ids.forEach(wi=>{
+            const segs=by.get(wi);
+            const fits=pos=>segs.every(s=>!segmentHits(horizontal,pos,s.a,s.b,boxes,2)&&!used.some(u=>Math.abs(u.p-pos)<8&&Math.min(s.b,u.b)-Math.max(s.a,u.a)>16)&&!routes.some((pts,other)=>other!==wi&&!ids.includes(other)&&occupied(pts,horizontal,pos,s.a,s.b)));
+            let slot=null;
+            for(let step=0;step<=ids.length&&slot==null;step++){
+              for(const sign of step?[1,-1]:[0]){
+                const pos=origin+sign*step*pitch;
+                if(fits(pos)){slot=pos;break;}
+              }
+            }
+            if(slot==null)return;
+            segs.forEach(s=>{routes[wi][s.i][axis]=slot;routes[wi][s.i+1][axis]=slot;used.push({p:slot,a:s.a,b:s.b});});
+          });
+          return;
+        }
+        const axis=horizontal?1:0;
+        ids.forEach((wi,k)=>by.get(wi).forEach(s=>{routes[wi][s.i][axis]=chosen[k];routes[wi][s.i+1][axis]=chosen[k];}));
+      });
+    };
+    run(true);run(false);
+  }
   function pathFor(a,b,index,w){
     if(a.id===b.id&&modules.some(m=>m.id===a.id&&m.type==='acmotor')){
       const motor=modules.find(m=>m.id===a.id),dx=b.x-a.x,dy=b.y-a.y,len2=dx*dx+dy*dy;
@@ -1527,32 +1683,13 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       }
       return `M${a.x} ${a.y} L${b.x} ${b.y}`;
     }
-    const lane=12+(index%4)*14;
-    const boxes=modules.map(m=>({id:m.id,l:m.x-9,r:m.x+m.el.offsetWidth+9,t:m.y-5,b:m.y+31+m.el.querySelector('.face').offsetHeight+23}));
-    const jogOf=key=>{
-      if(!w||!key)return 0;
-      const mates=wires.filter(x=>x.a===key||x.b===key);
-      if(mates.length<2)return 0;
-      return (mates.indexOf(w)-(mates.length-1)/2)*14;
-    };
-    const exit=(p,jog)=>{
-      const r=boxes.find(box=>box.id===p.id);
-      if(p.d==='top')return {x:p.x+jog,y:r.t-lane};
-      if(p.d==='left')return {x:r.l-lane,y:p.y+jog};
-      if(p.d==='right')return {x:r.r+lane,y:p.y+jog};
-      return {x:p.x+jog,y:r.b+lane};
-    };
-    const first=exit(a,w?jogOf(w.a):0);
+    const boxes=moduleBoxes();
+    const first=exitPoint(a,w?jogOf(w,w.a):0,boxes);
     if(b.d==='free'){
       if(a.d==='left'||a.d==='right')return `M${a.x} ${a.y} C${first.x} ${a.y} ${b.x} ${b.y} ${b.x} ${b.y}`;
       return `M${a.x} ${a.y} C${a.x} ${first.y} ${b.x} ${b.y} ${b.x} ${b.y}`;
     }
-    const last=exit(b,w?jogOf(w.b):0);let points=[[a.x,a.y],...routeBetween(first,last,boxes,lane),[b.x,b.y]];
-    points=points.filter((p,i)=>!i||p[0]!==points[i-1][0]||p[1]!==points[i-1][1]);
-    for(let i=points.length-2;i>0;i--)if((points[i-1][0]===points[i][0]&&points[i][0]===points[i+1][0])||(points[i-1][1]===points[i][1]&&points[i][1]===points[i+1][1]))points.splice(i,1);
-    let d=`M${points[0][0]} ${points[0][1]}`;
-    for(let i=1;i<points.length-1;i++){const p=points[i],prev=points[i-1],next=points[i+1],aLen=Math.hypot(p[0]-prev[0],p[1]-prev[1]),bLen=Math.hypot(next[0]-p[0],next[1]-p[1]),r=Math.min(10,aLen/2,bLen/2);d+=` L${p[0]-(p[0]-prev[0])/aLen*r} ${p[1]-(p[1]-prev[1])/aLen*r} Q${p[0]} ${p[1]} ${p[0]+(next[0]-p[0])/bLen*r} ${p[1]+(next[1]-p[1])/bLen*r}`;}
-    return d+` L${b.x} ${b.y}`;
+    return orthoPath(routePoints(a,b,w,boxes));
   }
   function path(d,cls,c){const p=document.createElementNS(NS,'path');p.setAttribute('d',d);p.setAttribute('class',cls);if(c)p.setAttribute('stroke',c);return p;}
   function removeWire(i){if(i<0)return;remember();if(wires[i]===selectedWire)selectedWire=null;wires.splice(i,1);update();noteWiringReset();}
@@ -1563,8 +1700,16 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const tag=(p,i)=>{p.dataset.wire=String(i);p.classList.toggle('wire-selected',wires[i]===selectedWire);return p;};
     const paint=(target,d,c,i)=>target.append(tag(path(d,'wire-shadow'),i),tag(path(d,'wire-volt'),i),tag(path(d,'wire-line',c),i),tag(path(d,'wire-highlight'),i));
     const setHot=(i,on)=>document.querySelectorAll('[data-wire="'+i+'"]').forEach(el=>el.classList.toggle('hot',on));
+    const boxes=moduleBoxes();
+    const routed=[];
     wires.forEach((w,i)=>{
-      const a=point(w.a),b=point(w.b);if(!a||!b)return;const d=pathFor(a,b,i,w);paint(svg,d,cableStroke(w.color),i);
+      const a=point(w.a),b=point(w.b);if(!a||!b)return;
+      if(a.id===b.id&&modules.some(m=>m.id===a.id&&m.type==='acmotor'))routed.push({i,w,a,b,d:pathFor(a,b,i,w)});
+      else routed.push({i,w,a,b,pts:routePoints(a,b,w,boxes)});
+    });
+    spreadBundles(routed.filter(r=>r.pts).map(r=>r.pts),boxes);
+    routed.forEach(r=>{
+      const {w,i,a,b}=r,d=r.d||orthoPath(tidyPoints(r.pts));paint(svg,d,cableStroke(w.color),i);
       const hitOn=target=>{
         const hit=tag(path(d,'wire-hit'),i);
         hit.onpointerdown=e=>e.stopPropagation();
@@ -1830,11 +1975,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const current=Object.fromEntries(Object.entries(snap.coils||{}).map(([id,coil])=>[id,!!coil.energized]));
     const conductors=graph(current);
     const link=(a,b)=>{if(!conductors.has(a))conductors.set(a,new Set());if(!conductors.has(b))conductors.set(b,new Set());conductors.get(a).add(b);conductors.get(b).add(a);};
-    modules.filter(m=>m.type==='lineardrive').forEach(m=>{
-      [m.slide<=.03,Math.abs(m.slide-.5)<=.035,m.slide>=.97].forEach((active,i)=>{
-        link(`${m.id}.B${i+1}_11`,`${m.id}.B${i+1}_${active?'14':'12'}`);
-      });
-    });
+    modules.filter(m=>m.type==='lineardrive').forEach(m=>linkDrive(m,link));
     for(const supply of modules.filter(m=>m.type==='psu')){
       if(reachable(conductors,supply.id+'.+24').has(supply.id+'.0V')){
         return {code:'SHORT_CIRCUIT',message:'Kurzschluss',componentIds:[supply.id]};
@@ -1986,6 +2127,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       applyPresses();
       if(engine.setRunning)engine.setRunning(wantEngineRun());
       applySnapshot();
+      flushProtection();
     }catch(e){engineOk=false;lastImportedSig='';setEngineTag(String(e),true);evaluate();}
   }
   function applyLive(){
@@ -2063,6 +2205,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       }
     });
     const pulled=modules.filter(x=>x.type==='contactor'&&coils[x.id]?.energized).map(x=>x.id);
+    flushProtection();
     $('#simStatus').textContent=latchedFault?getFaultPresentation(latchedFault).status:simMode==='aufbau'?'Aufbau · Spannung aus':simMode==='paused'?(pulled.length?pulled.join(', ')+' angezogen · eingefroren':'Eingefroren · Spannung bleibt'):!powered?'Betrieb · Spannung aus':pulled.length?'Betrieb · '+pulled.join(', ')+' angezogen':'Betrieb · Spannung an';
     $('#statusDot').className='status-dot'+(latchedFault?' error':!powered||simMode==='aufbau'||!snap.running?' off':'');
     const flag=$('#modeFlag');
