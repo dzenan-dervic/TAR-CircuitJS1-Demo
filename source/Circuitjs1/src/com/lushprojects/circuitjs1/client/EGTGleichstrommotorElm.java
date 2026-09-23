@@ -7,7 +7,7 @@ package com.lushprojects.circuitjs1.client;
 import com.lushprojects.circuitjs1.client.util.Locale;
 
 /**
- * DIN-Kreis + M + Gleichstrom-Kennzeichen (=). Klemmen +/−.
+ * DIN-Kreis, M und = unten, dreiflügeliger Lüfter wie beim Drehstrommotor.
  * Didaktik: linearer Ankerwiderstand R = Un²/Pn, Polarität = Drehsinn.
  * Kein Upstream-DCMotorElm (Dump 415) — CTMS/Gegen-EMK bleibt dort.
  */
@@ -368,25 +368,19 @@ class EGTGleichstrommotorElm extends ChipElm implements EGTDesignatable {
 	g.context.stroke();
 	g.setLineWidth(1.0);
 
-	double rr = r * 0.82;
-	double span = Math.PI * 0.55;
 	int dir = directionSign();
-	if (dir != 0) {
-	    if (simRunning())
-		angle += dir * Math.abs(currentMult) * ARROW_RATE;
-	    drawArcArrow(g, cx, cy, rr, angle, span, dir > 0, COL_ACCENT, 2.2);
-	} else
-	    drawArcIdle(g, cx, cy, rr, -Math.PI / 2, span);
+	if (dir != 0 && simRunning())
+	    angle += dir * Math.abs(currentMult) * ARROW_RATE;
+	EGTStyle.drawMotorFan(g, cx, cy, r, angle, dir, stroke, COL_IDLE,
+			      COL_ACCENT);
 
-	int labelSize = Math.max(12, (int) Math.round(r * 0.44));
-	int subSize = Math.max(10, (int) Math.round(labelSize * 0.68));
+	int subSize = Math.max(9, (int) Math.round(r * 0.22));
 	g.setColor(stroke);
 	g.context.setTextAlign("center");
 	g.context.setTextBaseline("middle");
-	g.setFont(new Font("normal", 0, labelSize));
-	g.drawString("M", cx, (int) (cy - r * 0.08));
 	g.setFont(new Font("normal", 0, subSize));
-	g.drawString("=", cx, (int) (cy + r * 0.32));
+	g.drawString("M", cx, (int) (cy + r * 0.72));
+	g.drawString("=", cx, (int) (cy + r * 0.88));
 	g.context.setTextAlign("left");
 	g.context.setTextBaseline("alphabetic");
 
@@ -418,49 +412,6 @@ class EGTGleichstrommotorElm extends ChipElm implements EGTDesignatable {
 	g.restore();
 	g.context.setTextAlign("left");
 	g.context.setTextBaseline("alphabetic");
-    }
-
-    void drawArcArrow(Graphics g, int cx, int cy, double rr, double aMid,
-		      double span, boolean cw, Color color, double w) {
-	double a0 = aMid - span / 2;
-	double a1 = aMid + span / 2;
-	g.setColor(color);
-	g.setLineWidth(w);
-	g.context.beginPath();
-	if (cw)
-	    g.context.arc(cx, cy, rr, a0, a1, false);
-	else
-	    g.context.arc(cx, cy, rr, a1, a0, true);
-	g.context.stroke();
-
-	double tipA = cw ? a1 : a0;
-	double tang = tipA + (cw ? Math.PI / 2 : -Math.PI / 2);
-	double tipX = cx + Math.cos(tipA) * rr;
-	double tipY = cy + Math.sin(tipA) * rr;
-	double ah = Math.max(7, rr * 0.26);
-	double bx = tipX - Math.cos(tang) * ah;
-	double by = tipY - Math.sin(tang) * ah;
-	double nx = -Math.sin(tang) * ah * 0.45;
-	double ny = Math.cos(tang) * ah * 0.45;
-	g.context.beginPath();
-	g.context.moveTo(tipX, tipY);
-	g.context.lineTo(bx + nx, by + ny);
-	g.context.lineTo(bx - nx, by - ny);
-	g.context.closePath();
-	g.context.fill();
-	g.setLineWidth(1.0);
-    }
-
-    void drawArcIdle(Graphics g, int cx, int cy, double rr, double aMid,
-		     double span) {
-	g.setColor(COL_IDLE);
-	g.setLineWidth(1.8);
-	g.setLineDash(5, 4);
-	g.context.beginPath();
-	g.context.arc(cx, cy, rr, aMid - span / 2, aMid + span / 2, false);
-	g.context.stroke();
-	g.setLineDash(0, 0);
-	g.setLineWidth(1.0);
     }
 
     String dump() {

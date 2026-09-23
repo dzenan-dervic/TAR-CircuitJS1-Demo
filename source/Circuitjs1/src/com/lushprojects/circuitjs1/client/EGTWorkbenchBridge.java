@@ -1,5 +1,6 @@
 package com.lushprojects.circuitjs1.client;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.google.gwt.core.client.JavaScriptObject;
@@ -40,6 +41,9 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTLeuchteElm> lamps;
     HashMap<String, EGTLeistungsschuetzElm> contactors;
     HashMap<String, EGTSchuetzSpuleElm> relays;
+    HashMap<String, EGTZeitrelaisSpuleElm> timers;
+    ArrayList<CircuitElm> commonFrom;
+    ArrayList<CircuitElm> commonTo;
     HashMap<String, EGTSchuetzHilfskontaktElm> auxContacts;
     HashMap<String, EGTGleichstrommotorElm> motors;
     HashMap<String, EGTDrehstrommotorElm> acMotors;
@@ -49,6 +53,8 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTDrehstromquelleElm> mains;
     HashMap<String, Double> mainsSetpoint;
     HashMap<String, WireElm> wireElms;
+    HashMap<String, EGTWorkbenchMotorProtectionElm> motorProtectors;
+    HashMap<String, EGTWorkbenchBreakerElm> breakers;
     boolean supplyOn = true;
 
     EGTWorkbenchBridge(CirSim app) {
@@ -59,6 +65,8 @@ class EGTWorkbenchBridge {
     String version() { return VERSION; }
 
     void resetMaps() {
+        motorProtectors = new HashMap<String, EGTWorkbenchMotorProtectionElm>();
+        breakers = new HashMap<String, EGTWorkbenchBreakerElm>();
 	terminals = new HashMap<String, Term>();
 	tasters = new HashMap<String, EGTTasterElm>();
 	tastersNc = new HashMap<String, EGTTasterElm>();
@@ -66,6 +74,9 @@ class EGTWorkbenchBridge {
 	lamps = new HashMap<String, EGTLeuchteElm>();
 	contactors = new HashMap<String, EGTLeistungsschuetzElm>();
         relays = new HashMap<String, EGTSchuetzSpuleElm>();
+        timers = new HashMap<String, EGTZeitrelaisSpuleElm>();
+	commonFrom = new ArrayList<CircuitElm>();
+	commonTo = new ArrayList<CircuitElm>();
 	auxContacts = new HashMap<String, EGTSchuetzHilfskontaktElm>();
 	motors = new HashMap<String, EGTGleichstrommotorElm>();
 	acMotors = new HashMap<String, EGTDrehstrommotorElm>();
@@ -154,6 +165,28 @@ class EGTWorkbenchBridge {
         if (position != 0) pair[position < 0 ? 0 : 1].setWorkbenchPressed(true);
         app.needAnalyze();
         app.repaint();
+        return true;
+    }
+
+    boolean setProtection(String id, String action) {
+        if (!"on".equals(action) && !"off".equals(action) && !"reset".equals(action) && !"test".equals(action)) return false;
+        EGTWorkbenchMotorProtectionElm m = motorProtectors.get(id);
+        EGTWorkbenchBreakerElm b = breakers.get(id);
+        if (m == null && b == null) return false;
+        if (m != null) {
+            if ("off".equals(action)) m.switchedOn = false;
+            if ("on".equals(action) && !m.tripped) m.switchedOn = true;
+            if ("reset".equals(action)) { m.switchedOn = false; m.clearTrip(); }
+            if ("test".equals(action)) m.trip(EGTMotorschutzschalterElm.TRIP_THERMAL);
+        }
+        if (b != null) {
+            if ("off".equals(action)) b.switchedOn = false;
+            if ("on".equals(action) && !b.tripped) b.switchedOn = true;
+            if ("reset".equals(action)) { b.switchedOn = false; b.clearTrip(); }
+            if ("test".equals(action)) b.trip(EGTSicherungElm.TRIP_TH);
+        }
+        EGTSchuetzLink.refresh(app.sim);
+        app.needAnalyze(); app.repaint();
         return true;
     }
 
@@ -248,6 +281,11 @@ class EGTWorkbenchBridge {
 	    app.repaint();
 	    return true;
 	}
+        EGTZeitrelaisSpuleElm timer = timers.get(id);
+        if (timer != null) {
+            timer.nom_v = nomV; timer.nom_pow = nomP; timer.updateResistance();
+            app.needAnalyze(); app.repaint(); return true;
+        }
         EGTSchuetzSpuleElm relay = relays.get(id);
         if (relay != null) {
             relay.nom_v = nomV;
@@ -353,6 +391,12 @@ class EGTWorkbenchBridge {
 	return i;
     }
 
+    private void protectionSnapshot(StringBuffer sb, String id, boolean on, boolean tripped, int reason, double current, double thermal) {
+        sb.append('"').append(esc(id)).append("\":{\"on\":").append(on);
+        sb.append(",\"tripped\":").append(tripped).append(",\"reason\":").append(reason);
+        sb.append(",\"current\":").append(jsonNum(current)).append(",\"thermal\":").append(jsonNum(thermal)).append('}');
+    }
+
     String readSnapshot() {
 	StringBuffer sb = new StringBuffer();
 	sb.append("{\"ok\":true,\"version\":\"").append(VERSION);
@@ -383,6 +427,19 @@ class EGTWorkbenchBridge {
 	    }
 	    sb.append("]}");
 	}
+        sb.append(",\"protections\":{");
+        boolean firstProtection = true;
+        for (String id : motorProtectors.keySet()) {
+            EGTWorkbenchMotorProtectionElm m = motorProtectors.get(id);
+            if (!firstProtection) sb.append(','); firstProtection = false;
+            protectionSnapshot(sb, id, m.switchedOn, m.tripped, m.tripReason, m.iRms, m.thermal);
+        }
+        for (String id : breakers.keySet()) {
+            EGTWorkbenchBreakerElm b = breakers.get(id);
+            if (!firstProtection) sb.append(','); firstProtection = false;
+            protectionSnapshot(sb, id, b.switchedOn, b.tripped, b.tripReason, b.iShow, b.thermal);
+        }
+        sb.append('}');
 	sb.append(",\"coils\":{");
 	boolean first = true;
 	for (String id : contactors.keySet()) {
@@ -407,6 +464,24 @@ class EGTWorkbenchBridge {
             sb.append(",\"a2\":").append(jsonNum(k.getVoltageJS(1)));
             sb.append(",\"current\":").append(jsonNum(k.getCurrent()));
             sb.append('}');
+        }
+        for (String id : timers.keySet()) {
+            if (!first) sb.append(','); first = false;
+            EGTZeitrelaisSpuleElm timer = timers.get(id);
+            sb.append('"').append(esc(id)).append("\":{\"energized\":");
+            sb.append(EGTZeitrelaisLink.isTimedOn(timer.designation)).append('}');
+        }
+        sb.append("},\"timers\":{"); first = true;
+        for (String id : timers.keySet()) {
+            if (!first) sb.append(','); first = false;
+            EGTZeitrelaisLink.State state = EGTZeitrelaisLink.get(timers.get(id).designation);
+            boolean waiting = EGTZeitrelaisLink.isWaitingState(state);
+            double phase = state.mode == EGTZeitrelaisLink.MODE_BLINK ? (state.timedOn ? state.delay : state.delayOff)
+                : state.mode == EGTZeitrelaisLink.MODE_COMBINED && !state.powered ? state.delayOff : state.delay;
+            sb.append('"').append(esc(id)).append("\":{\"powered\":").append(state.powered);
+            sb.append(",\"on\":").append(state.timedOn).append(",\"waiting\":").append(waiting);
+            sb.append(",\"remaining\":").append(jsonNum(waiting ? Math.max(0, phase - state.waitAccum) : 0));
+            sb.append(",\"duration\":").append(jsonNum(phase)).append('}');
         }
 	sb.append("},\"contacts\":{");
 	first = true;
@@ -610,6 +685,17 @@ class EGTWorkbenchBridge {
 	    Term t = terminals.get(key);
 	    t.elm.setPoints();
 	}
+	for (int i = 0; i < commonFrom.size(); i++) {
+	    CircuitElm a = commonFrom.get(i), b = commonTo.get(i);
+	    a.setPoints();
+	    b.setPoints();
+	    Point pa = a.getPost(0), pb = b.getPost(0);
+	    if (pa == null || pb == null || (pa.x == pb.x && pa.y == pb.y))
+		continue;
+	    WireElm link = new WireElm(pa.x, pa.y, pb.x, pb.y, 0, new StringTokenizer(""));
+	    link.setPoints();
+	    addElm(link);
+	}
 	int nw = getLen(wires);
 	for (int i = 0; i < nw; i++) {
 	    JavaScriptObject w = getAt(wires, i);
@@ -621,6 +707,62 @@ class EGTWorkbenchBridge {
 	String id = getStr(c, "id", "");
 	String type = getStr(c, "type", "");
 	String designation = getStr(c, "designation", id);
+        if ("motorprotection".equals(type)) {
+            EGTWorkbenchMotorProtectionElm m = new EGTWorkbenchMotorProtectionElm(nextX(), nextY());
+            m.designation = designation;
+            m.iSet = Math.max(.1, Math.min(100, getNum(c, "ratedCurrent", 2.8)));
+            m.magneticMultiple = 13;
+            m.tripTime = 5;
+            m.switchedOn = getBool(c, "protectionOn", false);
+            m.tripped = getBool(c, "protectionTripped", false);
+            m.tripReason = (int)getNum(c, "protectionReason", 0);
+            m.syncEndpoints(); addElm(m); motorProtectors.put(id, m);
+            for (int i = 0; i < 6; i++) bind(id + "." + (i + 1), m, i);
+            bump(); addAux(id, designation, 1, false); addAux(id, designation, 2, true);
+            return;
+        }
+        if ("breaker".equals(type)) {
+            EGTWorkbenchBreakerElm b = new EGTWorkbenchBreakerElm(nextX(), nextY());
+            b.designation = designation;
+            b.poles = (int)getNum(c, "poles", 1) == 3 ? 3 : 1;
+            b.inA = EGTSicherungElm.nearestIn((int)getNum(c, "ratedCurrent", 16));
+            String curve = getStr(c, "characteristic", "B");
+            b.charIdx = "D".equals(curve) ? 2 : "C".equals(curve) ? 1 : 0;
+            b.applySize(); b.layoutPins(); b.allocNodes(); b.syncEndpoints();
+            b.switchedOn = getBool(c, "protectionOn", false);
+            b.tripped = getBool(c, "protectionTripped", false);
+            b.tripReason = (int)getNum(c, "protectionReason", 0);
+            addElm(b); breakers.put(id, b);
+            for (int i = 0; i < b.poles * 2; i++) bind(id + "." + (i + 1), b, i);
+            bump(); return;
+        }
+        if ("timer".equals(type)) {
+            EGTZeitrelaisSpuleElm timer = new EGTZeitrelaisSpuleElm(nextX(), nextY());
+            timer.setEgtDesignation(designation);
+            int mode = Math.max(0, Math.min(3, (int)getNum(c, "timerMode", 0)));
+            timer.alignDelayMode(mode);
+            timer.delay = Math.max(.01, Math.min(3600, getNum(c, "delayOn", 3)));
+            timer.delayOff = Math.max(.01, Math.min(3600, getNum(c, "delayOff", 3)));
+            timer.nom_v = Math.max(1, getNum(c, "nomV", 24));
+            timer.nom_pow = Math.max(.1, getNum(c, "nomP", 2));
+            timer.updateResistance(); timer.syncEndpoints();
+            EGTZeitrelaisLink.clearDesignation(designation);
+            addElm(timer); timers.put(id, timer);
+            bind(id + ".A1", timer, 0); bind(id + ".A2", timer, 1); bump();
+            EGTZeitrelaisKontaktElm no = new EGTZeitrelaisKontaktElm(nextX(), nextY());
+            no.setEgtDesignation(designation); no.alignDelayMode(mode);
+            no.syncEndpoints(); addElm(no); bump();
+            EGTZeitrelaisKontaktElm nc = new EGTZeitrelaisKontaktElm(nextX(), nextY());
+            nc.setEgtDesignation(designation); nc.alignDelayMode(mode);
+            nc.flags |= EGTZeitrelaisKontaktElm.FLAG_NC;
+            nc.syncEndpoints(); addElm(nc); bump();
+            bind(id + ".15", no, 0);
+            bind(id + ".18", no, 1);
+            bind(id + ".16", nc, 1);
+            commonFrom.add(no);
+            commonTo.add(nc);
+            return;
+        }
         if ("relay".equals(type)) {
             EGTSchuetzSpuleElm k = new EGTSchuetzSpuleElm(nextX(), nextY());
             k.setEgtDesignation(designation);
@@ -958,7 +1100,7 @@ class EGTWorkbenchBridge {
     }
 
     private static boolean validType(String type) {
-	return "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
+	return "timer".equals(type) || "motorprotection".equals(type) || "breaker".equals(type) || "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "acmotor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)

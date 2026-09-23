@@ -486,6 +486,53 @@ class EGTStyle {
 	return w;
     }
 
+    /** Dreiflügeliger Motorlüfter. Negatives dir ist Linkslauf, 0 ist Stillstand. */
+    static void drawMotorFan(Graphics g, int cx, int cy, double r, double angle,
+			     int dir, Color stroke, Color idle, Color running) {
+	double hub = r * 0.16;
+	double rim = r * 0.70;
+	double curl = (dir < 0) ? -1 : 1;
+	g.setColor(dir == 0 ? idle : running);
+	for (int i = 0; i < 3; i++) {
+	    double a = angle + i * 2 * Math.PI / 3;
+	    double rootA = a - curl * 0.34;
+	    double tipA = a + curl * 0.38;
+	    double backA = a + curl * 0.54;
+	    double x0 = cx + Math.cos(rootA) * hub;
+	    double y0 = cy + Math.sin(rootA) * hub;
+	    double xt = cx + Math.cos(tipA) * rim;
+	    double yt = cy + Math.sin(tipA) * rim;
+	    double xb = cx + Math.cos(backA) * hub;
+	    double yb = cy + Math.sin(backA) * hub;
+	    g.context.beginPath();
+	    g.context.moveTo(x0, y0);
+	    g.context.bezierCurveTo(
+		cx + Math.cos(a - curl * 0.20) * r * 0.46,
+		cy + Math.sin(a - curl * 0.20) * r * 0.46,
+		cx + Math.cos(a + curl * 0.12) * r * 0.74,
+		cy + Math.sin(a + curl * 0.12) * r * 0.74,
+		xt, yt);
+	    g.context.bezierCurveTo(
+		cx + Math.cos(a + curl * 0.62) * r * 0.61,
+		cy + Math.sin(a + curl * 0.62) * r * 0.61,
+		cx + Math.cos(a + curl * 0.66) * r * 0.30,
+		cy + Math.sin(a + curl * 0.66) * r * 0.30,
+		xb, yb);
+	    g.context.closePath();
+	    g.context.fill();
+	}
+	g.setColor(new Color(0x18, 0x22, 0x2c));
+	g.context.beginPath();
+	g.context.arc(cx, cy, hub * 1.08, 0, 2 * Math.PI, false);
+	g.context.fill();
+	g.setColor(stroke);
+	g.setLineWidth(1.8);
+	g.context.beginPath();
+	g.context.arc(cx, cy, hub * 1.08, 0, 2 * Math.PI, false);
+	g.context.stroke();
+	g.setLineWidth(1.0);
+    }
+
     /** Kontaktbogen ∩ (Öffnung nach unten); Scheitel bei yPeak. */
     static void drawOpenDownU(Graphics g, int cx, int yPeak, int r) {
 	if (r < 4)

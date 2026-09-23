@@ -61,6 +61,7 @@ public class JSInterface {
     String workbenchVersion() { return EGTWorkbenchBridge.VERSION; }
     String workbenchLoadProject(JavaScriptObject project) { return workbench.loadProject(project); }
     boolean workbenchSetPressed(String id, boolean pressed) { return workbench.setPressed(id, pressed); }
+    boolean workbenchSetProtection(String id, String action) { return workbench.setProtection(id, action); }
     boolean workbenchSetSelector(String id, int position) { return workbench.setSelector(id, position); }
     boolean workbenchSetDrivePosition(String id, double position) { return workbench.setDrivePosition(id, position); }
     void workbenchSetRunning(boolean running) { workbench.setRunning(running); }
@@ -107,6 +108,7 @@ public class JSInterface {
 		    return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchLoadProject(Lcom/google/gwt/core/client/JavaScriptObject;)(project);
 		}),
 		setPressed: $entry(function(id, pressed) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetPressed(Ljava/lang/String;Z)(id, !!pressed); }),
+                setProtection: $entry(function(id, action) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetProtection(Ljava/lang/String;Ljava/lang/String;)(id, action); }),
                 setSelector: $entry(function(id, position) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetSelector(Ljava/lang/String;I)(id, position|0); }),
                 setDrivePosition: $entry(function(id, position) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetDrivePosition(Ljava/lang/String;D)(id, +position); }),
 		setRunning: $entry(function(running) { that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetRunning(Z)(!!running); }),
