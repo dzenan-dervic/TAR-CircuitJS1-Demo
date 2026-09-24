@@ -71,7 +71,7 @@
 .toolbar .add .glyph{display:block;width:24px;height:24px;margin:0;flex:none;border-radius:4px;overflow:hidden;box-shadow:inset 0 0 0 1px #1a24201a,0 1px 1px #2a382e18;font-size:0;color:inherit}
 .toolbar .add .glyph svg{display:block;width:24px;height:24px}
 .toolbar{align-items:flex-end}.toolbar .add-groups{display:flex;flex:1 1 520px;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;min-width:0}.toolbar .add-set{display:flex;flex-direction:column;gap:3px}.toolbar .add-set .tool-label{margin:0;font-size:11px}.toolbar .add-row{display:flex;gap:6px;flex-wrap:wrap}
-.auxiliary .state-label{font-size:10px;gap:4px}.auxiliary .state-label b{font-size:9px}
+.auxiliary .state-label{font-size:10px;gap:4px;background:transparent}.auxiliary .state-label b{font-size:9px}
 .module.start,.module.stop{width:156px}
 .start .face,.stop .face{height:296px;overflow:visible}
 .start,.stop{--push-color:#2f9a56;--push-ink:#fff;--signal-color:#eff6fb}
@@ -104,7 +104,7 @@
 .lit .din-lamp .lamp-glass{fill:var(--signal-color,#fff4a8);stroke:color-mix(in srgb,var(--signal-color) 45%,#2f3a32)}
 .lit .din-lamp .lamp-x{stroke:color-mix(in srgb,var(--signal-color) 25%,#2a2418);stroke-width:2.5}
 .lit .lamp-mark{color:#3e4a37}
-.start .state-label,.stop .state-label{flex-direction:column;align-items:flex-start;gap:2px}
+.start .state-label,.stop .state-label{flex-direction:column;align-items:flex-start;gap:2px;background:transparent}
 .start .state-label b,.stop .state-label b{font-size:10px}
 .component-list{display:grid;gap:4px;max-height:208px;overflow:auto;margin:10px 0}
 .component-select{display:flex;gap:8px;align-items:center;border:1px solid #d5dcd6;background:#fff;text-align:left;padding:7px 8px;border-radius:3px;font-size:11px;min-height:34px}
@@ -231,10 +231,10 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 
 /* Linear trainer: dimensions stay in board coordinates, including its sockets. */
 .module.lineardrive{width:1200px}
-.lineardrive .face{height:366px;background:#182633;border:2px solid #17222b;border-radius:5px;box-shadow:inset 0 1px #84909a,4px 7px 9px #26342955;overflow:hidden}
+.lineardrive .face{height:374px;background:#182633;border:2px solid #17222b;border-radius:5px;box-shadow:inset 0 1px #84909a,4px 7px 9px #26342955;overflow:hidden}
 .drive-mechanics{display:block;width:100%;height:192px;background:linear-gradient(#c3c9c3,#aab2ac);border-bottom:4px solid #0c1722;pointer-events:none}
-.drive-panel{display:flex;align-items:stretch;gap:19px;padding:15px 24px 10px;background:linear-gradient(105deg,#1e2c3b,#121c28);height:123px;color:#e5e9e9;box-shadow:inset 0 2px #475566}
-.drive-group{position:relative;min-width:0;flex:1}.drive-group.drive-power{flex:1.08}.drive-group.drive-supply{flex:.73}.drive-group.drive-spares{flex:1.35}
+.drive-panel{display:flex;align-items:stretch;gap:19px;padding:12px 24px 8px;background:linear-gradient(105deg,#1e2c3b,#121c28);height:132px;color:#e5e9e9;box-shadow:inset 0 2px #475566}
+.drive-group{position:relative;min-width:0;flex:1}.drive-group.drive-power{flex:1.08}.drive-group.drive-supply{flex:.73}.drive-group.drive-encoder{flex:1.15}
 .drive-group+.drive-group{border-left:1px solid #445363;padding-left:16px}
 .drive-group h3{margin:0;font:600 13px Arial,sans-serif;letter-spacing:.02em;color:#eef3f4;height:22px;white-space:nowrap}
 .drive-group h3 small{font-size:10px;font-weight:400;color:#a8b9c8}
@@ -247,7 +247,19 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 .drive-pin .term.connected::after{display:block;content:'';position:absolute;inset:12px;background:var(--cable,#d2ae27);border-radius:50%;box-shadow:0 0 0 2px #18212b;z-index:1}
 .drive-symbol{position:absolute;left:16px;top:23px;width:calc(100% - 16px);height:40px;overflow:visible;fill:none;stroke:#d5dfe4;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}
 .drive-symbol path{vector-effect:non-scaling-stroke}
-.drive-pin[data-pulse] .drive-pin-name::before{content:'';display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:50%;background:#4b5a62;border:1px solid #060f18;vertical-align:1px}.drive-pin[data-pulse].high .drive-pin-name{color:#9fe3a3}.drive-pin[data-pulse].high .drive-pin-name::before{background:#8ce595;box-shadow:0 0 4px #80df8880}.drive-takt{font-weight:650;font-variant-numeric:tabular-nums}.encoder-trace{display:block;width:calc(100% - 8px);height:34px;margin:2px 0 0 4px;overflow:visible}.encoder-trace path{fill:none;stroke:#d7e7cf;stroke-width:1.7;stroke-linejoin:miter;stroke-linecap:square}.encoder-trace text{fill:#d5e0d6;font:9px Arial,sans-serif}
+.drive-pin[data-pulse] .drive-pin-name::before{content:'';display:inline-block;width:7px;height:7px;margin-right:4px;border-radius:50%;background:#4b5a62;border:1px solid #060f18;vertical-align:1px}.drive-pin[data-pulse].high .drive-pin-name{color:#9fe3a3}.drive-pin[data-pulse].high .drive-pin-name::before{background:#8ce595;box-shadow:0 0 4px #80df8880}.drive-takt{font-weight:650;font-variant-numeric:tabular-nums}
+.encoder-channels{display:flex;justify-content:space-evenly;align-items:flex-start;gap:16px;padding-top:2px}
+.encoder-channel{display:flex;flex-direction:column;align-items:center;width:68px;gap:0}
+.encoder-mark{display:block;width:60px;height:16px;overflow:visible}
+.encoder-mark path{fill:none;stroke:#f4f7f8;stroke-width:1.8;stroke-linejoin:miter;stroke-linecap:square}
+.encoder-channel.high .encoder-mark path{stroke:#fff;filter:drop-shadow(0 0 2px #ffffffcc)}
+.encoder-channel .term{position:relative;width:30px;height:30px;margin:3px 0 0;padding:0;border:1px solid #101820;border-radius:50%;background:radial-gradient(circle at 36% 28%,#ffffff80,transparent 46%),#c5ced4;box-shadow:inset 0 0 0 2px #ffffff66,inset 0 -3px 3px #0006,1px 2px 2px #0008}
+.encoder-channel .term::before{content:'';position:absolute;inset:6px;border-radius:50%;background:radial-gradient(circle at 55% 68%,#3c4854,#070b10 72%);border:2px solid #9aa6b0}
+.encoder-channel .term::after{display:none}
+.encoder-channel .term.connected::after{display:block;content:'';position:absolute;inset:11px;background:var(--cable,#d2ae27);border-radius:50%;box-shadow:0 0 0 2px #18212b;z-index:1}
+.encoder-pin{margin-top:2px;font:11px/12px Arial,sans-serif;color:#f4f7f8}
+.encoder-name{font:700 13px/15px Arial,sans-serif;color:#f7fafb;letter-spacing:.04em}
+.encoder-channel.high .encoder-name{color:#d9ffe2}
 .drive-symbol .sensor-rest{display:block}.drive-symbol .sensor-active{display:none}
 .drive-group.active .sensor-rest{display:none}.drive-group.active .sensor-active{display:block}.drive-group.active h3{color:#9fe3a3}
 .drive-led{display:inline-block;width:7px;height:7px;background:#4b5a62;border-radius:50%;margin-right:5px;border:1px solid #060f18}.drive-group.active .drive-led{background:#8ce595;box-shadow:0 0 4px #80df8880}
@@ -299,7 +311,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 .emergency .case-screw{position:absolute;width:14px;height:14px;border-radius:50%;background:linear-gradient(130deg,#edf2ed,#849398);border:1px solid #718084;top:17px;left:12px}
 .emergency .case-screw::after{content:'+';position:absolute;inset:-5px 0 0;text-align:center;font-size:17px;color:#3d4a52}
 .emergency .case-screw.right{left:auto;right:11px}
-.emergency .state-label{flex-direction:column;align-items:flex-start;gap:3px;font-size:10px}
+.emergency .state-label{flex-direction:column;align-items:flex-start;gap:3px;font-size:10px;background:transparent}
 .emergency.pressed .module-state{color:#a32022;font-weight:650}
 
 .module.selector{width:320px}
@@ -770,7 +782,7 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
       <div class="drive-group drive-power"><h3>MOTOR 24 VDC</h3><div class="drive-mark">LINEAR TRAINER</div><div class="drive-pins">${socket('+','+','#c13c42','Motor +')}${socket('−','−','#238cc9','Motor −')}${socket('PE','⏚','#c5be36','PE · separate Gehäuseklemme')}</div></div>
       ${sensors}
       <div class="drive-group drive-supply"><h3>24 VDC</h3><div class="drive-pins">${socket('24V','1 +','#c13c42','Geberversorgung +')}${socket('0V','2 −','#238cc9','Geberversorgung −')}</div></div>
-      <div class="drive-group drive-spares"><h3>Linealgeber <b class="drive-takt">0</b></h3><svg class="encoder-trace" viewBox="0 0 148 36" role="img" aria-label="Rechtecksignale. Nach rechts kommt B6 vor B7, nach links B7 vor B6."><text x="1" y="11">B6</text><path d="M22 12 H37 V3 H67 V12 H97 V3 H127 V12 H142"/><text x="1" y="32">B7</text><path d="M22 33 H52 V24 H82 V33 H112 V24 H142"/></svg><div class="drive-pins">${[['B6','Rechteck','#2e9b76','B6 Rechteck, führt nach rechts'],['B7','Rechteck','#e0e5e3','B7 Rechteck, führt nach links']].map(pin=>socket(pin[0],pin[1],pin[2],pin[3])).join('')}</div></div>
+      <div class="drive-group drive-encoder" data-lead="b6" role="group" aria-label="Linealgeber. Zwei getrennte Rechteckkanäle. Nach rechts führt B6, nach links B7."><h3>Linealgeber <b class="drive-takt">0</b></h3><div class="encoder-channels"><div class="encoder-channel" data-pulse="B6"><svg class="encoder-mark" viewBox="0 0 56 16" aria-hidden="true"><path d="M1 13 H8 V2 H26 V13 H44 V2 H55"/></svg><button class="term" data-key="${m.id}.B6" data-direction="bottom" aria-label="${m.id} B6 Rechteck, führt nach rechts" title="${m.id} · B6"></button><span class="encoder-pin">3</span><span class="encoder-name">B6</span></div><div class="encoder-channel" data-pulse="B7"><svg class="encoder-mark" viewBox="0 0 56 16" aria-hidden="true"><path d="M1 13 H18 V2 H36 V13 H52 V2 H55"/></svg><button class="term" data-key="${m.id}.B7" data-direction="bottom" aria-label="${m.id} B7 Rechteck, führt nach links" title="${m.id} · B7"></button><span class="encoder-pin">3</span><span class="encoder-name">B7</span></div></div></div>
     </div><div class="drive-adjust"><label for="${id}-position">Schlitten von Hand</label><span class="drive-limits">B1 · links</span><input id="${id}-position" class="drive-position" type="range" min="0" max="1000" step="1" value="${Math.round(m.slide*1000)}" aria-label="${m.id} Schlittenposition von Hand"><span class="drive-limits">rechts · B3</span><output class="drive-position-value">${Math.round(m.slide*100)} %</output></div>`;
   }
   function drivePulses(slide){
@@ -806,6 +818,14 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
     const pulses=drivePulses(m.slide);
     m.el.querySelector('[data-pulse="B6"]')?.classList.toggle('high',pulses.b6);
     m.el.querySelector('[data-pulse="B7"]')?.classList.toggle('high',pulses.b7);
+    const pulseLead=m.linealDir==='links'?'b7':'b6';
+    const box=m.el.querySelector('.drive-encoder');
+    if(box&&box.dataset.lead!==pulseLead){
+      box.dataset.lead=pulseLead;
+      const early='M1 13 H8 V2 H26 V13 H44 V2 H55', late='M1 13 H18 V2 H36 V13 H52 V2 H55';
+      m.el.querySelector('[data-pulse="B6"] .encoder-mark path').setAttribute('d',pulseLead==='b6'?early:late);
+      m.el.querySelector('[data-pulse="B7"] .encoder-mark path').setAttribute('d',pulseLead==='b7'?early:late);
+    }
     const takt=m.el.querySelector('.drive-takt');if(takt)takt.textContent=String(Math.floor(pulses.step/4));
     if(engineOk&&engine.setDrivePosition)engine.setDrivePosition(m.id,m.slide);
     const slider=m.el.querySelector('.drive-position');slider.value=Math.round(m.slide*1000);slider.disabled=live;
