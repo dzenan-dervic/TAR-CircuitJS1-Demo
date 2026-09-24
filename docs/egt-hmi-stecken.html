@@ -380,16 +380,23 @@ html.sim-paused .plunger,html.sim-paused .indicator:after,html.mode-aufbau .plun
 .timer.energized .timer-rest{display:none}
 .timer.energized .timer-work{display:inline}
 .timer .state-label{flex-direction:column;gap:2px}.timer .handle-name{min-width:0;overflow:hidden;text-overflow:ellipsis}.timer .handle-label,.timer .remove{flex-shrink:0}
+@media(max-width:1480px){
+  header{min-height:0;padding:6px 10px;gap:8px;flex-wrap:nowrap;flex-direction:row;align-items:center}
+  header .actions{flex-wrap:nowrap;overflow-x:auto;max-width:100%}
+  header .ui-btn{min-height:34px;font-size:12px;padding:4px 8px}
+  .toolbar{flex-wrap:nowrap;overflow-x:auto;align-items:center;padding:4px 8px;gap:8px}
+  .toolbar .add-groups{flex:0 0 auto;flex-wrap:nowrap;min-width:max-content;gap:8px;align-items:center}
+  .toolbar .add-set{flex-direction:row;align-items:center;gap:4px}
+  .toolbar .add-set .tool-label{font-size:10px;line-height:1;white-space:nowrap;width:auto}
+  .toolbar .add-row{flex-wrap:nowrap;gap:3px}
+  .toolbar .add{min-height:30px;height:30px;font-size:11px;padding:1px 6px 1px 2px;gap:3px;white-space:nowrap}
+  .toolbar .add .glyph,.toolbar .add .glyph svg{width:18px;height:18px}
+  .work-mode,.simulation-controls,.tool-group{flex:0 0 auto;flex-wrap:nowrap}
+  .work-mode button{min-height:30px;min-width:0;font-size:12px;padding:0 8px}
+  .wire-colors .color,.color{width:22px;height:22px;flex-basis:22px}
+}
 @media(max-width:1180px){
-  header{padding:10px 12px;min-height:0;gap:10px}
-  .ui-btn{min-height:44px;font-size:14px;padding:8px 12px}
-  .toolbar{flex-wrap:nowrap;overflow-x:auto;align-items:flex-end;padding:8px 10px;gap:12px}
-  .toolbar .add-groups{flex-wrap:nowrap;flex:0 0 auto;min-width:max-content}
-  .toolbar .add-row{flex-wrap:nowrap}
-  .toolbar .add{min-height:48px;font-size:15px;padding:8px 12px;white-space:nowrap}
-  .work-mode,.simulation-controls,.tool-group{flex:0 0 auto}
-  .work-mode button{min-height:48px;min-width:104px;font-size:16px;padding:0 16px}
-  .wire-colors .color,.color{width:44px;height:44px;flex-basis:44px}
+  header{padding:6px 10px;min-height:0;gap:8px}
   .board-bar{flex-wrap:nowrap;overflow-x:auto;gap:8px}
   .view-controls{flex-wrap:nowrap}
   .view-controls .ui-btn,.zoom-step{min-height:44px;font-size:14px;padding:8px 12px}
@@ -2380,7 +2387,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     camera={x:16-left*scale,y:12-top*scale};
     applyView();viewReady=true;
   }
-  function layoutView(){if(matchMedia('(max-width:1180px)').matches)comfortView();else fit();}
+  function layoutView(){if(matchMedia('(max-width:1480px)').matches)comfortView();else fit();}
   function reveal(m){
     const w=m.el.offsetWidth*scale,h=m.el.offsetHeight*scale;
     if(w>viewport.clientWidth-40||h>viewport.clientHeight-40)scale=Math.min(scale,(viewport.clientWidth-40)/m.el.offsetWidth,(viewport.clientHeight-40)/m.el.offsetHeight);
