@@ -143,8 +143,8 @@ body{height:100dvh;display:grid;grid-template-rows:auto auto minmax(0,1fr)}
 .stage-size{position:absolute;inset:0;pointer-events:none}.board{pointer-events:auto}
 .hint-line{padding:7px 14px;margin:0;max-width:none;background:#f1f3ef;border-top:1px solid #c1cbc3;font-size:11px}
 .inspector{min-height:0;overflow-y:auto}.workspace{position:relative}.workspace.hide-inspector{grid-template-columns:1fr}.workspace.hide-inspector .inspector{display:none}
-.inspector-tab{position:absolute;z-index:30;top:108px;right:320px;width:28px;height:52px;padding:0;display:grid;place-items:center;border:1px solid var(--line);border-right:0;border-radius:8px 0 0 8px;background:#fff;color:var(--ink);box-shadow:-2px 1px 7px #233d281f;cursor:pointer}
-.inspector-tab:focus,.inspector-tab:focus-visible{outline:none}
+.inspector-tab{position:absolute;z-index:92;top:var(--viewbar-height,48px);right:320px;width:28px;height:52px;padding:0;display:grid;place-items:center;border:1px solid var(--line);border-right:0;border-radius:8px 0 0 8px;background:#fff;color:var(--ink);box-shadow:-2px 1px 7px #233d281f;cursor:pointer}
+button.inspector-tab:focus,button.inspector-tab:focus-visible{outline:none}
 .inspector{background:#fff;border-left:0;padding:14px 12px 24px}
 .inspector .inspector-head{margin:2px 4px 10px}.inspector .inspector-head h2{font-size:18px;font-weight:700}
 .inspector-head-actions{display:flex;align-items:center;gap:10px}
