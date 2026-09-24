@@ -48,6 +48,7 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTGleichstrommotorElm> motors;
     HashMap<String, EGTDrehstrommotorElm> acMotors;
     HashMap<String, EGTWechselschalterElm> driveSensors;
+    HashMap<String, EGTWechselschalterElm> drivePulses;
     HashMap<String, EGTGleichspannungsquelleElm> psus;
     HashMap<String, Double> psuSetpoint;
     HashMap<String, EGTDrehstromquelleElm> mains;
@@ -81,6 +82,7 @@ class EGTWorkbenchBridge {
 	motors = new HashMap<String, EGTGleichstrommotorElm>();
 	acMotors = new HashMap<String, EGTDrehstrommotorElm>();
 	driveSensors = new HashMap<String, EGTWechselschalterElm>();
+	drivePulses = new HashMap<String, EGTWechselschalterElm>();
 	psus = new HashMap<String, EGTGleichspannungsquelleElm>();
 	psuSetpoint = new HashMap<String, Double>();
 	mains = new HashMap<String, EGTDrehstromquelleElm>();
@@ -203,8 +205,31 @@ class EGTWorkbenchBridge {
                 changed = true;
             }
         }
+        int step = driveStep(position);
+        int quad = step & 3;
+        // Steigende Position = Rechts: B6 wechselt eine Lage vor B7.
+        boolean[] high = { quad == 1 || quad == 2, quad == 2 || quad == 3 };
+        String[] tracks = { "B6", "B7" };
+        for (int i = 0; i < tracks.length; i++) {
+            EGTWechselschalterElm pulse = drivePulses.get(id + "." + tracks[i]);
+            if (pulse == null) continue;
+            int next = high[i] ? 1 : 0;
+            if (pulse.position != next) {
+                pulse.position = next;
+                pulse.setPoints();
+                changed = true;
+            }
+        }
         if (changed) { app.needAnalyze(); app.repaint(); }
         return true;
+    }
+
+    // 20 Takte über den Weg, vier Lagen je Takt. B6 führt nach rechts, B7 nach links.
+    private static int driveStep(double position) {
+        if (position < 0) position = 0;
+        if (position > 1) position = 1;
+        int step = (int)Math.floor(position * 80);
+        return step > 79 ? 79 : step;
     }
 
     String resetSimulation(JavaScriptObject project) {
@@ -941,15 +966,27 @@ class EGTWorkbenchBridge {
                     bind(sensorId + "_14", sensor, 1);
                     bump();
                 }
-                // Unidentified sensor sockets remain independent passive test points.
-                String[] spare = { "PE", "24V", "0V", "B4", "B5", "B6", "B7" };
-                for (String pin : spare) {
-                    OutputElm socket = new OutputElm(nextX(), nextY());
-                    socket.x2 = socket.x + 32;
-                    addElm(socket);
-                    bind(id + "." + pin, socket, 0);
+                OutputElm pe = new OutputElm(nextX(), nextY());
+                pe.x2 = pe.x + 32;
+                addElm(pe);
+                bind(id + ".PE", pe, 0);
+                bump();
+                String[] tracks = { "B6", "B7" };
+                EGTWechselschalterElm[] pulses = new EGTWechselschalterElm[tracks.length];
+                for (int i = 0; i < tracks.length; i++) {
+                    EGTWechselschalterElm pulse = new EGTWechselschalterElm(nextX(), nextY());
+                    pulse.setEgtDesignation(designation + " " + tracks[i]);
+                    addElm(pulse);
+                    pulses[i] = pulse;
+                    String key = id + "." + tracks[i];
+                    drivePulses.put(key, pulse);
+                    bind(key, pulse, 2);
                     bump();
                 }
+                tiePosts(pulses[0], 0, pulses[1], 0);
+                tiePosts(pulses[0], 1, pulses[1], 1);
+                bind(id + ".0V", pulses[0], 0);
+                bind(id + ".24V", pulses[0], 1);
                 setDrivePosition(id, getNum(c, "slide", .5));
             }
 	    return;
@@ -1048,6 +1085,18 @@ class EGTWorkbenchBridge {
 	bind(b, c, 1);
 	auxContacts.put(a, c);
 	bump();
+    }
+
+    private void tiePosts(CircuitElm a, int pa, CircuitElm b, int pb) {
+	a.setPoints();
+	b.setPoints();
+	Point p1 = a.getPost(pa);
+	Point p2 = b.getPost(pb);
+	if (p1 == null || p2 == null || (p1.x == p2.x && p1.y == p2.y))
+	    return;
+	WireElm w = new WireElm(p1.x, p1.y, p2.x, p2.y, 0, new StringTokenizer(""));
+	w.setPoints();
+	addElm(w);
     }
 
     private void addWire(String a, String b) {
