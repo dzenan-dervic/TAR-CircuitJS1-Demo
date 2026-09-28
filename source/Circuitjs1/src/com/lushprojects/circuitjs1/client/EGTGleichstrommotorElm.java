@@ -21,6 +21,7 @@ class EGTGleichstrommotorElm extends ChipElm implements EGTDesignatable {
     static final double DEF_UN = 24;
     static final double DEF_PN = 50;
     static final double I_RUN = 0.05;
+    static final double MIN_RESISTANCE = 0.01;
     static final double SPEED_MAX = 8;
     static final double SPEED_TAU = 0.15;
     /**
@@ -100,8 +101,8 @@ class EGTGleichstrommotorElm extends ChipElm implements EGTDesignatable {
 	if (nom_p <= 0)
 	    nom_p = DEF_PN;
 	resistance = nom_v * nom_v / nom_p;
-	if (resistance < 1)
-	    resistance = 1;
+	if (resistance < MIN_RESISTANCE)
+	    resistance = MIN_RESISTANCE;
     }
 
     void applySize() {

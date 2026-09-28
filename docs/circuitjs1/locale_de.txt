@@ -660,7 +660,7 @@
 "Schmitt Inputs"="Schmitt-Eingänge"
 "Schmitt Trigger"="Schmitt-Trigger"
 "Schmitt Trigger (inverting)"="Invertierender Schmitt-Trigger"
-"Schützwerkstatt"="Schützwerkstatt"
+"Verdrahtungswerkstatt"="Verdrahtungswerkstatt"
 "Scopes"="Oszis"
 "Select Y"="Y auswählen"
 "Select/Drag Sel"="Auswahl/Auswahl ziehen"

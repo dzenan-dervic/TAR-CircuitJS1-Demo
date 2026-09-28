@@ -18,13 +18,11 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
     static final int SIZE_Y = 8;
     static final double DEF_ISET = 32;
     static final double DEF_TRIP_TIME = 5;
-    static final double DEF_MAG_MULT = 8;
+    static final double DEF_MAG_MULT = 13;
     static final double R_ON = .05;
-    static final double RMS_WINDOW = .04;
-    // A magnetic release is effectively instantaneous.  A very short
-    // simulation-time hold suppresses one-step numerical spikes without
-    // making an AC short circuit miss the threshold at every zero crossing.
-    static final double MAG_HOLD = .001;
+    static final double RMS_WINDOW = .02;
+    static final double THERMAL_NO_TRIP_RATIO = 1.05;
+    static final double THERMAL_CLASS_RATIO = 7.2;
     static final int TRIP_NONE = 0;
     static final int TRIP_THERMAL = 1;
     static final int TRIP_MAGNETIC = 2;
@@ -44,7 +42,6 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
     double rmsTime;
     double poleRms[] = new double[3];
     double iRms;
-    double magneticAccum;
     double poleCurrent[] = new double[3];
     double poleCurCount[] = new double[3];
     boolean holdUntilStamp = true;
@@ -197,7 +194,6 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
         tripped = false;
         tripReason = TRIP_NONE;
         thermal = 0;
-        magneticAccum = 0;
         clearMeter();
         holdUntilStamp = true;
         requestAnalyze();
@@ -207,7 +203,7 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
         if (tripped) return;
         tripped = true;
         tripReason = reason;
-        thermal = 1;
+        if (reason == TRIP_THERMAL) thermal = 1;
         holdUntilStamp = true;
         requestAnalyze();
     }
@@ -224,7 +220,6 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
         tripped = false;
         tripReason = TRIP_NONE;
         thermal = 0;
-        magneticAccum = 0;
         poleCurrent[0] = poleCurrent[1] = poleCurrent[2] = 0;
         poleCurCount[0] = poleCurCount[1] = poleCurCount[2] = 0;
         clearMeter();
@@ -247,13 +242,6 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
         return pinWired(2 * pole) && pinWired(2 * pole + 1);
     }
 
-    double poleAbsMax() {
-        double result = 0;
-        for (int i = 0; i < 3; i++)
-            result = Math.max(result, Math.abs(poleCurrent[i]));
-        return result;
-    }
-
     void calculateCurrent() {
         EGTStyle.clearPinCurrents(pins);
         for (int i = 0; i < 3; i++) {
@@ -272,7 +260,6 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
     void stepFinished() {
         if (holdUntilStamp || !contactClosed()) {
             clearMeter();
-            magneticAccum = 0;
             return;
         }
         double dt = sim.timeStep;
@@ -296,29 +283,25 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
             rmsTime = 0;
         }
 
-        // Magnetic short-circuit release uses simulation time so its result
-        // is independent of CPU speed and the UI refresh rate.
-        double peakRatio = poleAbsMax() / Math.max(iSet, 1e-6);
-        if (peakRatio >= magneticMultiple) {
-            magneticAccum += dt;
-            if (magneticAccum >= MAG_HOLD) {
-                trip(TRIP_MAGNETIC);
-                return;
-            }
-        } else {
-            magneticAccum = 0;
+        // The setting refers to effective current, including for AC loads.
+        if (iRms >= magneticMultiple * iSet) {
+            trip(TRIP_MAGNETIC);
+            return;
         }
 
-        // Thermal I²t model, also based on simulation time.  This makes the
-        // trip independent of browser frame rate and machine performance.
+        // CLASS 10 teaching approximation: from cold, 7.2 × Iset trips after
+        // tripTime simulation seconds. Below 1.05 × Iset the model cools.
         double thermalRatio = iRms / Math.max(iSet, 1e-6);
-        if (thermalRatio >= 1.2) {
-            double severity = thermalRatio * thermalRatio;
-            thermal += dt * severity / (tripTime * 1.2 * 1.2);
+        if (thermalRatio >= THERMAL_NO_TRIP_RATIO) {
+            double severity = (thermalRatio * thermalRatio
+                    - THERMAL_NO_TRIP_RATIO * THERMAL_NO_TRIP_RATIO)
+                    / (THERMAL_CLASS_RATIO * THERMAL_CLASS_RATIO
+                    - THERMAL_NO_TRIP_RATIO * THERMAL_NO_TRIP_RATIO);
+            thermal += dt * severity / tripTime;
             if (thermal >= 1) trip(TRIP_THERMAL);
-        } else if (thermalRatio < 1.0) {
-            thermal -= dt / Math.max(tripTime * 4, 1);
-            if (thermal < 0) thermal = 0;
+        } else {
+            thermal -= dt * thermal / Math.max(tripTime * 60, 1);
+            if (thermal < 1e-9) thermal = 0;
         }
     }
 
@@ -556,7 +539,7 @@ class EGTMotorschutzschalterElm extends ChipElm implements EGTDesignatable {
         if (n == 2)
             return new EditInfo("Einstellstrom Iset (A)", iSet, 0, 0).setPositive();
         if (n == 3)
-            return new EditInfo("Thermische Auslösezeit (s)", tripTime, 0, 0).setPositive();
+            return new EditInfo("Auslösezeit bei 7,2 × Iset (s)", tripTime, 0, 0).setPositive();
         if (n == 4)
             return new EditInfo("Magnetische Auslösung (×Iset)",
                     magneticMultiple, 0, 0).setPositive();

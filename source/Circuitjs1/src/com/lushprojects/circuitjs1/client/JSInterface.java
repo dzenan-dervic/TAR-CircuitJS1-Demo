@@ -64,6 +64,8 @@ public class JSInterface {
     boolean workbenchSetProtection(String id, String action) { return workbench.setProtection(id, action); }
     boolean workbenchSetSelector(String id, int position) { return workbench.setSelector(id, position); }
     boolean workbenchSetDrivePosition(String id, double position) { return workbench.setDrivePosition(id, position); }
+    boolean workbenchSetPotentiometer(String id, double resistance, double position) { return workbench.setPotentiometer(id, resistance, position); }
+    boolean workbenchTriggerMotion(String id) { return workbench.triggerMotion(id); }
     void workbenchSetRunning(boolean running) { workbench.setRunning(running); }
     String workbenchResetSimulation(JavaScriptObject project) { return workbench.resetSimulation(project); }
     void workbenchSetSupplyOn(boolean on) { workbench.setSupplyOn(on); }
@@ -111,6 +113,8 @@ public class JSInterface {
                 setProtection: $entry(function(id, action) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetProtection(Ljava/lang/String;Ljava/lang/String;)(id, action); }),
                 setSelector: $entry(function(id, position) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetSelector(Ljava/lang/String;I)(id, position|0); }),
                 setDrivePosition: $entry(function(id, position) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetDrivePosition(Ljava/lang/String;D)(id, +position); }),
+                setPotentiometer: $entry(function(id, resistance, position) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetPotentiometer(Ljava/lang/String;DD)(id, +resistance, +position); }),
+                triggerMotion: $entry(function(id) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchTriggerMotion(Ljava/lang/String;)(id); }),
 		setRunning: $entry(function(running) { that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetRunning(Z)(!!running); }),
 		resetSimulation: $entry(function(project) { return that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchResetSimulation(Lcom/google/gwt/core/client/JavaScriptObject;)(project); }),
 		setSupplyOn: $entry(function(on) { that.@com.lushprojects.circuitjs1.client.JSInterface::workbenchSetSupplyOn(Z)(!!on); }),

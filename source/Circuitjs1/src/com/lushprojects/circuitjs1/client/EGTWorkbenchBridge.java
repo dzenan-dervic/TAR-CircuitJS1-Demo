@@ -56,6 +56,8 @@ class EGTWorkbenchBridge {
     HashMap<String, WireElm> wireElms;
     HashMap<String, EGTWorkbenchMotorProtectionElm> motorProtectors;
     HashMap<String, EGTWorkbenchBreakerElm> breakers;
+    HashMap<String, EGTWorkbenchPotElm> potentiometers;
+    HashMap<String, EGTWorkbenchMotionElm> motionDetectors;
     boolean supplyOn = true;
 
     EGTWorkbenchBridge(CirSim app) {
@@ -66,6 +68,8 @@ class EGTWorkbenchBridge {
     String version() { return VERSION; }
 
     void resetMaps() {
+        potentiometers = new HashMap<String, EGTWorkbenchPotElm>();
+        motionDetectors = new HashMap<String, EGTWorkbenchMotionElm>();
         motorProtectors = new HashMap<String, EGTWorkbenchMotorProtectionElm>();
         breakers = new HashMap<String, EGTWorkbenchBreakerElm>();
 	terminals = new HashMap<String, Term>();
@@ -192,6 +196,24 @@ class EGTWorkbenchBridge {
         return true;
     }
 
+    boolean setPotentiometer(String id, double resistance, double position) {
+        EGTWorkbenchPotElm p = potentiometers.get(id);
+        if (p == null || Double.isNaN(resistance) || Double.isNaN(position)
+                || resistance < 100 || resistance > 1000000 || position < 0 || position > 1) return false;
+        if (p.maxResistance == resistance && p.setting == position) return true;
+        p.maxResistance = resistance;
+        p.setPosition(position);
+        app.needAnalyze(); app.repaint();
+        return true;
+    }
+
+    boolean triggerMotion(String id) {
+        EGTWorkbenchMotionElm m = motionDetectors.get(id);
+        if (!supplyOn || m == null || !m.triggerMovement()) return false;
+        app.repaint();
+        return true;
+    }
+
     boolean setDrivePosition(String id, double position) {
         if (!driveSensors.containsKey(id + ".B1")) return false;
         boolean[] active = { position <= .03, Math.abs(position - .5) <= .035, position >= .97 };
@@ -251,6 +273,7 @@ class EGTWorkbenchBridge {
 
     void setSupplyOn(boolean on) {
 	supplyOn = on;
+        if (!on) for (EGTWorkbenchMotionElm m : motionDetectors.values()) m.reset();
 	for (String id : psus.keySet()) {
 	    EGTGleichspannungsquelleElm g = psus.get(id);
 	    g.voltage = on ? setpointOf(id) : 0;
@@ -532,6 +555,15 @@ class EGTWorkbenchBridge {
             first = contactPair(sb, first, key + "_12", !active);
             first = contactPair(sb, first, key + "_14", active);
         }
+        sb.append("},\"motion\":{");
+        first = true;
+        for (String id : motionDetectors.keySet()) {
+            EGTWorkbenchMotionElm m = motionDetectors.get(id);
+            if (!first) sb.append(','); first = false;
+            sb.append('"').append(esc(id)).append("\":{\"powered\":").append(m.powered);
+            sb.append(",\"active\":").append(m.contactClosed());
+            sb.append(",\"remaining\":").append(jsonNum(m.remaining())).append('}');
+        }
 	sb.append("},\"terminals\":{");
 	first = true;
 	for (String key : terminals.keySet()) {
@@ -563,8 +595,8 @@ class EGTWorkbenchBridge {
 	    double i = m.getCurrent();
 	    sb.append('"').append(esc(id)).append("\":{");
 	    sb.append("\"current\":").append(jsonNum(i));
-	    sb.append(",\"running\":").append(Math.abs(i) >= EGTGleichstrommotorElm.I_RUN);
-	    sb.append(",\"reverse\":").append(i < -EGTGleichstrommotorElm.I_RUN);
+	    sb.append(",\"running\":").append(m.running());
+	    sb.append(",\"reverse\":").append(m.running() && i < 0);
 	    sb.append(",\"kind\":\"dc\"");
 	    sb.append('}');
 	}
@@ -732,6 +764,26 @@ class EGTWorkbenchBridge {
 	String id = getStr(c, "id", "");
 	String type = getStr(c, "type", "");
 	String designation = getStr(c, "designation", id);
+        if ("potentiometer".equals(type)) {
+            EGTWorkbenchPotElm p = new EGTWorkbenchPotElm(nextX(), nextY());
+            p.x2 = p.x + 128; p.y2 = p.y + 64;
+            p.maxResistance = Math.max(100, Math.min(1000000, getNum(c, "resistance", 10000)));
+            p.sliderText = designation;
+            p.setPosition(getNum(c, "potPosition", .5));
+            addElm(p); potentiometers.put(id, p);
+            bind(id + ".1", p, 0); bind(id + ".2", p, 2); bind(id + ".3", p, 1);
+            bump(); return;
+        }
+        if ("motion".equals(type)) {
+            EGTWorkbenchMotionElm m = new EGTWorkbenchMotionElm(nextX(), nextY());
+            m.setEgtDesignation(designation);
+            m.nom_v = getNum(c, "nomV", 230) == 24 ? 24 : 230;
+            m.nom_pow = m.nom_v == 24 ? .5 : 2;
+            m.delay = Math.max(1, Math.min(600, getNum(c, "motionDelay", 10)));
+            m.updateResistance(); m.syncEndpoints(); addElm(m); motionDetectors.put(id, m);
+            bind(id + ".L", m, 0); bind(id + ".N", m, 1); bind(id + ".OUT", m, 2);
+            bump(); return;
+        }
         if ("motorprotection".equals(type)) {
             EGTWorkbenchMotorProtectionElm m = new EGTWorkbenchMotorProtectionElm(nextX(), nextY());
             m.designation = designation;
@@ -1149,7 +1201,7 @@ class EGTWorkbenchBridge {
     }
 
     private static boolean validType(String type) {
-	return "timer".equals(type) || "motorprotection".equals(type) || "breaker".equals(type) || "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
+	return "potentiometer".equals(type) || "motion".equals(type) || "timer".equals(type) || "motorprotection".equals(type) || "breaker".equals(type) || "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "acmotor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)

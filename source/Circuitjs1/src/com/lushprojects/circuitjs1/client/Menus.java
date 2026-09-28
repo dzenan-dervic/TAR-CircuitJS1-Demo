@@ -323,7 +323,7 @@ public class Menus {
 		new MyCommand("egt", "hmi-tor")));
 	egtMenuBar.addItem(new MenuItem(Locale.LS("Pumpensteuerung"),
 		new MyCommand("egt", "hmi-pumpe")));
-	egtMenuBar.addItem(new MenuItem(Locale.LS("Schützwerkstatt"),
+	egtMenuBar.addItem(new MenuItem(Locale.LS("Verdrahtungswerkstatt"),
 		new MyCommand("egt", "hmi-stecken")));
 	menuBar.addItem(Locale.LS("EGT"), egtMenuBar);
 

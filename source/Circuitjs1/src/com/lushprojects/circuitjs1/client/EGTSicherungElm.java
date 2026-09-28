@@ -9,8 +9,8 @@ import com.lushprojects.circuitjs1.client.util.Locale;
 
 /**
  * Schaltmesser wie Workbench. Elektrisch Leitungsschutzschalter nach
- * IEC 60898-1 (didaktisch gekürzt): thermisch 1,13/1,45×In, magnetisch
- * B/C/D. Auslösung öffnet alle Pole gemeinsam. Reset nur Edit-Button.
+ * IEC 60898-1 (didaktisch gekürzt): thermisches Zeit-Strom-Modell innerhalb
+ * der Prüfbereiche und magnetische B/C/D-Auslösung. Alle Pole öffnen gemeinsam.
  */
 class EGTSicherungElm extends ChipElm implements EGTDesignatable {
     static final int SIZE_X_1P = 4;
@@ -22,23 +22,17 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
     };
     static final int DEF_IN = 16;
     static final int CHAR_B = 0, CHAR_C = 1, CHAR_D = 2;
-    /** Magnetisch: obere „muss auslösen“-Grenze IEC 60898-1. */
-    static final int[] MAG_MULT = { 5, 10, 20 };
+    static final double[] MAG_PICKUP = { 4, 7.5, 15 };
     static final double I1 = 1.13;
     static final double I2 = 1.45;
-    static final double THERMAL_T = 3;
-    static final double ENV_TAU = 0.05;
-    /** Magnetisch: mehrere Frames, nicht ein Solver-Spike / ein Hitch. */
-    static final double MAG_HOLD = 0.08;
+    static final double[] THERMAL_MULT = { I1, I2, 2.55, 5, 10, 20 };
+    static final double[] THERMAL_SECONDS = { 7200, 1800, 20, 1, 0.3, 0.1 };
+    static final double THERMAL_COOL_SECONDS = 600;
+    static final double MAG_HOLD = 0.02;
     static final double MAG_DT_MAX = 0.02;
     static final double MAX_WALL_DT = 0.25;
-    /**
-     * Geschlossener Pol. Nicht {@code COMPOSITE_CLOSED_R} (1 mΩ):
-     * Solver-ΔU ≈ u_L(t) gegen 0 V → ΔU/1 mΩ = 100 kA, Reset unmöglich.
-     */
-    static final double R_ON = 1;
-    /** Nach Reset/Stamp: Schutz aus, bis die neue Matrix gilt. */
-    static final int SETTLE_MS = 200;
+    /** Geschlossener Pol mit endlichem Widerstand für den Solver. */
+    static final double R_ON = 0.05;
     static final int TRIP_NONE = 0, TRIP_TH = 1, TRIP_MAG = 2;
     /** Wie Schütz/LS: oben 1/3/5, unten 2/4/6. */
     static final String[] TERM_TOP = { "1", "3", "5" };
@@ -52,14 +46,12 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
     boolean tripped;
     int tripReason = TRIP_NONE;
     double thermal;
-    double iEnv;
     double magAccum;
     boolean holdUntilStamp = true;
-    long stampOkAt;
     long lastWallMs;
-    /** Ieff über zwei 50-Hz-Perioden (Simulationszeit), nicht Momentanwert. */
-    static final double RMS_WINDOW = 0.04;
-    double rmsSum;
+    /** Ieff über eine 50-Hz-Periode (Simulationszeit), nicht Momentanwert. */
+    static final double RMS_WINDOW = 0.02;
+    double rmsSum[] = new double[3];
     double rmsTime;
     double iShow;
     double poleCurrent[] = new double[3];
@@ -159,9 +151,23 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	return 3;
     }
 
-    int magMult() {
+    double magMult() {
 	clampChar();
-	return MAG_MULT[charIdx];
+	return MAG_PICKUP[charIdx];
+    }
+
+    static double thermalTripSeconds(double ratio) {
+	if (ratio < I1)
+	    return Double.POSITIVE_INFINITY;
+	for (int i = 1; i < THERMAL_MULT.length; i++) {
+	    if (ratio <= THERMAL_MULT[i]) {
+		double fraction = Math.log(ratio / THERMAL_MULT[i - 1])
+			/ Math.log(THERMAL_MULT[i] / THERMAL_MULT[i - 1]);
+		return THERMAL_SECONDS[i - 1]
+			* Math.pow(THERMAL_SECONDS[i] / THERMAL_SECONDS[i - 1], fraction);
+	    }
+	}
+	return THERMAL_SECONDS[THERMAL_SECONDS.length - 1];
     }
 
     String charLetter() {
@@ -268,7 +274,6 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 
     void stamp() {
 	holdUntilStamp = false;
-	stampOkAt = System.currentTimeMillis();
 	if (tripped)
 	    return;
 	for (int i = 0; i < poles; i++)
@@ -283,7 +288,6 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	super.reset();
 	clearTrip();
 	poleCurrent[0] = poleCurrent[1] = poleCurrent[2] = 0;
-	iEnv = 0;
 	clearMeter();
     }
 
@@ -293,7 +297,6 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	tripped = false;
 	tripReason = TRIP_NONE;
 	thermal = 0;
-	iEnv = 0;
 	magAccum = 0;
 	clearMeter();
 	holdUntilStamp = true;
@@ -309,7 +312,8 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
     void trip(int reason) {
 	tripped = true;
 	tripReason = reason;
-	thermal = 1;
+	if (reason == TRIP_TH)
+	    thermal = 1;
 	requestAnalyze();
     }
 
@@ -333,19 +337,10 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
     }
 
     void clearMeter() {
-	rmsSum = 0;
+	for (int i = 0; i < rmsSum.length; i++)
+	    rmsSum[i] = 0;
 	rmsTime = 0;
 	iShow = 0;
-    }
-
-    double poleAbsMax() {
-	double i = 0;
-	for (int k = 0; k < poles; k++) {
-	    double ip = Math.abs(poleCurrent[k]);
-	    if (ip > i)
-		i = ip;
-	}
-	return i;
     }
 
     void stepFinished() {
@@ -356,14 +351,20 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	double dt = sim.timeStep;
 	if (dt <= 0)
 	    return;
-	double i = poleAbsMax();
-	rmsSum += i * i * dt;
+	for (int k = 0; k < poles; k++) {
+	    double i = poleCurrent[k];
+	    rmsSum[k] += i * i * dt;
+	}
 	rmsTime += dt;
 	if (rmsTime >= RMS_WINDOW) {
-	    iShow = Math.sqrt(rmsSum / rmsTime);
-	    rmsSum = 0;
+	    iShow = 0;
+	    for (int k = 0; k < poles; k++) {
+		iShow = Math.max(iShow, Math.sqrt(rmsSum[k] / rmsTime));
+		rmsSum[k] = 0;
+	    }
 	    rmsTime = 0;
 	}
+	tickProtection();
     }
 
     void tickProtection() {
@@ -381,22 +382,11 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	lastWallMs = now;
 	if (holdUntilStamp || tripped)
 	    return;
-	if (now - stampOkAt < SETTLE_MS)
-	    return;
 	if (!running || dt <= 0)
 	    return;
-	double iMax = Math.abs(poleCurrent[0]);
-	for (int i = 1; i < poles; i++) {
-	    double ip = Math.abs(poleCurrent[i]);
-	    if (ip > iMax)
-		iMax = ip;
-	}
-	double envA = 1 - Math.exp(-dt / ENV_TAU);
-	iEnv += (iMax - iEnv) * envA;
 	double in = Math.max(inA, 1e-6);
-	double rTh = iEnv / in;
-	double rMag = iMax / in;
-	if (rMag >= magMult()) {
+	double ratio = iShow / in;
+	if (ratio >= magMult()) {
 	    double dMag = dt;
 	    if (dMag > MAG_DT_MAX)
 		dMag = MAG_DT_MAX;
@@ -407,20 +397,14 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 	    }
 	} else
 	    magAccum = 0;
-	if (rTh >= I2) {
-	    thermal += dt / THERMAL_T;
+	if (ratio >= I1) {
+	    thermal += dt / thermalTripSeconds(ratio);
 	    if (thermal >= 1) {
 		trip(TRIP_TH);
 		return;
 	    }
-	} else if (rTh >= I1) {
-	    thermal += dt / (THERMAL_T * 8);
-	    if (thermal >= 1) {
-		trip(TRIP_TH);
-		return;
-	    }
-	} else if (rTh < 1.0) {
-	    thermal -= dt / Math.max(THERMAL_T * 4, 1);
+	} else {
+	    thermal -= dt / THERMAL_COOL_SECONDS;
 	    if (thermal < 0)
 		thermal = 0;
 	}
@@ -438,7 +422,6 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 		EGTStyle.pinCurrentThru(pins, a, b, poleCurrent[i]);
 	    }
 	}
-	tickProtection();
 	current = poleCurrent[0];
     }
 
@@ -553,7 +536,7 @@ class EGTSicherungElm extends ChipElm implements EGTDesignatable {
 		    : "ausgelöst thermisch — Reset im Edit";
 	else
 	    arr[2] = "durch";
-	arr[3] = "I> = " + magMult() + "×In";
+	arr[3] = "Magnetisch (Modell) = " + magMult() + "×In";
 	arr[4] = "Ieff = " + getCurrentText(iShow);
 	arr[5] = "Wärme " + (int) Math.round(thermal * 100) + " %";
     }
