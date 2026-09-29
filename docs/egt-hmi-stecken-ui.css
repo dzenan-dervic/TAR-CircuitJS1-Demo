@@ -267,11 +267,8 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.note .face{height:auto;min-height:90px;padding:18px;border:1px solid #bfb69d;border-radius:2px;background:var(--note-color,#fff7d6);box-shadow:1px 3px 5px #25362b26}.note-content{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.45;color:#24352b}.module.note .state-label{display:none}.module.note.text-only .face{min-height:40px;padding:8px;background:transparent;border-color:transparent;box-shadow:none}.module.note .handle{opacity:.35;transition:opacity .15s}.module.note:hover .handle,.module.note:focus-within .handle,.module.note.selected .handle{opacity:1}
 .lock-indicator{flex:none;width:13px;height:15px;color:#53665a}.lock-indicator[hidden]{display:none}.lock-indicator svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:2}.module.position-locked .handle,.module.position-locked .handle-label{cursor:default}
 .actuation-type{position:absolute;top:76px;left:5px;right:5px;text-align:center;font-size:8px;font-weight:750;letter-spacing:.25px;color:#3c4c40;pointer-events:none}
-.mech-dash.latching{border-left:0}
-.mech-dash.latching::before,.mech-dash.latching::after{content:'';position:absolute;left:0;border-left:2.4px dashed #2f3a32}
-.mech-dash.latching::before{top:0;height:28px}
-.mech-dash.latching::after{top:55px;height:25px}
-.latch-mark{position:absolute;left:calc(50% - 22px);top:68px;width:24px;height:28px;z-index:5;fill:none;stroke:#2f3a32;stroke-width:2.4;stroke-linecap:butt;stroke-linejoin:miter;pointer-events:none}
+.latch-link{position:absolute;left:50%;top:40px;width:28px;height:80px;transform:translateX(-50%);z-index:5;fill:none;stroke:#2f3a32;stroke-width:2.4;stroke-linecap:butt;stroke-linejoin:miter;pointer-events:none}
+.latch-link .latch-dash{stroke-dasharray:6 5}
  .parts-rail .add[hidden],.parts-rail .add-set[hidden]{display:none}
 .potentiometer .face,.motion .face{color:#2b3e33}.sensor-terminals .terminal-label{color:#34493b}.motion-test{color:#234738}
 .dev-menu .extension-field{flex-direction:column;align-items:stretch;gap:5px;margin:12px 0;font-size:11px;color:#53665a}
