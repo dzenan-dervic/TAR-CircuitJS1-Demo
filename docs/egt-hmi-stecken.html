@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929potterminals">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929latchmark">
 </head>
 <body>
 <header class="app-header">
@@ -1281,7 +1281,7 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='emergency')return `<span class="case-screw" aria-hidden="true"></span><span class="case-screw right" aria-hidden="true"></span><span class="emergency-title">NOT-AUS</span><button class="push" aria-label="${m.id} Not-Aus betätigen" aria-pressed="${!!m.latched}">↻</button><button class="emergency-unlock" type="button" ${m.latched?'':'disabled'}>↻ Entriegeln</button><div class="taster-deck"><i class="mech-dash" aria-hidden="true"></i><div class="contact-row">${terminal(m,'21','21 NC','left')}${dinNc()}${terminal(m,'22','22 NC','right')}</div><div class="contact-row">${terminal(m,'13','13 NO','left')}${dinNo()}${terminal(m,'14','14 NO','right')}</div></div>`;
     const p=lampTag(m);
     const [name,,,mark]=buttonColors[m.buttonColor]||buttonColors.green;
-    return `<span class="actuation-type">${m.latching?'SCHALTER · RASTEND':'TASTER · TASTEND'}</span><button class="push" aria-label="${m.id} Taster ${name} gedrückt halten">${mark}</button><div class="taster-deck"><i class="mech-dash" aria-hidden="true"></i><div class="contact-row">${terminal(m,'13','13','left')}${dinNo()}${terminal(m,'14','14','right')}</div><div class="contact-row">${terminal(m,'21','21','left')}${dinNc()}${terminal(m,'22','22','right')}</div><div class="lamp-row">${terminal(m,'X1','','left')}${dinLamp(p)}${terminal(m,'X2','','right')}<svg class="din-sym lamp-leads" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 H100"/></svg></div></div>`;
+    return `<span class="actuation-type">${m.latching?'SCHALTER · RASTEND':'TASTER · TASTEND'}</span><button class="push" aria-label="${m.id} Taster ${name} gedrückt halten">${mark}</button><div class="taster-deck"><i class="mech-dash${m.latching?' latching':''}" aria-hidden="true"></i>${m.latching?'<svg class="latch-mark" viewBox="0 0 24 28" aria-hidden="true"><path d="M21 0 V8 L3 20 H21 V28"/></svg>':''}<div class="contact-row">${terminal(m,'13','13','left')}${dinNo()}${terminal(m,'14','14','right')}</div><div class="contact-row">${terminal(m,'21','21','left')}${dinNc()}${terminal(m,'22','22','right')}</div><div class="lamp-row">${terminal(m,'X1','','left')}${dinLamp(p)}${terminal(m,'X2','','right')}<svg class="din-sym lamp-leads" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><path d="M0 15 H100"/></svg></div></div>`;
   }
   function renderModule(m){
     defaultNom(m);
