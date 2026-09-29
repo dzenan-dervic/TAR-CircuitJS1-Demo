@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929noteinspector">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929symbols">
 </head>
 <body>
 <header class="app-header">
@@ -665,11 +665,14 @@ header .actions{min-width:0;overflow-x:auto}
   function paintDetailPreview(m){
     const box=$('#detailPreview');if(!box)return;box.replaceChildren();box.setAttribute('aria-hidden','true');
     if(!m||!m.el||!m.el.querySelector('.face')){box.hidden=true;return;}
-    if(m.type==='note'){
-      const icon=document.createElementNS('http://www.w3.org/2000/svg','svg'),glyph=m.noteStyle==='frame'?'frame':m.noteStyle==='label'?'label':'note';
-      icon.setAttribute('viewBox','0 0 28 28');icon.setAttribute('aria-hidden','true');icon.innerHTML=newGlyph[glyph];box.classList.add('note-preview');box.append(icon);box.hidden=false;return;
-    }
-    box.classList.remove('note-preview');
+    let glyphType=m.type;
+    if(m.type==='note')glyphType=m.noteStyle==='frame'?'frame':m.noteStyle==='label'?'label':'note';
+    else if(m.type==='auxiliary')glyphType='relay';
+    else if(m.type==='stop')glyphType='emergency';
+    else if(m.type==='start'&&m.latching)glyphType='switch';
+    const paletteIcon=document.querySelector('.parts-rail [data-add="'+glyphType+'"] .glyph svg');
+    if(paletteIcon){box.classList.add('glyph-preview');box.append(paletteIcon.cloneNode(true));box.hidden=false;return;}
+    box.classList.remove('glyph-preview');
     const clone=m.el.cloneNode(true);
     clone.classList.remove('selected','dragging');
     clone.querySelectorAll('.handle,.state-label,.module-wires,.remove').forEach(n=>n.remove());
