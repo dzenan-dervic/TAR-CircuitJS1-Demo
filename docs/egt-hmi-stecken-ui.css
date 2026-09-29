@@ -288,6 +288,15 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .detail-preview.glyph-preview svg{width:40px;height:40px;display:block}
 .dev-menu .note-card-only[hidden]{display:none!important}
 .note-frame-title:focus-visible{outline:2px solid #00887f;outline-offset:2px}
+.terminal-info{overflow:hidden;border:1px solid #e1e8e3;border-radius:6px;background:#fff}
+.terminal-info summary{display:flex;align-items:center;gap:9px;min-height:38px;padding:8px 10px;list-style:none;cursor:pointer;background:#f7f9f7;color:#344940;font-weight:650;user-select:none}
+.terminal-info summary::-webkit-details-marker{display:none}
+.terminal-info summary::marker{content:""}
+.terminal-info summary::before{content:"";width:7px;height:7px;flex:none;margin-right:2px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .12s ease}
+.terminal-info[open] summary{border-bottom:1px solid #e1e8e3;background:#fff}
+.terminal-info[open] summary::before{transform:rotate(45deg)}
+.terminal-info .detail-row{padding:7px 10px}
+.terminal-info .detail-row+.detail-row{border-top:1px solid #eff2ef}
 .note-frame-outline{position:absolute;inset:27px 0 0;border:2px dashed #4a5e54;border-radius:2px;pointer-events:none}
 .note-resize-controls{position:absolute;inset:0;z-index:8;display:none;pointer-events:none}
 .module.note.text-only.selected .note-resize-controls,.module.note.text-only:hover .note-resize-controls,.module.note.text-only:focus-within .note-resize-controls,.module.note.framed-text.selected .note-resize-controls,.module.note.framed-text:hover .note-resize-controls,.module.note.framed-text:focus-within .note-resize-controls{display:block}
