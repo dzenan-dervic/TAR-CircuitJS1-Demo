@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929latchtight">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260929noteinspector">
 </head>
 <body>
 <header class="app-header">
@@ -665,6 +665,11 @@ header .actions{min-width:0;overflow-x:auto}
   function paintDetailPreview(m){
     const box=$('#detailPreview');if(!box)return;box.replaceChildren();box.setAttribute('aria-hidden','true');
     if(!m||!m.el||!m.el.querySelector('.face')){box.hidden=true;return;}
+    if(m.type==='note'){
+      const icon=document.createElementNS('http://www.w3.org/2000/svg','svg'),glyph=m.noteStyle==='frame'?'frame':m.noteStyle==='label'?'label':'note';
+      icon.setAttribute('viewBox','0 0 28 28');icon.setAttribute('aria-hidden','true');icon.innerHTML=newGlyph[glyph];box.classList.add('note-preview');box.append(icon);box.hidden=false;return;
+    }
+    box.classList.remove('note-preview');
     const clone=m.el.cloneNode(true);
     clone.classList.remove('selected','dragging');
     clone.querySelectorAll('.handle,.state-label,.module-wires,.remove').forEach(n=>n.remove());
@@ -795,7 +800,7 @@ header .actions{min-width:0;overflow-x:auto}
   const isProtection=m=>m.type==='motorprotection'||m.type==='breaker';
   const breakerRatings=[6,10,13,16,20,25,32,40,50,63];
   const timerModes=['Einschaltverzögert','Ausschaltverzögert','Ansprech- und rückfallverzögert','Blinkend'];
-  const componentTitle=m=>isCombinedTaster(m)&&m.latching?'SCHALTER · RASTEND':m.type==='note'&&m.noteStyle==='label'?'BESCHRIFTUNG':types[m.type];
+  const componentTitle=m=>isCombinedTaster(m)&&m.latching?'SCHALTER · RASTEND':m.type==='note'&&m.noteStyle==='label'?'BESCHRIFTUNG':m.type==='note'&&m.noteStyle==='frame'?'MARKIERUNGSRAHMEN':types[m.type];
   const noteTones={cream:['Creme','#fff7d6'],white:['Weiß','#ffffff'],blue:['Blau','#e4f1fa'],green:['Grün','#e7f2e8']};
   function defaultNom(m){
     m.locked=!!m.locked;
@@ -809,9 +814,11 @@ header .actions{min-width:0;overflow-x:auto}
     }
     if(m.type==='note'){
       m.noteText=typeof m.noteText==='string'?m.noteText.slice(0,1000):'Doppelklick zum Bearbeiten';
-      m.noteStyle=m.noteStyle==='label'?'label':'card';
+      m.noteStyle=['label','frame'].includes(m.noteStyle)?m.noteStyle:'card';
       m.noteSize=Number.isFinite(m.noteSize)?Math.max(12,Math.min(32,m.noteSize)):16;
-      m.noteWidth=Number.isFinite(m.noteWidth)?Math.max(180,Math.min(480,m.noteWidth)):260;
+      m.noteWidth=Number.isFinite(m.noteWidth)?Math.max(120,Math.min(1600,m.noteWidth)):260;
+      m.noteHeight=Number.isFinite(m.noteHeight)?(m.noteHeight<=0&&m.noteStyle==='label'?0:Math.max(48,Math.min(1600,m.noteHeight))):m.noteStyle==='frame'?240:0;
+      if(!['transparent','white','cream'].includes(m.noteTitleTone))m.noteTitleTone='transparent';
       if(!noteTones[m.noteTone])m.noteTone='cream';
     }
 
@@ -913,10 +920,22 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='potentiometer')paintPot(m);
     if(m.type==='motion')paintMotion(m,lastSnap);
     if(m.type==='note'){
-      m.el.classList.toggle('text-only',m.noteStyle==='label');
+      const isLabel=m.noteStyle==='label',isFrame=m.noteStyle==='frame',isResizable=isLabel||isFrame;
+      m.el.classList.toggle('text-only',isLabel);
+      m.el.classList.toggle('framed-text',isFrame);
       m.el.style.width=m.noteWidth+'px';
       m.el.style.setProperty('--note-color',noteTones[m.noteTone][1]);
-      const text=m.el.querySelector('.note-content');text.textContent=m.noteText;text.style.fontSize=m.noteSize+'px';
+      const face=m.el.querySelector('.face'),text=m.el.querySelector('.note-content');
+      text.textContent=m.noteText;text.style.fontSize=m.noteSize+'px';
+      text.classList.toggle('has-background',isFrame&&m.noteTitleTone!=='transparent');
+      text.classList.toggle('title-background-white',isFrame&&m.noteTitleTone==='white');
+      text.classList.toggle('title-background-cream',isFrame&&m.noteTitleTone==='cream');
+      face.style.height=isFrame?m.noteHeight+'px':isLabel&&m.noteHeight?m.noteHeight+'px':'';
+      text.tabIndex=isResizable?0:-1;
+      if(isResizable){text.setAttribute('role','button');text.setAttribute('aria-label',(isFrame?'Markierungsrahmen: ':'Beschriftung: ')+(m.noteText||'ohne Text')+(m.locked?'. Position gesperrt.':' mit Pfeiltasten verschieben, Umschalt plus Pfeiltasten ändert die Größe.')+' Doppelklick öffnet die Eigenschaften.');}
+      else{text.removeAttribute('role');text.removeAttribute('aria-label');}
+      const handle=m.el.querySelector('.handle');if(handle){handle.setAttribute('aria-hidden',String(isResizable));const handleButton=handle.querySelector('.handle-label');if(handleButton)handleButton.tabIndex=isResizable?-1:0;}
+      m.el.querySelector('.note-resize-controls')?.setAttribute('aria-hidden',String(!isResizable));
     }
 
     if(isLight(m)&&m.el)m.el.querySelector('.light-rating').textContent=m.nomV+' V · '+m.nomP+' W';
@@ -1203,7 +1222,7 @@ header .actions{min-width:0;overflow-x:auto}
     if(engine?.triggerMotion?.(m.id))refreshLive();
   }
   function face(m){
-    if(m.type==='note')return '<div class="note-content"></div>';
+    if(m.type==='note')return m.noteStyle==='frame'?'<div class="note-frame"><div class="note-content note-frame-title"></div><div class="note-frame-outline" aria-hidden="true"></div></div>':'<div class="note-content"></div>';
     if(m.type==='potentiometer')return `<div class="device-eyebrow">DREH-POTENTIOMETER</div><div class="pot-dial" aria-hidden="true"><span class="pot-zero">0</span><span class="pot-max">100</span><div class="pot-rotor"><i></i></div></div><div class="pot-controls"><label>Schleifer <output class="pot-value"></output><input class="pot-slider" type="range" min="0" max="100" step="1" value="${Math.round(m.potPosition*100)}" aria-label="${m.id} Schleiferposition"></label></div><div class="pot-rating"></div><svg class="pot-symbol" viewBox="0 0 194 56" aria-label="Potentiometer: Klemme 1 und 3 sind die Widerstandsenden, Klemme 2 ist der Schleifer"><path d="M16 51 V17 H55 M139 17 H178 V51 M97 51 V29 M91 37 L97 29 L103 37"/><rect x="55" y="9" width="84" height="16"/></svg><div class="sensor-terminals">${terminal(m,'1','1','bottom')}${terminal(m,'2','2','bottom')}${terminal(m,'3','3','bottom')}</div>`;
     if(m.type==='motion')return `<div class="device-eyebrow">PIR · BEWEGUNGSMELDER</div><div class="motion-detection" title="Maus im Erfassungsbereich bewegen"><span class="motion-led" aria-hidden="true"></span><div class="pir-lens" aria-hidden="true"></div><span class="motion-status">Ohne Versorgung</span><small>Erfassungsbereich · Maus bewegen</small></div><button class="motion-test" type="button">Bewegung testen</button><div class="motion-rating">${m.nomV} V ${m.nomV===24?'DC':'AC'} · ${m.motionDelay} s Nachlauf</div><div class="sensor-terminals">${terminal(m,'L',m.nomV===24?'+24':'L','bottom')}${terminal(m,'N',m.nomV===24?'0 V':'N','bottom')}${terminal(m,'OUT',m.nomV===24?'OUT':"L′",'bottom')}</div>`;
 
@@ -1290,13 +1309,26 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='breaker'&&m.poles===3){el.style.width='198px';el.classList.add('poles-3');}
     if(m.type==='rail')el.style.width=(railScrews(m)>5?420:280)+'px';
     el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-copy"><span class="handle-name">${types[m.type]}</span><span class="handle-sub"></span></span><span class="lock-indicator" hidden aria-label="Position gesperrt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 v3"/></svg></span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><span class="module-state"></span></div>`;
+    if(m.type==='note'){
+      const controls=document.createElement('div');controls.className='note-resize-controls';controls.setAttribute('aria-hidden','true');
+      controls.innerHTML=['n','ne','e','se','s','sw','w','nw'].map(edge=>'<button type="button" class="note-resize-grip" data-note-resize="'+edge+'" tabindex="-1" aria-label="Größe ändern"></button>').join('');el.append(controls);
+      controls.querySelectorAll('[data-note-resize]').forEach(grip=>grip.addEventListener('pointerdown',e=>{
+        if(e.button!==0||m.locked)return;e.preventDefault();e.stopPropagation();
+        const box=m.el.querySelector('.face').getBoundingClientRect();cancel();remember();selectModule(m.id);
+        gesture={kind:'resize-note',m,edge:grip.dataset.noteResize,x:e.clientX,y:e.clientY,startX:m.x,startY:m.y,startWidth:m.noteWidth,startHeight:m.noteHeight||Math.round(box.height),pointerId:e.pointerId};
+        el.classList.add('resizing');grip.setPointerCapture(e.pointerId);
+      }));
+    }
     const overlay=document.createElementNS(NS,'svg');overlay.classList.add('module-wires');overlay.setAttribute('aria-hidden','true');el.appendChild(overlay);
     if(!Number.isFinite(m.z))m.z=nextZ++;nextZ=Math.max(nextZ,m.z+1);el.style.zIndex=m.z;
     board.appendChild(el);position(m);paintDeviceFace(m);
     el.querySelector('.remove').onclick=()=>removeModule(m);
-    el.querySelector('.handle-label').onkeydown=e=>{const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]}[e.key];if(!delta)return;e.preventDefault();if(m.locked){say('Position gesperrt. In den Eigenschaften entsperren.');return;}remember();selectModule(m.id);move(m,m.x+delta[0],m.y+delta[1]);draw();schedulePersist();};
+    const bindMoveKeys=target=>{if(!target)return;target.onkeydown=e=>{if(m.type==='note'&&['label','frame'].includes(m.noteStyle)&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectModule(m.id);openSettings(m);return;}const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]}[e.key];if(!delta)return;e.preventDefault();if(m.locked){say('Position gesperrt. In den Eigenschaften entsperren.');return;}remember();selectModule(m.id);if(m.type==='note'&&['label','frame'].includes(m.noteStyle)&&e.shiftKey){m.noteWidth=Math.max(120,Math.min(1600,m.noteWidth+delta[0]));m.noteHeight=Math.max(48,Math.min(1600,(m.noteHeight||Math.round(m.el.querySelector('.face').offsetHeight))+delta[1]));paintDeviceFace(m);move(m,m.x,m.y);if($('#devNoteWidth'))$('#devNoteWidth').value=m.noteWidth;if($('#devNoteHeight'))$('#devNoteHeight').value=m.noteHeight;}else move(m,m.x+delta[0],m.y+delta[1]);draw();schedulePersist();};};
+    bindMoveKeys(el.querySelector('.handle-label'));
+    bindMoveKeys(el.querySelector('.note-content'));
+    el.querySelector('.note-content')?.addEventListener('focus',()=>{if(['label','frame'].includes(m.noteStyle))selectModule(m.id);});
     el.addEventListener('pointerdown',e=>{
-      if(e.button!==0||e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test'))return;
+      if(e.button!==0||e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-note-resize]'))return;
       cancel();selectModule(m.id);if(m.locked)return;remember();gesture={kind:'module',m,x:e.clientX,y:e.clientY,startX:m.x,startY:m.y,pointerId:e.pointerId};el.classList.add('dragging');el.setPointerCapture(e.pointerId);e.preventDefault();
     });
     el.addEventListener('dblclick',e=>{
@@ -1375,7 +1407,7 @@ header .actions{min-width:0;overflow-x:auto}
     selectedId=id;m.z=nextZ++;m.el.style.zIndex=m.z;raiseLeads();
     modules.forEach(x=>x.el.classList.toggle('selected',x===m));
     renderComponents();
-    if(focus){reveal(m);m.el.querySelector('.handle-label').focus({preventScroll:true});}
+    if(focus){reveal(m);(m.type==='note'&&['label','frame'].includes(m.noteStyle)?m.el.querySelector('.note-content'):m.el.querySelector('.handle-label')).focus({preventScroll:true});}
   }
   function removeModule(m){
     remember();cancel();const removed=new Set(modules.filter(x=>x===m||x.parent===m.id).map(x=>x.id));
@@ -1394,7 +1426,7 @@ header .actions{min-width:0;overflow-x:auto}
   function inspectorRows(m){
     if(m.type==='potentiometer')return [['Widerstand 1–3',m.resistance+' Ω'],['Schleifer','2 · '+Math.round(m.potPosition*100)+' %'],['Kennlinie','Linear']];
     if(m.type==='motion')return [['Versorgung',m.nomV+' V '+(m.nomV===24?'DC':'AC')],['Eingang','L / +24 · N / 0 V'],['Ausgang','OUT / L′ · geschaltete Versorgung'],['Nachlauf',m.motionDelay+' s · nachtriggerbar']];
-    if(m.type==='note')return [['Darstellung',m.noteStyle==='label'?'Beschriftung':'Notizzettel'],['Position',m.locked?'Gesperrt':'Verschiebbar']];
+    if(m.type==='note')return [['Darstellung',m.noteStyle==='label'?'Beschriftungsstreifen':m.noteStyle==='frame'?'Markierungsrahmen':'Notizzettel'],['Position',m.locked?'Gesperrt':'Verschiebbar'],...(m.noteStyle==='card'?[]:[['Größe',m.noteWidth+' × '+m.noteHeight+' px']])];
 
     return m.type==='timer'?[['Spule','A1 / A2 · '+(m.nomV||24)+' V'],['Gemeinsam','15'],['Ruhe','15–16'],['Arbeit','15–18'],['Funktion',timerModes[m.timerMode]||timerModes[0]]]:m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='mains'?[['U_LL',fmtV(m.voltage)+' V'],['U_LN',fmtV(m.voltage/Math.sqrt(3))+' V'],['Frequenz','50 Hz'],['Klemmen','L1 / L2 / L3 / N / PE'],['N–PE','intern verbunden']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B6 / B7','Inkrementalgeber · Rechteck'],['Richtung','Rechts: B6 vor B7 · Links: B7 vor B6'],['Versorgung','24 V nur für den Geber'],['Modell','10 s bei Nennspannung · 20 Takte'],['PE','Separate Gehäuseklemme']]:m.type==='acmotor'?[['Netz','400 V 3~'],['Nennleistung',(m.ratedKw||1.5)+' kW'],['Wirkungsgrad',Math.round((m.eta||0.8)*100)+' %'],['Zuleitung','U1 · V1 · W1'],['Wicklung','U2 · V2 · W2'],['PE','Gehäuse, nicht an der Wicklung']]:(m.type==='motor'||isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis '+terminalPoles(m)],['Oben / unten','dieselbe Nummer'],['Rand',terminalSpan(m)===2?'Paare, eine Verbindung':terminalSpan(m)===4?'je 4, eine Verbindung':'keine Brücke']]:m.type==='rail'?[['+24',railScrews(m)+' Schrauben, eine Schiene'],['0 V',railScrews(m)+' Schrauben, getrennt von +24'],['PE',railScrews(m)+' Schrauben, nicht auf 0 V']]:isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',lampTag(m)+' · X1 / X2'],['Tasterfarbe',buttonColors[m.buttonColor][0]],['Leuchtfarbe',signalColors[m.signalColor][0]]]:[['Bauteil',types[m.type]]];
   }
@@ -1600,8 +1632,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       $('#devMotionVoltage').value=String(m.nomV);
     }else if(m.type==='note'){
       note.textContent='Freier Text auf der Montageplatte. Doppelklick öffnet diese Einstellungen. Zeilenumbrüche bleiben erhalten; keine elektrischen Anschlüsse.';
-      fields.innerHTML='<label>Text<textarea id="devNoteText" rows="5" maxlength="1000"></textarea></label><label>Darstellung<select id="devNoteStyle"><option value="card">Notizzettel</option><option value="label">Beschriftung ohne Hintergrund</option></select></label><label>Schriftgröße<input id="devNoteSize" type="number" min="12" max="32" value="'+m.noteSize+'"></label><label>Breite<input id="devNoteWidth" type="number" min="180" max="480" step="10" value="'+m.noteWidth+'"></label><label>Papierfarbe<select id="devNoteTone">'+Object.entries(noteTones).map(([key,[name]])=>'<option value="'+key+'">'+name+'</option>').join('')+'</select></label>';
-      $('#devNoteText').value=m.noteText;$('#devNoteStyle').value=m.noteStyle;$('#devNoteTone').value=m.noteTone;
+      fields.innerHTML='<label>Text<textarea id="devNoteText" rows="5" maxlength="1000"></textarea></label><label>Darstellung<select id="devNoteStyle"><option value="card">Notizzettel</option><option value="label">Beschriftungsstreifen</option><option value="frame">Markierungsrahmen</option></select></label><label>Schriftgröße<input id="devNoteSize" type="number" min="12" max="32" value="'+m.noteSize+'"></label><label>Breite<input id="devNoteWidth" type="number" min="120" max="1600" step="10" value="'+m.noteWidth+'"></label><label id="devNoteHeightField">Höhe<input id="devNoteHeight" type="number" min="48" max="1600" step="10" value="'+(m.noteHeight||Math.round(m.el.querySelector('.face').offsetHeight))+'"></label><label id="devNoteTitleToneField">Titelhintergrund<select id="devNoteTitleTone"><option value="transparent">Transparent</option><option value="white">Weiß</option><option value="cream">Creme</option></select></label><label id="devNoteToneField">Papierfarbe<select id="devNoteTone">'+Object.entries(noteTones).map(([key,[name]])=>'<option value="'+key+'">'+name+'</option>').join('')+'</select></label>';
+      $('#devNoteText').value=m.noteText;$('#devNoteStyle').value=m.noteStyle;$('#devNoteTone').value=m.noteTone;$('#devNoteTitleTone').value=m.noteTitleTone;
+      const syncNoteStyleFields=()=>{const style=$('#devNoteStyle').value;$('#devNoteToneField').hidden=style!=='card';$('#devNoteHeightField').hidden=style==='card';$('#devNoteTitleToneField').hidden=style!=='frame';};syncNoteStyleFields();$('#devNoteStyle').addEventListener('change',syncNoteStyleFields);
     }else if(isProtection(m)){
       note.textContent=m.type==='motorprotection'?'Drei gekoppelte Pole. Einstellstrom nach Motornennstrom; magnetische Schwelle 13 × Iset (Effektivstrom). Thermisches CLASS-10-Lehrmodell: bei 7,2 × Iset aus kaltem Zustand nach etwa 5 Simulationssekunden. Hilfskontakte folgen EIN/AUS. Keine geprüfte Gerätekennlinie; Rückstellen lässt den Schalter AUS.':'Leitungsschutzschalter mit gekoppelten Polen. Magnetische Schwellen im Lehrmodell: B 4 × In, C 7,5 × In, D 15 × In (Effektivstrom). Die thermische Auslösung folgt einer angenäherten B/C/D-Zeit-Strom-Kennlinie. kA ist ein Nenndatum, keine Lichtbogen- oder Ausschaltvermögenssimulation.';
       fields.innerHTML=m.type==='motorprotection'?'<label>Einstellstrom (A)<input id="devCurrent" type="number" min="0.1" max="100" step="0.1" value="'+m.ratedCurrent+'"></label>':'<label>Nennstrom (A)<select id="devCurrent">'+breakerRatings.map(n=>'<option value="'+n+'">'+n+' A</option>').join('')+'</select></label><label>Charakteristik<select id="devCurve"><option>B</option><option>C</option><option>D</option></select></label><label>Polzahl<select id="devProtectionPoles"><option value="1">1-polig</option><option value="3">3-polig</option></select></label><label>Ausschaltvermögen (Nenndatum)<select id="devCapacity"><option value="6">6 kA</option><option value="10">10 kA</option><option value="15">15 kA</option></select></label>';
@@ -1670,12 +1703,17 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     }
     fields.insertAdjacentHTML('beforeend','<label class="latching-field">Position sperren<input id="devPositionLocked" type="checkbox"'+(m.locked?' checked':'')+'></label>');
     bindColorSwatches(m,fields);
-    const description=document.createElement('label');description.className='description-field';description.textContent='Titel';const input=document.createElement('input');input.id='devDescription';input.maxLength=40;input.value=m.description||'';input.placeholder=componentTitle(m);description.append(input);fields.append(description);
-    const subtitleField=document.createElement('label');subtitleField.className='description-field';subtitleField.textContent='Untertitel';const subtitleInput=document.createElement('textarea');subtitleInput.id='devSubtitle';subtitleInput.value=moduleSubtitle(m);subtitleInput.placeholder=moduleCaption(m);subtitleField.append(subtitleInput);fields.append(subtitleField);
-    const defaultSubtitle=document.createElement('button');defaultSubtitle.type='button';defaultSubtitle.className='ui-btn subtitle-default';defaultSubtitle.textContent='Standardtext verwenden';defaultSubtitle.title='Automatisch erzeugten Untertitel wiederherstellen';defaultSubtitle.onclick=()=>{subtitleInput.value=moduleCaption(m);queueLive(true);};fields.append(defaultSubtitle);
-    const titleLines=document.createElement('label');titleLines.className='title-lines-field';titleLines.textContent='Max. Titelzeilen';const titleLinesSelect=document.createElement('select');titleLinesSelect.id='devTitleLines';titleLinesSelect.setAttribute('aria-label','Maximale Titelzeilen');titleLinesSelect.innerHTML='<option value="1">1 Zeile</option><option value="2">2 Zeilen</option><option value="3">3 Zeilen</option>';titleLinesSelect.value=String(m.titleLines||2);titleLines.append(titleLinesSelect);fields.append(titleLines);
+    const description=document.createElement('label');description.className='description-field';description.classList.toggle('note-card-only',m.type==='note');description.textContent='Titel';const input=document.createElement('input');input.id='devDescription';input.maxLength=40;input.value=m.description||'';input.placeholder=componentTitle(m);description.append(input);fields.append(description);
+    const subtitleField=document.createElement('label');subtitleField.className='description-field';subtitleField.classList.toggle('note-card-only',m.type==='note');subtitleField.textContent='Untertitel';const subtitleInput=document.createElement('textarea');subtitleInput.id='devSubtitle';subtitleInput.value=moduleSubtitle(m);subtitleInput.placeholder=moduleCaption(m);subtitleField.append(subtitleInput);fields.append(subtitleField);
+    const defaultSubtitle=document.createElement('button');defaultSubtitle.type='button';defaultSubtitle.className='ui-btn subtitle-default'+(m.type==='note'?' note-card-only':'');defaultSubtitle.textContent='Standardtext verwenden';defaultSubtitle.title='Automatisch erzeugten Untertitel wiederherstellen';defaultSubtitle.onclick=()=>{subtitleInput.value=moduleCaption(m);queueLive(true);};fields.append(defaultSubtitle);
+    const titleLines=document.createElement('label');titleLines.className='title-lines-field'+(m.type==='note'?' note-card-only':'');titleLines.textContent='Max. Titelzeilen';const titleLinesSelect=document.createElement('select');titleLinesSelect.id='devTitleLines';titleLinesSelect.setAttribute('aria-label','Maximale Titelzeilen');titleLinesSelect.innerHTML='<option value="1">1 Zeile</option><option value="2">2 Zeilen</option><option value="3">3 Zeilen</option>';titleLinesSelect.value=String(m.titleLines||2);titleLines.append(titleLinesSelect);fields.append(titleLines);
     fields.insertAdjacentHTML('beforeend',badgeSwatchHtml(m));
+    const badgeField=fields.querySelector('.badge-swatches')?.closest('.color-field');if(badgeField&&m.type==='note')badgeField.classList.add('note-card-only');
     bindBadgeSwatches(m,fields);
+    if(m.type==='note'){
+      const syncNoteHeaderFields=()=>fields.querySelectorAll('.note-card-only').forEach(field=>{field.hidden=$('#devNoteStyle').value!=='card';});
+      $('#devNoteStyle').addEventListener('change',syncNoteHeaderFields);syncNoteHeaderFields();
+    }
     apply.hidden=true;
     bindLiveFields();
     menu.hidden=false;
@@ -1721,8 +1759,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(![24,230].includes(extra.nomV)||!Number.isFinite(extra.motionDelay)||extra.motionDelay<1||extra.motionDelay>600){fail('Nachlaufzeit zwischen 1 und 600 Sekunden eingeben.');return;}
     }
     if(m.type==='note'){
-      Object.assign(extra,{noteText:$('#devNoteText').value,noteStyle:$('#devNoteStyle').value,noteTone:$('#devNoteTone').value,noteSize:Number($('#devNoteSize').value),noteWidth:Number($('#devNoteWidth').value)});
-      if(!Number.isFinite(extra.noteSize)||extra.noteSize<12||extra.noteSize>32||!Number.isFinite(extra.noteWidth)||extra.noteWidth<180||extra.noteWidth>480){fail('Schriftgröße 12–32 und Breite 180–480 eingeben.');return;}
+      Object.assign(extra,{noteText:$('#devNoteText').value,noteStyle:$('#devNoteStyle').value,noteTone:$('#devNoteTone').value,noteTitleTone:$('#devNoteTitleTone').value,noteSize:Number($('#devNoteSize').value),noteWidth:Number($('#devNoteWidth').value),noteHeight:Number($('#devNoteHeight').value)});
+      if(!Number.isFinite(extra.noteSize)||extra.noteSize<12||extra.noteSize>32||!Number.isFinite(extra.noteWidth)||extra.noteWidth<120||extra.noteWidth>1600||extra.noteStyle!=='card'&&(!Number.isFinite(extra.noteHeight)||extra.noteHeight<48||extra.noteHeight>1600)){fail('Schriftgröße 12–32, Breite 120–1600 und Höhe 48–1600 eingeben.');return;}
     }
     const extraSame=Object.keys(extra).every(key=>m[key]===extra[key]);
     let timerSettings=null;
@@ -1913,11 +1951,17 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}
     remember();wires.push({a,b,color});update();noteWiringReset();return true;
   }
-  function cancel(){pending=null;gesture=null;wireTarget=null;viewDrag=null;markLeadDock(false);viewport.classList.remove('panning');board.querySelectorAll('.dragging').forEach(e=>e.classList.remove('dragging'));updateWirePrompt();paintHint();mark();draw();}
+  function cancel(){pending=null;gesture=null;wireTarget=null;viewDrag=null;markLeadDock(false);viewport.classList.remove('panning');board.querySelectorAll('.dragging,.resizing').forEach(e=>e.classList.remove('dragging','resizing'));updateWirePrompt();paintHint();mark();draw();}
   function updateWirePrompt(){const line=$('.hint-line'),button=$('#cancelWire');if(line)line.classList.toggle('wire-pending',!!pending);if(button)button.hidden=!pending;}
   document.addEventListener('pointermove',e=>{
     if(!gesture){if(pending){updateWireTarget(e);draw(wireTarget?point(wireTarget):localPoint(e));}return;}if(e.pointerId!==gesture.pointerId)return;
     if(gesture.kind==='module'){move(gesture.m,gesture.startX+(e.clientX-gesture.x)/scale,gesture.startY+(e.clientY-gesture.y)/scale);draw();}
+    else if(gesture.kind==='resize-note'){
+      const g=gesture,dx=(e.clientX-g.x)/scale,dy=(e.clientY-g.y)/scale,west=g.edge.includes('w'),east=g.edge.includes('e'),north=g.edge.includes('n'),south=g.edge.includes('s');
+      const minWidth=120,minHeight=48,width=Math.max(minWidth,Math.min(1600,g.startWidth+(east?dx:west?-dx:0))),height=Math.max(minHeight,Math.min(1600,g.startHeight+(south?dy:north?-dy:0)));
+      g.m.noteWidth=Math.round(width);g.m.noteHeight=Math.round(height);g.m.x=Math.max(24,Math.min(BOARD_W-24-width,west?g.startX+g.startWidth-width:g.startX));g.m.y=Math.max(61,Math.min(BOARD_H-36-height,north?g.startY+g.startHeight-height:g.startY));
+      position(g.m);paintDeviceFace(g.m);if($('#devNoteWidth'))$('#devNoteWidth').value=g.m.noteWidth;if($('#devNoteHeight'))$('#devNoteHeight').value=g.m.noteHeight;draw();
+    }
     else if(gesture.kind==='lead'){
       if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>4)gesture.moved=true;
       const home=leadDock(e.clientX,e.clientY,gesture.m);
@@ -1932,6 +1976,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(!gesture||e.pointerId!==gesture.pointerId)return;
     const g=gesture;
     if(g.kind==='module'){gesture=null;g.m.el.classList.remove('dragging');move(g.m,Math.round(g.m.x/4)*4,Math.round(g.m.y/4)*4);draw();schedulePersist();return;}
+    if(g.kind==='resize-note'){gesture=null;g.m.el.classList.remove('resizing');schedulePersist();return;}
     if(g.kind==='lead'){gesture=null;finishLead(g,e);return;}
     if(g.moved){
       const snap=nearestTerm(e.clientX,e.clientY,g.key);
@@ -2887,7 +2932,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function electricalKey(d){
     const mods=(d.modules||[]).map(m=>{
       const rest=Object.assign({},m);
-      delete rest.x;delete rest.y;delete rest.z;delete rest.el;delete rest.pressed;delete rest.description;delete rest.subtitle;delete rest.labelColor;delete rest.titleLines;delete rest.latching;delete rest.locked;delete rest.noteText;delete rest.noteStyle;delete rest.noteTone;delete rest.noteSize;delete rest.noteWidth;
+      delete rest.x;delete rest.y;delete rest.z;delete rest.el;delete rest.pressed;delete rest.description;delete rest.subtitle;delete rest.labelColor;delete rest.titleLines;delete rest.latching;delete rest.locked;delete rest.noteText;delete rest.noteStyle;delete rest.noteTone;delete rest.noteTitleTone;delete rest.noteSize;delete rest.noteWidth;delete rest.noteHeight;
       return JSON.stringify(rest,Object.keys(rest).sort());
     }).sort();
     const links=(d.wires||[]).map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
@@ -2899,7 +2944,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       const prev=byId.get(m.id);
       if(!prev||!m.el)return;
       m.x=prev.x;m.y=prev.y;
-      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteSize','noteWidth'])m[key]=prev[key];remount(m);
+      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteTitleTone','noteSize','noteWidth','noteHeight'])m[key]=prev[key];remount(m);
       if(Number.isFinite(prev.z)){m.z=prev.z;m.el.style.zIndex=prev.z;}
       position(m);
     });
@@ -3024,7 +3069,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     switch:'<rect width="28" height="28" rx="3" fill="#d9dfd1"/><circle cx="14" cy="11" r="8" fill="#69766b"/><circle cx="14" cy="11" r="5" fill="#25382e"/><path d="M5 23h6l6-4m1 4h5" stroke="#374d3e" stroke-width="2" fill="none"/>',
     motion:'<rect width="28" height="28" rx="3" fill="#e0e8e1"/><rect x="4" y="3" width="20" height="22" rx="4" fill="#fff" stroke="#94a599"/><path d="M7 16a7 8 0 0 1 14 0v3H7z" fill="#dce8dc" stroke="#a7b9aa"/><circle cx="20" cy="7" r="1.5" fill="#008375"/>',
     note:'<rect x="3" y="2" width="22" height="24" rx="2" fill="#fff1bb" stroke="#a79966"/><path d="M7 8h14M7 13h14M7 18h9" stroke="#716943" stroke-width="1.5"/>',
-    label:'<rect x="2" y="6" width="24" height="17" rx="2" fill="#e3eeea"/><path d="M8 10h12M14 10v10M11 20h6" stroke="#285b4e" stroke-width="2"/>'
+    label:'<rect x="2" y="6" width="24" height="17" rx="2" fill="#e3eeea"/><path d="M8 10h12M14 10v10M11 20h6" stroke="#285b4e" stroke-width="2"/>',
+    frame:'<path d="M3 5h5M12 5h4M20 5h5M3 12v4M25 12v4M3 21h5M12 21h4M20 21h5" stroke="#285b4e" stroke-width="2" stroke-linecap="round"/><path d="M8 10h12" stroke="#285b4e" stroke-width="1.5"/>'
   };
   function partButton(type,title,hint){return '<button type="button" class="add" data-add="'+type+'" title="'+hint+'"><i class="glyph" aria-hidden="true"><svg viewBox="0 0 28 28">'+newGlyph[type]+'</svg></i>'+title+'</button>';}
   function partGroup(title,entries){
@@ -3036,14 +3082,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
   ]));
   document.querySelector('.parts-rail .add-set').parentElement.append(partGroup('Beschriften',[
-    ['note','Notiz','Text auf der Montageplatte'],['label','Beschriftung','Freier Text ohne Hintergrund']
+    ['note','Notiz','Text auf der Montageplatte'],['label','Beschriftung','Weißer Textstreifen mit freier Größe'],['frame','Rahmen','Gestrichelter Rahmen mit Text, frei größenveränderbar']
   ]));
   document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
     closePalettes();
-    remember();const requested=b.dataset.add,type=requested==='switch'?'start':requested==='label'?'note':requested,prefix=defaultPrefix(type);
+    remember();const requested=b.dataset.add,type=['switch','label','frame'].includes(requested)?(requested==='switch'?'start':'note'):requested,prefix=defaultPrefix(type);
     const m={id:nextId(prefix),type,x:Math.max(24,Math.min(BOARD_W-510,(viewport.clientWidth/2-camera.x)/scale-122)),y:Math.max(61,Math.min(BOARD_H-420,(viewport.clientHeight/2-camera.y)/scale-170))};
     if(requested==='switch'){m.latching=true;m.buttonColor='black';}
     if(requested==='label'){m.noteStyle='label';m.noteText='Beschriftung';}
+    if(requested==='frame'){m.noteStyle='frame';m.noteText='Text';m.noteWidth=420;m.noteHeight=240;}
     if(type==='psu')m.voltage=24;if(type==='mains')m.voltage=400;
     if(type==='contactor'){m.nomV=24;m.nomP=4;}
     if(type==='motor'||type==='lineardrive'){m.nomV=24;m.nomP=50;}if(type==='acmotor'){m.ratedKw=1.5;m.eta=0.8;}
