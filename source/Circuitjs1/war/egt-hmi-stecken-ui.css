@@ -248,13 +248,18 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.potentiometer,.module.motion{width:224px}
 .potentiometer .face,.motion .face{height:320px;padding:16px 14px;background:linear-gradient(120deg,#f6f7f4,#dce1db);border:1px solid #87948b;border-radius:8px;box-shadow:inset 0 0 0 6px #e9ede6,3px 5px 6px #26342938}
 .device-eyebrow{font-size:10px;font-weight:750;letter-spacing:.7px;text-align:center;color:#46554e}
-.pot-dial{position:relative;width:132px;height:126px;margin:12px auto 0;border:2px solid #7f8b82;border-radius:50%;background:repeating-conic-gradient(from -135deg,#738078 0 1deg,transparent 1deg 27deg);box-shadow:inset 0 0 0 8px #e5e9e3}
+.pot-dial{position:relative;width:132px;height:132px;aspect-ratio:1;flex:none;margin:12px auto 0;border:2px solid #7f8b82;border-radius:50%;background:repeating-conic-gradient(from -135deg,#738078 0 1deg,transparent 1deg 27deg);box-shadow:inset 0 0 0 8px #e5e9e3}
 .pot-rotor{position:absolute;inset:13px;border:7px solid #54625b;border-radius:50%;background:radial-gradient(circle at 35% 30%,#45534b,#1a241f 75%);box-shadow:0 3px 5px #15201866;transform-origin:center}
 .pot-rotor i{position:absolute;top:3px;left:calc(50% - 2px);width:4px;height:25px;border-radius:2px;background:#f8faf5}
 .pot-zero,.pot-max{position:absolute;bottom:-8px;font-size:10px;background:#e5e9e3;padding:2px 4px;z-index:1}.pot-zero{left:0}.pot-max{right:0}
 .pot-controls{margin:8px 0 0}.pot-controls label{display:block;font-size:11px;font-weight:600}.pot-value{float:right;font-variant-numeric:tabular-nums}.pot-slider{display:block;width:100%;height:28px;margin:0;accent-color:#007d78;cursor:ew-resize;touch-action:pan-y}.pot-slider:focus-visible{outline:2px solid #007d78;outline-offset:2px}
 .pot-rating{text-align:center;font-size:11px;color:#4d5b53}.pot-symbol{display:block;width:160px;height:47px;margin:0 auto;fill:none;stroke:#37483f;stroke-width:2.5}
 .sensor-terminals{position:absolute;bottom:12px;left:15px;right:15px;display:flex;justify-content:space-between;gap:12px}.sensor-terminals .terminal-cell{position:relative!important;inset:auto!important;display:flex;align-items:center;flex-direction:column;gap:3px}.sensor-terminals .terminal-label{font-size:11px;line-height:16px}.sensor-terminals .term{width:32px;height:32px}
+.potentiometer .face{height:auto;min-height:376px;display:flex;flex-direction:column}
+.potentiometer .pot-controls{flex:none}
+.potentiometer .pot-rating{flex:none;line-height:16px;margin-top:2px}
+.potentiometer .pot-symbol{flex:none;height:42px;margin:10px auto 0}
+.potentiometer .sensor-terminals{position:static;inset:auto;flex:none;min-height:51px;margin-top:auto}
 .motion .face{background:linear-gradient(125deg,#fff,#edf0ec 75%)}
 .motion-detection{position:relative;display:flex;align-items:center;flex-direction:column;border:1px dashed #9cac9f;border-radius:10px;margin:12px 0 8px;padding:12px 6px 8px;background:#f8faf7;cursor:crosshair}
 .pir-lens{height:92px;width:120px;border-radius:70% 70% 40% 40%;border:3px solid #c9d0c7;background:repeating-radial-gradient(ellipse at 50% 0,#ffffff55 0 8px,#aab9af44 9px 10px),repeating-conic-gradient(from 0deg at 50% 0,#eef3ec 0 12deg,#d3ded3 13deg 15deg);box-shadow:inset 0 -8px 12px #abb9ab66,0 3px 3px #8a998a33}
