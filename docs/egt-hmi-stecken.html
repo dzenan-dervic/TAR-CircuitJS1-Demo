@@ -2939,6 +2939,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function bindFold(btnId,panelId){const btn=$('#'+btnId),panel=$('#'+panelId);btn.onclick=()=>{const open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',String(open));panel.hidden=!open;};}
   bindFold('wiresToggle','wirePanel');
   $('#partSearch').addEventListener('focus',()=>setComponentSearch(true));
+  $('#partSearch').addEventListener('click',()=>setComponentSearch(true));
   $('#partSearch').addEventListener('input',()=>setComponentSearch(true));
   $('#partsToggle').onclick=()=>{const open=$('#partsPanel').hidden;if(open)$('#partSearch').focus();setComponentSearch(open);};
   document.addEventListener('pointerdown',e=>{if(!e.target.closest('#componentSearch'))setComponentSearch(false);});
