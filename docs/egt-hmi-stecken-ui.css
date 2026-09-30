@@ -111,7 +111,7 @@
 }
 .view-tabs .view-btn:hover {color: var(--shell-ink); background: #f7faf7}
 .view-tabs .view-btn[aria-pressed="true"] {color: #075f5a; background: #fff; box-shadow: 0 1px 3px #1f3c2b24}
-.toolbar-fixed {display: flex; flex: 0 1 auto; justify-content: flex-end; align-items: center; gap: 16px; min-width: 0; margin: 0}
+.toolbar-fixed {display: flex; flex: 0 1 auto; justify-content: flex-end; align-items: center; gap: 8px; min-width: 0; margin: 0}
 .wire-choice {gap: 9px}
 .wire-choice .tool-label {width: auto; margin: 0; color: var(--shell-muted); font-size: 12px; font-weight: 600; white-space: nowrap}
 .wire-choice #wireColors {gap: 5px}
@@ -124,6 +124,8 @@ html.mode-betrieb .work-mode {border-color: #5eae7b; background: #e0f1e5}
 html.mode-betrieb .work-mode #modeRun[aria-pressed="true"] {background: #137c48}
 .simulation-controls {gap: 6px}
 .simulation-controls .sim-state {font-size: 12px; font-weight: 650; white-space: nowrap}
+.toolbar-fixed .simulation-controls .sim-state {min-width: 0; width: 96px; flex: 0 0 96px; text-align: right; overflow: hidden; text-overflow: ellipsis}
+#simPause {min-width: 86px}
 html.mode-aufbau .simulation-controls .sim-state {display: inline-block; visibility: hidden}
 .simulation-controls .ui-btn {min-height: 34px; padding: 6px 9px}
 
@@ -201,7 +203,33 @@ html.mode-betrieb .board-bar .mode-flag {background: #e2f2e6; border-color: #a8d
 button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px solid #009f9c; outline-offset: 3px}
 
 .inspector {padding: 0 0 18px; background: #fff; border-left: 1px solid var(--shell-line)}
-.inspector .inspector-head {position: sticky; top: 0; z-index: 2; margin: 0; padding: 16px 16px 13px; background: #fff; border-bottom: 1px solid var(--shell-line)}
+.inspector .inspector-head {display: block; position: sticky; top: 0; z-index: 2; margin: 0; padding: 16px 16px 13px; background: #fff; border-bottom: 1px solid var(--shell-line)}
+.inspector-heading {display: flex; align-items: center; justify-content: space-between; gap: 8px}
+.inspector-search {position: relative; margin-top: 12px}
+.inspector-search-field {display: flex; align-items: center; gap: 8px; padding: 0 8px; min-height: 36px; background: var(--shell-soft); border: 1px solid var(--shell-line); border-radius: 6px}
+.inspector-search-field:focus-within {outline: 2px solid #007d7b; outline-offset: 2px}
+.inspector-search-field > svg {width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5}
+.inspector .inspector-search #partSearch {flex: 1; min-width: 0; width: 0; margin: 0; padding: 7px 0; border: 0; border-radius: 0; background: transparent; font-size: 12px; outline: none}
+#partsToggle {display: grid; place-items: center; width: 28px; height: 28px; flex: none; padding: 4px; border: 0; background: transparent; border-radius: 4px}
+#partsToggle:hover {background: #e0eae5}
+#partsToggle svg {width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5}
+#partsToggle[aria-expanded=true] svg {transform: rotate(180deg)}
+.component-search-results {position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--shell-line); border-radius: 6px; box-shadow: 0 4px 12px #233b2d26}
+.search-results-summary {margin: 0; padding: 8px; font-size: 11px; color: #627568; border-bottom: 1px solid var(--shell-line)}
+.inspector .component-search-results .component-list {margin: 0; padding: 4px; max-height: min(38vh,360px)}
+.component-search-results .component-select {min-height: 44px; padding: 6px; gap: 6px; border-color: transparent; border-radius: 4px}
+.component-search-results .component-select:hover {background: #edf4f0}
+.component-search-results .component-select:focus-visible {outline: 2px solid #007d7b; outline-offset: -2px}
+.component-result-icon {display: grid; place-items: center; flex: none; width: 24px; height: 24px}
+.component-result-icon svg {width: 24px; height: 24px}
+.component-search-results .component-select strong {min-width: 30px}
+.component-result-copy {flex: 1; min-width: 0}
+.component-result-title {display: block; font-size: 12px; overflow-wrap: anywhere}
+.component-search-results .component-select small {display: block; margin: 2px 0 0; font-size: 10px}
+.inspector .side-card[hidden] {display: none}
+.inspector #wiresToggle {display: flex; align-items: center; gap: 6px; text-align: left}
+.inspector #wireHeading {overflow-wrap: anywhere}
+.app-menu .menu-panel .danger-action {color: #a52e25; border-top: 1px solid var(--shell-line); margin-top: 4px}
 .inspector .inspector-head h2 {font-size: 16px}
 .inspector .sim-status {display: none}
 .inspector .side-card,.inspector .fold {
@@ -223,7 +251,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
   .app-header h1 {font-size: 16px}
   .toolbar {flex-wrap: wrap; gap: 6px 12px; padding: 7px 12px}
   .view-tabs {margin-right: auto}
-  .toolbar-fixed {flex: 1 1 100%; justify-content: space-between; gap: 10px}
+  .toolbar-fixed {flex: 1 1 100%; justify-content: flex-end; gap: 8px}
   .board-bar {flex-wrap: wrap; overflow: visible}
   .board-bar .view-controls {margin-left: 0}
   .board-bar .board-title h2 {display: block}
