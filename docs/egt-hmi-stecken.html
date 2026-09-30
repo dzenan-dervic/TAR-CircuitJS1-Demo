@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260930pushbutton">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20260930frameinteraction">
 </head>
 <body>
 <header class="app-header">
@@ -1225,7 +1225,7 @@ header .actions{min-width:0;overflow-x:auto}
     if(engine?.triggerMotion?.(m.id))refreshLive();
   }
   function face(m){
-    if(m.type==='note')return m.noteStyle==='frame'?'<div class="note-frame"><div class="note-content note-frame-title"></div><div class="note-frame-outline" aria-hidden="true"></div></div>':'<div class="note-content"></div>';
+    if(m.type==='note')return m.noteStyle==='frame'?'<div class="note-frame"><div class="note-content note-frame-title"></div><div class="note-frame-outline" aria-hidden="true"><i class="note-frame-edge edge-n"></i><i class="note-frame-edge edge-e"></i><i class="note-frame-edge edge-s"></i><i class="note-frame-edge edge-w"></i></div></div>':'<div class="note-content"></div>';
     if(m.type==='potentiometer')return `<div class="device-eyebrow">DREH-POTENTIOMETER</div><div class="pot-dial" aria-hidden="true"><span class="pot-zero">0</span><span class="pot-max">100</span><div class="pot-rotor"><i></i></div></div><div class="pot-controls"><label>Schleifer <output class="pot-value"></output><input class="pot-slider" type="range" min="0" max="100" step="1" value="${Math.round(m.potPosition*100)}" aria-label="${m.id} Schleiferposition"></label></div><div class="pot-rating"></div><svg class="pot-symbol" viewBox="0 0 194 56" aria-label="Potentiometer: Klemme 1 und 3 sind die Widerstandsenden, Klemme 2 ist der Schleifer"><path d="M16 51 V17 H55 M139 17 H178 V51 M97 51 V29 M91 37 L97 29 L103 37"/><rect x="55" y="9" width="84" height="16"/></svg><div class="sensor-terminals">${terminal(m,'1','1','bottom')}${terminal(m,'2','2','bottom')}${terminal(m,'3','3','bottom')}</div>`;
     if(m.type==='motion')return `<div class="device-eyebrow">PIR · BEWEGUNGSMELDER</div><div class="motion-detection" title="Maus im Erfassungsbereich bewegen"><span class="motion-led" aria-hidden="true"></span><div class="pir-lens" aria-hidden="true"></div><span class="motion-status">Ohne Versorgung</span><small>Erfassungsbereich · Maus bewegen</small></div><button class="motion-test" type="button">Bewegung testen</button><div class="motion-rating">${m.nomV} V ${m.nomV===24?'DC':'AC'} · ${m.motionDelay} s Nachlauf</div><div class="sensor-terminals">${terminal(m,'L',m.nomV===24?'+24':'L','bottom')}${terminal(m,'N',m.nomV===24?'0 V':'N','bottom')}${terminal(m,'OUT',m.nomV===24?'OUT':"L′",'bottom')}</div>`;
 

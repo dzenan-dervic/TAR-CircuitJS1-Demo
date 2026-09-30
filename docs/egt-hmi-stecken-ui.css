@@ -322,3 +322,11 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.note.framed-text .note-resize-grip[data-note-resize="se"]{right:-18px;bottom:-18px;transform:rotate(-45deg)}
 .module.note.framed-text .note-resize-grip[data-note-resize="sw"]{left:-18px;bottom:-18px;transform:rotate(45deg)}
 .module.note.framed-text .note-resize-grip[data-note-resize="nw"]{left:-18px;top:-18px;transform:rotate(-45deg)}
+.module.note.framed-text{pointer-events:none}
+.module.note.framed-text .note-frame-title{pointer-events:auto;cursor:grab}
+.note-frame-edge{position:absolute;display:block;pointer-events:auto;cursor:grab;touch-action:none}
+.note-frame-edge.edge-n,.note-frame-edge.edge-s{left:-2px;right:-2px;height:14px}
+.note-frame-edge.edge-n{top:-8px}.note-frame-edge.edge-s{bottom:-8px}
+.note-frame-edge.edge-e,.note-frame-edge.edge-w{top:-2px;bottom:-2px;width:14px}
+.note-frame-edge.edge-e{right:-8px}.note-frame-edge.edge-w{left:-8px}
+.module.position-locked.note.framed-text .note-frame-edge,.module.position-locked.note.framed-text .note-frame-title{cursor:default}
