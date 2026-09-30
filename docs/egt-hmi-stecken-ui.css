@@ -318,7 +318,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.note.framed-text .note-resize-grip[data-note-resize="e"]{right:-4px;top:50%;transform:translate(100%,-50%)}
 .module.note.framed-text .note-resize-grip[data-note-resize="w"]{left:-4px;top:50%;transform:translate(-100%,-50%)}
 .module.note.framed-text .note-resize-grip[data-note-resize="ne"],.module.note.framed-text .note-resize-grip[data-note-resize="se"],.module.note.framed-text .note-resize-grip[data-note-resize="sw"],.module.note.framed-text .note-resize-grip[data-note-resize="nw"]{width:18px;height:6px}
-.module.note.framed-text .note-resize-grip[data-note-resize="ne"]{right:-18px;top:-18px;transform:rotate(-45deg)}
-.module.note.framed-text .note-resize-grip[data-note-resize="se"]{right:-18px;bottom:-18px;transform:rotate(45deg)}
-.module.note.framed-text .note-resize-grip[data-note-resize="sw"]{left:-18px;bottom:-18px;transform:rotate(-45deg)}
-.module.note.framed-text .note-resize-grip[data-note-resize="nw"]{left:-18px;top:-18px;transform:rotate(45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="ne"]{right:-18px;top:-18px;transform:rotate(45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="se"]{right:-18px;bottom:-18px;transform:rotate(-45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="sw"]{left:-18px;bottom:-18px;transform:rotate(45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="nw"]{left:-18px;top:-18px;transform:rotate(-45deg)}
