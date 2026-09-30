@@ -309,3 +309,16 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.note.resizing{z-index:8}.module.note.resizing,.module.note.resizing *{user-select:none}
 .module.position-locked.note.text-only .note-resize-controls,.module.position-locked.note.framed-text .note-resize-controls{display:none!important}
 .module.position-locked.note.framed-text .note-frame-title{cursor:default}
+.module.note.framed-text .note-resize-controls{inset:27px 0 0}
+.module.note.framed-text .note-resize-grip{width:34px;height:6px;border:0;border-radius:4px;background:#fff;box-shadow:0 1px 3px #24352b55;transform:none}
+.module.note.framed-text .note-resize-grip:hover,.module.note.framed-text .note-resize-grip:focus-visible{background:#dff1e9;outline:2px solid #00887f;outline-offset:1px}
+.module.note.framed-text .note-resize-grip[data-note-resize="n"]{left:50%;top:-4px;transform:translate(-50%,-100%)}
+.module.note.framed-text .note-resize-grip[data-note-resize="s"]{left:50%;bottom:-4px;transform:translate(-50%,100%)}
+.module.note.framed-text .note-resize-grip[data-note-resize="e"],.module.note.framed-text .note-resize-grip[data-note-resize="w"]{width:6px;height:34px}
+.module.note.framed-text .note-resize-grip[data-note-resize="e"]{right:-4px;top:50%;transform:translate(100%,-50%)}
+.module.note.framed-text .note-resize-grip[data-note-resize="w"]{left:-4px;top:50%;transform:translate(-100%,-50%)}
+.module.note.framed-text .note-resize-grip[data-note-resize="ne"],.module.note.framed-text .note-resize-grip[data-note-resize="se"],.module.note.framed-text .note-resize-grip[data-note-resize="sw"],.module.note.framed-text .note-resize-grip[data-note-resize="nw"]{width:18px;height:6px}
+.module.note.framed-text .note-resize-grip[data-note-resize="ne"]{right:-18px;top:-18px;transform:rotate(-45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="se"]{right:-18px;bottom:-18px;transform:rotate(45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="sw"]{left:-18px;bottom:-18px;transform:rotate(-45deg)}
+.module.note.framed-text .note-resize-grip[data-note-resize="nw"]{left:-18px;top:-18px;transform:rotate(45deg)}
