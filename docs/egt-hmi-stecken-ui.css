@@ -378,3 +378,95 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 #faultPathList small {display: block; color: #75483f; font-size: 10px; margin-top: 3px}
 @keyframes faultPulse {0%,100% {opacity: .22; stroke-width: 15px} 50% {opacity: 1; stroke-width: 23px}}
 @media (prefers-reduced-motion: reduce) {.fault-wire {animation: none; opacity: .85}}
+.help-dialog{width:min(46rem,calc(100vw - 24px));max-width:46rem;max-height:calc(100dvh - 32px);padding:0;overflow:auto;background:#fff}
+.help-dialog .help-head{position:sticky;top:0;z-index:1;gap:12px;padding:14px 18px;background:#fff;border-bottom:1px solid #d6ded9}
+.help-dialog .help-intro{margin:14px 18px;color:#52645c}
+.help-topic{margin:0 18px;border-top:1px solid #dce4de}
+.help-topic:last-child{margin-bottom:18px}
+.help-topic summary{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 0;list-style:none;cursor:pointer;font-weight:650;font-size:13px}
+.help-topic summary::-webkit-details-marker{display:none}
+.help-topic summary::marker{content:""}
+.help-topic summary::before{content:"";flex:none;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg)}
+.help-topic[open] summary::before{transform:rotate(45deg)}
+.help-topic p{margin:0 0 12px}
+.help-topic ol{padding-left:22px;margin:0 0 12px;font-size:13px;line-height:1.55}
+.help-topic li+li{margin-top:5px}
+.legend-list,.shortcut-list{margin:0 0 14px;font-size:12px;line-height:1.5}
+.legend-list>div,.shortcut-list>div{display:grid;grid-template-columns:158px minmax(0,1fr);gap:12px;padding:8px 0}
+.legend-list>div+div,.shortcut-list>div+div{border-top:1px solid #edf1ee}
+.legend-list dt{display:flex;align-items:center;gap:8px;font-weight:600}
+.legend-list svg{width:42px;height:24px;flex:none}
+.legend-list dd,.shortcut-list dd{margin:0}
+.shortcut-list dt{font-weight:600}
+@media(max-width:520px){.legend-list>div,.shortcut-list>div{grid-template-columns:minmax(0,1fr);gap:4px}.help-dialog .help-head{padding:12px 14px}.help-topic{margin-inline:14px}.help-dialog .help-intro{margin-inline:14px}}
+
+.selection-rectangle{position:absolute;border:2px solid #176dbb;background:#2878ef20;z-index:2147483646;pointer-events:none}
+.board-viewport.selection-mode,.board-viewport.selection-mode .module{cursor:crosshair}
+#selectionTool[aria-pressed=true]{background:#dcece8;border-color:#477164;color:#174c40}
+#selectionTool{min-height:36px}
+@media(pointer:coarse){#selectionTool{min-height:44px}}
+.group-align,.group-distribute{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin:8px 0 18px}
+.group-align .ui-btn,.group-distribute .ui-btn{white-space:normal;min-height:44px;font-size:12px}
+.group-actions{display:flex;flex-wrap:wrap;gap:6px}.group-actions .ui-btn{min-height:44px}
+#electricalEditDialog{width: min(480px,calc(100vw - 32px));box-sizing:border-box;padding:24px;border:1px solid #aab8b1;border-radius:8px;color:#24352b;background:#fff}
+#electricalEditDialog::backdrop{background:#15251e70}
+#electricalEditDialog h2{font-size:20px;margin:0 0 14px}
+#electricalEditDialog p{font-size:14px;line-height:1.65;margin:0 0 22px}
+.electrical-edit-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.electrical-edit-actions .ui-btn{min-height:44px}.electrical-edit-actions .primary{background:#007b75;color:#fff;border-color:#007b75}
+
+.module.changeover,.module.crossover,.module.socket{width:234px}
+.changeover .face,.crossover .face,.socket .face{height:auto;min-height:350px;padding:16px 18px 18px;background:#e5e8e1;border:1px solid #89958d;box-shadow:inset 0 0 0 6px #eff1ec,2px 4px 6px #263b492f;border-radius:7px}
+.changeover .device-eyebrow,.crossover .device-eyebrow,.socket .device-eyebrow{position:static;text-align:center;margin:0 0 14px;font-size:11px;letter-spacing:.055em}
+.wall-frame{width:176px;height:154px;margin:0 auto 14px;padding:14px;box-sizing:border-box;border:1px solid #c0c6bd;border-radius:8px;background:linear-gradient(135deg,#fff,#e7eae3);box-shadow:inset 0 0 0 6px #f6f7f3,0 2px 4px #263b4924}
+.installation-rocker{display:block;position:relative;width:100%;height:100%;padding:0;border:1px solid #a2aaa0;border-radius:4px;background:linear-gradient(#fbfcf9 46%,#e0e5dc 48%,#edf0e8);box-shadow:0 5px 2px -1px #7f8a7a,inset 0 1px 2px #fff;cursor:pointer;touch-action:manipulation}
+.installation-rocker::after{content:'';position:absolute;left:12px;right:12px;top:50%;height:1px;background:#c7cec0;box-shadow:0 1px #fff}
+.installation-rocker .rocker-top,.installation-rocker .rocker-bottom{position:absolute;left:48%;width:5px;height:2px;border-radius:2px;background:#8a9685}
+.rocker-top{top:14px}.rocker-bottom{bottom:14px}
+.switch-position-2 .installation-rocker{background:linear-gradient(#e3e8df 46%,#e2e7de 48%,#fff);box-shadow:0 -4px 2px -1px #7f8a7a,inset 0 -1px 2px #fff}
+.installation-rocker:focus-visible{outline:3px solid #007d7b;outline-offset:4px}
+.installation-map{position:relative;width:192px;margin:0 auto}
+.installation-terminals{display:flex;justify-content:space-between;padding:0 23px;position:relative;z-index:2}
+.installation-terminals .terminal-cell{gap:4px;align-items:center}
+.installation-terminals .term{width:32px;height:32px}
+.installation-terminals .terminal-label{color:#304a3e;font-size:12px;white-space:nowrap}
+.installation-terminals.bottom{justify-content:space-between;padding:0 23px}
+.installation-terminals.bottom .terminal-label{background:#e5e8e1;padding:0 3px}
+.changeover .installation-terminals.bottom{justify-content:center}
+.installation-symbol{display:block;width:192px;height:76px;margin:-1px auto;overflow:visible;fill:none;stroke:#344b42;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.installation-symbol .switch-cross{display:none}.switch-position-2 .switch-cross{display:block}.switch-position-2 .switch-straight{display:none}
+.module.junction{width:362px}
+.junction .face{height:auto;min-height:0;padding:0;background:transparent;border:0;box-shadow:none}
+.junction-shell{position:relative;padding:26px 22px 20px;border:2px solid #8e978a;border-radius:12px;background:#c9cfc3;box-shadow:inset 0 0 0 7px #e1e5d9,inset 0 0 12px 10px #7e897777,2px 5px 6px #263b492f}
+.junction .device-eyebrow{position:static;text-align:center;font-size:11px;letter-spacing:.055em;margin:0 0 18px;color:#354833}
+.box-screw{position:absolute;width:9px;height:9px;border-radius:50%;border:1px solid #909989;background:#e6e8df;box-shadow:0 1px 1px #556650}
+.box-screw::after{content:'';position:absolute;left:1px;right:1px;top:4px;border-top:1px solid #899582;transform:rotate(-35deg)}
+.screw-nw{top:9px;left:9px}.screw-ne{top:9px;right:9px}.screw-sw{bottom:9px;left:9px}.screw-se{bottom:9px;right:9px}
+.junction-connectors{display:grid;gap:13px}
+.junction-group{position:relative;display:grid;grid-template-columns:30px repeat(5,minmax(0,1fr));align-items:center;gap:2px;padding:7px 6px 18px 2px;background:#edf0e570;border:1px solid #9ba994;border-radius:4px}
+.junction-group-name{text-align:center;font-size:13px;color:#4b3c29}.group-N .junction-group-name{color:#175287}.group-PE .junction-group-name{color:#325122}
+.junction-bus{position:absolute;left:53px;right:23px;height:7px;bottom:8px;border:1px solid #865024;background:linear-gradient(#ebc58a,#ac733e);box-shadow:0 1px 1px #825c3340;pointer-events:none}
+.lever-connector{position:relative;padding:18px 0 3px;border:1px solid #c0c9bb;background:#f8fff570;border-radius:3px;z-index:1}
+.lever-connector::after{content:'';position:absolute;left:calc(50% - 1px);bottom:-7px;width:2px;height:14px;background:#976332;pointer-events:none}
+.connector-lever{position:absolute;top:3px;left:7px;right:7px;height:12px;border-radius:2px;background:linear-gradient(#f3a153,#df791c);border:1px solid #b66824;box-shadow:0 2px #aa611d}
+.connector-lever::after{content:'';position:absolute;left:3px;right:3px;top:3px;border-top:2px solid #c97d35}
+.junction .terminal-cell{display:flex;align-items:center;flex-direction:column;gap:4px}.junction .terminal-label{font-size:10px;color:#304434}
+.junction .term{width:26px;height:26px;border:1px solid #617762;box-shadow:inset 0 0 0 2px #83917b;background:#263c2d}
+.junction .screw{width:12px;height:12px;border-radius:50%;background:radial-gradient(#403a21 30%,#bbab76 34%,#797457 75%);box-shadow:inset 0 1px 2px #1d2b20}
+.junction .screw::before,.junction .screw::after{display:none}
+.junction-note{margin-top:13px;font-size:11px;line-height:1.6;text-align:center;color:#344b36}
+.junction-glands{display:flex;gap:30px;justify-content:center;margin:15px 0 -28px}.junction-glands i{width:42px;height:18px;border:1px solid #8a9683;border-radius:4px;background:repeating-linear-gradient(90deg,#b1bbaa 0 3px,#e1e5d9 3px 5px)}
+.junction .state-label{margin-top:16px}
+.socket-frame{height:176px;padding:12px;margin-bottom:12px}
+.socket-recess{position:relative;width:150px;height:150px;box-sizing:border-box;aspect-ratio:1;border:1px solid #a5ada2;border-radius:50%;background:radial-gradient(circle at 50% 65%,#f5f7ee 45%,#d9dfd2 72%,#f0f3e9 75%);box-shadow:inset 0 3px 6px #53614b4d,0 1px #fff}
+.socket .socket-contact{position:absolute;margin:0;width:23px;height:23px;border:3px solid #c0c9b7;border-radius:50%;background:#253226;box-shadow:inset 0 2px 4px #071509;padding:0}
+.socket-left{left:34px;top:66px}.socket-right{right:34px;top:66px}
+.socket .socket-earth{top:3px;left:55px;width:38px;height:13px;border-radius:2px;border:1px solid #939b85;background:linear-gradient(#d9dbbf,#a5ac86,#e8e8c9);box-shadow:0 1px 2px #667153}
+.socket-earth-bottom{position:absolute;bottom:3px;left:55px;width:38px;height:11px;border:1px solid #939b85;border-radius:2px;background:linear-gradient(#a5ac86,#e8e8c9)}
+.socket-contact-name{position:absolute;top:96px;font-size:10px;color:#556349}.name-left{left:43px}.name-right{right:43px}
+.socket-contact-caption{text-align:center;font-size:10px;line-height:1.5;color:#405541;margin:0 0 14px}
+.socket-back{padding:12px 8px;background:#d4ddd0;border:1px solid #a4b29b;border-radius:4px;box-shadow:inset 0 1px #eef1e8}
+.socket-back-title{display:block;text-align:center;font-size:9px;letter-spacing:.08em;color:#40513c;margin:0 0 10px}
+.socket-terminal-bank{display:flex;justify-content:space-around}.socket .terminal-label{font-size:12px;color:#304a3e}.socket .term:not(.socket-contact){width:32px;height:32px}
+.socket-terminal-bank .terminal-cell:nth-child(2) .terminal-label{color:#175287}.socket-terminal-bank .terminal-cell:nth-child(3) .terminal-label{color:#325122;background:repeating-linear-gradient(135deg,#e1ce5b 0 5px,#c8ddab 5px 10px);padding:0 4px;border-radius:2px}
+.socket .state-label,.junction .state-label,.changeover .state-label,.crossover .state-label{font-size:11px;min-height:24px;line-height:1.5}

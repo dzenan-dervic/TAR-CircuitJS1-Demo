@@ -38,6 +38,8 @@ class EGTWorkbenchBridge {
     HashMap<String, EGTTasterElm> tasters;
     HashMap<String, EGTTasterElm> tastersNc;
     HashMap<String, EGTTasterElm[]> selectors;
+    HashMap<String, EGTWechselschalterElm> changeovers;
+    HashMap<String, EGTKreuzschalterElm> crossovers;
     HashMap<String, EGTLeuchteElm> lamps;
     HashMap<String, EGTLeistungsschuetzElm> contactors;
     HashMap<String, EGTSchuetzSpuleElm> relays;
@@ -76,6 +78,8 @@ class EGTWorkbenchBridge {
 	tasters = new HashMap<String, EGTTasterElm>();
 	tastersNc = new HashMap<String, EGTTasterElm>();
 	selectors = new HashMap<String, EGTTasterElm[]>();
+        changeovers = new HashMap<String, EGTWechselschalterElm>();
+        crossovers = new HashMap<String, EGTKreuzschalterElm>();
 	lamps = new HashMap<String, EGTLeuchteElm>();
 	contactors = new HashMap<String, EGTLeistungsschuetzElm>();
         relays = new HashMap<String, EGTSchuetzSpuleElm>();
@@ -164,6 +168,16 @@ class EGTWorkbenchBridge {
     }
 
     boolean setSelector(String id, int position) {
+        SwitchElm installation = changeovers.containsKey(id) ? changeovers.get(id) : crossovers.get(id);
+        if (installation != null) {
+            if (position < 0 || position > 1) return false;
+            if (installation.position == position) return true;
+            installation.position = position;
+            installation.setPoints();
+            app.needAnalyze();
+            app.repaint();
+            return true;
+        }
         EGTTasterElm[] pair = selectors.get(id);
         if (pair == null || position < -1 || position > 1) return false;
         pair[0].setWorkbenchPressed(false);
@@ -549,6 +563,17 @@ class EGTWorkbenchBridge {
             EGTTasterElm[] pair = selectors.get(id);
             first = contactPair(sb, first, id + ".13", pair[0].position == 0);
             first = contactPair(sb, first, id + ".23", pair[1].position == 0);
+        }
+        for (String id : changeovers.keySet()) {
+            first = contactPair(sb, first, id + ".1", changeovers.get(id).position == 0);
+            first = contactPair(sb, first, id + ".2", changeovers.get(id).position == 1);
+        }
+        for (String id : crossovers.keySet()) {
+            boolean straight = crossovers.get(id).position == 0;
+            first = contactPair(sb, first, id + ".1-3", straight);
+            first = contactPair(sb, first, id + ".2-4", straight);
+            first = contactPair(sb, first, id + ".1-4", !straight);
+            first = contactPair(sb, first, id + ".2-3", !straight);
         }
         for (String key : driveSensors.keySet()) {
             boolean active = driveSensors.get(key).position == 1;
@@ -939,6 +964,49 @@ class EGTWorkbenchBridge {
             setSelector(id, (int)getNum(c, "selection", 0));
             return;
         }
+        if ("changeover".equals(type)) {
+            EGTWechselschalterElm sw = new EGTWechselschalterElm(nextX(), nextY());
+            sw.setEgtDesignation(designation);
+            sw.position = getNum(c, "selection", 0) == 1 ? 1 : 0;
+            addElm(sw);
+            changeovers.put(id, sw);
+            bind(id + ".1", sw, 0);
+            bind(id + ".2", sw, 1);
+            bind(id + ".L", sw, 2);
+            bump();
+            return;
+        }
+        if ("crossover".equals(type)) {
+            EGTKreuzschalterElm sw = new EGTKreuzschalterElm(nextX(), nextY());
+            sw.setEgtDesignation(designation);
+            sw.position = getNum(c, "selection", 0) == 1 ? 1 : 0;
+            addElm(sw);
+            crossovers.put(id, sw);
+            for (int i = 0; i < 4; i++) bind(id + "." + (i + 1), sw, i);
+            bump();
+            return;
+        }
+        if ("junction".equals(type)) {
+            String[] groups = { "L", "N", "PE", "A", "B" };
+            for (String group : groups) {
+                String[] keys = new String[5];
+                for (int i = 0; i < 5; i++) keys[i] = id + "." + group + "." + (i + 1);
+                bindCommon(keys);
+            }
+            return;
+        }
+        if ("socket".equals(type)) {
+            EGTSteckdoseElm socket = new EGTSteckdoseElm(nextX(), nextY());
+            socket.setEgtDesignation(designation);
+            addElm(socket);
+            String[] pins = { "L", "PE", "N" };
+            for (int i = 0; i < pins.length; i++) {
+                bind(id + "." + pins[i], socket, i);
+                bind(id + "." + pins[i] + "out", socket, i);
+            }
+            bump();
+            return;
+        }
 	if ("start".equals(type) || "stop".equals(type) || "emergency".equals(type)) {
 	    addTasterStation(id, designation.length() == 0 ? id : designation, !"emergency".equals(type));
 	    return;
@@ -1201,7 +1269,8 @@ class EGTWorkbenchBridge {
     }
 
     private static boolean validType(String type) {
-	return "potentiometer".equals(type) || "motion".equals(type) || "timer".equals(type) || "motorprotection".equals(type) || "breaker".equals(type) || "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
+	return "changeover".equals(type) || "crossover".equals(type) || "junction".equals(type) || "socket".equals(type)
+                || "potentiometer".equals(type) || "motion".equals(type) || "timer".equals(type) || "motorprotection".equals(type) || "breaker".equals(type) || "relay".equals(type) || "contactor".equals(type) || "auxiliary".equals(type)
 		|| "psu".equals(type) || "mains".equals(type) || "start".equals(type)
 		|| "stop".equals(type) || "motor".equals(type) || "acmotor".equals(type) || "lineardrive".equals(type)
                 || "lamp".equals(type) || "pilot".equals(type) || "emergency".equals(type) || "selector".equals(type)
