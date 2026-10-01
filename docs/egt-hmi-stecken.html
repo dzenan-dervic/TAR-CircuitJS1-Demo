@@ -606,7 +606,7 @@ header .actions{min-width:0;overflow-x:auto}
 
 <p class="notice">Elektrische Zustände kommen aus CircuitJS. Die Vorschau-Logik bleibt aus, sobald die Engine verbunden ist.</p>
 </aside>
-<dialog class="help-dialog" id="helpDialog" aria-labelledby="helpTitle"><div class="inspector-head"><h2 id="helpTitle">So funktioniert’s</h2><button type="button" class="ui-btn" id="closeHelp">Schließen</button></div><p>Die Montagefläche bietet 6.000 × 3.600 Einheiten Platz. Freie Fläche ziehen oder mit gedrückter Leertaste ziehen, um die Ansicht zu bewegen. Mit dem Mausrad am Zeiger zoomen. Zwei Finger auf der Montageplatte zoomen, ein Finger verschiebt die Ansicht. „Alle Bauteile“ bringt den Aufbau zurück ins Bild.</p><p>Jeder Leistungsschütz hat einen separat verschiebbaren Hilfskontaktblock. Beide tragen dieselbe K-Nummer.</p><p>Am Gehäuse oder am Bauteilnamen ziehen, um ein Bauteil zu verschieben. Mit fokussiertem Bauteilnamen geht das auch über die Pfeiltasten.</p><p>Eine Schraubklemme mit einer anderen verbinden: ziehen oder beide anklicken. Leitung anklicken, um ihre Anschlüsse und Farbe rechts zu bearbeiten. Ein Klick auf die freie Fläche oder Esc hebt die Auswahl auf. Doppelklick, Entf oder „Leitung löschen“ entfernt sie. „Spannung“ zeigt eine rote Umrandung an Adern mit Potenzial. Rote Leitungen bekommen zusätzlich eine helle Kontrastlage. „Strom“ zeigt laufende Würfel in Stromrichtung, sobald CircuitJS einen Strom liefert.</p><p>Blauer Ring: ausgewählte und direkt verbundene Klemmen. Grüner Ring: mögliches Leitungsziel. Esc beendet die Auswahl.</p><p>Zuerst Aufbau: Spannung aus, verdrahten und umbenennen. Dann Betrieb: Spannung ein, Taster wirken. Einfrieren hält die Zeit, Spannung bleibt. Eine geänderte Ader im Betrieb oder beim Einfrieren baut die Simulation neu auf: angezogene Schütze fallen ab. Bei Kurzschluss zuerst den Aufbau ändern, danach Reset.</p><p>„Selbsthaltung laden“ verdrahtet das Beispiel. „Drehrichtungsumkehr“ setzt die Wendeschaltung: S1 Rechtslauf über Q1, S2 Linkslauf über Q2, gegenseitig mit dem Öffner 61–62 verriegelt, S0 hält an. Danach Betrieb einschalten, S1 über 13–14 starten, S2 über 21–22 unterbrechen. Jeder Taster hat beide Kontakte.</p><p>Ein Klick auf ein Gerät zeigt seine Einstellungen rechts. Dort änderst du die Kennzeichnung (Schütz Q oder K, Taster S, Meldeleuchte P, Lampe E, Klemme X) und beim 24-V-Netzteil die DC-Spannung. Die Klemmen bleiben +24 / 0 V. Drehstrom 400 V (Kennbuchstabe T) speist L1/L2/L3/N/PE; U_LL ist einstellbar, U_LN = U_LL/√3. N und PE sind an der Einspeisung intern verbunden. Der Drehstrommotor (M, 400 V 3~) hat U1 V1 W1 und U2 V2 W2. Stern: U2–V2–W2 brücken. Dreieck: U1–W2, V1–U2, W1–V2. PE ist nur das Gehäuse.</p><p>Die Reihenklemme verbindet oben mit unten. Paar oder Vierer macht mehrere Nummern zu einer Verbindung; der farbige Rand und der Strich zeigen die Gruppe. Anzahl 2 bis 12.  Die Potenzialschiene hat drei getrennte Leisten +24, 0 V und PE, mit 5 oder 8 Schrauben. Schrauben einer Leiste sind intern verbunden. PE liegt nicht auf 0 V.</p><p>Jeder Taster hat Schließer 13–14 und Öffner 21–22 plus Meldeleuchte X1/X2. Ein Druck betätigt beide Kontakte gleichzeitig, wie am Tableau.</p><p><b>Neue Bauteile:</b> Beim Potentiometer liegen 1 und 3 am Widerstand, 2 ist der Schleifer. Der Regler stellt 0–100 % ein. „Schalter“ bleibt bis zum nächsten Druck betätigt; ein Taster lässt sich in den Eigenschaften auf rastend umstellen.</p><p><b>Bewegungsmelder:</b> L/N bzw. +24/0 V versorgen das Gerät, OUT/L′ ist der geschaltete Ausgang. Im Betrieb löst Mausbewegung über dem Erfassungsbereich aus. Auf Tablet und per Tastatur „Bewegung testen“ verwenden. Jede Bewegung startet den einstellbaren Nachlauf erneut.</p><p><b>Beschriften &amp; Sperren:</b> Notiz oder Beschriftung hinzufügen und per Doppelklick Text, Größe und Darstellung ändern. „Position sperren“ in den Eigenschaften verhindert Verschieben mit Maus oder Pfeiltasten. Bedienen und Verdrahten bleiben möglich; ein Schloss kennzeichnet gesperrte Bauteile.</p></dialog></div>
+<dialog class="help-dialog" id="helpDialog" aria-labelledby="helpTitle"><div class="inspector-head"><h2 id="helpTitle">So funktioniert’s</h2><button type="button" class="ui-btn" id="closeHelp">Schließen</button></div><p>Die Montagefläche bietet 6.000 × 3.600 Einheiten Platz. Freie Fläche ziehen oder mit gedrückter Leertaste ziehen, um die Ansicht zu bewegen. Mit dem Mausrad am Zeiger zoomen. Zwei Finger auf der Montageplatte zoomen, ein Finger verschiebt die Ansicht. „Alle Bauteile“ bringt den Aufbau zurück ins Bild.</p><p>Jeder Leistungsschütz hat einen separat verschiebbaren Hilfskontaktblock. Beide tragen dieselbe K-Nummer.</p><p><b>Tastenkürzel:</b> Entf löscht das ausgewählte Bauteil oder die Leitung. Strg+C kopiert ein Bauteil, Strg+V fügt es versetzt ein, Strg+D dupliziert es direkt. Strg+Z macht Änderungen rückgängig, Strg+Y oder Strg+Umschalt+Z stellt sie wieder her. Strg+S speichert das Projekt. Auf dem Mac Cmd statt Strg verwenden. Kopierte Bauteile bleiben bis zum Neuladen der Seite in der Zwischenablage der Werkstatt. Schütze und Hilfskontakte werden gemeinsam kopiert; Leitungen werden nicht mitkopiert. In Textfeldern gelten die üblichen Textkürzel.</p><p>Am Gehäuse oder am Bauteilnamen ziehen, um ein Bauteil zu verschieben. Mit fokussiertem Bauteilnamen geht das auch über die Pfeiltasten.</p><p>Eine Schraubklemme mit einer anderen verbinden: ziehen oder beide anklicken. Leitung anklicken, um ihre Anschlüsse und Farbe rechts zu bearbeiten. Ein Klick auf die freie Fläche oder Esc hebt die Auswahl auf. Doppelklick, Entf oder „Leitung löschen“ entfernt sie. „Spannung“ zeigt eine rote Umrandung an Adern mit Potenzial. Rote Leitungen bekommen zusätzlich eine helle Kontrastlage. „Strom“ zeigt laufende Würfel in Stromrichtung, sobald CircuitJS einen Strom liefert.</p><p>Blauer Ring: ausgewählte und direkt verbundene Klemmen. Grüner Ring: mögliches Leitungsziel. Esc beendet die Auswahl.</p><p>Zuerst Aufbau: Spannung aus, verdrahten und umbenennen. Dann Betrieb: Spannung ein, Taster wirken. Einfrieren hält die Zeit, Spannung bleibt. Eine geänderte Ader im Betrieb oder beim Einfrieren baut die Simulation neu auf: angezogene Schütze fallen ab. Bei Kurzschluss zuerst den Aufbau ändern, danach Reset.</p><p>„Selbsthaltung laden“ verdrahtet das Beispiel. „Drehrichtungsumkehr“ setzt die Wendeschaltung: S1 Rechtslauf über Q1, S2 Linkslauf über Q2, gegenseitig mit dem Öffner 61–62 verriegelt, S0 hält an. Danach Betrieb einschalten, S1 über 13–14 starten, S2 über 21–22 unterbrechen. Jeder Taster hat beide Kontakte.</p><p>Ein Klick auf ein Gerät zeigt seine Einstellungen rechts. Dort änderst du die Kennzeichnung (Schütz Q oder K, Taster S, Meldeleuchte P, Lampe E, Klemme X) und beim 24-V-Netzteil die DC-Spannung. Die Klemmen bleiben +24 / 0 V. Drehstrom 400 V (Kennbuchstabe T) speist L1/L2/L3/N/PE; U_LL ist einstellbar, U_LN = U_LL/√3. N und PE sind an der Einspeisung intern verbunden. Der Drehstrommotor (M, 400 V 3~) hat U1 V1 W1 und U2 V2 W2. Stern: U2–V2–W2 brücken. Dreieck: U1–W2, V1–U2, W1–V2. PE ist nur das Gehäuse.</p><p>Die Reihenklemme verbindet oben mit unten. Paar oder Vierer macht mehrere Nummern zu einer Verbindung; der farbige Rand und der Strich zeigen die Gruppe. Anzahl 2 bis 12.  Die Potenzialschiene hat drei getrennte Leisten +24, 0 V und PE, mit 5 oder 8 Schrauben. Schrauben einer Leiste sind intern verbunden. PE liegt nicht auf 0 V.</p><p>Jeder Taster hat Schließer 13–14 und Öffner 21–22 plus Meldeleuchte X1/X2. Ein Druck betätigt beide Kontakte gleichzeitig, wie am Tableau.</p><p><b>Neue Bauteile:</b> Beim Potentiometer liegen 1 und 3 am Widerstand, 2 ist der Schleifer. Der Regler stellt 0–100 % ein. „Schalter“ bleibt bis zum nächsten Druck betätigt; ein Taster lässt sich in den Eigenschaften auf rastend umstellen.</p><p><b>Bewegungsmelder:</b> L/N bzw. +24/0 V versorgen das Gerät, OUT/L′ ist der geschaltete Ausgang. Im Betrieb löst Mausbewegung über dem Erfassungsbereich aus. Auf Tablet und per Tastatur „Bewegung testen“ verwenden. Jede Bewegung startet den einstellbaren Nachlauf erneut.</p><p><b>Beschriften &amp; Sperren:</b> Notiz oder Beschriftung hinzufügen und per Doppelklick Text, Größe und Darstellung ändern. „Position sperren“ in den Eigenschaften verhindert Verschieben mit Maus oder Pfeiltasten. Bedienen und Verdrahten bleiben möglich; ein Schloss kennzeichnet gesperrte Bauteile.</p></dialog></div>
 </div>
 </div>
 <div class="toast" id="toast" role="status" hidden></div>
@@ -699,6 +699,7 @@ header .actions{min-width:0;overflow-x:auto}
     const z=m.z,pressed=m.pressed,latched=m.latched;
     m.el?.remove();
     renderModule(m);
+    m.el.classList.toggle('selected',selectedId===m.id);
     if(Number.isFinite(z)){m.z=z;m.el.style.zIndex=z;}
     m.pressed=pressed;m.latched=latched;
     if(m.type==='selector')paintSelector(m);
@@ -1421,6 +1422,29 @@ header .actions{min-width:0;overflow-x:auto}
     if(removed.has(selectedId))selectedId=modules.find(x=>x.type==='contactor')?.id||modules[0]?.id||null;
     update();
   }
+  let componentClipboard=null,clipboardPasteCount=0;
+  function copyPackage(m){
+    const owner=m.type==='auxiliary'?modules.find(x=>x.id===m.parent):m;
+    if(!owner)return null;
+    const items=[owner,...modules.filter(x=>x.parent===owner.id)];
+    return JSON.parse(JSON.stringify(items.map(({el,pressed,...item})=>item)));
+  }
+  function pastePackage(items,offset=40){
+    if(!items?.length)return;
+    remember();cancel();
+    const original=items[0],id=nextId(original.id.match(/^[A-Za-z]+/)?.[0]||defaultPrefix(original.type));
+    let owner;
+    items.forEach((item,index)=>{
+      const clone=defaultNom(JSON.parse(JSON.stringify(item)));
+      clone.id=index===0?id:id+'H';
+      if(index===0)delete clone.parent;else clone.parent=id;
+      Object.assign(clone,{pressed:false,latched:false,locked:false,protectionTripped:false,protectionReason:0,probeRed:null,probeBlack:null,measuredWire:null});
+      delete clone.z;
+      modules.push(clone);renderModule(clone);move(clone,item.x+offset,item.y+offset);
+      if(index===0)owner=clone;
+    });
+    selectModule(owner.id,true);update();say(owner.id+' eingefügt.');
+  }
   function createAux(parent){
     if(modules.some(m=>m.type==='auxiliary'&&m.parent===parent.id))return null;
     const aux={id:parent.id+'H',type:'auxiliary',parent:parent.id,x:Math.min(BOARD_W-204,parent.x+264),y:parent.y+70};
@@ -1504,7 +1528,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const actions=document.createElement('div');actions.className='property-actions';
     if(m.type==='auxiliary'){const owner=document.createElement('button');owner.className='ui-btn';owner.textContent='Hauptschütz bearbeiten';owner.onclick=()=>selectModule(m.parent,true);actions.append(owner);}
     if(isProtection(m)){const test=document.createElement('button');test.className='ui-btn';test.dataset.protection='test';test.title='Mechanische Testauslösung';test.textContent='TEST';test.disabled=!!m.protectionTripped;test.onclick=()=>operateProtection(m,'test');const reset=document.createElement('button');reset.className='ui-btn';reset.dataset.protection='reset';reset.title='Nach der Auslösung wieder einschaltbereit';reset.textContent='Rückstellen';reset.hidden=!m.protectionTripped;reset.onclick=()=>operateProtection(m,'reset');actions.append(test,reset);}
-    const copy=document.createElement('button');copy.className='ui-btn';copy.textContent='Duplizieren';copy.disabled=m.type==='auxiliary';copy.onclick=()=>{remember();const clone={...m,id:nextId(defaultPrefix(m.type)),el:undefined,pressed:false,latched:false,locked:false,selection:0,x:Math.min(BOARD_W-300,m.x+280),y:m.y+30};modules.push(clone);renderModule(clone);move(clone,clone.x,clone.y);if(m.type==='contactor'&&modules.some(x=>x.parent===m.id))createAux(clone);selectModule(clone.id);update();};
+    const copy=document.createElement('button');copy.className='ui-btn';copy.textContent='Duplizieren';copy.title='Duplizieren · Strg+D / Cmd+D';copy.disabled=m.type==='auxiliary';copy.onclick=()=>pastePackage(copyPackage(m));
     const remove=document.createElement('button');remove.className='ui-btn';remove.textContent='Bauteil löschen';remove.onclick=()=>removeModule(m);actions.append(copy,remove);$('#devMenu').append(actions);
     renderWires();
   }
@@ -3148,9 +3172,26 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   $('#addAux').onclick=()=>{const m=modules.find(m=>m.id===selectedId);const parent=m?.type==='contactor'?m:modules.find(x=>x.id===m?.parent);if(!parent||modules.some(x=>x.parent===parent.id))return;remember();const aux=createAux(parent);selectModule(aux.id);update();};
   mountCableButtons($('#wireColors'),color,value=>{color=value;syncCableButtons($('#wireColors'),value);});
   $('#zoom').onchange=()=>{if($('#zoom').value!=='custom'){const value=Number($('#zoom').value);cancel();zoomAt(value);}};new ResizeObserver(()=>{if(!viewReady)layoutView();else applyView();}).observe(viewport);
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePalettes();closeDevMenu();cancel();if(!(e.target.closest&&e.target.closest('input,textarea,select,[contenteditable=true]')))clearPick();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'&&!editable(e)){e.preventDefault();(e.shiftKey?$('#redo'):$('#undo')).click();}if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'&&!editable(e)){e.preventDefault();$('#redo').click();}});
+  const textEditing=e=>e.target.closest('input,textarea,select,[contenteditable]:not([contenteditable=false])');
+  document.addEventListener('keydown',e=>{
+    if(e.isComposing||e.defaultPrevented)return;
+    if(e.key==='Escape'){closePalettes();closeDevMenu();cancel();if(!textEditing(e))clearPick();return;}
+    if(textEditing(e)||document.querySelector('dialog[open]'))return;
+    const modifier=e.ctrlKey||e.metaKey,key=e.key.toLowerCase(),m=modules.find(x=>x.id===selectedId);
+    if(modifier&&!e.altKey){
+      if(key==='z'||key==='y'){e.preventDefault();if(!e.repeat)(key==='y'||e.shiftKey?$('#redo'):$('#undo')).click();}
+      else if(key==='s'){e.preventDefault();if(!e.repeat)saveProjectFile();}
+      else if(key==='c'&&m){e.preventDefault();if(!e.repeat){componentClipboard=copyPackage(m);clipboardPasteCount=0;say(m.type==='auxiliary'?'Schütz samt Hilfskontakten kopiert.':shortName(m)+' kopiert.');}}
+      else if(key==='v'&&componentClipboard){e.preventDefault();if(!e.repeat)pastePackage(componentClipboard,40*(++clipboardPasteCount));}
+      else if(key==='d'&&m){e.preventDefault();if(!e.repeat)pastePackage(copyPackage(m));}
+      return;
+    }
+    if(e.key==='Delete'&&!e.altKey){
+      if(selectedWire){e.preventDefault();if(!e.repeat)removeWire(wires.indexOf(selectedWire));}
+      else if(m){e.preventDefault();if(!e.repeat)removeModule(m);}
+    }
+  });
   board.addEventListener('click',e=>{if(e.target===board){cancel();clearPick();}});
-  document.addEventListener('keydown',e=>{if(e.key==='Delete'&&selectedWire&&!e.target.closest('input,textarea,select,[contenteditable=true]')){e.preventDefault();removeWire(wires.indexOf(selectedWire));}});
   $('#devCancel').hidden=true;
   $('#devApply').hidden=true;
   $('#devMenu').addEventListener('keydown',e=>{if(e.key==='Enter'&&editTarget&&e.target.closest('#devFields')){e.preventDefault();commitLive(true);}});
