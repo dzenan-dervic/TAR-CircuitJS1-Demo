@@ -130,6 +130,7 @@ html.mode-aufbau .simulation-controls .sim-state {display: inline-block; visibil
 .simulation-controls .ui-btn {min-height: 34px; padding: 6px 9px}
 
 .board-bar {
+  z-index: 112;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -152,7 +153,7 @@ html.mode-betrieb .board-bar .mode-flag {background: #e2f2e6; border-color: #a8d
 .control-cluster #zoom {min-width: 70px; padding: 5px 4px}
 .control-cluster #fitScene {white-space: nowrap}
 .board-more summary {min-width: 35px; padding: 4px 8px; font-size: 20px; line-height: 1}
-.board-more .menu-panel {min-width: 160px}
+.board-more .menu-panel {min-width: 160px; max-width: calc(100vw - 24px)}
 .hint-line {display: flex; align-items: center; gap: 9px; min-height: 36px; padding: 6px 14px; color: #52645a; background: #fff; border-top: 1px solid var(--shell-line); font-size: 12px}
 .hint-line #hint {font-weight: 600}
 .hint-line span:last-child {margin-left: auto; white-space: nowrap}
@@ -261,6 +262,8 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
   .parts-rail {z-index: 110}
   .inspector {z-index: 110}
   .workspace.hide-parts .parts-tab,.workspace.hide-inspector .inspector-tab {z-index: 111}
+  .board-more summary {min-width: 44px; min-height: 44px}
+  .board-more .menu-panel button {min-height: 44px}
 }
 @media (max-width: 800px) {
   .app-header .mark {display: none}
@@ -270,7 +273,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
   .app-menu summary {padding: 6px 7px}
   .toolbar-fixed {overflow-x: auto; justify-content: flex-start}
   .view-tabs .view-btn {padding: 6px 9px}
-  .board-bar .view-controls {overflow-x: auto; flex-wrap: nowrap; max-width: 100%}
+  .board-bar .view-controls {overflow: visible; flex-wrap: wrap; min-width: 0; max-width: 100%}
 }
 /* Additional workshop devices share the existing terminal and wiring layers. */
 .module.potentiometer,.module.motion{width:224px}
