@@ -2187,8 +2187,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     }
     const renamed=tag&&tag.id!==m.id;
     if(renamed&&!renameModule(m,tag.id))return;
+    const connectorChanged=m.type==='connector'&&m.ports!==extra.ports;
     Object.assign(m,extra);
-    if(m.type==='connector'&&!extraSame){dropLoose(m);lastImportedSig='';}
+    if(connectorChanged){dropLoose(m);lastImportedSig='';}
     if(m.type==='potentiometer'&&!extraSame&&engine?.setPotentiometer)engine.setPotentiometer(m.id,m.resistance,m.potPosition);
     m.description=description;
     m.subtitle=subtitleValue;
