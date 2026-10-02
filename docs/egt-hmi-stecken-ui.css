@@ -520,3 +520,11 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .wire-highlight.volt-live{stroke:#fffffff2;stroke-width:2;filter:drop-shadow(0 0 2px #ffffffbf)}
 .wire-highlight.volt-live.hot{stroke:#fff;stroke-width:2.2}
 .view-controls #showVoltage[aria-pressed=true]{background:#e4f2ef;border-color:#4d8276;color:#23564b}
+
+.module .state-label{display:none}
+.current-speed{display:inline-flex;align-items:center;gap:8px;min-height:36px;max-width:100%;padding:2px 10px;border:1px solid var(--shell-line);border-radius:7px;background:var(--shell-soft);font-size:11px;color:#304d43}
+.current-speed[hidden]{display:none}
+.current-speed span{white-space:nowrap}
+.current-speed input{width:104px;min-width:60px;height:32px;margin:0;accent-color:#007d78;cursor:ew-resize}
+.current-speed input:focus-visible{outline:3px solid #009f9c;outline-offset:2px;border-radius:3px}
+.current-speed output{min-width:36px;text-align:right;font-variant-numeric:tabular-nums}

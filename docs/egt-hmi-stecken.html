@@ -540,7 +540,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002voltagegloss2">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002currenttempo1">
 </head>
 <body>
 <header class="app-header">
@@ -589,6 +589,7 @@ header .actions{min-width:0;overflow-x:auto}
       <button class="ui-btn" id="fitScene" title="Alle Bauteile ins Bild bringen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.2 2.6H2.6V6.2M9.8 2.6h3.6V6.2M6.2 13.4H2.6V9.8M9.8 13.4h3.6V9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Einpassen</button>
     </div>
     <div class="control-cluster display-cluster" role="group" aria-label="Messwerte anzeigen"><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Spannungsführende Leitungen leuchten lassen"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Stromrichtung animieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button></div>
+    <label class="current-speed" id="currentSpeedControl" hidden title="Nur die Stromanimation verlangsamen; Simulation und Zeitrelais bleiben unverändert."><span>Stromtempo</span><input id="currentSpeed" type="range" min="5" max="100" step="5" value="25" aria-label="Geschwindigkeit der Stromanimation" aria-valuetext="25 Prozent"><output id="currentSpeedValue" for="currentSpeed">25 %</output></label>
     <details class="board-more"><summary aria-label="Weitere Aktionen" title="Weitere Aktionen">···</summary><div class="menu-panel"><button type="button" id="openBoardHelp">Hilfe &amp; Legende</button><button type="button" id="clearBoard">Fläche leeren</button></div></details>
   </div>
   <div class="selection-actions" id="selectionActions" role="group" aria-label="Ausgewählte Bauteile bearbeiten" hidden>
@@ -624,7 +625,7 @@ header .actions{min-width:0;overflow-x:auto}
   <details class="help-topic help-legend" id="helpLegend" open><summary>Anzeigen &amp; Markierungen</summary>
     <dl class="legend-list">
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path class="voltage-legend-glow" d="M7 12h34"/><path d="M7 12h34" stroke="#6b3f24" stroke-width="5"/><path d="M7 11h34" stroke="#fffffff2" stroke-width="2"/></svg>Spannung</dt><dd>Bei eingeschalteter Spannungsanzeige glänzen Adern mit Potenzial gegenüber dem Bezugspunkt mit einem hellen Reflex und einem transparenten weißen Lichtschein. Die Aderfarbe bleibt sichtbar. Das Leuchten beweist keinen Stromfluss; ein Kurzschluss wird separat rot und pulsierend markiert.</dd></div>
-      <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12h42" stroke="#384540" stroke-width="5"/><path d="M15 8h8v8h-8zm19 0h8v8h-8z" fill="#ffe35b" stroke="#74651b"/></svg>Strom</dt><dd>Die gelben Würfel bewegen sich in der angezeigten Stromrichtung, wenn die Stromanzeige eingeschaltet ist und ein Strom erfasst wird. Bei Einfrieren bleibt die Animation stehen.</dd></div>
+      <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12h42" stroke="#384540" stroke-width="5"/><path d="M15 8h8v8h-8zm19 0h8v8h-8z" fill="#ffe35b" stroke="#74651b"/></svg>Strom</dt><dd>Die gelben Würfel bewegen sich in der angezeigten Stromrichtung, wenn die Stromanzeige eingeschaltet ist und ein Strom erfasst wird. Mit <b>Stromtempo</b> lässt sich die Bewegung von 5 bis 100 % verlangsamen. Der Regler verändert nur die Darstellung, nicht die Simulation oder Zeitrelais. Bei Einfrieren bleibt die Animation stehen.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><rect x="13" y="3" width="22" height="18" rx="4" fill="none" stroke="#2878ef" stroke-width="3"/></svg>Bauteilauswahl</dt><dd>Ein blauer Außenring zeigt das ausgewählte Bauteil. Beschriftungsstreifen und Rahmen verwenden eigene Auswahlgriffe.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="none" stroke="#438fff" stroke-width="3"/></svg>Klemmenauswahl</dt><dd>Blaue Klemmenringe markieren den gewählten Anschluss und die direkt durch Adern verbundenen Klemmen. Das ist keine vollständige Durchgangsprüfung.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="none" stroke="#23834f" stroke-width="3"/></svg>Leitungsziel</dt><dd>Ein grüner Ring zeigt beim Verdrahten ein mögliches Ziel für die neue Ader.</dd></div>
@@ -722,13 +723,15 @@ header .actions{min-width:0;overflow-x:auto}
   }
   const VOLT_STORE=STORE_KEY+':showVoltage';
   const CURRENT_STORE=STORE_KEY+':showCurrent';
+  const CURRENT_SPEED_STORE=STORE_KEY+':currentSpeed';
   const LIVE_V=2;
   const I_DOT=1e-4;
   const DOT_SP=48;
   const DOT_SIZE=8;
   const DOT_SPEED=0.25;
+  const DOT_BASE_MULT=25;
   const DOT_ADD_MAX=12;
-  let dotPos=[];
+  let dotPos=[],lastDotTime=null,currentSpeed=25;
   const displayName=m=>m.type==='auxiliary'?m.parent+' Hilfskontakte':m.id;
   const shortName=m=>m.type==='auxiliary'?m.parent:m.id;
   function paletteIcon(m){
@@ -2708,22 +2711,33 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const i=Number((snap.wireCurrents||{})[w.a+'|'+w.b]);
     return Number.isFinite(i)?i:0;
   }
+  function currentDotAdvance(current,elapsedMs){
+    const advance=Math.min(DOT_ADD_MAX,Math.abs(current)*DOT_BASE_MULT*DOT_SPEED);
+    return advance*(currentSpeed/100)*(elapsedMs/(1000/60));
+  }
+  function setCurrentSpeed(value){
+    const n=Number(value);
+    currentSpeed=Number.isFinite(n)?Math.max(5,Math.min(100,Math.round(n/5)*5)):25;
+    const input=$('#currentSpeed'),output=$('#currentSpeedValue');
+    if(input){input.value=String(currentSpeed);input.setAttribute('aria-valuetext',currentSpeed+' Prozent');}
+    if(output)output.textContent=currentSpeed+' %';
+    if(!skipStore)try{localStorage.setItem(CURRENT_SPEED_STORE,String(currentSpeed));}catch(e){}
+  }
   function paintWireCurrent(snap){
     if(!dots)return;
     dots.replaceChildren();
     modules.forEach(m=>m.el?.querySelector('.module-wires')?.querySelectorAll('.wire-dot').forEach(dot=>dot.remove()));
-    if(!showCurrent||!powered||!snap){dotPos=[];return;}
+    if(!showCurrent||!powered||!snap){dotPos=[];lastDotTime=null;return;}
     const running=!!snap.running;
-    const raw=Number(snap.currentMult);
-    const m=Number.isFinite(raw)&&raw!==0?raw:25;
+    const now=performance.now();
+    const elapsed=lastDotTime===null?1000/60:Math.min(100,Math.max(0,now-lastDotTime));
+    lastDotTime=now;
+    const electronFlow=Number(snap.currentMult)<0;
     wires.forEach((w,i)=>{
       const cur=wireCurrentOf(w,snap);
       if(Math.abs(cur)<I_DOT){dotPos[i]=0;return;}
       if(running){
-        let add=cur*m*DOT_SPEED;
-        if(add>DOT_ADD_MAX)add=DOT_ADD_MAX;
-        else if(add<-DOT_ADD_MAX)add=-DOT_ADD_MAX;
-        dotPos[i]=(dotPos[i]||0)+add;
+        dotPos[i]=(dotPos[i]||0)+currentDotAdvance(cur,elapsed);
       }
       const path=svg.querySelector('.wire-line[data-wire="'+i+'"]');
       if(!path||typeof path.getTotalLength!=='function')return;
@@ -2731,7 +2745,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(len<8)return;
       let pos=(dotPos[i]||0)%DOT_SP;
       if(pos<0)pos+=DOT_SP;
-      const reverse=cur<0;
+      const reverse=(cur<0)!==electronFlow;
       const half=DOT_SIZE/2;
       for(let d=pos;d<len;d+=DOT_SP){
         const pt=path.getPointAtLength(reverse?len-d:d);
@@ -2754,6 +2768,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     showCurrent=!!on;
     const btn=$('#showCurrent');
     if(btn)btn.setAttribute('aria-pressed',String(showCurrent));
+    $('#currentSpeedControl').hidden=!showCurrent;
+    lastDotTime=null;
     paintWireCurrent(lastSnap);
     if(!skipStore)try{localStorage.setItem(CURRENT_STORE,showCurrent?'1':'0');}catch(e){}
   }
@@ -3410,6 +3426,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   $('#clearSelection').onclick=()=>{cancel();clearPick();};
   $('#showVoltage').onclick=()=>setShowVoltage(!showVoltage);
   $('#showCurrent').onclick=()=>setShowCurrent(!showCurrent);
+  $('#currentSpeed').oninput=e=>setCurrentSpeed(e.target.value);
   $('#zoomIn').onclick=()=>{cancel();zoomAt(scale*1.25);};$('#zoomOut').onclick=()=>{cancel();zoomAt(scale/1.25);};
   $('#fitScene').onclick=()=>{cancel();fit();};
   const workspace=$('.workspace');if(innerWidth<=1050)workspace.classList.add('hide-inspector','hide-parts');
@@ -3719,7 +3736,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   ['reversing','demo','changeoverExample','crossoverExample','reset','clearBoard','clear'].forEach(id=>{const button=$('#'+id),action=button.onclick;button.onclick=e=>{if(requestElectricalEdit(()=>action(e)))action(e);};});
   let saved=null;try{saved=JSON.parse($('#saved-state').textContent);}catch{}
   restore((saved&&Array.isArray(saved.modules))?saved:loadStored()||initial());
-  if(!skipStore){try{if(localStorage.getItem(VOLT_STORE)==='1')setShowVoltage(true);if(localStorage.getItem(CURRENT_STORE)==='1')setShowCurrent(true);}catch(e){}}
+  if(!skipStore){try{const speed=localStorage.getItem(CURRENT_SPEED_STORE);if(speed!==null)setCurrentSpeed(speed);if(localStorage.getItem(VOLT_STORE)==='1')setShowVoltage(true);if(localStorage.getItem(CURRENT_STORE)==='1')setShowCurrent(true);}catch(e){}}
   booting=false;
   persist();
   window.addEventListener('pagehide',persist);
