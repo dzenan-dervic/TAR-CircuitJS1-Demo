@@ -50,13 +50,7 @@
 .wire-shadow.hot{stroke:#007d7bcc;stroke-width:14}
 .wire-highlight.hot{stroke:#fff;stroke-width:2.2}
 .wire-hit.hot{stroke:#007d7b66}
-.wire-volt{fill:none;stroke:transparent;stroke-width:7.5;stroke-linecap:round;stroke-linejoin:round}
-.wire-shadow.volt-live{stroke:#c43328;stroke-width:9;transform:none}
-.wire-shadow.volt-live.hot{stroke:#c43328;stroke-width:10}
-.wire-shadow.volt-live.volt-red{stroke:#5a1410;stroke-width:10}
-.wire-shadow.volt-live.volt-red.hot{stroke:#5a1410;stroke-width:11}
-.wire-volt.volt-live.volt-red{stroke:#f4efe8;stroke-width:7.5}
-.view-controls #showVoltage[aria-pressed=true]{background:#fde8e4;border-color:#c43328;color:#8a2218}
+.wire-volt{fill:none;stroke:transparent;stroke-width:9;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .view-controls #showCurrent[aria-pressed=true]{background:#f8f0c4;border-color:#c4a40a;color:#5c4a08}
 .wire-dots{position:absolute;inset:0;width:6000px;height:3600px;z-index:6;pointer-events:none;overflow:visible}.leads{position:absolute;inset:0;width:6000px;height:3600px;z-index:7;pointer-events:none;overflow:visible}
 .wire-dot{fill:#ffe14a;stroke:#2a2610;stroke-width:.7}
@@ -546,7 +540,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002connectorbanner1">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002voltageglow1">
 </head>
 <body>
 <header class="app-header">
@@ -594,7 +588,7 @@ header .actions{min-width:0;overflow-x:auto}
       <button class="ui-btn zoom-step" id="zoomOut" aria-label="Herauszoomen">−</button><select id="zoom" aria-label="Vergrößerung"><option value="custom">100 %</option><option value="0.2">20 %</option><option value="0.5">50 %</option><option value="0.75">75 %</option><option value="1">100 %</option><option value="1.5">150 %</option><option value="2">200 %</option><option value="2.5">250 %</option></select><button class="ui-btn zoom-step" id="zoomIn" aria-label="Hineinzoomen">+</button>
       <button class="ui-btn" id="fitScene" title="Alle Bauteile ins Bild bringen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.2 2.6H2.6V6.2M9.8 2.6h3.6V6.2M6.2 13.4H2.6V9.8M9.8 13.4h3.6V9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Einpassen</button>
     </div>
-    <div class="control-cluster display-cluster" role="group" aria-label="Messwerte anzeigen"><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Leitungen mit Spannung markieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Stromrichtung animieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button></div>
+    <div class="control-cluster display-cluster" role="group" aria-label="Messwerte anzeigen"><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Spannungsführende Leitungen leuchten lassen"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Stromrichtung animieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button></div>
     <details class="board-more"><summary aria-label="Weitere Aktionen" title="Weitere Aktionen">···</summary><div class="menu-panel"><button type="button" id="openBoardHelp">Hilfe &amp; Legende</button><button type="button" id="clearBoard">Fläche leeren</button></div></details>
   </div>
   <div class="selection-actions" id="selectionActions" role="group" aria-label="Ausgewählte Bauteile bearbeiten" hidden>
@@ -629,7 +623,7 @@ header .actions{min-width:0;overflow-x:auto}
   </details>
   <details class="help-topic help-legend" id="helpLegend" open><summary>Anzeigen &amp; Markierungen</summary>
     <dl class="legend-list">
-      <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M5 12h38" stroke="#c43328" stroke-width="10"/><path d="M5 12h38" stroke="#6b3f24" stroke-width="4"/></svg>Spannung</dt><dd>Bei eingeschalteter Spannungsanzeige markiert eine rote Kontur Adern mit Potenzial gegenüber dem Bezugspunkt. Sie ist keine Kurzschlussmeldung und beweist keinen Stromfluss.</dd></div>
+      <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path class="voltage-legend-glow" d="M7 12h34"/><path d="M7 12h34" stroke="#6b3f24" stroke-width="5"/><path d="M7 11h34" stroke="#fff7c2" stroke-width="1.8"/></svg>Spannung</dt><dd>Bei eingeschalteter Spannungsanzeige leuchten Adern mit Potenzial gegenüber dem Bezugspunkt gelblich mit einem hellen Kern. Die Aderfarbe bleibt sichtbar. Das Leuchten beweist keinen Stromfluss; ein Kurzschluss wird separat rot und pulsierend markiert.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><path d="M3 12h42" stroke="#384540" stroke-width="5"/><path d="M15 8h8v8h-8zm19 0h8v8h-8z" fill="#ffe35b" stroke="#74651b"/></svg>Strom</dt><dd>Die gelben Würfel bewegen sich in der angezeigten Stromrichtung, wenn die Stromanzeige eingeschaltet ist und ein Strom erfasst wird. Bei Einfrieren bleibt die Animation stehen.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><rect x="13" y="3" width="22" height="18" rx="4" fill="none" stroke="#2878ef" stroke-width="3"/></svg>Bauteilauswahl</dt><dd>Ein blauer Außenring zeigt das ausgewählte Bauteil. Beschriftungsstreifen und Rahmen verwenden eigene Auswahlgriffe.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="none" stroke="#438fff" stroke-width="3"/></svg>Klemmenauswahl</dt><dd>Blaue Klemmenringe markieren den gewählten Anschluss und die direkt durch Adern verbundenen Klemmen. Das ist keine vollständige Durchgangsprüfung.</dd></div>
@@ -2676,12 +2670,6 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       });
     });
   }
-  function isRedCable(c){
-    const m=String(c||'').match(/^#?([0-9a-f]{6})$/i);
-    if(!m)return false;
-    const n=parseInt(m[1],16),r=(n>>16)&255,g=(n>>8)&255,b=n&255;
-    return r>140&&r>g+40&&r>b+40;
-  }
   function acPhaseLive(snap){
     const keys=new Set();
     if(!powered||!snap)return keys;
@@ -2702,11 +2690,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function paintWireVoltage(snap){
     wires.forEach((w,i)=>{
       const on=wireHasVoltage(w,snap);
-      const red=on&&isRedCable(w.color);
       document.querySelectorAll('[data-wire="'+i+'"]').forEach(el=>{
-        if(!el.classList.contains('wire-shadow')&&!el.classList.contains('wire-volt'))return;
+        if(!el.classList.contains('wire-volt')&&!el.classList.contains('wire-highlight'))return;
         el.classList.toggle('volt-live',on);
-        el.classList.toggle('volt-red',red);
       });
     });
   }

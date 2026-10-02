@@ -515,3 +515,8 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .socket-terminal-bank{display:flex;justify-content:space-around}.socket .terminal-label{font-size:12px;color:#304a3e}.socket .term:not(.socket-contact){width:32px;height:32px}
 .socket-terminal-bank .terminal-cell:nth-child(2) .terminal-label{color:#175287}.socket-terminal-bank .terminal-cell:nth-child(3) .terminal-label{color:#325122;background:repeating-linear-gradient(135deg,#e1ce5b 0 5px,#c8ddab 5px 10px);padding:0 4px;border-radius:2px}
 .socket .state-label,.junction .state-label,.changeover .state-label,.crossover .state-label{font-size:11px;min-height:24px;line-height:1.5}
+
+.wire-volt.volt-live,.voltage-legend-glow{stroke-width:9;stroke-linecap:round;stroke:#ffd34f;filter:blur(2.5px) drop-shadow(0 0 3px #ffce3a);opacity:.9}
+.wire-highlight.volt-live{stroke:#fff7c2;stroke-width:1.8;filter:drop-shadow(0 0 1px #ffe17a)}
+.wire-highlight.volt-live.hot{stroke:#fff;stroke-width:2.2}
+.view-controls #showVoltage[aria-pressed=true]{background:#fff4cc;border-color:#a47713;color:#634708}
