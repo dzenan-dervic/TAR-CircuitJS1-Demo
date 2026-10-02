@@ -516,7 +516,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .socket-terminal-bank .terminal-cell:nth-child(2) .terminal-label{color:#175287}.socket-terminal-bank .terminal-cell:nth-child(3) .terminal-label{color:#325122;background:repeating-linear-gradient(135deg,#e1ce5b 0 5px,#c8ddab 5px 10px);padding:0 4px;border-radius:2px}
 .socket .state-label,.junction .state-label,.changeover .state-label,.crossover .state-label{font-size:11px;min-height:24px;line-height:1.5}
 
-.wire-volt.volt-live,.voltage-legend-glow{stroke-width:10;stroke-linecap:round;stroke:#fff;filter:blur(3px) drop-shadow(0 0 3px #ffffff80);opacity:.55}
-.wire-highlight.volt-live{stroke:#ffffffd9;stroke-width:1.8;filter:drop-shadow(0 0 1px #ffffff80)}
+.wire-volt.volt-live,.voltage-legend-glow{stroke-width:14;stroke-linecap:round;stroke:#fff;filter:blur(3.5px) drop-shadow(0 0 5px #ffffffbf);opacity:.85}
+.wire-highlight.volt-live{stroke:#fffffff2;stroke-width:2;filter:drop-shadow(0 0 2px #ffffffbf)}
 .wire-highlight.volt-live.hot{stroke:#fff;stroke-width:2.2}
 .view-controls #showVoltage[aria-pressed=true]{background:#e4f2ef;border-color:#4d8276;color:#23564b}
