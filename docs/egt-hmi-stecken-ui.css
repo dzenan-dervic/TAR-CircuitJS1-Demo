@@ -462,26 +462,41 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .box-screw{position:absolute;width:10px;height:10px;border-radius:50%;border:1px solid #8a9590;background:#dae1db;box-shadow:inset 0 1px 1px #fff,0 1px 1px #56645c}
 .box-screw::after{content:'';position:absolute;left:2px;right:2px;top:4px;border-top:1px solid #77857d;transform:rotate(-35deg)}
 .screw-nw{top:11px;left:11px}.screw-ne{top:11px;right:11px}.screw-sw{bottom:11px;left:11px}.screw-se{bottom:11px;right:11px}
-.junction-connectors{display:grid;gap:8px}
-.junction-group{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:7px}
-.junction-group-name{text-align:center;font-size:12px;color:#513a28;font-weight:750}.group-N .junction-group-name{color:#155282}.group-PE .junction-group-name{color:#354c2d}.group-A .junction-group-name,.group-B .junction-group-name{color:#33453c}
-.junction-connector{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:3px 3px 5px;border:1px solid #80978a;border-radius:5px;background:linear-gradient(#ecf4e9a8,#bdcec17d);box-shadow:inset 0 0 0 2px #eff9f068,0 2px 3px #3b4c4133}
-.junction-bus{position:absolute;left:12px;right:12px;height:4px;bottom:6px;border:1px solid #8d7048;background:linear-gradient(#d1b281,#9f7b45);pointer-events:none}
-.lever-connector{position:relative;min-width:0;padding:10px 0 0;border-right:1px solid #96aa9980;z-index:1}
+.module.connector .face{height:auto;min-height:0;padding:0;border:0;background:transparent;box-shadow:none}
+.module.connector .face::before{display:none}
+.connector .handle{min-height:32px;margin-bottom:5px;padding:4px 6px;gap:6px}
+.connector .handle-label{min-width:32px;width:32px;min-height:28px;font-size:12px}
+.connector .handle-name,.connector .handle-sub{font-size:10px}
+.connector .state-label{display:none}
+.lever-body{position:relative;display:grid;padding:8px 6px 7px;border:1px solid #95aba0;border-radius:7px;background:linear-gradient(115deg,#edf5efb8,#c8d9d093 45%,#e4eee7cb);box-shadow:inset 0 0 0 2px #ffffff78,inset 0 -6px 8px #768f8050,0 3px 4px #263b4930}
+.connector-bus{position:absolute;left:12px;right:12px;height:5px;bottom:9px;border:1px solid #967347;background:linear-gradient(#dabc89,#a98650);pointer-events:none}
+.lever-connector{position:relative;min-width:0;padding:28px 0 0;border-right:1px solid #9bb2a580;z-index:1}
 .lever-connector:last-child{border-right:0}
-.connector-lever{position:absolute;top:0;left:3px;right:3px;height:24px;border:1px solid #61894d;border-radius:3px 3px 1px 1px;background:linear-gradient(90deg,#95cb74,#a9da85 45%,#83b965);box-shadow:inset 0 2px #cde9af,0 1px #557946;pointer-events:none}
-.connector-lever::before{content:'';position:absolute;left:3px;right:3px;top:4px;bottom:5px;border-left:1px solid #d0e9b8;border-right:1px solid #66934f;border-radius:1px}
-.connector-lever::after{content:'';position:absolute;left:5px;right:5px;bottom:1px;height:4px;border:1px solid #6b775e;border-radius:1px;background:linear-gradient(#ced0ac,#69796a);box-shadow:0 1px #e2e9cd}
-.junction .terminal-cell{position:relative;display:flex;align-items:center;flex-direction:column;gap:0}
-.junction .terminal-label{position:absolute;left:1px;top:23px;z-index:9;font-size:8px;line-height:10px;color:#263e30}
-.junction .term{width:44px;height:44px;border:0;border-radius:4px;padding:0;box-shadow:none;background:transparent}
-.junction .term:hover{background:#ffffff45}
-.junction .screw{inset:13px 11px 10px;border:2px solid #a7b5a5;border-radius:3px;background:linear-gradient(#35443a,#17281e 50%,#3b4a3d);box-shadow:inset 0 1px 2px #102018,0 1px #e0e8d8;transform:none}
-.junction .screw::before{content:'';position:absolute;inset:3px 3px auto;height:4px;background:linear-gradient(#d8d9b7,#859481);box-shadow:0 1px #15231b}
-.junction .screw::after{content:'';position:absolute;left:5px;right:5px;bottom:1px;top:auto;height:3px;width:auto;background:#b89a62;box-shadow:none}
-.junction .term.connected::after{inset:20px 16px 14px;border-width:1px;box-shadow:0 1px 2px #0006}
-.junction-note{margin-top:12px;font-size:10px;line-height:1.5;text-align:center;color:#34483a}
-.junction .state-label{margin-top:6px}
+.connector-lever{position:absolute;top:0;left:3px;right:3px;height:34px;border:1px solid #af571a;border-radius:5px 5px 3px 3px;background:linear-gradient(90deg,#df6a18,#ff9c42 45%,#ef7c20);box-shadow:inset 0 2px #ffd1a0,inset 0 -4px #d7641650,0 2px 1px #8d4d2445;pointer-events:none}
+.connector-lever::before{content:'';position:absolute;left:5px;right:5px;top:5px;bottom:6px;border-left:1px solid #ffd1a0;border-right:1px solid #cb691e;border-radius:2px}
+.connector-lever::after{content:'';position:absolute;left:7px;right:7px;bottom:2px;height:3px;background:#bf5c15;border-radius:2px}
+.connector .terminal-cell{position:relative;display:flex;align-items:center;flex-direction:column;gap:0}
+.connector .terminal-label{position:absolute;left:0;top:21px;z-index:9;font-size:9px;line-height:10px;color:#263e30}
+.connector .term{width:44px;height:44px;border:0;border-radius:4px;padding:0;box-shadow:none;background:transparent}
+.connector .term:hover{background:#ffffff65}
+.connector .screw{inset:10px 11px 12px;border:2px solid #a7b9ae;border-radius:4px;background:linear-gradient(#35443a,#14261d 55%,#3b4a3d);box-shadow:inset 0 1px 2px #102018,0 1px #e0e8d8;transform:none}
+.connector .screw::before{content:'';position:absolute;inset:3px 3px auto;height:4px;background:linear-gradient(#d8dbbe,#859481);box-shadow:0 1px #15231b}
+.connector .screw::after{content:'';position:absolute;left:5px;right:5px;bottom:1px;top:auto;height:3px;width:auto;background:#b89a62;box-shadow:none}
+.connector .term.connected::after{inset:17px 16px 17px;border-width:1px;box-shadow:0 1px 2px #0006}
+.module.junction{pointer-events:none;z-index:0!important}
+.junction .handle{pointer-events:auto}
+.junction .face{height:360px;min-height:180px}
+.junction-shell{height:100%;box-sizing:border-box;margin:0;padding:28px 24px 24px}
+.junction .state-label{display:none}
+.junction-edge{position:absolute;display:block;pointer-events:auto;cursor:grab;touch-action:none}
+.junction-edge.edge-n,.junction-edge.edge-s{left:0;right:0;height:24px}
+.junction-edge.edge-n{top:0}.junction-edge.edge-s{bottom:0}
+.junction-edge.edge-e,.junction-edge.edge-w{top:0;bottom:0;width:24px}
+.junction-edge.edge-e{right:0}.junction-edge.edge-w{left:0}
+.module.junction.selected .note-resize-controls,.module.junction:hover .note-resize-controls,.module.junction:focus-within .note-resize-controls{display:block}
+.module.junction .note-resize-controls{top:58px}
+.module.position-locked.junction .note-resize-controls{display:none!important}
+.module.position-locked.junction .junction-edge{cursor:default}
 .socket-frame{height:176px;padding:12px;margin-bottom:12px}
 .socket-recess{position:relative;width:150px;height:150px;box-sizing:border-box;aspect-ratio:1;border:1px solid #a5ada2;border-radius:50%;background:radial-gradient(circle at 50% 65%,#f5f7ee 45%,#d9dfd2 72%,#f0f3e9 75%);box-shadow:inset 0 3px 6px #53614b4d,0 1px #fff}
 .socket .socket-contact{position:absolute;margin:0;width:23px;height:23px;border:3px solid #c0c9b7;border-radius:50%;background:#253226;box-shadow:inset 0 2px 4px #071509;padding:0;cursor:default}

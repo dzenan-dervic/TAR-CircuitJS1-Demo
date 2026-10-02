@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002junctiondesign1">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002connectors1">
 </head>
 <body>
 <header class="app-header">
@@ -673,7 +673,7 @@ header .actions{min-width:0;overflow-x:auto}
   </details>
   <details class="help-topic"><summary>Gebäudeinstallation: Schalter, Dose und Steckdose</summary>
     <p><b>Wechselschalter:</b> L wird abwechselnd mit 1 oder 2 verbunden. Zwei Wechselschalter ermöglichen das Schalten von zwei Stellen. <b>Kreuzschalter:</b> verbindet 1–3 / 2–4 oder 1–4 / 2–3 und wird zwischen die Wechselschalter gesetzt. Jede Wippe ändert den Zustand der richtig verdrahteten Leuchte; eine Wippenstellung allein bedeutet nicht EIN oder AUS.</p>
-    <p><b>Abzweigdose:</b> Jede orange Klemmengruppe verbindet ihre fünf Anschlüsse über eine sichtbare Kupferbrücke. Die fünf Reihen bleiben voneinander getrennt. L, N, PE, A und B sind Beschriftungen; die Spannung entsteht durch deine Verdrahtung.</p>
+    <p><b>Abzweigdose:</b> Leeres Gehäuse, am Rand verschiebbar und über die Griffe frei skalierbar. Hebelklemmen für 2, 3 oder 5 Leiter separat einsetzen und darin platzieren. Jede Hebelklemme verbindet alle ihre Anschlüsse; separate Klemmen bleiben getrennt. Die Dose selbst hat keine elektrischen Anschlüsse.</p>
     <p><b>Steckdose:</b> Leitungen ausschließlich an den unteren Anschlussklemmen L, N und PE verdrahten. Die beiden Stecklöcher und der Schutzkontakt sind Messpunkte für die Messleitungen der Messgeräte. Dort lassen sich keine normalen Adern anschließen. Eine leere Steckdose ist keine Last. Im Modell gehört Kontakt 1 zu L und Kontakt 2 zu N; reale Schuko-Stecker sind umkehrbar.</p>
   </details>
   <details class="help-topic"><summary>Tastenkürzel</summary>
@@ -702,7 +702,7 @@ header .actions{min-width:0;overflow-x:auto}
   const NS = 'http://www.w3.org/2000/svg';
   const BOARD_W=6000, BOARD_H=3600;
   const contacts={contactor:[['1','2','NO'],['3','4','NO'],['5','6','NO'],['13','14','NO']],auxiliary:[['53','54','NO'],['61','62','NC'],['71','72','NC'],['83','84','NO']]};
-  const types = {changeover:'WECHSELSCHALTER',crossover:'KREUZSCHALTER',junction:'ABZWEIGDOSE',socket:'SCHUKO-STECKDOSE',potentiometer:'POTENTIOMETER',motion:'BEWEGUNGSMELDER',note:'NOTIZ',timer:'ZEITRELAIS',motorprotection:'MOTORSCHUTZSCHALTER',breaker:'SICHERUNG · LS',relay:'HILFSSCHÜTZ',voltmeter:'SPANNUNGSMESSGERÄT',ammeter:'STROMMESSGERÄT',contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',mains:'DREHSTROM 400 V',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',acmotor:'MOTOR · 3~ 400 V',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B',terminal:'REIHENKLEMME',rail:'POTENZIALSCHIENE'};
+  const types = {changeover:'WECHSELSCHALTER',crossover:'KREUZSCHALTER',junction:'ABZWEIGDOSE',connector:'HEBELKLEMME',socket:'SCHUKO-STECKDOSE',potentiometer:'POTENTIOMETER',motion:'BEWEGUNGSMELDER',note:'NOTIZ',timer:'ZEITRELAIS',motorprotection:'MOTORSCHUTZSCHALTER',breaker:'SICHERUNG · LS',relay:'HILFSSCHÜTZ',voltmeter:'SPANNUNGSMESSGERÄT',ammeter:'STROMMESSGERÄT',contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',mains:'DREHSTROM 400 V',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',acmotor:'MOTOR · 3~ 400 V',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B',terminal:'REIHENKLEMME',rail:'POTENZIALSCHIENE'};
   let modules=[], wires=[], history=[], future=[], pending=null, gesture=null, scale=1, color='#6b3f24', powered=false, toastTimer, persistTimer, booting=true, recoveryMemory=null;
   const STORE_KEY='workshopRecovery:v1:egt-hmi-stecken';
   const skipStore=new URLSearchParams(location.search).has('test')||new URLSearchParams(location.search).has('fresh');
@@ -766,8 +766,8 @@ header .actions{min-width:0;overflow-x:auto}
   const buttonColors={green:['Grün','#2f9a56','#fff','I'],red:['Rot','#c43328','#fff','O'],black:['Schwarz','#1d262c','#fff',''],white:['Weiß','#eef3f6','#1d262c','I'],yellow:['Gelb','#e6c21a','#1d262c','I']};
   const isLight=m=>m.type==='lamp'||m.type==='pilot';
   const isCombinedTaster=m=>m.type==='start'||m.type==='stop';
-  const tagPrefixes={changeover:['S'],crossover:['S'],junction:['X'],socket:['X'],potentiometer:['R'],motion:['B'],note:['N'],timer:['K'],motorprotection:['Q'],breaker:['F'],relay:['K'],voltmeter:['V'],ammeter:['A'],contactor:['Q','K'],psu:['G'],mains:['T','U'],motor:['M'],acmotor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S'],terminal:['X'],rail:['X']};
-  const defaultPrefix=type=>type==='potentiometer'?'R':type==='motion'?'B':type==='note'?'N':type==='timer'?'K':type==='motorprotection'?'Q':type==='breaker'?'F':type==='relay'?'K':type==='voltmeter'?'V':type==='ammeter'?'A':type==='contactor'?'Q':type==='psu'?'G':type==='mains'?'T':(type==='motor'||type==='lineardrive'||type==='acmotor')?'M':type==='lamp'?'E':type==='pilot'?'P':['terminal','rail','junction','socket'].includes(type)?'X':'S';
+  const tagPrefixes={changeover:['S'],crossover:['S'],junction:['X'],connector:['X'],socket:['X'],potentiometer:['R'],motion:['B'],note:['N'],timer:['K'],motorprotection:['Q'],breaker:['F'],relay:['K'],voltmeter:['V'],ammeter:['A'],contactor:['Q','K'],psu:['G'],mains:['T','U'],motor:['M'],acmotor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S'],terminal:['X'],rail:['X']};
+  const defaultPrefix=type=>type==='potentiometer'?'R':type==='motion'?'B':type==='note'?'N':type==='timer'?'K':type==='motorprotection'?'Q':type==='breaker'?'F':type==='relay'?'K':type==='voltmeter'?'V':type==='ammeter'?'A':type==='contactor'?'Q':type==='psu'?'G':type==='mains'?'T':(type==='motor'||type==='lineardrive'||type==='acmotor')?'M':type==='lamp'?'E':type==='pilot'?'P':['terminal','rail','junction','connector','socket'].includes(type)?'X':'S';
   function splitTag(id){const hit=String(id||'').match(/^([A-Za-z]+)(\d+)$/);return hit?{prefix:hit[1],n:Number(hit[2])}:{prefix:'',n:1};}
   function nextId(prefix){let n=1;while(modules.some(m=>m.id===prefix+n))n++;return prefix+n;}
   function rewriteTerm(key,from,to){if(key===from)return to;if(key.startsWith(from+'.'))return to+key.slice(from.length);return key;}
@@ -869,6 +869,7 @@ header .actions{min-width:0;overflow-x:auto}
   }
   function terminalPoles(m){const n=Number(m.poles);return Number.isInteger(n)&&n>=2&&n<=12?n:6;}
   function terminalSpan(m){const n=Number(m.span);return n===2||n===4?n:1;}
+  function connectorPorts(m){return [2,3,5].includes(Number(m.ports))?Number(m.ports):3;}
   function railScrews(m){return Number(m.screws)===8?8:5;}
   function terminalGroups(m){const n=terminalPoles(m),span=terminalSpan(m),out=[];for(let s=1;s<=n;s+=span){const e=Math.min(n,s+span-1);out.push(s===e?String(s):s+'–'+e);}return out;}
   function terminalCaption(m){const n=terminalPoles(m);return n+' Durchgangsklemmen · '+(terminalSpan(m)===1?'jede Nummer für sich':terminalGroups(m).join(' · '));}
@@ -876,6 +877,7 @@ header .actions{min-width:0;overflow-x:auto}
   function dropLoose(m){
     const keys=new Set();
     if(m.type==='terminal'){for(let i=1;i<=terminalPoles(m);i++){keys.add(m.id+'.'+i+'o');keys.add(m.id+'.'+i+'u');}}
+    if(m.type==='connector')for(let i=1;i<=connectorPorts(m);i++)keys.add(m.id+'.'+i);
     if(m.type==='rail'){for(const bar of ['+24','0V','PE'])for(let i=1;i<=railScrews(m);i++)keys.add(m.id+'.'+bar+'.'+i);}
     const gone=k=>k&&k.startsWith(m.id+'.')&&!keys.has(k);
     wires=wires.filter(w=>!gone(w.a)&&!gone(w.b)&&!internallyCommon(w.a,w.b));
@@ -888,6 +890,8 @@ header .actions{min-width:0;overflow-x:auto}
   const noteTones={cream:['Creme','#fff7d6'],white:['Weiß','#ffffff'],blue:['Blau','#e4f1fa'],green:['Grün','#e7f2e8']};
   function defaultNom(m){
     m.locked=!!m.locked;
+    if(m.type==='junction'){m.junctionVersion=2;m.boxWidth=Number.isFinite(m.boxWidth)?Math.max(240,Math.min(1600,m.boxWidth)):420;m.boxHeight=Number.isFinite(m.boxHeight)?Math.max(180,Math.min(1600,m.boxHeight)):360;}
+    if(m.type==='connector')m.ports=connectorPorts(m);
     if(m.type==='potentiometer'){
       m.resistance=Number.isFinite(m.resistance)?Math.max(100,Math.min(1000000,m.resistance)):10000;
       m.potPosition=Number.isFinite(m.potPosition)?Math.max(0,Math.min(1,m.potPosition)):.5;
@@ -947,11 +951,11 @@ header .actions{min-width:0;overflow-x:auto}
     return m;
   }
   const isInstallationSwitch=m=>m.type==='changeover'||m.type==='crossover';
-  const junctionGroups=['L','N','PE','A','B'];
   function moduleCaption(m){
     if(m.type==='changeover')return 'L gemeinsam · 1 / 2 Korrespondierende';
     if(m.type==='crossover')return '1 / 2 hinein · 3 / 4 heraus';
-    if(m.type==='junction')return '5 getrennte Gruppen · je 5 Anschlüsse';
+    if(m.type==='junction')return 'Leeres Gehäuse · frei skalierbar';
+    if(m.type==='connector')return connectorPorts(m)+' Leiter · intern verbunden';
     if(m.type==='socket')return 'L / N / PE · getrennte Kontakte';
     if(m.type==='potentiometer')return (m.resistance/1000).toLocaleString('de-DE')+' kΩ · linear · 3 Anschlüsse';
     if(m.type==='motion')return m.nomV+' V '+(m.nomV===24?'DC':'AC')+' · Nachlauf '+m.motionDelay+' s';
@@ -1009,7 +1013,8 @@ header .actions{min-width:0;overflow-x:auto}
     if(handle)handle.setAttribute('aria-label',displayName(m)+(m.locked?' Position gesperrt; Doppelklick für Eigenschaften':' verschieben, Pfeiltasten verwenden'));
     const lock=m.el.querySelector('.lock-indicator');if(lock){lock.hidden=!m.locked;lock.title='Position gesperrt – in Eigenschaften entsperren';}
     if(isInstallationSwitch(m))paintInstallationSwitch(m);
-    if(m.type==='junction')m.el.querySelector('.module-state').textContent='Je Klemmblock verbunden · Blöcke getrennt';
+    if(m.type==='junction'){m.el.style.width=m.boxWidth+'px';m.el.querySelector('.face').style.height=m.boxHeight+'px';m.el.querySelector('.note-resize-controls').style.top=m.el.querySelector('.face').offsetTop+'px';m.el.querySelector('.note-resize-controls').setAttribute('aria-hidden','false');m.el.querySelector('.module-state').textContent='';}
+    if(m.type==='connector'){m.el.style.width=(connectorPorts(m)*52+24)+'px';m.el.querySelector('.module-state').textContent='Alle Anschlüsse intern verbunden';}
     if(m.type==='socket')m.el.querySelector('.module-state').textContent='Ohne Eigenverbrauch · L / N / PE getrennt';
     if(m.type==='potentiometer')paintPot(m);
     if(m.type==='motion')paintMotion(m,lastSnap);
@@ -1335,12 +1340,28 @@ header .actions{min-width:0;overflow-x:auto}
     if(!cross)m.el.querySelector('.switch-throw').setAttribute('d','M96 48L'+(pos?'153':'39')+' 20');
   }
   function junctionFace(m){
-    const connectors=junctionGroups.map(group=>`<div class="junction-group group-${group}" role="group" aria-label="${m.id} Klemmengruppe ${group}: alle fünf Anschlüsse verbunden">
-      <b class="junction-group-name">${group}</b>
-      <div class="junction-connector"><div class="junction-bus" aria-hidden="true"></div>${Array.from({length:5},(_,i)=>'<div class="lever-connector"><i class="connector-lever" aria-hidden="true"></i>'+terminal(m,group+'.'+(i+1),String(i+1),i<2?'left':'right')+'</div>').join('')}</div>
-    </div>`).join('');
-    return `<div class="junction-shell"><i class="junction-mount mount-left" aria-hidden="true"></i><i class="junction-mount mount-right" aria-hidden="true"></i><i class="junction-entry entry-left" aria-hidden="true"></i><i class="junction-entry entry-right" aria-hidden="true"></i><i class="junction-entry entry-bottom" aria-hidden="true"></i><i class="box-screw screw-nw" aria-hidden="true"></i><i class="box-screw screw-ne" aria-hidden="true"></i><i class="box-screw screw-sw" aria-hidden="true"></i><i class="box-screw screw-se" aria-hidden="true"></i><div class="device-eyebrow">ABZWEIGDOSE · OFFEN</div><div class="junction-connectors">${connectors}</div><div class="junction-note">Je Klemmblock intern verbunden<br>A / B: freie Klemmengruppen</div></div>`;
+    return `<div class="junction-shell"><i class="junction-mount mount-left" aria-hidden="true"></i><i class="junction-mount mount-right" aria-hidden="true"></i><i class="junction-entry entry-left" aria-hidden="true"></i><i class="junction-entry entry-right" aria-hidden="true"></i><i class="junction-entry entry-bottom" aria-hidden="true"></i><i class="box-screw screw-nw" aria-hidden="true"></i><i class="box-screw screw-ne" aria-hidden="true"></i><i class="box-screw screw-sw" aria-hidden="true"></i><i class="box-screw screw-se" aria-hidden="true"></i><div class="device-eyebrow">ABZWEIGDOSE · OFFEN</div>${['n','e','s','w'].map(edge=>'<span class="junction-edge edge-'+edge+'" aria-hidden="true"></span>').join('')}</div>`;
   }
+  function connectorFace(m){
+    const count=connectorPorts(m);
+    return `<div class="lever-body" style="grid-template-columns:repeat(${count},minmax(0,1fr))"><div class="connector-bus" aria-hidden="true"></div>${Array.from({length:count},(_,i)=>'<div class="lever-connector"><i class="connector-lever" aria-hidden="true"></i>'+terminal(m,String(i+1),String(i+1),'bottom')+'</div>').join('')}</div>`;
+  }
+  function migrateJunctions(data){
+    if(!(data.modules||[]).some(m=>m.type==='junction'&&m.junctionVersion!==2))return data;
+    const reserved=new Set(data.modules.map(m=>m.id)),keys=new Map(),result=[];
+    for(const item of data.modules){
+      if(item.type!=='junction'||item.junctionVersion===2){result.push({...item});continue;}
+      result.push({...item,junctionVersion:2,boxWidth:390,boxHeight:780,z:0});
+      for(const [row,group] of ['L','N','PE','A','B'].entries()){
+        let n=1;while(reserved.has('X'+n))n++;const id='X'+n;reserved.add(id);
+        result.push({id,type:'connector',ports:5,x:item.x+42,y:item.y+90+row*140,locked:!!item.locked,description:group});
+        for(let pin=1;pin<=5;pin++)keys.set(item.id+'.'+group+'.'+pin,id+'.'+pin);
+      }
+    }
+    const rewrite=key=>keys.get(key)||key;
+    return {...data,modules:result.map(m=>({...m,probeRed:rewrite(m.probeRed),probeBlack:rewrite(m.probeBlack),...(m.measuredWire?{measuredWire:{...m.measuredWire,a:rewrite(m.measuredWire.a),b:rewrite(m.measuredWire.b)}}:{})})),wires:(data.wires||[]).map(w=>({...w,a:rewrite(w.a),b:rewrite(w.b)}))};
+  }
+
   function socketFace(m){
     const contact=(key,label,cls)=>`<button type="button" class="term socket-contact ${cls}" data-key="${m.id}.${key}out" data-direction="${key==='L'?'left':key==='N'?'right':'top'}" aria-label="${m.id} ${label}, nur Messleitungen" title="${label} · nur Messleitungen · intern mit ${key} verbunden"></button>`;
     return `<div class="device-eyebrow">SCHUKO · STECKDOSE</div><div class="wall-frame socket-frame"><div class="socket-recess">${contact('L','Steckkontakt 1, intern an L','socket-left')}${contact('N','Steckkontakt 2, intern an N','socket-right')}${contact('PE','Schutzkontakt, intern an PE','socket-earth')}<i class="socket-earth-bottom" aria-hidden="true"></i><span class="socket-contact-name name-left">1</span><span class="socket-contact-name name-right">2</span></div></div><div class="socket-contact-caption"><b>Messpunkte · nur Messleitungen</b><br>1 ↔ L · 2 ↔ N · Schutzkontakt ↔ PE</div><div class="socket-back"><span class="socket-back-title">ANSCHLUSSKLEMMEN</span><div class="socket-terminal-bank">${terminal(m,'L','L','bottom')}${terminal(m,'N','N','bottom')}${terminal(m,'PE','PE','bottom')}</div></div>`;
@@ -1348,6 +1369,7 @@ header .actions{min-width:0;overflow-x:auto}
   function face(m){
     if(isInstallationSwitch(m))return installationSwitchFace(m);
     if(m.type==='junction')return junctionFace(m);
+    if(m.type==='connector')return connectorFace(m);
     if(m.type==='socket')return socketFace(m);
     if(m.type==='note')return m.noteStyle==='frame'?'<div class="note-frame"><div class="note-content note-frame-title"></div><div class="note-frame-outline" aria-hidden="true"><i class="note-frame-edge edge-n"></i><i class="note-frame-edge edge-e"></i><i class="note-frame-edge edge-s"></i><i class="note-frame-edge edge-w"></i></div></div>':'<div class="note-content"></div>';
     if(m.type==='potentiometer')return `<div class="device-eyebrow">DREH-POTENTIOMETER</div><div class="pot-dial" aria-hidden="true"><span class="pot-zero">0</span><span class="pot-max">100</span><div class="pot-rotor"><i></i></div></div><div class="pot-controls"><label>Schleifer <output class="pot-value"></output><input class="pot-slider" type="range" min="0" max="100" step="1" value="${Math.round(m.potPosition*100)}" aria-label="${m.id} Schleiferposition"></label></div><div class="pot-rating"></div><svg class="pot-symbol" viewBox="0 0 194 56" aria-label="Potentiometer: Klemme 1 und 3 sind die Widerstandsenden, Klemme 2 ist der Schleifer"><path d="M16 51 V17 H55 M139 17 H178 V51 M97 51 V29 M91 37 L97 29 L103 37"/><rect x="55" y="9" width="84" height="16"/></svg><div class="sensor-terminals">${terminal(m,'1','1','bottom')}${terminal(m,'2','2','bottom')}${terminal(m,'3','3','bottom')}</div>`;
@@ -1436,13 +1458,13 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='breaker'&&m.poles===3){el.style.width='198px';el.classList.add('poles-3');}
     if(m.type==='rail')el.style.width=(railScrews(m)>5?420:280)+'px';
     el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-copy"><span class="handle-name">${types[m.type]}</span><span class="handle-sub"></span></span><span class="lock-indicator" hidden aria-label="Position gesperrt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 v3"/></svg></span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><span class="module-state"></span></div>`;
-    if(m.type==='note'){
+    if(m.type==='note'||m.type==='junction'){
       const controls=document.createElement('div');controls.className='note-resize-controls';controls.setAttribute('aria-hidden','true');
       controls.innerHTML=['n','ne','e','se','s','sw','w','nw'].map(edge=>'<button type="button" class="note-resize-grip" data-note-resize="'+edge+'" tabindex="-1" aria-label="Größe ändern"></button>').join('');el.append(controls);
       controls.querySelectorAll('[data-note-resize]').forEach(grip=>grip.addEventListener('pointerdown',e=>{
         if(e.button!==0||m.locked)return;e.preventDefault();e.stopPropagation();
         const box=m.el.querySelector('.face').getBoundingClientRect();cancel();remember();selectModule(m.id);
-        gesture={kind:'resize-note',m,edge:grip.dataset.noteResize,x:e.clientX,y:e.clientY,startX:m.x,startY:m.y,startWidth:m.noteWidth,startHeight:m.noteHeight||Math.round(box.height),pointerId:e.pointerId};
+        gesture={kind:'resize-note',m,edge:grip.dataset.noteResize,x:e.clientX,y:e.clientY,startX:m.x,startY:m.y,startWidth:m.type==='junction'?m.boxWidth:m.noteWidth,startHeight:m.type==='junction'?m.boxHeight:m.noteHeight||Math.round(box.height),pointerId:e.pointerId};
         el.classList.add('resizing');grip.setPointerCapture(e.pointerId);
       }));
     }
@@ -1576,7 +1598,7 @@ header .actions{min-width:0;overflow-x:auto}
     selectedWire=null;wireScope='selection';renderComponents();draw();
   }
   function toggleSelection(id){const ids=new Set(selectedIds);if(ids.has(id))ids.delete(id);else ids.add(id);setSelection([...ids],id);}
-  function electricalModule(m){return m.type!=='note'&&!isMeter(m);}
+  function electricalModule(m){return !['note','junction'].includes(m.type)&&!isMeter(m);}
   function requestElectricalEdit(action,onCancel){
     if(!liveMode()||booting)return true;
     if(electricalRequest)return false;
@@ -1674,6 +1696,7 @@ header .actions{min-width:0;overflow-x:auto}
     return JSON.parse(JSON.stringify({modules:selected.map(({el,pressed,...m})=>m),wires:wires.filter(w=>ids.has(w.a.split('.')[0])&&ids.has(w.b.split('.')[0]))}));
   }
   function pastePackage(pack,offset=40){
+    if(pack)pack=migrateJunctions(pack);
     const items=pack?.modules;if(!items?.length)return;
     if(items.some(electricalModule)&&!requestElectricalEdit(()=>pastePackage(pack,offset)))return;
     remember();cancel();
@@ -1704,7 +1727,8 @@ header .actions{min-width:0;overflow-x:auto}
   function inspectorRows(m){
     if(m.type==='changeover')return [['Gemeinsamer Anschluss','L'],['Korrespondierende','1 / 2'],['Stellung 1','L–1'],['Stellung 2','L–2'],['Betätigung','Rastende Wippe · zwei Stellungen']];
     if(m.type==='crossover')return [['Eingangspaar','1 / 2'],['Ausgangspaar','3 / 4'],['Stellung 1','1–3 und 2–4'],['Stellung 2','1–4 und 2–3'],['Kreuzung','Kein elektrischer Knoten in der Mitte']];
-    if(m.type==='junction')return [...junctionGroups.map(group=>[group+' intern verbunden',group+'.1 bis '+group+'.5']),['Zwischen den Klemmblöcken','Keine Verbindung'],['L / N / PE','Zuordnung durch deine Verdrahtung']];
+    if(m.type==='junction')return [['Gehäuse','Keine elektrischen Anschlüsse'],['Größe',m.boxWidth+' × '+m.boxHeight],['Bestückung','Hebelklemmen separat einsetzen']];
+    if(m.type==='connector')return [['Anschlüsse','1 bis '+connectorPorts(m)],['Intern verbunden','Alle Anschlüsse dieser Klemme'],['Potenzial','Bestimmt deine Verdrahtung']];
     if(m.type==='socket')return [['Zuleitung','L / N / PE · untere Anschlussklemmen'],['Steckkontakt 1','Messpunkt · intern mit L verbunden'],['Steckkontakt 2','Messpunkt · intern mit N verbunden'],['Schutzkontakt','Messpunkt · intern mit PE verbunden'],['Vorderseite','Nur Messleitungen, keine Adern'],['L–N / L–PE / N–PE','Keine interne Verbindung'],['Eigenverbrauch','Keine Last']];
     if(m.type==='potentiometer')return [['Widerstand 1–3',m.resistance+' Ω'],['Schleifer','2 · '+Math.round(m.potPosition*100)+' %'],['Kennlinie','Linear']];
     if(m.type==='motion')return [['Versorgung',m.nomV+' V '+(m.nomV===24?'DC':'AC')],['Eingang','L / +24 · N / 0 V'],['Ausgang','OUT / L′ · geschaltete Versorgung'],['Nachlauf',m.motionDelay+' s · nachtriggerbar']];
@@ -1995,6 +2019,12 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       note.textContent='Ein Druck betätigt Schließer 13–14 und Öffner 21–22 gleichzeitig. Rastend hält den Taster bis zum nächsten Druck betätigt.';
       fields.innerHTML='<label class="latching-field">Rastend wie ein Schalter<input id="devLatchMode" type="checkbox"'+(m.latching?' checked':'')+'></label>'+colorField('buttonColor','Tasterfarbe',buttonColors,m.buttonColor)+colorField('signalColor','Meldeleuchte',signalColors,m.signalColor);
       apply.hidden=true;
+    }else if(m.type==='junction'){
+      note.textContent='Leeres Gehäuse ohne interne Verbindungen. Hebelklemmen separat einsetzen und frei darin platzieren. Zum Verschieben den Rand oder den Bauteilkopf ziehen; die Fläche innen bleibt für Bauteile und Leitungen zugänglich. Die Griffe ändern nur die Gehäusegröße.';
+      fields.innerHTML='<label>Breite<input id="devBoxWidth" type="number" min="240" max="1600" value="'+m.boxWidth+'"></label><label>Höhe<input id="devBoxHeight" type="number" min="180" max="1600" value="'+m.boxHeight+'"></label>';apply.hidden=true;
+    }else if(m.type==='connector'){
+      note.textContent='Eine Hebelklemme verbindet alle ihre Anschlüsse miteinander. Separate Klemmen bleiben voneinander getrennt. L, N und PE werden durch deine Verdrahtung zugeordnet. Beim Verkleinern entfallen Leitungen und Messleitungen an den entfernten Anschlüssen.';
+      fields.innerHTML='<label>Leiteranschlüsse<select id="devPorts">'+[2,3,5].map(n=>'<option value="'+n+'">'+n+' Leiter</option>').join('')+'</select></label>';$('#devPorts').value=String(connectorPorts(m));apply.hidden=true;
     }else if(m.type==='terminal'){
       note.textContent='Oben und unten sind immer dieselbe Klemme. Anzahl und Verbindung gelten sofort. Rand und Strich markieren die Gruppe.';
       fields.innerHTML='<label>Anzahl<input id="devPoles" type="number" min="2" max="12" step="1" value="'+terminalPoles(m)+'"></label><div class="presets"><button type="button" class="ui-btn" data-poles="4">4</button><button type="button" class="ui-btn" data-poles="6">6</button><button type="button" class="ui-btn" data-poles="10">10</button></div><label>Gleiche Verbindung<select id="devSpan"><option value="1">Jede Nummer für sich</option><option value="2">Paar · je 2</option><option value="4">Vierer · je 4</option></select></label>';
@@ -2007,7 +2037,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       $('#devScrews').value=String(railScrews(m));
       apply.hidden=true;
     }else{
-      note.textContent=m.type==='changeover'?'L ist der gemeinsame Kontakt und wird auf 1 oder 2 geschaltet. Zwei Wechselschalter steuern eine Leuchte von zwei Stellen. Die Wippe ist rastend; ihre Stellung allein bedeutet nicht EIN oder AUS.':m.type==='crossover'?'Zwischen zwei Wechselschaltern einsetzen. Die Wippe verbindet entweder 1–3 und 2–4 oder 1–4 und 2–3. Die gekreuzten Wege sind elektrisch getrennt.':m.type==='junction'?'Offene Abzweigdose mit fünf voneinander getrennten Hebelklemmen. Je Klemmblock sind alle fünf Anschlüsse über die gemeinsame Kontaktschiene im transparenten Gehäuse verbunden. Die grünen Hebel gehören zum Klemmenkörper; verdrahtet wird an den darunterliegenden Anschlussöffnungen. L, N und PE sind Beschriftungen: Die Einspeisung entsteht erst durch deine Leitungen. A und B sind freie Gruppen, etwa für Korrespondierende oder die geschaltete Phase.':m.type==='socket'?'Normale Adern ausschließlich an den unteren Anschlussklemmen L, N und PE verdrahten. Die beiden Stecklöcher und der Schutzkontakt vorne sind nur Messpunkte für die Messleitungen der Messgeräte. Die leere Steckdose verbraucht keinen Strom. Kontakt 1 ist im Modell L zugeordnet, Kontakt 2 N; echte Schuko-Stecker sind umkehrbar. Ein angeschlossener PE ersetzt keine Schutzprüfung.':m.type==='voltmeter'?'Rote Messleitung V und schwarze COM auf zwei Klemmen oder Steckdosen-Messpunkte ziehen. Die Leitungen messen nur, sie verbinden nicht. Im Betrieb: Spannungsdifferenz als Momentanwert (kein AC-Effektivwert). Im Aufbau: Durchgang über Leitungen und Kontakte, ohne Widerstandsprüfung von Verbrauchern.':m.type==='ammeter'?'Beide Messleitungen an die zwei Enden einer Ader ziehen. Angezeigt wird der Strom dieser Ader, ohne das Messgerät in den Stromkreis zu legen. Momentanwert, kein AC-Effektivwert.':m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
+      note.textContent=m.type==='changeover'?'L ist der gemeinsame Kontakt und wird auf 1 oder 2 geschaltet. Zwei Wechselschalter steuern eine Leuchte von zwei Stellen. Die Wippe ist rastend; ihre Stellung allein bedeutet nicht EIN oder AUS.':m.type==='crossover'?'Zwischen zwei Wechselschaltern einsetzen. Die Wippe verbindet entweder 1–3 und 2–4 oder 1–4 und 2–3. Die gekreuzten Wege sind elektrisch getrennt.':m.type==='socket'?'Normale Adern ausschließlich an den unteren Anschlussklemmen L, N und PE verdrahten. Die beiden Stecklöcher und der Schutzkontakt vorne sind nur Messpunkte für die Messleitungen der Messgeräte. Die leere Steckdose verbraucht keinen Strom. Kontakt 1 ist im Modell L zugeordnet, Kontakt 2 N; echte Schuko-Stecker sind umkehrbar. Ein angeschlossener PE ersetzt keine Schutzprüfung.':m.type==='voltmeter'?'Rote Messleitung V und schwarze COM auf zwei Klemmen oder Steckdosen-Messpunkte ziehen. Die Leitungen messen nur, sie verbinden nicht. Im Betrieb: Spannungsdifferenz als Momentanwert (kein AC-Effektivwert). Im Aufbau: Durchgang über Leitungen und Kontakte, ohne Widerstandsprüfung von Verbrauchern.':m.type==='ammeter'?'Beide Messleitungen an die zwei Enden einer Ader ziehen. Angezeigt wird der Strom dieser Ader, ohne das Messgerät in den Stromkreis zu legen. Momentanwert, kein AC-Effektivwert.':m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
       fields.innerHTML='';
       apply.hidden=true;
     }
@@ -2077,6 +2107,11 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       Object.assign(extra,{noteText:$('#devNoteText').value,noteStyle:$('#devNoteStyle').value,noteTone:$('#devNoteTone').value,noteTitleTone:$('#devNoteTitleTone').value,noteSize:Number($('#devNoteSize').value),noteWidth:Number($('#devNoteWidth').value),noteHeight:Number($('#devNoteHeight').value)});
       if(!Number.isFinite(extra.noteSize)||extra.noteSize<12||extra.noteSize>32||!Number.isFinite(extra.noteWidth)||extra.noteWidth<120||extra.noteWidth>1600||extra.noteStyle!=='card'&&(!Number.isFinite(extra.noteHeight)||extra.noteHeight<48||extra.noteHeight>1600)){fail('Schriftgröße 12–32, Breite 120–1600 und Höhe 48–1600 eingeben.');return;}
     }
+    if(m.type==='junction'){
+      extra.boxWidth=Number($('#devBoxWidth').value);extra.boxHeight=Number($('#devBoxHeight').value);
+      if(!Number.isFinite(extra.boxWidth)||extra.boxWidth<240||extra.boxWidth>1600||!Number.isFinite(extra.boxHeight)||extra.boxHeight<180||extra.boxHeight>1600){fail('Breite 240–1600 und Höhe 180–1600 eingeben.');return;}
+    }
+    if(m.type==='connector'){extra.ports=Number($('#devPorts').value);if(![2,3,5].includes(extra.ports)){fail('2, 3 oder 5 Leiteranschlüsse wählen.');return;}}
     const extraSame=Object.keys(extra).every(key=>m[key]===extra[key]);
     let timerSettings=null;
     if(m.type==='timer'){
@@ -2153,6 +2188,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const renamed=tag&&tag.id!==m.id;
     if(renamed&&!renameModule(m,tag.id))return;
     Object.assign(m,extra);
+    if(m.type==='connector'&&!extraSame){dropLoose(m);lastImportedSig='';}
     if(m.type==='potentiometer'&&!extraSame&&engine?.setPotentiometer)engine.setPotentiometer(m.id,m.resistance,m.potPosition);
     m.description=description;
     m.subtitle=subtitleValue;
@@ -2276,7 +2312,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const id=key.slice(0,dot),rest=key.slice(dot+1),m=modules.find(x=>x.id===id);
     if(!m)return '';
     if(m.type==='terminal'){const hit=rest.match(/^(\d+)[ou]$/);if(!hit)return '';const span=terminalSpan(m);return id+'#'+Math.floor((Number(hit[1])-1)/span);}
-    if(m.type==='junction'){const hit=rest.match(/^(L|N|PE|A|B)\.[1-5]$/);return hit?id+'#'+hit[1]:'';}
+    if(m.type==='connector')return /^[1-5]$/.test(rest)&&Number(rest)<=connectorPorts(m)?id+'#common':'';
     if(m.type==='socket'){const hit=rest.match(/^(L|N|PE)(out)?$/);return hit?id+'#'+hit[1]:'';}
     if(m.type==='rail'){const hit=rest.match(/^(\+24|0V|PE)\.\d+$/);return hit?id+'#'+hit[1]:'';}
     if(m.type==='mains'&&(rest==='N'||rest==='PE'))return id+'#NPE';
@@ -2286,7 +2322,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function connect(a,b){
     if(a===b||!term(a)||!term(b))return false;
     if(isMeasurementPoint(a)||isMeasurementPoint(b)){measurementPointHint();return false;}
-    if(internallyCommon(a,b)){const id=a.slice(0,a.indexOf('.'));const m=modules.find(x=>x.id===id);say(m&&m.type==='mains'?'N und PE sind an der Einspeisung intern verbunden.':m&&m.type==='rail'?'Diese Schrauben liegen auf derselben Schiene.':m?.type==='junction'?'Alle Anschlüsse dieser Klemmengruppe sind intern verbunden.':m?.type==='socket'?'Dieser Steckkontakt ist bereits mit seiner Anschlussklemme verbunden.':'Oben und unten sind an dieser Klemme schon verbunden.');return false;}
+    if(internallyCommon(a,b)){const id=a.slice(0,a.indexOf('.'));const m=modules.find(x=>x.id===id);say(m&&m.type==='mains'?'N und PE sind an der Einspeisung intern verbunden.':m&&m.type==='rail'?'Diese Schrauben liegen auf derselben Schiene.':m?.type==='connector'?'Alle Anschlüsse dieser Hebelklemme sind intern verbunden.':m?.type==='socket'?'Dieser Steckkontakt ist bereits mit seiner Anschlussklemme verbunden.':'Oben und unten sind an dieser Klemme schon verbunden.');return false;}
     if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}
     if(!requestElectricalEdit(()=>connect(a,b)))return false;
     remember();wires.push({a,b,color});update();noteWiringReset();return true;
@@ -2299,9 +2335,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     else if(gesture.kind==='selection'){paintSelectionRectangle(e);}
     else if(gesture.kind==='resize-note'){
       const g=gesture,dx=(e.clientX-g.x)/scale,dy=(e.clientY-g.y)/scale,west=g.edge.includes('w'),east=g.edge.includes('e'),north=g.edge.includes('n'),south=g.edge.includes('s');
-      const minWidth=120,minHeight=48,width=Math.max(minWidth,Math.min(1600,g.startWidth+(east?dx:west?-dx:0))),height=Math.max(minHeight,Math.min(1600,g.startHeight+(south?dy:north?-dy:0)));
-      g.m.noteWidth=Math.round(width);g.m.noteHeight=Math.round(height);g.m.x=Math.max(24,Math.min(BOARD_W-24-width,west?g.startX+g.startWidth-width:g.startX));g.m.y=Math.max(61,Math.min(BOARD_H-36-height,north?g.startY+g.startHeight-height:g.startY));
-      position(g.m);paintDeviceFace(g.m);if($('#devNoteWidth'))$('#devNoteWidth').value=g.m.noteWidth;if($('#devNoteHeight'))$('#devNoteHeight').value=g.m.noteHeight;draw();
+      const isBox=g.m.type==='junction',minWidth=isBox?240:120,minHeight=isBox?180:48,width=Math.max(minWidth,Math.min(1600,g.startWidth+(east?dx:west?-dx:0))),height=Math.max(minHeight,Math.min(1600,g.startHeight+(south?dy:north?-dy:0)));
+      if(isBox){g.m.boxWidth=Math.round(width);g.m.boxHeight=Math.round(height);}else{g.m.noteWidth=Math.round(width);g.m.noteHeight=Math.round(height);}g.m.x=Math.max(24,Math.min(BOARD_W-24-width,west?g.startX+g.startWidth-width:g.startX));g.m.y=Math.max(61,Math.min(BOARD_H-36-height,north?g.startY+g.startHeight-height:g.startY));
+      position(g.m);paintDeviceFace(g.m);if($('#devBoxWidth'))$('#devBoxWidth').value=g.m.boxWidth;if($('#devBoxHeight'))$('#devBoxHeight').value=g.m.boxHeight;if($('#devNoteWidth'))$('#devNoteWidth').value=g.m.noteWidth;if($('#devNoteHeight'))$('#devNoteHeight').value=g.m.noteHeight;draw();
     }
     else if(gesture.kind==='lead'){
       if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>4)gesture.moved=true;
@@ -2318,7 +2354,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const g=gesture;
     if(g.kind==='module'){finishModuleDrag();return;}
     if(g.kind==='selection'){finishSelectionRectangle(e);return;}
-    if(g.kind==='resize-note'){gesture=null;g.m.el.classList.remove('resizing');schedulePersist();return;}
+    if(g.kind==='resize-note'){ignorePanClick=true;gesture=null;g.m.el.classList.remove('resizing');schedulePersist();return;}
     if(g.kind==='lead'){gesture=null;finishLead(g,e);return;}
     if(g.moved){
       const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('.term');
@@ -2726,7 +2762,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     wires.forEach(w=>link(w.a,w.b));
     modules.forEach(m=>{
       if(m.type==='terminal'){const span=terminalSpan(m);for(let n=1;n<=terminalPoles(m);n++){link(m.id+'.'+n+'o',m.id+'.'+n+'u');if(span>1&&(n-1)%span)link(m.id+'.'+(n-1)+'o',m.id+'.'+n+'o');}}
-      if(m.type==='junction')for(const group of junctionGroups)for(let n=2;n<=5;n++)link(m.id+'.'+group+'.1',m.id+'.'+group+'.'+n);
+      if(m.type==='connector')for(let n=2;n<=connectorPorts(m);n++)link(m.id+'.1',m.id+'.'+n);
       if(m.type==='socket')for(const pin of ['L','N','PE'])link(m.id+'.'+pin,m.id+'.'+pin+'out');
       if(m.type==='changeover')link(m.id+'.L',m.id+'.'+(m.selection===1?'2':'1'));
       if(m.type==='crossover'){link(m.id+'.1',m.id+'.'+(m.selection===1?'4':'3'));link(m.id+'.2',m.id+'.'+(m.selection===1?'3':'4'));}
@@ -2922,7 +2958,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(first)say(getFaultPresentation(fault).toast);
   }
   function topologySig(){
-    const parts=modules.filter(m=>!isMeter(m)&&m.type!=='note').map(m=>m.id+':'+m.type+':'+(m.type==='motion'?JSON.stringify([m.nomV,m.motionDelay]):'')+':'+(m.parent||'')+':'+JSON.stringify(m.relayContacts||null)+':'+(m.type==='timer'?JSON.stringify([m.timerMode,m.delayOn,m.delayOff]):'')+':'+(isProtection(m)?JSON.stringify([m.ratedCurrent,m.poles,m.characteristic]):'')).slice().sort();
+    const parts=modules.filter(electricalModule).map(m=>m.id+':'+m.type+':'+(m.type==='connector'?connectorPorts(m):'')+':'+(m.type==='motion'?JSON.stringify([m.nomV,m.motionDelay]):'')+':'+(m.parent||'')+':'+JSON.stringify(m.relayContacts||null)+':'+(m.type==='timer'?JSON.stringify([m.timerMode,m.delayOn,m.delayOff]):'')+':'+(isProtection(m)?JSON.stringify([m.ratedCurrent,m.poles,m.characteristic]):'')).slice().sort();
     const links=wires.map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
     return parts.join(',')+'|'+links.join(',');
   }
@@ -2943,7 +2979,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   function setEngineTag(text,err){$('#engineTag').textContent=text;$('#engineTag').style.color=err?'#be442f':'#56665b';}
   function projectPayload(){
-    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.filter(m=>!isMeter(m)&&m.type!=='note').map(m=>({resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:isProtection(m)?m.poles:m.type==='terminal'?terminalPoles(m):0,span:m.type==='terminal'?terminalSpan(m):1,screws:m.type==='rail'?railScrews(m):0})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
+    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.filter(electricalModule).map(m=>({ports:m.type==='connector'?connectorPorts(m):undefined,resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:isProtection(m)?m.poles:m.type==='terminal'?terminalPoles(m):0,span:m.type==='terminal'?terminalSpan(m):1,screws:m.type==='rail'?railScrews(m):0})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
   }
   function scheduleSync(){
     if(!engine||!engineOk)return;
@@ -3287,7 +3323,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function finishSelectionRectangle(e){
     paintSelectionRectangle(e);const g=gesture;gesture=null;selectionRectangle.hidden=true;ignorePanClick=true;
     const l=Math.min(g.start.x,g.end.x),r=Math.max(g.start.x,g.end.x),t=Math.min(g.start.y,g.end.y),b=Math.max(g.start.y,g.end.y);
-    const picked=g.moved?modules.filter(m=>m.type==='note'&&m.noteStyle==='frame'?m.x>=l&&m.y>=t&&m.x+m.el.offsetWidth<=r&&m.y+m.el.offsetHeight<=b:m.x<r&&m.x+m.el.offsetWidth>l&&m.y<b&&m.y+m.el.offsetHeight>t).map(m=>m.id):[];
+    const picked=g.moved?modules.filter(m=>(m.type==='junction'||m.type==='note'&&m.noteStyle==='frame')?m.x>=l&&m.y>=t&&m.x+m.el.offsetWidth<=r&&m.y+m.el.offsetHeight<=b:m.x<r&&m.x+m.el.offsetWidth>l&&m.y<b&&m.y+m.el.offsetHeight>t).map(m=>m.id):[];
     setSelection([...new Set([...g.base,...picked])]);
     if(picked.length)say(selectedIds.size+' Bauteile ausgewählt.');
   }
@@ -3319,7 +3355,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     boardPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(boardPointers.size>=2){startPinch();try{viewport.setPointerCapture(e.pointerId);}catch(err){}e.preventDefault();e.stopPropagation();return;}
     const part=e.target.closest('.module'),blank=!e.target.closest('.module,.wire-hit,.lead-hit,.lead-probe-hit');
-    if(e.button===0&&!spaceHeld&&part&&e.target.closest('.remove'))return;
+    if(e.button===0&&!spaceHeld&&part&&e.target.closest('.remove,[data-note-resize]'))return;
     if(e.button===0&&!spaceHeld&&!handMode&&(e.shiftKey||selectionMode)){
       if(part){
         if(selectionMode&&!e.shiftKey&&selectedIds.has(part.dataset.id)&&moduleDragTarget(e))startModuleDrag(modules.find(m=>m.id===part.dataset.id),e,true,true);
@@ -3330,7 +3366,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     }
     if(e.button===0&&handMode&&!spaceHeld&&part){
       if(!moduleDragTarget(e))return;
-      if(e.target.closest('.handle')||selectedIds.has(part.dataset.id)&&e.target.closest('.note-content')){
+      if(e.target.closest('.handle,.junction-edge')||selectedIds.has(part.dataset.id)&&e.target.closest('.note-content')){
         startModuleDrag(modules.find(m=>m.id===part.dataset.id),e,false,true);e.stopPropagation();return;
       }
     }
@@ -3406,6 +3442,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   new ResizeObserver(()=>workspace.style.setProperty('--viewbar-height',$('.board-bar').offsetHeight+'px')).observe($('.board-bar'));
   matchMedia('(max-width:1050px)').addEventListener('change',e=>{workspace.classList.toggle('hide-inspector',e.matches);workspace.classList.toggle('hide-parts',e.matches);inspectorLabel();partsLabel();requestAnimationFrame(layoutView);});
   function restore(d,keepMode){
+    d=migrateJunctions(d);
     cancel();closeDevMenu();
     board.querySelectorAll('.module').forEach(e=>e.remove());
     modules=d.modules.map(m=>defaultNom({...m,pressed:false}));
@@ -3442,7 +3479,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       const prev=byId.get(m.id);
       if(!prev||!m.el)return;
       m.x=prev.x;m.y=prev.y;
-      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.buttonColor=prev.buttonColor;m.signalColor=prev.signalColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteTitleTone','noteSize','noteWidth','noteHeight'])m[key]=prev[key];
+      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.buttonColor=prev.buttonColor;m.signalColor=prev.signalColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteTitleTone','noteSize','noteWidth','noteHeight','boxWidth','boxHeight','junctionVersion'])m[key]=prev[key];
       if(isMeter(m)){m.probeRed=prev.probeRed||null;m.probeBlack=prev.probeBlack||null;m.measuredWire=prev.measuredWire||null;}
       remount(m);
       if(Number.isFinite(prev.z)){m.z=prev.z;m.el.style.zIndex=prev.z;}
@@ -3487,7 +3524,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       ['X1.A.2','S2.1','#384540'],['X1.B.2','S2.2','#8d9296'],
       [end+'.L','E1.L',brown],['X2.L','E2.L',brown],['X2.N','E2.N',blue],['X2.PE','E2.PE','pe']];
     if(cross)pairs.push(['S2.3','S3.1','#384540'],['S2.4','S3.2','#8d9296']);
-    return {modules:result,wires:pairs.map(([a,b,color])=>({a,b,color})),powered:false};
+    return migrateJunctions({modules:result,wires:pairs.map(([a,b,color])=>({a,b,color})),powered:false});
   }
   function reversingBoard(){
     const modules=[
@@ -3596,10 +3633,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     crossover:`<rect x="1.5" y="1.5" width="25" height="25" rx="4" fill="#e5e8e6" stroke="#929d97"/><rect x="4" y="4" width="20" height="20" rx="2" fill="#fafcf9" stroke="#c3ccc5"/>
       <g fill="none" stroke="#30483d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7v2l5 3.6m4 2.8L21 19v2M21 7v2L7 19v2"/>
       <circle cx="7" cy="7" r="1.7" fill="#fafcf9"/><circle cx="21" cy="7" r="1.7" fill="#fafcf9"/><circle cx="7" cy="21" r="1.7" fill="#fafcf9"/><circle cx="21" cy="21" r="1.7" fill="#fafcf9"/></g>`,
-    junction:`<path d="M1 11h4v6H1m22-6h4v6h-4" fill="#b4bcbc" stroke="#859290" stroke-width=".8"/><rect x="3" y="2" width="22" height="24" rx="4" fill="#dfe3e1" stroke="#84908c"/><rect x="5" y="4" width="18" height="20" rx="2" fill="#aeb8b4" stroke="#c5ceca"/>
-      <path d="M6 10h4m4-4v4m8 0h-4" fill="none" stroke="#76827c" stroke-width="2" stroke-linecap="round"/>
-      <g fill="#8bc568" stroke="#537b40" stroke-width=".6"><rect x="7" y="11" width="4" height="9" rx="1"/><rect x="12" y="11" width="4" height="9" rx="1"/><rect x="17" y="11" width="4" height="9" rx="1"/></g>
-      <path d="M8 12v3m5-3v3m5-3v3" stroke="#cee9b5" stroke-width="1"/><path d="M7.5 18h3m2-0h3m2 0h3" stroke="#af8757" stroke-width="1.5"/><path d="M8 20h2m3 0h2m3 0h2" stroke="#e5ece8" stroke-width="1.5"/>`,
+    junction:`<path d="M1 11h4v6H1m22-6h4v6h-4" fill="#b4bcbc" stroke="#859290" stroke-width=".8"/><rect x="3" y="2" width="22" height="24" rx="4" fill="#dfe3e1" stroke="#84908c"/><rect x="5" y="4" width="18" height="20" rx="2" fill="#b8c2bd" stroke="#7e8e85"/><path d="M7 7h14M7 21h14" stroke="#e8eeea"/><circle cx="7" cy="6" r="1" fill="#718479"/><circle cx="21" cy="22" r="1" fill="#718479"/>`,
+    connector:`<path d="M2 6h24v18H2z" fill="#dce8e2" stroke="#92a79d"/><path d="M4 20h20" stroke="#bb945c" stroke-width="2"/>${[3,11,19].map(x=>'<rect x="'+x+'" y="3" width="6" height="10" rx="1.5" fill="#f18729" stroke="#b65c15"/><rect x="'+(x+1)+'" y="15" width="4" height="5" rx="1" fill="#304137" stroke="#aabbb1"/>').join('')}`,
     socket:'<rect x="2" y="2" width="24" height="24" rx="4" fill="#fafbf6" stroke="#a4aaa4"/><circle cx="14" cy="14" r="9" fill="#e5e7df" stroke="#a4aaa4"/><circle cx="10" cy="14" r="1.8" fill="#334239"/><circle cx="18" cy="14" r="1.8" fill="#334239"/><path d="M12 5h4m-4 18h4" stroke="#797d68" stroke-width="2.5"/>',
     potentiometer:'<rect width="28" height="28" rx="3" fill="#e8eadc"/><circle cx="14" cy="13" r="9" fill="#6b786e"/><circle cx="14" cy="13" r="6" fill="#263b31"/><path d="M14 7v5" stroke="#fff" stroke-width="2"/><path d="M5 25h18" stroke="#536b5b"/>',
     switch:'<rect width="28" height="28" rx="3" fill="#e5e9e0"/><rect x="4" y="2" width="20" height="23" rx="3" fill="#829087"/><rect x="6" y="4" width="16" height="19" rx="2" fill="#21372c"/><path d="M7 5h14v9H7z" fill="#40564b"/><path d="M14 7v4" stroke="#f4f7f4" stroke-width="1.6" stroke-linecap="round"/><circle cx="14" cy="18" r="2.2" fill="none" stroke="#d1ddd4" stroke-width="1.3"/><path d="M9 25v2m10-2v2" stroke="#43584a" stroke-width="2"/>',
@@ -3615,7 +3650,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   document.querySelector('[data-add="start"]').insertAdjacentHTML('afterend',partButton('switch','Schalter','Rastend · NO + NC'));
   document.querySelector('[data-add="lamp"]').closest('.add-set').before(partGroup('Gebäudeinstallation',[
-    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Fünf getrennte, sichtbare Klemmengruppen'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
+    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Leeres, frei skalierbares Gehäuse'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
   ]));
   document.querySelector('[data-add="lamp"]').closest('.add-set').before(partGroup('Regler & Sensoren',[
     ['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
@@ -3623,12 +3658,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   document.querySelector('.parts-rail .add-set').parentElement.append(partGroup('Beschriften',[
     ['note','Notiz','Text auf der Montageplatte'],['label','Beschriftung','Weißer Textstreifen mit freier Größe'],['frame','Rahmen','Gestrichelter Rahmen mit Text, frei größenveränderbar']
   ]));
+  document.querySelector('[data-add="terminal"]').insertAdjacentHTML('afterend',[2,3,5].map(n=>partButton('connector','Hebelklemme · '+n+' Leiter','Alle '+n+' Anschlüsse intern verbunden').replace('data-add="connector"','data-add="connector" data-ports="'+n+'"')).join(''));
   document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
     closePalettes();
     const requested=b.dataset.add;
-    if(!['note','label','frame','voltmeter','ammeter'].includes(requested)&&!requestElectricalEdit(()=>b.onclick()))return;
+    if(!['note','label','frame','junction','voltmeter','ammeter'].includes(requested)&&!requestElectricalEdit(()=>b.onclick()))return;
     remember();const type=['switch','label','frame'].includes(requested)?(requested==='switch'?'start':'note'):requested,prefix=defaultPrefix(type);
     const m={id:nextId(prefix),type,x:Math.max(24,Math.min(BOARD_W-510,(viewport.clientWidth/2-camera.x)/scale-122)),y:Math.max(61,Math.min(BOARD_H-420,(viewport.clientHeight/2-camera.y)/scale-170))};
+    if(type==='connector')m.ports=Number(b.dataset.ports);
+    if(type==='junction')m.junctionVersion=2;
     if(requested==='switch'){m.latching=true;m.buttonColor='black';}
     if(requested==='label'){m.noteStyle='label';m.noteText='Beschriftung';}
     if(requested==='frame'){m.noteStyle='frame';m.noteText='Text';m.noteWidth=420;m.noteHeight=240;}
@@ -3726,7 +3764,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       try{iframe.contentWindow.oncircuitjsloaded=attached;}catch(e){}
       wait(60);
     };
-    iframe.src='circuitjs.html?v=20261001installation2&cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
+    iframe.src='circuitjs.html?v=20261002connectors1&cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
   })();
   if(skipStore)window.__workshop={present:getFaultPresentation,recovery:()=>recoveryMemory};
 })();
