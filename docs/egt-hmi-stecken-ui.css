@@ -459,7 +459,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .junction .state-label{margin-top:16px}
 .socket-frame{height:176px;padding:12px;margin-bottom:12px}
 .socket-recess{position:relative;width:150px;height:150px;box-sizing:border-box;aspect-ratio:1;border:1px solid #a5ada2;border-radius:50%;background:radial-gradient(circle at 50% 65%,#f5f7ee 45%,#d9dfd2 72%,#f0f3e9 75%);box-shadow:inset 0 3px 6px #53614b4d,0 1px #fff}
-.socket .socket-contact{position:absolute;margin:0;width:23px;height:23px;border:3px solid #c0c9b7;border-radius:50%;background:#253226;box-shadow:inset 0 2px 4px #071509;padding:0}
+.socket .socket-contact{position:absolute;margin:0;width:23px;height:23px;border:3px solid #c0c9b7;border-radius:50%;background:#253226;box-shadow:inset 0 2px 4px #071509;padding:0;cursor:default}
 .socket-left{left:34px;top:66px}.socket-right{right:34px;top:66px}
 .socket .socket-earth{top:3px;left:55px;width:38px;height:13px;border-radius:2px;border:1px solid #939b85;background:linear-gradient(#d9dbbf,#a5ac86,#e8e8c9);box-shadow:0 1px 2px #667153}
 .socket-earth-bottom{position:absolute;bottom:3px;left:55px;width:38px;height:11px;border:1px solid #939b85;border-radius:2px;background:linear-gradient(#a5ac86,#e8e8c9)}

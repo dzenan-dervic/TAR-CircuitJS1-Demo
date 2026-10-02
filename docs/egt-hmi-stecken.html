@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261001installation4">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002socketmeasurement1">
 </head>
 <body>
 <header class="app-header">
@@ -666,7 +666,7 @@ header .actions{min-width:0;overflow-x:auto}
   <details class="help-topic"><summary>Gebäudeinstallation: Schalter, Dose und Steckdose</summary>
     <p><b>Wechselschalter:</b> L wird abwechselnd mit 1 oder 2 verbunden. Zwei Wechselschalter ermöglichen das Schalten von zwei Stellen. <b>Kreuzschalter:</b> verbindet 1–3 / 2–4 oder 1–4 / 2–3 und wird zwischen die Wechselschalter gesetzt. Jede Wippe ändert den Zustand der richtig verdrahteten Leuchte; eine Wippenstellung allein bedeutet nicht EIN oder AUS.</p>
     <p><b>Abzweigdose:</b> Jede orange Klemmengruppe verbindet ihre fünf Anschlüsse über eine sichtbare Kupferbrücke. Die fünf Reihen bleiben voneinander getrennt. L, N, PE, A und B sind Beschriftungen; die Spannung entsteht durch deine Verdrahtung.</p>
-    <p><b>Steckdose:</b> L, N und PE an den Anschlussklemmen verdrahten. Verbraucher oder Messleitungen können an den beiden Stecklöchern und dem Schutzkontakt angeschlossen werden. Eine leere Steckdose ist keine Last. Im Modell gehört Kontakt 1 zu L und Kontakt 2 zu N; reale Schuko-Stecker sind umkehrbar.</p>
+    <p><b>Steckdose:</b> Leitungen ausschließlich an den unteren Anschlussklemmen L, N und PE verdrahten. Die beiden Stecklöcher und der Schutzkontakt sind Messpunkte für die Messleitungen der Messgeräte. Dort lassen sich keine normalen Adern anschließen. Eine leere Steckdose ist keine Last. Im Modell gehört Kontakt 1 zu L und Kontakt 2 zu N; reale Schuko-Stecker sind umkehrbar.</p>
   </details>
   <details class="help-topic"><summary>Tastenkürzel</summary>
     <dl class="shortcut-list"><div><dt>Entf</dt><dd>Ausgewähltes Bauteil oder Leitung löschen</dd></div><div><dt>Strg+C / Strg+V</dt><dd>Bauteil kopieren / versetzt einfügen</dd></div><div><dt>Strg+D</dt><dd>Bauteil duplizieren</dd></div><div><dt>Strg+Z</dt><dd>Rückgängig</dd></div><div><dt>Strg+Y / Strg+Umschalt+Z</dt><dd>Wiederholen</dd></div><div><dt>Strg+S</dt><dd>Projektdatei herunterladen</dd></div><div><dt>Esc</dt><dd>Verbindung abbrechen, Auswahl oder Menü schließen</dd></div></dl>
@@ -1330,8 +1330,8 @@ header .actions{min-width:0;overflow-x:auto}
     return '<div class="junction-shell"><i class="box-screw screw-nw" aria-hidden="true"></i><i class="box-screw screw-ne" aria-hidden="true"></i><i class="box-screw screw-sw" aria-hidden="true"></i><i class="box-screw screw-se" aria-hidden="true"></i><div class="device-eyebrow">ABZWEIGDOSE · OFFEN</div><div class="junction-connectors">'+junctionGroups.map(group=>`<div class="junction-group group-${group}" role="group" aria-label="${m.id} Klemmengruppe ${group}: alle fünf Anschlüsse verbunden"><b class="junction-group-name">${group}</b><div class="junction-bus" aria-hidden="true"></div>${Array.from({length:5},(_,i)=>'<div class="lever-connector"><i class="connector-lever" aria-hidden="true"></i>'+terminal(m,group+'.'+(i+1),String(i+1),i<2?'left':'right')+'</div>').join('')}</div>`).join('')+'<div class="junction-note">Kupferbrücke pro Reihe<br>A / B: freie Klemmengruppen</div></div><div class="junction-glands" aria-hidden="true"><i></i><i></i><i></i></div></div>';
   }
   function socketFace(m){
-    const contact=(key,label,cls)=>`<button type="button" class="term socket-contact ${cls}" data-key="${m.id}.${key}out" data-direction="${key==='L'?'left':key==='N'?'right':'top'}" aria-label="${m.id} ${label}" title="${label} · mit ${key} verbunden"></button>`;
-    return `<div class="device-eyebrow">SCHUKO · STECKDOSE</div><div class="wall-frame socket-frame"><div class="socket-recess">${contact('L','Steckkontakt 1, intern an L','socket-left')}${contact('N','Steckkontakt 2, intern an N','socket-right')}${contact('PE','Schutzkontakt, intern an PE','socket-earth')}<i class="socket-earth-bottom" aria-hidden="true"></i><span class="socket-contact-name name-left">1</span><span class="socket-contact-name name-right">2</span></div></div><div class="socket-contact-caption">1 ↔ L · 2 ↔ N · Schutzkontakt ↔ PE</div><div class="socket-back"><span class="socket-back-title">ANSCHLUSSKLEMMEN</span><div class="socket-terminal-bank">${terminal(m,'L','L','bottom')}${terminal(m,'N','N','bottom')}${terminal(m,'PE','PE','bottom')}</div></div>`;
+    const contact=(key,label,cls)=>`<button type="button" class="term socket-contact ${cls}" data-key="${m.id}.${key}out" data-direction="${key==='L'?'left':key==='N'?'right':'top'}" aria-label="${m.id} ${label}, nur Messleitungen" title="${label} · nur Messleitungen · intern mit ${key} verbunden"></button>`;
+    return `<div class="device-eyebrow">SCHUKO · STECKDOSE</div><div class="wall-frame socket-frame"><div class="socket-recess">${contact('L','Steckkontakt 1, intern an L','socket-left')}${contact('N','Steckkontakt 2, intern an N','socket-right')}${contact('PE','Schutzkontakt, intern an PE','socket-earth')}<i class="socket-earth-bottom" aria-hidden="true"></i><span class="socket-contact-name name-left">1</span><span class="socket-contact-name name-right">2</span></div></div><div class="socket-contact-caption"><b>Messpunkte · nur Messleitungen</b><br>1 ↔ L · 2 ↔ N · Schutzkontakt ↔ PE</div><div class="socket-back"><span class="socket-back-title">ANSCHLUSSKLEMMEN</span><div class="socket-terminal-bank">${terminal(m,'L','L','bottom')}${terminal(m,'N','N','bottom')}${terminal(m,'PE','PE','bottom')}</div></div>`;
   }
   function face(m){
     if(isInstallationSwitch(m))return installationSwitchFace(m);
@@ -1484,7 +1484,7 @@ header .actions{min-width:0;overflow-x:auto}
       el.querySelector('.meter-clear').onclick=()=>{remember();setLead(m,'probeRed',null);setLead(m,'probeBlack',null);schedulePersist();paintMeters(lastSnap);draw();};
     }
     el.querySelectorAll('.term').forEach(t=>{
-      t.addEventListener('pointerdown',e=>{if(e.button!==0||gesture)return;e.stopPropagation();gesture={kind:'wire',key:t.dataset.key,x:e.clientX,y:e.clientY,moved:false,pointerId:e.pointerId};t.setPointerCapture(e.pointerId);updateWireTarget(e);});
+      t.addEventListener('pointerdown',e=>{if(e.button!==0||gesture)return;e.stopPropagation();if(isMeasurementPoint(t.dataset.key)){e.preventDefault();measurementPointHint();return;}gesture={kind:'wire',key:t.dataset.key,x:e.clientX,y:e.clientY,moved:false,pointerId:e.pointerId};t.setPointerCapture(e.pointerId);updateWireTarget(e);});
       t.addEventListener('click',e=>{if(e.detail!==0)return;choose(t.dataset.key);});
       t.addEventListener('lostpointercapture',e=>{if(gesture?.kind==='wire'&&gesture.pointerId===e.pointerId&&!gesture.moved)cancel();});
       t.addEventListener('focus',()=>{wireTarget=canConnect(wireSource(),t.dataset.key)?t.dataset.key:null;mark();});
@@ -1654,8 +1654,9 @@ header .actions{min-width:0;overflow-x:auto}
     });
     moveEntries(clones,offset,offset);
     const rewrite=key=>{const dot=key.indexOf('.');return ids.get(key.slice(0,dot))+key.slice(dot);};
-    (pack.wires||[]).forEach(w=>wires.push({...w,a:rewrite(w.a),b:rewrite(w.b)}));
-    setSelection(clones.map(({m})=>m.id),clones[0].m.id);update();reveal(clones[0].m);say(clones.length+' Bauteile mit '+(pack.wires||[]).length+' internen Leitungen eingefügt.');
+    const pastedWires=normalizeSocketWires((pack.wires||[]).map(w=>({...w,a:rewrite(w.a),b:rewrite(w.b)})));
+    wires.push(...pastedWires);
+    setSelection(clones.map(({m})=>m.id),clones[0].m.id);update();reveal(clones[0].m);say(clones.length+' Bauteile mit '+pastedWires.length+' internen Leitungen eingefügt.');
   }
   function createAux(parent){
     if(modules.some(m=>m.type==='auxiliary'&&m.parent===parent.id))return null;
@@ -1668,7 +1669,7 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='changeover')return [['Gemeinsamer Anschluss','L'],['Korrespondierende','1 / 2'],['Stellung 1','L–1'],['Stellung 2','L–2'],['Betätigung','Rastende Wippe · zwei Stellungen']];
     if(m.type==='crossover')return [['Eingangspaar','1 / 2'],['Ausgangspaar','3 / 4'],['Stellung 1','1–3 und 2–4'],['Stellung 2','1–4 und 2–3'],['Kreuzung','Kein elektrischer Knoten in der Mitte']];
     if(m.type==='junction')return [...junctionGroups.map(group=>[group+' intern verbunden',group+'.1 bis '+group+'.5']),['Zwischen den Reihen','Keine Verbindung'],['L / N / PE','Zuordnung durch deine Verdrahtung']];
-    if(m.type==='socket')return [['Zuleitung','L / N / PE'],['Steckkontakt 1','Intern mit L verbunden'],['Steckkontakt 2','Intern mit N verbunden'],['Schutzkontakt','Intern mit PE verbunden'],['L–N / L–PE / N–PE','Keine interne Verbindung'],['Eigenverbrauch','Keine Last']];
+    if(m.type==='socket')return [['Zuleitung','L / N / PE · untere Anschlussklemmen'],['Steckkontakt 1','Messpunkt · intern mit L verbunden'],['Steckkontakt 2','Messpunkt · intern mit N verbunden'],['Schutzkontakt','Messpunkt · intern mit PE verbunden'],['Vorderseite','Nur Messleitungen, keine Adern'],['L–N / L–PE / N–PE','Keine interne Verbindung'],['Eigenverbrauch','Keine Last']];
     if(m.type==='potentiometer')return [['Widerstand 1–3',m.resistance+' Ω'],['Schleifer','2 · '+Math.round(m.potPosition*100)+' %'],['Kennlinie','Linear']];
     if(m.type==='motion')return [['Versorgung',m.nomV+' V '+(m.nomV===24?'DC':'AC')],['Eingang','L / +24 · N / 0 V'],['Ausgang','OUT / L′ · geschaltete Versorgung'],['Nachlauf',m.motionDelay+' s · nachtriggerbar']];
     if(m.type==='note')return [['Darstellung',m.noteStyle==='label'?'Beschriftungsstreifen':m.noteStyle==='frame'?'Markierungsrahmen':'Notizzettel'],['Position',m.locked?'Gesperrt':'Verschiebbar'],...(m.noteStyle==='card'?[]:[['Größe',m.noteWidth+' × '+m.noteHeight+' px']])];
@@ -1965,7 +1966,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       $('#devScrews').value=String(railScrews(m));
       apply.hidden=true;
     }else{
-      note.textContent=m.type==='changeover'?'L ist der gemeinsame Kontakt und wird auf 1 oder 2 geschaltet. Zwei Wechselschalter steuern eine Leuchte von zwei Stellen. Die Wippe ist rastend; ihre Stellung allein bedeutet nicht EIN oder AUS.':m.type==='crossover'?'Zwischen zwei Wechselschaltern einsetzen. Die Wippe verbindet entweder 1–3 und 2–4 oder 1–4 und 2–3. Die gekreuzten Wege sind elektrisch getrennt.':m.type==='junction'?'Offene Abzweigdose mit fünf voneinander getrennten Hebelklemmen. Pro Reihe sind alle fünf Anschlüsse über die sichtbare Kupferbrücke verbunden. L, N und PE sind Beschriftungen: Die Einspeisung entsteht erst durch deine Leitungen. A und B sind freie Gruppen, etwa für Korrespondierende oder die geschaltete Phase.':m.type==='socket'?'L, N und PE an den Anschlussklemmen verdrahten. Die beiden Stecklöcher und der Schutzkontakt sind anschließbare Kontakte: Dort kannst du einen Verbraucher oder Messleitungen anschließen. Die leere Steckdose verbraucht keinen Strom. Kontakt 1 ist im Modell L zugeordnet, Kontakt 2 N; echte Schuko-Stecker sind umkehrbar. Ein angeschlossener PE ersetzt keine Schutzprüfung.':m.type==='voltmeter'?'Rote Messleitung V und schwarze COM auf zwei Klemmen ziehen. Die Leitungen messen nur, sie verbinden nicht. Im Betrieb: Spannungsdifferenz als Momentanwert (kein AC-Effektivwert). Im Aufbau: Durchgang über Leitungen und Kontakte, ohne Widerstandsprüfung von Verbrauchern.':m.type==='ammeter'?'Beide Messleitungen an die zwei Enden einer Ader ziehen. Angezeigt wird der Strom dieser Ader, ohne das Messgerät in den Stromkreis zu legen. Momentanwert, kein AC-Effektivwert.':m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
+      note.textContent=m.type==='changeover'?'L ist der gemeinsame Kontakt und wird auf 1 oder 2 geschaltet. Zwei Wechselschalter steuern eine Leuchte von zwei Stellen. Die Wippe ist rastend; ihre Stellung allein bedeutet nicht EIN oder AUS.':m.type==='crossover'?'Zwischen zwei Wechselschaltern einsetzen. Die Wippe verbindet entweder 1–3 und 2–4 oder 1–4 und 2–3. Die gekreuzten Wege sind elektrisch getrennt.':m.type==='junction'?'Offene Abzweigdose mit fünf voneinander getrennten Hebelklemmen. Pro Reihe sind alle fünf Anschlüsse über die sichtbare Kupferbrücke verbunden. L, N und PE sind Beschriftungen: Die Einspeisung entsteht erst durch deine Leitungen. A und B sind freie Gruppen, etwa für Korrespondierende oder die geschaltete Phase.':m.type==='socket'?'Normale Adern ausschließlich an den unteren Anschlussklemmen L, N und PE verdrahten. Die beiden Stecklöcher und der Schutzkontakt vorne sind nur Messpunkte für die Messleitungen der Messgeräte. Die leere Steckdose verbraucht keinen Strom. Kontakt 1 ist im Modell L zugeordnet, Kontakt 2 N; echte Schuko-Stecker sind umkehrbar. Ein angeschlossener PE ersetzt keine Schutzprüfung.':m.type==='voltmeter'?'Rote Messleitung V und schwarze COM auf zwei Klemmen oder Steckdosen-Messpunkte ziehen. Die Leitungen messen nur, sie verbinden nicht. Im Betrieb: Spannungsdifferenz als Momentanwert (kein AC-Effektivwert). Im Aufbau: Durchgang über Leitungen und Kontakte, ohne Widerstandsprüfung von Verbrauchern.':m.type==='ammeter'?'Beide Messleitungen an die zwei Enden einer Ader ziehen. Angezeigt wird der Strom dieser Ader, ohne das Messgerät in den Stromkreis zu legen. Momentanwert, kein AC-Effektivwert.':m.type==='selector'?'Rastender Drehschalter mit Mittelstellung. A schließt 13–14, B schließt 23–24. In 0 sind beide Kontakte offen. Stellung direkt über A / 0 / B oder am Griff mit Pfeiltasten wählen.':m.type==='emergency'?'Drücken rastet den Pilztaster ein: Öffner 21–22 öffnet und Schließer 13–14 schließt. Entriegeln stellt beide Kontakte zurück. Reset und Spannungswechsel entriegeln den Not-Aus nicht.':m.type==='auxiliary'?'Hilfskontakte folgen dem Schütz. Keine eigenen elektrischen Einstellungen.':'Keine einstellbaren Werte.';
       fields.innerHTML='';
       apply.hidden=true;
     }
@@ -2143,11 +2144,28 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function position(m){m.el.style.left=m.x+'px';m.el.style.top=m.y+'px';}
   function move(m,x,y){if(m.locked)return;m.x=Math.max(24,Math.min(BOARD_W-24-m.el.offsetWidth,x));m.y=Math.max(61,Math.min(BOARD_H-36-m.el.offsetHeight,y));position(m);}
   function term(key){return [...board.querySelectorAll('.term')].find(t=>t.dataset.key===key);}
+  function isMeasurementPoint(key){
+    if(typeof key!=='string')return false;
+    const dot=key.indexOf('.');
+    return dot>0&&/^(L|N|PE)out$/.test(key.slice(dot+1))&&modules.some(m=>m.id===key.slice(0,dot)&&m.type==='socket');
+  }
+  function measurementPointHint(){say('Vorne nur Messleitungen anschließen. Normale Adern an den unteren Klemmen L, N und PE verdrahten.');}
+  function normalizeSocketWires(links){
+    if(!links.some(w=>isMeasurementPoint(w.a)||isMeasurementPoint(w.b)))return links.map(w=>({...w}));
+    const key=k=>isMeasurementPoint(k)?k.slice(0,-3):k;
+    const seen=new Set();
+    return links.map(w=>({...w,a:key(w.a),b:key(w.b)})).filter(w=>{
+      if(w.a===w.b||internallyCommon(w.a,w.b))return false;
+      const pair=w.a<w.b?w.a+'|'+w.b:w.b+'|'+w.a;
+      if(seen.has(pair))return false;
+      seen.add(pair);return true;
+    });
+  }
   function point(key){const t=term(key);if(!t)return null;const r=t.getBoundingClientRect(),b=board.getBoundingClientRect();return{x:(r.left+r.width/2-b.left)/scale,y:(r.top+r.height/2-b.top)/scale,d:t.dataset.direction,id:t.closest('.module').dataset.id};}
   function localPoint(e){const b=board.getBoundingClientRect();return{x:(e.clientX-b.left)/scale,y:(e.clientY-b.top)/scale,d:'free'};}
   function wireSource(){return gesture?.kind==='wire'?(gesture.moved?gesture.key:pending||gesture.key):pending;}
   function directlyConnected(a,b){return wires.some(w=>w.a===a&&w.b===b||w.a===b&&w.b===a);}
-  function canConnect(a,b){return !!a&&!!b&&a!==b&&!!term(a)&&!!term(b)&&!directlyConnected(a,b)&&!internallyCommon(a,b);}
+  function canConnect(a,b){return !!a&&!!b&&a!==b&&!isMeasurementPoint(a)&&!isMeasurementPoint(b)&&!!term(a)&&!!term(b)&&!directlyConnected(a,b)&&!internallyCommon(a,b);}
   function nearestTerm(cx,cy,source){
     if(!source)return null;
     let best=null,bestD=56;
@@ -2165,7 +2183,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     wireTarget=target?target.dataset.key:null;
     mark();
   }
-  function choose(key){wireTarget=null;if(!pending){pending=key;$('#hint').textContent=key+' gewählt. Zweite Klemme anklicken.';}else if(pending===key){cancel();return;}else{const created=connect(pending,key);pending=null;$('#hint').textContent=created?(liveMode()?'Verbindung erstellt. Angezoogene Schütze fallen ab.':'Verbindung erstellt · Weitere Klemmen verbinden.'):defaultHint();}updateWirePrompt();mark();draw();}
+  function choose(key){if(isMeasurementPoint(key)){measurementPointHint();return;}wireTarget=null;if(!pending){pending=key;$('#hint').textContent=key+' gewählt. Zweite Klemme anklicken.';}else if(pending===key){cancel();return;}else{const created=connect(pending,key);pending=null;$('#hint').textContent=created?(liveMode()?'Verbindung erstellt. Angezoogene Schütze fallen ab.':'Verbindung erstellt · Weitere Klemmen verbinden.'):defaultHint();}updateWirePrompt();mark();draw();}
   function leadDock(cx,cy,meter){
     const el=meter&&meter.el;if(!el)return false;
     const r=el.getBoundingClientRect(),pad=28;
@@ -2191,7 +2209,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     cancel();
     gesture={kind:'lead',m,field,x:e.clientX,y:e.clientY,moved:false,pointerId:e.pointerId,preview:localPoint(e)};
     try{board.setPointerCapture(e.pointerId);}catch(err){}
-    $('#hint').textContent='Messleitung auf eine Schraubklemme ziehen oder am Messgerät ablegen. Esc bricht ab.';
+    $('#hint').textContent='Messleitung auf eine Klemme oder einen Messpunkt ziehen. Am Messgerät ablegen oder mit Esc abbrechen.';
     draw();
   }
   function finishLead(g,e){
@@ -2205,7 +2223,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       return;
     }
     const snap=nearestLeadTerm(e.clientX,e.clientY,g.m,g.field);
-    if(!snap){say('Messleitung auf einer Schraubklemme loslassen.');draw();return;}
+    if(!snap){say('Messleitung auf einer Klemme oder einem Messpunkt loslassen.');draw();return;}
     remember();
     setLead(g.m,g.field,snap.dataset.key);
     schedulePersist();paintMeters(lastSnap);draw();
@@ -2226,6 +2244,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function internallyCommon(a,b){const ga=clampGroup(a),gb=clampGroup(b);return !!ga&&ga===gb;}
   function connect(a,b){
     if(a===b||!term(a)||!term(b))return false;
+    if(isMeasurementPoint(a)||isMeasurementPoint(b)){measurementPointHint();return false;}
     if(internallyCommon(a,b)){const id=a.slice(0,a.indexOf('.'));const m=modules.find(x=>x.id===id);say(m&&m.type==='mains'?'N und PE sind an der Einspeisung intern verbunden.':m&&m.type==='rail'?'Diese Schrauben liegen auf derselben Schiene.':m?.type==='junction'?'Alle Anschlüsse dieser Klemmengruppe sind intern verbunden.':m?.type==='socket'?'Dieser Steckkontakt ist bereits mit seiner Anschlussklemme verbunden.':'Oben und unten sind an dieser Klemme schon verbunden.');return false;}
     if(directlyConnected(a,b)){say('Diese Klemmen sind bereits verbunden.');return false;}
     if(!requestElectricalEdit(()=>connect(a,b)))return false;
@@ -2248,7 +2267,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       const home=leadDock(e.clientX,e.clientY,gesture.m);
       markLeadDock(home,gesture.m);
       if(home){gesture.preview=localPoint(e);$('#hint').textContent='Loslassen legt die Messleitung am Messgerät ab.';}
-      else{const snap=nearestLeadTerm(e.clientX,e.clientY,gesture.m,gesture.field);gesture.preview=snap?point(snap.dataset.key):localPoint(e);$('#hint').textContent='Messleitung auf eine Schraubklemme ziehen oder am Messgerät ablegen. Esc bricht ab.';}
+      else{const snap=nearestLeadTerm(e.clientX,e.clientY,gesture.m,gesture.field);gesture.preview=snap?point(snap.dataset.key):localPoint(e);$('#hint').textContent='Messleitung auf eine Klemme oder einen Messpunkt ziehen. Am Messgerät ablegen oder mit Esc abbrechen.';}
       draw();
     }
     else{if(Math.hypot(e.clientX-gesture.x,e.clientY-gesture.y)>4)gesture.moved=true;if(gesture.moved){pending=null;updateWireTarget(e);gesture.target=wireTarget;draw(wireTarget?point(wireTarget):localPoint(e),gesture.key);}}
@@ -2261,6 +2280,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(g.kind==='resize-note'){gesture=null;g.m.el.classList.remove('resizing');schedulePersist();return;}
     if(g.kind==='lead'){gesture=null;finishLead(g,e);return;}
     if(g.moved){
+      const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('.term');
+      if(target&&isMeasurementPoint(target.dataset.key)){cancel();measurementPointHint();return;}
       const snap=nearestTerm(e.clientX,e.clientY,g.key);
       const dest=(snap&&snap.dataset.key)||g.target;
       if(dest&&canConnect(g.key,dest))connect(g.key,dest);
@@ -2729,7 +2750,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const el=$('#hint'),line=el&&el.parentElement;
     if(!el)return;
     if(pending||gesture)return;
-    if(gesture?.kind==='lead'){el.textContent='Messleitung auf eine Schraubklemme ziehen oder am Messgerät ablegen. Esc bricht ab.';return;}
+    if(gesture?.kind==='lead'){el.textContent='Messleitung auf eine Klemme oder einen Messpunkt ziehen. Am Messgerät ablegen oder mit Esc abbrechen.';return;}
     el.textContent=defaultHint();
     if(line)line.classList.toggle('live',liveMode());
   }
@@ -3331,7 +3352,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     cancel();closeDevMenu();
     board.querySelectorAll('.module').forEach(e=>e.remove());
     modules=d.modules.map(m=>defaultNom({...m,pressed:false}));
-    wires=d.wires.map(w=>({...w}));
+    wires=normalizeSocketWires(d.wires);
     if(keepMode)powered=liveMode();
     else{powered=false;simMode='aufbau';}
     lastImportedSig='';lastSnap=null;
@@ -3397,7 +3418,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       {id:'S2',type:cross?'crossover':'changeover',x:1010,y:88,selection:0},
       {id:'X2',type:'socket',x:710,y:660},
       {id:'E1',type:'lamp',x:cross?1360:1040,y:680,nomV:230,nomP:60},
-      {id:'E2',type:'lamp',x:1010,y:680,nomV:230,nomP:25,description:'Verbraucher an Steckdose'}
+      {id:'E2',type:'lamp',x:1010,y:680,nomV:230,nomP:25,description:'Verbraucher im Steckdosenstromkreis'}
     ];
     if(cross)result.push({id:'S3',type:'changeover',x:1300,y:88,selection:0});
     else result.find(m=>m.id==='E2').x=1290;
@@ -3407,7 +3428,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       ['T1.PE','X1.PE.1','pe'],['X1.PE.2','E1.PE','pe'],['X1.PE.3','X2.PE','pe'],
       ['S1.1','X1.A.1','#384540'],['S1.2','X1.B.1','#8d9296'],
       ['X1.A.2','S2.1','#384540'],['X1.B.2','S2.2','#8d9296'],
-      [end+'.L','E1.L',brown],['X2.Lout','E2.L',brown],['X2.Nout','E2.N',blue],['X2.PEout','E2.PE','pe']];
+      [end+'.L','E1.L',brown],['X2.L','E2.L',brown],['X2.N','E2.N',blue],['X2.PE','E2.PE','pe']];
     if(cross)pairs.push(['S2.3','S3.1','#384540'],['S2.4','S3.2','#8d9296']);
     return {modules:result,wires:pairs.map(([a,b,color])=>({a,b,color})),powered:false};
   }
@@ -3530,7 +3551,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   document.querySelector('[data-add="start"]').insertAdjacentHTML('afterend',partButton('switch','Schalter','Rastend · NO + NC'));
   document.querySelector('[data-add="lamp"]').closest('.add-set').before(partGroup('Gebäudeinstallation',[
-    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Fünf getrennte, sichtbare Klemmengruppen'],['socket','Steckdose · L / N / PE','Schuko · anschließbare Steckkontakte']
+    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Fünf getrennte, sichtbare Klemmengruppen'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
   ]));
   document.querySelector('[data-add="lamp"]').closest('.add-set').before(partGroup('Regler & Sensoren',[
     ['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
