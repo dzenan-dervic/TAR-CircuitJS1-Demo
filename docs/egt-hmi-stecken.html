@@ -1478,7 +1478,7 @@ header .actions{min-width:0;overflow-x:auto}
     el.querySelector('.remove').onclick=()=>removeModule(m);
     const bindMoveKeys=target=>{if(!target)return;target.onkeydown=e=>{
       if(e.ctrlKey||e.metaKey||e.altKey||e.target.closest('.term'))return;
-      if(m.type==='connector'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectModule(m.id);openSettings(m);return;}
+      if(m.type==='connector'&&(e.key==='Enter'||e.key===' ')){e.preventDefault();e.stopPropagation();selectModule(m.id);openSettings(m);return;}
       if(m.type==='note'&&['label','frame'].includes(m.noteStyle)&&(e.key==='Enter'||e.key===' ')){e.preventDefault();selectModule(m.id);openSettings(m);return;}
       const delta={ArrowLeft:[-10,0],ArrowRight:[10,0],ArrowUp:[0,-10],ArrowDown:[0,10]}[e.key];if(!delta)return;
       e.preventDefault();selectModule(m.id);
