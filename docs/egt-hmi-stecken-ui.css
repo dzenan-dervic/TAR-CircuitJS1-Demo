@@ -145,6 +145,17 @@ html.mode-aufbau .simulation-controls .sim-state {display: inline-block; visibil
 .board-bar .mode-flag {padding: 4px 7px; border: 1px solid #d4ddd5; border-radius: 4px; color: #42544a; background: #edf2ec; font: 700 11px/1.1 "Segoe UI",Arial,sans-serif; letter-spacing: 0}
 html.mode-betrieb .board-bar .mode-flag {background: #e2f2e6; border-color: #a8d3b4; color: #116939}
 .board-bar .view-controls {display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-left: auto}
+.selection-actions {display: flex; align-items: center; flex-wrap: wrap; flex: 1 0 100%; gap: 6px 10px; min-width: 0; padding-top: 8px; border-top: 1px solid var(--shell-line)}
+.selection-actions[hidden] {display: none}
+#selectionCount {font-weight: 650}
+.selection-drag-hint {margin-right: auto; color: var(--shell-muted); font-size: 12px}
+.selection-actions .ui-btn {min-height: 44px}
+.selection-actions .selection-delete {color: #a12d20; border-color: #d9b4ac}
+.selection-actions .selection-delete:hover {background: #fff1ed; border-color: #a12d20}
+.board .module,.board .module * { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none }
+.board .module input,.board .module textarea,.board .module [contenteditable="true"] { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default }
+.board .handle,.board .handle-label {touch-action: none}
+.board-viewport.selection-mode .module.selected .handle,.board-viewport.selection-mode .module.selected .handle-label {cursor: grab}
 .control-cluster {display: inline-flex; align-items: center; gap: 3px; padding: 2px; border: 1px solid var(--shell-line); border-radius: 7px; background: var(--shell-soft)}
 .control-cluster .ui-btn,.control-cluster select {min-height: 32px; border-color: transparent; border-radius: 5px; background: transparent; font-size: 12px}
 .control-cluster .ui-btn:hover,.control-cluster select:hover {background: #fff; border-color: #c7d2c9}

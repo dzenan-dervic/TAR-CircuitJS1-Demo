@@ -546,7 +546,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-bar.pe .rail-name{background:repeating-linear-gradient(-45deg,#e6c21a 0 4px,#1f7a3a 4px 8px);color:#102018;padding:3px 0}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
-<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002tabletmenu1">
+<link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002touchselection1">
 </head>
 <body>
 <header class="app-header">
@@ -597,6 +597,13 @@ header .actions{min-width:0;overflow-x:auto}
     <div class="control-cluster display-cluster" role="group" aria-label="Messwerte anzeigen"><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Leitungen mit Spannung markieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Stromrichtung animieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button></div>
     <details class="board-more"><summary aria-label="Weitere Aktionen" title="Weitere Aktionen">···</summary><div class="menu-panel"><button type="button" id="openBoardHelp">Hilfe &amp; Legende</button><button type="button" id="clearBoard">Fläche leeren</button></div></details>
   </div>
+  <div class="selection-actions" id="selectionActions" role="group" aria-label="Ausgewählte Bauteile bearbeiten" hidden>
+    <span id="selectionCount"></span>
+    <span class="selection-drag-hint">Am Bauteilkopf ziehen</span>
+    <button type="button" class="ui-btn" id="duplicateSelection">Duplizieren</button>
+    <button type="button" class="ui-btn selection-delete" id="deleteSelection">Löschen</button>
+    <button type="button" class="ui-btn" id="clearSelection">Auswahl aufheben</button>
+  </div>
 </div><div class="board-viewport" id="viewport"><div class="stage-size" id="stage"><div class="board" id="board"><i class="mount-screw" style="left:28px;top:27px"></i><i class="mount-screw" style="right:28px;top:27px"></i><i class="mount-screw" style="left:28px;bottom:27px"></i><i class="mount-screw" style="right:28px;bottom:27px"></i><div class="rail"></div><div class="rail second"></div><svg class="couplings" id="couplings" viewBox="0 0 6000 3600" aria-hidden="true"></svg><svg class="wires" id="wires" viewBox="0 0 6000 3600" aria-label="Verbindungsleitungen"></svg><svg class="wire-dots" id="wire-dots" viewBox="0 0 6000 3600" aria-hidden="true"></svg><svg class="leads" id="leads" viewBox="0 0 6000 3600" aria-hidden="true"></svg></div></div></div><div class="hint-line"><span id="hint" role="status">Klemme ziehen oder zwei Klemmen nacheinander anklicken.</span><button type="button" id="cancelWire" hidden>Abbrechen</button><span>Mausrad oder zwei Finger: Zoom · Ziehen: Ansicht bewegen</span></div></main>
 <button type="button" class="inspector-tab" id="toggleInspector" aria-expanded="true" aria-controls="propertiesInspector" title="Auswahl ausblenden" aria-label="Auswahl ausblenden"><svg class="inspector-tab-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.4" y="2.2" width="3.1" height="3.1" rx=".6" fill="currentColor"/><path d="M6.2 3.75h8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="1.4" y="6.45" width="3.1" height="3.1" rx=".6" fill="currentColor"/><path d="M6.2 8h8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="1.4" y="10.7" width="3.1" height="3.1" rx=".6" fill="currentColor"/><path d="M6.2 12.25h8.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><span>Eigenschaften</span><svg class="inspector-tab-chevron" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
 <aside class="inspector" id="propertiesInspector" aria-label="Eigenschaften der Auswahl">
@@ -637,7 +644,8 @@ header .actions{min-width:0;overflow-x:auto}
   </details>
   <details class="help-topic"><summary>Mehrfachauswahl &amp; Ausrichten</summary>
     <p><b>Umschalt halten und auf freier Fläche ziehen</b> spannt ein Auswahlrechteck auf. Umschalt plus Klick fügt ein Bauteil hinzu oder entfernt es aus der Auswahl. Ein umgebender Markierungsrahmen wird nur gewählt, wenn das Rechteck den ganzen Rahmen umfasst.</p>
-    <p>Mit dem Werkzeug <b>Auswahl</b> geht das auch ohne Tastatur: Bauteile antippen oder ein Rechteck ziehen. Danach das Werkzeug ausschalten, um die Gruppe am Gehäuse gemeinsam zu ziehen. Pfeiltasten verschieben die Auswahl um 10 Pixel.</p>
+    <p>Mit dem Werkzeug <b>Auswahl</b> geht das auch ohne Tastatur: Bauteile antippen oder ein Rechteck ziehen. Ausgewählte Bauteile am Kopf gemeinsam ziehen, auch bei aktivem Handwerkzeug. Antippen im Auswahlmodus entfernt ein bereits ausgewähltes Bauteil wieder. Beschriftungen und Rahmen am Text anfassen. Pfeiltasten verschieben die Auswahl um 10 Pixel.</p>
+    <p>Die Auswahlleiste über der Montageplatte bietet <b>Duplizieren</b>, <b>Löschen</b> und <b>Auswahl aufheben</b>, auch wenn die Eigenschaften eingeklappt sind. Gesperrte Positionen werden beim Ziehen nicht verschoben.</p>
     <p>Ab zwei Bauteilen bieten die Eigenschaften Ausrichten und Zentrieren an; ab drei beweglichen Bauteilen gleichmäßige Abstände. Gesperrte Positionen bleiben unverändert.</p>
     <p><b>Strg/Cmd+C, V und D</b> kopieren, fügen ein oder duplizieren die Gruppe samt internen Leitungen und Schützzuordnungen. Externe Leitungen werden ausgelassen. Jede Gruppenaktion lässt sich mit einem Rückgängig-Schritt zurücknehmen. <b>Strg/Cmd+A</b> wählt alle Bauteile.</p>
   </details>
@@ -1454,9 +1462,8 @@ header .actions{min-width:0;overflow-x:auto}
     bindMoveKeys(el.querySelector('.note-content'));
     el.querySelector('.note-content')?.addEventListener('focus',()=>{if(['label','frame'].includes(m.noteStyle))selectModule(m.id);});
     el.addEventListener('pointerdown',e=>{
-      if(e.button!==0||e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-note-resize]'))return;
-      cancel();selectModule(m.id);if(m.locked){setSelection([m.id],m.id);return;}
-      const entries=selectedMovable().map(m=>({m,x:m.x,y:m.y}));gesture={kind:'module',m,entries,x:e.clientX,y:e.clientY,pointerId:e.pointerId,recorded:false};entries.forEach(({m})=>m.el.classList.add('dragging'));el.setPointerCapture(e.pointerId);e.preventDefault();
+      if(e.button!==0||!moduleDragTarget(e))return;
+      startModuleDrag(m,e);
     });
     el.addEventListener('dblclick',e=>{
       if(e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,input,select,textarea,[contenteditable="true"]'))return;
@@ -1534,6 +1541,31 @@ header .actions{min-width:0;overflow-x:auto}
     });
   }
   function selection(){return modules.filter(m=>selectedIds.has(m.id));}
+  function moduleDragTarget(e){return !e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-note-resize],input,select,textarea,[contenteditable="true"]');}
+  function startModuleDrag(m,e,toggleOnTap=false,preserveOnTap=false){
+    cancel();selectModule(m.id);
+    const entries=m.locked?[]:selectedMovable().map(m=>({m,x:m.x,y:m.y}));
+    gesture={kind:'module',m,entries,x:e.clientX,y:e.clientY,pointerId:e.pointerId,recorded:false,toggleOnTap,preserveOnTap};
+    entries.forEach(({m})=>m.el.classList.add('dragging'));
+    m.el.setPointerCapture(e.pointerId);e.preventDefault();
+  }
+  function moveModuleDrag(e){
+    const g=gesture,dx=(e.clientX-g.x)/scale,dy=(e.clientY-g.y)/scale;
+    if(!g.entries.length||(!g.recorded&&Math.hypot(dx,dy)<3))return;
+    if(!g.recorded){remember();g.recorded=true;}
+    moveEntries(g.entries,dx,dy);draw();
+  }
+  function finishModuleDrag(){
+    const g=gesture;gesture=null;
+    g.entries.forEach(({m})=>m.el.classList.remove('dragging'));
+    if(g.recorded){
+      const first=g.entries[0];
+      moveEntries(g.entries,Math.round((first.m.x-first.x)/4)*4,Math.round((first.m.y-first.y)/4)*4);
+      schedulePersist();ignorePanClick=true;
+    }else if(g.toggleOnTap){toggleSelection(g.m.id);ignorePanClick=true;}
+    else if(!g.preserveOnTap&&selectedIds.size>1)setSelection([g.m.id],g.m.id);
+    draw();
+  }
   function setSelection(ids,primary){
     selectedIds=new Set(ids.filter(id=>modules.some(m=>m.id===id)));
     selectedId=selectedIds.has(primary)?primary:[...selectedIds].at(-1)||null;
@@ -1722,7 +1754,12 @@ header .actions{min-width:0;overflow-x:auto}
     $('#partsPanel').hidden=!open;$('#partsToggle').setAttribute('aria-expanded',String(open));$('#partsToggle').setAttribute('aria-label',open?'Bauteilsuche schließen':'Bauteilsuche öffnen');
     if(open)renderComponentResults();
   }
+  function renderSelectionActions(){
+    $('#selectionActions').hidden=!selectedIds.size;
+    $('#selectionCount').textContent=selectedIds.size===1?'1 Bauteil ausgewählt':selectedIds.size+' Bauteile ausgewählt';
+  }
   function renderComponents(){
+    renderSelectionActions();
     $('#devMenu').querySelector('.property-actions')?.remove();
     renderComponentResults();
     modules.forEach(m=>m.el.classList.toggle('selected',selectedIds.has(m.id)));
@@ -2254,7 +2291,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function updateWirePrompt(){const line=$('.hint-line'),button=$('#cancelWire');if(line)line.classList.toggle('wire-pending',!!pending);if(button)button.hidden=!pending;}
   document.addEventListener('pointermove',e=>{
     if(!gesture){if(pending){updateWireTarget(e);draw(wireTarget?point(wireTarget):localPoint(e));}return;}if(e.pointerId!==gesture.pointerId)return;
-    if(gesture.kind==='module'){const g=gesture,dx=(e.clientX-g.x)/scale,dy=(e.clientY-g.y)/scale;if(!g.recorded&&Math.hypot(dx,dy)<3)return;if(!g.recorded){remember();g.recorded=true;}moveEntries(g.entries,dx,dy);draw();}
+    if(gesture.kind==='module'){moveModuleDrag(e);}
     else if(gesture.kind==='selection'){paintSelectionRectangle(e);}
     else if(gesture.kind==='resize-note'){
       const g=gesture,dx=(e.clientX-g.x)/scale,dy=(e.clientY-g.y)/scale,west=g.edge.includes('w'),east=g.edge.includes('e'),north=g.edge.includes('n'),south=g.edge.includes('s');
@@ -2275,7 +2312,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   document.addEventListener('pointerup',e=>{
     if(!gesture||e.pointerId!==gesture.pointerId)return;
     const g=gesture;
-    if(g.kind==='module'){gesture=null;g.entries.forEach(({m})=>m.el.classList.remove('dragging'));if(g.recorded){const first=g.entries[0];moveEntries(g.entries,Math.round((first.m.x-first.x)/4)*4,Math.round((first.m.y-first.y)/4)*4);schedulePersist();}else if(selectedIds.size>1)setSelection([g.m.id],g.m.id);draw();return;}
+    if(g.kind==='module'){finishModuleDrag();return;}
     if(g.kind==='selection'){finishSelectionRectangle(e);return;}
     if(g.kind==='resize-note'){gesture=null;g.m.el.classList.remove('resizing');schedulePersist();return;}
     if(g.kind==='lead'){gesture=null;finishLead(g,e);return;}
@@ -2740,7 +2777,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function update(){mark();draw();evaluate();renderComponents();scheduleSync();schedulePersist();}
   function liveMode(){return simMode==='betrieb'||simMode==='paused';}
   function defaultHint(){
-    if(selectionMode)return 'Auswahl · Bauteile antippen oder auf freier Fläche ein Rechteck ziehen. Zum Verschieben Auswahlwerkzeug ausschalten.';
+    if(selectionMode)return 'Auswahl · Bauteile antippen oder ein Rechteck ziehen. Ausgewählte Bauteile am Kopf gemeinsam verschieben; Löschen oben in der Auswahlleiste.';
     if(simMode==='aufbau')return 'Aufbau · Spannung aus. Klemmen verbinden, dann Betrieb einschalten.';
     if(simMode==='paused')return 'Eingefroren · Spannung bleibt. Elektrische Änderungen erfordern den Wechsel in Aufbau.';
     return 'Betrieb · Spannung an. Zum elektrischen Ändern in Aufbau wechseln.';
@@ -3272,19 +3309,32 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     camera={x:geo.mid.x-pinch.worldX*scale,y:geo.mid.y-pinch.worldY*scale};
     applyView();
   }
-  viewport.addEventListener('pointerdown',e=>{
+  function handleBoardPointerDown(e){
     if(e.pointerType==='mouse'&&e.button!==0&&e.button!==1)return;
+    ignorePanClick=false;
     boardPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(boardPointers.size>=2){startPinch();try{viewport.setPointerCapture(e.pointerId);}catch(err){}e.preventDefault();e.stopPropagation();return;}
     const part=e.target.closest('.module'),blank=!e.target.closest('.module,.wire-hit,.lead-hit,.lead-probe-hit');
+    if(e.button===0&&!spaceHeld&&part&&e.target.closest('.remove'))return;
     if(e.button===0&&!spaceHeld&&!handMode&&(e.shiftKey||selectionMode)){
-      if(part){cancel();toggleSelection(part.dataset.id);ignorePanClick=true;e.preventDefault();e.stopPropagation();return;}
+      if(part){
+        if(selectionMode&&!e.shiftKey&&selectedIds.has(part.dataset.id)&&moduleDragTarget(e))startModuleDrag(modules.find(m=>m.id===part.dataset.id),e,true,true);
+        else{cancel();toggleSelection(part.dataset.id);ignorePanClick=true;e.preventDefault();}
+        e.stopPropagation();return;
+      }
       if(blank){startSelectionRectangle(e);e.preventDefault();e.stopPropagation();return;}
+    }
+    if(e.button===0&&handMode&&!spaceHeld&&part){
+      if(!moduleDragTarget(e))return;
+      if(e.target.closest('.handle')||selectedIds.has(part.dataset.id)&&e.target.closest('.note-content')){
+        startModuleDrag(modules.find(m=>m.id===part.dataset.id),e,false,true);e.stopPropagation();return;
+      }
     }
     if(!blank&&!handMode&&!spaceHeld&&e.button!==1)return;
     cancel();ignorePanClick=false;viewDrag={id:e.pointerId,x:e.clientX,y:e.clientY,cx:camera.x,cy:camera.y,moved:false,blank:blank&&e.button===0&&!handMode&&!spaceHeld};
     viewport.setPointerCapture(e.pointerId);viewport.classList.add('panning');e.preventDefault();e.stopPropagation();
-  },true);
+  }
+  viewport.addEventListener('pointerdown',handleBoardPointerDown,true);
   viewport.addEventListener('pointermove',e=>{
     if(boardPointers.has(e.pointerId))boardPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(pinch&&boardPointers.size>=2){movePinch();e.preventDefault();e.stopPropagation();return;}
@@ -3303,7 +3353,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   viewport.addEventListener('pointercancel',endBoardPointer,true);
   viewport.addEventListener('lostpointercapture',e=>{if(e.pointerId!=null)boardPointers.delete(e.pointerId);if(boardPointers.size<2)pinch=null;if(viewDrag&&e.pointerId===viewDrag.id){viewDrag=null;viewport.classList.remove('panning');}});
 
-  viewport.addEventListener('click',e=>{if(ignorePanClick||handMode||spaceHeld){e.stopPropagation();e.preventDefault();ignorePanClick=false;}},true);
+  viewport.addEventListener('click',e=>{if(ignorePanClick){e.stopPropagation();e.preventDefault();ignorePanClick=false;}},true);
   viewport.addEventListener('auxclick',e=>{if(e.button===1)e.preventDefault();});
   const editable=e=>e.target.closest('input,textarea,select,button,[contenteditable=true]');
   document.addEventListener('keydown',e=>{if(e.code==='Space'&&!editable(e)){e.preventDefault();spaceHeld=true;viewport.classList.add('pan-mode');}});
@@ -3314,6 +3364,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     cancel();selectionMode=!selectionMode;handMode=false;$('#panTool').setAttribute('aria-pressed','false');viewport.classList.remove('pan-mode');viewport.classList.toggle('selection-mode',selectionMode);$('#selectionTool').setAttribute('aria-pressed',String(selectionMode));
     say(selectionMode?'Auswahl: Bauteile antippen oder ein Rechteck auf freier Fläche ziehen.':'Auswahlwerkzeug beendet.');
   };
+  $('#duplicateSelection').onclick=()=>pastePackage(copySelection());
+  $('#deleteSelection').onclick=()=>removeSelection();
+  $('#clearSelection').onclick=()=>{cancel();clearPick();};
   $('#showVoltage').onclick=()=>setShowVoltage(!showVoltage);
   $('#showCurrent').onclick=()=>setShowCurrent(!showCurrent);
   $('#zoomIn').onclick=()=>{cancel();zoomAt(scale*1.25);};$('#zoomOut').onclick=()=>{cancel();zoomAt(scale/1.25);};
