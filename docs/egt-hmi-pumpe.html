@@ -39,6 +39,11 @@
       --accent: #3b7088;
       --row: #141618;
       --row-line: #4c5459;
+      --tb-face: #eeefed;
+      --tb-face-2: #d9dad6;
+      --tb-cell: #e2e3df;
+      --tb-line: #c1c4c1;
+      --tb-ink: #3c444a;
     }
     html.palette-tag,
     html.palette-tag-rahmen,
@@ -73,6 +78,11 @@
       --accent: #2f6f88;
       --row: #ffffff;
       --row-line: #5b666d;
+      --tb-face: #f6f7f4;
+      --tb-face-2: #e6e7e3;
+      --tb-cell: #eceeea;
+      --tb-line: #cdd0cc;
+      --tb-ink: #2d353b;
     }
     html.palette-tag {
       --card: #d8dee2;
@@ -121,6 +131,11 @@
       --accent: #4e736f;
       --row: #1f2120;
       --row-line: #5b615e;
+      --tb-face: #eeefed;
+      --tb-face-2: #d9dad6;
+      --tb-cell: #e2e3df;
+      --tb-line: #c1c4c1;
+      --tb-ink: #3c444a;
     }
     html.palette-kontrast {
       --bg: #0e0e0e;
@@ -154,6 +169,11 @@
       --accent: #1f7eab;
       --row: #000000;
       --row-line: #8a8a8a;
+      --tb-face: #c8cac6;
+      --tb-face-2: #b0b2ae;
+      --tb-cell: #b8bab6;
+      --tb-line: #9a9c98;
+      --tb-ink: #1a1a1a;
     }
     * { box-sizing: border-box; }
     html { color-scheme: dark; }
@@ -699,22 +719,128 @@
     }
 
     .side { display: contents; }
-    .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
     button.cmd {
-      appearance: none; border-radius: 12px; padding: 12px 10px 10px;
-      cursor: pointer; color: #fff; text-align: center;
-      border: 1px solid transparent; font: inherit; font-weight: 800; font-size: 15px;
+      appearance: none; cursor: pointer; font: inherit; font-weight: 800;
+      color: #fff; text-align: center; border: 0; padding: 0;
+      touch-action: manipulation;
     }
-    button.cmd.auf { background: var(--blue-btn); border-color: var(--blue); }
-    button.cmd.zu { background: var(--amber); border-color: var(--yellow); }
-    button.cmd.stop { grid-column: 1 / -1; background: var(--red); border-color: var(--red); }
-    button.cmd.notaus { grid-column: 1 / -1; background: color-mix(in srgb, var(--red) 55%, #4a1010); border-color: var(--red); border-radius: 50px; }
-    button.cmd.ghost {
-      grid-column: 1 / -1; background: transparent; border-color: var(--line); color: var(--text);
+    button.cmd:focus-visible { outline: 2px solid #1f5f8a; outline-offset: 3px; }
+    .tasterboard {
+      position: relative;
+      background: linear-gradient(180deg, var(--tb-face) 0%, var(--tb-face-2) 100%);
+      border: 1px solid #9ea3a6;
+      border-radius: 2px;
+      padding: 18px 16px 14px;
+      color: var(--tb-ink);
+      box-shadow: inset 0 1px 0 #fff, 0 2px 5px #0002;
+      transition: background .04s linear, color .04s linear;
     }
-    button.cmd:hover { filter: brightness(1.08); }
-    button.cmd.active { box-shadow: inset 0 3px 8px #0007; filter: brightness(.92); }
-    .press-hint { font-size: 11px; color: var(--muted); margin-top: 10px; }
+    .tb-screw {
+      position: absolute; width: 10px; height: 10px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #dfe2e4, #777d82 70%);
+      box-shadow: inset 0 0 0 1px #555b60, 0 1px 0 #fff8;
+    }
+    .tb-screw::after {
+      content: ""; position: absolute; left: 2px; right: 2px; top: 4px; height: 1px;
+      background: #50555a; transform: rotate(-12deg);
+    }
+    .tb-screw.tl { top: 8px; left: 8px; }
+    .tb-screw.tr { top: 8px; right: 8px; }
+    .tb-screw.bl { bottom: 8px; left: 8px; }
+    .tb-screw.br { bottom: 8px; right: 8px; }
+    .tb-top-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin: 0 4px 10px;
+    }
+    .tb-panel {
+      border: 1px solid var(--tb-line); background: var(--tb-cell);
+      min-height: 132px; padding: 12px;
+      display: grid; align-items: center;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-indicator-panel {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 7px; padding: 12px 5px 9px;
+    }
+    .tb-indicator-wrap { display: grid; place-items: center; min-width: 0; }
+    .tb-big-lamp {
+      width: 76px; height: 76px; border-radius: 50%;
+      box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, inset 0 7px 10px #fff4;
+      border: 0; position: relative; overflow: visible;
+      filter: saturate(.88) brightness(.9);
+      transition: box-shadow .05s linear, filter .05s linear, transform .05s linear;
+    }
+    .tb-big-lamp::before {
+      content: ""; position: absolute; inset: -18px; border-radius: 50%;
+      opacity: 0; transform: scale(.9); transition: opacity .05s linear, transform .05s linear;
+      pointer-events: none;
+    }
+    .tb-big-lamp::after {
+      content: ""; position: absolute; left: 18px; top: 14px; width: 24px; height: 18px;
+      border-radius: 50%; background: rgba(255,255,255,.28); filter: blur(2px);
+      pointer-events: none;
+    }
+    .tb-big-lamp.yellow { background: radial-gradient(circle at 34% 30%, #f6e56a, #d4a82a 58%, #8a6a10); }
+    .tb-big-lamp.yellow::before { background: radial-gradient(circle, rgba(240, 196, 0, .75) 0%, rgba(240, 196, 0, .30) 48%, rgba(240, 196, 0, 0) 72%); }
+    .tb-big-lamp.on { filter: saturate(1.18) brightness(1.08); transform: scale(1.015); }
+    html.palette-tag-feld .tb-big-lamp { filter: saturate(.78) brightness(.84); }
+    html.palette-tag-feld .tb-big-lamp.on { filter: saturate(1.2) brightness(1.12); }
+    html.palette-kontrast .tb-big-lamp { filter: saturate(.92) brightness(.68); }
+    html.palette-kontrast .tb-big-lamp.on { filter: saturate(1.45) brightness(1.28); }
+    .tb-big-lamp.on::before { opacity: 1; transform: scale(1.05); }
+    .tb-big-lamp.on.yellow { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(232, 186, 24, .98), 0 0 44px rgba(232, 186, 24, .48), inset 0 7px 10px #fff8; }
+    .tb-mid-row {
+      display: grid; grid-template-columns: 1fr; gap: 6px; margin: 0 4px 8px;
+    }
+    .tb-estop-row {
+      min-height: 182px; border: 1px solid var(--tb-line); background: var(--tb-cell);
+      padding: 12px 10px 10px; display: grid; align-items: center;
+      grid-template-columns: minmax(92px, 124px) 1fr;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-mushroom {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, #f0c433, #c99610 62%, #9a760c);
+      box-shadow: 0 5px 0 #7a5e08, inset 0 2px 3px #ffe9a8;
+      position: relative; justify-self: center;
+    }
+    .tb-mushroom .tb-cap {
+      position: absolute; inset: 11px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #ff6a62, #c41e1e 55%, #7a1212);
+      box-shadow: 0 5px 0 #5a0e0e, inset 0 6px 8px #ffd4cc55;
+    }
+    .tb-mushroom.active .tb-cap { inset: 13px 11px 9px; box-shadow: inset 0 8px 12px #0007, 0 1px 0 #5a0e0e; }
+    .tb-estop-control { display:flex; flex-direction:column; align-items:center; gap:8px; }
+    .tb-estop-release {
+      appearance:none; border:1px solid #8f969a; border-radius:7px; padding:7px 10px;
+      background:linear-gradient(#f4f5f3,#cfd2d2); color:#30363a;
+      font:800 11px/1.1 "Segoe UI",system-ui,sans-serif; cursor:pointer;
+      box-shadow:0 2px 0 #7d8386,inset 0 1px 0 #fff; white-space:nowrap;
+    }
+    .tb-estop-release:hover:not(:disabled) { background:linear-gradient(#fff,#d9dcdc); }
+    .tb-estop-release:active:not(:disabled) { transform:translateY(2px); box-shadow:inset 0 2px 4px #0003; }
+    .tb-estop-release:disabled { opacity:.35; cursor:not-allowed; box-shadow:none; }
+    .tb-stations {
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; margin:0 4px;
+    }
+    .tb-cell {
+      border:1px solid var(--tb-line); background:var(--tb-cell); padding:12px 5px 9px;
+      display:flex; flex-direction:column; align-items:center; gap:7px; min-width:0;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-tag { font-size:15px; font-weight:800; letter-spacing:.03em; color:var(--tb-ink); text-align:center; }
+    .tb-tag small { display:block; font-size:12px; font-weight:600; color:#5a6268; letter-spacing:0; }
+    .tb-push {
+      width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
+      color:#2a3036; font-size:9px; font-weight:800; letter-spacing:.03em; line-height:1.05;
+      background:radial-gradient(circle at 34% 30%, #f4f4f2, #c9cccd 60%, #969c9f);
+      box-shadow:0 0 0 4px #cfd2d6, 0 0 0 6px #8e949a, 0 5px 0 #5c6268, inset 0 5px 6px #fff8;
+    }
+    .tb-push.active { transform:translateY(3px); box-shadow:0 0 0 4px #cfd2d6,0 0 0 6px #8e949a,0 1px 0 #5c6268,inset 0 8px 10px #0004; }
+    .tb-lamp { width:20px; height:20px; border-radius:50%; border:1.6px solid #3a4248; background:#cfd3d6; position:relative; }
+    .tb-lamp::before,.tb-lamp::after { content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;background:#3a4248;transform:translate(-50%,-50%) rotate(45deg); }
+    .tb-lamp::after { transform:translate(-50%,-50%) rotate(-45deg); }
+    .tb-cell:has(.cmd.active) .tb-lamp,.tb-estop-row:has(.cmd.active) .tb-lamp { background:#f3dc6a; box-shadow:0 0 7px #d4b83a88; }
     .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
     .test-sw {
       display: flex; align-items: center; gap: 8px;
@@ -780,6 +906,7 @@
       .pipe-in { width: 56px; }
     }
   </style>
+  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261003real1" />
 </head>
 <body>
   <script>
@@ -799,11 +926,14 @@
       <div class="sim-bar">
         <h1>Steuerung — FUP auf der Mini-SPS</h1>
         <select id="circSel" title="Unterrichtsstufe laden">
-          <option value="egt-pumpe-fup.txt" selected>FUP-Übung</option>
-          <option value="egt-pumpe-steckbrett.txt">Steckbrett</option>
-          <option value="egt-pumpe-beispiel.txt">Beispiel</option>
+          <option value="egt-pumpe-real-uebung.txt" selected>Verdrahtung + FUP</option>
+          <option value="egt-pumpe-real-beispiel.txt">Beispiel – vollständig</option>
+          <option value="egt-pumpe-fup.txt">Bisherige Geber – FUP</option>
+          <option value="egt-pumpe-steckbrett.txt">Bisheriges Steckbrett</option>
+          <option value="egt-pumpe-beispiel.txt">Bisheriges Beispiel</option>
         </select>
         <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Nur Simulator</a>
+        <a href="egt-hmi-pumpe.html?hmiOnly=1" target="_blank" rel="noopener">HMI-Demo</a>
       </div>
       <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
     </section>
@@ -858,14 +988,51 @@
         <div class="scene">
           <div class="plant" id="plant">
             <div class="well" id="brunnen" title="Brunnen leer / voll" role="button" tabindex="0">
-              <div class="unit-cap" id="wellCap"><b>Brunnen</b>Quelle · I5</div>
+              <div class="unit-cap" id="wellCap">
+                <b>Brunnen</b>
+                <span class="well-sensor"><span class="float-symbol" id="sensorB3" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B3</b><small>I5</small></span><span id="wellState">Wasser da</span></span></span>
+              </div>
               <div class="well-water"></div>
             </div>
             <button type="button" class="scene-btn" id="btnWell">Leeren</button>
             <div class="pipe pipe-saug" id="pipeSaug"></div>
             <div class="pump-box" id="pumpe">
-              <div class="unit-cap"><b>Pumpe M1</b>K1 · I6 F1</div>
-              <div class="heat-bar" title="Motorwicklung"><span id="heatFill"></span></div>
+              <div class="unit-cap">
+                <div class="pump-caption"><b>Pumpe M1</b>Motorschutz F1</div>
+                <div class="contactor-box" id="contactor" role="img" aria-label="Q1 · Schütz der Pumpe M1" title="Q1 · Schütz der Pumpe M1">
+                  <svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="pumpQ1Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
+                      <linearGradient id="pumpQ1Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
+                      <radialGradient id="pumpQ1Screw"><stop stop-color="#d9dfbd"/><stop offset=".65" stop-color="#aab391"/><stop offset="1" stop-color="#6b7968"/></radialGradient>
+                      <g id="pumpQ1Terminal"><circle r="12" fill="#16231d" stroke="#82907b"/><circle r="8.5" fill="url(#pumpQ1Screw)"/><path d="M-7 0H7M0-7V7" stroke="#35402d" stroke-width="3"/></g>
+                    </defs>
+                    <rect x="3" y="3" width="194" height="254" rx="7" fill="url(#pumpQ1Housing)" stroke="#17251e" stroke-width="3"/>
+                    <rect x="9" y="9" width="182" height="242" rx="2" fill="none" stroke="#899589"/>
+                    <rect x="14" y="15" width="84" height="23" fill="#009c9a"/>
+                    <text x="18" y="32" fill="white" font-size="17" font-weight="bold">SIEMENS</text>
+                    <text x="105" y="32" fill="#d0d8cf" font-size="20">SIRIUS</text>
+                    <g fill="#edf0df" font-size="8" text-anchor="middle">
+                      <text x="26" y="52">1/L1</text><text x="63" y="52">3/L2</text><text x="100" y="52">5/L3</text><text x="137" y="52">13 NO</text><text x="174" y="52">A1</text>
+                      <text x="26" y="230">2/T1</text><text x="63" y="230">4/T2</text><text x="100" y="230">6/T3</text><text x="137" y="230">14 NO</text><text x="174" y="230">A2</text>
+                    </g>
+                    <use href="#pumpQ1Terminal" x="26" y="70"/><use href="#pumpQ1Terminal" x="63" y="70" transform="rotate(30 63 70)"/><use href="#pumpQ1Terminal" x="100" y="70" transform="rotate(-15 100 70)"/><use href="#pumpQ1Terminal" x="137" y="70"/><use href="#pumpQ1Terminal" x="174" y="70"/>
+                    <g fill="#182a20" stroke="#8b9b80" stroke-width="1.5"><rect x="41" y="95" width="19" height="76" rx="2"/><rect x="134" y="95" width="19" height="76" rx="2"/></g>
+                    <g class="contactor-armature"><rect x="75" y="93" width="45" height="77" rx="5" fill="url(#pumpQ1Plunger)" stroke="#1d3020" stroke-width="2"/><rect x="88" y="124" width="20" height="35" fill="#233722" stroke="#8b9b80"/><path d="M85 103V111M110 103V111" stroke="#33452d" stroke-width="4"/></g>
+                    <path d="M166 98H185M175 98V108M166 121H185M166 139H185M166 157H185" stroke="#18271e" stroke-width="8"/>
+                    <rect x="15" y="181" width="135" height="23" fill="#7a8674" stroke="#15231b" stroke-width="2"/>
+                    <text x="21" y="197" fill="#edf0df" font-size="13" font-weight="bold">Q1</text><text x="79" y="197" fill="#edf0df" font-size="10">3P + 1 NO</text>
+                    <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
+                    <use href="#pumpQ1Terminal" x="26" y="214"/><use href="#pumpQ1Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#pumpQ1Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#pumpQ1Terminal" x="137" y="214"/><use href="#pumpQ1Terminal" x="174" y="214"/>
+                    <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
+                  </svg>
+                  <div class="contactor-status">
+                    <b>Q1</b>
+                    <small>Schütz</small>
+                  </div>
+                </div>
+              </div>
+              <div class="heat-bar" title="Thermischer Auslöser F1"><span id="heatFill"></span></div>
               <div class="impeller">
                 <svg viewBox="0 0 40 40" aria-hidden="true">
                   <g transform="translate(20 20)" fill="#94a3b8">
@@ -905,10 +1072,10 @@
                   </div>
                 </div>
                 <div class="ls max" id="lsMax">
-                  <span class="ls-label"><span class="ls-led"></span> I4 Max</span>
+                  <span class="ls-label"><span class="float-symbol" id="sensorB2" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B2</b><small>I4</small></span><span>Maximum</span></span></span>
                 </div>
                 <div class="ls min" id="lsMin">
-                  <span class="ls-label"><span class="ls-led"></span> I3 Min</span>
+                  <span class="ls-label"><span class="float-symbol" id="sensorB1" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B1</b><small>I3</small></span><span>Minimum</span></span></span>
                 </div>
               </div>
             </div>
@@ -919,31 +1086,76 @@
             <div class="ml" id="mlQ5"><i></i><small>Q5 Min</small></div>
             <div class="ml" id="mlQ2"><i></i><small>Q2 Betrieb</small></div>
             <div class="alarm" id="alarm">
-              <div class="p4" title="P4 Störleuchte rot"></div>
               <div class="hupe" title="Hupe H1"></div>
-              <small>P4 rot<br />H1 Hupe</small>
+              <small>H1 Hupe</small>
             </div>
           </div>
           <div class="spill-pool" aria-hidden="true"></div>
           <div class="floor">BODENNIVEAU</div>
         </div>
+        <details class="sensor-details" open>
+          <summary>Schwimmerschalter und Eingangssignale</summary>
+          <p id="sensorMinState">B1 Minimum · I3</p>
+          <p id="sensorMaxState">B2 Maximum · I4</p>
+          <p id="sensorWellState">B3 Brunnen · I5</p>
+          <p>Geschlossener Kontakt und SPS-Signal sind getrennte Zustände. Versorgung und Leitungen selbst verdrahten.</p>
+        </details>
+        <p class="pump-binding-errors" id="pumpBindingErrors" role="status" hidden></p>
       </div>
 
       <div class="side">
         <div class="card">
           <h2>
             <span>Bedientableau</span>
-            <label class="test-sw" title="Ein: Anlage wie bisher im HTML. Aus: Ausgänge nur aus der FUP in CircuitJS.">
+            <label class="test-sw" title="Eigenständige Demo ohne elektrische Verdrahtung">
               <input type="checkbox" id="testMode" />
               <span class="knob"></span>
-              <span class="test-lbl">Testbetrieb</span>
+              <span class="test-lbl">Demo ohne Verdrahtung</span>
             </label>
           </h2>
-          <div class="btns">
-            <button type="button" class="cmd auf" id="btnEin">▶ EIN</button>
-            <button type="button" class="cmd zu" id="btnAus">■ AUS → I2 Öffner</button>
-            <button type="button" class="cmd notaus" id="btnNotAus">⬤ NOT-AUS</button>
-            <button type="button" class="cmd ghost" id="btnReset">↻ Grundstellung</button>
+          <div class="tasterboard">
+            <span class="tb-screw tl" aria-hidden="true"></span>
+            <span class="tb-screw tr" aria-hidden="true"></span>
+            <span class="tb-screw bl" aria-hidden="true"></span>
+            <span class="tb-screw br" aria-hidden="true"></span>
+
+            <div class="tb-top-row">
+              <div class="tb-panel tb-indicator-panel">
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP1" title="P1 gelb · Q7"></div></div>
+                <div class="tb-tag">P1 <small>Q7</small></div>
+              </div>
+              <div class="tb-panel tb-indicator-panel">
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP2" title="P2 gelb · Q8"></div></div>
+                <div class="tb-tag">P2 <small>Q8</small></div>
+              </div>
+            </div>
+
+            <div class="tb-mid-row">
+              <div class="tb-estop-row">
+                <button type="button" class="cmd notaus tb-mushroom" id="btnNotAus" aria-label="Not-Aus S0 betätigen" aria-pressed="false">
+                  <span class="tb-cap"></span>
+                </button>
+                <div class="tb-estop-control">
+                  <div class="tb-tag">S0 <small>NOT-HALT · I8 · Öffner</small></div>
+                  <button type="button" class="tb-estop-release" id="btnNotAusRelease" disabled>↥ ZIEHEN / ENTRIEGELN</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tb-stations">
+              <div class="tb-cell">
+                <button type="button" class="cmd tb-push" id="btnEin" aria-label="Taster EIN S4"></button>
+                <div class="tb-tag">S4 <small>Taster EIN · I1</small></div>
+              </div>
+              <div class="tb-cell">
+                <button type="button" class="cmd tb-push" id="btnAus" aria-label="Taster AUS S5"></button>
+                <div class="tb-tag">S5 <small>Taster AUS · I2</small></div>
+              </div>
+              <div class="tb-cell">
+                <button type="button" class="system-reset" id="btnReset">Anlage zurücksetzen</button>
+                <div class="tb-tag"><small>Systemfunktion</small></div>
+              </div>
+            </div>
           </div>
           <div class="toggles">
             <label class="test-sw ok" title="1 = Automatik (LOGIK-08), 0 = Hand">
@@ -956,21 +1168,22 @@
               <span class="knob"></span>
               <span class="test-lbl">Motorschutz I6</span>
             </label>
-            <label class="test-sw bad" title="I4 bleibt 1: Max greift nicht — Füll-RS fällt nicht, Überlauf über 100 %">
+            <label class="test-sw bad" title="B2-Kontakt geschlossen festhalten; sein SPS-Signal folgt weiterhin der Verdrahtung">
               <input type="checkbox" id="swI4" />
               <span class="knob"></span>
-              <span class="test-lbl">I4 Max fehlt</span>
+              <span class="test-lbl">B2 Handtest: geschlossen</span>
             </label>
-            <label class="test-sw bad" title="I5 bleibt 1: Sensor nicht verdrahtet — Brunnen leer, Pumpe läuft trocken, F1 thermisch">
+            <label class="test-sw bad" title="B3-Kontakt geschlossen festhalten; sein SPS-Signal folgt weiterhin der Verdrahtung">
               <input type="checkbox" id="swI5" />
               <span class="knob"></span>
-              <span class="test-lbl">I5 fehlt</span>
+              <span class="test-lbl">B3 Handtest: geschlossen</span>
             </label>
           </div>
         </div>
 
         <div class="card">
           <h2>Eingänge / Ausgänge</h2>
+          <p class="pump-io-legend">Grün: Signal EIN · Grau: Signal AUS. SPS-Ausgang A1.Q1 schaltet die Spule von Schütz Q1.</p>
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
@@ -992,8 +1205,8 @@
               <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
               <div class="io-row q"><span><b>Q5</b> <span class="fn">Meldeleuchte Min</span></span><span class="dot" id="ledQ5"></span></div>
               <div class="io-row q"><span><b>Q6</b> <span class="fn">frei</span></span><span class="dot" id="ledQ6"></span></div>
-              <div class="io-row q"><span><b>Q7</b> <span class="fn">frei</span></span><span class="dot" id="ledQ7"></span></div>
-              <div class="io-row q"><span><b>Q8</b> <span class="fn">frei</span></span><span class="dot" id="ledQ8"></span></div>
+              <div class="io-row q"><span><b>Q7</b> <span class="fn">P1 gelb</span></span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q"><span><b>Q8</b> <span class="fn">P2 gelb</span></span><span class="dot" id="ledQ8"></span></div>
             </div>
           </div>
         </div>
@@ -1003,12 +1216,13 @@
     </section>
   </div>
 
+<script src="egt-hmi-pumpe-real.js?v=20261003real1"></script>
 <script>
 (function () {
   var V_ON = 230, V_OFF = 0, V_TH = 80, V_OPEN = 20, OPEN_HOLD_S = 0.003, HOLD_DT_MAX = 0.0005;
   var LVL_MIN = 20, LVL_MAX = 90, LVL_CAP = 118;
   var i1 = 0, i2 = 1, i7 = 1, q1 = false, q2 = false;
-  var q3 = false, q4 = false, q5 = false, q6 = false;
+  var q3 = false, q4 = false, q5 = false, q6 = false, q7 = false, q8 = false;
   var level = 18, lastT = performance.now(), fault = false;
   var dry = false, f1Trip = false, zapf = false, i4Fail = false, i5Fail = false;
   var motorTemp = 0;
@@ -1017,11 +1231,15 @@
   var sim = null, linked = false;
   var iframe = document.getElementById("circuitFrame");
   var hmiOnly = document.documentElement.classList.contains("hmi-only");
+  var demoAllowed = hmiOnly || new URLSearchParams(window.location.search).get("demo") === "1";
+  var realCircuit = true, physicalController = new EGTPumpController(), inputSignals = [];
+  document.getElementById("testMode").closest("label").hidden = !demoAllowed;
   if (hmiOnly) document.getElementById("testMode").checked = true;
 
   function testOn() {
-    return document.getElementById("testMode").checked;
+    return demoAllowed && document.getElementById("testMode").checked;
   }
+  function physicalOn() { return realCircuit && !testOn(); }
 
   /** Wie EGTAcLevelHold: Ein bei |u|≥80 V, Aus erst nach 3 ms unter 20 V — kein 50-Hz-Flattern. */
   function AcHold() {
@@ -1051,16 +1269,16 @@
     }
     return this.on;
   };
-  var qHold = [new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold()];
+  var qHold = [new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold(), new AcHold()];
   function resetQHolds() {
     for (var i = 0; i < qHold.length; i++) qHold[i].reset();
   }
-  function i3() { return level <= LVL_MIN; }
-  function i4() { return i4Fail ? true : level < LVL_MAX; }
-  function i5() { return i5Fail ? true : !dry; }
-  function i6() { return !f1Trip; }
-  function i8() { return notAus; }
-  function pumping() { return q1 && i6(); }
+  function i3() { return physicalOn() ? !!inputSignals[2] : level <= LVL_MIN; }
+  function i4() { return physicalOn() ? !!inputSignals[3] : i4Fail ? true : level < LVL_MAX; }
+  function i5() { return physicalOn() ? !!inputSignals[4] : i5Fail ? true : !dry; }
+  function i6() { return physicalOn() ? !!inputSignals[5] : !f1Trip; }
+  function i8() { return physicalOn() ? !!inputSignals[7] : notAus; }
+  function pumping() { return physicalOn() ? physicalController.pumping() : q1 && i6(); }
 
   function setCjsBadge(on) {
     var pill = document.getElementById("cjsLink");
@@ -1088,11 +1306,24 @@
   }
 
   function writeExt(name, on) {
+    if (physicalOn()) return;
     if (!sim || !linked) return;
     try { sim.setExtVoltage(name, on ? V_ON : V_OFF); } catch (e) {}
   }
 
   function readQ() {
+    if (physicalOn()) {
+      physicalController.read(level, !dry);
+      var plc = physicalController.device("sps:A1"), outputs = plc.outputs || [];
+      inputSignals = plc.inputs || [];
+      i1 = !!inputSignals[0]; i2 = !!inputSignals[1]; i7 = !!inputSignals[6];
+      q1 = !!outputs[0]; q2 = !!outputs[1]; q3 = !!outputs[2]; q4 = !!outputs[3];
+      q5 = !!outputs[4]; q6 = !!outputs[5]; q7 = !!outputs[6]; q8 = !!outputs[7];
+      notAus = !physicalController.device("estop:S0").pressed;
+      f1Trip = !!physicalController.device("protection:F1").tripped;
+      motorTemp = (physicalController.device("protection:F1").thermal || 0) * 100;
+      return;
+    }
     if (testOn() || !sim) return;
     try {
       var t = null;
@@ -1103,12 +1334,14 @@
       q4 = qHold[3].update(sim.getNodeVoltage("Q4"), t);
       q5 = qHold[4].update(sim.getNodeVoltage("Q5"), t);
       q6 = qHold[5].update(sim.getNodeVoltage("Q6"), t);
+      q7 = qHold[6].update(sim.getNodeVoltage("Q7"), t);
+      q8 = qHold[7].update(sim.getNodeVoltage("Q8"), t);
     } catch (e) {}
   }
 
   document.getElementById("testMode").addEventListener("change", function () {
     if (!testOn()) {
-      q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false;
+      q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false; q7 = false; q8 = false;
       betrieb = false; fuellen = false; fault = false;
       resetQHolds();
       readQ();
@@ -1119,7 +1352,9 @@
   });
 
   function led(id, on, cls) {
-    document.getElementById(id).className = "dot" + (on ? " " + (cls || "on-green") : "");
+    var dot = document.getElementById(id);
+    dot.className = "dot" + (on ? " on-green" : "");
+    dot.setAttribute("aria-label", id.replace("led", "") + (on ? ": EIN" : ": AUS"));
   }
 
   function applyTestLogic() {
@@ -1138,12 +1373,14 @@
     q4 = !i5() || !i6() || !i8() || fault || level >= 100 || (dry && i5Fail);
     q5 = i3();
     q6 = false;
+    q7 = safe;
+    q8 = !safe || level >= 100;
   }
 
   function render() {
     var overflow = level >= 100;
-    var minOn = i3();
-    var maxReached = !i4Fail && !i4();
+    var minOn = physicalOn() ? level <= LVL_MIN : i3();
+    var maxReached = physicalOn() ? level >= LVL_MAX : !i4Fail && !i4();
     var stoer = !i6() || !i8() || fault || overflow;
 
     document.getElementById("kpiPos").textContent =
@@ -1190,7 +1427,7 @@
 
     led("ledI1", i1, "on-blue");
     led("ledI2", i2, "on-yellow");
-    led("ledI3", minOn);
+    led("ledI3", physicalOn() ? i3() : minOn);
     led("ledI4", i4());
     led("ledI5", i5());
     led("ledI6", i6());
@@ -1202,16 +1439,18 @@
     led("ledQ4", q4, "on-red");
     led("ledQ5", q5, "on-yellow");
     led("ledQ6", q6);
-    led("ledQ7", false);
-    led("ledQ8", false);
+    led("ledQ7", q7, "on-yellow");
+    led("ledQ8", q8, "on-yellow");
+    var tbP1 = document.getElementById("tbP1");
+    var tbP2 = document.getElementById("tbP2");
+    if (tbP1) tbP1.classList.toggle("on", q7);
+    if (tbP2) tbP2.classList.toggle("on", q8);
 
     document.getElementById("lsMax").classList.toggle("on", maxReached);
     document.getElementById("lsMin").classList.toggle("on", minOn);
     document.getElementById("brunnen").classList.toggle("dry", dry);
     document.getElementById("brunnen").classList.toggle("noprotect", dry && i5Fail);
-    document.getElementById("wellCap").innerHTML = dry
-      ? "<b>Brunnen</b>leer · I5"
-      : "<b>Brunnen</b>Quelle · I5";
+    document.getElementById("wellState").textContent = dry ? "Leer" : "Wasser da";
     var hot = motorTemp >= 45;
     document.getElementById("pumpe").classList.toggle("run", pumping());
     document.getElementById("pumpe").classList.toggle("hot", hot && !f1Trip);
@@ -1268,33 +1507,73 @@
       msg.className = "v state-ok";
       msg.textContent = "Betriebsbereit";
     }
+    document.documentElement.classList.toggle("physical-pump", physicalOn());
+    document.getElementById("contactor").hidden = !physicalOn();
+    document.querySelector(".sensor-details").hidden = !physicalOn();
+    if (physicalOn()) physicalController.render(document, level, dry);
+    else document.getElementById("pumpBindingErrors").hidden = true;
   }
 
   function hold(btn, onDown, onUp) {
-    function down(ev) { ev.preventDefault(); btn.classList.add("active"); onDown(); }
-    function up(ev) { ev.preventDefault(); btn.classList.remove("active"); onUp(); }
+    var held = false;
+    function down(ev) {
+      ev.preventDefault(); if (held) return; held = true;
+      if (ev.pointerId != null) btn.setPointerCapture(ev.pointerId);
+      btn.classList.add("active"); onDown();
+    }
+    function up(ev) {
+      if (ev && ev.preventDefault) ev.preventDefault(); if (!held) return;
+      held = false; btn.classList.remove("active"); onUp();
+    }
     btn.addEventListener("pointerdown", down);
     btn.addEventListener("pointerup", up);
     btn.addEventListener("pointercancel", up);
+    btn.addEventListener("lostpointercapture", up);
+    btn.addEventListener("keydown", function (ev) { if ((ev.key === " " || ev.key === "Enter") && !ev.repeat) down(ev); });
+    btn.addEventListener("keyup", function (ev) { if (ev.key === " " || ev.key === "Enter") up(ev); });
+    btn.addEventListener("blur", up);
+    window.addEventListener("blur", up);
+    document.addEventListener("visibilitychange", function () { if (document.hidden) up(); });
     btn.addEventListener("pointerleave", function (ev) {
       if (btn.classList.contains("active")) up(ev);
     });
   }
 
   hold(document.getElementById("btnEin"), function () {
+    if (physicalOn()) physicalController.action("button:S4", "press");
     i1 = 1; writeExt("I1", true);
     if (testOn()) applyTestLogic();
-  }, function () { i1 = 0; writeExt("I1", false); });
+  }, function () { if (physicalOn()) physicalController.action("button:S4", "release"); i1 = 0; writeExt("I1", false); });
 
   hold(document.getElementById("btnAus"), function () {
+    if (physicalOn()) physicalController.action("button:S5", "press");
     i2 = 0; writeExt("I2", false);
     if (testOn()) applyTestLogic();
-  }, function () { i2 = 1; writeExt("I2", true); });
+  }, function () { if (physicalOn()) physicalController.action("button:S5", "release"); i2 = 1; writeExt("I2", true); });
 
-  hold(document.getElementById("btnNotAus"), function () {
-    notAus = false; writeExt("I8", false);
+  var btnNotAus = document.getElementById("btnNotAus");
+  var btnNotAusRelease = document.getElementById("btnNotAusRelease");
+  function syncEstop() {
+    btnNotAus.classList.toggle("active", !notAus);
+    btnNotAus.setAttribute("aria-pressed", notAus ? "false" : "true");
+    btnNotAusRelease.disabled = notAus;
+  }
+  btnNotAus.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    if (!notAus) return;
+    notAus = false;
+    if (physicalOn()) physicalController.action("estop:S0", "press");
+    writeExt("I8", false);
     if (testOn()) { q1 = false; betrieb = false; }
-  }, function () { notAus = true; writeExt("I8", true); });
+    syncEstop();
+  });
+  btnNotAusRelease.addEventListener("click", function () {
+    notAus = true;
+    if (physicalOn()) physicalController.action("estop:S0", "release");
+    writeExt("I8", true);
+    syncEstop();
+  });
+  syncEstop();
 
   hold(document.getElementById("btnZapf"), function () {
     zapf = true;
@@ -1302,6 +1581,7 @@
 
   document.getElementById("modeAuto").addEventListener("change", function () {
     i7 = this.checked ? 1 : 0;
+    if (physicalOn()) physicalController.action("selector:S7", this.checked ? "on" : "off");
     writeExt("I7", !!i7);
   });
 
@@ -1321,24 +1601,28 @@
 
   document.getElementById("swF1").addEventListener("change", function () {
     f1Trip = this.checked;
+    if (physicalOn()) physicalController.action("protection:F1", this.checked ? "trip" : "reset");
     writeExt("I6", i6());
     if (testOn() && f1Trip) q1 = false;
   });
 
   document.getElementById("swI4").addEventListener("change", function () {
     i4Fail = this.checked;
+    if (physicalOn()) physicalController.action("sensor:B2", this.checked ? "closed" : "auto");
     writeExt("I4", i4());
   });
 
   document.getElementById("swI5").addEventListener("change", function () {
     i5Fail = this.checked;
+    if (physicalOn()) physicalController.action("sensor:B3", this.checked ? "closed" : "auto");
     writeExt("I5", i5());
   });
 
   document.getElementById("btnReset").addEventListener("click", function () {
+    if (physicalOn()) physicalController.reset();
     level = 18; fault = false; dry = false; f1Trip = false; zapf = false; i4Fail = false; i5Fail = false;
     motorTemp = 0;
-    q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false;
+    q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false; q7 = false; q8 = false;
     betrieb = false; fuellen = false;
     i1 = 0; i2 = 1; i7 = 1; notAus = true;
     resetQHolds();
@@ -1350,23 +1634,28 @@
     writeExt("I1", false); writeExt("I2", true);
     writeExt("I5", true); writeExt("I6", true);
     writeExt("I7", true); writeExt("I8", true);
+    syncEstop();
   });
 
   function tick(now) {
     var dt = Math.min(0.08, (now - lastT) / 1000);
     lastT = now;
     if (!testOn()) readQ();
-    if (pumping() && dry) motorTemp = Math.min(100, motorTemp + 72 * dt);
-    else if (pumping()) motorTemp = Math.min(100, motorTemp + 8 * dt);
-    else motorTemp = Math.max(0, motorTemp - 10 * dt);
-    if (motorTemp >= 100) {
+    if (physicalOn()) dt = physicalController.processDelta();
+    if (!physicalOn()) {
+      if (pumping() && dry) motorTemp = Math.min(100, motorTemp + 72 * dt);
+      else if (pumping()) motorTemp = Math.min(100, motorTemp + 8 * dt);
+      else motorTemp = Math.max(0, motorTemp - 10 * dt);
+    }
+    if (!physicalOn() && motorTemp >= 100) {
       f1Trip = true;
       document.getElementById("swF1").checked = true;
     }
     if (testOn()) applyTestLogic();
     var rate = (parseFloat(document.getElementById("spd").value) / 100) * 22;
-    if (pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
-    if (zapf) level = Math.max(0, level - rate * 1.15 * dt);
+    var processRunning = !physicalOn() || physicalController.snapshot && physicalController.snapshot.running;
+    if (processRunning && pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
+    if (processRunning && zapf) level = Math.max(0, level - rate * 1.15 * dt);
     writeExt("I1", !!i1);
     writeExt("I2", !!i2);
     writeExt("I3", i3());
@@ -1385,6 +1674,7 @@
     linked = !!sim;
     setCjsBadge(linked);
     if (!sim) return;
+    physicalController.attach(sim);
     sim.onupdate = function () { readQ(); };
     writeExt("I1", !!i1);
     writeExt("I2", !!i2);
@@ -1407,6 +1697,10 @@
   }
 
   function loadCircuit(name) {
+    physicalController.releaseButtons();
+    physicalController.attach(null);
+    realCircuit = name.indexOf("egt-pumpe-real-") === 0;
+    inputSignals = [];
     linked = false; sim = null;
     setCjsBadge(false);
     var selection = document.getElementById("circSel");
@@ -1424,7 +1718,10 @@
   document.getElementById("circSel").addEventListener("change", function () {
     loadCircuit(this.value);
   });
-  loadCircuit("egt-pumpe-fup.txt");
+  var initialCircuit = new URLSearchParams(location.search).get("example") === "1"
+    ? "egt-pumpe-real-beispiel.txt" : "egt-pumpe-real-uebung.txt";
+  document.getElementById("circSel").value = initialCircuit;
+  loadCircuit(initialCircuit);
 
   (function splitDrag() {
     var app = document.getElementById("app");

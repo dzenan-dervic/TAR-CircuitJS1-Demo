@@ -6,6 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EGT Torsteuerung — CircuitJS + HMI</title>
+  <link rel="stylesheet" href="egt-hmi-tor-real.css" />
   <style>
     :root,
     html.palette-nacht {
@@ -118,7 +119,7 @@
     }
     .app {
       display: grid;
-      grid-template-columns: minmax(420px, 7fr) 12px minmax(360px, 3fr);
+      grid-template-columns: minmax(420px, 55fr) 12px minmax(360px, 45fr);
       height: 100%;
     }
     html.hmi-only .app { display: block; }
@@ -591,8 +592,10 @@
     }
     .tb-big-lamp.green { background: radial-gradient(circle at 34% 30%, #47bd76, #218a4d 58%, #14532d); }
     .tb-big-lamp.red { background: radial-gradient(circle at 34% 30%, #f1554f, #cb2d2b 58%, #7a1717); }
+    .tb-big-lamp.yellow { background: radial-gradient(circle at 34% 30%, #f6e56a, #d4a82a 58%, #8a6a10); }
     .tb-big-lamp.green::before { background: radial-gradient(circle, rgba(53, 214, 104, .72) 0%, rgba(53, 214, 104, .28) 48%, rgba(53, 214, 104, 0) 72%); }
     .tb-big-lamp.red::before { background: radial-gradient(circle, rgba(239, 68, 68, .74) 0%, rgba(239, 68, 68, .28) 48%, rgba(239, 68, 68, 0) 72%); }
+    .tb-big-lamp.yellow::before { background: radial-gradient(circle, rgba(240, 196, 0, .75) 0%, rgba(240, 196, 0, .30) 48%, rgba(240, 196, 0, 0) 72%); }
     .tb-big-lamp.on { filter: saturate(1.18) brightness(1.08); transform: scale(1.015); }
     html.palette-tag-feld .tb-big-lamp { filter: saturate(.78) brightness(.84); }
     html.palette-tag-feld .tb-big-lamp.on { filter: saturate(1.2) brightness(1.12); }
@@ -601,6 +604,7 @@
     .tb-big-lamp.on::before { opacity: 1; transform: scale(1.05); }
     .tb-big-lamp.on.green { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(42, 164, 91, .95), 0 0 44px rgba(42, 164, 91, .45), inset 0 7px 10px #fff8; }
     .tb-big-lamp.on.red { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(214, 58, 52, .98), 0 0 44px rgba(214, 58, 52, .45), inset 0 7px 10px #fff8; }
+    .tb-big-lamp.on.yellow { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(232, 186, 24, .98), 0 0 44px rgba(232, 186, 24, .48), inset 0 7px 10px #fff8; }
     .tb-mid-row {
       display: grid; grid-template-columns: 1fr; gap: 6px; margin: 0 4px 8px;
     }
@@ -754,8 +758,13 @@
     <section class="sim-pane">
       <div class="sim-bar">
         <h1>Steuerung — FUP auf der Mini-SPS</h1>
+        <button type="button" class="tor-info-button" id="fupHelpOpen" aria-label="FUP-Signalverbindungen erklären" aria-haspopup="dialog" aria-controls="fupHelp" title="FUP-Signalverbindungen erklären">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg>
+        </button>
         <select id="circSel" title="Unterrichtsstufe laden">
-          <option value="egt-tor-standard.txt" selected>Standardaufbau</option>
+          <option value="egt-tor-real-uebung.txt" selected>Übung · selbst verdrahten</option>
+          <option value="egt-tor-real-beispiel.txt">Beispiel · vollständig verdrahtet</option>
+          <option value="egt-tor-standard.txt">Bisheriger Aufbau · Geber</option>
           <option value="egt-tor-steckbrett.txt">Freies Steckbrett</option>
           <option value="egt-tor-beispiel.txt">Beispiel (fertig)</option>
         </select>
@@ -811,6 +820,57 @@
           <span>Anlage — Rolltor</span>
           <span class="spd">Geschwindigkeit <input id="spd" type="range" min="10" max="100" value="55" /></span>
         </h2>
+        <div class="tor-contactors" id="torContactors"><div class="tor-contactor" id="torQ1" role="img" aria-label="Q1 Schütz abgefallen"><b>Q1 Schütz · AUF</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="torQ1Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
+                      <linearGradient id="torQ1Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
+                      <radialGradient id="torQ1Screw"><stop stop-color="#d9dfbd"/><stop offset=".65" stop-color="#aab391"/><stop offset="1" stop-color="#6b7968"/></radialGradient>
+                      <g id="torQ1Terminal"><circle r="12" fill="#16231d" stroke="#82907b"/><circle r="8.5" fill="url(#torQ1Screw)"/><path d="M-7 0H7M0-7V7" stroke="#35402d" stroke-width="3"/></g>
+                    </defs>
+                    <rect x="3" y="3" width="194" height="254" rx="7" fill="url(#torQ1Housing)" stroke="#17251e" stroke-width="3"/>
+                    <rect x="9" y="9" width="182" height="242" rx="2" fill="none" stroke="#899589"/>
+                    <rect x="14" y="15" width="84" height="23" fill="#009c9a"/>
+                    <text x="18" y="32" fill="white" font-size="17" font-weight="bold">SIEMENS</text>
+                    <text x="105" y="32" fill="#d0d8cf" font-size="20">SIRIUS</text>
+                    <g fill="#edf0df" font-size="8" text-anchor="middle">
+                      <text x="26" y="52">1/L1</text><text x="63" y="52">3/L2</text><text x="100" y="52">5/L3</text><text x="137" y="52">13 NO</text><text x="174" y="52">A1</text>
+                      <text x="26" y="230">2/T1</text><text x="63" y="230">4/T2</text><text x="100" y="230">6/T3</text><text x="137" y="230">14 NO</text><text x="174" y="230">A2</text>
+                    </g>
+                    <use href="#torQ1Terminal" x="26" y="70"/><use href="#torQ1Terminal" x="63" y="70" transform="rotate(30 63 70)"/><use href="#torQ1Terminal" x="100" y="70" transform="rotate(-15 100 70)"/><use href="#torQ1Terminal" x="137" y="70"/><use href="#torQ1Terminal" x="174" y="70"/>
+                    <g fill="#182a20" stroke="#8b9b80" stroke-width="1.5"><rect x="41" y="95" width="19" height="76" rx="2"/><rect x="134" y="95" width="19" height="76" rx="2"/></g>
+                    <g class="contactor-armature"><rect x="75" y="93" width="45" height="77" rx="5" fill="url(#torQ1Plunger)" stroke="#1d3020" stroke-width="2"/><rect x="88" y="124" width="20" height="35" fill="#233722" stroke="#8b9b80"/><path d="M85 103V111M110 103V111" stroke="#33452d" stroke-width="4"/></g>
+                    <path d="M166 98H185M175 98V108M166 121H185M166 139H185M166 157H185" stroke="#18271e" stroke-width="8"/>
+                    <rect x="15" y="181" width="135" height="23" fill="#7a8674" stroke="#15231b" stroke-width="2"/>
+                    <text x="21" y="197" fill="#edf0df" font-size="13" font-weight="bold">Q1</text><text x="79" y="197" fill="#edf0df" font-size="10">3P + 1 NO</text>
+                    <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
+                    <use href="#torQ1Terminal" x="26" y="214"/><use href="#torQ1Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ1Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ1Terminal" x="137" y="214"/><use href="#torQ1Terminal" x="174" y="214"/>
+                    <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
+                  </svg></div><div class="tor-contactor" id="torQ2" role="img" aria-label="Q2 Schütz abgefallen"><b>Q2 Schütz · ZU</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="torQ2Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
+                      <linearGradient id="torQ2Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
+                      <radialGradient id="torQ2Screw"><stop stop-color="#d9dfbd"/><stop offset=".65" stop-color="#aab391"/><stop offset="1" stop-color="#6b7968"/></radialGradient>
+                      <g id="torQ2Terminal"><circle r="12" fill="#16231d" stroke="#82907b"/><circle r="8.5" fill="url(#torQ2Screw)"/><path d="M-7 0H7M0-7V7" stroke="#35402d" stroke-width="3"/></g>
+                    </defs>
+                    <rect x="3" y="3" width="194" height="254" rx="7" fill="url(#torQ2Housing)" stroke="#17251e" stroke-width="3"/>
+                    <rect x="9" y="9" width="182" height="242" rx="2" fill="none" stroke="#899589"/>
+                    <rect x="14" y="15" width="84" height="23" fill="#009c9a"/>
+                    <text x="18" y="32" fill="white" font-size="17" font-weight="bold">SIEMENS</text>
+                    <text x="105" y="32" fill="#d0d8cf" font-size="20">SIRIUS</text>
+                    <g fill="#edf0df" font-size="8" text-anchor="middle">
+                      <text x="26" y="52">1/L1</text><text x="63" y="52">3/L2</text><text x="100" y="52">5/L3</text><text x="137" y="52">13 NO</text><text x="174" y="52">A1</text>
+                      <text x="26" y="230">2/T1</text><text x="63" y="230">4/T2</text><text x="100" y="230">6/T3</text><text x="137" y="230">14 NO</text><text x="174" y="230">A2</text>
+                    </g>
+                    <use href="#torQ2Terminal" x="26" y="70"/><use href="#torQ2Terminal" x="63" y="70" transform="rotate(30 63 70)"/><use href="#torQ2Terminal" x="100" y="70" transform="rotate(-15 100 70)"/><use href="#torQ2Terminal" x="137" y="70"/><use href="#torQ2Terminal" x="174" y="70"/>
+                    <g fill="#182a20" stroke="#8b9b80" stroke-width="1.5"><rect x="41" y="95" width="19" height="76" rx="2"/><rect x="134" y="95" width="19" height="76" rx="2"/></g>
+                    <g class="contactor-armature"><rect x="75" y="93" width="45" height="77" rx="5" fill="url(#torQ2Plunger)" stroke="#1d3020" stroke-width="2"/><rect x="88" y="124" width="20" height="35" fill="#233722" stroke="#8b9b80"/><path d="M85 103V111M110 103V111" stroke="#33452d" stroke-width="4"/></g>
+                    <path d="M166 98H185M175 98V108M166 121H185M166 139H185M166 157H185" stroke="#18271e" stroke-width="8"/>
+                    <rect x="15" y="181" width="135" height="23" fill="#7a8674" stroke="#15231b" stroke-width="2"/>
+                    <text x="21" y="197" fill="#edf0df" font-size="13" font-weight="bold">Q2</text><text x="79" y="197" fill="#edf0df" font-size="10">3P + 1 NO</text>
+                    <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
+                    <use href="#torQ2Terminal" x="26" y="214"/><use href="#torQ2Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ2Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ2Terminal" x="137" y="214"/><use href="#torQ2Terminal" x="174" y="214"/>
+                    <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
+                  </svg></div><p>Q1 / Q2 schalten Motor M1.<br>Grüner Rahmen: Schütz angezogen.</p></div>
         <div class="scene">
           <div class="drive-bar" id="drive">
             <div class="welle"></div>
@@ -843,7 +903,7 @@
 
           <div class="portal">
             <div class="door" id="door">
-              <button type="button" class="edge" id="btnEdge">I7 Sicherheitsleiste</button>
+              <button type="button" class="edge" id="btnEdge">B2 · I7 Sicherheitsleiste</button>
             </div>
           </div>
           <div class="pe-wrap">
@@ -854,7 +914,7 @@
               <div class="pe-head rx"><i></i></div>
             </div>
           </div>
-          <button type="button" class="obstacle" id="btnObstacle">⚠ Hindernis stellen</button>
+          <button type="button" class="obstacle" id="btnObstacle">Hindernis stellen</button>
           <div class="ampel red" id="ampel"><i></i><i></i><i></i></div>
           <div class="ampel-cap">Ampel</div>
           <div class="alarm" id="alarm">
@@ -870,10 +930,10 @@
         <div class="card">
           <h2>
             <span>Bedientableau</span>
-            <label class="test-sw" title="Ein: Anlage wie bisher im HTML. Aus: Ausgänge nur aus der FUP in CircuitJS.">
+            <label class="test-sw" title="Demo: eigenständige HMI. Ausgeschaltet: reale elektrische Bauteile in CircuitJS.">
               <input type="checkbox" id="testMode" />
               <span class="knob"></span>
-              <span class="test-lbl">Testbetrieb</span>
+              <span class="test-lbl">Demo ohne Verdrahtung</span>
             </label>
           </h2>
           <div class="tasterboard">
@@ -884,11 +944,11 @@
 
             <div class="tb-top-row">
               <div class="tb-panel tb-indicator-panel">
-                <div class="tb-indicator-wrap"><div class="tb-big-lamp green" id="tbP1" title="P1 grün · Q7"></div></div>
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP1" title="P1 gelb · Q7"></div></div>
                 <div class="tb-tag">P1 <small>Q7</small></div>
               </div>
               <div class="tb-panel tb-indicator-panel">
-                <div class="tb-indicator-wrap"><div class="tb-big-lamp red" id="tbP2" title="P2 rot · Q8"></div></div>
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP2" title="P2 gelb · Q8"></div></div>
                 <div class="tb-tag">P2 <small>Q8</small></div>
               </div>
             </div>
@@ -926,12 +986,14 @@
 
         <div class="card">
           <h2>Eingänge / Ausgänge</h2>
+          <p class="tor-legend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
+          <p id="torErrors" class="tor-errors" role="status" hidden></p>
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
               <div class="io-row"><span><b>I1</b> <span class="fn">Taster AUF</span></span><span class="dot" id="ledI1"></span></div>
               <div class="io-row"><span><b>I2</b> <span class="fn">Taster ZU</span></span><span class="dot" id="ledI2"></span></div>
-              <div class="io-row"><span><b>I3</b> <span class="fn">Taster STOP</span></span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row"><span><b>I3</b> <span class="fn" id="stopLabel">STOP · Öffner</span></span><span class="dot" id="ledI3"></span></div>
               <div class="io-row"><span><b>I4</b> <span class="fn">S1 oben</span></span><span class="dot" id="ledI4"></span></div>
               <div class="io-row"><span><b>I5</b> <span class="fn">S2 unten</span></span><span class="dot" id="ledI5"></span></div>
               <div class="io-row"><span><b>I6</b> <span class="fn">B1 Lichtschranke</span></span><span class="dot" id="ledI6"></span></div>
@@ -947,9 +1009,23 @@
               <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
               <div class="io-row q"><span><b>Q5</b> <span class="fn">Ampel rot</span></span><span class="dot" id="ledQ5"></span></div>
               <div class="io-row q"><span><b>Q6</b> <span class="fn">Ampel grün</span></span><span class="dot" id="ledQ6"></span></div>
-              <div class="io-row q"><span><b>Q7</b> <span class="fn">P1 grün</span></span><span class="dot" id="ledQ7"></span></div>
-              <div class="io-row q"><span><b>Q8</b> <span class="fn">P2 rot</span></span><span class="dot" id="ledQ8"></span></div>
+              <div class="io-row q"><span><b>Q7</b> <span class="fn">P1 gelb</span></span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q"><span><b>Q8</b> <span class="fn">P2 gelb</span></span><span class="dot" id="ledQ8"></span></div>
             </div>
+          </div>
+          <div id="torLearning">
+          <details class="tor-sensors" open><summary>Sensoren und echte Eingangssignale</summary><div class="tor-sensor-row"><label for="torModeS1">S1 · Endschalter oben → I4</label>
+    <p id="torSensorS1">Warte auf Simulation</p><select id="torModeS1" aria-label="S1 Betätigung">
+    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeS2">S2 · Endschalter unten → I5</label>
+    <p id="torSensorS2">Warte auf Simulation</p><select id="torModeS2" aria-label="S2 Betätigung">
+    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeB1">B1 · Lichtschranke · 230 V AC → I6</label>
+    <p id="torSensorB1">Warte auf Simulation</p><select id="torModeB1" aria-label="B1 Betätigung">
+    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeB2">B2 · Sicherheitsleiste → I7</label>
+    <p id="torSensorB2">Warte auf Simulation</p><select id="torModeB2" aria-label="B2 Betätigung">
+    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div>
+          <p class="tor-legend">Automatisch: Torposition, Hindernis und Leiste betätigen die Kontakte. Handtest: Kontakt festhalten, unabhängig von der Anlage. Danach wieder Automatisch wählen. Die Lichtschranke braucht L/N mit 230 V AC; ihr Relais schließt 13/14 bei freiem Lichtweg. Ohne Versorgung bleibt es offen. Endschalter und Leiste sind passive Kontakte. I3 und I8 gehören im Beispiel zur Freigabekette F1 → STOP → Not-Aus; ihr Signal hängt von der ganzen Verdrahtung ab.</p></details>
+          <div class="tor-system"><span id="torF1State">F1</span><button type="button" id="torTrip">F1 auslösen</button><button type="button" id="torProtectionReset">F1 zurücksetzen</button><button type="button" id="torReset">Anlage zurücksetzen</button></div>
+          <p class="tor-legend">Beispiel: Lichtschranke oder Leiste stoppen die ZU-Fahrt. Danach mit AUF zurückfahren. Bei fehlender Endabschaltung löst F1 nach 1,5 s blockiertem Antrieb aus.</p>
           </div>
         </div>
       </div>
@@ -958,8 +1034,28 @@
     </section>
   </div>
 
+<dialog class="tor-fup-help" id="fupHelp" aria-labelledby="fupHelpTitle">
+  <h2 id="fupHelpTitle">Signalverbindungen in der FUP</h2>
+  <p>Die beschrifteten Anschlüsse wie <strong>FUP_Freigabe</strong>, <strong>FUP_AUF</strong> und <strong>FUP_ZU</strong> verbinden die Netzwerke miteinander.</p>
+  <p><strong>Gleicher Name = verbunden.</strong> Das wirkt wie eine Leitung zwischen diesen Anschlüssen. So müssen keine langen Leitungen quer durch die FUP gezeichnet werden.</p>
+  <div class="tor-fup-help-example">
+    <strong>Beispiel: FUP_AUF</strong>
+    <p>Am Ausgang des AUF-Speichers steht <strong>FUP_AUF</strong>. Ein Anschluss mit demselben Namen im anderen Netzwerk erhält dieses Signal: AUF aktiv oder nicht aktiv.</p>
+  </div>
+  <p>Diese Anschlüsse erzeugen selbst kein Signal. <strong>FUP_</strong> kennzeichnet hier ein Programmsignal. <strong>I1–I8</strong> sind die SPS-Eingänge, <strong>Q1–Q8</strong> die SPS-Ausgänge.</p>
+  <p>Bei gezeichneten Leitungen gilt: <strong>Punkt an der Kreuzung = verbunden.</strong> Eine Kreuzung ohne Punkt ist keine Verbindung.</p>
+  <form method="dialog"><button type="submit" autofocus>Schließen</button></form>
+</dialog>
+<script>
+  document.getElementById("fupHelpOpen").addEventListener("click", function () {
+    document.getElementById("fupHelp").showModal();
+  });
+</script>
+<script src="egt-hmi-tor-real.js"></script>
 <script>
 (function () {
+  var real = new TorController(), realMode = true, edgePressed = false;
+  function physicalOn() { return realMode && !testOn(); }
   var V_ON = 230, V_OFF = 0, V_TH = 80;
   var i1 = 0, i2 = 0, i3 = 0, i7 = 1, q1 = false, q2 = false;
   var q3 = false, q4 = false, q5 = false, q6 = false, q7 = false, q8 = false;
@@ -1016,11 +1112,18 @@
   }
 
   function writeExt(name, on) {
-    if (!sim || !linked) return;
+    if (physicalOn()) {
+      var buttons = {I1:"S4",I2:"S5",I3:"S6"};
+      if (buttons[name]) real.action("button:"+buttons[name],on?"press":"release");
+      if (name === "I7") edgePressed = !on;
+      return;
+    }
+    if (realMode || !sim || !linked || testOn()) return;
     try { sim.setExtVoltage(name, on ? V_ON : V_OFF); } catch (e) {}
   }
 
   function readQ() {
+    if (physicalOn()) { real.read(); return; }
     if (testOn() || !sim || !linked) return;
     try {
       q1 = high(sim.getNodeVoltage("Q1"));
@@ -1057,6 +1160,7 @@
   }
 
   document.getElementById("testMode").addEventListener("change", function () {
+    real.suspend(); edgePressed=false;
     overheat = false;
     stallT = 0;
     if (pos > 100) pos = 100;
@@ -1074,6 +1178,13 @@
   }
 
   function render() {
+    document.getElementById("torContactors").hidden = !physicalOn();
+    document.getElementById("torLearning").hidden = !physicalOn();
+    document.getElementById("stopLabel").textContent = physicalOn() ? "STOP · Öffner" : "Taster STOP";
+    if (physicalOn()) { real.render(document); return; }
+    document.querySelectorAll("#ampel .lit, #alarm .lit").forEach(function (el) { el.classList.remove("lit"); });
+    document.getElementById("drive").classList.remove("protection-trip");
+    document.getElementById("pe").classList.remove("unpowered");
     var s1 = pos >= 99.5, s2 = pos <= 0.5;
     var aufFahrt = q1 && !q2 && pos < 100;
     var zuFahrt = q2 && !q1 && pos > 0;
@@ -1169,7 +1280,7 @@
       msg.textContent = "Motor Überlast — Endlage nicht abgeschaltet";
     } else if (testOn()) {
       msg.className = "v state-zu";
-      msg.textContent = "Testbetrieb";
+      msg.textContent = "Demo ohne Verdrahtung";
     } else if (!linked) {
       msg.className = "v";
       msg.textContent = "warte auf CircuitJS";
@@ -1192,8 +1303,13 @@
   }
 
   function hold(btn, onDown, onUp) {
-    function down(ev) { ev.preventDefault(); btn.classList.add("active"); onDown(); }
-    function up(ev) { ev.preventDefault(); btn.classList.remove("active"); onUp(); }
+    var held=false;
+    function down(ev) { if(held)return;ev.preventDefault();held=true;btn.classList.add("active");onDown(); }
+    function up(ev) { if(!held)return;if(ev)ev.preventDefault();held=false;btn.classList.remove("active");onUp(); }
+    btn.addEventListener("keydown",function(ev){if(ev.key===" "||ev.key==="Enter")down(ev);});
+    btn.addEventListener("keyup",function(ev){if(ev.key===" "||ev.key==="Enter")up(ev);});
+    btn.addEventListener("blur",up);window.addEventListener("blur",up);
+    document.addEventListener("visibilitychange",function(){if(document.hidden)up();});
     btn.addEventListener("pointerdown", down);
     btn.addEventListener("pointerup", up);
     btn.addEventListener("pointercancel", up);
@@ -1223,6 +1339,7 @@
   }
   btnNotAus.addEventListener("click", function (ev) {
     ev.preventDefault();
+    if (physicalOn()) { real.action("estop:S0","press"); return; }
     if (!notAus) return;
     notAus = false;
     writeExt("I8", false);
@@ -1230,6 +1347,7 @@
     syncNotAusVisual();
   });
   btnNotAusRelease.addEventListener("click", function () {
+    if (physicalOn()) { real.action("estop:S0","release"); return; }
     notAus = true;
     writeExt("I8", true);
     syncNotAusVisual();
@@ -1245,7 +1363,7 @@
   document.getElementById("btnObstacle").addEventListener("click", function () {
     obstacle = !obstacle;
     this.classList.toggle("on", obstacle);
-    this.textContent = obstacle ? "⚠ Hindernis entfernen" : "⚠ Hindernis stellen";
+    this.textContent = obstacle ? "Hindernis entfernen" : "Hindernis stellen";
     writeExt("I6", !obstacle);
     if (testOn() && obstacle && q2) {
       q2 = false;
@@ -1256,6 +1374,10 @@
   function tick(now) {
     var dt = Math.min(0.08, (now - lastT) / 1000);
     lastT = now;
+    if (physicalOn()) {
+      pos=real.step(parseFloat(document.getElementById("spd").value)/100*28,obstacle,edgePressed);
+      setCjsBadge(linked && !!real.api); render(); requestAnimationFrame(tick); return;
+    }
     if (!testOn()) readQ();
     var speed = (parseFloat(document.getElementById("spd").value) / 100) * 28;
     if (q1 && q2) fault = true;
@@ -1300,6 +1422,8 @@
     linked = !!sim;
     setCjsBadge(linked);
     if (!sim) return;
+    real.attach(realMode ? sim : null);
+    if (physicalOn()) { real.read(); return; }
     sim.onupdate = function () { readQ(); };
     writeExt("I1", !!i1);
     writeExt("I2", !!i2);
@@ -1322,6 +1446,8 @@
   }
 
   function loadCircuit(name) {
+    real.release(); real.attach(null);
+    realMode = name.indexOf("egt-tor-real-") === 0; pos=0;obstacle=false;edgePressed=false;
     linked = false; sim = null;
     setCjsBadge(false);
     var selection = document.getElementById("circSel");
@@ -1339,7 +1465,14 @@
   document.getElementById("circSel").addEventListener("change", function () {
     loadCircuit(this.value);
   });
-  loadCircuit("egt-tor-standard.txt");
+  ["S1","S2","B1","B2"].forEach(function(id){
+    document.getElementById("torMode"+id).addEventListener("change",function(){real.action("sensor:"+id,this.value);});
+  });
+  document.getElementById("torTrip").addEventListener("click",function(){real.action("protection:F1","trip");});
+  document.getElementById("torProtectionReset").addEventListener("click",function(){real.action("protection:F1","reset");});
+  document.getElementById("torReset").addEventListener("click",function(){real.reset();pos=0;obstacle=false;edgePressed=false;document.getElementById("btnObstacle").classList.remove("on");document.getElementById("btnObstacle").textContent="Hindernis stellen";});
+  document.getElementById("circSel").value=new URLSearchParams(location.search).get("example")==="1"?"egt-tor-real-beispiel.txt":"egt-tor-real-uebung.txt";
+  loadCircuit(document.getElementById("circSel").value);
 
   (function splitDrag() {
     var app = document.getElementById("app");

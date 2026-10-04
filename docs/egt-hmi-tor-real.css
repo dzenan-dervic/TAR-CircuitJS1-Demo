@@ -1,0 +1,41 @@
+/* Industrial scene sizes follow the existing HMI rather than changing its scale. */
+.tor-info-button { display:inline-flex;align-items:center;justify-content:center;flex:none;width:28px;height:28px;padding:3px;border:0;border-radius:50%;background:transparent;color:var(--muted);cursor:pointer; }
+.tor-info-button svg { width:20px;height:20px; }
+.tor-info-button:hover { background:var(--card);color:var(--text); }
+.tor-info-button:focus-visible,.tor-fup-help button:focus-visible { outline:2px solid var(--blue);outline-offset:3px; }
+.tor-fup-help { width:480px;max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow:auto;padding:20px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--text);font:inherit; }
+.tor-fup-help::backdrop { background:rgb(0 0 0 / 45%); }
+.tor-fup-help h2 { margin:0 0 14px;font-size:18px; }
+.tor-fup-help p { margin:12px 0; }
+.tor-fup-help-example { padding:12px;border-inline-start:3px solid var(--blue);background:var(--row); }
+.tor-fup-help-example p { margin-bottom:0; }
+.tor-fup-help form { margin-top:18px;text-align:right; }
+.tor-fup-help button { font:inherit;padding:6px 12px;border:1px solid var(--line);border-radius:5px;background:var(--card);color:var(--text);cursor:pointer; }
+.tor-fup-help button:hover { border-color:var(--blue); }
+.tor-contactors { display:flex;gap:8px;justify-content:center;padding:10px;margin-bottom:10px;background:var(--panel);border:1px solid var(--line);border-radius:8px; }
+.tor-contactor { display:flex;flex-direction:column;align-items:center;gap:4px;min-width:76px;padding:6px;border:2px solid var(--line);border-radius:6px;color:var(--text);font-size:12px; }
+.tor-contactor svg {width:44px;height:58px;}
+.tor-contactor.energized {border-color:var(--green);box-shadow:0 0 8px color-mix(in srgb,var(--green) 40%,transparent);}
+.tor-contactor.energized .contactor-armature {transform:translateY(5px);}
+.tor-contactor.energized .contactor-window {fill:var(--green);}
+.tor-contactors p {margin:0;align-self:center;color:var(--muted);font-size:12px;max-width:25ch;}
+.tor-sensors {margin-top:12px;}
+.tor-sensors summary {cursor:pointer;font-size:13px;padding:8px 0;color:var(--text);}
+.tor-sensor-row {padding:8px 0;border-top:1px solid var(--line);font-size:12px;}
+.tor-sensor-row label {display:block;color:var(--text);font-weight:700;}
+.tor-sensor-row p {margin:5px 0;color:var(--muted);}
+.tor-sensors select,.tor-system button {font:inherit;padding:6px 8px;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:5px;}
+.tor-system {display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px;font-size:12px;}
+.tor-errors {color:var(--text);border-inline-start:3px solid var(--red);padding-inline-start:8px;font-size:12px;overflow-wrap:anywhere;}
+.tor-legend {color:var(--muted);font-size:12px;line-height:1.5;}
+.ampel i:nth-child(1).lit {background:var(--red);box-shadow:0 0 14px var(--red);}
+.ampel i:nth-child(2).lit {background:var(--yellow);box-shadow:0 0 14px var(--yellow);}
+.ampel i:nth-child(3).lit {background:var(--green);box-shadow:0 0 14px var(--green);}
+.alarm .p4.lit {background:var(--red);box-shadow:0 0 12px var(--red);}
+.alarm .hupe.lit {color:var(--red);background:var(--red);}
+.pe.unpowered .pe-beam {opacity:.15;}
+.drive-bar.protection-trip {border-color:var(--red);}
+.drive-bar.protection-trip .motor {border-color:var(--red);}
+.tor-sensors select:focus-visible,.tor-system button:focus-visible {outline:2px solid var(--blue);outline-offset:3px;}
+[hidden] {display:none!important;}
+@media(max-width:520px){.tor-contactors {flex-wrap:wrap;}.tor-contactors p {max-width:none;width:100%;text-align:center;}}
