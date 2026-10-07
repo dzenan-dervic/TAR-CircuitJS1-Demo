@@ -482,7 +482,7 @@
     }
     .plant.run .pipe-up {
       background: repeating-linear-gradient(180deg, var(--water-hi) 0 8px, var(--water-deep) 8px 16px);
-      animation: flow-v .45s linear infinite;
+      animation: flow-v .45s linear infinite reverse;
     }
     .plant.run .spout { background: var(--water); box-shadow: 0 8px 10px color-mix(in srgb, var(--water) 40%, transparent); }
     @keyframes flow { to { background-position: 16px 0; } }
@@ -906,7 +906,7 @@
       .pipe-in { width: 56px; }
     }
   </style>
-  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261003real1" />
+  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261007sensorchannels1" />
 </head>
 <body>
   <script>
@@ -983,14 +983,14 @@
       <div class="card">
         <h2>
           <span>Anlage — Wasserbehälter</span>
-          <span class="spd">Förderleistung <input id="spd" type="range" min="10" max="100" value="55" /></span>
+          <span class="spd">Förderleistung <input id="spd" type="range" min="10" max="100" value="55" aria-label="Förderleistung für Befüllen und Zapfen" title="Links langsam · rechts schnell. Regelt Befüllen und Zapfen." /></span>
         </h2>
         <div class="scene">
           <div class="plant" id="plant">
             <div class="well" id="brunnen" title="Brunnen leer / voll" role="button" tabindex="0">
-              <div class="unit-cap" id="wellCap">
+              <div class="unit-cap sensor-card" id="wellCap" role="img" aria-label="B3 Brunnen: nicht betätigt">
                 <b>Brunnen</b>
-                <span class="well-sensor"><span class="float-symbol" id="sensorB3" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B3</b><small>I5</small></span><span id="wellState">Wasser da</span></span></span>
+                <span class="well-sensor"><span class="float-symbol" id="sensorB3" aria-hidden="true"><svg viewBox="0 0 32 36"><path d="M16 2v6"/><g class="float-body"><path d="M16 8v5"/><rect x="11" y="13" width="10" height="13" rx="3"/><path d="M12 17h8"/></g><path class="float-water" d="M2 30q3-3 6 0t6 0t6 0t6 0t4 0"/></svg></span><span class="sensor-copy"><span class="sensor-id"><b>B3</b><small id="sensorInputB3">I5</small></span><span id="wellState">Wasser da</span></span></span>
               </div>
               <div class="well-water"></div>
             </div>
@@ -1072,10 +1072,10 @@
                   </div>
                 </div>
                 <div class="ls max" id="lsMax">
-                  <span class="ls-label"><span class="float-symbol" id="sensorB2" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B2</b><small>I4</small></span><span>Maximum</span></span></span>
+                  <span class="ls-label sensor-card" id="sensorB2Card" role="img" aria-label="B2 Maximum: nicht betätigt"><span class="float-symbol" id="sensorB2" aria-hidden="true"><svg viewBox="0 0 32 36"><path d="M16 2v6"/><g class="float-body"><path d="M16 8v5"/><rect x="11" y="13" width="10" height="13" rx="3"/><path d="M12 17h8"/></g><path class="float-water" d="M2 30q3-3 6 0t6 0t6 0t6 0t4 0"/></svg></span><span class="sensor-copy"><span class="sensor-id"><b>B2</b><small id="sensorInputB2">I4</small></span><span>Maximum</span></span></span>
                 </div>
                 <div class="ls min" id="lsMin">
-                  <span class="ls-label"><span class="float-symbol" id="sensorB1" aria-hidden="true"></span><span class="sensor-copy"><span class="sensor-id"><b>B1</b><small>I3</small></span><span>Minimum</span></span></span>
+                  <span class="ls-label sensor-card" id="sensorB1Card" role="img" aria-label="B1 Minimum: nicht betätigt"><span class="float-symbol" id="sensorB1" aria-hidden="true"><svg viewBox="0 0 32 36"><path d="M16 2v6"/><g class="float-body"><path d="M16 8v5"/><rect x="11" y="13" width="10" height="13" rx="3"/><path d="M12 17h8"/></g><path class="float-water" d="M2 30q3-3 6 0t6 0t6 0t6 0t4 0"/></svg></span><span class="sensor-copy"><span class="sensor-id"><b>B1</b><small id="sensorInputB1">I3</small></span><span>Minimum</span></span></span>
                 </div>
               </div>
             </div>
@@ -1093,13 +1093,6 @@
           <div class="spill-pool" aria-hidden="true"></div>
           <div class="floor">BODENNIVEAU</div>
         </div>
-        <details class="sensor-details" open>
-          <summary>Schwimmerschalter und Eingangssignale</summary>
-          <p id="sensorMinState">B1 Minimum · I3</p>
-          <p id="sensorMaxState">B2 Maximum · I4</p>
-          <p id="sensorWellState">B3 Brunnen · I5</p>
-          <p>Geschlossener Kontakt und SPS-Signal sind getrennte Zustände. Versorgung und Leitungen selbst verdrahten.</p>
-        </details>
         <p class="pump-binding-errors" id="pumpBindingErrors" role="status" hidden></p>
       </div>
 
@@ -1183,30 +1176,30 @@
 
         <div class="card">
           <h2>Eingänge / Ausgänge</h2>
-          <p class="pump-io-legend">Grün: Signal EIN · Grau: Signal AUS. SPS-Ausgang A1.Q1 schaltet die Spule von Schütz Q1.</p>
+          <p class="pump-io-legend">Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung.</p>
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
-              <div class="io-row"><span><b>I1</b> <span class="fn">Taster EIN</span></span><span class="dot" id="ledI1"></span></div>
-              <div class="io-row"><span><b>I2</b> <span class="fn">Taster AUS Öffner</span></span><span class="dot" id="ledI2"></span></div>
-              <div class="io-row"><span><b>I3</b> <span class="fn">Sensor Min</span></span><span class="dot" id="ledI3"></span></div>
-              <div class="io-row"><span><b>I4</b> <span class="fn">Sensor Max Öffner</span></span><span class="dot" id="ledI4"></span></div>
-              <div class="io-row"><span><b>I5</b> <span class="fn">Trockenlauf Öffner</span></span><span class="dot" id="ledI5"></span></div>
-              <div class="io-row"><span><b>I6</b> <span class="fn">Motorschutz F1 Öffner</span></span><span class="dot" id="ledI6"></span></div>
-              <div class="io-row"><span><b>I7</b> <span class="fn">Hand / Auto</span></span><span class="dot" id="ledI7"></span></div>
-              <div class="io-row"><span><b>I8</b> <span class="fn">Not-Aus Öffner</span></span><span class="dot" id="ledI8"></span></div>
+              <div class="io-row io-input"><b>I1</b><span class="fn" id="inputFn1">Taster EIN</span><span class="dot" id="ledI1"></span></div>
+              <div class="io-row io-input"><b>I2</b><span class="fn" id="inputFn2">Taster AUS Öffner</span><span class="dot" id="ledI2"></span></div>
+              <div class="io-row io-input"><b>I3</b><span class="fn" id="inputFn3">Sensor Min</span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row io-input"><b>I4</b><span class="fn" id="inputFn4">Sensor Max Öffner</span><span class="dot" id="ledI4"></span></div>
+              <div class="io-row io-input"><b>I5</b><span class="fn" id="inputFn5">Trockenlauf Öffner</span><span class="dot" id="ledI5"></span></div>
+              <div class="io-row io-input"><b>I6</b><span class="fn" id="inputFn6">Motorschutz F1 Öffner</span><span class="dot" id="ledI6"></span></div>
+              <div class="io-row io-input"><b>I7</b><span class="fn" id="inputFn7">Hand / Auto</span><span class="dot" id="ledI7"></span></div>
+              <div class="io-row io-input"><b>I8</b><span class="fn" id="inputFn8">Not-Aus Öffner</span><span class="dot" id="ledI8"></span></div>
             </div>
             <div class="io-col">
               <div class="k">Ausgänge <em>8/4</em></div>
-              <div class="io-row q"><span><b>Q1</b> <span class="fn">Motor / Pumpe</span></span><span class="dot" id="ledQ1"></span></div>
-              <div class="io-row q"><span><b>Q2</b> <span class="fn">Meldeleuchte Betrieb</span></span><span class="dot" id="ledQ2"></span></div>
-              <div class="io-row q"><span><b>Q3</b> <span class="fn">Meldeleuchte Voll</span></span><span class="dot" id="ledQ3"></span></div>
-              <div class="io-row q"><span><b>Q4</b> <span class="fn">Hupe</span></span><span class="dot" id="ledQ4"></span></div>
+              <div class="io-row q io-output"><b>Q1</b><span class="fn" id="outputFn1">Motor / Pumpe</span><span class="dot" id="ledQ1"></span></div>
+              <div class="io-row q io-output"><b>Q2</b><span class="fn" id="outputFn2">Meldeleuchte Betrieb</span><span class="dot" id="ledQ2"></span></div>
+              <div class="io-row q io-output"><b>Q3</b><span class="fn" id="outputFn3">Meldeleuchte Voll</span><span class="dot" id="ledQ3"></span></div>
+              <div class="io-row q io-output"><b>Q4</b><span class="fn" id="outputFn4">Hupe</span><span class="dot" id="ledQ4"></span></div>
               <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
-              <div class="io-row q"><span><b>Q5</b> <span class="fn">Meldeleuchte Min</span></span><span class="dot" id="ledQ5"></span></div>
-              <div class="io-row q"><span><b>Q6</b> <span class="fn">frei</span></span><span class="dot" id="ledQ6"></span></div>
-              <div class="io-row q"><span><b>Q7</b> <span class="fn">P1 gelb</span></span><span class="dot" id="ledQ7"></span></div>
-              <div class="io-row q"><span><b>Q8</b> <span class="fn">P2 gelb</span></span><span class="dot" id="ledQ8"></span></div>
+              <div class="io-row q io-output"><b>Q5</b><span class="fn" id="outputFn5">Meldeleuchte Min</span><span class="dot" id="ledQ5"></span></div>
+              <div class="io-row q io-output"><b>Q6</b><span class="fn" id="outputFn6">frei</span><span class="dot" id="ledQ6"></span></div>
+              <div class="io-row q io-output"><b>Q7</b><span class="fn" id="outputFn7">P1 gelb</span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q io-output"><b>Q8</b><span class="fn" id="outputFn8">P2 gelb</span><span class="dot" id="ledQ8"></span></div>
             </div>
           </div>
         </div>
@@ -1216,7 +1209,7 @@
     </section>
   </div>
 
-<script src="egt-hmi-pumpe-real.js?v=20261003real1"></script>
+<script src="egt-hmi-pumpe-real.js?v=20261007sensorchannels1"></script>
 <script>
 (function () {
   var V_ON = 230, V_OFF = 0, V_TH = 80, V_OPEN = 20, OPEN_HOLD_S = 0.003, HOLD_DT_MAX = 0.0005;
@@ -1377,7 +1370,23 @@
     q8 = !safe || level >= 100;
   }
 
+  function resetWiringLabels() {
+    [["I",["Taster EIN","Taster AUS Öffner","Sensor Min","Sensor Max Öffner","Trockenlauf Öffner","Motorschutz F1 Öffner","Hand / Auto","Not-Aus Öffner"]],
+     ["Q",["Motor / Pumpe","Meldeleuchte Betrieb","Meldeleuchte Voll","Hupe","Meldeleuchte Min","frei","P1 gelb","P2 gelb"]]].forEach(function (column) {
+      column[1].forEach(function (name,index) {
+        var label=document.getElementById((column[0]==="I"?"inputFn":"outputFn")+(index+1));
+        label.textContent=name;label.title=name;
+      });
+    });
+    [["B1","I3"],["B2","I4"],["B3","I5"]].forEach(function (row) {
+      var hint=document.getElementById("sensorInput"+row[0]);
+      if (hint.textContent!==row[1]) hint.textContent=row[1];
+      hint.title=row[0]+": SPS-Eingang "+row[1]+" (Demo)";
+    });
+  }
+
   function render() {
+    if (!physicalOn()) resetWiringLabels();
     var overflow = level >= 100;
     var minOn = physicalOn() ? level <= LVL_MIN : i3();
     var maxReached = physicalOn() ? level >= LVL_MAX : !i4Fail && !i4();
@@ -1451,6 +1460,16 @@
     document.getElementById("brunnen").classList.toggle("dry", dry);
     document.getElementById("brunnen").classList.toggle("noprotect", dry && i5Fail);
     document.getElementById("wellState").textContent = dry ? "Leer" : "Wasser da";
+    if (!physicalOn()) {
+      [["B1", "sensorB1Card", "Minimum", minOn], ["B2", "sensorB2Card", "Maximum", maxReached], ["B3", "wellCap", "Brunnen", dry]].forEach(function (row) {
+        var card = document.getElementById(row[1]);
+        card.classList.toggle("actuated", row[3]);
+        document.getElementById("sensor" + row[0]).classList.toggle("actuated", row[3]);
+        var description = row[0] + " " + row[2] + ": " + (row[3] ? "betätigt" : "nicht betätigt") + " (Demo)";
+        card.setAttribute("aria-label", description);
+        card.title = description;
+      });
+    }
     var hot = motorTemp >= 45;
     document.getElementById("pumpe").classList.toggle("run", pumping());
     document.getElementById("pumpe").classList.toggle("hot", hot && !f1Trip);
@@ -1509,7 +1528,6 @@
     }
     document.documentElement.classList.toggle("physical-pump", physicalOn());
     document.getElementById("contactor").hidden = !physicalOn();
-    document.querySelector(".sensor-details").hidden = !physicalOn();
     if (physicalOn()) physicalController.render(document, level, dry);
     else document.getElementById("pumpBindingErrors").hidden = true;
   }
@@ -1652,7 +1670,7 @@
       document.getElementById("swF1").checked = true;
     }
     if (testOn()) applyTestLogic();
-    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 22;
+    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 40;
     var processRunning = !physicalOn() || physicalController.snapshot && physicalController.snapshot.running;
     if (processRunning && pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
     if (processRunning && zapf) level = Math.max(0, level - rate * 1.15 * dt);

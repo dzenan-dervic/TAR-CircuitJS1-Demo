@@ -6,7 +6,7 @@
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EGT Torsteuerung — CircuitJS + HMI</title>
-  <link rel="stylesheet" href="egt-hmi-tor-real.css" />
+  <link rel="stylesheet" href="egt-hmi-tor-real.css?v=20261007wiring3" />
   <style>
     :root,
     html.palette-nacht {
@@ -820,7 +820,7 @@
           <span>Anlage — Rolltor</span>
           <span class="spd">Geschwindigkeit <input id="spd" type="range" min="10" max="100" value="55" /></span>
         </h2>
-        <div class="tor-contactors" id="torContactors"><div class="tor-contactor" id="torQ1" role="img" aria-label="Q1 Schütz abgefallen"><b>Q1 Schütz · AUF</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+        <section class="tor-drive" aria-labelledby="torDriveTitle"><header><h3 id="torDriveTitle">Antrieb M1</h3><button type="button" class="tor-info-button" id="driveHelpOpen" aria-label="Schütze und Motordrehrichtung erklären" aria-haspopup="dialog" aria-controls="driveHelp" title="Schütze und Motordrehrichtung erklären"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg></button></header><div class="tor-contactors drive-bar" id="drive"><div class="tor-contactor" id="torQ1" role="img" aria-label="Q1 Schütz abgefallen"><b>Q1 · AUF ↑</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
                     <defs>
                       <linearGradient id="torQ1Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
                       <linearGradient id="torQ1Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
@@ -845,7 +845,7 @@
                     <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
                     <use href="#torQ1Terminal" x="26" y="214"/><use href="#torQ1Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ1Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ1Terminal" x="137" y="214"/><use href="#torQ1Terminal" x="174" y="214"/>
                     <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
-                  </svg></div><div class="tor-contactor" id="torQ2" role="img" aria-label="Q2 Schütz abgefallen"><b>Q2 Schütz · ZU</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                  </svg><span class="tor-device-state" id="torQ1State">Abgefallen</span></div><div class="tor-contactor" id="torQ2" role="img" aria-label="Q2 Schütz abgefallen"><b>Q2 · ZU ↓</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
                     <defs>
                       <linearGradient id="torQ2Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
                       <linearGradient id="torQ2Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
@@ -870,11 +870,8 @@
                     <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
                     <use href="#torQ2Terminal" x="26" y="214"/><use href="#torQ2Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ2Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ2Terminal" x="137" y="214"/><use href="#torQ2Terminal" x="174" y="214"/>
                     <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
-                  </svg></div><p>Q1 / Q2 schalten Motor M1.<br>Grüner Rahmen: Schütz angezogen.</p></div>
-        <div class="scene">
-          <div class="drive-bar" id="drive">
-            <div class="welle"></div>
-            <div class="motor">
+                  </svg><span class="tor-device-state" id="torQ2State">Abgefallen</span></div>
+            <div class="tor-motor" role="img" id="torMotor" aria-label="Motor M1: Stillstand"><b>Motor M1</b><div class="motor">
               <svg class="prop" viewBox="0 0 40 40" aria-hidden="true">
                 <g transform="translate(20 20)" fill="#94a3b8">
                   <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5"/>
@@ -886,28 +883,30 @@
             </div>
             <div class="mtr-meta">
               <div>
-                <b>Motor M1</b>
                 <span id="driveDir">Stillstand</span>
               </div>
             </div>
-          </div>
+            </div>
+</div></section>
+        <div class="scene">
+          <div class="tor-motion" id="torMotion" hidden><span id="torMotionArrow" aria-hidden="true">↑</span><strong id="torMotionText">Öffnet</strong></div>
 
           <div class="ls s1" id="lsS1">
-            <span class="ls-label"><span class="ls-led"></span> S1 → I4 oben</span>
+            <span class="ls-label"><span class="ls-led"></span> <span id="deviceFnS1">S1 → I4 oben</span></span>
             <span class="ls-body"></span>
           </div>
           <div class="ls s2" id="lsS2">
-            <span class="ls-label"><span class="ls-led"></span> S2 → I5 unten</span>
+            <span class="ls-label"><span class="ls-led"></span> <span id="deviceFnS2">S2 → I5 unten</span></span>
             <span class="ls-body"></span>
           </div>
 
           <div class="portal">
             <div class="door" id="door">
-              <button type="button" class="edge" id="btnEdge">B2 · I7 Sicherheitsleiste</button>
+              <button type="button" class="edge" id="btnEdge"><span id="deviceFnB2">B2 · I7 Sicherheitsleiste</span></button>
             </div>
           </div>
           <div class="pe-wrap">
-            <div class="pe-tag">B1 → I6 Lichtschranke</div>
+            <div class="pe-tag" id="deviceFnB1">B1 → I6 Lichtschranke</div>
             <div class="pe" id="pe">
               <div class="pe-head tx"><i></i></div>
               <div class="pe-beam"></div>
@@ -959,7 +958,7 @@
                   <span class="tb-cap"></span>
                 </button>
                 <div class="tb-estop-control">
-                  <div class="tb-tag">S0 <small>NOT-HALT · I8 · Öffner</small></div>
+                  <div class="tb-tag">S0 <small><span id="deviceFnS0">NOT-HALT · I8 · Öffner</span></small></div>
                   <button type="button" class="tb-estop-release" id="btnNotAusRelease" disabled>↥ ZIEHEN / ENTRIEGELN</button>
                 </div>
               </div>
@@ -968,17 +967,17 @@
             <div class="tb-stations">
               <div class="tb-cell">
                 <button type="button" class="cmd tb-push" id="btnAuf" aria-label="Taster AUF S4"></button>
-                <div class="tb-tag">S4 <small>Taster AUF · I1</small></div>
+                <div class="tb-tag">S4 <small id="deviceFnS4">Taster AUF · I1</small></div>
               </div>
 
               <div class="tb-cell">
                 <button type="button" class="cmd tb-push" id="btnZu" aria-label="Taster ZU S5"></button>
-                <div class="tb-tag">S5 <small>Taster ZU · I2</small></div>
+                <div class="tb-tag">S5 <small id="deviceFnS5">Taster ZU · I2</small></div>
               </div>
 
               <div class="tb-cell">
                 <button type="button" class="cmd tb-push" id="btnStop" aria-label="Taster STOP S6"></button>
-                <div class="tb-tag">S6 <small>Taster STOP · I3</small></div>
+                <div class="tb-tag">S6 <small id="deviceFnS6">Taster STOP · I3</small></div>
               </div>
             </div>
           </div>
@@ -991,42 +990,29 @@
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
-              <div class="io-row"><span><b>I1</b> <span class="fn">Taster AUF</span></span><span class="dot" id="ledI1"></span></div>
-              <div class="io-row"><span><b>I2</b> <span class="fn">Taster ZU</span></span><span class="dot" id="ledI2"></span></div>
-              <div class="io-row"><span><b>I3</b> <span class="fn" id="stopLabel">STOP · Öffner</span></span><span class="dot" id="ledI3"></span></div>
-              <div class="io-row"><span><b>I4</b> <span class="fn">S1 oben</span></span><span class="dot" id="ledI4"></span></div>
-              <div class="io-row"><span><b>I5</b> <span class="fn">S2 unten</span></span><span class="dot" id="ledI5"></span></div>
-              <div class="io-row"><span><b>I6</b> <span class="fn">B1 Lichtschranke</span></span><span class="dot" id="ledI6"></span></div>
-              <div class="io-row"><span><b>I7</b> <span class="fn">Sicherheitsleiste</span></span><span class="dot" id="ledI7"></span></div>
-              <div class="io-row"><span><b>I8</b> <span class="fn">Not-Aus</span></span><span class="dot" id="ledI8"></span></div>
+              <div class="io-row io-input"><b>I1</b><span class="fn" id="inputFn1">Taster AUF</span><span class="dot" id="ledI1"></span></div>
+              <div class="io-row io-input"><b>I2</b><span class="fn" id="inputFn2">Taster ZU</span><span class="dot" id="ledI2"></span></div>
+              <div class="io-row io-input"><b>I3</b><span class="fn" id="stopLabel">STOP · Öffner</span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row io-input"><b>I4</b><span class="fn" id="inputFn4">S1 oben</span><span class="dot" id="ledI4"></span></div>
+              <div class="io-row io-input"><b>I5</b><span class="fn" id="inputFn5">S2 unten</span><span class="dot" id="ledI5"></span></div>
+              <div class="io-row io-input"><b>I6</b><span class="fn" id="inputFn6">B1 Lichtschranke</span><span class="dot" id="ledI6"></span></div>
+              <div class="io-row io-input"><b>I7</b><span class="fn" id="inputFn7">Sicherheitsleiste</span><span class="dot" id="ledI7"></span></div>
+              <div class="io-row io-input"><b>I8</b><span class="fn" id="inputFn8">Not-Aus</span><span class="dot" id="ledI8"></span></div>
             </div>
             <div class="io-col">
               <div class="k">Ausgänge <em>8/4</em></div>
-              <div class="io-row q"><span><b>Q1</b> <span class="fn">Motor AUF</span></span><span class="dot" id="ledQ1"></span></div>
-              <div class="io-row q"><span><b>Q2</b> <span class="fn">Motor ZU</span></span><span class="dot" id="ledQ2"></span></div>
-              <div class="io-row q"><span><b>Q3</b> <span class="fn">Ampel gelb (Fahrt)</span></span><span class="dot" id="ledQ3"></span></div>
-              <div class="io-row q"><span><b>Q4</b> <span class="fn">Hupe H1 + P4 Störung</span></span><span class="dot" id="ledQ4"></span></div>
+              <div class="io-row q io-output"><b>Q1</b><span class="fn" id="outputFn1">Motor AUF</span><span class="dot" id="ledQ1"></span></div>
+              <div class="io-row q io-output"><b>Q2</b><span class="fn" id="outputFn2">Motor ZU</span><span class="dot" id="ledQ2"></span></div>
+              <div class="io-row q io-output"><b>Q3</b><span class="fn" id="outputFn3">Ampel gelb (Fahrt)</span><span class="dot" id="ledQ3"></span></div>
+              <div class="io-row q io-output"><b>Q4</b><span class="fn" id="outputFn4">Hupe H1 + P4 Störung</span><span class="dot" id="ledQ4"></span></div>
               <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
-              <div class="io-row q"><span><b>Q5</b> <span class="fn">Ampel rot</span></span><span class="dot" id="ledQ5"></span></div>
-              <div class="io-row q"><span><b>Q6</b> <span class="fn">Ampel grün</span></span><span class="dot" id="ledQ6"></span></div>
-              <div class="io-row q"><span><b>Q7</b> <span class="fn">P1 gelb</span></span><span class="dot" id="ledQ7"></span></div>
-              <div class="io-row q"><span><b>Q8</b> <span class="fn">P2 gelb</span></span><span class="dot" id="ledQ8"></span></div>
+              <div class="io-row q io-output"><b>Q5</b><span class="fn" id="outputFn5">Ampel rot</span><span class="dot" id="ledQ5"></span></div>
+              <div class="io-row q io-output"><b>Q6</b><span class="fn" id="outputFn6">Ampel grün</span><span class="dot" id="ledQ6"></span></div>
+              <div class="io-row q io-output"><b>Q7</b><span class="fn" id="outputFn7">P1 gelb</span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q io-output"><b>Q8</b><span class="fn" id="outputFn8">P2 gelb</span><span class="dot" id="ledQ8"></span></div>
             </div>
           </div>
-          <div id="torLearning">
-          <details class="tor-sensors" open><summary>Sensoren und echte Eingangssignale</summary><div class="tor-sensor-row"><label for="torModeS1">S1 · Endschalter oben → I4</label>
-    <p id="torSensorS1">Warte auf Simulation</p><select id="torModeS1" aria-label="S1 Betätigung">
-    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeS2">S2 · Endschalter unten → I5</label>
-    <p id="torSensorS2">Warte auf Simulation</p><select id="torModeS2" aria-label="S2 Betätigung">
-    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeB1">B1 · Lichtschranke · 230 V AC → I6</label>
-    <p id="torSensorB1">Warte auf Simulation</p><select id="torModeB1" aria-label="B1 Betätigung">
-    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div><div class="tor-sensor-row"><label for="torModeB2">B2 · Sicherheitsleiste → I7</label>
-    <p id="torSensorB2">Warte auf Simulation</p><select id="torModeB2" aria-label="B2 Betätigung">
-    <option value="auto">Automatisch / Anlage</option><option value="closed">Handtest: Kontakt geschlossen</option><option value="open">Handtest: Kontakt offen</option></select></div>
-          <p class="tor-legend">Automatisch: Torposition, Hindernis und Leiste betätigen die Kontakte. Handtest: Kontakt festhalten, unabhängig von der Anlage. Danach wieder Automatisch wählen. Die Lichtschranke braucht L/N mit 230 V AC; ihr Relais schließt 13/14 bei freiem Lichtweg. Ohne Versorgung bleibt es offen. Endschalter und Leiste sind passive Kontakte. I3 und I8 gehören im Beispiel zur Freigabekette F1 → STOP → Not-Aus; ihr Signal hängt von der ganzen Verdrahtung ab.</p></details>
-          <div class="tor-system"><span id="torF1State">F1</span><button type="button" id="torTrip">F1 auslösen</button><button type="button" id="torProtectionReset">F1 zurücksetzen</button><button type="button" id="torReset">Anlage zurücksetzen</button></div>
-          <p class="tor-legend">Beispiel: Lichtschranke oder Leiste stoppen die ZU-Fahrt. Danach mit AUF zurückfahren. Bei fehlender Endabschaltung löst F1 nach 1,5 s blockiertem Antrieb aus.</p>
-          </div>
+
         </div>
       </div>
     </div>
@@ -1034,6 +1020,15 @@
     </section>
   </div>
 
+<dialog class="tor-fup-help" id="driveHelp" aria-labelledby="driveHelpTitle">
+  <h2 id="driveHelpTitle">Schütze und Motordrehrichtung</h2>
+  <p><strong>Q1 ist für AUF ↑ vorgesehen, Q2 für ZU ↓.</strong> Beide Schütze schalten denselben Motor M1. Für die Gegenrichtung werden zwei Phasen vertauscht.</p>
+  <p><strong>Grüner Rahmen + „Angezogen“:</strong> Die tatsächliche Schützspule ist angesteuert. Ob der Motor läuft, hängt zusätzlich von seiner Versorgung und Verdrahtung ab.</p>
+  <p><strong>Rechtslauf ↻ / Linkslauf ↺:</strong> tatsächliche Motordrehrichtung, mit Blick auf die Abtriebswelle. In diesem Anlagenmodell öffnet Rechtslauf das Tor und Linkslauf schließt es. Falsche Phasenfolge kann deshalb zur falschen Torbewegung führen.</p>
+  <p>Der Pfeil am Tor zeigt die tatsächliche Bewegung. An einer Endlage kann der Motor weiterlaufen, obwohl sich das Tor nicht weiter bewegt.</p>
+  <p><strong>Q1 und Q2 müssen gegenseitig verriegelt sein.</strong> Beide dürfen nicht gleichzeitig anziehen. Verdrahte dafür auch die Hilfskontakte im Steuerstromkreis.</p>
+  <form method="dialog"><button type="submit" autofocus>Schließen</button></form>
+</dialog>
 <dialog class="tor-fup-help" id="fupHelp" aria-labelledby="fupHelpTitle">
   <h2 id="fupHelpTitle">Signalverbindungen in der FUP</h2>
   <p>Die beschrifteten Anschlüsse wie <strong>FUP_Freigabe</strong>, <strong>FUP_AUF</strong> und <strong>FUP_ZU</strong> verbinden die Netzwerke miteinander.</p>
@@ -1047,11 +1042,14 @@
   <form method="dialog"><button type="submit" autofocus>Schließen</button></form>
 </dialog>
 <script>
+  document.getElementById("driveHelpOpen").addEventListener("click", function () {
+    document.getElementById("driveHelp").showModal();
+  });
   document.getElementById("fupHelpOpen").addEventListener("click", function () {
     document.getElementById("fupHelp").showModal();
   });
 </script>
-<script src="egt-hmi-tor-real.js"></script>
+<script src="egt-hmi-tor-real.js?v=20261007stable1"></script>
 <script>
 (function () {
   var real = new TorController(), realMode = true, edgePressed = false;
@@ -1178,9 +1176,19 @@
   }
 
   function render() {
-    document.getElementById("torContactors").hidden = !physicalOn();
-    document.getElementById("torLearning").hidden = !physicalOn();
-    document.getElementById("stopLabel").textContent = physicalOn() ? "STOP · Öffner" : "Taster STOP";
+    if (!physicalOn()) {
+      ["Taster AUF","Taster ZU","Taster STOP","S1 oben","S2 unten","B1 Lichtschranke","Sicherheitsleiste","Not-Aus"].forEach(function (name, index) {
+        var input = document.getElementById(index === 2 ? "stopLabel" : "inputFn" + (index + 1));
+        input.textContent = name; input.title = name;
+      });
+      ["Motor AUF","Motor ZU","Ampel gelb (Fahrt)","Hupe H1 + P4 Störung","Ampel rot","Ampel grün","P1 gelb","P2 gelb"].forEach(function (name, index) {
+        var output = document.getElementById("outputFn"+(index+1));
+        output.textContent=name; output.title=name;
+      });
+      [["S4","Taster AUF · I1"],["S5","Taster ZU · I2"],["S6","Taster STOP · I3"],["S0","NOT-HALT · I8 · Öffner"],["S1","S1 → I4 oben"],["S2","S2 → I5 unten"],["B1","B1 → I6 Lichtschranke"],["B2","B2 · I7 Sicherheitsleiste"]].forEach(function (item) {
+        document.getElementById("deviceFn"+item[0]).textContent=item[1];
+      });
+    }
     if (physicalOn()) { real.render(document); return; }
     document.querySelectorAll("#ampel .lit, #alarm .lit").forEach(function (el) { el.classList.remove("lit"); });
     document.getElementById("drive").classList.remove("protection-trip");
@@ -1265,15 +1273,26 @@
     drv.classList.toggle("auf", q1 && !q2 && !overheat);
     drv.classList.toggle("zu", q2 && !q1 && !overheat);
 
+    [q1, q2].forEach(function (on, index) {
+      var id = "torQ" + (index + 1), card = document.getElementById(id);
+      card.classList.toggle("energized", on);
+      card.setAttribute("aria-label", "Q" + (index + 1) + " Schütz " + (on ? "angezogen" : "abgefallen") + " · Demo");
+      document.getElementById(id + "State").textContent = on ? "Angezogen" : "Abgefallen";
+    });
+    var moving = motor && !fault && !overheat && ((q1 && pos < 100) || (q2 && pos > 0));
+    document.getElementById("torMotion").hidden = !moving;
+    document.getElementById("torMotionArrow").textContent = q1 ? "↑" : "↓";
+    document.getElementById("torMotionText").textContent = q1 ? "Öffnet" : "Schließt";
     var dir = document.getElementById("driveDir");
     if (overheat) {
       dir.textContent = "Überhitzt — Q nicht aus";
       dir.className = "hot";
     } else {
-      dir.textContent = fault ? "gesperrt" : (motor ? (q1 ? "Rechtslauf (AUF)" : "Linkslauf (ZU)") : "Stillstand");
+      dir.textContent = fault ? "gesperrt" : (motor ? (q1 ? "Rechtslauf ↻" : "Linkslauf ↺") : "Stillstand");
       dir.className = motor && !fault ? (q1 ? "auf" : "zu") : "";
     }
 
+    document.getElementById("torMotor").setAttribute("aria-label", "Motor M1: " + dir.textContent + " · Demo");
     var msg = document.getElementById("sysMsg");
     if (overheat) {
       msg.className = "v state-fault";
@@ -1465,12 +1484,7 @@
   document.getElementById("circSel").addEventListener("change", function () {
     loadCircuit(this.value);
   });
-  ["S1","S2","B1","B2"].forEach(function(id){
-    document.getElementById("torMode"+id).addEventListener("change",function(){real.action("sensor:"+id,this.value);});
-  });
-  document.getElementById("torTrip").addEventListener("click",function(){real.action("protection:F1","trip");});
-  document.getElementById("torProtectionReset").addEventListener("click",function(){real.action("protection:F1","reset");});
-  document.getElementById("torReset").addEventListener("click",function(){real.reset();pos=0;obstacle=false;edgePressed=false;document.getElementById("btnObstacle").classList.remove("on");document.getElementById("btnObstacle").textContent="Hindernis stellen";});
+
   document.getElementById("circSel").value=new URLSearchParams(location.search).get("example")==="1"?"egt-tor-real-beispiel.txt":"egt-tor-real-uebung.txt";
   loadCircuit(document.getElementById("circSel").value);
 

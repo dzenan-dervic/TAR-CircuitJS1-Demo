@@ -11,23 +11,26 @@
 .contactor-box.energized .contactor-window { fill:#65d293; }
 .contactor-box.energized .contactor-device { outline:2px solid var(--green); outline-offset:2px; border-radius:2px; }
 .physical-pump .contactor-box.energized b { color:var(--green); }
-.float-symbol { display:inline-block; width:14px; height:10px; border:2px solid currentColor; border-radius:50%; vertical-align:middle; margin-right:4px; transform:rotate(-18deg); }
-.float-symbol.actuated { transform:rotate(18deg); }
+.float-symbol { display:block; flex:none; width:26px; height:32px; color:var(--muted); }
+.float-symbol svg { display:block; width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.float-symbol .float-water { stroke:var(--water); }
+.float-symbol .float-body { transform:rotate(22deg); transform-origin:16px 8px; }
+.float-symbol.actuated .float-body { transform:rotate(-22deg); }
+.sensor-card { transition:border-color .15s ease-out, box-shadow .15s ease-out, background-color .15s ease-out; }
+.ls .ls-label.sensor-card { color:var(--text); }
+.sensor-card.actuated, .ls .ls-label.sensor-card.actuated { border-color:var(--green); background:color-mix(in srgb, var(--green) 13%, var(--well)); box-shadow:0 0 0 1px var(--green), 0 0 16px color-mix(in srgb, var(--green) 35%, transparent), inset 0 0 12px color-mix(in srgb, var(--green) 8%, transparent); }
+.sensor-card.actuated .float-symbol, .sensor-card.actuated .sensor-id b { color:var(--green); }
 .sensor-copy { display:block; min-width:0; font-size:11px; line-height:1.35; }
-.sensor-id { display:flex; align-items:baseline; gap:6px; margin-bottom:2px; }
+.sensor-id { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; margin-bottom:2px; }
 .sensor-id b, .well .unit-cap .sensor-id b { display:inline; font-size:16px; line-height:1.2; margin:0; color:var(--text); }
-.sensor-id small { font-size:11px; color:var(--muted); font-weight:600; }
-.ls-label { width:100px; padding:8px; gap:6px; }
-.ls { width:104px; }
-.ls::before { right:104px; }
-.tank-glass { right:104px; }
-.tank-cap { left:calc((100% - 104px) / 2); max-width:calc(100% - 104px); }
+.sensor-id small { min-width:0; overflow-wrap:anywhere; font-size:11px; color:var(--muted); font-weight:600; }
+.ls-label { width:112px; padding:8px; gap:6px; }
+.ls { width:116px; }
+.ls::before { right:116px; }
+.tank-glass { right:116px; }
+.tank-cap { left:calc((100% - 116px) / 2); max-width:calc(100% - 116px); }
 .well-sensor { display:flex; align-items:center; gap:6px; text-align:left; }
 .well .unit-cap { left:0; transform:none; width:100px; padding:7px; }
-.ls-label .float-symbol, .well-sensor .float-symbol { flex:none; width:18px; height:12px; margin:0; }
-.sensor-details { margin-top:12px; border-top:1px solid var(--line); padding-top:10px; color:var(--muted); font-size:11px; line-height:1.7; }
-.sensor-details summary { cursor:pointer; color:var(--text); min-height:28px; }
-.sensor-details p { margin:2px 0; }
 .pump-binding-errors { margin:10px 0 0; padding:8px; border-left:3px solid var(--red); font-size:11px; overflow-wrap:anywhere; }
 [hidden] { display:none !important; }
 .system-reset { border:1px solid var(--line); border-radius:5px; padding:10px; background:var(--well); color:var(--text); font:inherit; cursor:pointer; }
@@ -35,6 +38,11 @@
 .physical-pump .io-row .dot.on-green { background:var(--green); box-shadow:0 0 7px color-mix(in srgb, var(--green) 45%, transparent); }
 .pump-io-legend { display:none; }
 .physical-pump .pump-io-legend { display:block; margin:0 0 10px; font-size:11px; line-height:1.6; color:var(--muted); }
-.cmd:focus-visible, .sensor-details summary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+.cmd:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 @media (prefers-reduced-motion:reduce) { .water::before, .impeller svg, .pipe::after { animation:none !important; } }
 @media (prefers-reduced-motion:reduce) { .contactor-box .contactor-armature { transition:none; } }
+@media (prefers-reduced-motion:reduce) { .sensor-card { transition:none; } }
+.io-row.io-input,.io-row.io-output { display:grid;grid-template-columns:2.5ch minmax(0,1fr) 12px;align-items:center;line-height:1.45; }
+.io-input > .fn,.io-output > .fn { min-width:0;white-space:pre-line;overflow-wrap:anywhere; }
+.physical-pump .grid { grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr)); }
+.physical-pump .io { grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr)); }

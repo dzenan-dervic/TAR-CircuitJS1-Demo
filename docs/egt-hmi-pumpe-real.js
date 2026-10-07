@@ -1,10 +1,13 @@
 (function (root) {
   "use strict";
-  function PumpController() { this.api = null; this.snapshot = null; this.processTime = null; }
+  function PumpController() { this.api = null; this.snapshot = null; this.processTime = null; this.wiring = {}; }
   PumpController.prototype.attach = function (sim) {
+    this.sim = sim;
     this.api = sim && sim.pump || null;
+    this.realtimeReady = false;
     this.snapshot = null;
     this.processTime = null;
+    this.wiring = {};
     return !!this.api;
   };
   PumpController.prototype.read = function (level, wellHasWater) {
@@ -12,6 +15,10 @@
     try {
       this.api.setProcessState({ level: level, wellHasWater: wellHasWater });
       this.snapshot = this.api.readSnapshot();
+      if (!this.realtimeReady && this.device("sps:A1").present && this.sim.workbench && typeof this.sim.workbench.setRealtime === "function") {
+        this.sim.workbench.setRealtime(true);
+        this.realtimeReady = true;
+      }
     } catch (e) { this.snapshot = null; }
     return this.snapshot;
   };
@@ -42,14 +49,26 @@
   PumpController.prototype.render = function (doc, level, dry) {
     var self = this;
     function el(id) { return doc.getElementById(id); }
-    function text(id, value) { if (el(id)) el(id).textContent = value; }
+    function text(id, value) { var node = el(id); if (node && node.textContent !== value) node.textContent = value; }
     function on(id, value, cls) { if (el(id)) el(id).classList.toggle(cls || "on", !!value); }
     var plc = this.device("sps:A1"), coil = this.device("coil:Q1"), contacts = this.device("contacts:Q1");
     var motor = this.device("motor:M1"), protection = this.device("protection:F1");
     var errors = this.snapshot ? this.snapshot.errors : ["Pumpenverbindung fehlt"];
     var supplied = !!plc.supplied, moving = this.pumping(), stopped = !!this.device("estop:S0").pressed;
     var inputs = plc.inputs || [], outputs = plc.outputs || [];
+    if (!plc.present) this.wiring = {};
+    ["inputDevices", "outputDevices"].forEach(function (key) {
+      var rows = plc[key];
+      if (plc.present && Array.isArray(rows) && rows.length === 8 && rows.every(Array.isArray)) {
+        self.wiring[key] = rows.map(function (row) { return row.slice(); });
+      }
+    });
     for (var i = 1; i <= 8; i++) {
+      var names=this.wiring.inputDevices&&this.wiring.inputDevices[i-1], loads=this.wiring.outputDevices&&this.wiring.outputDevices[i-1];
+      var inputLabel=!plc.present?"SPS A1 fehlt":!names?"Zuordnung wird ermittelt":names.length?names.join("\n"):"Nicht zugeordnet";
+      var outputLabel=!plc.present?"SPS A1 fehlt":i>plc.outputCount?"Nicht vorhanden (8/4)":!loads?"Zuordnung wird ermittelt":loads.length?loads.join("\n"):"Nicht zugeordnet";
+      text("inputFn"+i,inputLabel);text("outputFn"+i,outputLabel);
+      el("inputFn"+i).title=inputLabel.replace(/\n/g, ", ");el("outputFn"+i).title=outputLabel.replace(/\n/g, ", ");
       ["I", "Q"].forEach(function (kind) {
         var dot = el("led" + kind + i), active = kind === "I" ? inputs[i - 1] : outputs[i - 1];
         if (dot) { dot.className = "dot" + (active ? " on-green" : ""); dot.setAttribute("aria-label", kind + i + (active ? ": EIN" : ": AUS")); }
@@ -58,14 +77,23 @@
     on("contactor", coil.energized, "energized"); on("contactor", contacts.closed, "closed");
     el("contactor").setAttribute("aria-label", "Schütz Q1: " + (coil.present ? (coil.energized ? "angezogen" : "abgefallen") : "fehlt")
       + ", " + (contacts.present ? (contacts.closed ? "Leistungskontakte geschlossen" : "Leistungskontakte offen") : "Leistungskontakte fehlen"));
-    [["B1", "sensorMinState", 3], ["B2", "sensorMaxState", 4], ["B3", "sensorWellState", 5]].forEach(function (row) {
+    [["B1", "sensorB1Card", "Minimum"], ["B2", "sensorB2Card", "Maximum"], ["B3", "wellCap", "Brunnen"]].forEach(function (row) {
       var sensor = self.device("sensor:" + row[0]);
-      text(row[1], !sensor.present ? row[0] + ": Sensor fehlt" : row[0] + ": Kontakt " + (sensor.closed ? "geschlossen" : "offen")
-        + " · I" + row[2] + ": " + (inputs[row[2] - 1] ? "EIN" : "AUS") + (sensor.handTest ? " · Handtest" : ""));
+      var channels = [];
+      (self.wiring.inputDevices || []).forEach(function (names, index) {
+        if (names.some(function (name) { return name.indexOf(row[0] + " ") === 0; })) channels.push("I" + (index + 1));
+      });
+      var assignment = !plc.present ? "SPS A1 fehlt" : !self.wiring.inputDevices ? "Zuordnung wird ermittelt"
+        : channels.length ? "SPS-Eingang: " + channels.join(", ") : "Kein SPS-Eingang zugeordnet";
+      text("sensorInput" + row[0], channels.length ? channels.join(", ") : "—");
+      el("sensorInput" + row[0]).title = row[0] + ": " + assignment;
+      var actuated = !!(sensor.present && sensor.actuated);
+      on("sensor" + row[0], actuated, "actuated");
+      on(row[1], actuated, "actuated");
+      var description = row[0] + " " + row[2] + ": " + (!sensor.present ? "Sensor fehlt" : actuated ? "betätigt" : "nicht betätigt") + " · " + assignment;
+      el(row[1]).setAttribute("aria-label", description);
+      el(row[1]).setAttribute("title", description);
     });
-    on("sensorB1", this.device("sensor:B1").actuated, "actuated");
-    on("sensorB2", this.device("sensor:B2").actuated, "actuated");
-    on("sensorB3", this.device("sensor:B3").actuated, "actuated");
     on("tbP1", this.device("lamp:P1").on); on("tbP2", this.device("lamp:P2").on);
     [ ["mlQ2", "P3", "on-yellow"], ["mlQ3", "P4", "on-green"], ["mlQ5", "P5", "on-yellow"] ].forEach(function (row) {
       if (el(row[0])) el(row[0]).className = "ml" + (self.device("lamp:" + row[1]).on ? " " + row[2] : "");
