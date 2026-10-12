@@ -43,11 +43,12 @@
     ['l1', 'Braun · L1'], ['l2', 'Schwarz · L2'], ['l3', 'Grau · L3'], ['n', 'Blau · N'], ['pe', 'Grün-Gelb · PE']
   ];
 
-  function legendSymbol(kind) {
+  function legendSymbol(kind, suffix = '') {
     if (kind === 'voltage' || kind === 'current') {
       const live = kind === 'voltage' ? ' volt-live' : '';
       const conductor = '<path class="wire-shadow" d="M14 24H114"/><path class="wire-volt' + live + '" d="M14 24H114"/><path class="wire-line" d="M14 24H114" stroke="#6b3f24"/><path class="wire-highlight' + live + '" d="M14 24H114"/>';
-      const flow = kind === 'current' ? '<defs><clipPath id="studentHelpCurrentClip"><rect x="14" y="16" width="100" height="16"/></clipPath></defs><g clip-path="url(#studentHelpCurrentClip)"><g class="student-help-flow">' + [-38,10,58,106,154].map(x => '<rect class="wire-dot" x="' + x + '" y="20" width="8" height="8"/>').join('') + '</g></g>' : '';
+      const clipId = 'studentHelpCurrentClip' + suffix;
+      const flow = kind === 'current' ? '<defs><clipPath id="' + clipId + '"><rect x="14" y="16" width="100" height="16"/></clipPath></defs><g clip-path="url(#' + clipId + ')"><g class="student-help-flow">' + [-38,10,58,106,154].map(x => '<rect class="wire-dot" x="' + x + '" y="20" width="8" height="8"/>').join('') + '</g></g>' : '';
       return '<svg class="student-help-wire-demo" viewBox="0 0 128 48" aria-hidden="true">' + conductor + flow + '</svg>';
     }
     const label = {'fup-on':'1','junction':'●','named':'FUP_AUF','fault':'!','contactor':'Q','sensor':'B'}[kind] || '';
@@ -73,6 +74,9 @@
     const entry = doc.querySelector('[data-student-help]');
     if (!entry || typeof doc.createElement('dialog').showModal !== 'function') return;
     const area = entry.dataset.studentHelp;
+    doc.querySelectorAll('[data-help-wire]').forEach(element => {
+      element.innerHTML = legendSymbol(element.dataset.helpWire, 'Legacy');
+    });
     let storage;
     try { storage = root.localStorage; } catch (_) {}
     const state = createState(area, storage);

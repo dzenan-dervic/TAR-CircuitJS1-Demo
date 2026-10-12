@@ -35,6 +35,8 @@
 .student-help-symbol.selection-workshop{border:3px solid #2878ef}
 .student-help-symbol.fault{border:3px solid #d73527;color:#b42318;background:#fff}
 .student-help-wire-demo{width:128px;height:48px;flex:none;overflow:visible;border-radius:4px;background:linear-gradient(115deg,#d5d8d1,#bfc5bc)}
+.legend-list .student-help-wire-demo{width:128px;height:48px}
+.legend-list>.legend-wire-example{grid-template-columns:minmax(0,1fr);gap:8px}
 .student-help-wire-demo .wire-shadow,.student-help-wire-demo .wire-line,.student-help-wire-demo .wire-highlight,.student-help-wire-demo .wire-volt{fill:none;stroke-linecap:round;stroke-linejoin:round}
 .student-help-wire-demo .wire-shadow{stroke:#2730298c;stroke-width:7;transform:translateY(2px)}
 .student-help-wire-demo .wire-line{stroke-width:5}
