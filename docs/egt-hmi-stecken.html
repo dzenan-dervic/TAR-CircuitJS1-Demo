@@ -541,6 +541,8 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
 <link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002currenttempo1">
+<link rel="stylesheet" href="egt-terminal-v2.css?v=20261012d">
+<link rel="stylesheet" href="egt-current-control.css?v=20261012a">
 <link rel="stylesheet" href="egt-student-help.css?v=20261012d">
 </head>
 <body>
@@ -590,8 +592,15 @@ header .actions{min-width:0;overflow-x:auto}
       <button class="ui-btn zoom-step" id="zoomOut" aria-label="Herauszoomen">−</button><select id="zoom" aria-label="Vergrößerung"><option value="custom">100 %</option><option value="0.2">20 %</option><option value="0.5">50 %</option><option value="0.75">75 %</option><option value="1">100 %</option><option value="1.5">150 %</option><option value="2">200 %</option><option value="2.5">250 %</option></select><button class="ui-btn zoom-step" id="zoomIn" aria-label="Hineinzoomen">+</button>
       <button class="ui-btn" id="fitScene" title="Alle Bauteile ins Bild bringen"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6.2 2.6H2.6V6.2M9.8 2.6h3.6V6.2M6.2 13.4H2.6V9.8M9.8 13.4h3.6V9.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Einpassen</button>
     </div>
-    <div class="control-cluster display-cluster" role="group" aria-label="Messwerte anzeigen"><button class="ui-btn" id="showVoltage" aria-pressed="false" title="Spannungsführende Leitungen leuchten lassen"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button><button class="ui-btn" id="showCurrent" aria-pressed="false" title="Stromrichtung animieren"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button></div>
-    <label class="current-speed" id="currentSpeedControl" hidden title="Nur die Stromanimation verlangsamen; Simulation und Zeitrelais bleiben unverändert."><span>Stromtempo</span><input id="currentSpeed" type="range" min="5" max="100" step="5" value="25" aria-label="Geschwindigkeit der Stromanimation" aria-valuetext="25 Prozent"><output id="currentSpeedValue" for="currentSpeed">25 %</output></label>
+    <div class="display-cluster" role="group" aria-label="Messwerte anzeigen">
+      <button class="ui-btn" id="showVoltage" aria-pressed="false" title="Spannungsführende Leitungen leuchten lassen"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Spannung</span></button>
+      <div class="current-display" id="currentDisplay" role="group" aria-label="Stromanzeige und Animation">
+        <button class="ui-btn" id="showCurrent" aria-pressed="false" aria-expanded="false" aria-controls="currentSpeedControl" title="Stromanzeige einschalten und Tempo einstellen"><svg class="visibility-icon" viewBox="0 0 16 16" aria-hidden="true"><path class="eye-shape" d="M1.1 8s2.4-4.3 6.9-4.3S14.9 8 14.9 8s-2.4 4.3-6.9 4.3S1.1 8 1.1 8Z"/><circle class="eye-pupil" cx="8" cy="8" r="1.8"/><path class="eye-slash" d="M2.1 13.9 13.9 2.1"/></svg><span>Strom</span></button>
+        <div class="current-speed" id="currentSpeedControl" aria-hidden="true" inert>
+          <label class="current-speed-body" title="Nur die Stromanimation verlangsamen; Simulation und Zeitrelais bleiben unverändert."><span>Tempo</span><input id="currentSpeed" type="range" min="5" max="100" step="5" value="25" aria-label="Geschwindigkeit der Stromanimation" aria-valuetext="25 Prozent" disabled><output id="currentSpeedValue" for="currentSpeed">25 %</output></label>
+        </div>
+      </div>
+    </div>
     <details class="board-more"><summary aria-label="Weitere Aktionen" title="Weitere Aktionen">···</summary><div class="menu-panel"><button type="button" id="openBoardHelp">Hilfe &amp; Legende</button><button type="button" id="clearBoard">Fläche leeren</button></div></details>
   </div>
   <div class="selection-actions" id="selectionActions" role="group" aria-label="Ausgewählte Bauteile bearbeiten" hidden>
@@ -627,7 +636,7 @@ header .actions{min-width:0;overflow-x:auto}
   <details class="help-topic help-legend" id="helpLegend" open><summary>Anzeigen &amp; Markierungen</summary>
     <dl class="legend-list">
       <div class="legend-wire-example"><dt><span data-help-wire="voltage"></span>Spannung</dt><dd>Bei eingeschalteter Spannungsanzeige glänzen Adern mit Potenzial gegenüber dem Bezugspunkt mit einem hellen Reflex und einem transparenten weißen Lichtschein. Die Aderfarbe bleibt sichtbar. Das Leuchten beweist keinen Stromfluss; ein Kurzschluss wird separat rot und pulsierend markiert.</dd></div>
-      <div class="legend-wire-example"><dt><span data-help-wire="current"></span>Strom</dt><dd>Die gelben Würfel bewegen sich in der angezeigten Stromrichtung, wenn die Stromanzeige eingeschaltet ist und ein Strom erfasst wird. Mit <b>Stromtempo</b> lässt sich die Bewegung von 5 bis 100 % verlangsamen. Der Regler verändert nur die Darstellung, nicht die Simulation oder Zeitrelais. Bei Einfrieren bleibt die Animation stehen.</dd></div>
+      <div class="legend-wire-example"><dt><span data-help-wire="current"></span>Strom</dt><dd>Die gelben Würfel bewegen sich in der angezeigten Stromrichtung, wenn die Stromanzeige eingeschaltet ist und ein Strom erfasst wird. Ein Klick auf <b>Strom</b> schaltet die Anzeige ein und klappt rechts den Tempo-Regler aus. Damit lässt sich die Bewegung von 5 bis 100 % verlangsamen. Ein weiterer Klick auf Strom schaltet sie aus. Der Regler verändert nur die Darstellung, nicht die Simulation oder Zeitrelais. Bei Einfrieren bleibt die Animation stehen.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><rect x="13" y="3" width="22" height="18" rx="4" fill="none" stroke="#2878ef" stroke-width="3"/></svg>Bauteilauswahl</dt><dd>Ein blauer Außenring zeigt das ausgewählte Bauteil. Beschriftungsstreifen und Rahmen verwenden eigene Auswahlgriffe.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="none" stroke="#438fff" stroke-width="3"/></svg>Klemmenauswahl</dt><dd>Blaue Klemmenringe markieren den gewählten Anschluss und die direkt durch Adern verbundenen Klemmen. Das ist keine vollständige Durchgangsprüfung.</dd></div>
       <div><dt><svg viewBox="0 0 48 24" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="none" stroke="#23834f" stroke-width="3"/></svg>Leitungsziel</dt><dd>Ein grüner Ring zeigt beim Verdrahten ein mögliches Ziel für die neue Ader.</dd></div>
@@ -868,10 +877,33 @@ header .actions{min-width:0;overflow-x:auto}
   }
   function terminalPoles(m){const n=Number(m.poles);return Number.isInteger(n)&&n>=2&&n<=12?n:6;}
   function terminalSpan(m){const n=Number(m.span);return n===2||n===4?n:1;}
+  function terminalLinks(m){
+    const n=terminalPoles(m);
+    return [...new Set((Array.isArray(m.bridges)?m.bridges:[]).filter(i=>Number.isInteger(i)&&i>=1&&i<n))].sort((a,b)=>a-b);
+  }
+  function terminalGroupIndex(m,n){
+    if(n<1||n>terminalPoles(m))return -1;
+    const links=terminalLinks(m);while(n>1&&links.includes(n-1))n--;
+    return n;
+  }
+  function toggleTerminalBridge(m,edge){
+    if(m.type!=='terminal'||m.terminalVersion!==2||!Number.isInteger(edge)||edge<1||edge>=terminalPoles(m))return;
+    if(!requestElectricalEdit(()=>toggleTerminalBridge(m,edge)))return;
+    const restoreFocus=m.el?.querySelector('[data-terminal-bridge="'+edge+'"]')===document.activeElement;
+    remember();const links=terminalLinks(m);
+    m.bridges=links.includes(edge)?links.filter(i=>i!==edge):links.concat(edge).sort((a,b)=>a-b);
+    lastImportedSig='';m.el?.remove();renderModule(m);selectModule(m.id);update();
+    if(restoreFocus)m.el.querySelector('[data-terminal-bridge="'+edge+'"]').focus({preventScroll:true});
+    say('Steckbrücke '+m.id+': '+edge+'–'+(edge+1)+(m.bridges.includes(edge)?' eingesetzt.':' entfernt.'));
+  }
   function connectorPorts(m){return [2,3,5].includes(Number(m.ports))?Number(m.ports):3;}
   function railScrews(m){return Number(m.screws)===8?8:5;}
-  function terminalGroups(m){const n=terminalPoles(m),span=terminalSpan(m),out=[];for(let s=1;s<=n;s+=span){const e=Math.min(n,s+span-1);out.push(s===e?String(s):s+'–'+e);}return out;}
-  function terminalCaption(m){const n=terminalPoles(m);return n+' Durchgangsklemmen · '+(terminalSpan(m)===1?'jede Nummer für sich':terminalGroups(m).join(' · '));}
+  function terminalGroups(m){
+    const n=terminalPoles(m),span=terminalSpan(m),out=[],links=m.terminalVersion===2?terminalLinks(m):null;
+    for(let s=1;s<=n;){let e=links?s:Math.min(n,s+span-1);if(links)while(e<n&&links.includes(e))e++;out.push(s===e?String(s):s+'–'+e);s=e+1;}
+    return out;
+  }
+  function terminalCaption(m){const n=terminalPoles(m);return m.terminalVersion===2?n+' Durchgangsklemmen · '+terminalLinks(m).length+' Steckbrücken':n+' Durchgangsklemmen · '+(terminalSpan(m)===1?'jede Nummer für sich':terminalGroups(m).join(' · '));}
   function railCaption(m){return '+24 · 0 V · PE, je '+railScrews(m)+' Schrauben';}
   function dropLoose(m){
     const keys=new Set();
@@ -885,7 +917,7 @@ header .actions{min-width:0;overflow-x:auto}
   const isProtection=m=>m.type==='motorprotection'||m.type==='breaker';
   const breakerRatings=[6,10,13,16,20,25,32,40,50,63];
   const timerModes=['Einschaltverzögert','Ausschaltverzögert','Ansprech- und rückfallverzögert','Blinkend'];
-  const componentTitle=m=>isCombinedTaster(m)&&m.latching?'SCHALTER · RASTEND':m.type==='note'&&m.noteStyle==='label'?'BESCHRIFTUNG':m.type==='note'&&m.noteStyle==='frame'?'MARKIERUNGSRAHMEN':types[m.type];
+  const componentTitle=m=>isCombinedTaster(m)&&m.latching?'SCHALTER · RASTEND':m.type==='note'&&m.noteStyle==='label'?'BESCHRIFTUNG':m.type==='note'&&m.noteStyle==='frame'?'MARKIERUNGSRAHMEN':m.type==='terminal'&&m.terminalVersion===2?'REIHENKLEMMEN V2':types[m.type];
   const noteTones={cream:['Creme','#fff7d6'],white:['Weiß','#ffffff'],blue:['Blau','#e4f1fa'],green:['Grün','#e7f2e8']};
   function defaultNom(m){
     m.locked=!!m.locked;
@@ -945,7 +977,7 @@ header .actions{min-width:0;overflow-x:auto}
     if(m.type==='emergency'){m.latched=!!m.latched;m.pressed=m.latched;}
     if(isInstallationSwitch(m)&&![0,1].includes(m.selection))m.selection=0;
     if(m.type==='selector'&&![-1,0,1].includes(m.selection))m.selection=0;
-    if(m.type==='terminal'){m.poles=terminalPoles(m);m.span=terminalSpan(m);}
+    if(m.type==='terminal'){m.poles=terminalPoles(m);m.span=terminalSpan(m);if(m.terminalVersion===2){m.span=1;m.bridges=terminalLinks(m);m.terminalColors=Array.from({length:m.poles},(_,i)=>['blue','pe'].includes(m.terminalColors?.[i])?m.terminalColors[i]:'gray');}}
     if(m.type==='rail')m.screws=railScrews(m);
     return m;
   }
@@ -1019,6 +1051,9 @@ header .actions{min-width:0;overflow-x:auto}
       const banner=m.el.querySelector('.handle');banner.hidden=!m.showBanner;banner.querySelector('.handle-label').tabIndex=m.showBanner?0:-1;
     }
     if(m.type==='socket')m.el.querySelector('.module-state').textContent='Ohne Eigenverbrauch · L / N / PE getrennt';
+    if(m.type==='terminal'&&m.terminalVersion===2){
+      m.el.querySelectorAll('.terminal-v2-cell').forEach((cell,i)=>{cell.classList.toggle('tone-blue',m.terminalColors[i]==='blue');cell.classList.toggle('tone-pe',m.terminalColors[i]==='pe');});
+    }
     if(m.type==='potentiometer')paintPot(m);
     if(m.type==='motion')paintMotion(m,lastSnap);
     if(m.type==='note'){
@@ -1397,6 +1432,12 @@ header .actions{min-width:0;overflow-x:auto}
 
     if(m.type==='terminal'){
       const nPoles=terminalPoles(m),span=terminalSpan(m);
+      if(m.terminalVersion===2){
+        const links=terminalLinks(m);
+        const cells=Array.from({length:nPoles},(_,i)=>{const n=i+1;return `<div class="terminal-v2-cell">${terminal(m,n+'o','','top')}<span class="terminal-v2-entry" aria-hidden="true"></span><span class="terminal-v2-marker">${n}</span><span class="terminal-v2-metal" aria-hidden="true"></span><span class="terminal-v2-entry" aria-hidden="true"></span>${terminal(m,n+'u','','bottom')}</div>`;}).join('');
+        const jumpers=Array.from({length:nPoles-1},(_,i)=>{const n=i+1,on=links.includes(n);return `<button type="button" class="terminal-v2-jumper${on?' inserted':''}" data-terminal-bridge="${n}" style="left:${n*36-18}px" aria-pressed="${on}" aria-label="Steckbrücke ${m.id}: ${n}–${n+1} ${on?'entfernen':'einsetzen'}" title="${n}–${n+1}: Steckbrücke ${on?'entfernen':'einsetzen'}"></button>`;}).join('');
+        return `<div class="terminal-v2-din" aria-hidden="true"></div><div class="terminal-v2-strip" aria-label="${m.id} Reihenklemmen V2">${cells}<div class="terminal-v2-bridges">${jumpers}</div></div>`;
+      }
       let html='',group=0;
       for(let start=1;start<=nPoles;start+=span){
         const count=Math.min(span,nPoles-start+1);
@@ -1457,7 +1498,7 @@ header .actions{min-width:0;overflow-x:auto}
   function renderModule(m){
     defaultNom(m);
     const el=document.createElement('div');m.el=el;el.className='module '+(m.type==='rail'?'bus':m.type);el.dataset.id=m.id;
-    if(m.type==='terminal')el.style.width=Math.max(220,36+terminalPoles(m)*46+Math.ceil(terminalPoles(m)/terminalSpan(m))*8)+'px';
+    if(m.type==='terminal'){el.classList.toggle('terminal-v2',m.terminalVersion===2);el.style.width=(m.terminalVersion===2?24+terminalPoles(m)*36:Math.max(220,36+terminalPoles(m)*46+Math.ceil(terminalPoles(m)/terminalSpan(m))*8))+'px';}
     if(m.type==='breaker'&&m.poles===3){el.style.width='198px';el.classList.add('poles-3');}
     if(m.type==='rail')el.style.width=(railScrews(m)>5?420:280)+'px';
     el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${displayName(m)} verschieben, Pfeiltasten verwenden">${shortName(m)}</button><span class="handle-copy"><span class="handle-name">${types[m.type]}</span><span class="handle-sub"></span></span><span class="lock-indicator" hidden aria-label="Position gesperrt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 v3"/></svg></span><button class="remove" aria-label="${displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${face(m)}</div><div class="state-label"><span class="module-state"></span></div>`;
@@ -1498,7 +1539,7 @@ header .actions{min-width:0;overflow-x:auto}
       startModuleDrag(m,e);
     });
     el.addEventListener('dblclick',e=>{
-      if(e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,input,select,textarea,[contenteditable="true"]'))return;
+      if(e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-terminal-bridge],input,select,textarea,[contenteditable="true"]'))return;
       e.preventDefault();e.stopPropagation();selectModule(m.id);openSettings(m);
     });
     if(m.type==='potentiometer'){
@@ -1513,6 +1554,10 @@ header .actions{min-width:0;overflow-x:auto}
       el.querySelector('.motion-test').onclick=()=>triggerMovement(m);
     }
     if(m.type==='timer'){el.querySelector('.timer-settings').onclick=()=>{selectModule(m.id);openSettings(m);};paintTimer(m,lastSnap);}
+    if(m.type==='terminal'&&m.terminalVersion===2)el.querySelectorAll('[data-terminal-bridge]').forEach(button=>{
+      button.onclick=()=>toggleTerminalBridge(m,Number(button.dataset.terminalBridge));
+      button.addEventListener('keydown',e=>e.stopPropagation());
+    });
     if(isProtection(m)){
       el.querySelector('.protection-switch').onclick=()=>operateProtection(m,m.protectionOn?'off':'on');
       el.querySelectorAll('[data-protection]').forEach(b=>b.onclick=()=>operateProtection(m,b.dataset.protection));
@@ -1573,7 +1618,7 @@ header .actions{min-width:0;overflow-x:auto}
     });
   }
   function selection(){return modules.filter(m=>selectedIds.has(m.id));}
-  function moduleDragTarget(e){return !e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-note-resize],input,select,textarea,[contenteditable="true"]');}
+  function moduleDragTarget(e){return !e.target.closest('.term,.remove,.push,.wire-hit,.drive-adjust,.emergency-unlock,.selector-knob,.selector-choices,.installation-rocker,.meter-controls,.protection-switch,.protection-actions,.timer-settings,.pot-controls,.motion-test,[data-terminal-bridge],[data-note-resize],input,select,textarea,[contenteditable="true"]');}
   function startModuleDrag(m,e,toggleOnTap=false,preserveOnTap=false){
     cancel();selectModule(m.id);
     const entries=m.locked?[]:selectedMovable().map(m=>({m,x:m.x,y:m.y}));
@@ -1728,9 +1773,10 @@ header .actions{min-width:0;overflow-x:auto}
     const aux={id:parent.id+'H',type:'auxiliary',parent:parent.id,x:Math.min(BOARD_W-204,parent.x+264),y:parent.y+70};
     modules.push(aux);renderModule(aux);move(aux,aux.x,aux.y);return aux;
   }
-  function partKind(m){return isCombinedTaster(m)&&m.latching?'Schalter · rastend':m.type==='note'?componentTitle(m):m.type==='auxiliary'?'Hilfskontakte':m.type==='contactor'?'Hauptschütz':types[m.type];}
+  function partKind(m){return isCombinedTaster(m)&&m.latching?'Schalter · rastend':m.type==='note'?componentTitle(m):m.type==='auxiliary'?'Hilfskontakte':m.type==='contactor'?'Hauptschütz':m.type==='terminal'&&m.terminalVersion===2?'Reihenklemmen V2':types[m.type];}
   function partBlob(m){return [m.id,displayName(m),shortName(m),partKind(m),m.description||'',m.noteText||'',m.parent||''].join(' ').toLowerCase();}
   function inspectorRows(m){
+    if(m.type==='terminal'&&m.terminalVersion===2)return [['Klemmen','1 bis '+terminalPoles(m)],['Oben / unten','Dieselbe Nummer'],['Verbunden',terminalGroups(m).join(' · ')],['Steckbrücken',String(terminalLinks(m).length)],['Gehäusefarbe','Kennzeichnung, keine Verdrahtung']];
     if(m.type==='changeover')return [['Gemeinsamer Anschluss','L'],['Korrespondierende','1 / 2'],['Stellung 1','L–1'],['Stellung 2','L–2'],['Betätigung','Rastende Wippe · zwei Stellungen']];
     if(m.type==='crossover')return [['Eingangspaar','1 / 2'],['Ausgangspaar','3 / 4'],['Stellung 1','1–3 und 2–4'],['Stellung 2','1–4 und 2–3'],['Kreuzung','Kein elektrischer Knoten in der Mitte']];
     if(m.type==='junction')return [['Gehäuse','Keine elektrischen Anschlüsse'],['Größe',m.boxWidth+' × '+m.boxHeight],['Bestückung','Verbindungsklemmen separat einsetzen']];
@@ -2036,6 +2082,11 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       note.textContent='Oben und unten sind immer dieselbe Klemme. Anzahl und Verbindung gelten sofort. Rand und Strich markieren die Gruppe.';
       fields.innerHTML='<label>Anzahl<input id="devPoles" type="number" min="2" max="12" step="1" value="'+terminalPoles(m)+'"></label><div class="presets"><button type="button" class="ui-btn" data-poles="4">4</button><button type="button" class="ui-btn" data-poles="6">6</button><button type="button" class="ui-btn" data-poles="10">10</button></div><label>Gleiche Verbindung<select id="devSpan"><option value="1">Jede Nummer für sich</option><option value="2">Paar · je 2</option><option value="4">Vierer · je 4</option></select></label>';
       $('#devSpan').value=String(terminalSpan(m));
+      if(m.terminalVersion===2){
+        note.textContent='Oben und unten derselben Nummer sind verbunden. Rote Steckbrücken verbinden Nachbarn; die leeren Brückenplätze anklicken. Farben sind Kennzeichnungen, N und PE selbst verdrahten.';
+        $('#devSpan').closest('label').hidden=true;
+        renderTerminalColors(m);
+      }
       markPolePreset();
       apply.hidden=true;
     }else if(m.type==='rail'){
@@ -2079,6 +2130,11 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(first&&focus)first.focus();
   }
   let liveTimer=0;
+  function renderTerminalColors(m){
+    const fields=$('#devFields');fields.querySelector('.terminal-v2-colors')?.remove();
+    const colors=document.createElement('fieldset');colors.className='terminal-v2-colors';colors.innerHTML='<legend>Klemmenfarben</legend>'+Array.from({length:terminalPoles(m)},(_,i)=>'<label>'+ (i+1) +'<select aria-label="Farbe Klemme '+(i+1)+'" data-terminal-color="'+i+'"><option value="gray">Grau</option><option value="blue">Blau · N</option><option value="pe">Grün-Gelb · PE</option></select></label>').join('');
+    fields.append(colors);colors.querySelectorAll('select').forEach(select=>{select.value=m.terminalColors[Number(select.dataset.terminalColor)];select.onchange=()=>{remember();m.terminalColors[Number(select.dataset.terminalColor)]=select.value;paintDeviceFace(m);schedulePersist();};});
+  }
   function markPolePreset(){
     const n=$('#devPoles')?.value;
     document.querySelectorAll('#devFields [data-poles]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.poles===String(n))));
@@ -2087,6 +2143,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const fields=$('#devFields');
     if(!fields)return;
     fields.querySelectorAll('input,select,textarea').forEach(el=>{
+      if(el.hasAttribute('data-terminal-color'))return;
       el.addEventListener('input',()=>queueLive(false));
       el.addEventListener('change',()=>queueLive(true));
     });
@@ -2181,7 +2238,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const commit=()=>{
     remember();
     defaultNom(m);
-    if(m.type==='terminal'&&(terminalPoles(m)!==poles||terminalSpan(m)!==span)){m.poles=poles;m.span=span;dropLoose(m);lastImportedSig='';}
+    const terminalCountChanged=m.type==='terminal'&&terminalPoles(m)!==poles;
+    if(m.type==='terminal'&&(terminalCountChanged||terminalSpan(m)!==span)){m.poles=poles;m.span=span;dropLoose(m);lastImportedSig='';}
     if(m.type==='rail'&&railScrews(m)!==screws){m.screws=screws;dropLoose(m);lastImportedSig='';}
     if(voltage!==null&&m.voltage!==voltage){m.voltage=voltage;if(engine&&engine.setPsuVoltage)engine.setPsuVoltage(m.id,voltage);else lastImportedSig='';}
     if(kw!==null&&(m.ratedKw!==kw||m.eta!==eta)){m.ratedKw=kw;m.eta=eta;if(engine&&engine.setAcMotorRatings)engine.setAcMotorRatings(m.id,kw,eta);else lastImportedSig='';}
@@ -2208,6 +2266,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     m.titleLines=titleLines>=1&&titleLines<=3?titleLines:2;
     if(isCombinedTaster(m)&&m.latching!==latching){m.latching=latching;if(!latching&&m.pressed){m.pressed=false;if(engine)engine.setPressed(m.id,false);paintTaster(m);refreshLive();}}
     remount(m);
+    if(live&&terminalCountChanged&&m.terminalVersion===2)renderTerminalColors(m);
     mark();draw();
     paintDeviceFace(m);
     if(live){
@@ -2251,7 +2310,13 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       seen.add(pair);return true;
     });
   }
-  function point(key){const t=term(key);if(!t)return null;const r=t.getBoundingClientRect(),b=board.getBoundingClientRect();return{x:(r.left+r.width/2-b.left)/scale,y:(r.top+r.height/2-b.top)/scale,d:t.dataset.direction,id:t.closest('.module').dataset.id};}
+  function point(key){
+    const t=term(key);if(!t)return null;
+    const r=t.getBoundingClientRect(),b=board.getBoundingClientRect(),module=t.closest('.module');
+    let y=(r.top+r.height/2-b.top)/scale;
+    if(module.classList.contains('terminal-v2'))y=t.dataset.direction==='top'?(r.top-b.top)/scale+1:(r.bottom-b.top)/scale-1;
+    return{x:(r.left+r.width/2-b.left)/scale,y,d:t.dataset.direction,id:module.dataset.id};
+  }
   function localPoint(e){const b=board.getBoundingClientRect();return{x:(e.clientX-b.left)/scale,y:(e.clientY-b.top)/scale,d:'free'};}
   function wireSource(){return gesture?.kind==='wire'?(gesture.moved?gesture.key:pending||gesture.key):pending;}
   function directlyConnected(a,b){return wires.some(w=>w.a===a&&w.b===b||w.a===b&&w.b===a);}
@@ -2324,7 +2389,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(dot<0)return '';
     const id=key.slice(0,dot),rest=key.slice(dot+1),m=modules.find(x=>x.id===id);
     if(!m)return '';
-    if(m.type==='terminal'){const hit=rest.match(/^(\d+)[ou]$/);if(!hit)return '';const span=terminalSpan(m);return id+'#'+Math.floor((Number(hit[1])-1)/span);}
+    if(m.type==='terminal'){const hit=rest.match(/^(\d+)[ou]$/);if(!hit)return '';const n=Number(hit[1]);if(n<1||n>terminalPoles(m))return '';const span=terminalSpan(m);return id+'#'+(m.terminalVersion===2?terminalGroupIndex(m,n):Math.floor((n-1)/span));}
     if(m.type==='connector')return /^[1-5]$/.test(rest)&&Number(rest)<=connectorPorts(m)?id+'#common':'';
     if(m.type==='socket'){const hit=rest.match(/^(L|N|PE)(out)?$/);return hit?id+'#'+hit[1]:'';}
     if(m.type==='rail'){const hit=rest.match(/^(\+24|0V|PE)\.\d+$/);return hit?id+'#'+hit[1]:'';}
@@ -2769,8 +2834,12 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function setShowCurrent(on){
     showCurrent=!!on;
     const btn=$('#showCurrent');
-    if(btn)btn.setAttribute('aria-pressed',String(showCurrent));
-    $('#currentSpeedControl').hidden=!showCurrent;
+    if(btn){btn.setAttribute('aria-pressed',String(showCurrent));btn.setAttribute('aria-expanded',String(showCurrent));btn.title=showCurrent?'Stromanzeige ausschalten':'Stromanzeige einschalten und Tempo einstellen';}
+    const control=$('#currentSpeedControl');
+    if(!showCurrent&&control.contains(document.activeElement))btn.focus({preventScroll:true});
+    $('#currentDisplay').classList.toggle('expanded',showCurrent);
+    control.setAttribute('aria-hidden',String(!showCurrent));control.inert=!showCurrent;
+    $('#currentSpeed').disabled=!showCurrent;
     lastDotTime=null;
     paintWireCurrent(lastSnap);
     if(!skipStore)try{localStorage.setItem(CURRENT_STORE,showCurrent?'1':'0');}catch(e){}
@@ -2779,7 +2848,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const g=new Map(),link=(a,b)=>{if(!g.has(a))g.set(a,new Set());if(!g.has(b))g.set(b,new Set());g.get(a).add(b);g.get(b).add(a);};
     wires.forEach(w=>link(w.a,w.b));
     modules.forEach(m=>{
-      if(m.type==='terminal'){const span=terminalSpan(m);for(let n=1;n<=terminalPoles(m);n++){link(m.id+'.'+n+'o',m.id+'.'+n+'u');if(span>1&&(n-1)%span)link(m.id+'.'+(n-1)+'o',m.id+'.'+n+'o');}}
+      if(m.type==='terminal'){const span=terminalSpan(m),bridges=m.terminalVersion===2?terminalLinks(m):null;for(let n=1;n<=terminalPoles(m);n++){link(m.id+'.'+n+'o',m.id+'.'+n+'u');if(bridges?bridges.includes(n-1):span>1&&(n-1)%span)link(m.id+'.'+(n-1)+'o',m.id+'.'+n+'o');}}
       if(m.type==='connector')for(let n=2;n<=connectorPorts(m);n++)link(m.id+'.1',m.id+'.'+n);
       if(m.type==='socket')for(const pin of ['L','N','PE'])link(m.id+'.'+pin,m.id+'.'+pin+'out');
       if(m.type==='changeover')link(m.id+'.L',m.id+'.'+(m.selection===1?'2':'1'));
@@ -2997,7 +3066,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   function setEngineTag(text,err){$('#engineTag').textContent=text;$('#engineTag').style.color=err?'#be442f':'#56665b';}
   function projectPayload(){
-    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.filter(electricalModule).map(m=>({ports:m.type==='connector'?connectorPorts(m):undefined,resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:isProtection(m)?m.poles:m.type==='terminal'?terminalPoles(m):0,span:m.type==='terminal'?terminalSpan(m):1,screws:m.type==='rail'?railScrews(m):0})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
+    return {schema:1,revision:++importSeq,running:false,supplyOn:powered,components:modules.filter(electricalModule).map(m=>({ports:m.type==='connector'?connectorPorts(m):undefined,resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:isProtection(m)?m.poles:m.type==='terminal'?terminalPoles(m):0,span:m.type==='terminal'?terminalSpan(m):1,terminalVersion:m.type==='terminal'&&m.terminalVersion===2?2:undefined,bridges:m.type==='terminal'&&m.terminalVersion===2?terminalLinks(m):undefined,screws:m.type==='rail'?railScrews(m):0})),wires:wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
   }
   function scheduleSync(){
     if(!engine||!engineOk)return;
@@ -3462,6 +3531,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   new ResizeObserver(()=>workspace.style.setProperty('--viewbar-height',$('.board-bar').offsetHeight+'px')).observe($('.board-bar'));
   matchMedia('(max-width:1050px)').addEventListener('change',e=>{workspace.classList.toggle('hide-inspector',e.matches);workspace.classList.toggle('hide-parts',e.matches);inspectorLabel();partsLabel();requestAnimationFrame(layoutView);});
   function restore(d,keepMode){
+    clearTimeout(liveTimer);
     d=migrateJunctions(d);
     cancel();closeDevMenu();
     board.querySelectorAll('.module').forEach(e=>e.remove());
@@ -3647,6 +3717,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     });
   });
   const newGlyph={
+    terminal:'<path d="M1 12h26v5H1" fill="#aebac1" stroke="#74848c"/><g fill="#cbd1d4" stroke="#809097">'+[3,10,17].map(x=>'<rect x="'+x+'" y="2" width="7" height="24" rx="1"/><circle cx="'+(x+3.5)+'" cy="6" r="2" fill="#78858c"/><rect x="'+(x+1)+'" y="10" width="5" height="5" fill="#fff"/><circle cx="'+(x+3.5)+'" cy="22" r="2" fill="#78858c"/>').join('')+'</g><path d="M13 17h8" stroke="#d84735" stroke-width="3"/>',
     changeover:`<rect x="1.5" y="1.5" width="25" height="25" rx="4" fill="#e5e8e6" stroke="#929d97"/><rect x="4" y="4" width="20" height="20" rx="2" fill="#fafcf9" stroke="#c3ccc5"/>
       <g fill="none" stroke="#30483d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7v5m14-5v5M14 21v-4l-7-5"/><path d="M6 12h2m12 0h2"/>
       <circle cx="7" cy="7" r="1.7" fill="#fafcf9"/><circle cx="21" cy="7" r="1.7" fill="#fafcf9"/><circle cx="14" cy="21" r="1.7" fill="#fafcf9"/></g>`,
@@ -3678,7 +3749,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   document.querySelector('.parts-rail .add-set').parentElement.append(partGroup('Beschriften',[
     ['note','Notiz','Text auf der Montageplatte'],['label','Beschriftung','Weißer Textstreifen mit freier Größe'],['frame','Rahmen','Gestrichelter Rahmen mit Text, frei größenveränderbar']
   ]));
-  document.querySelector('[data-add="terminal"]').insertAdjacentHTML('afterend',[2,3,5].map(n=>partButton('connector','Verbindungsklemme · '+n+' Leiter','Alle '+n+' Anschlüsse intern verbunden').replace('data-add="connector"','data-add="connector" data-ports="'+n+'"')).join(''));
+  document.querySelector('[data-add="terminal"]').outerHTML=partButton('terminal','Reihenklemmen V2','Einzelne Durchgangsklemmen mit steckbaren Brücken').replace('data-add="terminal"','data-add="terminal" data-terminal-version="2"');
   document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>{
     closePalettes();
     const requested=b.dataset.add;
@@ -3686,6 +3757,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     remember();const type=['switch','label','frame'].includes(requested)?(requested==='switch'?'start':'note'):requested,prefix=defaultPrefix(type);
     const m={id:nextId(prefix),type,x:Math.max(24,Math.min(BOARD_W-510,(viewport.clientWidth/2-camera.x)/scale-122)),y:Math.max(61,Math.min(BOARD_H-420,(viewport.clientHeight/2-camera.y)/scale-170))};
     if(type==='connector')m.ports=Number(b.dataset.ports);
+    if(type==='terminal'&&b.dataset.terminalVersion==='2'){m.terminalVersion=2;m.bridges=[];m.poles=6;}
     if(type==='junction')m.junctionVersion=2;
     if(requested==='switch'){m.latching=true;m.buttonColor='black';}
     if(requested==='label'){m.noteStyle='label';m.noteText='Beschriftung';}
