@@ -541,6 +541,7 @@ header .actions{min-width:0;overflow-x:auto}
 .rail-screws{display:flex;justify-content:space-between;gap:2px}
 </style>
 <link rel="stylesheet" href="egt-hmi-stecken-ui.css?v=20261002currenttempo1">
+<link rel="stylesheet" href="egt-student-help.css?v=20261012a">
 </head>
 <body>
 <header class="app-header">
@@ -550,6 +551,7 @@ header .actions{min-width:0;overflow-x:auto}
     <div class="identity-copy"><h1>Verdrahtungswerkstatt</h1><span class="engine-tag" id="engineTag" role="status">Lädt CircuitJS…</span></div>
   </div>
   <div class="actions" aria-label="Projektaktionen">
+    <button type="button" class="student-help-entry" data-student-help="werkstatt"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7" r=".7" fill="currentColor"/></svg>Hilfe</button>
     <div class="history-actions" role="group" aria-label="Bearbeiten">
       <button class="ui-btn icon-only" id="undo" disabled aria-label="Rückgängig" title="Rückgängig, Strg+Z"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5 3.5 9.5 8 14M4 9.5h8a4.5 4.5 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <button class="ui-btn icon-only" id="redo" disabled aria-label="Wiederholen" title="Wiederholen, Strg+Y"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5 4.5 4.5L12 14m4-4.5H8a4.5 4.5 0 0 0 0 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -3787,5 +3789,6 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   if(skipStore)window.__workshop={present:getFaultPresentation,recovery:()=>recoveryMemory};
 })();
 </script>
+<script src="egt-student-help.js?v=20261012a"></script>
 </body>
 </html>
