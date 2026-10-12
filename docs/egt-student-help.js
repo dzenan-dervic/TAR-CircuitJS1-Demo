@@ -45,10 +45,10 @@
 
   function legendSymbol(kind) {
     if (kind === 'voltage' || kind === 'current') {
-      const effect = kind === 'voltage'
-        ? '<path class="student-help-voltage-glow" d="M14 18H82"/><path d="M14 18H82" stroke="#6b3f24" stroke-width="8"/><path d="M14 16H82" stroke="#fffffff2" stroke-width="2"/>'
-        : '<path d="M14 18H82" stroke="#384540" stroke-width="8"/><defs><clipPath id="studentHelpCurrentClip"><rect x="14" y="11" width="68" height="14"/></clipPath></defs><g clip-path="url(#studentHelpCurrentClip)"><g class="student-help-flow" fill="#ffe35b" stroke="#74651b" stroke-width=".8"><rect x="-12" y="14" width="8" height="8"/><rect x="12" y="14" width="8" height="8"/><rect x="36" y="14" width="8" height="8"/><rect x="60" y="14" width="8" height="8"/><rect x="84" y="14" width="8" height="8"/></g></g>';
-      return '<svg class="student-help-wire-demo" viewBox="0 0 96 36" aria-hidden="true"><path d="M8 18H88" stroke="#69767a" stroke-width="10"/>' + effect + '<g fill="#d6dde0" stroke="#596b62" stroke-width="1.5"><circle cx="8" cy="18" r="6"/><circle cx="88" cy="18" r="6"/><path d="m5 21 6-6m74 6 6-6"/></g></svg>';
+      const live = kind === 'voltage' ? ' volt-live' : '';
+      const conductor = '<path class="wire-shadow" d="M14 24H114"/><path class="wire-volt' + live + '" d="M14 24H114"/><path class="wire-line" d="M14 24H114" stroke="#6b3f24"/><path class="wire-highlight' + live + '" d="M14 24H114"/>';
+      const flow = kind === 'current' ? '<defs><clipPath id="studentHelpCurrentClip"><rect x="14" y="16" width="100" height="16"/></clipPath></defs><g clip-path="url(#studentHelpCurrentClip)"><g class="student-help-flow">' + [-38,10,58,106,154].map(x => '<rect class="wire-dot" x="' + x + '" y="20" width="8" height="8"/>').join('') + '</g></g>' : '';
+      return '<svg class="student-help-wire-demo" viewBox="0 0 128 48" aria-hidden="true">' + conductor + flow + '</svg>';
     }
     const label = {'fup-on':'1','junction':'●','named':'FUP_AUF','fault':'!','contactor':'Q','sensor':'B'}[kind] || '';
     return '<span class="student-help-symbol ' + kind + '" aria-hidden="true">' + label + '</span>';
