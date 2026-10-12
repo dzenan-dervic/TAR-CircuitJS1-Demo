@@ -43,6 +43,17 @@
     ['l1', 'Braun · L1'], ['l2', 'Schwarz · L2'], ['l3', 'Grau · L3'], ['n', 'Blau · N'], ['pe', 'Grün-Gelb · PE']
   ];
 
+  function legendSymbol(kind) {
+    if (kind === 'voltage' || kind === 'current') {
+      const effect = kind === 'voltage'
+        ? '<path class="student-help-voltage-glow" d="M14 18H82"/><path d="M14 18H82" stroke="#6b3f24" stroke-width="8"/><path d="M14 16H82" stroke="#fffffff2" stroke-width="2"/>'
+        : '<path d="M14 18H82" stroke="#384540" stroke-width="8"/><defs><clipPath id="studentHelpCurrentClip"><rect x="14" y="11" width="68" height="14"/></clipPath></defs><g clip-path="url(#studentHelpCurrentClip)"><g class="student-help-flow" fill="#ffe35b" stroke="#74651b" stroke-width=".8"><rect x="-12" y="14" width="8" height="8"/><rect x="12" y="14" width="8" height="8"/><rect x="36" y="14" width="8" height="8"/><rect x="60" y="14" width="8" height="8"/><rect x="84" y="14" width="8" height="8"/></g></g>';
+      return '<svg class="student-help-wire-demo" viewBox="0 0 96 36" aria-hidden="true"><path d="M8 18H88" stroke="#69767a" stroke-width="10"/>' + effect + '<g fill="#d6dde0" stroke="#596b62" stroke-width="1.5"><circle cx="8" cy="18" r="6"/><circle cx="88" cy="18" r="6"/><path d="m5 21 6-6m74 6 6-6"/></g></svg>';
+    }
+    const label = {'fup-on':'1','junction':'●','named':'FUP_AUF','fault':'!','contactor':'Q','sensor':'B'}[kind] || '';
+    return '<span class="student-help-symbol ' + kind + '" aria-hidden="true">' + label + '</span>';
+  }
+
   function createState(area, storage) {
     if (!steps[area]) throw new Error('Unbekannter Hilfebereich: ' + area);
     const key = 'egt.student-help.v1.' + area;
@@ -90,7 +101,7 @@
         content.innerHTML = '<p class="student-help-progress" role="status">Schritt ' + (state.step + 1) + ' von 4</p><div class="student-help-step" aria-hidden="true">' + (state.step + 1) + '</div><h3 tabindex="-1">' + item[0] + '</h3><p>' + item[1] + '</p><p class="student-help-note">' + item[2] + '</p><p class="student-help-reminder">Du kannst den Einstieg jederzeit über Hilfe erneut öffnen.</p>';
       } else {
         const list = area === 'werkstatt' ? workshopLegend : circuitLegend;
-        content.innerHTML = '<p>Die Bedeutung hängt davon ab, wo die Markierung erscheint.</p><dl class="student-help-legend">' + list.map(item => '<div><dt><span class="student-help-symbol ' + item[0] + '" aria-hidden="true">' + ({'fup-on':'1','junction':'●','named':'FUP_AUF','fault':'!','contactor':'Q','sensor':'B','current':'▪ ▪','voltage':'V'}[item[0]] || '') + '</span>' + item[1] + '</dt><dd>' + item[2] + '</dd></div>').join('') + '</dl><h3>Aderfarben</h3><p>Leiterkennzeichnungen, keine EIN/AUS-Anzeige. Eine gewählte Farbe verdrahtet den Leiter nicht automatisch.</p><ul class="student-help-conductors">' + conductors.map(item => '<li><span class="student-help-wire ' + item[0] + '" aria-hidden="true"></span>' + item[1] + '</li>').join('') + '</ul>';
+        content.innerHTML = '<p>Die Bedeutung hängt davon ab, wo die Markierung erscheint.</p><dl class="student-help-legend">' + list.map(item => '<div><dt>' + legendSymbol(item[0]) + item[1] + '</dt><dd>' + item[2] + '</dd></div>').join('') + '</dl><h3>Aderfarben</h3><p>Leiterkennzeichnungen, keine EIN/AUS-Anzeige. Eine gewählte Farbe verdrahtet den Leiter nicht automatisch.</p><ul class="student-help-conductors">' + conductors.map(item => '<li><span class="student-help-wire ' + item[0] + '" aria-hidden="true"></span>' + item[1] + '</li>').join('') + '</ul>';
       }
       if (area === 'werkstatt') {
         const more = doc.createElement('button');

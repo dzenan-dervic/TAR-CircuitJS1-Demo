@@ -34,8 +34,11 @@
 .student-help-symbol.selection{background:#050505;border:3px solid #0ff}
 .student-help-symbol.selection-workshop{border:3px solid #2878ef}
 .student-help-symbol.fault{border:3px solid #d73527;color:#b42318;background:#fff}
-.student-help-symbol.current{background:#384540;color:#ffe35b}
-.student-help-symbol.voltage{background:#6b3f24;color:#fff;box-shadow:0 0 0 3px #e5e5e5}
+.student-help-wire-demo{width:96px;height:36px;flex:none;overflow:visible}
+.student-help-voltage-glow{stroke:#fff;stroke-width:14;stroke-linecap:round;filter:blur(3.5px) drop-shadow(0 0 5px #ffffffbf);opacity:.85}
+.student-help-flow{animation:student-help-current 1.1s linear infinite}
+@keyframes student-help-current{from{transform:translateX(0)}to{transform:translateX(24px)}}
+@media(prefers-reduced-motion:reduce){.student-help-flow{animation:none}}
 .student-help-symbol.junction{color:var(--help-ink);border-block:2px solid currentColor;border-radius:0}
 .student-help-symbol.named{border:1px solid var(--help-line);padding:.25rem;height:auto}
 .student-help-conductors{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;padding:0;list-style:none}
