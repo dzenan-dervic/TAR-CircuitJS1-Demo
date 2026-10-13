@@ -1847,16 +1847,51 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       });
     });
   }
-  function acPhaseLive(snap){
-    const keys=new Set();
-    if(!ctx.state.powered||!snap)return keys;
+  let acFrame=null,acNetwork=null,acSignature='';
+  const acLampMarks=new Map(),acWireMarks=new Map();
+  function acDisplayNetwork(snap){
+    if(!ctx.state.powered||ctx.state.latchedFault||!snap||!ctx.state.modules.some(m=>m.type==='mains')){
+      acFrame=null;acNetwork=null;acSignature='';acLampMarks.clear();acWireMarks.clear();return null;
+    }
+    const signature=String(snap.revision)+'|'+ctx.state.modules.map(m=>[m.id,m.pressed,m.selection,m.protectionOn,m.protectionTripped,m.voltage,m.nomV,m.resistance,m.potPosition].join(':')).join('|')+'|'+JSON.stringify(snap.contacts||{});
+    if(signature!==acSignature){acLampMarks.clear();acWireMarks.clear();acSignature=signature;acFrame=null;}
+    if(acFrame===snap)return acNetwork;
     const current=Object.fromEntries(Object.entries(snap.coils||{}).map(([id,coil])=>[id,!!coil.energized]));
-    const g=ctx.services.simulation.graph(current);
+    const g=ctx.services.simulation.graph(current,true),phases=new Set(),terminals=new Set();
     ctx.state.modules.filter(m=>m.type==='mains').forEach(m=>{
-      ['L1','L2','L3'].forEach(p=>ctx.services.simulation.reachable(g,m.id+'.'+p).forEach(k=>keys.add(k)));
+      ['L1','L2','L3','N','PE'].forEach(pin=>ctx.services.simulation.reachable(g,m.id+'.'+pin).forEach(key=>{terminals.add(key);if(pin.startsWith('L'))phases.add(key);}));
     });
-    return keys;
+    const signals=new Map([...g].map(([key,values])=>[key,new Set(values)]));
+    const link=(a,b)=>{if(!signals.has(a))signals.set(a,new Set());if(!signals.has(b))signals.set(b,new Set());signals.get(a).add(b);signals.get(b).add(a);};
+    ctx.state.modules.forEach(m=>{if(ctx.services.editor.isLight(m)||ctx.services.editor.isCombinedTaster(m)||m.type==='emergency'){const [a,b]=lampPins(m);link(m.id+'.'+a,m.id+'.'+b);}});
+    const displayTerminals=new Set(terminals);
+    phases.forEach(key=>ctx.services.simulation.reachable(signals,key).forEach(term=>displayTerminals.add(term)));
+    acFrame=snap;acNetwork={g,phases,terminals,displayTerminals};return acNetwork;
   }
+  function lampPins(m){return m.type==='pilot'||ctx.services.editor.isCombinedTaster(m)||m.type==='emergency'?['X1','X2']:['L','N'];}
+  function displayLampOn(m,snap){
+    const raw=!!snap?.lamps?.[m.id]?.on;
+    if(!ctx.services.simulation.plantLive()){acLampMarks.delete(m.id);return false;}
+    const [a,b]=lampPins(m),ac=acDisplayNetwork(snap),l=m.id+'.'+a,n=m.id+'.'+b;
+    if(!ac||!ac.displayTerminals.has(l)&&!ac.displayTerminals.has(n))return raw;
+    if(ctx.services.simulation.reachable(ac.g,l).has(n)){acLampMarks.delete(m.id);return false;}
+    const now=performance.now();
+    if(raw)acLampMarks.set(m.id,now);
+    // Ein Nulldurchgang löscht die Anzeige nicht; Schaltänderungen leeren den Verlauf sofort.
+    const closed=(ac.phases.has(l)||ac.phases.has(n))&&ac.terminals.has(l)&&ac.terminals.has(n);
+    if(acLampMarks.has(m.id)&&(closed||!snap.running||now-acLampMarks.get(m.id)<=250))return true;
+    acLampMarks.delete(m.id);return false;
+  }
+  function displayWireCurrent(w,snap){
+    const current=ctx.services.editor.wireCurrentOf(w,snap),network=acDisplayNetwork(snap);
+    const ac=!!network&&(network.displayTerminals.has(w.a)||network.displayTerminals.has(w.b));
+    const key=w.a+'|'+w.b,now=performance.now();
+    if(ac&&Math.abs(current)>=ctx.config.I_DOT)acWireMarks.set(key,now);
+    const active=Math.abs(current)>=ctx.config.I_DOT||ac&&acWireMarks.has(key)&&(!snap.running||now-acWireMarks.get(key)<=250);
+    if(!active)acWireMarks.delete(key);
+    return {current,ac,active};
+  }
+  function acPhaseLive(snap){return acDisplayNetwork(snap)?.phases||new Set();}
   function wireHasVoltage(w,snap){
     if(!ctx.state.showVoltage||!ctx.state.powered||!snap)return false;
     const terms=snap.terminals||{};
@@ -1893,7 +1928,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const n=Number(value);
     ctx.state.currentSpeed=Number.isFinite(n)?Math.max(5,Math.min(100,Math.round(n/5)*5)):25;
     const input=ctx.dom.$('#currentSpeed'),output=ctx.dom.$('#currentSpeedValue');
-    if(input){input.value=String(ctx.state.currentSpeed);input.setAttribute('aria-valuetext',ctx.state.currentSpeed+' Prozent');}
+    if(input){if(input.value!==String(ctx.state.currentSpeed))input.value=String(ctx.state.currentSpeed);input.setAttribute('aria-valuetext',ctx.state.currentSpeed+' Prozent');}
     if(output)output.textContent=ctx.state.currentSpeed+' %';
     if(!ctx.config.skipStore)try{localStorage.setItem(ctx.config.CURRENT_SPEED_STORE,String(ctx.state.currentSpeed));}catch(e){}
   }
@@ -1908,10 +1943,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.state.lastDotTime=now;
     const electronFlow=Number(snap.currentMult)<0;
     ctx.state.wires.forEach((w,i)=>{
-      const cur=ctx.services.editor.wireCurrentOf(w,snap);
-      if(Math.abs(cur)<ctx.config.I_DOT){ctx.state.dotPos[i]=0;return;}
+      const display=ctx.services.editor.displayWireCurrent(w,snap),cur=display.current;
+      if(!display.active){ctx.state.dotPos[i]=0;return;}
       if(running){
-        ctx.state.dotPos[i]=(ctx.state.dotPos[i]||0)+ctx.services.editor.currentDotAdvance(cur,elapsed);
+        ctx.state.dotPos[i]=(ctx.state.dotPos[i]||0)+ctx.services.editor.currentDotAdvance(cur,elapsed)*(display.ac&&cur<0?-1:1);
       }
       const path=ctx.dom.svg.querySelector('.wire-line[data-wire="'+i+'"]');
       if(!path||typeof path.getTotalLength!=='function')return;
@@ -1919,7 +1954,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(len<8)return;
       let pos=(ctx.state.dotPos[i]||0)%ctx.config.DOT_SP;
       if(pos<0)pos+=ctx.config.DOT_SP;
-      const reverse=(cur<0)!==electronFlow;
+      const reverse=(display.ac?false:cur<0)!==electronFlow;
       const half=ctx.config.DOT_SIZE/2;
       for(let d=pos;d<len;d+=ctx.config.DOT_SP){
         const pt=path.getPointAtLength(reverse?len-d:d);
@@ -2238,7 +2273,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
         m.el.classList.toggle('energized',on);
         if(label)label.textContent=on?'Angezogen':'Abgefallen';
       }
-      if(ctx.services.editor.isLight(m)){const on=ctx.services.simulation.plantLive()&&!!snap.lamps?.[m.id]?.on;m.el.classList.toggle('lit',on);if(label)label.textContent=on?'Leuchtet':'Aus';}
+      if(ctx.services.editor.isLight(m)){const on=ctx.services.editor.displayLampOn(m,snap);m.el.classList.toggle('lit',on);if(label)label.textContent=on?'Leuchtet':'Aus';}
       if(ctx.services.editor.isInstallationSwitch(m))ctx.services.editor.paintInstallationSwitch(m);
       if(m.type==='selector')ctx.services.editor.paintSelector(m);
       if(m.type==='lineardrive')ctx.services.editor.paintDrive(m,snap);
@@ -2274,7 +2309,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(m.type==='start'||m.type==='stop'||m.type==='emergency'){
         m.el.classList.toggle('pressed',!!m.pressed);
         const lamp=(snap.lamps||{})[m.id]||{};
-        m.el.classList.toggle('lit',ctx.services.simulation.plantLive()&&!!lamp.on);
+        m.el.classList.toggle('lit',ctx.services.editor.displayLampOn(m,snap));
         if(m.type==='emergency')ctx.services.editor.paintTaster(m);else if(label)label.textContent=m.pressed?'NO zu · NC auf':'NO auf · NC zu';
       }
     });
@@ -2645,6 +2680,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     leadProbe,
     raiseLeads,
     drawLeads,
+    acDisplayNetwork,
+    lampPins,
+    displayLampOn,
+    displayWireCurrent,
     acPhaseLive,
     wireHasVoltage,
     paintWireVoltage,
