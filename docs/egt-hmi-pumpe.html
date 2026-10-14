@@ -573,6 +573,7 @@
       display: block; color: var(--text); font-size: 12px;
       margin: 0 0 3px; line-height: 1.2;
     }
+    .tank-flow { display: block; font-size: 10px; font-weight: 600; letter-spacing: normal; text-transform: none; color: var(--muted); }
     .tank-cap.overflow { color: var(--red); border-color: var(--red); }
     .tank-cap.overflow b { color: var(--red); }
     .tank-body {
@@ -984,7 +985,7 @@
     <div class="grid">
       <div class="card">
         <h2>
-          <span>Anlage — Wasserbehälter</span>
+          <span>Anlage — Wasserbehälter<span class="tank-flow" id="tankFlowState" role="status">Kein Wasserfluss</span></span>
           <span class="spd">Förderleistung <input id="spd" type="range" min="10" max="100" value="55" aria-label="Förderleistung für Befüllen und Zapfen" title="Links langsam · rechts schnell. Regelt Befüllen und Zapfen." /></span>
         </h2>
         <div class="scene">
@@ -1055,7 +1056,7 @@
               <div class="flap"></div>
             </div>
             <div class="tank">
-              <div class="tank-cap" id="tankCap"><b>Behälter</b>Min 20 % · Max 90 %</div>
+              <div class="tank-cap" id="tankCap"><b id="tankCapTitle">Behälter</b><span id="tankCapLimits">Min 20 % · Max 90 %</span></div>
               <div class="tank-body">
                 <div class="spill-lip" aria-hidden="true"></div>
                 <div class="spill-fall" aria-hidden="true"></div>
@@ -1402,9 +1403,13 @@
     document.getElementById("lsMax").classList.toggle("fail", i4Fail);
     var cap = document.getElementById("tankCap");
     cap.classList.toggle("overflow", overflow);
-    cap.innerHTML = overflow
-      ? "<b>Überlauf</b>über 100 % — I4 greift nicht"
-      : "<b>Behälter</b>Min 20 % · Max 90 %";
+    var capTitle = document.getElementById("tankCapTitle");
+    var capLimits = document.getElementById("tankCapLimits");
+    var title = overflow ? "Überlauf" : "Behälter";
+    var limits = overflow ? "über 100 % — I4 greift nicht" : "Min 20 % · Max 90 %";
+    if (capTitle.textContent !== title) capTitle.textContent = title;
+    if (capLimits.textContent !== limits) capLimits.textContent = limits;
+    renderWaterFlow(waterFlow());
 
     var state = document.getElementById("anlageState");
     if (overflow) {
@@ -1657,6 +1662,25 @@
     syncEstop();
   });
 
+  function waterFlow() {
+    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 40;
+    var running = !physicalOn() || !!(physicalController.snapshot && physicalController.snapshot.running);
+    var inflow = running && pumping() && !dry ? rate : 0;
+    // Beim normalen Zapfen kann die Pumpe den Behälter weiter füllen.
+    var outflow = running && zapf ? rate * 0.6 : 0;
+    return { running: running, inflow: inflow, outflow: outflow, net: inflow - outflow };
+  }
+
+  function renderWaterFlow(flow) {
+    var text = "Kein Wasserfluss";
+    if (!flow.running) text = "Wasserfluss pausiert";
+    else if (flow.net > 0) text = level >= LVL_CAP ? "Behälter voll" : "Wasserstand steigt";
+    else if (flow.net < 0) text = level <= 0 ? "Behälter leer" : "Wasserstand sinkt";
+    else if (flow.inflow || flow.outflow) text = "Wasserstand konstant";
+    var status = document.getElementById("tankFlowState");
+    if (status.textContent !== text) status.textContent = text;
+  }
+
   function tick(now) {
     var dt = Math.min(0.08, (now - lastT) / 1000);
     lastT = now;
@@ -1672,10 +1696,8 @@
       document.getElementById("swF1").checked = true;
     }
     if (testOn()) applyTestLogic();
-    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 40;
-    var processRunning = !physicalOn() || physicalController.snapshot && physicalController.snapshot.running;
-    if (processRunning && pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
-    if (processRunning && zapf) level = Math.max(0, level - rate * 1.15 * dt);
+    var flow = waterFlow();
+    level = Math.max(0, Math.min(LVL_CAP, level + flow.net * dt));
     writeExt("I1", !!i1);
     writeExt("I2", !!i2);
     writeExt("I3", i3());
