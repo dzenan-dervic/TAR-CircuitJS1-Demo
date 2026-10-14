@@ -99,7 +99,7 @@ export function createSimulation(ctx) {
     if(!el)return;
     if(ctx.state.pending||ctx.state.gesture)return;
     if(ctx.state.gesture?.kind==='lead'){el.textContent='Messleitung auf eine Klemme oder einen Messpunkt ziehen. Am Messgerät ablegen oder mit Esc abbrechen.';return;}
-    el.textContent=ctx.services.simulation.defaultHint();
+    el.textContent=ctx.services.editor.routingHint?.()||ctx.services.simulation.defaultHint();
     if(line)line.classList.toggle('live',ctx.services.simulation.liveMode());
   }
   function wantEngineRun(){return ctx.state.engineOk&&!ctx.state.latchedFault&&ctx.state.simMode==='betrieb';}

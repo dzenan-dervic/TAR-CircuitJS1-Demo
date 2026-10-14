@@ -1,6 +1,7 @@
 // Bauteile platzieren, Leitungen verbinden und die Montagefläche zeichnen.
 export function createEditor(ctx) {
   let bound = false;
+  let blockedRouteHint = '';
   function applySplitLayout(){
     const appEl=ctx.dom.$('#app');
     if(!appEl)return;
@@ -1565,6 +1566,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.dom.board.querySelectorAll('.term').forEach(t=>{const key=t.dataset.key,attached=ctx.state.wires.find(w=>w.a===key||w.b===key);t.classList.toggle('connected',!!attached);t.classList.toggle('pending',source===key);t.classList.toggle('direct-neighbor',neighbors.has(key));t.classList.toggle('wire-target',ctx.state.wireTarget===key&&ctx.services.editor.canConnect(source,key));t.style.setProperty('--cable',ctx.services.editor.cablePaint(attached?.color||ctx.state.color));});
   }
   function routeBetween(a,b,boxes,lane){
+    if(boxes.some(r=>[a,b].some(p=>p.x>r.l&&p.x<r.r&&p.y>r.t&&p.y<r.b)))return [];
     const xs=[...new Set([a.x,b.x,20,ctx.config.BOARD_W-20,...boxes.flatMap(r=>[r.l-lane,r.r+lane])])].filter(x=>x>=8&&x<=ctx.config.BOARD_W-8).sort((a,b)=>a-b);
     const ys=[...new Set([a.y,b.y,20,ctx.config.BOARD_H-16,...boxes.flatMap(r=>[r.t-lane,r.b+lane])])].filter(y=>y>=8&&y<=ctx.config.BOARD_H-8).sort((a,b)=>a-b);
     const inside=(x,y)=>boxes.some(r=>x>r.l&&x<r.r&&y>r.t&&y<r.b);
@@ -1582,11 +1584,12 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
         if(best.has(key)&&best.get(key)<=cost)continue;best.set(key,cost);queue.push({i,j,dir,cost,prev:n});
       }
     }
-    if(!end)return [[a.x,a.y],[a.x,b.y],[b.x,b.y]];
+    if(!end)return [];
     const result=[];for(let n=end;n;n=n.prev)result.unshift([xs[n.i],ys[n.j]]);return result;
   }
   function moduleBoxes(){
-    return ctx.state.modules.filter(m=>m.el&&m.el.querySelector('.face')).map(m=>({id:m.id,l:m.x-9,r:m.x+m.el.offsetWidth+9,t:m.y-5,b:m.y+31+m.el.querySelector('.face').offsetHeight+23}));
+    // Die offene Dose und Markierungsrahmen dürfen Leitungen enthalten.
+    return ctx.state.modules.filter(m=>m.el&&m.el.querySelector('.face')&&m.type!=='junction'&&!(m.type==='note'&&m.noteStyle==='frame')).map(m=>({id:m.id,l:m.x-9,r:m.x+m.el.offsetWidth+9,t:m.y-5,b:m.y+m.el.offsetHeight+9}));
   }
   function jogOf(w,key){
     if(!w||!key)return 0;
@@ -1604,14 +1607,38 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   function tidyPoints(points){
     points=points.filter((p,i)=>!i||Math.abs(p[0]-points[i-1][0])>.5||Math.abs(p[1]-points[i-1][1])>.5);
-    for(let i=points.length-2;i>0;i--)if((Math.abs(points[i-1][0]-points[i][0])<.5&&Math.abs(points[i][0]-points[i+1][0])<.5)||(Math.abs(points[i-1][1]-points[i][1])<.5&&Math.abs(points[i][1]-points[i+1][1])<.5))points.splice(i,1);
+    for(let i=points.length-2;i>0;i--){
+      const prev=points[i-1],p=points[i],next=points[i+1];
+      const vertical=Math.abs(prev[0]-p[0])<.5&&Math.abs(p[0]-next[0])<.5;
+      const horizontal=Math.abs(prev[1]-p[1])<.5&&Math.abs(p[1]-next[1])<.5;
+      if(vertical&&(p[1]-prev[1])*(next[1]-p[1])>=0||horizontal&&(p[0]-prev[0])*(next[0]-p[0])>=0)points.splice(i,1);
+    }
     return points;
   }
   function routePoints(a,b,w,boxes){
     const first=ctx.services.editor.exitPoint(a,w?ctx.services.editor.jogOf(w,w.a):0,boxes),last=ctx.services.editor.exitPoint(b,w?ctx.services.editor.jogOf(w,w.b):0,boxes);
-    return ctx.services.editor.tidyPoints([[a.x,a.y],...ctx.services.editor.routeBetween(first,last,boxes,18),[b.x,b.y]]);
+    const route=ctx.services.editor.routeBetween(first,last,boxes,18);
+    const points=route.length?ctx.services.editor.tidyPoints([[a.x,a.y],...route,[b.x,b.y]]):[];
+    return ctx.services.editor.routeClear(points,boxes,a.id,b.id)?points:[];
+  }
+  function routeClear(points,boxes,sourceId,targetId){
+    return points.length>1&&!points.slice(1).some((p,i)=>boxes.some(r=>{
+      const a=points[i],inside=q=>q[0]>r.l&&q[0]<r.r&&q[1]>r.t&&q[1]<r.b;
+      const source=sourceId?r.id===sourceId:inside(points[0]),target=targetId?r.id===targetId:inside(points.at(-1));
+      if(i===0&&source||i===points.length-2&&target)return false;
+      let enter=0,leave=1;
+      for(const [axis,low,high] of [[0,r.l,r.r],[1,r.t,r.b]]){
+        const delta=p[axis]-a[axis];
+        if(Math.abs(delta)<1e-6){if(a[axis]<=low||a[axis]>=high)return false;continue;}
+        const near=(low-a[axis])/delta,far=(high-a[axis])/delta;
+        enter=Math.max(enter,Math.min(near,far));leave=Math.min(leave,Math.max(near,far));
+        if(enter>=leave)return false;
+      }
+      return enter<leave;
+    }));
   }
   function orthoPath(points){
+    if(!points.length)return '';
     let d=`M${points[0][0]} ${points[0][1]}`;
     for(let i=1;i<points.length-1;i++){
       const p=points[i],prev=points[i-1],next=points[i+1],aLen=Math.hypot(p[0]-prev[0],p[1]-prev[1]),bLen=Math.hypot(next[0]-p[0],next[1]-p[1]),r=Math.min(10,aLen/2,bLen/2);
@@ -1625,6 +1652,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     return boxes.some(r=>horizontal?pos>r.t-pad&&pos<r.b+pad&&spanB>r.l+1&&spanA<r.r-1:pos>r.l-pad&&pos<r.r+pad&&spanB>r.t+1&&spanA<r.b-1);
   }
   function spreadBundles(routes,boxes){
+    const originals=routes.map(points=>points.map(p=>[...p]));
     const occupied=(pts,horizontal,pos,spanA,spanB)=>{
       for(let n=1;n<pts.length-2;n++){
         const c=pts[n],d=pts[n+1];
@@ -1705,6 +1733,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       });
     };
     run(true);run(false);
+    // Mehr Abstand zwischen Adern darf keinen Umweg durch ein Gehäuse erzeugen.
+    routes.forEach((points,wi)=>{
+      if(!ctx.services.editor.routeClear(points,boxes))points.splice(0,points.length,...originals[wi]);
+    });
   }
   function pathFor(a,b,index,w){
     if(a.id===b.id&&ctx.state.modules.some(m=>m.id===a.id&&m.type==='acmotor')){
@@ -1738,10 +1770,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const setHot=(i,on)=>document.querySelectorAll('[data-wire="'+i+'"]').forEach(el=>el.classList.toggle('hot',on));
     const boxes=ctx.services.editor.moduleBoxes();
     const routed=[];
+    const blocked=[];
     ctx.state.wires.forEach((w,i)=>{
       const a=ctx.services.editor.point(w.a),b=ctx.services.editor.point(w.b);if(!a||!b)return;
       if(a.id===b.id&&ctx.state.modules.some(m=>m.id===a.id&&m.type==='acmotor'))routed.push({i,w,a,b,d:ctx.services.editor.pathFor(a,b,i,w)});
-      else routed.push({i,w,a,b,pts:ctx.services.editor.routePoints(a,b,w,boxes)});
+      else{
+        const pts=ctx.services.editor.routePoints(a,b,w,boxes);
+        if(pts.length)routed.push({i,w,a,b,pts});
+        else blocked.push(w.a+' – '+w.b);
+      }
     });
     ctx.services.editor.spreadBundles(routed.filter(r=>r.pts).map(r=>r.pts),boxes);
     routed.forEach(r=>{
@@ -1769,6 +1806,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.services.editor.paintWireCurrent(ctx.state.lastSnap);
     ctx.services.editor.drawLeads();
     ctx.services.editor.paintFaultScene();
+    const hint=ctx.dom.$('#hint'),previous=blockedRouteHint;
+    blockedRouteHint=blocked.length?'Kein Platz für die Leitung '+blocked[0]+'. Bauteile auseinanderziehen. Die elektrische Verbindung bleibt bestehen.':'';
+    if(blockedRouteHint&&hint)hint.textContent=blockedRouteHint;
+    else if(previous&&hint?.textContent===previous)ctx.services.simulation.paintHint();
   }
   function leadOrigin(m,field){
     const jack=m.el&&m.el.querySelector('[data-lead="'+field+'"]');
@@ -2660,12 +2701,14 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     cancel,
     updateWirePrompt,
     mark,
+    routingHint:()=>blockedRouteHint,
     routeBetween,
     moduleBoxes,
     jogOf,
     exitPoint,
     tidyPoints,
     routePoints,
+    routeClear,
     orthoPath,
     segmentHits,
     spreadBundles,
