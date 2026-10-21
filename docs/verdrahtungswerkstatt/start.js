@@ -1,8 +1,8 @@
 // Erst alle Bereiche verbinden, dann die Oberfläche und die Bridge starten.
-import {createContext} from './zustand.js?v=20261013c';
-import {createEditor} from './editor.js?v=20261013c';
-import {createProject} from './projekt.js?v=20261013c';
-import {createSimulation} from './simulation.js?v=20261013c';
+import {createContext} from './zustand.js?v=20261021a';
+import {createEditor} from './editor.js?v=20261021a';
+import {createProject} from './projekt.js?v=20261021a';
+import {createSimulation} from './simulation.js?v=20261021a';
 
 let started;
 export function bootstrap() {

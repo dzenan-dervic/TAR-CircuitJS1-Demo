@@ -821,7 +821,7 @@ export function createEditor(ctx) {
     const g=ctx.state.gesture,dx=(e.clientX-g.x)/ctx.state.scale,dy=(e.clientY-g.y)/ctx.state.scale;
     if(!g.entries.length||(!g.recorded&&Math.hypot(dx,dy)<3))return;
     if(!g.recorded){ctx.services.projekt.remember();g.recorded=true;}
-    ctx.services.editor.moveEntries(g.entries,dx,dy);ctx.services.editor.draw();
+    ctx.services.editor.moveEntries(g.entries,dx,dy);ctx.services.editor.scheduleDraw();
   }
   function finishModuleDrag(){
     const g=ctx.state.gesture;ctx.state.gesture=null;
@@ -1540,14 +1540,14 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function cancel(){ctx.dom.selectionRectangle.hidden=true;ctx.state.pending=null;ctx.state.gesture=null;ctx.state.wireTarget=null;ctx.state.viewDrag=null;ctx.services.editor.markLeadDock(false);ctx.dom.viewport.classList.remove('panning');ctx.dom.board.querySelectorAll('.dragging,.resizing').forEach(e=>e.classList.remove('dragging','resizing'));ctx.services.editor.updateWirePrompt();ctx.services.simulation.paintHint();ctx.services.editor.mark();ctx.services.editor.draw();}
   function updateWirePrompt(){const line=ctx.dom.$('.hint-line'),button=ctx.dom.$('#cancelWire');if(line)line.classList.toggle('wire-pending',!!ctx.state.pending);if(button)button.hidden=!ctx.state.pending;}
   function handleDocumentPointerMove(e) {
-    if(!ctx.state.gesture){if(ctx.state.pending){ctx.services.editor.updateWireTarget(e);ctx.services.editor.draw(ctx.state.wireTarget?ctx.services.editor.point(ctx.state.wireTarget):ctx.services.editor.localPoint(e));}return;}if(e.pointerId!==ctx.state.gesture.pointerId)return;
+    if(!ctx.state.gesture){if(ctx.state.pending){ctx.services.editor.updateWireTarget(e);ctx.services.editor.scheduleDraw(ctx.state.wireTarget?ctx.services.editor.point(ctx.state.wireTarget):ctx.services.editor.localPoint(e));}return;}if(e.pointerId!==ctx.state.gesture.pointerId)return;
     if(ctx.state.gesture.kind==='module'){ctx.services.editor.moveModuleDrag(e);}
     else if(ctx.state.gesture.kind==='selection'){ctx.services.editor.paintSelectionRectangle(e);}
     else if(ctx.state.gesture.kind==='resize-note'){
       const g=ctx.state.gesture,dx=(e.clientX-g.x)/ctx.state.scale,dy=(e.clientY-g.y)/ctx.state.scale,west=g.edge.includes('w'),east=g.edge.includes('e'),north=g.edge.includes('n'),south=g.edge.includes('s');
       const isBox=g.m.type==='junction',minWidth=isBox?240:120,minHeight=isBox?180:48,width=Math.max(minWidth,Math.min(1600,g.startWidth+(east?dx:west?-dx:0))),height=Math.max(minHeight,Math.min(1600,g.startHeight+(south?dy:north?-dy:0)));
       if(isBox){g.m.boxWidth=Math.round(width);g.m.boxHeight=Math.round(height);}else{g.m.noteWidth=Math.round(width);g.m.noteHeight=Math.round(height);}g.m.x=Math.max(24,Math.min(ctx.config.BOARD_W-24-width,west?g.startX+g.startWidth-width:g.startX));g.m.y=Math.max(61,Math.min(ctx.config.BOARD_H-36-height,north?g.startY+g.startHeight-height:g.startY));
-      ctx.services.editor.position(g.m);ctx.services.editor.paintDeviceFace(g.m);if(ctx.dom.$('#devBoxWidth'))ctx.dom.$('#devBoxWidth').value=g.m.boxWidth;if(ctx.dom.$('#devBoxHeight'))ctx.dom.$('#devBoxHeight').value=g.m.boxHeight;if(ctx.dom.$('#devNoteWidth'))ctx.dom.$('#devNoteWidth').value=g.m.noteWidth;if(ctx.dom.$('#devNoteHeight'))ctx.dom.$('#devNoteHeight').value=g.m.noteHeight;ctx.services.editor.draw();
+      ctx.services.editor.position(g.m);ctx.services.editor.paintDeviceFace(g.m);if(ctx.dom.$('#devBoxWidth'))ctx.dom.$('#devBoxWidth').value=g.m.boxWidth;if(ctx.dom.$('#devBoxHeight'))ctx.dom.$('#devBoxHeight').value=g.m.boxHeight;if(ctx.dom.$('#devNoteWidth'))ctx.dom.$('#devNoteWidth').value=g.m.noteWidth;if(ctx.dom.$('#devNoteHeight'))ctx.dom.$('#devNoteHeight').value=g.m.noteHeight;ctx.services.editor.scheduleDraw();
     }
     else if(ctx.state.gesture.kind==='lead'){
       if(Math.hypot(e.clientX-ctx.state.gesture.x,e.clientY-ctx.state.gesture.y)>4)ctx.state.gesture.moved=true;
@@ -1555,9 +1555,9 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       ctx.services.editor.markLeadDock(home,ctx.state.gesture.m);
       if(home){ctx.state.gesture.preview=ctx.services.editor.localPoint(e);ctx.dom.$('#hint').textContent='Loslassen legt die Messleitung am Messgerät ab.';}
       else{const snap=ctx.services.editor.nearestLeadTerm(e.clientX,e.clientY,ctx.state.gesture.m,ctx.state.gesture.field);ctx.state.gesture.preview=snap?ctx.services.editor.point(snap.dataset.key):ctx.services.editor.localPoint(e);ctx.dom.$('#hint').textContent='Messleitung auf eine Klemme oder einen Messpunkt ziehen. Am Messgerät ablegen oder mit Esc abbrechen.';}
-      ctx.services.editor.draw();
+      ctx.services.editor.scheduleDraw();
     }
-    else{if(Math.hypot(e.clientX-ctx.state.gesture.x,e.clientY-ctx.state.gesture.y)>4)ctx.state.gesture.moved=true;if(ctx.state.gesture.moved){ctx.state.pending=null;ctx.services.editor.updateWireTarget(e);ctx.state.gesture.target=ctx.state.wireTarget;ctx.services.editor.draw(ctx.state.wireTarget?ctx.services.editor.point(ctx.state.wireTarget):ctx.services.editor.localPoint(e),ctx.state.gesture.key);}}
+    else{if(Math.hypot(e.clientX-ctx.state.gesture.x,e.clientY-ctx.state.gesture.y)>4)ctx.state.gesture.moved=true;if(ctx.state.gesture.moved){ctx.state.pending=null;ctx.services.editor.updateWireTarget(e);ctx.state.gesture.target=ctx.state.wireTarget;ctx.services.editor.scheduleDraw(ctx.state.wireTarget?ctx.services.editor.point(ctx.state.wireTarget):ctx.services.editor.localPoint(e),ctx.state.gesture.key);}}
 
   }
   function mark(){
@@ -1761,7 +1761,14 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   }
   function path(d,cls,c){const p=document.createElementNS(ctx.config.NS,'path');p.setAttribute('d',d);p.setAttribute('class',cls);if(c)p.setAttribute('stroke',c);return p;}
   function removeWire(i){if(i<0||!ctx.state.wires[i])return;const target=ctx.state.wires[i];if(!ctx.services.simulation.requestElectricalEdit(()=>ctx.services.editor.removeWire(ctx.state.wires.indexOf(target))))return;ctx.services.projekt.remember();if(ctx.state.wires[i]===ctx.state.selectedWire)ctx.state.selectedWire=null;ctx.state.wires.splice(i,1);ctx.services.simulation.update();ctx.services.simulation.noteWiringReset();}
+  let drawFrame=null,drawArgs=null;
+  function scheduleDraw(...args){
+    drawArgs=args;
+    if(drawFrame!==null)return;
+    drawFrame=requestAnimationFrame(()=>{const latest=drawArgs;drawFrame=null;drawArgs=null;ctx.services.editor.draw(...latest);});
+  }
   function draw(preview,start=ctx.state.pending){
+    if(drawFrame!==null){cancelAnimationFrame(drawFrame);drawFrame=null;drawArgs=null;}
     ctx.dom.svg.replaceChildren();ctx.dom.svg.append(ctx.services.editor.peStripe());
     const overlays=new Map();
     ctx.state.modules.forEach(m=>{const layer=m.el.querySelector('.module-wires');layer.replaceChildren();layer.setAttribute('viewBox',`${m.x} ${m.y} ${m.el.offsetWidth} ${m.el.offsetHeight}`);layer.style.clipPath=`inset(${m.el.querySelector('.handle').offsetHeight}px 0 0 0)`;overlays.set(m.id,layer);});
@@ -1973,11 +1980,49 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(output)output.textContent=ctx.state.currentSpeed+' %';
     if(!ctx.config.skipStore)try{localStorage.setItem(ctx.config.CURRENT_SPEED_STORE,String(ctx.state.currentSpeed));}catch(e){}
   }
+  const currentDotLayers=new Map(),currentGeometries=new Map(),currentPaths=new WeakMap();
+  function currentGeometry(path){
+    const d=path.getAttribute?.('d')||'';
+    const previous=currentPaths.get(path);
+    if(previous?.d===d)return previous;
+    let geometry=currentGeometries.get(d);
+    if(!geometry){
+      const tokens=d.match(/[A-Za-z]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/g)||[];
+      const points=[];let x=0,y=0,length=0,valid=tokens.length>0;
+      const add=(a,b)=>{if(points.length)length+=Math.hypot(a-x,b-y);x=a;y=b;points.push({x,y,length});};
+      for(let i=0;i<tokens.length&&valid;){
+        const command=tokens[i++],count=command==='Q'?4:command==='M'||command==='L'?2:0;
+        const values=tokens.slice(i,i+count).map(Number);i+=count;
+        if(!count||values.length!==count||values.some(v=>!Number.isFinite(v))||command==='M'&&points.length){valid=false;break;}
+        if(command!=='Q')add(...values);
+        else{
+          const [cx,cy,endX,endY]=values,startX=x,startY=y;
+          // Unsere Leitungsbögen sind quadratisch. 32 Abschnitte halten die Abweichung unter einem Bildpunkt.
+          for(let step=1;step<=32;step++){const t=step/32,u=1-t;add(u*u*startX+2*u*t*cx+t*t*endX,u*u*startY+2*u*t*cy+t*t*endY);}
+        }
+      }
+      geometry=valid?{d,length,points}:{d,length:path.getTotalLength(),points:null};
+      if(valid){if(currentGeometries.size>=128)currentGeometries.delete(currentGeometries.keys().next().value);currentGeometries.set(d,geometry);}
+    }
+    currentPaths.set(path,geometry);return geometry;
+  }
+  function currentPoint(path,geometry,distance){
+    const points=geometry.points;
+    if(!points)return path.getPointAtLength(distance);
+    let low=0,high=points.length-1;
+    while(low<high){const mid=(low+high)>>1;if(points[mid].length<distance)low=mid+1;else high=mid;}
+    const b=points[low],a=points[Math.max(0,low-1)],span=b.length-a.length,t=span?Math.max(0,Math.min(1,(distance-a.length)/span)):0;
+    return {x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};
+  }
   function paintWireCurrent(snap){
     if(!ctx.dom.dots)return;
-    ctx.dom.dots.replaceChildren();
-    ctx.state.modules.forEach(m=>m.el?.querySelector('.module-wires')?.querySelectorAll('.wire-dot').forEach(dot=>dot.remove()));
-    if(!ctx.state.showCurrent||!ctx.state.powered||!snap){ctx.state.dotPos=[];ctx.state.lastDotTime=null;return;}
+    if(!ctx.state.showCurrent||!ctx.state.powered||!snap){
+      for(const nodes of currentDotLayers.values())nodes.forEach(dot=>dot.remove());
+      currentDotLayers.clear();ctx.state.dotPos=[];ctx.state.lastDotTime=null;return;
+    }
+    // Erst Geometrie lesen, danach SVG ändern: keine Größenabfrage zwischen den Würfeln.
+    const overlays=ctx.state.modules.filter(m=>m.el&&(Number(m.z)||0)>=6).map(m=>({layer:m.el.querySelector('.module-wires'),x:m.x,y:m.y,right:m.x+m.el.offsetWidth,bottom:m.y+m.el.offsetHeight}));
+    const positions=new Map([[ctx.dom.dots,[]],...overlays.filter(m=>m.layer).map(m=>[m.layer,[]])]);
     const running=!!snap.running;
     const now=performance.now();
     const elapsed=ctx.state.lastDotTime===null?1000/60:Math.min(100,Math.max(0,now-ctx.state.lastDotTime));
@@ -1991,28 +2036,37 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       }
       const path=ctx.dom.svg.querySelector('.wire-line[data-wire="'+i+'"]');
       if(!path||typeof path.getTotalLength!=='function')return;
-      const len=path.getTotalLength();
+      const geometry=currentGeometry(path),len=geometry.length;
       if(len<8)return;
       let pos=(ctx.state.dotPos[i]||0)%ctx.config.DOT_SP;
       if(pos<0)pos+=ctx.config.DOT_SP;
       const reverse=(display.ac?false:cur<0)!==electronFlow;
       const half=ctx.config.DOT_SIZE/2;
       for(let d=pos;d<len;d+=ctx.config.DOT_SP){
-        const pt=path.getPointAtLength(reverse?len-d:d);
-        const r=document.createElementNS(ctx.config.NS,'rect');
-        r.setAttribute('class','wire-dot');
-        r.setAttribute('x',pt.x-half);
-        r.setAttribute('y',pt.y-half);
-        r.setAttribute('width',String(ctx.config.DOT_SIZE));
-        r.setAttribute('height',String(ctx.config.DOT_SIZE));
-        ctx.dom.dots.append(r);
-        ctx.state.modules.forEach(m=>{
-          if((Number(m.z)||0)<6||pt.x<m.x||pt.x>m.x+m.el.offsetWidth||pt.y<m.y||pt.y>m.y+m.el.offsetHeight)return;
-          const layer=m.el.querySelector('.module-wires');
-          if(layer)layer.append(r.cloneNode(true));
-        });
+        const pt=currentPoint(path,geometry,reverse?len-d:d);
+        positions.get(ctx.dom.dots).push([pt.x-half,pt.y-half]);
+        for(const m of overlays){
+          if(m.layer&&pt.x>=m.x&&pt.x<=m.right&&pt.y>=m.y&&pt.y<=m.bottom)positions.get(m.layer).push([pt.x-half,pt.y-half]);
+        }
       }
     });
+    for(const [layer,nodes] of currentDotLayers){
+      if(!positions.has(layer)){nodes.forEach(dot=>dot.remove());currentDotLayers.delete(layer);}
+    }
+    for(const [layer,points] of positions){
+      const nodes=currentDotLayers.get(layer)||[];
+      while(nodes.length>points.length)nodes.pop().remove();
+      points.forEach(([x,y],i)=>{
+        let dot=nodes[i];
+        if(!dot){
+          dot=document.createElementNS(ctx.config.NS,'rect');nodes.push(dot);
+          dot.setAttribute('class','wire-dot');dot.setAttribute('width',String(ctx.config.DOT_SIZE));dot.setAttribute('height',String(ctx.config.DOT_SIZE));
+        }
+        dot.setAttribute('x',x);dot.setAttribute('y',y);
+        if(dot.parentNode!==layer)layer.append(dot);
+      });
+      currentDotLayers.set(layer,nodes);
+    }
   }
   function setShowCurrent(on){
     ctx.state.showCurrent=!!on;
@@ -2390,7 +2444,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const g=ctx.state.gesture;
     if(g.kind==='module'){ctx.services.editor.finishModuleDrag();return;}
     if(g.kind==='selection'){ctx.services.editor.finishSelectionRectangle(e);return;}
-    if(g.kind==='resize-note'){ctx.state.ignorePanClick=true;ctx.state.gesture=null;g.m.el.classList.remove('resizing');ctx.services.projekt.schedulePersist();return;}
+    if(g.kind==='resize-note'){ctx.state.ignorePanClick=true;ctx.state.gesture=null;g.m.el.classList.remove('resizing');ctx.services.projekt.schedulePersist();ctx.services.editor.draw();return;}
     if(g.kind==='lead'){ctx.state.gesture=null;ctx.services.editor.finishLead(g,e);return;}
     if(g.moved){
       const target=document.elementFromPoint(e.clientX,e.clientY)?.closest('.term');
@@ -2734,6 +2788,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     wireCurrentOf,
     currentDotAdvance,
     setCurrentSpeed,
+    scheduleDraw,
     paintWireCurrent,
     setShowCurrent,
     paintTaster,
