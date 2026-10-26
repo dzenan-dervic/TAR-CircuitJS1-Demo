@@ -2501,7 +2501,12 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.dom.$('#currentSpeed').oninput=e=>ctx.services.editor.setCurrentSpeed(e.target.value);
     ctx.dom.$('#zoomIn').onclick=()=>{ctx.services.editor.cancel();ctx.services.editor.zoomAt(ctx.state.scale*1.25);};
     ctx.dom.$('#zoomOut').onclick=()=>{ctx.services.editor.cancel();ctx.services.editor.zoomAt(ctx.state.scale/1.25);};
-    ctx.dom.$('#fitScene').onclick=()=>{ctx.services.editor.cancel();ctx.services.editor.fit();};
+    ctx.dom.$('#fitScene').onclick=()=>{
+      ctx.services.editor.cancel();
+      ctx.dom.workspace.classList.add('hide-parts','hide-inspector');
+      ctx.services.editor.partsLabel();ctx.services.editor.inspectorLabel();
+      ctx.services.editor.fit();
+    };
     if(innerWidth<=1050)ctx.dom.workspace.classList.add('hide-inspector','hide-parts');
     ctx.dom.$('#toggleInspector').setAttribute('aria-controls','propertiesInspector');
     ctx.dom.$('#toggleInspector').onclick=()=>{ctx.dom.workspace.classList.toggle('hide-inspector');ctx.services.editor.inspectorLabel();};
