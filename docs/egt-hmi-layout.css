@@ -15,8 +15,27 @@
 .hmi-pane .card h2 { flex-wrap: wrap; }
 .hmi-pane .test-sw .test-lbl { text-transform: none; letter-spacing: normal; }
 .hmi-pane .top-inner { max-width: none; }
-.hmi-pane .badges { flex-wrap: wrap; min-width: 0; max-width: 100%; box-sizing: border-box; }
-.hmi-pane .badge { flex: 1 1 8rem; min-width: 0; }
+.hmi-pane .badges {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr);
+  width: min(100%, 46rem);
+  flex: none;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.hmi-pane .badge { min-width: 0; }
+/* Zwei Textzeilen bleiben auch bei kurzen Meldungen frei. */
+.hmi-pane .badge .v {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 2.9em;
+  overflow-wrap: anywhere;
+}
+@container hmi (max-width: 600px) {
+  .hmi-pane .badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hmi-pane .badge .v { block-size: 4.35em; }
+}
 @container hmi (min-width: 850px) {
   .hmi-pane .side { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
 }
