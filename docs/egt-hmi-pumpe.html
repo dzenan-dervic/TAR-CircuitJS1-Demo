@@ -910,6 +910,7 @@
     }
   </style>
   <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261007sensorchannels1" />
+  <link rel="stylesheet" href="egt-hmi-layout.css?v=20261026a" />
   <link rel="stylesheet" href="egt-student-help.css?v=20261012d" />
 </head>
 <body>
@@ -1214,7 +1215,7 @@
     </section>
   </div>
 
-<script src="egt-hmi-pumpe-real.js?v=20261007sensorchannels1"></script>
+<script src="egt-hmi-pumpe-real.js?v=20261026a"></script>
 <script>
 (function () {
   var V_ON = 230, V_OFF = 0, V_TH = 80, V_OPEN = 20, OPEN_HOLD_S = 0.003, HOLD_DT_MAX = 0.0005;
@@ -1229,13 +1230,11 @@
   var sim = null, linked = false;
   var iframe = document.getElementById("circuitFrame");
   var hmiOnly = document.documentElement.classList.contains("hmi-only");
-  var demoAllowed = hmiOnly || new URLSearchParams(window.location.search).get("demo") === "1";
   var realCircuit = true, physicalController = new EGTPumpController(), inputSignals = [];
-  document.getElementById("testMode").closest("label").hidden = !demoAllowed;
   if (hmiOnly) document.getElementById("testMode").checked = true;
 
   function testOn() {
-    return demoAllowed && document.getElementById("testMode").checked;
+    return document.getElementById("testMode").checked;
   }
   function physicalOn() { return realCircuit && !testOn(); }
 
@@ -1338,6 +1337,11 @@
   }
 
   document.getElementById("testMode").addEventListener("change", function () {
+    physicalController.suspend();
+    i1 = 0; i2 = 1;
+    i7 = document.getElementById("modeAuto").checked ? 1 : 0;
+    document.getElementById("btnEin").classList.remove("active");
+    document.getElementById("btnAus").classList.remove("active");
     if (!testOn()) {
       q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false; q7 = false; q8 = false;
       betrieb = false; fuellen = false; fault = false;
