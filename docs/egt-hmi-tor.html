@@ -989,8 +989,8 @@
         </div>
 
         <div class="card">
-          <h2>Eingänge / Ausgänge</h2>
-          <p class="tor-legend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
+          <h2 id="ioHeading">Eingänge / Ausgänge</h2>
+          <p class="tor-legend" id="ioLegend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
           <p id="torErrors" class="tor-errors" role="status" hidden></p>
           <div class="io">
             <div class="io-col">
@@ -1181,6 +1181,12 @@
   }
 
   function render() {
+    var ioHeading = document.getElementById("ioHeading"), ioLegend = document.getElementById("ioLegend");
+    var heading = physicalOn() ? "Eingänge / Ausgänge" : "Eingänge / Ausgänge · Demo";
+    var legend = physicalOn() ? "Grün = Signal EIN · Grau = Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung. Eine Kontaktstellung ist noch kein SPS-Signal."
+      : "Demo: feste Beispielzuordnung. Namen und Signale sind unabhängig von der Verdrahtung im Simulator. Grün: EIN · Grau: AUS.";
+    if (ioHeading.textContent !== heading) ioHeading.textContent = heading;
+    if (ioLegend.textContent !== legend) ioLegend.textContent = legend;
     if (!physicalOn()) {
       ["Taster AUF","Taster ZU","Taster STOP","S1 oben","S2 unten","B1 Lichtschranke","Sicherheitsleiste","Not-Aus"].forEach(function (name, index) {
         var input = document.getElementById(index === 2 ? "stopLabel" : "inputFn" + (index + 1));

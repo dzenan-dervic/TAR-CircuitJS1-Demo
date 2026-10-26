@@ -909,7 +909,7 @@
       .pipe-in { width: 56px; }
     }
   </style>
-  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261007sensorchannels1" />
+  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261026demo1" />
   <link rel="stylesheet" href="egt-hmi-layout.css?v=20261026c" />
   <link rel="stylesheet" href="egt-student-help.css?v=20261012d" />
 </head>
@@ -1181,8 +1181,8 @@
         </div>
 
         <div class="card">
-          <h2>Eingänge / Ausgänge</h2>
-          <p class="pump-io-legend">Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung.</p>
+          <h2 id="ioHeading">Eingänge / Ausgänge</h2>
+          <p class="pump-io-legend" id="ioLegend">Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung.</p>
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
@@ -1395,6 +1395,12 @@
   }
 
   function render() {
+    var ioHeading = document.getElementById("ioHeading"), ioLegend = document.getElementById("ioLegend");
+    var heading = physicalOn() ? "Eingänge / Ausgänge" : "Eingänge / Ausgänge · Demo";
+    var legend = physicalOn() ? "Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung."
+      : "Demo: feste Beispielzuordnung. Namen und Signale sind unabhängig von der Verdrahtung im Simulator. Grün: EIN · Grau: AUS.";
+    if (ioHeading.textContent !== heading) ioHeading.textContent = heading;
+    if (ioLegend.textContent !== legend) ioLegend.textContent = legend;
     if (!physicalOn()) resetWiringLabels();
     var overflow = level >= 100;
     var minOn = physicalOn() ? level <= LVL_MIN : i3();
