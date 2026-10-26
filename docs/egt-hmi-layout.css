@@ -14,8 +14,9 @@
 .hmi-pane .io { grid-template-columns: minmax(0, 1fr); }
 .hmi-pane .card h2 { flex-wrap: wrap; }
 .hmi-pane .test-sw .test-lbl { text-transform: none; letter-spacing: normal; }
-.hmi-pane .top-inner { max-width: none; }
+.hmi-pane .top-inner { max-width: none; justify-content: flex-start; }
 .hmi-pane .badges {
+  margin-inline-start: auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr);
   width: min(100%, 46rem);
