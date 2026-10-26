@@ -59,7 +59,8 @@ export function createProject(ctx) {
     });
     ctx.services.editor.moveEntries(clones,offset,offset);
     const rewrite=key=>{const dot=key.indexOf('.');return ids.get(key.slice(0,dot))+key.slice(dot);};
-    const pastedWires=ctx.services.editor.normalizeSocketWires((pack.wires||[]).map(w=>({...w,a:rewrite(w.a),b:rewrite(w.b)})));
+    const dx=clones[0].m.x-clones[0].x,dy=clones[0].m.y-clones[0].y;
+    const pastedWires=ctx.services.editor.normalizeSocketWires((pack.wires||[]).map(w=>({...w,a:rewrite(w.a),b:rewrite(w.b),...(Array.isArray(w.route)?{route:w.route.map(p=>[p[0]+dx,p[1]+dy])}:{})})));
     ctx.state.wires.push(...pastedWires);
     ctx.services.editor.setSelection(clones.map(({m})=>m.id),clones[0].m.id);ctx.services.simulation.update();ctx.services.editor.reveal(clones[0].m);ctx.services.editor.say(clones.length+' Bauteile mit '+pastedWires.length+' internen Leitungen eingefügt.');
   }
@@ -109,7 +110,7 @@ export function createProject(ctx) {
       ctx.services.editor.position(m);
     });
     ctx.state.nextZ=Math.max(ctx.state.nextZ,...ctx.state.modules.map(m=>(m.z||0)+1));
-    (d.wires||[]).forEach((w,i)=>{if(ctx.state.wires[i])ctx.state.wires[i].color=w.color;});
+    (d.wires||[]).forEach((w,i)=>{if(ctx.state.wires[i]){ctx.state.wires[i].color=w.color;if(Array.isArray(w.route)&&w.route.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)))ctx.state.wires[i].route=w.route.map(p=>[...p]);else delete ctx.state.wires[i].route;}});
     if(d.view&&Number.isFinite(d.view.scale)&&Number.isFinite(d.view.x)&&Number.isFinite(d.view.y)){
       ctx.state.scale=Math.max(.15,Math.min(2.5,d.view.scale));
       ctx.state.camera={x:d.view.x,y:d.view.y};
@@ -197,7 +198,7 @@ export function createProject(ctx) {
         const ids=new Set(payload.modules.map(m=>m.id));
         if(ids.size!==payload.modules.length){ctx.services.editor.say('Datei enthält doppelte Kennzeichen.');return;}
         if(payload.modules.some(m=>m.type==='auxiliary'&&!ids.has(m.parent))){ctx.services.editor.say('Hilfskontakt ohne Leistungsschütz.');return;}
-        const nextWires=payload.wires.map(w=>({a:String(w&&w.a||''),b:String(w&&w.b||''),color:w&&w.color||'#d2ae27'}));
+        const nextWires=payload.wires.map(w=>({a:String(w&&w.a||''),b:String(w&&w.b||''),color:w&&w.color||'#d2ae27',...(Array.isArray(w?.route)&&w.route.length<=200&&w.route.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite))?{route:w.route.map(p=>[...p])}:{})}));
         if(nextWires.some(w=>!w.a||!w.b)){ctx.services.editor.say('Datei enthält eine Leitung ohne Klemme.');return;}
         const owner=key=>{const d=key.indexOf('.');return d<0?key:key.slice(0,d);};
         if(nextWires.some(w=>!ids.has(owner(w.a))||!ids.has(owner(w.b)))){ctx.services.editor.say('Datei enthält eine Leitung zu einem fehlenden Bauteil.');return;}

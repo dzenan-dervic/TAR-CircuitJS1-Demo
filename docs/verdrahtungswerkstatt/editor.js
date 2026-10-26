@@ -2,6 +2,8 @@
 export function createEditor(ctx) {
   let bound = false;
   let blockedRouteHint = '';
+  const drawnWireRoutes = new WeakMap();
+  let ignoreWireClickUntil = 0;
   function applySplitLayout(){
     const appEl=ctx.dom.$('#app');
     if(!appEl)return;
@@ -1045,6 +1047,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const field=document.createElement('div');field.className='color-field';const cap=document.createElement('span');cap.textContent='Aderfarbe';const box=document.createElement('div');box.className='wire-colors';field.append(cap,box);root.append(field);
     ctx.services.editor.mountCableButtons(box,w.color,value=>{if(ctx.services.editor.sameCable(w.color,value))return;ctx.services.projekt.remember();w.color=value;ctx.services.editor.mark();ctx.services.editor.draw();ctx.services.editor.renderWires();ctx.services.editor.renderWireDetails();ctx.services.projekt.schedulePersist();});
     const remove=document.createElement('button');remove.className='ui-btn';remove.textContent='Leitung löschen';remove.id='deleteSelectedWire';remove.onclick=()=>ctx.services.editor.removeWire(ctx.state.wires.indexOf(w));root.append(remove);
+    const routeNote=document.createElement('p');routeNote.className='wire-route-note';routeNote.textContent='Gerade Abschnitte oder ihre Griffe ziehen. Fokussierte Griffe lassen sich mit Pfeiltasten verschieben. Esc bricht das Ziehen ab.';root.append(routeNote);
+    const auto=document.createElement('button');auto.className='ui-btn';auto.id='resetWireRoute';auto.textContent='Automatisch verlegen';auto.disabled=!w.route;auto.onclick=()=>{ctx.services.editor.cancel();ctx.services.projekt.remember();delete w.route;ctx.services.editor.draw();ctx.services.editor.renderWireDetails();ctx.services.projekt.schedulePersist();};root.append(auto);
   }
   function wireMeasure(w){
     const known=ctx.config.wirePalette.find(e=>ctx.services.editor.sameCable(e[1],w.color));
@@ -1541,7 +1545,8 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   function updateWirePrompt(){const line=ctx.dom.$('.hint-line'),button=ctx.dom.$('#cancelWire');if(line)line.classList.toggle('wire-pending',!!ctx.state.pending);if(button)button.hidden=!ctx.state.pending;}
   function handleDocumentPointerMove(e) {
     if(!ctx.state.gesture){if(ctx.state.pending){ctx.services.editor.updateWireTarget(e);ctx.services.editor.scheduleDraw(ctx.state.wireTarget?ctx.services.editor.point(ctx.state.wireTarget):ctx.services.editor.localPoint(e));}return;}if(e.pointerId!==ctx.state.gesture.pointerId)return;
-    if(ctx.state.gesture.kind==='module'){ctx.services.editor.moveModuleDrag(e);}
+    if(ctx.state.gesture.kind==='wire-route'){ctx.services.editor.moveWireRoute(e);}
+    else if(ctx.state.gesture.kind==='module'){ctx.services.editor.moveModuleDrag(e);}
     else if(ctx.state.gesture.kind==='selection'){ctx.services.editor.paintSelectionRectangle(e);}
     else if(ctx.state.gesture.kind==='resize-note'){
       const g=ctx.state.gesture,dx=(e.clientX-g.x)/ctx.state.scale,dy=(e.clientY-g.y)/ctx.state.scale,west=g.edge.includes('w'),east=g.edge.includes('e'),north=g.edge.includes('n'),south=g.edge.includes('s');
@@ -1616,10 +1621,114 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     return points;
   }
   function routePoints(a,b,w,boxes){
+    if(ctx.services.editor.validWireRoute(w?.route,a,b,boxes))return w.route.map(p=>[...p]);
     const first=ctx.services.editor.exitPoint(a,w?ctx.services.editor.jogOf(w,w.a):0,boxes),last=ctx.services.editor.exitPoint(b,w?ctx.services.editor.jogOf(w,w.b):0,boxes);
     const route=ctx.services.editor.routeBetween(first,last,boxes,18);
     const points=route.length?ctx.services.editor.tidyPoints([[a.x,a.y],...route,[b.x,b.y]]):[];
-    return ctx.services.editor.routeClear(points,boxes,a.id,b.id)?points:[];
+    return ctx.services.editor.terminalExitClear(points,a,b,boxes)&&ctx.services.editor.routeClear(points,boxes,a.id,b.id)?points:[];
+  }
+  function terminalExitClear(points,a,b,boxes){
+    if(points.length<2)return false;
+    // Im Gehäuse ist nur der direkte Zugang von der Anschlussseite erlaubt.
+    return [[a,points[1]],[b,points.at(-2)]].every(([terminal,outer])=>{
+      const r=boxes.find(r=>r.id===terminal.id);if(!r)return true;
+      if(terminal.d==='left')return outer[0]<=r.l&&outer[0]<terminal.x;
+      if(terminal.d==='right')return outer[0]>=r.r&&outer[0]>terminal.x;
+      if(terminal.d==='top')return outer[1]<=r.t&&outer[1]<terminal.y;
+      return outer[1]>=r.b&&outer[1]>terminal.y;
+    });
+  }
+  function validWireRoute(points,a,b,boxes){
+    if(!Array.isArray(points)||points.length<2||points.length>200)return false;
+    if(!points.every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=8&&p[0]<=ctx.config.BOARD_W-8&&p[1]>=8&&p[1]<=ctx.config.BOARD_H-8))return false;
+    if(Math.hypot(points[0][0]-a.x,points[0][1]-a.y)>.5||Math.hypot(points.at(-1)[0]-b.x,points.at(-1)[1]-b.y)>.5)return false;
+    // Nur kurze, nach außen aufgefächerte Klemmenausgänge dürfen schräg sein.
+    const fan=(terminal,p)=>{const r=boxes.find(r=>r.id===terminal.id);if(!r||points.length<4)return false;const horizontal=terminal.d==='left'||terminal.d==='right',lateral=Math.abs((horizontal?p[1]-terminal.y:p[0]-terminal.x));const max=24+ctx.state.wires.filter(w=>w.a?.startsWith(terminal.id+'.')||w.b?.startsWith(terminal.id+'.')).length*14;return lateral<=max&&(terminal.d==='top'?p[1]<=r.t:terminal.d==='left'?p[0]<=r.l:terminal.d==='right'?p[0]>=r.r:p[1]>=r.b);};
+    if(points.slice(1).some((p,i)=>Math.abs(p[0]-points[i][0])>.5&&Math.abs(p[1]-points[i][1])>.5&&!(i===0&&fan(a,p))&&!(i===points.length-2&&fan(b,points[i]))))return false;
+    return ctx.services.editor.terminalExitClear(points,a,b,boxes)&&ctx.services.editor.routeClear(points,boxes,a.id,b.id);
+  }
+  function wireSegments(points){
+    const segments=[];
+    for(let i=0;i<points.length-1;i++){
+      const a=points[i],b=points[i+1],horizontal=Math.abs(a[1]-b[1])<.5,vertical=Math.abs(a[0]-b[0])<.5;
+      const length=Math.hypot(b[0]-a[0],b[1]-a[1]);
+      const start=i===0?ctx.services.editor.wireLeadLength(a,b):0,end=i===points.length-2?ctx.services.editor.wireLeadLength(b,a):0;
+      if((horizontal||vertical)&&length>32+start+end){const sign=Math.sign(horizontal?b[0]-a[0]:b[1]-a[1]);segments.push({i,horizontal,x:(a[0]+b[0])/2+(horizontal?sign*(start-end)/2:0),y:(a[1]+b[1])/2+(vertical?sign*(start-end)/2:0)});}
+    }
+    return segments;
+  }
+  function wireLeadLength(a,b){
+    const r=ctx.services.editor.moduleBoxes().find(r=>a[0]>r.l&&a[0]<r.r&&a[1]>r.t&&a[1]<r.b);
+    if(!r)return 24;
+    const distance=Math.abs(a[1]-b[1])<.5?(b[0]>a[0]?r.r-a[0]:a[0]-r.l):(b[1]>a[1]?r.b-a[1]:a[1]-r.t);
+    return Math.max(24,distance+18);
+  }
+  function shiftWireSegment(points,index,offset){
+    const a=[...points[index]],b=[...points[index+1]],horizontal=Math.abs(a[1]-b[1])<.5;
+    const along=horizontal?0:1,across=1-along,sign=Math.sign(b[along]-a[along]);
+    const prefix=points.slice(0,index).map(p=>[...p]),suffix=points.slice(index+2).map(p=>[...p]);
+    if(index===0){prefix.push([...a]);a[along]+=sign*ctx.services.editor.wireLeadLength(a,b);prefix.push([...a]);}
+    else if(Math.abs(points[index-1][along]-a[along])>.5)prefix.push([...a]);
+    if(index===points.length-2){suffix.unshift([...b]);b[along]-=sign*ctx.services.editor.wireLeadLength(b,points[index]);suffix.unshift([...b]);}
+    else if(Math.abs(points[index+2][along]-b[along])>.5)suffix.unshift([...b]);
+    const movedA=[...a],movedB=[...b];movedA[across]+=offset;movedB[across]+=offset;
+    return ctx.services.editor.tidyPoints([...prefix,movedA,movedB,...suffix]);
+  }
+  function beginWireRoute(w,points,e,index){
+    if(e.button!==0||ctx.state.handMode||ctx.state.spaceHeld||ctx.state.pending||ctx.state.gesture)return;
+    const p=ctx.services.editor.localPoint(e),segments=ctx.services.editor.wireSegments(points);
+    const distance=s=>{const a=points[s.i],b=points[s.i+1],x=Math.max(Math.min(a[0],b[0]),Math.min(Math.max(a[0],b[0]),p.x)),y=Math.max(Math.min(a[1],b[1]),Math.min(Math.max(a[1],b[1]),p.y));return Math.hypot(x-p.x,y-p.y);};
+    const segment=segments.find(s=>s.i===index)||segments.sort((s,t)=>distance(s)-distance(t))[0];
+    if(!segment)return;
+    e.preventDefault();e.stopPropagation();
+    ctx.services.editor.selectWire(w);
+    ctx.state.gesture={kind:'wire-route',pointerId:e.pointerId,x:e.clientX,y:e.clientY,w,points:points.map(p=>[...p]),segment,fromGrip:index!=null,preview:null,moved:false};
+    ctx.dom.viewport.setPointerCapture(e.pointerId);
+  }
+  function moveWireRoute(e){
+    const g=ctx.state.gesture;
+    if(Math.hypot(e.clientX-g.x,e.clientY-g.y)<4&&!g.moved)return;
+    g.moved=true;
+    const delta=(g.segment.horizontal?e.clientY-g.y:e.clientX-g.x)/ctx.state.scale;
+    const next=ctx.services.editor.shiftWireSegment(g.points,g.segment.i,Math.round(delta/8)*8);
+    const a=ctx.services.editor.point(g.w.a),b=ctx.services.editor.point(g.w.b);
+    if(ctx.services.editor.validWireRoute(next,a,b,ctx.services.editor.moduleBoxes())){
+      g.preview=next;ctx.services.editor.scheduleDraw();
+      ctx.dom.$('#hint').textContent='Leitungsverlauf verschieben · Loslassen übernimmt · Esc bricht ab.';
+    }else ctx.dom.$('#hint').textContent='Hier liegt ein Bauteil oder der Rand der Montageplatte. Der letzte freie Verlauf bleibt erhalten.';
+  }
+  function finishWireRoute(e){
+    ctx.services.editor.moveWireRoute(e);
+    const g=ctx.state.gesture;ctx.state.gesture=null;
+    ctx.state.ignorePanClick=true;ignoreWireClickUntil=performance.now()+300;
+    if(!g.moved){if(g.fromGrip)ctx.dom.svg.querySelector('[data-segment="'+g.segment.i+'"]')?.focus();else ctx.services.editor.clickWire(g.w);return;}
+    ctx.state.wireClickTarget=null;ctx.state.wireClickAt=0;
+    if(g.preview&&JSON.stringify(g.preview)!==JSON.stringify(g.points)){
+      ctx.services.projekt.remember();g.w.route=g.preview.map(p=>[...p]);ctx.services.projekt.schedulePersist();
+    }
+    ctx.services.editor.draw();ctx.services.editor.renderWireDetails();
+    ctx.dom.$('#hint').textContent=g.moved?'Leitungsverlauf übernommen. Die Klemmen bleiben verbunden.':'Leitung ausgewählt · Gerade Abschnitte oder Griffe ziehen.';
+  }
+  function paintWireGrips(w,points){
+    for(const s of ctx.services.editor.wireSegments(points)){
+      const grip=document.createElementNS(ctx.config.NS,'circle');
+      grip.setAttribute('cx',s.x);grip.setAttribute('cy',s.y);grip.setAttribute('r','6');
+      grip.setAttribute('class','wire-route-grip '+(s.horizontal?'horizontal':'vertical'));
+      grip.dataset.segment=s.i;grip.setAttribute('tabindex','0');grip.setAttribute('role','button');
+      grip.setAttribute('aria-label','Leitungsabschnitt '+(s.horizontal?'mit Pfeil auf/ab':'mit Pfeil links/rechts')+' verschieben');
+      grip.onpointerdown=e=>ctx.services.editor.beginWireRoute(w,points,e,s.i);
+      grip.onclick=e=>{e.preventDefault();e.stopPropagation();};
+      grip.onkeydown=e=>{
+        const delta=s.horizontal?{ArrowUp:-8,ArrowDown:8}[e.key]:{ArrowLeft:-8,ArrowRight:8}[e.key];
+        if(delta==null)return;e.preventDefault();e.stopPropagation();
+        const next=ctx.services.editor.shiftWireSegment(points,s.i,delta),a=ctx.services.editor.point(w.a),b=ctx.services.editor.point(w.b);
+        if(!ctx.services.editor.validWireRoute(next,a,b,ctx.services.editor.moduleBoxes())){ctx.services.editor.say('Dieser Verlauf würde ein Bauteil überdecken.');return;}
+        ctx.services.projekt.remember();w.route=next;ctx.services.projekt.schedulePersist();ctx.services.editor.draw();ctx.services.editor.renderWireDetails();
+        const moved=ctx.services.editor.wireSegments(next).filter(t=>t.horizontal===s.horizontal).sort((a,b)=>Math.hypot(a.x-s.x,a.y-s.y)-Math.hypot(b.x-s.x,b.y-s.y))[0];
+        if(moved)ctx.dom.svg.querySelector('[data-segment="'+moved.i+'"]')?.focus();
+      };
+      ctx.dom.svg.append(grip);
+    }
   }
   function routeClear(points,boxes,sourceId,targetId){
     return points.length>1&&!points.slice(1).some((p,i)=>boxes.some(r=>{
@@ -1779,21 +1888,25 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const routed=[];
     const blocked=[];
     ctx.state.wires.forEach((w,i)=>{
+      drawnWireRoutes.delete(w);
       const a=ctx.services.editor.point(w.a),b=ctx.services.editor.point(w.b);if(!a||!b)return;
       if(a.id===b.id&&ctx.state.modules.some(m=>m.id===a.id&&m.type==='acmotor'))routed.push({i,w,a,b,d:ctx.services.editor.pathFor(a,b,i,w)});
       else{
-        const pts=ctx.services.editor.routePoints(a,b,w,boxes);
+        const pts=ctx.state.gesture?.kind==='wire-route'&&ctx.state.gesture.w===w&&ctx.state.gesture.preview||ctx.services.editor.routePoints(a,b,w,boxes);
         if(pts.length)routed.push({i,w,a,b,pts});
         else blocked.push(w.a+' – '+w.b);
       }
     });
-    ctx.services.editor.spreadBundles(routed.filter(r=>r.pts).map(r=>r.pts),boxes);
+    ctx.services.editor.spreadBundles(routed.filter(r=>r.pts&&!ctx.services.editor.validWireRoute(r.w.route,r.a,r.b,boxes)&&!(ctx.state.gesture?.kind==='wire-route'&&ctx.state.gesture.w===r.w&&ctx.state.gesture.preview)).map(r=>r.pts),boxes);
     routed.forEach(r=>{
+      if(r.pts&&!ctx.services.editor.terminalExitClear(r.pts,r.a,r.b,boxes))r.pts=ctx.services.editor.routePoints(r.a,r.b,r.w,boxes);
+      if(r.pts)r.pts=ctx.services.editor.tidyPoints(r.pts);
+      if(r.pts)drawnWireRoutes.set(r.w,r.pts.map(p=>[...p]));
       const {w,i,a,b}=r,d=r.d||ctx.services.editor.orthoPath(ctx.services.editor.tidyPoints(r.pts));paint(ctx.dom.svg,d,ctx.services.editor.cableStroke(w.color),i);
       const hitOn=target=>{
         const hit=tag(ctx.services.editor.path(d,'wire-hit'),i);
-        hit.onpointerdown=e=>e.stopPropagation();
-        hit.onclick=e=>{e.stopPropagation();ctx.services.editor.clickWire(w);};
+        hit.onpointerdown=e=>{e.stopPropagation();if(r.pts)ctx.services.editor.beginWireRoute(w,r.pts,e);};
+        hit.onclick=e=>{e.stopPropagation();if(performance.now()>=ignoreWireClickUntil)ctx.services.editor.clickWire(w);};
         hit.ondblclick=e=>{e.stopPropagation();e.preventDefault();ctx.services.editor.removeWire(ctx.state.wires.indexOf(w));};
         hit.setAttribute('title','Doppelklick löscht die Leitung');
         hit.onpointerenter=()=>setHot(i,true);
@@ -1803,6 +1916,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       hitOn(ctx.dom.svg);
       for(const id of new Set([a.id,b.id])){paint(overlays.get(id),d,ctx.services.editor.cableStroke(w.color),i);hitOn(overlays.get(id));}
     });
+    if(ctx.state.selectedWire&&drawnWireRoutes.has(ctx.state.selectedWire))ctx.services.editor.paintWireGrips(ctx.state.selectedWire,drawnWireRoutes.get(ctx.state.selectedWire));
     if(start&&preview){const a=ctx.services.editor.point(start);if(a){const d=ctx.services.editor.pathFor(a,preview,0);ctx.dom.svg.append(ctx.services.editor.path(d,'wire-preview'));overlays.get(a.id).append(ctx.services.editor.path(d,'wire-preview'));}}
     const coupling=ctx.dom.$('#couplings');coupling.replaceChildren();
     ctx.state.modules.filter(m=>m.type==='auxiliary').forEach(m=>{const parent=ctx.state.modules.find(p=>p.id===m.parent);if(!parent)return;const left=m.x>parent.x;
@@ -2275,7 +2389,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.state.ignorePanClick=false;
     ctx.state.boardPointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
     if(ctx.state.boardPointers.size>=2){ctx.services.editor.startPinch();try{ctx.dom.viewport.setPointerCapture(e.pointerId);}catch(err){}e.preventDefault();e.stopPropagation();return;}
-    const part=e.target.closest('.module'),blank=!e.target.closest('.module,.wire-hit,.lead-hit,.lead-probe-hit');
+    const part=e.target.closest('.module'),blank=!e.target.closest('.module,.wire-hit,.wire-route-grip,.lead-hit,.lead-probe-hit');
     if(e.button===0&&!ctx.state.spaceHeld&&part&&e.target.closest('.remove,[data-note-resize]'))return;
     if(e.button===0&&!ctx.state.spaceHeld&&!ctx.state.handMode&&(e.shiftKey||ctx.state.selectionMode)){
       if(part){
@@ -2442,6 +2556,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     document.addEventListener('pointerup',e=>{
     if(!ctx.state.gesture||e.pointerId!==ctx.state.gesture.pointerId)return;
     const g=ctx.state.gesture;
+    if(g.kind==='wire-route'){ctx.services.editor.finishWireRoute(e);return;}
     if(g.kind==='module'){ctx.services.editor.finishModuleDrag();return;}
     if(g.kind==='selection'){ctx.services.editor.finishSelectionRectangle(e);return;}
     if(g.kind==='resize-note'){ctx.state.ignorePanClick=true;ctx.state.gesture=null;g.m.el.classList.remove('resizing');ctx.services.projekt.schedulePersist();ctx.services.editor.draw();return;}
@@ -2767,6 +2882,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     exitPoint,
     tidyPoints,
     routePoints,
+    terminalExitClear,
+    validWireRoute,
+    wireSegments,
+    wireLeadLength,
+    shiftWireSegment,
+    beginWireRoute,
+    moveWireRoute,
+    finishWireRoute,
+    paintWireGrips,
     routeClear,
     orthoPath,
     segmentHits,
