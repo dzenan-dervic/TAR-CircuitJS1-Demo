@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+<html lang="de">
+<head><meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; frame-src 'self'; worker-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'"><script src="../benchmark/isolation.js"></script>
+  <link rel="icon" type="image/png" href="icon128.png" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EGT Torsteuerung — CircuitJS + HMI</title>
+  <link rel="stylesheet" href="egt-hmi-tor-real.css?v=20261007wiring3" />
+  <style>
+    :root,
+    html.palette-nacht {
+      --bg: #1b1d1f;
+      --panel: #242628;
+      --card: #2d3033;
+      --ink: #141618;
+      --line: #4c5459;
+      --text: #f2f3f1;
+      --muted: #a7adb1;
+      --blue: #4e8aa6;
+      --blue-btn: #3b7088;
+      --amber: #c47a28;
+      --green: #2f9a58;
+      --yellow: #d4a82a;
+      --red: #d6453d;
+      --led-off: #4c5459;
+      --header: #242628;
+      --scene: #16181a;
+      --well: #262a2d;
+      --floor: #2a2e31;
+      --metal: #6d767c;
+      --impeller: #1a1d1f;
+      --knob: #4c5459;
+      --knob-dot: #e8eaeb;
+      --accent: #3b7088;
+      --row: #141618;
+      --row-line: #4c5459;
+      --pipe-edge: #c4ccd0;
+      --tb-face: #eeefed;
+      --tb-face-2: #d9dad6;
+      --tb-cell: #e2e3df;
+      --tb-line: #c1c4c1;
+      --tb-ink: #3c444a;
+    }
+    html.palette-tag-feld {
+      --bg: #e6e9eb;
+      --panel: #f4f6f7;
+      --card: #ffffff;
+      --ink: #d7dce0;
+      --line: #b4bdc2;
+      --text: #1c2429;
+      --muted: #3f4b52;
+      --blue: #2f6f88;
+      --blue-btn: #2f6f88;
+      --amber: #a05d20;
+      --green: #217a43;
+      --yellow: #9a7a1c;
+      --red: #c13a34;
+      --led-off: #8b969d;
+      --header: #f4f6f7;
+      --scene: #d5dce0;
+      --well: #f4f6f7;
+      --floor: #cfd6da;
+      --metal: #6a747a;
+      --impeller: #d6dce0;
+      --knob: #b4bdc2;
+      --knob-dot: #ffffff;
+      --accent: #2f6f88;
+      --row: #ffffff;
+      --row-line: #2f6f88;
+      --pipe-edge: #9aa4aa;
+      --tb-face: #f6f7f4;
+      --tb-face-2: #e6e7e3;
+      --tb-cell: #eceeea;
+      --tb-line: #c8ccc8;
+      --tb-ink: #2d353b;
+    }
+    html.palette-kontrast {
+      --bg: #0e0e0e;
+      --panel: #171717;
+      --card: #222222;
+      --ink: #000000;
+      --line: #8a8a8a;
+      --text: #ffffff;
+      --muted: #c8c8c8;
+      --blue: #3aa0d0;
+      --blue-btn: #1f7eab;
+      --amber: #e08a20;
+      --green: #22c45a;
+      --yellow: #f0c400;
+      --red: #ff3b30;
+      --led-off: #5a5a5a;
+      --header: #171717;
+      --scene: #000000;
+      --well: #1c1c1c;
+      --floor: #1a1a1a;
+      --metal: #8d8d8d;
+      --impeller: #111111;
+      --knob: #5a5a5a;
+      --knob-dot: #ffffff;
+      --accent: #1f7eab;
+      --row: #000000;
+      --row-line: #8a8a8a;
+      --pipe-edge: #ffffff;
+      --tb-face: #c8cac6;
+      --tb-face-2: #b0b2ae;
+      --tb-cell: #b8bab6;
+      --tb-line: #8e9290;
+      --tb-ink: #1a1a1a;
+    }
+    * { box-sizing: border-box; }
+    html { color-scheme: dark; }
+    html.palette-tag-feld { color-scheme: light; }
+    html, body {
+      margin: 0; height: 100%;
+      background: var(--bg); color: var(--text);
+      font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
+      transition: background-color .04s linear, color .04s linear;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: minmax(420px, 55fr) 12px minmax(360px, 45fr);
+      height: 100%;
+    }
+    html.hmi-only .app { display: block; }
+    html.hmi-only .sim-pane, html.hmi-only .split { display: none; }
+    html.hmi-only .hmi-pane { height: 100%; }
+    html.hmi-only .wrap { max-width: 1180px; margin: 0 auto; }
+    .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
+    .sim-pane { display: flex; flex-direction: column; background: var(--ink); }
+    .sim-bar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      padding: 8px 12px; background: var(--panel);
+      border-bottom: 1px solid var(--line); flex-shrink: 0;
+    }
+    .sim-bar h1 { margin: 0; font-size: 13px; font-weight: 700; }
+    .sim-bar select, .sim-bar a {
+      background: var(--card); color: var(--text);
+      border: 1px solid var(--line); border-radius: 6px;
+      padding: 4px 8px; font-size: 12px; text-decoration: none;
+    }
+    .sim-bar a:hover { border-color: var(--blue); }
+    #circuitFrame { flex: 1; width: 100%; border: 0; background: var(--ink); }
+    .split {
+      position: relative; z-index: 20;
+      justify-self: center; width: 44px; min-width: 44px;
+      cursor: col-resize; touch-action: none; user-select: none;
+      -webkit-user-select: none; outline: none;
+    }
+    .split::before {
+      content: ""; position: absolute; inset: 0 20px;
+      background: var(--metal);
+      box-shadow: 1px 0 0 var(--ink), -1px 0 0 var(--ink);
+      transition: background-color 120ms ease, box-shadow 120ms ease;
+    }
+    .split::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 18px; height: 64px; transform: translate(-50%, -50%);
+      border: 1px solid var(--muted); border-radius: 9px;
+      background-color: var(--card);
+      background-image: radial-gradient(circle, var(--knob-dot) 0 1.7px, transparent 2px);
+      background-position: center; background-size: 6px 12px;
+      box-shadow: 0 2px 8px color-mix(in srgb, var(--ink) 60%, transparent);
+      transition: border-color 120ms ease, background-color 120ms ease, transform 120ms ease;
+    }
+    .split:hover::before, .split:focus-visible::before, .split.is-dragging::before {
+      background: var(--blue); box-shadow: 0 0 0 1px var(--blue-btn);
+    }
+    .split:hover::after, .split:focus-visible::after, .split.is-dragging::after {
+      border-color: var(--blue); background-color: var(--blue-btn);
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+    .hmi-pane {
+      overflow: auto; background: var(--bg); container-type: inline-size;
+      transition: background-color .04s linear;
+    }
+    .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
+
+    header.top {
+      background: var(--header);
+      border-bottom: 1px solid var(--line);
+      box-shadow: none;
+      margin: 0 -14px 16px;
+      padding: 0;
+    }
+    .top-inner {
+      margin: 0;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 20px;
+      padding: 12px 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .brand-ico {
+      width: 42px; height: 42px; border-radius: 10px; flex: none;
+      background: var(--accent);
+      color: #fff;
+      display: grid; place-items: center;
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .brand-ico svg { display: block; }
+    .brand h1 {
+      margin: 0; font-size: 17px; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.2;
+    }
+    .brand p {
+      margin: 4px 0 0; font-size: 12px; color: var(--muted);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 6px 0;
+    }
+    .brand p span { white-space: nowrap; }
+    .brand p span + span::before {
+      content: "·";
+      margin: 0 8px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .badges {
+      display: flex; gap: 8px; background: var(--ink); padding: 6px;
+      border: 1px solid var(--line); border-radius: 12px;
+      margin-left: auto;
+    }
+
+    .theme-switch {
+      display: flex; flex: none;
+      border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+    }
+    .theme-switch button {
+      appearance: none; min-height: 44px; padding: 0 14px;
+      border: 0; background: var(--card); color: var(--text);
+      font: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .theme-switch button + button { border-left: 1px solid var(--line); }
+    .theme-switch button[aria-pressed="true"] {
+      background: var(--accent); color: #fff;
+    }
+    .theme-switch button:focus-visible {
+      outline: 2px solid var(--blue); outline-offset: -2px;
+    }
+    .badge {
+      min-width: 110px; text-align: center;
+      background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+      padding: 6px 10px;
+    }
+    .badge .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; }
+    .badge .v { font-size: 13px; font-weight: 800; margin-top: 2px; }
+    .badge .v.with-led {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .badge .led {
+      width: 8px; height: 8px; border-radius: 50%; flex: none;
+    }
+    .badge .led.off { background: var(--red); box-shadow: 0 0 7px var(--red); }
+    .badge .led.on { background: var(--green); box-shadow: 0 0 7px var(--green); }
+    .state-auf { color: var(--blue); }
+    .state-zu { color: var(--yellow); }
+    .state-offen, .state-ok { color: var(--green); }
+    .state-fault { color: var(--red); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-areas: "anlage" "side";
+      gap: 14px; align-items: start;
+    }
+    .grid > .card { grid-area: anlage; }
+    .grid > .side { grid-area: side; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .card h2 {
+      margin: 0 0 12px; font-size: 11px; font-weight: 800;
+      color: var(--muted); text-transform: uppercase; letter-spacing: .08em;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      border-bottom: 1px solid var(--line); padding-bottom: 8px;
+    }
+    .spd { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); font-weight: 600; text-transform: none; letter-spacing: 0; }
+    input[type=range] { accent-color: var(--blue); width: 90px; }
+
+    .scene {
+      position: relative; height: 380px;
+      background: var(--scene); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+    }
+    .drive-bar {
+      position: absolute; left: 128px; right: 16px; top: 10px; height: 44px; z-index: 5;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--well); border: 1px solid var(--line); border-radius: 10px; padding: 0 12px;
+    }
+    .welle {
+      flex: 1; min-width: 0; height: 14px; align-self: center;
+      border-radius: 3px; border: 1px solid var(--metal);
+      background: repeating-linear-gradient(90deg, var(--metal) 0 8px, var(--line) 8px 16px);
+      margin-right: -1px;
+    }
+    .drive-bar.run.auf .welle { animation: drum .45s linear infinite; }
+    .drive-bar.run.zu .welle { animation: drum-rev .45s linear infinite; }
+    .mtr-meta { display: flex; align-items: center; gap: 8px; text-align: right; flex: none; }
+    .mtr-meta b { display: block; font-size: 11px; }
+    .mtr-meta span { font-size: 10px; color: var(--muted); font-weight: 700; }
+    .mtr-meta span.auf { color: var(--blue); }
+    .mtr-meta span.zu { color: var(--yellow); }
+    .motor {
+      width: 40px; height: 40px; border-radius: 50%; flex: none; align-self: center;
+      background: var(--impeller); border: 2px solid var(--metal);
+      box-shadow: inset 0 0 0 3px var(--card);
+      position: relative;
+      display: grid; place-items: center;
+    }
+    .prop { width: 36px; height: 36px; display: block; }
+    .prop .mark { fill: var(--knob-dot); }
+    .hub {
+      position: absolute; left: 50%; top: 50%;
+      width: 10px; height: 10px; margin: -5px 0 0 -5px;
+      border-radius: 50%; background: var(--line); border: 2px solid var(--pipe-edge);
+      pointer-events: none;
+    }
+    .drive-bar.run.auf .prop { animation: spin .95s linear infinite; }
+    .drive-bar.run.zu .prop { animation: spin-rev .95s linear infinite; }
+    .drive-bar.run.auf { border-color: var(--blue); }
+    .drive-bar.run.zu { border-color: var(--yellow); }
+    .drive-bar.run.auf .prop .mark { fill: var(--blue); }
+    .drive-bar.run.zu .prop .mark { fill: var(--yellow); }
+    .drive-bar.overheat {
+      border-color: var(--red);
+      background: #3f1212e6;
+    }
+    .drive-bar.overheat .motor {
+      border-color: #f87171;
+      box-shadow: 0 0 16px #ef444488, inset 0 0 0 3px #7f1d1d;
+      animation: heat .55s ease-in-out infinite;
+    }
+    .drive-bar.overheat .welle { animation: drum .22s linear infinite; }
+    .drive-bar.overheat .prop { animation: spin .35s linear infinite; }
+    .drive-bar.overheat .prop .mark { fill: #fca5a5; }
+    .mtr-meta span.hot { color: #fca5a5; }
+    @keyframes heat {
+      50% { box-shadow: 0 0 22px #ef4444cc, inset 0 0 0 3px #991b1b; }
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin-rev { to { transform: rotate(-360deg); } }
+    @keyframes drum { to { background-position: 16px 0; } }
+    @keyframes drum-rev { to { background-position: -16px 0; } }
+
+    .portal {
+      position: absolute; left: 128px; right: 88px; top: 64px; bottom: 22px;
+      border: 8px solid #475569; border-bottom: 0; overflow: hidden;
+      background: linear-gradient(#0c4a6e 0, #0369a1 42%, #166534 42%, #14532d 100%);
+      box-shadow: inset 0 0 30px #0006;
+    }
+    .door {
+      position: absolute; left: 0; right: 0; top: 0; height: 100%;
+      background: repeating-linear-gradient(to bottom, #cbd5e1 0 14px, #94a3b8 14px 16px);
+      box-shadow: 0 12px 18px #0005;
+      transform-origin: top;
+    }
+    .door.past {
+      filter: saturate(.55) brightness(.82);
+      box-shadow: 0 12px 18px #7f1d1d99;
+    }
+    .edge {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 16px; z-index: 3;
+      appearance: none; cursor: pointer; font: inherit;
+      background: #f59e0b; color: #1c1917; border: 0; border-top: 1px solid #b45309;
+      font-size: 8px; font-weight: 800; letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .edge:hover { filter: brightness(1.08); }
+    .edge.active {
+      background: #dc2626; color: #fff; border-top-color: #991b1b;
+    }
+    .floor {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 22px;
+      background: var(--floor); border-top: 2px solid var(--line);
+      color: var(--muted); font-size: 9px; letter-spacing: .12em;
+      display: grid; place-items: center; font-weight: 700;
+    }
+
+    .ls {
+      position: absolute; z-index: 6;
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; font-weight: 700;
+    }
+    .ls.s1 { left: 4px; top: 72px; }
+    .ls.s2 { left: 4px; bottom: 24px; }
+    .ls-label {
+      background: var(--well); border: 1px solid var(--line);
+      border-radius: 8px; padding: 4px 7px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .ls-led {
+      width: 8px; height: 8px; border-radius: 50%; background: var(--led-off);
+    }
+    .ls.on .ls-led { background: var(--green); box-shadow: 0 0 8px color-mix(in srgb, var(--green) 80%, transparent); }
+    .ls.on .ls-label { color: var(--green); }
+    .ls-body {
+      width: 18px; height: 28px;
+      background: linear-gradient(#ffd24a, #c9a227);
+      border: 1px solid #8a7018; border-radius: 3px;
+      position: relative;
+      box-shadow: 0 2px 4px #0006;
+    }
+    .ls-body::after {
+      content: "";
+      position: absolute; right: -10px; top: 11px;
+      width: 10px; height: 4px;
+      background: #d7dee6; border-radius: 0 2px 2px 0;
+      transform: rotate(28deg); transform-origin: left center;
+    }
+    .ls.on .ls-body::after { transform: rotate(0deg); background: #ffe08a; }
+
+    .pe-wrap {
+      position: absolute; left: 8px; right: 88px; bottom: 76px; z-index: 7;
+      display: flex; align-items: center; gap: 6px;
+      pointer-events: none;
+    }
+    .pe {
+      flex: 1; height: 22px; min-width: 0;
+      display: flex; align-items: center;
+    }
+    .pe-head {
+      width: 12px; height: 22px; flex: none;
+      background: #f59e0b; border: 1px solid #0f172a; border-radius: 2px;
+      display: grid; place-items: center;
+    }
+    .pe-head i { width: 6px; height: 6px; border-radius: 50%; }
+    .pe-head.tx i { background: #dc2626; }
+    .pe-head.rx i { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .pe.cut .pe-head.rx i { background: #dc2626; box-shadow: 0 0 6px #ef4444; }
+    .pe-beam {
+      flex: 1; height: 2px;
+      background: linear-gradient(90deg, #ef4444cc, #ef444433, #ef4444cc);
+      box-shadow: 0 0 8px #ef4444aa;
+    }
+    .pe.cut .pe-beam {
+      background: var(--card); box-shadow: none; opacity: .35;
+    }
+    .pe-tag {
+      flex: none;
+      background: var(--well); border: 1px solid var(--line);
+      border-radius: 8px; padding: 4px 7px;
+      font-size: 10px; font-weight: 700;
+      white-space: nowrap;
+    }
+    .obstacle {
+      position: absolute; left: 50%; bottom: 68px; z-index: 8;
+      transform: translateX(-50%);
+      appearance: none; cursor: pointer; font: inherit;
+      background: #f59e0b; color: #1c1917; border: 2px solid #fde68a;
+      border-radius: 8px; padding: 5px 10px;
+      font-size: 11px; font-weight: 800;
+      box-shadow: 0 4px 12px #0007;
+    }
+    .obstacle.on {
+      background: #dc2626; color: #fff; border-color: #fca5a5;
+    }
+
+    .ampel {
+      position: absolute; right: 18px; top: 118px; z-index: 6;
+      width: 36px;
+      background: var(--ink);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 8px 6px;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      box-shadow: 0 8px 16px #0008;
+    }
+    .ampel::after {
+      content: "";
+      position: absolute; left: 50%; bottom: -28px;
+      width: 6px; height: 28px; margin-left: -3px;
+      background: var(--line);
+    }
+    .ampel i {
+      display: block; width: 18px; height: 18px; border-radius: 50%;
+      background: var(--card); border: 1px solid var(--ink);
+    }
+    .ampel.red i:nth-child(1) { background: var(--red); box-shadow: 0 0 12px var(--red); }
+    .ampel.yellow i:nth-child(2) { background: var(--yellow); box-shadow: 0 0 12px var(--yellow); }
+    .ampel.green i:nth-child(3) { background: var(--green); box-shadow: 0 0 12px var(--green); }
+    .ampel-cap {
+      position: absolute; right: 8px; top: 232px; z-index: 6;
+      font-size: 10px; font-weight: 700; color: var(--muted); text-align: center; width: 56px;
+    }
+    .alarm {
+      position: absolute; right: 8px; top: 252px; z-index: 6;
+      width: 58px; text-align: center;
+      background: var(--well); border: 1px solid var(--line); border-radius: 8px;
+      padding: 6px 4px 4px;
+    }
+    .p4 {
+      width: 20px; height: 20px; margin: 0 auto 2px;
+      border-radius: 50%; background: #3f1212; border: 2px solid #7f1d1d;
+    }
+    .alarm.on .p4 {
+      background: var(--red); border-color: #fca5a5;
+      box-shadow: 0 0 14px #ef4444;
+      animation: blink .45s linear infinite;
+    }
+    .hupe {
+      width: 26px; height: 16px; margin: 4px auto 0;
+      background: var(--line);
+      clip-path: polygon(0 5px, 11px 5px, 26px 0, 26px 16px, 11px 11px, 0 11px);
+      position: relative;
+    }
+    .alarm.on .hupe {
+      background: #f87171;
+      animation: honk .35s ease-in-out infinite;
+    }
+    .alarm.on .hupe::after {
+      content: "";
+      position: absolute; left: 28px; top: 1px;
+      width: 8px; height: 12px;
+      border: 2px solid #f87171; border-left: 0; border-radius: 0 8px 8px 0;
+    }
+    .alarm small {
+      display: block; margin-top: 3px;
+      font-size: 9px; font-weight: 800; color: #f87171;
+      line-height: 1.2;
+    }
+    @keyframes blink { 50% { opacity: .35; } }
+    @keyframes honk { 50% { transform: scale(1.12); } }
+
+    .side {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+      min-width: 0;
+    }
+    .side > .card { min-width: 0; }
+    button.cmd {
+      appearance: none; cursor: pointer; font: inherit; font-weight: 800;
+      color: #fff; text-align: center; border: 0; padding: 0;
+      touch-action: manipulation;
+    }
+    button.cmd:focus-visible { outline: 2px solid #1f5f8a; outline-offset: 3px; }
+    .tasterboard {
+      position: relative;
+      background: linear-gradient(180deg, var(--tb-face) 0%, var(--tb-face-2) 100%);
+      border: 1px solid #9ea3a6;
+      border-radius: 2px;
+      padding: 18px 16px 14px;
+      color: var(--tb-ink);
+      box-shadow: inset 0 1px 0 #fff, 0 2px 5px #0002;
+      transition: background .04s linear, color .04s linear;
+    }
+    .tb-screw {
+      position: absolute; width: 10px; height: 10px; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #dfe2e4, #777d82 70%);
+      box-shadow: inset 0 0 0 1px #555b60, 0 1px 0 #fff8;
+    }
+    .tb-screw::after {
+      content: ""; position: absolute; left: 2px; right: 2px; top: 4px; height: 1px;
+      background: #50555a; transform: rotate(-12deg);
+    }
+    .tb-screw.tl { top: 8px; left: 8px; }
+    .tb-screw.tr { top: 8px; right: 8px; }
+    .tb-screw.bl { bottom: 8px; left: 8px; }
+    .tb-screw.br { bottom: 8px; right: 8px; }
+    .tb-top-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+      margin: 0 4px 10px;
+    }
+    .tb-panel {
+      border: 1px solid var(--tb-line); background: var(--tb-cell);
+      min-height: 132px; padding: 12px;
+      display: grid; align-items: center;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-indicator-panel {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 7px; padding: 12px 5px 9px;
+    }
+    .tb-indicator-wrap { display: grid; place-items: center; min-width: 0; }
+    .tb-big-lamp {
+      width: 76px; height: 76px; border-radius: 50%;
+      box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, inset 0 7px 10px #fff4;
+      border: 0; position: relative; overflow: visible;
+      filter: saturate(.88) brightness(.9);
+      transition: box-shadow .05s linear, filter .05s linear, transform .05s linear;
+    }
+    .tb-big-lamp::before {
+      content: ""; position: absolute; inset: -18px; border-radius: 50%;
+      opacity: 0; transform: scale(.9); transition: opacity .05s linear, transform .05s linear;
+      pointer-events: none;
+    }
+    .tb-big-lamp::after {
+      content: ""; position: absolute; left: 18px; top: 14px; width: 24px; height: 18px;
+      border-radius: 50%; background: rgba(255,255,255,.28); filter: blur(2px);
+      pointer-events: none;
+    }
+    .tb-big-lamp.green { background: radial-gradient(circle at 34% 30%, #47bd76, #218a4d 58%, #14532d); }
+    .tb-big-lamp.red { background: radial-gradient(circle at 34% 30%, #f1554f, #cb2d2b 58%, #7a1717); }
+    .tb-big-lamp.yellow { background: radial-gradient(circle at 34% 30%, #f6e56a, #d4a82a 58%, #8a6a10); }
+    .tb-big-lamp.green::before { background: radial-gradient(circle, rgba(53, 214, 104, .72) 0%, rgba(53, 214, 104, .28) 48%, rgba(53, 214, 104, 0) 72%); }
+    .tb-big-lamp.red::before { background: radial-gradient(circle, rgba(239, 68, 68, .74) 0%, rgba(239, 68, 68, .28) 48%, rgba(239, 68, 68, 0) 72%); }
+    .tb-big-lamp.yellow::before { background: radial-gradient(circle, rgba(240, 196, 0, .75) 0%, rgba(240, 196, 0, .30) 48%, rgba(240, 196, 0, 0) 72%); }
+    .tb-big-lamp.on { filter: saturate(1.18) brightness(1.08); transform: scale(1.015); }
+    html.palette-tag-feld .tb-big-lamp { filter: saturate(.78) brightness(.84); }
+    html.palette-tag-feld .tb-big-lamp.on { filter: saturate(1.2) brightness(1.12); }
+    html.palette-kontrast .tb-big-lamp { filter: saturate(.92) brightness(.68); }
+    html.palette-kontrast .tb-big-lamp.on { filter: saturate(1.45) brightness(1.28); }
+    .tb-big-lamp.on::before { opacity: 1; transform: scale(1.05); }
+    .tb-big-lamp.on.green { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(42, 164, 91, .95), 0 0 44px rgba(42, 164, 91, .45), inset 0 7px 10px #fff8; }
+    .tb-big-lamp.on.red { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(214, 58, 52, .98), 0 0 44px rgba(214, 58, 52, .45), inset 0 7px 10px #fff8; }
+    .tb-big-lamp.on.yellow { box-shadow: 0 0 0 4px #c5c8ca, 0 0 0 6px #8d9397, 0 5px 0 #666c70, 0 0 26px rgba(232, 186, 24, .98), 0 0 44px rgba(232, 186, 24, .48), inset 0 7px 10px #fff8; }
+    .tb-mid-row {
+      display: grid; grid-template-columns: 1fr; gap: 6px; margin: 0 4px 8px;
+    }
+    .tb-estop-row, .tb-selector-row {
+      min-height: 182px; border: 1px solid var(--tb-line); background: var(--tb-cell);
+      padding: 12px 10px 10px; display: grid; align-items: center;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-estop-row { grid-template-columns: minmax(92px, 124px) 1fr; }
+    .tb-selector-row { grid-template-columns: minmax(90px, 128px) 1fr; }
+    .tb-mushroom {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, #f0c433, #c99610 62%, #9a760c);
+      box-shadow: 0 5px 0 #7a5e08, inset 0 2px 3px #ffe9a8;
+      position: relative; justify-self: center;
+    }
+    .tb-mushroom .tb-cap {
+      position: absolute; inset: 11px; border-radius: 50%;
+      background: radial-gradient(circle at 32% 28%, #ff6a62, #c41e1e 55%, #7a1212);
+      box-shadow: 0 5px 0 #5a0e0e, inset 0 6px 8px #ffd4cc55;
+    }
+    .tb-mushroom.active .tb-cap { inset: 13px 11px 9px; box-shadow: inset 0 8px 12px #0007, 0 1px 0 #5a0e0e; }
+    .tb-estop-control { display:flex; flex-direction:column; align-items:center; gap:8px; }
+    .tb-estop-release {
+      appearance:none; border:1px solid #8f969a; border-radius:7px; padding:7px 10px;
+      background:linear-gradient(#f4f5f3,#cfd2d2); color:#30363a;
+      font:800 11px/1.1 "Segoe UI",system-ui,sans-serif; cursor:pointer;
+      box-shadow:0 2px 0 #7d8386,inset 0 1px 0 #fff; white-space:nowrap;
+    }
+    .tb-estop-release:hover:not(:disabled) { background:linear-gradient(#fff,#d9dcdc); }
+    .tb-estop-release:active:not(:disabled) { transform:translateY(2px); box-shadow:inset 0 2px 4px #0003; }
+    .tb-estop-release:disabled { opacity:.35; cursor:not-allowed; box-shadow:none; }
+    .tb-selector-wrap { display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .tb-selector-labels { width:112px; display:flex; justify-content:space-between; font:700 12px/1 ui-monospace,Consolas,monospace; }
+    .tb-selector {
+      width: 82px; height: 82px; border-radius: 50%; border: 3px solid #aeb2b5;
+      background: radial-gradient(circle, #202428 0 45%, #8c9296 46% 64%, #d5d7d8 65% 100%);
+      position: relative; cursor:pointer; box-shadow: inset 0 0 0 1px #5c6266, 0 2px 4px #0003;
+    }
+    .tb-selector::after {
+      content:""; position:absolute; left:50%; top:11px; width:13px; height:38px; border-radius:4px;
+      background:linear-gradient(#f5f5f3,#c8cacc); transform-origin:50% 30px; transform:translateX(-50%) rotate(var(--sel-angle,0deg));
+      box-shadow:0 1px 2px #0007;
+    }
+    .tb-selector[data-pos="A"] { --sel-angle:-42deg; }
+    .tb-selector[data-pos="0"] { --sel-angle:0deg; }
+    .tb-selector[data-pos="B"] { --sel-angle:42deg; }
+    .tb-selector-state { font-size:13px; font-weight:700; color:#4a5258; min-height:16px; }
+    .tb-stations {
+      display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:4px; margin:0 4px;
+    }
+    .tb-cell {
+      border:1px solid var(--tb-line); background:var(--tb-cell); padding:12px 5px 9px;
+      display:flex; flex-direction:column; align-items:center; gap:7px; min-width:0;
+      transition: background-color .04s linear, border-color .04s linear;
+    }
+    .tb-tag { font-size:15px; font-weight:800; letter-spacing:.03em; color:var(--tb-ink); text-align:center; }
+    .tb-tag small { display:block; font-size:12px; font-weight:600; color:#5a6268; letter-spacing:0; }
+    .tb-push {
+      width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
+      color:#2a3036; font-size:9px; font-weight:800; letter-spacing:.03em; line-height:1.05;
+      background:radial-gradient(circle at 34% 30%, #f4f4f2, #c9cccd 60%, #969c9f);
+      box-shadow:0 0 0 4px #cfd2d6, 0 0 0 6px #8e949a, 0 5px 0 #5c6268, inset 0 5px 6px #fff8;
+    }
+    .tb-push.active { transform:translateY(3px); box-shadow:0 0 0 4px #cfd2d6,0 0 0 6px #8e949a,0 1px 0 #5c6268,inset 0 8px 10px #0004; }
+    .tb-print { width:100%; display:flex; flex-direction:column; align-items:center; gap:5px; }
+    .tb-lamp { width:20px; height:20px; border-radius:50%; border:1.6px solid #3a4248; background:#cfd3d6; position:relative; }
+    .tb-lamp::before,.tb-lamp::after { content:"";position:absolute;left:50%;top:50%;width:11px;height:1.6px;background:#3a4248;transform:translate(-50%,-50%) rotate(45deg); }
+    .tb-lamp::after { transform:translate(-50%,-50%) rotate(-45deg); }
+    .tb-lamp-row { display:flex; align-items:center; gap:6px; font:700 9px/1 ui-monospace,Consolas,monospace; color:#3a4248; }
+    .tb-cell:has(.cmd.active) .tb-lamp,.tb-estop-row:has(.cmd.active) .tb-lamp { background:#f3dc6a; box-shadow:0 0 7px #d4b83a88; }
+    @container (max-width: 560px) {
+      .tb-top-row,.tb-mid-row { grid-template-columns:1fr; }
+      .tb-stations { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    }
+    @container (max-width: 360px) { .tb-stations { grid-template-columns:1fr; } }
+    .test-sw {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0;
+      text-transform: none; color: var(--muted); cursor: pointer; user-select: none;
+    }
+    .test-sw input {
+      position: absolute; opacity: 0; width: 1px; height: 1px;
+    }
+    .test-sw .knob {
+      width: 36px; height: 20px; border-radius: 999px; flex: none;
+      background: var(--knob); border: 1px solid var(--line); position: relative;
+    }
+    .test-sw .knob::after {
+      content: "";
+      position: absolute; left: 2px; top: 1px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--knob-dot);
+      transition: transform .15s ease;
+    }
+    .test-sw input:checked + .knob {
+      background: var(--amber); border-color: var(--yellow);
+    }
+    .test-sw input:checked + .knob::after { transform: translateX(16px); }
+    .test-sw input:checked ~ .test-lbl { color: var(--yellow); }
+    .test-sw input:focus-visible + .knob { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+    .io { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .io-col .k { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 800; margin: 8px 0 6px; }
+    .io-col .k:first-child { margin-top: 0; }
+    .io-col .k em { font-style: normal; color: var(--blue); font-weight: 700; }
+    .io-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      background: var(--row); border: 1px solid var(--row-line); border-radius: 8px;
+      padding: 7px 8px; margin-bottom: 6px; font-size: 12px;
+    }
+    .io-row b { font-family: ui-monospace, Consolas, monospace; color: var(--blue); }
+    .io-row.q b { color: var(--green); }
+    .io-row span.fn { color: var(--text); font-size: 11px; }
+    .dot {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--led-off); flex: none;
+    }
+    .dot.on-green { background: var(--green); box-shadow: 0 0 8px color-mix(in srgb, var(--green) 70%, transparent); }
+    .dot.on-blue { background: var(--blue); box-shadow: 0 0 8px color-mix(in srgb, var(--blue) 70%, transparent); }
+    .dot.on-yellow { background: var(--yellow); box-shadow: 0 0 8px color-mix(in srgb, var(--yellow) 70%, transparent); }
+    .dot.on-red { background: var(--red); box-shadow: 0 0 8px color-mix(in srgb, var(--red) 70%, transparent); }
+
+    @media (max-width: 980px) {
+      .app { grid-template-columns: 1fr; grid-template-rows: 38vh 12px 1fr; }
+      .split { align-self: center; justify-self: stretch; width: auto; min-width: 0; height: 44px; cursor: row-resize; }
+      .split::before { inset: 20px 0; }
+      .split::after { width: 64px; height: 18px; }
+      .io { grid-template-columns: 1fr; }
+      .grid { grid-template-areas: "anlage" "side"; }
+      .side { grid-template-columns: 1fr; }
+      header.top { margin: 0 -14px 14px; }
+    }
+    @container (max-width: 720px) {
+      .side { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="egt-student-help.css?v=20261012d" />
+</head>
+<body>
+  <script type="application/x-benchmark-pending">
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('hmiOnly') === '1') document.documentElement.classList.add('hmi-only');
+      var palette = params.get('palette');
+      if (['nacht', 'tag-feld', 'kontrast'].indexOf(palette) !== -1) {
+        document.documentElement.classList.add('palette-' + palette);
+      }
+    }());
+  </script>
+  <div class="app" id="app">
+    <section class="sim-pane">
+      <div class="sim-bar">
+        <h1>Steuerung — FUP auf der Mini-SPS</h1>
+        <button type="button" class="tor-info-button" id="fupHelpOpen" aria-label="FUP-Signalverbindungen erklären" aria-haspopup="dialog" aria-controls="fupHelp" title="FUP-Signalverbindungen erklären">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg>
+        </button>
+        <select id="circSel" title="Unterrichtsstufe laden">
+          <option value="egt-tor-real-uebung.txt" selected>Übung · selbst verdrahten</option>
+          <option value="egt-tor-real-beispiel.txt">Beispiel · vollständig verdrahtet</option>
+          <option value="egt-tor-standard.txt">Bisheriger Aufbau · Geber</option>
+          <option value="egt-tor-steckbrett.txt">Freies Steckbrett</option>
+          <option value="egt-tor-beispiel.txt">Beispiel (fertig)</option>
+        </select>
+        <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Zurück zu CircuitJS</a>
+      </div>
+      <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
+    </section>
+    <div class="split" id="split" role="separator" aria-label="Breite von CircuitJS und HMI anpassen" aria-orientation="vertical" aria-valuemin="28" aria-valuemax="72" aria-valuenow="70" tabindex="0" title="Teiler ziehen oder mit den Pfeiltasten verschieben"></div>
+    <section class="hmi-pane">
+  <div class="wrap">
+    <header class="top">
+      <div class="top-inner">
+        <div class="brand">
+          <div class="brand-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4.5" y="3" width="15" height="18" rx="1.6"/>
+              <path d="M4.5 8h15M4.5 12h15M4.5 16h15"/>
+            </svg>
+          </div>
+          <div>
+            <h1>SPS-Rolltorsteuerung</h1>
+            <p><span>Werner-Siemens-Schule</span><span>EGT</span><span>Mini-SPS</span></p>
+          </div>
+        </div>
+        <button type="button" class="student-help-entry" data-student-help="tor"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7" r=".7" fill="currentColor"/></svg>Hilfe</button>
+        <div class="theme-switch" role="group" aria-label="Darstellung">
+          <button type="button" id="themeHell" data-palette="tag-feld">Hell</button>
+          <button type="button" id="themeKontrast" data-palette="kontrast">Kontrast</button>
+        </div>
+        <div class="badges">
+          <div class="badge" id="cjsLink" title="Wartet auf CircuitJS im linken Fenster">
+            <div class="k">CircuitJS</div>
+            <div class="v with-led" id="cjsLinkTxt"><span class="led off" id="cjsLed"></span><span id="cjsLinkLabel">nicht verbunden</span></div>
+          </div>
+          <div class="badge">
+            <div class="k">Zustand</div>
+            <div class="v" id="anlageState">Tor geschlossen</div>
+          </div>
+          <div class="badge">
+            <div class="k">Position</div>
+            <div class="v" id="kpiPos">0 % (ZU)</div>
+          </div>
+          <div class="badge">
+            <div class="k">Meldung</div>
+            <div class="v state-ok" id="sysMsg">Betriebsbereit</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <h2>
+          <span>Anlage — Rolltor</span>
+          <span class="spd">Geschwindigkeit <input id="spd" type="range" min="10" max="100" value="55" /></span>
+        </h2>
+        <section class="tor-drive" aria-labelledby="torDriveTitle"><header><h3 id="torDriveTitle">Antrieb M1</h3><button type="button" class="tor-info-button" id="driveHelpOpen" aria-label="Schütze und Motordrehrichtung erklären" aria-haspopup="dialog" aria-controls="driveHelp" title="Schütze und Motordrehrichtung erklären"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle cx="12" cy="7.5" r=".8" fill="currentColor" stroke="none"/></svg></button></header><div class="tor-contactors drive-bar" id="drive"><div class="tor-contactor" id="torQ1" role="img" aria-label="Q1 Schütz abgefallen"><b>Q1 · AUF ↑</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="torQ1Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
+                      <linearGradient id="torQ1Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
+                      <radialGradient id="torQ1Screw"><stop stop-color="#d9dfbd"/><stop offset=".65" stop-color="#aab391"/><stop offset="1" stop-color="#6b7968"/></radialGradient>
+                      <g id="torQ1Terminal"><circle r="12" fill="#16231d" stroke="#82907b"/><circle r="8.5" fill="url(#torQ1Screw)"/><path d="M-7 0H7M0-7V7" stroke="#35402d" stroke-width="3"/></g>
+                    </defs>
+                    <rect x="3" y="3" width="194" height="254" rx="7" fill="url(#torQ1Housing)" stroke="#17251e" stroke-width="3"/>
+                    <rect x="9" y="9" width="182" height="242" rx="2" fill="none" stroke="#899589"/>
+                    <rect x="14" y="15" width="84" height="23" fill="#009c9a"/>
+                    <text x="18" y="32" fill="white" font-size="17" font-weight="bold">SIEMENS</text>
+                    <text x="105" y="32" fill="#d0d8cf" font-size="20">SIRIUS</text>
+                    <g fill="#edf0df" font-size="8" text-anchor="middle">
+                      <text x="26" y="52">1/L1</text><text x="63" y="52">3/L2</text><text x="100" y="52">5/L3</text><text x="137" y="52">13 NO</text><text x="174" y="52">A1</text>
+                      <text x="26" y="230">2/T1</text><text x="63" y="230">4/T2</text><text x="100" y="230">6/T3</text><text x="137" y="230">14 NO</text><text x="174" y="230">A2</text>
+                    </g>
+                    <use href="#torQ1Terminal" x="26" y="70"/><use href="#torQ1Terminal" x="63" y="70" transform="rotate(30 63 70)"/><use href="#torQ1Terminal" x="100" y="70" transform="rotate(-15 100 70)"/><use href="#torQ1Terminal" x="137" y="70"/><use href="#torQ1Terminal" x="174" y="70"/>
+                    <g fill="#182a20" stroke="#8b9b80" stroke-width="1.5"><rect x="41" y="95" width="19" height="76" rx="2"/><rect x="134" y="95" width="19" height="76" rx="2"/></g>
+                    <g class="contactor-armature"><rect x="75" y="93" width="45" height="77" rx="5" fill="url(#torQ1Plunger)" stroke="#1d3020" stroke-width="2"/><rect x="88" y="124" width="20" height="35" fill="#233722" stroke="#8b9b80"/><path d="M85 103V111M110 103V111" stroke="#33452d" stroke-width="4"/></g>
+                    <path d="M166 98H185M175 98V108M166 121H185M166 139H185M166 157H185" stroke="#18271e" stroke-width="8"/>
+                    <rect x="15" y="181" width="135" height="23" fill="#7a8674" stroke="#15231b" stroke-width="2"/>
+                    <text x="21" y="197" fill="#edf0df" font-size="13" font-weight="bold">Q1</text><text x="79" y="197" fill="#edf0df" font-size="10">3P + 1 NO</text>
+                    <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
+                    <use href="#torQ1Terminal" x="26" y="214"/><use href="#torQ1Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ1Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ1Terminal" x="137" y="214"/><use href="#torQ1Terminal" x="174" y="214"/>
+                    <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
+                  </svg><span class="tor-device-state" id="torQ1State">Abgefallen</span></div><div class="tor-contactor" id="torQ2" role="img" aria-label="Q2 Schütz abgefallen"><b>Q2 · ZU ↓</b><svg class="contactor-device" viewBox="0 0 200 260" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="torQ2Housing" x2="1" y2="1"><stop stop-color="#63706a"/><stop offset="1" stop-color="#303e38"/></linearGradient>
+                      <linearGradient id="torQ2Plunger" x2="0" y2="1"><stop stop-color="#84967b"/><stop offset="1" stop-color="#42553c"/></linearGradient>
+                      <radialGradient id="torQ2Screw"><stop stop-color="#d9dfbd"/><stop offset=".65" stop-color="#aab391"/><stop offset="1" stop-color="#6b7968"/></radialGradient>
+                      <g id="torQ2Terminal"><circle r="12" fill="#16231d" stroke="#82907b"/><circle r="8.5" fill="url(#torQ2Screw)"/><path d="M-7 0H7M0-7V7" stroke="#35402d" stroke-width="3"/></g>
+                    </defs>
+                    <rect x="3" y="3" width="194" height="254" rx="7" fill="url(#torQ2Housing)" stroke="#17251e" stroke-width="3"/>
+                    <rect x="9" y="9" width="182" height="242" rx="2" fill="none" stroke="#899589"/>
+                    <rect x="14" y="15" width="84" height="23" fill="#009c9a"/>
+                    <text x="18" y="32" fill="white" font-size="17" font-weight="bold">SIEMENS</text>
+                    <text x="105" y="32" fill="#d0d8cf" font-size="20">SIRIUS</text>
+                    <g fill="#edf0df" font-size="8" text-anchor="middle">
+                      <text x="26" y="52">1/L1</text><text x="63" y="52">3/L2</text><text x="100" y="52">5/L3</text><text x="137" y="52">13 NO</text><text x="174" y="52">A1</text>
+                      <text x="26" y="230">2/T1</text><text x="63" y="230">4/T2</text><text x="100" y="230">6/T3</text><text x="137" y="230">14 NO</text><text x="174" y="230">A2</text>
+                    </g>
+                    <use href="#torQ2Terminal" x="26" y="70"/><use href="#torQ2Terminal" x="63" y="70" transform="rotate(30 63 70)"/><use href="#torQ2Terminal" x="100" y="70" transform="rotate(-15 100 70)"/><use href="#torQ2Terminal" x="137" y="70"/><use href="#torQ2Terminal" x="174" y="70"/>
+                    <g fill="#182a20" stroke="#8b9b80" stroke-width="1.5"><rect x="41" y="95" width="19" height="76" rx="2"/><rect x="134" y="95" width="19" height="76" rx="2"/></g>
+                    <g class="contactor-armature"><rect x="75" y="93" width="45" height="77" rx="5" fill="url(#torQ2Plunger)" stroke="#1d3020" stroke-width="2"/><rect x="88" y="124" width="20" height="35" fill="#233722" stroke="#8b9b80"/><path d="M85 103V111M110 103V111" stroke="#33452d" stroke-width="4"/></g>
+                    <path d="M166 98H185M175 98V108M166 121H185M166 139H185M166 157H185" stroke="#18271e" stroke-width="8"/>
+                    <rect x="15" y="181" width="135" height="23" fill="#7a8674" stroke="#15231b" stroke-width="2"/>
+                    <text x="21" y="197" fill="#edf0df" font-size="13" font-weight="bold">Q2</text><text x="79" y="197" fill="#edf0df" font-size="10">3P + 1 NO</text>
+                    <rect x="162" y="181" width="23" height="15" fill="#17291e" stroke="#95a084"/><rect class="contactor-window" x="166" y="184" width="15" height="9" fill="#a8b297"/>
+                    <use href="#torQ2Terminal" x="26" y="214"/><use href="#torQ2Terminal" x="63" y="214" transform="rotate(30 63 214)"/><use href="#torQ2Terminal" x="100" y="214" transform="rotate(-15 100 214)"/><use href="#torQ2Terminal" x="137" y="214"/><use href="#torQ2Terminal" x="174" y="214"/>
+                    <g fill="#edf0df" font-size="10"><text x="16" y="248">3RT20</text><text x="116" y="248">AC 230 V</text></g>
+                  </svg><span class="tor-device-state" id="torQ2State">Abgefallen</span></div>
+            <div class="tor-motor" role="img" id="torMotor" aria-label="Motor M1: Stillstand"><b>Motor M1</b><div class="motor">
+              <svg class="prop" viewBox="0 0 40 40" aria-hidden="true">
+                <g transform="translate(20 20)" fill="#94a3b8">
+                  <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5"/>
+                  <rect x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(120)"/>
+                  <rect class="mark" x="-3.5" y="1.5" width="7" height="14" rx="3.5" transform="rotate(240)"/>
+                </g>
+              </svg>
+              <span class="hub"></span>
+            </div>
+            <div class="mtr-meta">
+              <div>
+                <span id="driveDir">Stillstand</span>
+              </div>
+            </div>
+            </div>
+</div></section>
+        <div class="scene">
+          <div class="tor-motion" id="torMotion" hidden><span id="torMotionArrow" aria-hidden="true">↑</span><strong id="torMotionText">Öffnet</strong></div>
+
+          <div class="ls s1" id="lsS1">
+            <span class="ls-label"><span class="ls-led"></span> <span id="deviceFnS1">S1 → I4 oben</span></span>
+            <span class="ls-body"></span>
+          </div>
+          <div class="ls s2" id="lsS2">
+            <span class="ls-label"><span class="ls-led"></span> <span id="deviceFnS2">S2 → I5 unten</span></span>
+            <span class="ls-body"></span>
+          </div>
+
+          <div class="portal">
+            <div class="door" id="door">
+              <button type="button" class="edge" id="btnEdge"><span id="deviceFnB2">B2 · I7 Sicherheitsleiste</span></button>
+            </div>
+          </div>
+          <div class="pe-wrap">
+            <div class="pe-tag" id="deviceFnB1">B1 → I6 Lichtschranke</div>
+            <div class="pe" id="pe">
+              <div class="pe-head tx"><i></i></div>
+              <div class="pe-beam"></div>
+              <div class="pe-head rx"><i></i></div>
+            </div>
+          </div>
+          <button type="button" class="obstacle" id="btnObstacle">Hindernis stellen</button>
+          <div class="ampel red" id="ampel"><i></i><i></i><i></i></div>
+          <div class="ampel-cap">Ampel</div>
+          <div class="alarm" id="alarm">
+            <div class="p4" title="P4 Störleuchte rot"></div>
+            <div class="hupe" title="Hupe H1"></div>
+            <small>P4 rot<br />H1 Hupe</small>
+          </div>
+          <div class="floor">BODENNIVEAU</div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="card">
+          <h2>
+            <span>Bedientableau</span>
+            <label class="test-sw" title="Demo: eigenständige HMI. Ausgeschaltet: reale elektrische Bauteile in CircuitJS.">
+              <input type="checkbox" id="testMode" />
+              <span class="knob"></span>
+              <span class="test-lbl">Demo ohne Verdrahtung</span>
+            </label>
+          </h2>
+          <div class="tasterboard">
+            <span class="tb-screw tl" aria-hidden="true"></span>
+            <span class="tb-screw tr" aria-hidden="true"></span>
+            <span class="tb-screw bl" aria-hidden="true"></span>
+            <span class="tb-screw br" aria-hidden="true"></span>
+
+            <div class="tb-top-row">
+              <div class="tb-panel tb-indicator-panel">
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP1" title="P1 gelb · Q7"></div></div>
+                <div class="tb-tag">P1 <small>Q7</small></div>
+              </div>
+              <div class="tb-panel tb-indicator-panel">
+                <div class="tb-indicator-wrap"><div class="tb-big-lamp yellow" id="tbP2" title="P2 gelb · Q8"></div></div>
+                <div class="tb-tag">P2 <small>Q8</small></div>
+              </div>
+            </div>
+
+            <div class="tb-mid-row">
+              <div class="tb-estop-row">
+                <button type="button" class="cmd notaus tb-mushroom" id="btnNotAus" aria-label="Not-Aus S0 betätigen" aria-pressed="false">
+                  <span class="tb-cap"></span>
+                </button>
+                <div class="tb-estop-control">
+                  <div class="tb-tag">S0 <small><span id="deviceFnS0">NOT-HALT · I8 · Öffner</span></small></div>
+                  <button type="button" class="tb-estop-release" id="btnNotAusRelease" disabled>↥ ZIEHEN / ENTRIEGELN</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="tb-stations">
+              <div class="tb-cell">
+                <button type="button" class="cmd tb-push" id="btnAuf" aria-label="Taster AUF S4"></button>
+                <div class="tb-tag">S4 <small id="deviceFnS4">Taster AUF · I1</small></div>
+              </div>
+
+              <div class="tb-cell">
+                <button type="button" class="cmd tb-push" id="btnZu" aria-label="Taster ZU S5"></button>
+                <div class="tb-tag">S5 <small id="deviceFnS5">Taster ZU · I2</small></div>
+              </div>
+
+              <div class="tb-cell">
+                <button type="button" class="cmd tb-push" id="btnStop" aria-label="Taster STOP S6"></button>
+                <div class="tb-tag">S6 <small id="deviceFnS6">Taster STOP · I3</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Eingänge / Ausgänge</h2>
+          <p class="tor-legend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
+          <p id="torErrors" class="tor-errors" role="status" hidden></p>
+          <div class="io">
+            <div class="io-col">
+              <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
+              <div class="io-row io-input"><b>I1</b><span class="fn" id="inputFn1">Taster AUF</span><span class="dot" id="ledI1"></span></div>
+              <div class="io-row io-input"><b>I2</b><span class="fn" id="inputFn2">Taster ZU</span><span class="dot" id="ledI2"></span></div>
+              <div class="io-row io-input"><b>I3</b><span class="fn" id="stopLabel">STOP · Öffner</span><span class="dot" id="ledI3"></span></div>
+              <div class="io-row io-input"><b>I4</b><span class="fn" id="inputFn4">S1 oben</span><span class="dot" id="ledI4"></span></div>
+              <div class="io-row io-input"><b>I5</b><span class="fn" id="inputFn5">S2 unten</span><span class="dot" id="ledI5"></span></div>
+              <div class="io-row io-input"><b>I6</b><span class="fn" id="inputFn6">B1 Lichtschranke</span><span class="dot" id="ledI6"></span></div>
+              <div class="io-row io-input"><b>I7</b><span class="fn" id="inputFn7">Sicherheitsleiste</span><span class="dot" id="ledI7"></span></div>
+              <div class="io-row io-input"><b>I8</b><span class="fn" id="inputFn8">Not-Aus</span><span class="dot" id="ledI8"></span></div>
+            </div>
+            <div class="io-col">
+              <div class="k">Ausgänge <em>8/4</em></div>
+              <div class="io-row q io-output"><b>Q1</b><span class="fn" id="outputFn1">Motor AUF</span><span class="dot" id="ledQ1"></span></div>
+              <div class="io-row q io-output"><b>Q2</b><span class="fn" id="outputFn2">Motor ZU</span><span class="dot" id="ledQ2"></span></div>
+              <div class="io-row q io-output"><b>Q3</b><span class="fn" id="outputFn3">Ampel gelb (Fahrt)</span><span class="dot" id="ledQ3"></span></div>
+              <div class="io-row q io-output"><b>Q4</b><span class="fn" id="outputFn4">Hupe H1 + P4 Störung</span><span class="dot" id="ledQ4"></span></div>
+              <div class="k">Ausgänge <em>8/8 — zusätzlich</em></div>
+              <div class="io-row q io-output"><b>Q5</b><span class="fn" id="outputFn5">Ampel rot</span><span class="dot" id="ledQ5"></span></div>
+              <div class="io-row q io-output"><b>Q6</b><span class="fn" id="outputFn6">Ampel grün</span><span class="dot" id="ledQ6"></span></div>
+              <div class="io-row q io-output"><b>Q7</b><span class="fn" id="outputFn7">P1 gelb</span><span class="dot" id="ledQ7"></span></div>
+              <div class="io-row q io-output"><b>Q8</b><span class="fn" id="outputFn8">P2 gelb</span><span class="dot" id="ledQ8"></span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+  </div>
+
+<dialog class="tor-fup-help" id="driveHelp" aria-labelledby="driveHelpTitle">
+  <h2 id="driveHelpTitle">Schütze und Motordrehrichtung</h2>
+  <p><strong>Q1 ist für AUF ↑ vorgesehen, Q2 für ZU ↓.</strong> Beide Schütze schalten denselben Motor M1. Für die Gegenrichtung werden zwei Phasen vertauscht.</p>
+  <p><strong>Grüner Rahmen + „Angezogen“:</strong> Die tatsächliche Schützspule ist angesteuert. Ob der Motor läuft, hängt zusätzlich von seiner Versorgung und Verdrahtung ab.</p>
+  <p><strong>Rechtslauf ↻ / Linkslauf ↺:</strong> tatsächliche Motordrehrichtung, mit Blick auf die Abtriebswelle. In diesem Anlagenmodell öffnet Rechtslauf das Tor und Linkslauf schließt es. Falsche Phasenfolge kann deshalb zur falschen Torbewegung führen.</p>
+  <p>Der Pfeil am Tor zeigt die tatsächliche Bewegung. An einer Endlage kann der Motor weiterlaufen, obwohl sich das Tor nicht weiter bewegt.</p>
+  <p><strong>Q1 und Q2 müssen gegenseitig verriegelt sein.</strong> Beide dürfen nicht gleichzeitig anziehen. Verdrahte dafür auch die Hilfskontakte im Steuerstromkreis.</p>
+  <form method="dialog"><button type="submit" autofocus>Schließen</button></form>
+</dialog>
+<dialog class="tor-fup-help" id="fupHelp" aria-labelledby="fupHelpTitle">
+  <h2 id="fupHelpTitle">Signalverbindungen in der FUP</h2>
+  <p>Die beschrifteten Anschlüsse wie <strong>FUP_Freigabe</strong>, <strong>FUP_AUF</strong> und <strong>FUP_ZU</strong> verbinden die Netzwerke miteinander.</p>
+  <p><strong>Gleicher Name = verbunden.</strong> Das wirkt wie eine Leitung zwischen diesen Anschlüssen. So müssen keine langen Leitungen quer durch die FUP gezeichnet werden.</p>
+  <div class="tor-fup-help-example">
+    <strong>Beispiel: FUP_AUF</strong>
+    <p>Am Ausgang des AUF-Speichers steht <strong>FUP_AUF</strong>. Ein Anschluss mit demselben Namen im anderen Netzwerk erhält dieses Signal: AUF aktiv oder nicht aktiv.</p>
+  </div>
+  <p>Diese Anschlüsse erzeugen selbst kein Signal. <strong>FUP_</strong> kennzeichnet hier ein Programmsignal. <strong>I1–I8</strong> sind die SPS-Eingänge, <strong>Q1–Q8</strong> die SPS-Ausgänge.</p>
+  <p>Bei gezeichneten Leitungen gilt: <strong>Punkt an der Kreuzung = verbunden.</strong> Eine Kreuzung ohne Punkt ist keine Verbindung.</p>
+  <form method="dialog"><button type="submit" autofocus>Schließen</button></form>
+</dialog>
+<script type="application/x-benchmark-pending">
+  document.getElementById("driveHelpOpen").addEventListener("click", function () {
+    document.getElementById("driveHelp").showModal();
+  });
+  document.getElementById("fupHelpOpen").addEventListener("click", function () {
+    document.getElementById("fupHelp").showModal();
+  });
+</script>
+<script type="application/x-benchmark-pending" data-benchmark-src="egt-hmi-tor-real.js?v=20261007stable1"></script>
+<script type="application/x-benchmark-pending">
+(function () {
+  var real = new TorController(), realMode = true, edgePressed = false;
+  function physicalOn() { return realMode && !testOn(); }
+  var V_ON = 230, V_OFF = 0, V_TH = 80;
+  var i1 = 0, i2 = 0, i3 = 0, i7 = 1, q1 = false, q2 = false;
+  var q3 = false, q4 = false, q5 = false, q6 = false, q7 = false, q8 = false;
+  var pos = 0, lastT = performance.now(), fault = false, obstacle = false;
+  var stallT = 0, overheat = false;
+  var REST_H = 14, OVER_MAX = 24, STALL_S = 1.5;
+  var notAus = true;
+  var sim = null, linked = false;
+  var iframe = document.getElementById("circuitFrame");
+  var hmiOnly = document.documentElement.classList.contains("hmi-only");
+  if (hmiOnly) document.getElementById("testMode").checked = true;
+
+  function testOn() {
+    return document.getElementById("testMode").checked;
+  }
+  function doorHeightPct(p) {
+    if (p <= 0) return 100;
+    if (p <= 100) return 100 - p * (100 - REST_H) / 100;
+    var over = Math.min(OVER_MAX, p - 100);
+    return Math.max(0, REST_H * (1 - over / OVER_MAX));
+  }
+  function posLabel(p) {
+    var s1 = p >= 99.5, s2 = p <= 0.5;
+    if (p > 100.4) return Math.round(p) + " % (über S1)";
+    if (p < -0.4) return "0 % (über S2)";
+    return Math.round(Math.max(0, Math.min(100, p))) + " % "
+	+ (s1 ? "(OFFEN)" : (s2 ? "(ZU)" : ""));
+  }
+  function high(v) { return Math.abs(v) >= V_TH; }
+
+  function setCjsBadge(on) {
+    var pill = document.getElementById("cjsLink");
+    var txt = document.getElementById("cjsLinkTxt");
+    var ledEl = document.getElementById("cjsLed");
+    var label = document.getElementById("cjsLinkLabel");
+    if (hmiOnly) {
+      pill.title = "Eigenständiger HMI-Testbetrieb";
+      txt.className = "v with-led state-ok";
+      label.textContent = "HMI-Modus";
+      ledEl.className = "led on";
+      return;
+    }
+    if (on) {
+      pill.title = "Simulator-API gefunden";
+      txt.className = "v with-led state-ok";
+      label.textContent = "verbunden";
+      ledEl.className = "led on";
+    } else {
+      pill.title = "Wartet auf CircuitJS im linken Fenster";
+      txt.className = "v with-led";
+      label.textContent = "nicht verbunden";
+      ledEl.className = "led off";
+    }
+  }
+
+  function writeExt(name, on) {
+    if (physicalOn()) {
+      var buttons = {I1:"S4",I2:"S5",I3:"S6"};
+      if (buttons[name]) real.action("button:"+buttons[name],on?"press":"release");
+      if (name === "I7") edgePressed = !on;
+      return;
+    }
+    if (realMode || !sim || !linked || testOn()) return;
+    try { sim.setExtVoltage(name, on ? V_ON : V_OFF); } catch (e) {}
+  }
+
+  function readQ() {
+    if (physicalOn()) { real.read(); return; }
+    if (testOn() || !sim || !linked) return;
+    try {
+      q1 = high(sim.getNodeVoltage("Q1"));
+      q2 = high(sim.getNodeVoltage("Q2"));
+      q3 = high(sim.getNodeVoltage("Q3"));
+      q4 = high(sim.getNodeVoltage("Q4"));
+      q5 = high(sim.getNodeVoltage("Q5"));
+      q6 = high(sim.getNodeVoltage("Q6"));
+      q7 = high(sim.getNodeVoltage("Q7"));
+      q8 = high(sim.getNodeVoltage("Q8"));
+    } catch (e) {}
+    if (q1 || q2 || q3 || q4 || q5 || q6 || q7 || q8) return;
+    try {
+      var els = sim.getElements();
+      for (var i = 0; i < els.length; i++) {
+        var t = "";
+        try { t = els[i].getType(); } catch (e2) { continue; }
+        if (t.indexOf("MiniSps") < 0) continue;
+        var info = els[i].getInfo();
+        var m = /Q=([01]+)/.exec((info[2] || "") + "");
+        if (!m) continue;
+        var b = m[1];
+        q1 = b.charAt(0) === "1";
+        q2 = b.charAt(1) === "1";
+        q3 = b.charAt(2) === "1";
+        q4 = b.charAt(3) === "1";
+        q5 = b.charAt(4) === "1";
+        q6 = b.charAt(5) === "1";
+        q7 = b.charAt(6) === "1";
+        q8 = b.charAt(7) === "1";
+        break;
+      }
+    } catch (e) {}
+  }
+
+  document.getElementById("testMode").addEventListener("change", function () {
+    real.suspend(); edgePressed=false;
+    overheat = false;
+    stallT = 0;
+    if (pos > 100) pos = 100;
+    if (pos < 0) pos = 0;
+    if (!testOn()) {
+      q1 = false; q2 = false; fault = false;
+      readQ();
+    }
+  });
+
+  function led(id, on, cls) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.className = "dot" + (on ? " " + (cls || "on-green") : "");
+  }
+
+  function render() {
+    if (!physicalOn()) {
+      ["Taster AUF","Taster ZU","Taster STOP","S1 oben","S2 unten","B1 Lichtschranke","Sicherheitsleiste","Not-Aus"].forEach(function (name, index) {
+        var input = document.getElementById(index === 2 ? "stopLabel" : "inputFn" + (index + 1));
+        input.textContent = name; input.title = name;
+      });
+      ["Motor AUF","Motor ZU","Ampel gelb (Fahrt)","Hupe H1 + P4 Störung","Ampel rot","Ampel grün","P1 gelb","P2 gelb"].forEach(function (name, index) {
+        var output = document.getElementById("outputFn"+(index+1));
+        output.textContent=name; output.title=name;
+      });
+      [["S4","Taster AUF · I1"],["S5","Taster ZU · I2"],["S6","Taster STOP · I3"],["S0","NOT-HALT · I8 · Öffner"],["S1","S1 → I4 oben"],["S2","S2 → I5 unten"],["B1","B1 → I6 Lichtschranke"],["B2","B2 · I7 Sicherheitsleiste"]].forEach(function (item) {
+        document.getElementById("deviceFn"+item[0]).textContent=item[1];
+      });
+    }
+    if (physicalOn()) { real.render(document); return; }
+    document.querySelectorAll("#ampel .lit, #alarm .lit").forEach(function (el) { el.classList.remove("lit"); });
+    document.getElementById("drive").classList.remove("protection-trip");
+    document.getElementById("pe").classList.remove("unpowered");
+    var s1 = pos >= 99.5, s2 = pos <= 0.5;
+    var aufFahrt = q1 && !q2 && pos < 100;
+    var zuFahrt = q2 && !q1 && pos > 0;
+    var moving = aufFahrt || zuFahrt;
+    var motor = q1 || q2;
+
+    document.getElementById("kpiPos").textContent = posLabel(pos);
+    var doorEl = document.getElementById("door");
+    doorEl.style.height = doorHeightPct(pos) + "%";
+    doorEl.classList.toggle("past", pos > 100.4);
+
+    var state = document.getElementById("anlageState");
+    if (overheat) {
+      state.textContent = "Motor überlastet";
+      state.className = "v state-fault";
+    } else if (fault) {
+      state.textContent = "Gesperrt";
+      state.className = "v state-fault";
+    } else if (q1 && !q2 && pos >= 100) {
+      state.textContent = "Überlauf AUF";
+      state.className = "v state-fault";
+    } else if (q2 && !q1 && pos <= 0) {
+      state.textContent = "Überlauf ZU";
+      state.className = "v state-fault";
+    } else if (aufFahrt) {
+      state.textContent = "Fährt AUF";
+      state.className = "v state-auf";
+    } else if (zuFahrt) {
+      state.textContent = "Fährt ZU";
+      state.className = "v state-zu";
+    } else if (s1) {
+      state.textContent = "Tor offen";
+      state.className = "v state-offen";
+    } else if (s2) {
+      state.textContent = "Tor geschlossen";
+      state.className = "v";
+    } else {
+      state.textContent = "Stillstand";
+      state.className = "v";
+    }
+
+    var i8 = notAus;
+    var stoer = fault || !i8;
+    if (testOn() || !linked) {
+      q3 = motor && !stoer;
+      q4 = stoer;
+      q5 = !moving && !s1;
+      q6 = s1 && !moving;
+      q7 = !stoer;
+      q8 = stoer || overheat;
+    }
+
+    document.getElementById("ampel").className =
+      "ampel " + (q3 ? "yellow" : (q6 ? "green" : "red"));
+
+    led("ledI1", i1); led("ledI2", i2); led("ledI3", i3);
+    led("ledI4", s1); led("ledI5", s2); led("ledI6", !obstacle); led("ledI7", i7);
+    led("ledI8", i8);
+    led("ledQ1", q1); led("ledQ2", q2);
+    led("ledQ3", q3); led("ledQ4", q4);
+    led("ledQ5", q5); led("ledQ6", q6);
+    led("ledQ7", q7); led("ledQ8", q8);
+    document.getElementById("alarm").classList.toggle("on", q4);
+    var tbP1 = document.getElementById("tbP1");
+    var tbP2 = document.getElementById("tbP2");
+    if (tbP1) tbP1.classList.toggle("on", q7);
+    if (tbP2) tbP2.classList.toggle("on", q8);
+
+    if (testOn() && stoer) { q1 = false; q2 = false; }
+
+    document.getElementById("lsS1").classList.toggle("on", s1);
+    document.getElementById("lsS2").classList.toggle("on", s2);
+    document.getElementById("pe").classList.toggle("cut", obstacle);
+
+    var drv = document.getElementById("drive");
+    drv.classList.toggle("run", motor && !fault);
+    drv.classList.toggle("overheat", overheat);
+    drv.classList.toggle("auf", q1 && !q2 && !overheat);
+    drv.classList.toggle("zu", q2 && !q1 && !overheat);
+
+    [q1, q2].forEach(function (on, index) {
+      var id = "torQ" + (index + 1), card = document.getElementById(id);
+      card.classList.toggle("energized", on);
+      card.setAttribute("aria-label", "Q" + (index + 1) + " Schütz " + (on ? "angezogen" : "abgefallen") + " · Demo");
+      document.getElementById(id + "State").textContent = on ? "Angezogen" : "Abgefallen";
+    });
+    var moving = motor && !fault && !overheat && ((q1 && pos < 100) || (q2 && pos > 0));
+    document.getElementById("torMotion").hidden = !moving;
+    document.getElementById("torMotionArrow").textContent = q1 ? "↑" : "↓";
+    document.getElementById("torMotionText").textContent = q1 ? "Öffnet" : "Schließt";
+    var dir = document.getElementById("driveDir");
+    if (overheat) {
+      dir.textContent = "Überhitzt — Q nicht aus";
+      dir.className = "hot";
+    } else {
+      dir.textContent = fault ? "gesperrt" : (motor ? (q1 ? "Rechtslauf ↻" : "Linkslauf ↺") : "Stillstand");
+      dir.className = motor && !fault ? (q1 ? "auf" : "zu") : "";
+    }
+
+    document.getElementById("torMotor").setAttribute("aria-label", "Motor M1: " + dir.textContent + " · Demo");
+    var msg = document.getElementById("sysMsg");
+    if (overheat) {
+      msg.className = "v state-fault";
+      msg.textContent = "Motor Überlast — Endlage nicht abgeschaltet";
+    } else if (testOn()) {
+      msg.className = "v state-zu";
+      msg.textContent = "Demo ohne Verdrahtung";
+    } else if (!linked) {
+      msg.className = "v";
+      msg.textContent = "warte auf CircuitJS";
+    } else if (fault) {
+      msg.className = "v state-fault";
+      msg.textContent = "Störung Q1+Q2";
+    } else if (!notAus) {
+      msg.className = "v state-fault";
+      msg.textContent = "Not-Aus";
+    } else if (!i7) {
+      msg.className = "v state-zu";
+      msg.textContent = "Sicherheitsleiste";
+    } else if (obstacle && !s2) {
+      msg.className = "v state-zu";
+      msg.textContent = "B1 unterbrochen";
+    } else {
+      msg.className = "v state-ok";
+      msg.textContent = "Betriebsbereit";
+    }
+  }
+
+  function hold(btn, onDown, onUp) {
+    var held=false;
+    function down(ev) { if(held)return;ev.preventDefault();held=true;btn.classList.add("active");onDown(); }
+    function up(ev) { if(!held)return;if(ev)ev.preventDefault();held=false;btn.classList.remove("active");onUp(); }
+    btn.addEventListener("keydown",function(ev){if(ev.key===" "||ev.key==="Enter")down(ev);});
+    btn.addEventListener("keyup",function(ev){if(ev.key===" "||ev.key==="Enter")up(ev);});
+    btn.addEventListener("blur",up);window.addEventListener("blur",up);
+    document.addEventListener("visibilitychange",function(){if(document.hidden)up();});
+    btn.addEventListener("pointerdown", down);
+    btn.addEventListener("pointerup", up);
+    btn.addEventListener("pointercancel", up);
+    btn.addEventListener("pointerleave", function (ev) {
+      if (btn.classList.contains("active")) up(ev);
+    });
+  }
+
+  hold(document.getElementById("btnAuf"), function () {
+    i1 = 1; writeExt("I1", true);
+    if (testOn() && !i3 && !fault && notAus) { q1 = true; q2 = false; }
+  }, function () { i1 = 0; writeExt("I1", false); });
+  hold(document.getElementById("btnZu"), function () {
+    i2 = 1; writeExt("I2", true);
+    if (testOn() && !i3 && !fault && !obstacle && i7 && notAus) { q2 = true; q1 = false; }
+  }, function () { i2 = 0; writeExt("I2", false); });
+  hold(document.getElementById("btnStop"), function () {
+    i3 = 1; writeExt("I3", true);
+    if (testOn()) { q1 = false; q2 = false; }
+  }, function () { i3 = 0; writeExt("I3", false); });
+  var btnNotAus = document.getElementById("btnNotAus");
+  var btnNotAusRelease = document.getElementById("btnNotAusRelease");
+  function syncNotAusVisual() {
+    btnNotAus.classList.toggle("active", !notAus);
+    btnNotAus.setAttribute("aria-pressed", notAus ? "false" : "true");
+    btnNotAusRelease.disabled = notAus;
+  }
+  btnNotAus.addEventListener("click", function (ev) {
+    ev.preventDefault();
+    if (physicalOn()) { real.action("estop:S0","press"); return; }
+    if (!notAus) return;
+    notAus = false;
+    writeExt("I8", false);
+    if (testOn()) { q1 = false; q2 = false; }
+    syncNotAusVisual();
+  });
+  btnNotAusRelease.addEventListener("click", function () {
+    if (physicalOn()) { real.action("estop:S0","release"); return; }
+    notAus = true;
+    writeExt("I8", true);
+    syncNotAusVisual();
+  });
+  syncNotAusVisual();
+  hold(document.getElementById("btnEdge"), function () {
+    i7 = 0; writeExt("I7", false);
+    if (testOn()) {
+      if (q2) { q2 = false; if (pos < 99.5 && !fault && notAus) q1 = true; }
+      else q2 = false;
+    }
+  }, function () { i7 = 1; writeExt("I7", true); });
+  document.getElementById("btnObstacle").addEventListener("click", function () {
+    obstacle = !obstacle;
+    this.classList.toggle("on", obstacle);
+    this.textContent = obstacle ? "Hindernis entfernen" : "Hindernis stellen";
+    writeExt("I6", !obstacle);
+    if (testOn() && obstacle && q2) {
+      q2 = false;
+      if (pos < 99.5 && !fault && notAus) q1 = true;
+    }
+  });
+
+  function tick(now) {
+    var dt = Math.min(0.08, (now - lastT) / 1000);
+    lastT = now;
+    if (physicalOn()) {
+      pos=real.step(parseFloat(document.getElementById("spd").value)/100*28,obstacle,edgePressed);
+      setCjsBadge(linked && !!real.api); render(); requestAnimationFrame(tick); return;
+    }
+    if (!testOn()) readQ();
+    var speed = (parseFloat(document.getElementById("spd").value) / 100) * 28;
+    if (q1 && q2) fault = true;
+    else if (q1 && !q2 && (testOn() ? notAus : true)) {
+      var cap = testOn() ? 100 : (100 + OVER_MAX);
+      pos = Math.min(cap, pos + speed * dt);
+    } else if (q2 && !q1 && (testOn() ? (!obstacle && i7 && notAus) : true)) {
+      var floor = testOn() ? 0 : -OVER_MAX;
+      pos = Math.max(floor, pos - speed * dt);
+    }
+    if (testOn()) {
+      if (obstacle || !i7 || !notAus || fault) q2 = false;
+      if (!notAus || fault) q1 = false;
+      if (pos >= 100) q1 = false;
+      if (pos <= 0) q2 = false;
+      overheat = false;
+      stallT = 0;
+      if (pos > 100) pos = 100;
+      if (pos < 0) pos = 0;
+    } else {
+      var stalled = (q1 && !q2 && pos >= 100) || (q2 && !q1 && pos <= 0);
+      if (stalled) {
+	stallT += dt;
+	if (stallT >= STALL_S) overheat = true;
+      } else {
+	stallT = 0;
+      }
+    }
+    writeExt("I4", pos >= 99.5);
+    writeExt("I5", pos <= 0.5);
+    writeExt("I6", !obstacle);
+    writeExt("I7", !!i7);
+    writeExt("I8", !!notAus);
+    setCjsBadge(linked);
+    render();
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  function simLoaded() {
+    var previousSim = sim;
+    try { sim = iframe.contentWindow.CircuitJS1; } catch (e) { sim = null; }
+    linked = !!sim;
+    setCjsBadge(linked);
+    if (!sim) return;
+    // Bereitschaftshook und Polling können dieselbe Instanz melden.
+    if (sim === previousSim) return;
+    real.attach(realMode ? sim : null);
+    if (physicalOn()) { real.read(); return; }
+    sim.onupdate = function () { readQ(); };
+    writeExt("I1", !!i1);
+    writeExt("I2", !!i2);
+    writeExt("I3", !!i3);
+    writeExt("I4", pos >= 99.5);
+    writeExt("I5", pos <= 0.5);
+    writeExt("I6", !obstacle);
+    writeExt("I7", !!i7);
+    writeExt("I8", !!notAus);
+  }
+
+  function waitForSim(n) {
+    try {
+      if (iframe.contentWindow && iframe.contentWindow.CircuitJS1) {
+        simLoaded();
+        return;
+      }
+    } catch (e) {}
+    if (n > 0) setTimeout(function () { waitForSim(n - 1); }, 500);
+  }
+
+  function loadCircuit(name) {
+    real.release(); real.attach(null);
+    realMode = name.indexOf("egt-tor-real-") === 0; pos=0;obstacle=false;edgePressed=false;
+    linked = false; sim = null;
+    setCjsBadge(false);
+    var selection = document.getElementById("circSel");
+    var label = selection.options[selection.selectedIndex].text;
+    var src = "circuitjs.html?startCircuit=" + encodeURIComponent(name) +
+      "&startLabel=" + encodeURIComponent(label) +
+      "&lang=de&IECGates=true&running=true&egtHmi=true";
+    iframe.onload = function () {
+      try { iframe.contentWindow.oncircuitjsloaded = simLoaded; } catch (e) {}
+      waitForSim(60);
+    };
+    iframe.src = src;
+  }
+
+  document.getElementById("circSel").addEventListener("change", function () {
+    loadCircuit(this.value);
+  });
+
+  document.getElementById("circSel").value=new URLSearchParams(location.search).get("example")==="1"?"egt-tor-real-beispiel.txt":"egt-tor-real-uebung.txt";
+  loadCircuit(document.getElementById("circSel").value);
+
+  (function splitDrag() {
+    var app = document.getElementById("app");
+    var simPane = app.querySelector(".sim-pane");
+    var handle = document.getElementById("split");
+    var drag = false;
+    var layoutMedia = window.matchMedia("(max-width: 980px)");
+    var splitPositions = { wide: null, narrow: null };
+    function isVertical() {
+      return layoutMedia.matches;
+    }
+    function currentPercent(vertical) {
+      var appRect = app.getBoundingClientRect();
+      var simRect = simPane.getBoundingClientRect();
+      return vertical ? (simRect.height / appRect.height) * 100 : (simRect.width / appRect.width) * 100;
+    }
+    function setSplit(value, vertical) {
+      var min = vertical ? 25 : 28;
+      var max = vertical ? 70 : 72;
+      value = Math.max(min, Math.min(max, value));
+      splitPositions[vertical ? "narrow" : "wide"] = value;
+      if (vertical) {
+        app.style.gridTemplateRows = value + "% 12px 1fr";
+        app.style.gridTemplateColumns = "1fr";
+        handle.setAttribute("aria-orientation", "horizontal");
+      } else {
+        app.style.gridTemplateColumns = value + "% 12px 1fr";
+        app.style.gridTemplateRows = "";
+        handle.setAttribute("aria-orientation", "vertical");
+      }
+      handle.setAttribute("aria-valuemin", String(min));
+      handle.setAttribute("aria-valuemax", String(max));
+      handle.setAttribute("aria-valuenow", String(Math.round(value)));
+      handle.setAttribute("aria-valuetext", "CircuitJS " + Math.round(value) + " Prozent");
+    }
+    function stopDrag() {
+      drag = false;
+      handle.classList.remove("is-dragging");
+    }
+    handle.addEventListener("pointerdown", function (e) {
+      drag = true;
+      handle.classList.add("is-dragging");
+      handle.focus();
+      handle.setPointerCapture(e.pointerId);
+      e.preventDefault();
+    });
+    handle.addEventListener("pointerup", stopDrag);
+    handle.addEventListener("pointercancel", stopDrag);
+    handle.addEventListener("lostpointercapture", stopDrag);
+    handle.addEventListener("pointermove", function (e) {
+      if (!drag) return;
+      var r = app.getBoundingClientRect();
+      var vertical = isVertical();
+      if (vertical) {
+        var y = ((e.clientY - r.top) / r.height) * 100;
+        setSplit(y, true);
+      } else {
+        var x = ((e.clientX - r.left) / r.width) * 100;
+        setSplit(x, false);
+      }
+    });
+    handle.addEventListener("keydown", function (e) {
+      var vertical = isVertical();
+      var delta = 0;
+      if ((!vertical && e.key === "ArrowLeft") || (vertical && e.key === "ArrowUp")) delta = -2;
+      if ((!vertical && e.key === "ArrowRight") || (vertical && e.key === "ArrowDown")) delta = 2;
+      if (!delta) return;
+      setSplit(currentPercent(vertical) + delta, vertical);
+      e.preventDefault();
+    });
+    function syncOrientation() {
+      stopDrag();
+      var vertical = isVertical();
+      var value = splitPositions[vertical ? "narrow" : "wide"];
+      if (value === null) {
+        app.style.gridTemplateColumns = "";
+        app.style.gridTemplateRows = "";
+        value = currentPercent(vertical);
+      }
+      setSplit(value, vertical);
+    }
+    layoutMedia.addEventListener("change", syncOrientation);
+    syncOrientation();
+  })();
+  (function themeSwitch() {
+    var palettes = ['nacht', 'tag-feld', 'kontrast'];
+    var buttons = document.querySelectorAll('.theme-switch [data-palette]');
+    if (!buttons.length) return;
+    function current() {
+      var html = document.documentElement;
+      for (var i = 0; i < palettes.length; i++) {
+        if (html.classList.contains('palette-' + palettes[i])) return palettes[i];
+      }
+      return '';
+    }
+    function sync() {
+      var now = current();
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-palette') === now ? 'true' : 'false');
+      }
+    }
+    function apply(name) {
+      var html = document.documentElement;
+      for (var i = 0; i < palettes.length; i++) html.classList.remove('palette-' + palettes[i]);
+      html.classList.add('palette-' + name);
+      var url = new URL(window.location.href);
+      url.searchParams.set('palette', name);
+      history.replaceState({}, '', url);
+      sync();
+    }
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].addEventListener('click', function () {
+        apply(this.getAttribute('data-palette'));
+      });
+    }
+    sync();
+  })();
+})();
+</script>
+<script type="application/x-benchmark-pending" data-benchmark-src="egt-student-help.js?v=20261012d"></script>
+<script src="../benchmark/start.js"></script></body>
+</html>
