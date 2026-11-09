@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:,">
 <title>Verdrahtungswerkstatt · CircuitJS</title>
-<link rel="stylesheet" href="verdrahtungswerkstatt.css?v=20261026route2">
+<link rel="stylesheet" href="verdrahtungswerkstatt.css?v=20261109workshop1">
 <link rel="stylesheet" href="egt-student-help.css?v=20261012d">
 </head>
 <body>
@@ -26,8 +26,8 @@
       <button class="ui-btn icon-only" id="redo" disabled aria-label="Wiederholen" title="Wiederholen, Strg+Y"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5 4.5 4.5L12 14m4-4.5H8a4.5 4.5 0 0 0 0 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <button class="ui-btn primary save-action" id="saveProject"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 2.8h10l4 4V17H3zM6 2.8v5h7v-5M6 17v-6h8v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Speichern</button>
-    <details class="app-menu" id="projectMenu"><summary>Projekt <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="openProject">Projekt öffnen</button><button type="button" id="reset">Grundaufbau laden</button><button type="button" id="clear" class="danger-action" disabled>Alle Leitungen der Schaltung löschen</button></div></details>
-    <details class="app-menu" id="examplesMenu"><summary>Beispiele <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="demo">Selbsthaltung laden</button><button type="button" id="reversing">Drehrichtungsumkehr</button><button type="button" id="changeoverExample">Wechselschaltung · zwei Stellen</button><button type="button" id="crossoverExample">Kreuzschaltung · drei Stellen</button></div></details>
+    <details class="app-menu" id="projectMenu"><summary>Projekt <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="openProject">Projekt öffnen</button><button type="button" id="restoreProject" disabled>Letzten Stand wiederherstellen</button><button type="button" id="clear" class="danger-action" disabled>Alle Leitungen der Schaltung löschen</button></div></details>
+    <details class="app-menu" id="examplesMenu"><summary>Beispiele <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="reset">Grundaufbau laden</button><button type="button" id="demo">Selbsthaltung laden</button><button type="button" id="reversing">Drehrichtungsumkehr</button><button type="button" id="changeoverExample">Wechselschaltung · zwei Stellen</button><button type="button" id="crossoverExample">Kreuzschaltung · drei Stellen</button></div></details>
     <input id="projectFile" type="file" accept="application/json,.json" hidden>
   </div>
 </header>
@@ -168,7 +168,7 @@
   </div>
 </div>
 <script type="application/json" id="saved-state">null</script>
-<script type="module" src="verdrahtungswerkstatt/start.js?v=20261026route2"></script>
+<script type="module" src="verdrahtungswerkstatt/start.js?v=20261109workshop1"></script>
 
 </body>
 </html>

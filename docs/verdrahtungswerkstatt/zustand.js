@@ -12,6 +12,7 @@ export function createContext() {
   ctx.config.BOARD_H = 3600;
   ctx.config.contacts = {contactor:[['1','2','NO'],['3','4','NO'],['5','6','NO'],['13','14','NO']],auxiliary:[['53','54','NO'],['61','62','NC'],['71','72','NC'],['83','84','NO']]};
   ctx.config.types = {changeover:'WECHSELSCHALTER',crossover:'KREUZSCHALTER',junction:'ABZWEIGDOSE',connector:'VERBINDUNGSKLEMME',socket:'SCHUKO-STECKDOSE',potentiometer:'POTENTIOMETER',motion:'BEWEGUNGSMELDER',note:'NOTIZ',timer:'ZEITRELAIS',motorprotection:'MOTORSCHUTZSCHALTER',breaker:'SICHERUNG · LS',relay:'HILFSSCHÜTZ',voltmeter:'SPANNUNGSMESSGERÄT',ammeter:'STROMMESSGERÄT',contactor:'LEISTUNGSSCHÜTZ',auxiliary:'HILFSKONTAKTE',psu:'NETZTEIL',mains:'DREHSTROM 400 V',start:'TASTER',stop:'TASTER',motor:'MOTOR · DC',acmotor:'MOTOR · 3~ 400 V',lineardrive:'LINEARANTRIEB · 24 V DC',lamp:'LAMPE',pilot:'MELDELEUCHTE',emergency:'NOT-AUS · RASTEND',selector:'DREHSCHALTER · A–0–B',terminal:'REIHENKLEMME',rail:'POTENZIALSCHIENE'};
+  ctx.config.types.resistor = 'WIDERSTAND';
   ctx.state.modules = [];
   ctx.state.wires = [];
   ctx.state.history = [];
@@ -79,6 +80,7 @@ export function createContext() {
   ctx.config.signalColors = {green:['Grün','#37ce70'],red:['Rot','#f05252'],amber:['Gelb','#f4ca43'],blue:['Blau','#459af5'],white:['Weiß','#eff6fb'],orange:['Orange','#f79536']};
   ctx.config.buttonColors = {green:['Grün','#2f9a56','#fff','I'],red:['Rot','#c43328','#fff','O'],black:['Schwarz','#1d262c','#fff',''],white:['Weiß','#eef3f6','#1d262c','I'],yellow:['Gelb','#e6c21a','#1d262c','I']};
   ctx.config.tagPrefixes = {changeover:['S'],crossover:['S'],junction:['X'],connector:['X'],socket:['X'],potentiometer:['R'],motion:['B'],note:['N'],timer:['K'],motorprotection:['Q'],breaker:['F'],relay:['K'],voltmeter:['V'],ammeter:['A'],contactor:['Q','K'],psu:['G'],mains:['T','U'],motor:['M'],acmotor:['M'],lineardrive:['M'],lamp:['E'],pilot:['P'],start:['S'],stop:['S'],selector:['S'],emergency:['S'],terminal:['X'],rail:['X']};
+  ctx.config.tagPrefixes.resistor = ['R'];
   ctx.config.breakerRatings = [6,10,13,16,20,25,32,40,50,63];
   ctx.config.timerModes = ['Einschaltverzögert','Ausschaltverzögert','Ansprech- und rückfallverzögert','Blinkend'];
   ctx.config.noteTones = {cream:['Creme','#fff7d6'],white:['Weiß','#ffffff'],blue:['Blau','#e4f1fa'],green:['Grün','#e7f2e8']};
@@ -107,6 +109,7 @@ export function createContext() {
     junction:`<path d="M1 11h4v6H1m22-6h4v6h-4" fill="#b4bcbc" stroke="#859290" stroke-width=".8"/><rect x="3" y="2" width="22" height="24" rx="4" fill="#dfe3e1" stroke="#84908c"/><rect x="5" y="4" width="18" height="20" rx="2" fill="#b8c2bd" stroke="#7e8e85"/><path d="M7 7h14M7 21h14" stroke="#e8eeea"/><circle cx="7" cy="6" r="1" fill="#718479"/><circle cx="21" cy="22" r="1" fill="#718479"/>`,
     connector:`<rect x="1" y="1" width="26" height="26" rx="3" fill="#dce8e2" stroke="#92a79d"/><path d="M3 21h22" stroke="#bb945c" stroke-width="1.5"/>${[3,11,19].map(x=>'<rect x="'+x+'" y="3" width="6" height="16" rx="2" fill="#f18729" stroke="#b65c15"/><path d="M'+(x+1)+' 5h4" stroke="#dce5df" stroke-width="2"/><rect x="'+(x+1)+'" y="21" width="4" height="4" rx="1" fill="#304137" stroke="#aabbb1"/>').join('')}`,
     socket:'<rect x="2" y="2" width="24" height="24" rx="4" fill="#fafbf6" stroke="#a4aaa4"/><circle cx="14" cy="14" r="9" fill="#e5e7df" stroke="#a4aaa4"/><circle cx="10" cy="14" r="1.8" fill="#334239"/><circle cx="18" cy="14" r="1.8" fill="#334239"/><path d="M12 5h4m-4 18h4" stroke="#797d68" stroke-width="2.5"/>',
+    resistor:'<rect width="28" height="28" rx="3" fill="#e8eadc"/><path d="M2 14h5m14 0h5" stroke="#37483f" stroke-width="2"/><rect x="7" y="9" width="14" height="10" fill="#f6f7f4" stroke="#37483f" stroke-width="2"/>',
     potentiometer:'<rect width="28" height="28" rx="3" fill="#e8eadc"/><circle cx="14" cy="13" r="9" fill="#6b786e"/><circle cx="14" cy="13" r="6" fill="#263b31"/><path d="M14 7v5" stroke="#fff" stroke-width="2"/><path d="M5 25h18" stroke="#536b5b"/>',
     switch:'<rect width="28" height="28" rx="3" fill="#e5e9e0"/><rect x="4" y="2" width="20" height="23" rx="3" fill="#829087"/><rect x="6" y="4" width="16" height="19" rx="2" fill="#21372c"/><path d="M7 5h14v9H7z" fill="#40564b"/><path d="M14 7v4" stroke="#f4f7f4" stroke-width="1.6" stroke-linecap="round"/><circle cx="14" cy="18" r="2.2" fill="none" stroke="#d1ddd4" stroke-width="1.3"/><path d="M9 25v2m10-2v2" stroke="#43584a" stroke-width="2"/>',
     motion:'<rect width="28" height="28" rx="3" fill="#e0e8e1"/><rect x="4" y="3" width="20" height="22" rx="4" fill="#fff" stroke="#94a599"/><path d="M7 16a7 8 0 0 1 14 0v3H7z" fill="#dce8dc" stroke="#a7b9aa"/><circle cx="20" cy="7" r="1.5" fill="#008375"/>',

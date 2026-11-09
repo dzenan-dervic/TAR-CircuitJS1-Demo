@@ -47,7 +47,7 @@ export function createEditor(ctx) {
   const fmtV = v=>{const n=Number(v);return (Number.isFinite(n)?n:24).toFixed(1);};
   const isLight = m=>m.type==='lamp'||m.type==='pilot';
   const isCombinedTaster = m=>m.type==='start'||m.type==='stop';
-  const defaultPrefix = type=>type==='potentiometer'?'R':type==='motion'?'B':type==='note'?'N':type==='timer'?'K':type==='motorprotection'?'Q':type==='breaker'?'F':type==='relay'?'K':type==='voltmeter'?'V':type==='ammeter'?'A':type==='contactor'?'Q':type==='psu'?'G':type==='mains'?'T':(type==='motor'||type==='lineardrive'||type==='acmotor')?'M':type==='lamp'?'E':type==='pilot'?'P':['terminal','rail','junction','connector','socket'].includes(type)?'X':'S';
+  const defaultPrefix = type=>['resistor','potentiometer'].includes(type)?'R':type==='motion'?'B':type==='note'?'N':type==='timer'?'K':type==='motorprotection'?'Q':type==='breaker'?'F':type==='relay'?'K':type==='voltmeter'?'V':type==='ammeter'?'A':type==='contactor'?'Q':type==='psu'?'G':type==='mains'?'T':(type==='motor'||type==='lineardrive'||type==='acmotor')?'M':type==='lamp'?'E':type==='pilot'?'P':['terminal','rail','junction','connector','socket'].includes(type)?'X':'S';
   function splitTag(id){const hit=String(id||'').match(/^([A-Za-z]+)(\d+)$/);return hit?{prefix:hit[1],n:Number(hit[2])}:{prefix:'',n:1};}
   function nextId(prefix){let n=1;while(ctx.state.modules.some(m=>m.id===prefix+n))n++;return prefix+n;}
   function rewriteTerm(key,from,to){if(key===from)return to;if(key.startsWith(from+'.'))return to+key.slice(from.length);return key;}
@@ -192,6 +192,7 @@ export function createEditor(ctx) {
     m.locked=!!m.locked;
     if(m.type==='junction'){m.junctionVersion=2;m.boxWidth=Number.isFinite(m.boxWidth)?Math.max(240,Math.min(1600,m.boxWidth)):420;m.boxHeight=Number.isFinite(m.boxHeight)?Math.max(180,Math.min(1600,m.boxHeight)):360;}
     if(m.type==='connector'){m.ports=ctx.services.editor.connectorPorts(m);m.showBanner=m.showBanner===true;}
+    if(m.type==='resistor')m.resistance=Number.isFinite(m.resistance)?Math.max(.1,Math.min(1000000000,m.resistance)):1000;
     if(m.type==='potentiometer'){
       m.resistance=Number.isFinite(m.resistance)?Math.max(100,Math.min(1000000,m.resistance)):10000;
       m.potPosition=Number.isFinite(m.potPosition)?Math.max(0,Math.min(1,m.potPosition)):.5;
@@ -257,6 +258,7 @@ export function createEditor(ctx) {
     if(m.type==='junction')return 'Leeres Gehäuse · frei skalierbar';
     if(m.type==='connector')return ctx.services.editor.connectorPorts(m)+' Leiter · intern verbunden';
     if(m.type==='socket')return 'L / N / PE · getrennte Kontakte';
+    if(m.type==='resistor')return m.resistance.toLocaleString('de-DE')+' Ω · 2 Anschlüsse';
     if(m.type==='potentiometer')return (m.resistance/1000).toLocaleString('de-DE')+' kΩ · linear · 3 Anschlüsse';
     if(m.type==='motion')return m.nomV+' V '+(m.nomV===24?'DC':'AC')+' · Nachlauf '+m.motionDelay+' s';
     if(m.type==='note')return '';
@@ -322,6 +324,7 @@ export function createEditor(ctx) {
     if(m.type==='terminal'&&m.terminalVersion===2){
       m.el.querySelectorAll('.terminal-v2-cell').forEach((cell,i)=>{cell.classList.toggle('tone-blue',m.terminalColors[i]==='blue');cell.classList.toggle('tone-pe',m.terminalColors[i]==='pe');});
     }
+    if(m.type==='resistor'){m.el.querySelector('.resistor-value').textContent=m.resistance.toLocaleString('de-DE')+' Ω';m.el.querySelector('.module-state').textContent='1 / 2 · ohne Polarität';}
     if(m.type==='potentiometer')ctx.services.editor.paintPot(m);
     if(m.type==='motion')ctx.services.editor.paintMotion(m,ctx.state.lastSnap);
     if(m.type==='note'){
@@ -615,6 +618,7 @@ export function createEditor(ctx) {
     if(m.type==='junction')return ctx.services.editor.junctionFace(m);
     if(m.type==='connector')return ctx.services.editor.connectorFace(m);
     if(m.type==='socket')return ctx.services.editor.socketFace(m);
+    if(m.type==='resistor')return `<div class="device-eyebrow">OHMSCHER WIDERSTAND</div><svg class="resistor-symbol" viewBox="0 0 194 100" role="img" aria-label="Widerstand zwischen Klemme 1 und 2"><path d="M20 94 V40 H55 M139 40 H174 V94"/><rect x="55" y="25" width="84" height="30"/></svg><div class="resistor-value"></div><div class="sensor-terminals">${ctx.services.editor.terminal(m,'1','1','bottom')}${ctx.services.editor.terminal(m,'2','2','bottom')}</div>`;
     if(m.type==='note')return m.noteStyle==='frame'?'<div class="note-frame"><div class="note-content note-frame-title"></div><div class="note-frame-outline" aria-hidden="true"><i class="note-frame-edge edge-n"></i><i class="note-frame-edge edge-e"></i><i class="note-frame-edge edge-s"></i><i class="note-frame-edge edge-w"></i></div></div>':'<div class="note-content"></div>';
     if(m.type==='potentiometer')return `<div class="device-eyebrow">DREH-POTENTIOMETER</div><div class="pot-dial" aria-hidden="true"><span class="pot-zero">0</span><span class="pot-max">100</span><div class="pot-rotor"><i></i></div></div><div class="pot-controls"><label>Schleifer <output class="pot-value"></output><input class="pot-slider" type="range" min="0" max="100" step="1" value="${Math.round(m.potPosition*100)}" aria-label="${m.id} Schleiferposition"></label></div><div class="pot-rating"></div><svg class="pot-symbol" viewBox="0 0 194 56" aria-label="Potentiometer: Klemme 1 und 3 sind die Widerstandsenden, Klemme 2 ist der Schleifer"><path d="M16 51 V17 H55 M139 17 H178 V51 M97 51 V29 M91 37 L97 29 L103 37"/><rect x="55" y="9" width="84" height="16"/></svg><div class="sensor-terminals">${ctx.services.editor.terminal(m,'1','1','bottom')}${ctx.services.editor.terminal(m,'2','2','bottom')}${ctx.services.editor.terminal(m,'3','3','bottom')}</div>`;
     if(m.type==='motion')return `<div class="device-eyebrow">PIR · BEWEGUNGSMELDER</div><div class="motion-detection" title="Maus im Erfassungsbereich bewegen"><span class="motion-led" aria-hidden="true"></span><div class="pir-lens" aria-hidden="true"></div><span class="motion-status">Ohne Versorgung</span><small>Erfassungsbereich · Maus bewegen</small></div><button class="motion-test" type="button">Bewegung testen</button><div class="motion-rating">${m.nomV} V ${m.nomV===24?'DC':'AC'} · ${m.motionDelay} s Nachlauf</div><div class="sensor-terminals">${ctx.services.editor.terminal(m,'L',m.nomV===24?'+24':'L','bottom')}${ctx.services.editor.terminal(m,'N',m.nomV===24?'0 V':'N','bottom')}${ctx.services.editor.terminal(m,'OUT',m.nomV===24?'OUT':"L′",'bottom')}</div>`;
@@ -920,6 +924,7 @@ export function createEditor(ctx) {
     if(m.type==='junction')return [['Gehäuse','Keine elektrischen Anschlüsse'],['Größe',m.boxWidth+' × '+m.boxHeight],['Bestückung','Verbindungsklemmen separat einsetzen']];
     if(m.type==='connector')return [['Anschlüsse','1 bis '+ctx.services.editor.connectorPorts(m)],['Intern verbunden','Alle Anschlüsse dieser Klemme'],['Potenzial','Bestimmt deine Verdrahtung']];
     if(m.type==='socket')return [['Zuleitung','L / N / PE · untere Anschlussklemmen'],['Steckkontakt 1','Messpunkt · intern mit L verbunden'],['Steckkontakt 2','Messpunkt · intern mit N verbunden'],['Schutzkontakt','Messpunkt · intern mit PE verbunden'],['Vorderseite','Nur Messleitungen, keine Adern'],['L–N / L–PE / N–PE','Keine interne Verbindung'],['Eigenverbrauch','Keine Last']];
+    if(m.type==='resistor')return [['Widerstand',m.resistance.toLocaleString('de-DE')+' Ω'],['Anschlüsse','1 / 2 · ohne Polarität']];
     if(m.type==='potentiometer')return [['Widerstand 1–3',m.resistance+' Ω'],['Schleifer','2 · '+Math.round(m.potPosition*100)+' %'],['Kennlinie','Linear']];
     if(m.type==='motion')return [['Versorgung',m.nomV+' V '+(m.nomV===24?'DC':'AC')],['Eingang','L / +24 · N / 0 V'],['Ausgang','OUT / L′ · geschaltete Versorgung'],['Nachlauf',m.motionDelay+' s · nachtriggerbar']];
     if(m.type==='note')return [['Darstellung',m.noteStyle==='label'?'Beschriftungsstreifen':m.noteStyle==='frame'?'Markierungsrahmen':'Notizzettel'],['Position',m.locked?'Gesperrt':'Verschiebbar'],...(m.noteStyle==='card'?[]:[['Größe',m.noteWidth+' × '+m.noteHeight+' px']])];
@@ -1151,7 +1156,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     menu.removeAttribute('role');
     ctx.dom.$('#devTitle').textContent='Bearbeiten';
     note.hidden=false;
-    if(m.type==='potentiometer'){
+    if(m.type==='resistor'){
+      note.textContent='Klemmen 1 und 2 beliebig herum verdrahten. CircuitJS berechnet den Strom nach I = U / R. Der Widerstand bleibt konstant; Erwärmung und Überlast werden nicht simuliert.';
+      fields.innerHTML='<label>Widerstand (Ω)<input id="devResistance" type="number" min="0.1" max="1000000000" step="any" required value="'+m.resistance+'"></label>';
+    }else if(m.type==='potentiometer'){
       note.textContent='1 und 3 sind die Enden des Widerstands; 2 ist der Schleifer. 0 % liegt bei 1, 100 % bei 3. Der Drehregler verändert den echten Spannungsteiler, auch unter Last.';
       fields.innerHTML='<label>Gesamtwiderstand (Ω)<input id="devResistance" type="number" min="100" max="1000000" step="100" value="'+m.resistance+'"></label><label>Schleifer (%)<input id="devPotPosition" type="number" min="0" max="100" step="1" value="'+Math.round(m.potPosition*100)+'"></label>';
     }else if(m.type==='motion'){
@@ -1236,7 +1244,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       fields.innerHTML='';
       apply.hidden=true;
     }
-    if(['potentiometer','motion','note'].includes(m.type))fields.querySelectorAll('label').forEach(label=>label.classList.add('extension-field'));
+    if(['resistor','potentiometer','motion','note'].includes(m.type))fields.querySelectorAll('label').forEach(label=>label.classList.add('extension-field'));
     if(ctx.config.tagPrefixes[m.type]){
       fields.insertAdjacentHTML('afterbegin',ctx.services.editor.tagFieldHtml(m));
       apply.hidden=false;
@@ -1300,6 +1308,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const tag=ctx.services.editor.readTag(m);
     if(tag&&!tag.ok){fail(tag.error);return;}
     const extra={locked:!!ctx.dom.$('#devPositionLocked')?.checked};
+    if(m.type==='resistor'){
+      extra.resistance=Number(ctx.dom.$('#devResistance').value);
+      if(!Number.isFinite(extra.resistance)||extra.resistance<.1||extra.resistance>1000000000){fail('Widerstand zwischen 0,1 und 1.000.000.000 Ω eingeben.');return;}
+    }
     if(m.type==='potentiometer'){
       extra.resistance=Number(ctx.dom.$('#devResistance').value);extra.potPosition=Number(ctx.dom.$('#devPotPosition').value)/100;
       if(!Number.isFinite(extra.resistance)||extra.resistance<100||extra.resistance>1000000||!Number.isFinite(extra.potPosition)||extra.potPosition<0||extra.potPosition>1){fail('Widerstand 100–1.000.000 Ω und Schleifer 0–100 % eingeben.');return;}
@@ -2402,7 +2414,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(e.button===0&&ctx.state.handMode&&!ctx.state.spaceHeld&&part){
       if(!ctx.services.editor.moduleDragTarget(e))return;
       const m=ctx.state.modules.find(m=>m.id===part.dataset.id);
-      if(e.target.closest('.handle,.junction-edge')||m?.type==='connector'&&!m.showBanner&&e.target.closest('.lever-body')||ctx.state.selectedIds.has(part.dataset.id)&&e.target.closest('.note-content')){
+      if(e.target.closest('.handle,.junction-shell')||m?.type==='connector'&&!m.showBanner&&e.target.closest('.lever-body')||ctx.state.selectedIds.has(part.dataset.id)&&e.target.closest('.note-content')){
         ctx.services.editor.startModuleDrag(m,e,false,true);e.stopPropagation();return;
       }
     }
@@ -2676,7 +2688,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Leeres, frei skalierbares Gehäuse'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
   ]));
     document.querySelector('[data-add="lamp"]').closest('.add-set').before(ctx.services.editor.partGroup('Regler & Sensoren',[
-    ['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
+    ['resistor','Widerstand','Einstellbarer Wert · 2 Anschlüsse'],['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
   ]));
     document.querySelector('.parts-rail .add-set').parentElement.append(ctx.services.editor.partGroup('Beschriften',[
     ['note','Notiz','Text auf der Montageplatte'],['label','Beschriftung','Weißer Textstreifen mit freier Größe'],['frame','Rahmen','Gestrichelter Rahmen mit Text, frei größenveränderbar']

@@ -231,7 +231,8 @@ export function createSimulation(ctx) {
   function topologySig(){
     const parts=ctx.state.modules.filter(ctx.services.simulation.electricalModule).map(m=>m.id+':'+m.type+':'+(m.type==='connector'?ctx.services.editor.connectorPorts(m):'')+':'+(m.type==='motion'?JSON.stringify([m.nomV,m.motionDelay]):'')+':'+(m.parent||'')+':'+JSON.stringify(m.relayContacts||null)+':'+(m.type==='timer'?JSON.stringify([m.timerMode,m.delayOn,m.delayOff]):'')+':'+(ctx.services.editor.isProtection(m)?JSON.stringify([m.ratedCurrent,m.poles,m.characteristic]):'')).slice().sort();
     const links=ctx.state.wires.map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
-    return parts.join(',')+'|'+links.join(',');
+    const resistances=ctx.state.modules.filter(m=>m.type==='resistor').map(m=>m.id+':'+m.resistance).sort();
+    return parts.join(',')+'|'+links.join(',')+'|'+resistances.join(',');
   }
   function readEngineSnap(){
     if(!ctx.state.engine||!ctx.state.engine.readSnapshot)return null;

@@ -829,7 +829,10 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
   .board-bar .view-controls {overflow: visible; flex-wrap: wrap; min-width: 0; max-width: 100%}
 }
 /* Additional workshop devices share the existing terminal and wiring layers. */
-.module.potentiometer,.module.motion{width:224px}
+.module.resistor,.module.potentiometer,.module.motion{width:224px}
+.resistor .face{height:240px;padding:16px 14px;background:#e9ede6;color:#2b3e33}
+.resistor-symbol{display:block;width:100%;height:110px;margin:12px auto 0;fill:none;stroke:#37483f;stroke-width:2.5}
+.resistor-value{text-align:center;font-size:20px;font-weight:700;color:#2b3e33}
 .potentiometer .face,.motion .face{height:320px;padding:16px 14px;background:linear-gradient(120deg,#f6f7f4,#dce1db);border:1px solid #87948b;border-radius:8px;box-shadow:inset 0 0 0 6px #e9ede6,3px 5px 6px #26342938}
 .device-eyebrow{font-size:10px;font-weight:750;letter-spacing:.7px;text-align:center;color:#46554e}
 .pot-dial{position:relative;width:132px;height:132px;aspect-ratio:1;flex:none;margin:12px auto 0;border:2px solid #7f8b82;border-radius:50%;background:repeating-conic-gradient(from -135deg,#738078 0 1deg,transparent 1deg 27deg);box-shadow:inset 0 0 0 8px #e5e9e3}
@@ -1033,7 +1036,7 @@ button.parts-tab:focus-visible,button.inspector-tab:focus-visible {outline: 3px 
 .module.junction{pointer-events:none;z-index:0!important}
 .junction .handle{pointer-events:auto}
 .junction .face{height:360px;min-height:180px}
-.junction-shell{height:100%;box-sizing:border-box;margin:0;padding:28px 24px 24px}
+.junction-shell{height:100%;box-sizing:border-box;margin:0;padding:28px 24px 24px;pointer-events:auto;cursor:grab;touch-action:none}
 .junction .state-label{display:none}
 .junction-edge{position:absolute;display:block;pointer-events:auto;cursor:grab;touch-action:none}
 .junction-edge.edge-n,.junction-edge.edge-s{left:0;right:0;height:24px}

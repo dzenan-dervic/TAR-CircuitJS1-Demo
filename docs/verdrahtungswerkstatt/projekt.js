@@ -2,7 +2,7 @@
 export function createProject(ctx) {
   let bound = false;
   function data(){return {modules:ctx.state.modules.map(({el,pressed,...m})=>m),wires:ctx.state.wires.map(w=>({...w})),powered: ctx.state.powered,view:{x:ctx.state.camera.x,y:ctx.state.camera.y,scale: ctx.state.scale}};}
-  function persist(){const packed=JSON.stringify({v:1,savedAt:Date.now(),payload:ctx.services.projekt.data()});ctx.state.recoveryMemory=packed;if(ctx.config.skipStore)return;try{localStorage.setItem(ctx.config.STORE_KEY,packed);}catch(e){}}
+  function persist(){if(ctx.state.startupBlank&&!ctx.state.modules.length&&!ctx.state.wires.length)return;ctx.state.startupBlank=false;const packed=JSON.stringify({v:1,savedAt:Date.now(),payload:ctx.services.projekt.data()});ctx.state.recoveryMemory=packed;if(ctx.config.skipStore)return;try{localStorage.setItem(ctx.config.STORE_KEY,packed);}catch(e){}}
   function schedulePersist(){if(ctx.state.booting)return;clearTimeout(ctx.state.persistTimer);ctx.state.persistTimer=setTimeout(ctx.services.projekt.persist,400);}
   function loadStored(){if(ctx.config.skipStore)return null;try{const raw=JSON.parse(localStorage.getItem(ctx.config.STORE_KEY)||'null');if(raw&&raw.payload&&Array.isArray(raw.payload.modules)&&Array.isArray(raw.payload.wires))return raw.payload;}catch(e){}return null;}
   function paintHistory(){ctx.dom.$('#undo').disabled=!ctx.state.history.length;ctx.dom.$('#redo').disabled=!ctx.state.future.length;}
@@ -222,6 +222,7 @@ export function createProject(ctx) {
     ctx.dom.$('#clear').onclick=()=>{if(!ctx.state.wires.length||!confirm('Alle '+ctx.state.wires.length+' Leitungen der Schaltung löschen? Die Bauteile bleiben erhalten.'))return;ctx.services.projekt.remember();ctx.services.editor.cancel();ctx.state.wires=[];ctx.services.simulation.update();ctx.services.simulation.noteWiringReset();ctx.dom.$('#projectMenu').open=false;};
     ctx.dom.$('#saveProject').onclick=ctx.services.projekt.saveProjectFile;
     ctx.dom.$('#openProject').onclick=()=>{ctx.dom.$('#projectFile').value='';ctx.dom.$('#projectFile').click();};
+    ctx.dom.$('#restoreProject').onclick=()=>{const saved=ctx.services.projekt.loadStored();if(!saved)return;const load=()=>{ctx.services.projekt.remember();ctx.state.startupBlank=false;ctx.services.projekt.restore(saved);ctx.services.editor.say('Letzten Stand wiederhergestellt. Spannung aus — danach Betrieb.');};if(ctx.services.simulation.requestElectricalEdit(load))load();ctx.dom.$('#projectMenu').open=false;};
     ctx.dom.$('#projectFile').onchange=()=>{const file=ctx.dom.$('#projectFile').files&&ctx.dom.$('#projectFile').files[0];if(file)ctx.services.projekt.readProjectFile(file);};
     ctx.dom.$('#undo').onclick=()=>ctx.services.projekt.stepHistory(ctx.state.history,ctx.state.future);
     ctx.dom.$('#redo').onclick=()=>ctx.services.projekt.stepHistory(ctx.state.future,ctx.state.history);
@@ -231,7 +232,11 @@ export function createProject(ctx) {
 
   function loadInitial() {
 try{ctx.state.saved=JSON.parse(ctx.dom.$('#saved-state').textContent);}catch{}
-ctx.services.projekt.restore((ctx.state.saved&&Array.isArray(ctx.state.saved.modules))?ctx.state.saved:ctx.services.projekt.loadStored()||ctx.services.projekt.initial());
+const embedded=ctx.state.saved&&Array.isArray(ctx.state.saved.modules)?ctx.state.saved:null;
+ctx.state.startupBlank=!embedded;
+ctx.services.projekt.restore(embedded||{modules:[],wires:[],powered:false});
+const recovered=ctx.services.projekt.loadStored(),restoreButton=ctx.dom.$('#restoreProject');
+if(restoreButton)restoreButton.disabled=!(recovered&&(recovered.modules.length||recovered.wires.length));
 if(!ctx.config.skipStore){try{const speed=localStorage.getItem(ctx.config.CURRENT_SPEED_STORE);if(speed!==null)ctx.services.editor.setCurrentSpeed(speed);if(localStorage.getItem(ctx.config.VOLT_STORE)==='1')ctx.services.editor.setShowVoltage(true);if(localStorage.getItem(ctx.config.CURRENT_STORE)==='1')ctx.services.editor.setShowCurrent(true);}catch(e){}}
 ctx.state.booting=false;
 ctx.services.projekt.persist();
