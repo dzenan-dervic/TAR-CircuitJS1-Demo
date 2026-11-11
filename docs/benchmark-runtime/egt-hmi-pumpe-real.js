@@ -46,6 +46,10 @@
   PumpController.prototype.releaseButtons = function () {
     this.action("button:S4", "release"); this.action("button:S5", "release");
   };
+  PumpController.prototype.suspend = function () {
+    this.releaseButtons();
+    this.processTime = null;
+  };
   PumpController.prototype.render = function (doc, level, dry) {
     var self = this;
     function el(id) { return doc.getElementById(id); }

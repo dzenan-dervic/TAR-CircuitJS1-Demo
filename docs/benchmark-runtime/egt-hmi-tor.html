@@ -112,7 +112,7 @@
     html { color-scheme: dark; }
     html.palette-tag-feld { color-scheme: light; }
     html, body {
-      margin: 0; height: 100%;
+      margin: 0; height: 100%; overflow: hidden;
       background: var(--bg); color: var(--text);
       font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
       transition: background-color .04s linear, color .04s linear;
@@ -120,14 +120,15 @@
     .app {
       display: grid;
       grid-template-columns: minmax(420px, 55fr) 12px minmax(360px, 45fr);
-      height: 100%;
+      grid-template-rows: minmax(0, 1fr);
+      height: 100%; overflow: hidden;
     }
     html.hmi-only .app { display: block; }
     html.hmi-only .sim-pane, html.hmi-only .split { display: none; }
     html.hmi-only .hmi-pane { height: 100%; }
     html.hmi-only .wrap { max-width: 1180px; margin: 0 auto; }
     .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
-    .sim-pane { display: flex; flex-direction: column; background: var(--ink); }
+    .sim-pane { display: flex; flex-direction: column; overflow: hidden; background: var(--ink); }
     .sim-bar {
       display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
       padding: 8px 12px; background: var(--panel);
@@ -140,7 +141,7 @@
       padding: 4px 8px; font-size: 12px; text-decoration: none;
     }
     .sim-bar a:hover { border-color: var(--blue); }
-    #circuitFrame { flex: 1; width: 100%; border: 0; background: var(--ink); }
+    #circuitFrame { display: block; flex: 1; min-height: 0; width: 100%; border: 0; background: var(--ink); }
     .split {
       position: relative; z-index: 20;
       justify-self: center; width: 44px; min-width: 44px;
@@ -171,7 +172,7 @@
       transform: translate(-50%, -50%) scale(1.06);
     }
     .hmi-pane {
-      overflow: auto; background: var(--bg); container-type: inline-size;
+      overflow: auto; overscroll-behavior: contain; background: var(--bg); container-type: inline-size;
       transition: background-color .04s linear;
     }
     .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
@@ -682,6 +683,7 @@
     }
     @container (max-width: 360px) { .tb-stations { grid-template-columns:1fr; } }
     .test-sw {
+      position: relative;
       display: flex; align-items: center; gap: 8px;
       font-size: 11px; font-weight: 700; letter-spacing: 0;
       text-transform: none; color: var(--muted); cursor: pointer; user-select: none;
@@ -742,6 +744,7 @@
       .side { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="egt-hmi-layout.css?v=20261026c" />
   <link rel="stylesheet" href="egt-student-help.css?v=20261012d" />
 </head>
 <body>
@@ -986,8 +989,8 @@
         </div>
 
         <div class="card">
-          <h2>Eingänge / Ausgänge</h2>
-          <p class="tor-legend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
+          <h2 id="ioHeading">Eingänge / Ausgänge</h2>
+          <p class="tor-legend" id="ioLegend">Grün = Signal EIN · Grau = Signal AUS. Eine Kontaktstellung ist noch kein SPS-Signal.</p>
           <p id="torErrors" class="tor-errors" role="status" hidden></p>
           <div class="io">
             <div class="io-col">
@@ -1051,7 +1054,7 @@
     document.getElementById("fupHelp").showModal();
   });
 </script>
-<script type="application/x-benchmark-pending" data-benchmark-src="egt-hmi-tor-real.js?v=20261007stable1"></script>
+<script type="application/x-benchmark-pending" data-benchmark-src="egt-hmi-tor-real.js?v=20261111render1"></script>
 <script type="application/x-benchmark-pending">
 (function () {
   var real = new TorController(), realMode = true, edgePressed = false;
@@ -1178,6 +1181,12 @@
   }
 
   function render() {
+    var ioHeading = document.getElementById("ioHeading"), ioLegend = document.getElementById("ioLegend");
+    var heading = physicalOn() ? "Eingänge / Ausgänge" : "Eingänge / Ausgänge · Demo";
+    var legend = physicalOn() ? "Grün = Signal EIN · Grau = Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung. Eine Kontaktstellung ist noch kein SPS-Signal."
+      : "Demo: feste Beispielzuordnung. Namen und Signale sind unabhängig von der Verdrahtung im Simulator. Grün: EIN · Grau: AUS.";
+    if (ioHeading.textContent !== heading) ioHeading.textContent = heading;
+    if (ioLegend.textContent !== legend) ioLegend.textContent = legend;
     if (!physicalOn()) {
       ["Taster AUF","Taster ZU","Taster STOP","S1 oben","S2 unten","B1 Lichtschranke","Sicherheitsleiste","Not-Aus"].forEach(function (name, index) {
         var input = document.getElementById(index === 2 ? "stopLabel" : "inputFn" + (index + 1));
@@ -1439,13 +1448,10 @@
   requestAnimationFrame(tick);
 
   function simLoaded() {
-    var previousSim = sim;
     try { sim = iframe.contentWindow.CircuitJS1; } catch (e) { sim = null; }
     linked = !!sim;
     setCjsBadge(linked);
     if (!sim) return;
-    // Bereitschaftshook und Polling können dieselbe Instanz melden.
-    if (sim === previousSim) return;
     real.attach(realMode ? sim : null);
     if (physicalOn()) { real.read(); return; }
     sim.onupdate = function () { readQ(); };
@@ -1498,10 +1504,9 @@
     var simPane = app.querySelector(".sim-pane");
     var handle = document.getElementById("split");
     var drag = false;
-    var layoutMedia = window.matchMedia("(max-width: 980px)");
-    var splitPositions = { wide: null, narrow: null };
+    var layoutQuery = window.matchMedia("(max-width: 980px)");
     function isVertical() {
-      return layoutMedia.matches;
+      return layoutQuery.matches;
     }
     function currentPercent(vertical) {
       var appRect = app.getBoundingClientRect();
@@ -1512,7 +1517,6 @@
       var min = vertical ? 25 : 28;
       var max = vertical ? 70 : 72;
       value = Math.max(min, Math.min(max, value));
-      splitPositions[vertical ? "narrow" : "wide"] = value;
       if (vertical) {
         app.style.gridTemplateRows = value + "% 12px 1fr";
         app.style.gridTemplateColumns = "1fr";
@@ -1562,19 +1566,14 @@
       setSplit(currentPercent(vertical) + delta, vertical);
       e.preventDefault();
     });
-    function syncOrientation() {
+    layoutQuery.addEventListener("change", function () {
       stopDrag();
-      var vertical = isVertical();
-      var value = splitPositions[vertical ? "narrow" : "wide"];
-      if (value === null) {
-        app.style.gridTemplateColumns = "";
-        app.style.gridTemplateRows = "";
-        value = currentPercent(vertical);
-      }
-      setSplit(value, vertical);
-    }
-    layoutMedia.addEventListener("change", syncOrientation);
-    syncOrientation();
+      // Alte Spaltenwerte passen nicht zur gestapelten Ansicht und umgekehrt.
+      app.style.gridTemplateColumns = "";
+      app.style.gridTemplateRows = "";
+      setSplit(currentPercent(isVertical()), isVertical());
+    });
+    setSplit(currentPercent(isVertical()), isVertical());
   })();
   (function themeSwitch() {
     var palettes = ['nacht', 'tag-feld', 'kontrast'];

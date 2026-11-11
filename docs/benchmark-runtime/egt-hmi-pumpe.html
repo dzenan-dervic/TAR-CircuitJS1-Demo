@@ -181,21 +181,22 @@
     html.palette-tag-rahmen,
     html.palette-tag-feld { color-scheme: light; }
     html, body {
-      margin: 0; height: 100%;
+      margin: 0; height: 100%; overflow: hidden;
       background: var(--bg); color: var(--text);
       font: 14px/1.45 "Segoe UI", system-ui, sans-serif;
     }
     .app {
       display: grid;
       grid-template-columns: minmax(280px, 1fr) 12px minmax(440px, 1.15fr);
-      height: 100%;
+      grid-template-rows: minmax(0, 1fr);
+      height: 100%; overflow: hidden;
     }
     html.hmi-only .app { display: block; }
     html.hmi-only .sim-pane, html.hmi-only .split { display: none; }
     html.hmi-only .hmi-pane { height: 100%; }
     html.hmi-only .wrap { max-width: 1180px; margin: 0 auto; }
     .sim-pane, .hmi-pane { min-width: 0; min-height: 0; }
-    .sim-pane { display: flex; flex-direction: column; background: var(--ink); }
+    .sim-pane { display: flex; flex-direction: column; overflow: hidden; background: var(--ink); }
     .sim-bar {
       display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
       padding: 8px 12px; background: var(--panel);
@@ -208,7 +209,7 @@
       padding: 4px 8px; font-size: 12px; text-decoration: none;
     }
     .sim-bar a:hover { border-color: var(--blue); }
-    #circuitFrame { flex: 1; width: 100%; border: 0; background: var(--ink); }
+    #circuitFrame { display: block; flex: 1; min-height: 0; width: 100%; border: 0; background: var(--ink); }
     .split {
       position: relative; z-index: 20;
       justify-self: center; width: 44px; min-width: 44px;
@@ -238,7 +239,7 @@
       border-color: var(--water-hi); background-color: var(--blue-btn);
       transform: translate(-50%, -50%) scale(1.06);
     }
-    .hmi-pane { overflow: auto; background: var(--bg); }
+    .hmi-pane { overflow: auto; overscroll-behavior: contain; background: var(--bg); }
     .wrap { max-width: none; margin: 0; padding: 0 14px 24px; }
 
     header.top {
@@ -573,6 +574,7 @@
       display: block; color: var(--text); font-size: 12px;
       margin: 0 0 3px; line-height: 1.2;
     }
+    .tank-flow { display: block; font-size: 10px; font-weight: 600; letter-spacing: normal; text-transform: none; color: var(--muted); }
     .tank-cap.overflow { color: var(--red); border-color: var(--red); }
     .tank-cap.overflow b { color: var(--red); }
     .tank-body {
@@ -843,6 +845,7 @@
     .tb-cell:has(.cmd.active) .tb-lamp,.tb-estop-row:has(.cmd.active) .tb-lamp { background:#f3dc6a; box-shadow:0 0 7px #d4b83a88; }
     .toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
     .test-sw {
+      position: relative;
       display: flex; align-items: center; gap: 8px;
       font-size: 11px; font-weight: 700; letter-spacing: 0;
       text-transform: none; color: var(--muted); cursor: pointer; user-select: none;
@@ -906,7 +909,8 @@
       .pipe-in { width: 56px; }
     }
   </style>
-  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261007sensorchannels1" />
+  <link rel="stylesheet" href="egt-hmi-pumpe-real.css?v=20261026demo1" />
+  <link rel="stylesheet" href="egt-hmi-layout.css?v=20261026c" />
   <link rel="stylesheet" href="egt-student-help.css?v=20261012d" />
 </head>
 <body>
@@ -984,7 +988,7 @@
     <div class="grid">
       <div class="card">
         <h2>
-          <span>Anlage — Wasserbehälter</span>
+          <span>Anlage — Wasserbehälter<span class="tank-flow" id="tankFlowState" role="status">Kein Wasserfluss</span></span>
           <span class="spd">Förderleistung <input id="spd" type="range" min="10" max="100" value="55" aria-label="Förderleistung für Befüllen und Zapfen" title="Links langsam · rechts schnell. Regelt Befüllen und Zapfen." /></span>
         </h2>
         <div class="scene">
@@ -1055,7 +1059,7 @@
               <div class="flap"></div>
             </div>
             <div class="tank">
-              <div class="tank-cap" id="tankCap"><b>Behälter</b>Min 20 % · Max 90 %</div>
+              <div class="tank-cap" id="tankCap"><b id="tankCapTitle">Behälter</b><span id="tankCapLimits">Min 20 % · Max 90 %</span></div>
               <div class="tank-body">
                 <div class="spill-lip" aria-hidden="true"></div>
                 <div class="spill-fall" aria-hidden="true"></div>
@@ -1177,8 +1181,8 @@
         </div>
 
         <div class="card">
-          <h2>Eingänge / Ausgänge</h2>
-          <p class="pump-io-legend">Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung.</p>
+          <h2 id="ioHeading">Eingänge / Ausgänge</h2>
+          <p class="pump-io-legend" id="ioLegend">Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung.</p>
           <div class="io">
             <div class="io-col">
               <div class="k">Eingänge <em>8E — 8/4 und 8/8</em></div>
@@ -1211,7 +1215,7 @@
     </section>
   </div>
 
-<script type="application/x-benchmark-pending" data-benchmark-src="egt-hmi-pumpe-real.js?v=20261007sensorchannels1"></script>
+<script type="application/x-benchmark-pending" data-benchmark-src="egt-hmi-pumpe-real.js?v=20261026a"></script>
 <script type="application/x-benchmark-pending">
 (function () {
   var V_ON = 230, V_OFF = 0, V_TH = 80, V_OPEN = 20, OPEN_HOLD_S = 0.003, HOLD_DT_MAX = 0.0005;
@@ -1226,13 +1230,11 @@
   var sim = null, linked = false;
   var iframe = document.getElementById("circuitFrame");
   var hmiOnly = document.documentElement.classList.contains("hmi-only");
-  var demoAllowed = hmiOnly || new URLSearchParams(window.location.search).get("demo") === "1";
   var realCircuit = true, physicalController = new EGTPumpController(), inputSignals = [];
-  document.getElementById("testMode").closest("label").hidden = !demoAllowed;
   if (hmiOnly) document.getElementById("testMode").checked = true;
 
   function testOn() {
-    return demoAllowed && document.getElementById("testMode").checked;
+    return document.getElementById("testMode").checked;
   }
   function physicalOn() { return realCircuit && !testOn(); }
 
@@ -1335,6 +1337,11 @@
   }
 
   document.getElementById("testMode").addEventListener("change", function () {
+    physicalController.suspend();
+    i1 = 0; i2 = 1;
+    i7 = document.getElementById("modeAuto").checked ? 1 : 0;
+    document.getElementById("btnEin").classList.remove("active");
+    document.getElementById("btnAus").classList.remove("active");
     if (!testOn()) {
       q1 = false; q2 = false; q3 = false; q4 = false; q5 = false; q6 = false; q7 = false; q8 = false;
       betrieb = false; fuellen = false; fault = false;
@@ -1388,6 +1395,12 @@
   }
 
   function render() {
+    var ioHeading = document.getElementById("ioHeading"), ioLegend = document.getElementById("ioLegend");
+    var heading = physicalOn() ? "Eingänge / Ausgänge" : "Eingänge / Ausgänge · Demo";
+    var legend = physicalOn() ? "Grün: Signal EIN · Grau: Signal AUS. Die Bezeichnungen folgen deiner Verdrahtung."
+      : "Demo: feste Beispielzuordnung. Namen und Signale sind unabhängig von der Verdrahtung im Simulator. Grün: EIN · Grau: AUS.";
+    if (ioHeading.textContent !== heading) ioHeading.textContent = heading;
+    if (ioLegend.textContent !== legend) ioLegend.textContent = legend;
     if (!physicalOn()) resetWiringLabels();
     var overflow = level >= 100;
     var minOn = physicalOn() ? level <= LVL_MIN : i3();
@@ -1402,9 +1415,13 @@
     document.getElementById("lsMax").classList.toggle("fail", i4Fail);
     var cap = document.getElementById("tankCap");
     cap.classList.toggle("overflow", overflow);
-    cap.innerHTML = overflow
-      ? "<b>Überlauf</b>über 100 % — I4 greift nicht"
-      : "<b>Behälter</b>Min 20 % · Max 90 %";
+    var capTitle = document.getElementById("tankCapTitle");
+    var capLimits = document.getElementById("tankCapLimits");
+    var title = overflow ? "Überlauf" : "Behälter";
+    var limits = overflow ? "über 100 % — I4 greift nicht" : "Min 20 % · Max 90 %";
+    if (capTitle.textContent !== title) capTitle.textContent = title;
+    if (capLimits.textContent !== limits) capLimits.textContent = limits;
+    renderWaterFlow(waterFlow());
 
     var state = document.getElementById("anlageState");
     if (overflow) {
@@ -1657,6 +1674,25 @@
     syncEstop();
   });
 
+  function waterFlow() {
+    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 40;
+    var running = !physicalOn() || !!(physicalController.snapshot && physicalController.snapshot.running);
+    var inflow = running && pumping() && !dry ? rate : 0;
+    // Beim normalen Zapfen kann die Pumpe den Behälter weiter füllen.
+    var outflow = running && zapf ? rate * 0.6 : 0;
+    return { running: running, inflow: inflow, outflow: outflow, net: inflow - outflow };
+  }
+
+  function renderWaterFlow(flow) {
+    var text = "Kein Wasserfluss";
+    if (!flow.running) text = "Wasserfluss pausiert";
+    else if (flow.net > 0) text = level >= LVL_CAP ? "Behälter voll" : "Wasserstand steigt";
+    else if (flow.net < 0) text = level <= 0 ? "Behälter leer" : "Wasserstand sinkt";
+    else if (flow.inflow || flow.outflow) text = "Wasserstand konstant";
+    var status = document.getElementById("tankFlowState");
+    if (status.textContent !== text) status.textContent = text;
+  }
+
   function tick(now) {
     var dt = Math.min(0.08, (now - lastT) / 1000);
     lastT = now;
@@ -1672,10 +1708,8 @@
       document.getElementById("swF1").checked = true;
     }
     if (testOn()) applyTestLogic();
-    var rate = (parseFloat(document.getElementById("spd").value) / 100) * 40;
-    var processRunning = !physicalOn() || physicalController.snapshot && physicalController.snapshot.running;
-    if (processRunning && pumping() && !dry) level = Math.min(LVL_CAP, level + rate * dt);
-    if (processRunning && zapf) level = Math.max(0, level - rate * 1.15 * dt);
+    var flow = waterFlow();
+    level = Math.max(0, Math.min(LVL_CAP, level + flow.net * dt));
     writeExt("I1", !!i1);
     writeExt("I2", !!i2);
     writeExt("I3", i3());
@@ -1690,13 +1724,10 @@
   requestAnimationFrame(tick);
 
   function simLoaded() {
-    var previousSim = sim;
     try { sim = iframe.contentWindow.CircuitJS1; } catch (e) { sim = null; }
     linked = !!sim;
     setCjsBadge(linked);
     if (!sim) return;
-    // Bereitschaftshook und Polling können dieselbe Instanz melden.
-    if (sim === previousSim) return;
     physicalController.attach(sim);
     sim.onupdate = function () { readQ(); };
     writeExt("I1", !!i1);
@@ -1751,10 +1782,9 @@
     var simPane = app.querySelector(".sim-pane");
     var handle = document.getElementById("split");
     var drag = false;
-    var layoutMedia = window.matchMedia("(max-width: 980px)");
-    var splitPositions = { wide: null, narrow: null };
+    var layoutQuery = window.matchMedia("(max-width: 980px)");
     function isVertical() {
-      return layoutMedia.matches;
+      return layoutQuery.matches;
     }
     function currentPercent(vertical) {
       var appRect = app.getBoundingClientRect();
@@ -1765,7 +1795,6 @@
       var min = vertical ? 25 : 28;
       var max = vertical ? 70 : 72;
       value = Math.max(min, Math.min(max, value));
-      splitPositions[vertical ? "narrow" : "wide"] = value;
       if (vertical) {
         app.style.gridTemplateRows = value + "% 12px 1fr";
         app.style.gridTemplateColumns = "1fr";
@@ -1815,19 +1844,14 @@
       setSplit(currentPercent(vertical) + delta, vertical);
       e.preventDefault();
     });
-    function syncOrientation() {
+    layoutQuery.addEventListener("change", function () {
       stopDrag();
-      var vertical = isVertical();
-      var value = splitPositions[vertical ? "narrow" : "wide"];
-      if (value === null) {
-        app.style.gridTemplateColumns = "";
-        app.style.gridTemplateRows = "";
-        value = currentPercent(vertical);
-      }
-      setSplit(value, vertical);
-    }
-    layoutMedia.addEventListener("change", syncOrientation);
-    syncOrientation();
+      // Alte Spaltenwerte passen nicht zur gestapelten Ansicht und umgekehrt.
+      app.style.gridTemplateColumns = "";
+      app.style.gridTemplateRows = "";
+      setSplit(currentPercent(isVertical()), isVertical());
+    });
+    setSplit(currentPercent(isVertical()), isVertical());
   })();
 
   (function themeSwitch() {

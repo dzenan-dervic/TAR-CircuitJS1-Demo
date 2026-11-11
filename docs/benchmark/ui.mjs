@@ -1,7 +1,7 @@
 import '../vendor/webawesome/components/button/button.js';
 import '../vendor/webawesome/components/badge/badge.js';
 import '../vendor/webawesome/components/progress-bar/progress-bar.js';
-import { Benchmark } from './runner.mjs';
+import { Benchmark } from './runner.mjs?v=20261111modules1';
 import { download, safeError } from './core.mjs';
 import { assessResult, assessReport } from './assessment.mjs';
 const $=id=>document.getElementById(id),number=(v,d=0)=>Number.isFinite(v)?v.toFixed(d):'nicht messbar';

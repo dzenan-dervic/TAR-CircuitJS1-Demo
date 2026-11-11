@@ -36,8 +36,7 @@
 .system-reset { border:1px solid var(--line); border-radius:5px; padding:10px; background:var(--well); color:var(--text); font:inherit; cursor:pointer; }
 .system-reset:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 .physical-pump .io-row .dot.on-green { background:var(--green); box-shadow:0 0 7px color-mix(in srgb, var(--green) 45%, transparent); }
-.pump-io-legend { display:none; }
-.physical-pump .pump-io-legend { display:block; margin:0 0 10px; font-size:11px; line-height:1.6; color:var(--muted); }
+.pump-io-legend { margin:0 0 10px; font-size:11px; line-height:1.6; color:var(--muted); }
 .cmd:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 @media (prefers-reduced-motion:reduce) { .water::before, .impeller svg, .pipe::after { animation:none !important; } }
 @media (prefers-reduced-motion:reduce) { .contactor-box .contactor-armature { transition:none; } }

@@ -12,7 +12,7 @@ const workloads=[
 
   {id:'pump',label:'Pumpen-HMI',url:'egt-hmi-pumpe.html?example=1&test=benchmark'},
 
-  {id:'workshop',label:'Verdrahtungswerkstatt',url:'egt-hmi-stecken.html?test=benchmark'}
+  {id:'workshop',label:'Verdrahtungswerkstatt',url:'verdrahtungswerkstatt.html?test=benchmark'}
 
 ];
 
@@ -41,6 +41,19 @@ async function until(fn,signal,timeout=60000){
 }
 
 export function findApi(win){return win.CircuitJS1||win.document.querySelector('#circuitFrame')?.contentWindow?.CircuitJS1;}
+
+export function applicationReady(work,win,api){
+  if(typeof api?.getElements!=='function')return false;
+  if(work.id!=='workshop')return api.getElements().length>0;
+  if(typeof win.__workshop?.recovery!=='function'||!api.workbench?.readSnapshot)return false;
+  const raw=api.workbench.readSnapshot(),state=typeof raw==='string'?JSON.parse(raw):raw;
+  return state?.ok===true&&state.revision>0;
+}
+
+export function workshopProject(win){
+  const saved=win.__workshop?.recovery();
+  return saved?JSON.parse(saved).payload:null;
+}
 
 function assertIsolation(win){
 
@@ -120,9 +133,7 @@ export class Benchmark {
 
       const api=findApi(win);
 
-      if(!api?.getElements||api.getElements().length===0)return false;
-
-      if(work.id==='workshop'&&!win.__workshop?.recovery())return false;
+      if(!applicationReady(work,win,api))return false;
 
       const events=allEvents(win);
 
@@ -211,7 +222,7 @@ export class Benchmark {
 
     const expected=project.payload||project;
 
-    const loaded=await until(()=>{const value=JSON.parse(win.__workshop.recovery()).payload;return value.modules.length===expected.modules.length&&value.wires.length===expected.wires.length?value:null;},signal,5000);
+    const loaded=await until(()=>{const value=workshopProject(win);return value&&value.modules.length===expected.modules.length&&value.wires.length===expected.wires.length?value:null;},signal,5000);
 
     const contains=(actual,wanted)=>wanted&&typeof wanted==='object'?Object.keys(wanted).every(key=>contains(actual?.[key],wanted[key])):actual===wanted;
     if(loaded.modules.length!==expected.modules.length||loaded.wires.length!==expected.wires.length||!contains(loaded.modules,expected.modules)||!contains(loaded.wires,expected.wires))throw Error('Werkstattprojekt nicht vollständig wiederhergestellt.');
@@ -256,7 +267,7 @@ export class Benchmark {
 
     try{
 
-      const response=await fetch(new URL('../benchmark-build.json',import.meta.url),{signal});
+      const response=await fetch(new URL('../benchmark-build.json',import.meta.url),{signal,cache:'no-store'});
 
       if(!response.ok)throw Error('Buildkennung fehlt. Benchmark zuerst mit prepare_benchmark.py paketieren.');
 
@@ -367,4 +378,3 @@ export class Benchmark {
   }
 
 }
-

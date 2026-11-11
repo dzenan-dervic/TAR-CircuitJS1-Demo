@@ -1,0 +1,45 @@
+/* Die Breite rechts vom Trenner bestimmt die Kartenaufteilung. */
+.hmi-pane { container: hmi / inline-size; }
+.hmi-pane .grid { grid-template-columns: minmax(0, 1fr); }
+.hmi-pane .side {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  min-width: 0;
+}
+.hmi-pane .side > .card { min-width: 0; }
+.hmi-pane .side > .card:last-child { container: io-card / inline-size; }
+.hmi-pane .io { grid-template-columns: minmax(0, 1fr); }
+.hmi-pane .card h2 { flex-wrap: wrap; }
+.hmi-pane .test-sw .test-lbl { text-transform: none; letter-spacing: normal; }
+.hmi-pane .top-inner { max-width: none; justify-content: flex-start; }
+.hmi-pane .badges {
+  margin-inline-start: auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr);
+  width: min(100%, 46rem);
+  flex: none;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.hmi-pane .badge { min-width: 0; }
+/* Zwei Textzeilen bleiben auch bei kurzen Meldungen frei. */
+.hmi-pane .badge .v {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  block-size: 2.9em;
+  overflow-wrap: anywhere;
+}
+@container hmi (max-width: 600px) {
+  .hmi-pane .badges { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hmi-pane .badge .v { block-size: 4.35em; }
+}
+@container hmi (min-width: 850px) {
+  .hmi-pane .side { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@container io-card (min-width: 480px) {
+  .hmi-pane .io { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
