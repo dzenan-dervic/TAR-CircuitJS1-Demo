@@ -1539,3 +1539,9 @@
 "wattmeter"="Wattmeter"
 "write"="Schreiben"
 "Ćuk Converter"="Ćuk-Wandler"
+
+"EGT Contactor Circuits"="EGT-Schütztechnik"
+
+"SCHUETZ-11 Three Wire"="SCHUETZ-11 Dreileiter (nicht nachschaltbar)"
+
+"SCHUETZ-11 Four Wire"="SCHUETZ-11 Vierleiter (nachschaltbar)"

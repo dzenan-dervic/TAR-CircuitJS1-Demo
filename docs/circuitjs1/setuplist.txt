@@ -6,6 +6,10 @@ egt-anh-07-b.txt ANH-07 Location B Winding Current
 +MOTOR Star-Delta
 egt-stern-dreieck.txt Star-Delta Main and Control Circuit
 -
++EGT Contactor Circuits
+egt-schuetz-11-dreileiter.txt SCHUETZ-11 Three Wire
+egt-schuetz-11-vierleiter.txt SCHUETZ-11 Four Wire
+-
 +EGT Installation
 +INST-05 Two-Way Switching
 egt-inst-05.txt INST-05 Connected Representation
