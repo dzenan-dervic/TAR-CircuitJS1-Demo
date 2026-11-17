@@ -1,0 +1,31 @@
+<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+<x x="32 48 700 48" f="4" si="20" te="MOTOR-01 | Drehfeld und Phasenfolge"/>
+<x x="32 80 700 80" f="4" si="14" te="Blatt 13.7. Sternschaltung: U2, V2 und W2 verbunden. L1/L2/L3 an U1/V1/W1."/>
+<x x="32 106 700 106" f="4" si="14" te="MOTOR-01 (Blatt 13.7): Drei um 120 Grad versetzte Ströme bilden ein Drehfeld."/>
+<x x="32 132 700 132" f="4" si="14" te="Zwei Außenleiter tauschen kehrt das Feld um. Synchrondrehzahl n_s = 60 f / p in 1/min."/>
+<x x="32 158 700 158" f="4" si="14" te="PE ist als eigener Gehäuseanschluss dargestellt. Das Wicklungsmodell hat sechs Pole."/>
+<EGTDrehstromquelle x="16 240 32 240" f="0" urms="230" fr="50" des="U1"/>
+<EGTDrehstrommotor x="560 384 816 384" f="0" rs="3.2020582160225124" rr="6.006619550056023" ls="0.2164149690829008" lr="0.21862328509395085" lm="0.21126223172378414" b="0.0108680097775447" j="0.02" designation="M1" ratedKw="1.5" eta="0.8"/>
+<egtleitung x="112 240 224 240" f="0" role="0" bez="L1" col="#8b4513"/>
+<egtleitung x="224 240 224 352" f="0" role="0" bez="L1" col="#8b4513"/>
+<egtleitung x="224 352 512 352" f="0" role="0" bez="L1" col="#8b4513"/>
+<r x="512 352 560 352" f="0" r="0.01"/>
+<egtleitung x="112 272 272 272" f="0" role="1" bez="L2" col="#202020"/>
+<egtleitung x="272 272 272 384" f="0" role="1" bez="L2" col="#202020"/>
+<egtleitung x="272 384 512 384" f="0" role="1" bez="L2" col="#202020"/>
+<r x="512 384 560 384" f="0" r="0.01"/>
+<egtleitung x="112 304 320 304" f="0" role="2" bez="L3" col="#808080"/>
+<egtleitung x="320 304 320 416" f="0" role="2" bez="L3" col="#808080"/>
+<egtleitung x="320 416 512 416" f="0" role="2" bez="L3" col="#808080"/>
+<r x="512 416 560 416" f="0" r="0.01"/>
+<w x="816 352 880 352" f="0"/>
+<w x="816 384 880 384" f="0"/>
+<w x="816 416 880 416" f="0"/>
+<w x="880 352 880 384" f="0"/>
+<w x="880 384 880 416" f="0"/>
+<egtleitung x="112 368 144 368" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<egtleitung x="144 368 144 640" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<egtleitung x="144 640 800 640" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<ln x="800 640 880 640" f="0" te="M1 Gehäuse (PE)"/>
+<x x="32 668 700 668" f="4" si="13" te="R1 bis R3: Messwiderstände (je 0,01 Ohm) für die drei Phasenströme."/>
+</cir>

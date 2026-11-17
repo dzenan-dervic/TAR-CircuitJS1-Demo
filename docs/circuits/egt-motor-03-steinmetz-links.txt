@@ -1,0 +1,43 @@
+<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+<x x="32 48 700 48" f="4" si="20" te="MOTOR-03 | Steinmetzschaltung Linkslauf"/>
+<x x="32 80 700 80" f="4" si="14" te="Blatt 13.10, Aufgabe 3: Dreieckbrücken. L an U1, N an V1, C_B zwischen W1 und V1."/>
+<x x="32 106 700 106" f="4" si="14" te="230 V, 50 Hz. C_B = 18 µF als Simulationsparameter; das Aufgabenblatt gibt keinen Wert vor."/>
+<x x="32 132 700 132" f="4" si="14" te="PE ist als eigener Gehäuseanschluss dargestellt. Das Wicklungsmodell hat sechs Pole."/>
+<EGTSpannungsquelle x="16 240 32 240" f="0" urms="230" fr="50" des="U1"/>
+<EGTDrehstrommotor x="560 384 816 384" f="0" rs="19.212349296135073" rr="36.039717300336136" ls="1.2984898144974049" lr="1.311739710563705" lm="1.2675733903427049" b="0.0018113349629241167" j="0.02" designation="M1" ratedKw="0.25" eta="0.8"/>
+<egtleitung x="112 240 224 240" f="0" role="0" bez="L1" col="#8b4513"/>
+<egtleitung x="224 240 224 352" f="0" role="0" bez="L1" col="#8b4513"/>
+<egtleitung x="224 352 560 352" f="0" role="0" bez="L1" col="#8b4513"/>
+<egtleitung x="112 272 272 272" f="0" role="3" bez="N" col="#267db7"/>
+<egtleitung x="272 272 272 384" f="0" role="3" bez="N" col="#267db7"/>
+<egtleitung x="272 384 560 384" f="0" role="3" bez="N" col="#267db7"/>
+<w x="560 352 510 352" f="0"/>
+<w x="510 352 510 470" f="0"/>
+<w x="510 470 866 470" f="0"/>
+<w x="866 470 866 352" f="0"/>
+<w x="866 352 816 352" f="0"/>
+<w x="560 384 478 384" f="0"/>
+<w x="478 384 478 502" f="0"/>
+<w x="478 502 898 502" f="0"/>
+<w x="898 502 898 384" f="0"/>
+<w x="898 384 816 384" f="0"/>
+<w x="560 416 446 416" f="0"/>
+<w x="446 416 446 534" f="0"/>
+<w x="446 534 930 534" f="0"/>
+<w x="930 534 930 416" f="0"/>
+<w x="930 416 816 416" f="0"/>
+<w x="560 384 384 384" f="0"/>
+<w x="384 384 384 200" f="0"/>
+<w x="384 200 544 200" f="0"/>
+<c x="544 200 736 200" f="0" c="1.8e-05" iv="0" sr="0"/>
+<w x="736 200 936 200" f="0"/>
+<w x="936 200 936 416" f="0"/>
+<w x="936 416 936 592" f="0"/>
+<w x="936 592 410 592" f="0"/>
+<w x="410 592 410 416" f="0"/>
+<w x="410 416 560 416" f="0"/>
+<egtleitung x="112 304 144 304" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<egtleitung x="144 304 144 640" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<egtleitung x="144 640 800 640" f="0" role="4" bez="PE" col="#5e9d2d"/>
+<ln x="800 640 880 640" f="0" te="M1 Gehäuse (PE)"/>
+</cir>

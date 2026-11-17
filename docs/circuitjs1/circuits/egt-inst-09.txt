@@ -1,0 +1,17 @@
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 32 496 32" f="4" si="18" te="INST-09 - Außenlicht mit IR-Bewegungsmelder" />
+  <x x="96 56 496 56" f="4" si="12" te="S1 und S2 sind Öffner in Reihe im L-Zulauf des Melders." />
+  <EGTSpannungsquelle x="32 128 64 128" f="0" urms="230" fr="50" des="U1" />
+  <EGTTaster x="224 272 320 368" f="0" p="1" des="S1" w="96" h="96" mm="true" nc="1" />
+  <EGTTaster x="416 272 512 368" f="0" p="1" des="S2" w="96" h="96" mm="true" nc="1" />
+  <EGTBewegungsmelder x="640 272 752 368" f="1" sx="7" sy="6" des="B1" np="5" nv="230" del="3" psw="1" />
+  <EGTLeuchte x="896 400 992 400" f="0" sx="3" sy="3" des="E1" np="60" nv="230" />
+  <egtleitung x="128 128 272 256" f="0" role="0" bez="L" col="#8B4513" mids="272,128" />
+  <egtleitung x="272 384 464 256" f="0" role="0" bez="L" col="#8B4513" mids="352,384;352,256" />
+  <egtleitung x="464 384 672 256" f="0" role="0" bez="L" col="#8B4513" mids="560,384;560,256" />
+  <egtleitung x="128 160 672 368" f="0" role="3" bez="N" col="#1E90FF" mids="608,160;608,432;672,432" />
+  <egtleitung x="128 160 992 368" f="0" role="3" bez="N" col="#1E90FF" mids="992,160" />
+  <egtleitung x="736 256 928 368" f="0" role="0" bez="L" col="#8B4513" mids="928,256" />
+  <egtleitung x="128 192 960 368" f="0" role="4" bez="PE" col="#4d8708" mids="960,192" />
+  <x x="96 80 600 80" f="4" si="12" te="S1/S2 kurz drücken und loslassen: Licht umschalten. Modellfenster 0,03 bis 1 s." />
+</cir>

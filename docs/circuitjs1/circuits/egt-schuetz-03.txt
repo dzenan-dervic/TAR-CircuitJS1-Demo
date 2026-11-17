@@ -1,0 +1,48 @@
+<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="32 48 672 48" f="4" si="21" te="SCHUETZ-03 | Relais und Reedrelais"/>
+  <x x="32 84 672 84" f="4" si="13" te="Blatt 6.9, Aufgaben 4 und 5. Strom und Kontaktstellung im Vergleich."/>
+  <x x="32 131 672 131" f="4" si="16" te="S1: Relais K1 mit Öffner und Schließer"/>
+  <v x="64 432 64 192" f="0" wf="0" maxv="24"/>
+  <EGTSpannungsquelle x="416 192 448 192" f="0" urms="230" fr="50" des="U1"/>
+  <EGTTaster x="208 256 272 320" f="0" p="1" mm="true" des="S1" w="64" h="64"/>
+  <EGTSchuetzSpule x="208 384 256 432" f="1" sx="3" sy="3" des="K1" np="2" nv="24"/>
+  <EGTSchuetzHilfskontakt x="624 256 672 320" f="1" sx="3" sy="4" des="K1" cn="1"/>
+  <EGTLeuchte x="624 464 720 464" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <w x="64 192 240 192" f="0"/>
+  <w x="240 192 240 240" f="0"/>
+  <w x="240 336 240 368" f="0"/>
+  <w x="240 432 64 432" f="0"/>
+  <w x="512 192 656 192" f="0"/>
+  <w x="656 192 656 240" f="0"/>
+  <w x="656 320 656 432" f="0"/>
+  <egtleitung x="512 224 720 432" f="0" role="3" bez="N" col="#1e90ff" mids="768,224;768,400;720,400"/>
+  <egtleitung x="512 256 688 432" f="0" role="4" bez="PE" col="#5e9d2d" mids="592,256;592,400;688,400"/>
+  <EGTSchuetzHilfskontakt x="816 256 864 320" f="3" sx="3" sy="4" des="K1" cn="2"/>
+  <EGTLeuchte x="816 464 912 464" f="0" sx="3" sy="3" des="E2" np="60" nv="230"/>
+  <w x="656 192 848 192" f="0"/>
+  <w x="848 192 848 240" f="0"/>
+  <w x="848 320 848 432" f="0"/>
+  <egtleitung x="768 224 912 432" f="0" role="3" bez="N" col="#1e90ff" mids="912,224"/>
+  <egtleitung x="592 256 880 432" f="0" role="4" bez="PE" col="#5e9d2d" mids="880,256"/>
+  <x x="32 538 672 538" f="4" si="12" te="Relais: Spule und Eisenkern ziehen den Anker an. Federkontakt wechselt von Öffner zu Schließer."/>
+  <x x="32 563 672 563" f="4" si="12" te="Die Rückstellfeder bringt den Anker nach dem Abschalten wieder in die Ruhelage."/>
+  <x x="32 681 672 681" f="4" si="16" te="S2: Reedrelais K2 mit einem Schließer (elektrisches Ersatzmodell)"/>
+  <v x="64 976 64 736" f="0" wf="0" maxv="24"/>
+  <EGTSpannungsquelle x="416 736 448 736" f="0" urms="230" fr="50" des="U2"/>
+  <EGTTaster x="208 800 272 864" f="0" p="1" mm="true" des="S2" w="64" h="64"/>
+  <EGTSchuetzSpule x="208 928 256 976" f="1" sx="3" sy="3" des="K2" np="2" nv="24"/>
+  <EGTSchuetzHilfskontakt x="624 800 672 864" f="1" sx="3" sy="4" des="K2" cn="1"/>
+  <EGTLeuchte x="624 1008 720 1008" f="0" sx="3" sy="3" des="E3" np="60" nv="230"/>
+  <w x="64 736 240 736" f="0"/>
+  <w x="240 736 240 784" f="0"/>
+  <w x="240 880 240 912" f="0"/>
+  <w x="240 976 64 976" f="0"/>
+  <w x="512 736 656 736" f="0"/>
+  <w x="656 736 656 784" f="0"/>
+  <w x="656 864 656 976" f="0"/>
+  <egtleitung x="512 768 720 976" f="0" role="3" bez="N" col="#1e90ff" mids="768,768;768,944;720,944"/>
+  <egtleitung x="512 800 688 976" f="0" role="4" bez="PE" col="#5e9d2d" mids="592,800;592,944;688,944"/>
+  <x x="32 1088 672 1088" f="4" si="12" te="Reed: Die Spule magnetisiert zwei Kontaktzungen im Glasröhrchen. Die Anschlüsse liegen außen."/>
+  <x x="32 1114 672 1114" f="4" si="12" te="Bei Stromrichtung wie in Bild 2 trägt die linke Zunge innen Süd und die rechte innen Nord."/>
+  <x x="32 1140 672 1140" f="4" si="12" te="Die gegenüberliegenden Pole ziehen sich an und schließen den Kontakt. Das Schutzglas trennt den Kontakt von der Umgebung."/>
+</cir>

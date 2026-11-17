@@ -21,6 +21,6 @@
   <egtleitung x="1328 304 1776 672" f="131072" role="0" bez="L1" col="#c0392b" mids="1744,304;1744,656;1776,656"/>
   <egtleitung x="1776 752 2032 464" f="262144" role="2" bez="L3" col="#c0392b" mids="1792,752;1792,384;2032,384"/>
   <egtleitung x="2096 464 1600 336" f="262144" role="3" bez="N" col="#c0392b"/>
-  <EGTZeitrelaisSpule x="1616 688 1696 688" f="3" sx="3" sy="3" des="K1" del="1" np="15" nv="230"/>
+  <EGTZeitrelaisSpule x="1616 688 1696 688" f="3" sx="3" sy="3" des="K1" del="0.5" np="15" nv="230"/>
   <EGTZeitrelaisKontakt x="1744 688 1792 752" f="5" sx="3" sy="4" des="K1"/>
 </cir>

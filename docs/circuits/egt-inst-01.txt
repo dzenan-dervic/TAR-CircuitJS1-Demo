@@ -1,0 +1,33 @@
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 24 496 24" f="4" si="18" te="INST-01 - Installationsschaltplan Kinderzimmer"/>
+  <b x="144 96 976 448" f="0" />
+  <x x="624 320 1024 320" f="4" si="13" te="Kinderzimmer"/>
+  <EGTAbzweigdose x="240 112 368 224" f="16384" des="X2"/>
+  <EGTAbzweigdose x="496 112 624 224" f="16384" des="X3"/>
+  <EGTAusschalter x="256 272 352 368" f="16384" p="1" des="Q1" w="96" h="96"/>
+  <EGTLeuchte x="512 272 608 272" f="16384" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTSteckdose x="784 352 880 352" f="16384" sx="3" sy="2" des="X1"/>
+  <EGTInstallationsleitung x="144 160 304 160" f="0" role="2" bez="3" col="#8B4513"/>
+  <EGTInstallationsleitung x="304 160 560 160" f="0" role="2" bez="4" col="#8B4513"/>
+  <EGTInstallationsleitung x="304 160 304 256" f="0" role="2" bez="3" col="#8B4513"/>
+  <EGTInstallationsleitung x="560 160 576 240" f="0" role="2" bez="3" col="#8B4513"/>
+  <EGTInstallationsleitung x="560 160 848 320" f="0" role="2" bez="3" col="#8B4513" mids="848,160"/>
+  <x x="144 480 544 480" f="4" si="13" te="NYM-J Cu 1,5. Elektrischer Prüfaufbau derselben Ausschaltung unterhalb."/>
+  <x x="96 576 496 576" f="4" si="18" te="INST-03 - Ausschaltung, zusammenhängender Stromlaufplan"/>
+  <EGTSpannungsquelle x="32 640 64 640" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="240 624 368 736" f="0" des="X2"/>
+  <EGTAbzweigdose x="496 624 624 736" f="0" des="X3"/>
+  <EGTAusschalter x="256 864 352 960" f="0" p="1" des="Q1" w="96" h="96"/>
+  <EGTLeuchte x="496 896 592 896" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTSteckdose x="768 928 864 928" f="0" sx="3" sy="2" des="X1"/>
+  <egtleitung x="128 640 272 640" f="0" role="0" bez="L" col="#8B4513"/>
+  <egtleitung x="272 640 304 848" f="0" role="0" bez="L" col="#8B4513" mids="304,640"/>
+  <egtleitung x="272 640 800 896" f="0" role="0" bez="L" col="#8B4513" mids="800,640"/>
+  <egtleitung x="304 976 528 864" f="0" role="0" bez="L" col="#8B4513" mids="384,976;384,720;528,720"/>
+  <egtleitung x="128 672 544 672" f="0" role="3" bez="N" col="#1E90FF"/>
+  <egtleitung x="544 672 592 864" f="0" role="3" bez="N" col="#1E90FF" mids="592,672"/>
+  <egtleitung x="544 672 864 896" f="0" role="3" bez="N" col="#1E90FF" mids="864,672"/>
+  <egtleitung x="128 704 336 704" f="0" role="4" bez="PE" col="#4d8708"/>
+  <egtleitung x="336 704 560 864" f="0" role="4" bez="PE" col="#4d8708" mids="560,704"/>
+  <egtleitung x="336 704 832 896" f="0" role="4" bez="PE" col="#4d8708" mids="832,704"/>
+</cir>

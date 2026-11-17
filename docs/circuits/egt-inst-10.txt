@@ -1,0 +1,45 @@
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 64 496 64" f="4" si="18" te="INST-10 - Klingel und Türöffner für zwei Wohnungen"/>
+  <x x="96 96 496 96" f="4" si="12" te="S1/S3: P1 (EG)   S2/S4: P2 (1. OG)   S5/S6: M1 (Türöffner)"/>
+  <x x="96 112 496 112" f="4" si="11" te="T1: 230 V primär. 8 V sekundär als Modellwert (Vorlage ohne Sekundär-Nennspannung)."/>
+  <EGTSpannungsquelle x="32 160 64 160" f="0" urms="230" fr="50" des="U1"/>
+  <T x="240 160 304 160" f="0" wi="128" ra="0.034782608695652174" in="100" co="0.9999"/>
+  <x x="256 196 656 196" f="4" si="12" te="T1"/>
+  <egtleitung x="128 160 240 160" f="0" role="0" bez="L" col="#8B4513"/>
+  <egtleitung x="128 192 240 288" f="0" role="3" bez="N" col="#1E90FF" mids="208,192;208,288"/>
+  <EGTAbzweigdose x="400 144 528 256" f="0" des="X1"/>
+  <EGTAbzweigdose x="576 144 704 256" f="0" des="X2"/>
+  <EGTAbzweigdose x="784 144 912 256" f="0" des="X3"/>
+  <EGTKlingel x="960 384 1056 384" f="0" sx="3" sy="3" des="P1" np="8" nv="8"/>
+  <EGTKlingel x="960 624 1056 624" f="0" sx="3" sy="3" des="P2" np="8" nv="8"/>
+  <EGTTueroeffner x="960 848 1056 848" f="0" sx="3" sy="3" des="M1" np="10" nv="8"/>
+  <EGTTaster x="544 272 640 368" f="0" p="1" des="S1" w="96" h="96" mm="true"/>
+  <EGTTaster x="736 272 832 368" f="0" p="1" des="S3" w="96" h="96" mm="true"/>
+  <EGTTaster x="544 512 640 608" f="0" p="1" des="S2" w="96" h="96" mm="true"/>
+  <EGTTaster x="736 512 832 608" f="0" p="1" des="S4" w="96" h="96" mm="true"/>
+  <EGTTaster x="544 752 640 848" f="0" p="1" des="S5" w="96" h="96" mm="true"/>
+  <EGTTaster x="736 752 832 848" f="0" p="1" des="S6" w="96" h="96" mm="true"/>
+  <egtleitung x="304 160 448 256" f="0" role="0" col="#8B4513" mids="448,160"/>
+  <egtleitung x="448 256 592 256" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="592 256 784 256" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="448 256 448 496" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="448 496 592 496" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="592 496 784 496" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="448 496 448 736" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="448 736 592 736" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="592 736 784 736" f="0" role="0" col="#8B4513"/>
+  <egtleitung x="592 384 784 416" f="0" role="1" col="#343f3b" mids="592,416"/>
+  <egtleitung x="784 384 784 416" f="0" role="1" col="#343f3b"/>
+  <egtleitung x="784 416 992 352" f="0" role="1" col="#343f3b" mids="896,416;896,352"/>
+  <egtleitung x="592 624 784 656" f="0" role="1" col="#343f3b" mids="592,656"/>
+  <egtleitung x="784 624 784 656" f="0" role="1" col="#343f3b"/>
+  <egtleitung x="784 656 992 592" f="0" role="1" col="#343f3b" mids="896,656;896,592"/>
+  <egtleitung x="592 864 784 896" f="0" role="1" col="#343f3b" mids="592,896"/>
+  <egtleitung x="784 864 784 896" f="0" role="1" col="#343f3b"/>
+  <egtleitung x="784 896 1024 816" f="0" role="1" col="#343f3b" mids="896,896;896,816"/>
+  <egtleitung x="304 288 1120 352" f="0" role="3" col="#1E90FF" mids="1120,288"/>
+  <egtleitung x="1120 352 1056 352" f="0" role="3" col="#1E90FF"/>
+  <egtleitung x="1120 352 1120 592" f="0" role="3" col="#1E90FF"/>
+  <egtleitung x="1120 592 1056 592" f="0" role="3" col="#1E90FF"/>
+  <egtleitung x="1120 592 1024 944" f="0" role="3" col="#1E90FF" mids="1120,944"/>
+</cir>

@@ -1,0 +1,19 @@
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 64 496 64" f="4" si="18" te="INST-03 - Ausschaltung, zusammenhängender Stromlaufplan"/>
+  <EGTSpannungsquelle x="32 128 64 128" f="0" urms="230" fr="50" des="U1"/>
+  <EGTAbzweigdose x="240 112 368 224" f="0" des="X2"/>
+  <EGTAbzweigdose x="496 112 624 224" f="0" des="X3"/>
+  <EGTAusschalter x="256 352 352 448" f="0" p="1" des="Q1" w="96" h="96"/>
+  <EGTLeuchte x="496 384 592 384" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTSteckdose x="768 416 864 416" f="0" sx="3" sy="2" des="X1"/>
+  <egtleitung x="128 128 272 128" f="0" role="0" bez="L" col="#8B4513"/>
+  <egtleitung x="272 128 304 336" f="0" role="0" bez="L" col="#8B4513" mids="304,128"/>
+  <egtleitung x="272 128 800 384" f="0" role="0" bez="L" col="#8B4513" mids="800,128"/>
+  <egtleitung x="304 464 528 352" f="0" role="0" bez="L" col="#8B4513" mids="384,464;384,208;528,208"/>
+  <egtleitung x="128 160 544 160" f="0" role="3" bez="N" col="#1E90FF"/>
+  <egtleitung x="544 160 592 352" f="0" role="3" bez="N" col="#1E90FF" mids="592,160"/>
+  <egtleitung x="544 160 864 384" f="0" role="3" bez="N" col="#1E90FF" mids="864,160"/>
+  <egtleitung x="128 192 336 192" f="0" role="4" bez="PE" col="#4d8708"/>
+  <egtleitung x="336 192 560 352" f="0" role="4" bez="PE" col="#4d8708" mids="560,192"/>
+  <egtleitung x="336 192 832 384" f="0" role="4" bez="PE" col="#4d8708" mids="832,192"/>
+</cir>

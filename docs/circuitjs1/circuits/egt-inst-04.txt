@@ -1,0 +1,28 @@
+<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 64 496 64" f="4" si="18" te="INST-04 - Installationsschalter und Schaltzeichen"/>
+  <x x="96 112 496 112" f="4" si="12" te="Eine Schaltstelle: Ausschaltung, Serienschaltung, Gruppenschaltung"/>
+  <x x="96 144 496 144" f="4" si="12" te="Zwei Schaltstellen: Wechsel- und Sparwechselschaltung"/>
+  <x x="96 176 496 176" f="4" si="12" te="Mehr als zwei: Kreuz-, Stromstoß- und Treppenhaus-Zeitschaltung"/>
+  <x x="416 224 816 224" f="4" si="14" te="Installationsplan"/>
+  <x x="624 224 1024 224" f="4" si="14" te="Stromlaufplan"/>
+  <x x="96 312 496 312" f="4" si="14" te="Ausschalter"/>
+  <x x="752 312 1152 312" f="4" si="11" te="Eine Schaltstelle für einen Verbraucher."/>
+  <EGTAusschalter x="448 288 544 384" f="16384" p="1" des="Q1" w="96" h="96"/>
+  <EGTAusschalter x="640 288 736 384" f="0" p="1" des="Q1" w="96" h="96"/>
+  <x x="96 504 496 504" f="4" si="14" te="Serienschalter"/>
+  <x x="752 504 1152 504" f="4" si="11" te="Zwei Schaltstellen im selben Gehäuse für zwei Verbraucher."/>
+  <EGTSerienschalter x="448 480 544 576" f="16384" p="1" des="Q2" w="96" h="96"/>
+  <EGTSerienschalter x="640 480 736 576" f="0" p="1" des="Q2" w="96" h="96"/>
+  <x x="96 696 496 696" f="4" si="14" te="Wechselschalter"/>
+  <x x="752 696 1152 696" f="4" si="11" te="Zwei getrennte Schaltstellen für einen Verbraucher."/>
+  <EGTWechselschalter x="448 672 544 768" f="16384" p="1" des="Q3" w="96" h="96"/>
+  <EGTWechselschalter x="640 672 736 768" f="0" p="1" des="Q3" w="96" h="96"/>
+  <x x="96 888 496 888" f="4" si="14" te="Kreuzschalter"/>
+  <x x="752 888 1152 888" f="4" si="11" te="Zusätzliche Schaltstellen zwischen den Wechselschaltern."/>
+  <EGTKreuzschalter x="448 864 544 960" f="16384" p="1" des="Q4" w="96" h="96"/>
+  <EGTKreuzschalter x="640 864 736 960" f="0" p="1" des="Q4" w="96" h="96"/>
+  <x x="96 1080 496 1080" f="4" si="14" te="Taster"/>
+  <x x="752 1080 1152 1080" f="4" si="11" te="Impuls; mehrere Schaltstellen über die passende Steuerung."/>
+  <EGTTaster x="448 1056 544 1152" f="16384" p="1" des="S1" w="96" h="96" mm="true"/>
+  <EGTTaster x="640 1056 736 1152" f="0" p="1" des="S1" w="96" h="96" mm="true"/>
+</cir>
