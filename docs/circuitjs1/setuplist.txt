@@ -1,79 +1,85 @@
 ### setuplist.txt first line must be a comment
++EGT Installation
+egt-inst-01.txt INST-01 Installationsverdrahtung
+egt-inst-02.txt INST-02 Ausschaltung in aufgelÃƒÂ¶ster Darstellung
+egt-inst-03.txt INST-03 Ausschaltung in zusammenhÃƒÂ¤ngender Darstellung
+egt-inst-04.txt INST-04 Schaltzeichen im Vergleich
++INST-05 â€“ Wechselschaltung
+egt-inst-05.txt INST-05 Wechselschaltung Ã¢â‚¬â€œ zusammenhÃƒÂ¤ngend
+egt-inst-05-uebersicht.txt INST-05 Wechselschaltung Ã¢â‚¬â€œ ÃƒÅ“bersicht
+-
++INST-06 â€“ Sparwechselschaltung
+egt-inst-06.txt INST-06 Sparwechselschaltung Ã¢â‚¬â€œ zusammenhÃƒÂ¤ngend
+egt-inst-06-uebersicht.txt INST-06 Sparwechselschaltung Ã¢â‚¬â€œ ÃƒÅ“bersicht
+-
++INST-07 – Serienschaltung
+egt-inst-07.txt INST-07 â€“ ZusammenhÃƒÂ¤ngende Darstellung
+egt-inst-07-uebersicht.txt INST-07 â€“ Installationsschaltplan
+-
++INST-08 – Stromstoßschaltung
+egt-inst-08.txt INST-08 â€“ ZusammenhÃƒÂ¤ngende Darstellung
+egt-inst-08-uebersicht.txt INST-08 â€“ Installationsschaltplan
+-
+egt-inst-09.txt INST-09 Bewegungsmelder mit Steuertastern
+egt-inst-10.txt INST-10 Klingeln und TÃƒÂ¼rÃƒÂ¶ffner
++Zusatz â€“ Kreuzschaltung
+egt-inst-kreuz.txt ZusammenhÃƒÂ¤ngende Darstellung
+egt-inst-kreuz-uebersicht.txt Installationsschaltplan
+-
+-
++EGT Contactor Circuits
+egt-schuetz-01.txt SCHUETZ-01 Steuer- und Hauptstromkreis
+egt-schuetz-02.txt SCHUETZ-02 Motorstarter mit Motorschutz
+egt-schuetz-03.txt SCHUETZ-03 Relais und Reedrelais
+egt-schuetz-04.txt SCHUETZ-04 Tippbetrieb
+egt-schuetz-05.txt SCHUETZ-05 Selbsthaltung
+egt-schuetz-06.txt SCHUETZ-06 Lampenverriegelung
+egt-schuetz-07.txt SCHUETZ-07 WendeschÃƒÂ¼tz mit direkter Umschaltung
++SCHUETZ-08 â€“ Zeitrelais â€“ vier Zeitfunktionen
+egt-zeitrelais-ein.txt SCHUETZ-08 â€“ Zeitrelais einschaltverzÃƒÂ¶gert
+egt-zeitrelais-aus.txt SCHUETZ-08 â€“ Zeitrelais ausschaltverzÃƒÂ¶gert
+egt-zeitrelais-kombiniert.txt SCHUETZ-08 â€“ Zeitrelais ansprech- und rÃƒÂ¼ckfallverzÃƒÂ¶gert
+egt-zeitrelais-blink.txt SCHUETZ-08 â€“ Zeitrelais blinkend
+-
+egt-schuetz-09.txt SCHUETZ-09 VerzÃƒÂ¶gertes Einschalten
+egt-stern-dreieck.txt SCHUETZ-10 â€“ Stern-Dreieck Haupt- und Steuerstromkreis
++SCHUETZ-11 â€“ Treppenlicht â€“ Drei- und Vierleiter
+egt-schuetz-11-dreileiter.txt SCHUETZ-11 Dreileiter (nicht nachschaltbar)
+egt-schuetz-11-vierleiter.txt SCHUETZ-11 Vierleiter (nachschaltbar)
+-
+-
++EGT Motor Circuits
+egt-motor-01-drehfeld.txt MOTOR-01 Drehfeld
++MOTOR-02 â€“ Drehstrommotor â€“ Stern und Dreieck
+egt-motor-02-stern-rechts.txt MOTOR-02 Stern mit Rechtslauf
+egt-motor-02-dreieck-links.txt MOTOR-02 Dreieck mit Linkslauf
+-
++MOTOR-03 â€“ Steinmetzschaltung â€“ Drehrichtungen
+egt-motor-03-steinmetz-rechts.txt MOTOR-03 Steinmetz mit Rechtslauf
+egt-motor-03-steinmetz-links.txt MOTOR-03 Steinmetz mit Linkslauf
+-
+egt-motor-04-prinzip.txt MOTOR-04 Stern-Dreieck-Prinzip
++MOTOR-05 â€“ Kondensatormotor â€“ Drehrichtungen
+egt-kondensatormotor-rechts.txt MOTOR-05 Rechtslauf
+egt-kondensatormotor-links.txt MOTOR-05 Linkslauf
+-
+egt-kondensatormotor-kompakt.txt MOTOR-05 â€“ Vereinfachter Aufbau
+-
++EGT Function Plan
+egt-logik-01.txt LOGIK-01 Exklusiv-ODER
+egt-logik-02.txt LOGIK-02 Logikgrundfunktionen
+egt-logik-03.txt LOGIK-03 Wahrheitstabelle und Zeitdiagramm
+egt-logik-04.txt LOGIK-04 SchÃƒÂ¼tz mit zwei SchlieÃƒÅ¸ern
+egt-logik-05.txt LOGIK-05 Flurbeleuchtung
+egt-logik-06.txt LOGIK-06 SPS-Anschlussplan Ein/Aus
+egt-logik-07.txt LOGIK-07 Motorsteuerung mit Speicher
+egt-logik-08.txt LOGIK-08 FÃƒÂ¼llsteuerung
+egt-logik-09.txt LOGIK-09 AuÃƒÅ¸enbeleuchtung
+egt-fup-ton-tof.txt Zusatz â€“ FUP-Zeitbausteine TON und TOF
+-
 +ANH-07 Thermal Overload Relay
 egt-anh-07-a.txt ANH-07 Location A Line Current
 egt-anh-07-b.txt ANH-07 Location B Winding Current
--
-+EGT Motor Circuits
-egt-motor-01-drehfeld.txt MOTOR-01 Rotating Field
-egt-motor-02-stern-rechts.txt MOTOR-02 Star Right Rotation
-egt-motor-02-dreieck-links.txt MOTOR-02 Delta Left Rotation
-egt-motor-03-steinmetz-rechts.txt MOTOR-03 Steinmetz Right Rotation
-egt-motor-03-steinmetz-links.txt MOTOR-03 Steinmetz Left Rotation
-egt-motor-04-prinzip.txt MOTOR-04 Star-Delta Principle
-+MOTOR-05 Capacitor Motor
-egt-kondensatormotor-kompakt.txt MOTOR-05 Simplified Setup
-egt-kondensatormotor-rechts.txt MOTOR-05 Right Rotation
-egt-kondensatormotor-links.txt MOTOR-05 Left Rotation
--
--
-+MOTOR Star-Delta
-egt-stern-dreieck.txt Star-Delta Main and Control Circuit
--
-+EGT Contactor Circuits
-egt-schuetz-01.txt SCHUETZ-01 Control and Load Circuit
-egt-schuetz-02.txt SCHUETZ-02 Motor Starter with Overload
-egt-schuetz-03.txt SCHUETZ-03 Relay and Reed Relay
-egt-schuetz-04.txt SCHUETZ-04 Jog Control
-egt-schuetz-05.txt SCHUETZ-05 Seal-In Circuit
-egt-schuetz-06.txt SCHUETZ-06 Lamp Interlock
-egt-schuetz-07.txt SCHUETZ-07 Reversing Contactor
-egt-schuetz-09.txt SCHUETZ-09 Delayed Contactor
-egt-schuetz-11-dreileiter.txt SCHUETZ-11 Three Wire
-egt-schuetz-11-vierleiter.txt SCHUETZ-11 Four Wire
--
-+EGT Installation
-egt-inst-01.txt INST-01 Installation Wiring
-egt-inst-02.txt INST-02 One-Way Switching Detached
-egt-inst-03.txt INST-03 One-Way Switching Assembled
-egt-inst-04.txt INST-04 Switch Symbols
-+INST-05 Two-Way Switching
-egt-inst-05.txt INST-05 Connected Representation
-egt-inst-05-uebersicht.txt INST-05 Installation Plan
--
-+INST-06 Saver Two-Way Switching
-egt-inst-06.txt INST-06 Connected Representation
-egt-inst-06-uebersicht.txt INST-06 Installation Plan
--
-+INST Kreuzschaltung
-egt-inst-kreuz.txt Connected Representation
-egt-inst-kreuz-uebersicht.txt Installation Plan
--
-+INST-07 Series Circuit
-egt-inst-07.txt Connected Representation
-egt-inst-07-uebersicht.txt Installation Plan
--
-+INST-08 Impulse Switching
-egt-inst-08.txt Connected Representation
-egt-inst-08-uebersicht.txt Installation Plan
--
-egt-inst-09.txt INST-09 Motion Sensor with Manual Buttons
-egt-inst-10.txt INST-10 Doorbell and Door Release
-egt-zeitrelais-ein.txt Time Relay On-Delay
-egt-zeitrelais-aus.txt Time Relay Off-Delay
-egt-zeitrelais-kombiniert.txt Time Relay Combined On/Off Delay
-egt-zeitrelais-blink.txt Time Relay Flashing
--
-+EGT Function Plan
-egt-logik-01.txt LOGIK-01 Exclusive OR
-egt-logik-02.txt LOGIK-02 Basic Logic Gates
-egt-logik-03.txt LOGIK-03 Truth Table and Timing Diagram
-egt-logik-04.txt LOGIK-04 Contactor with Two Inputs
-egt-fup-ton-tof.txt FUP TON and TOF Time Blocks
-egt-logik-05.txt LOGIK-05 Hallway Lighting
-egt-logik-06.txt LOGIK-06 PLC Start Stop Wiring
-egt-logik-07.txt LOGIK-07 Motor Control with Memory
-egt-logik-08.txt LOGIK-08 Tank Filling Control
-egt-logik-09.txt LOGIK-09 Outdoor Lighting
 -
 +Basics
 ohms.txt Ohm's Law
@@ -432,7 +438,7 @@ qam-256.txt QAM-256 Modulator/Demodulator
 conv-boost.txt Boost Converter
 conv-buck.txt Buck Converter
 conv-buckboost.txt Buck-Boost Converter
-conv-cuk.txt Ćuk Converter
+conv-cuk.txt Ã„â€ uk Converter
 conv-sepic.txt SEPIC Converter
 -
 +Phase-Locked Loops
