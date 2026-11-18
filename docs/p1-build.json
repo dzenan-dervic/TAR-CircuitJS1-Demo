@@ -1,10 +1,24 @@
 {
-  "sourceCommit": "8a196b0add8de2e89f4328cfe10b57299c68d194",
+  "sourceCommit": "820e49704c658097b464b623aad02b01803045f8",
   "createdAt": "2026-11-18",
   "cases": 35,
   "variantFiles": 42,
   "previousFullLibraryEvidence": "2026-11-17: 41 functional round-trips and 1 symbol overview",
   "currentVerification": {
+    "scope": "Targeted SCHUETZ-07 update; full library not rerun",
+    "electricalRoundTrips": [
+      "SCHUETZ-07"
+    ],
+    "nodeJavaTestGroups": 31,
+    "mouseButtons": [
+      "S2",
+      "S3"
+    ],
+    "browser": "157.0.8103.79",
+    "runtimeManifestSha256": "9d1959cfced113bfdf0f4a8b6fc5a3705301a88699261e0cb366d3d22e29843d"
+  },
+  "formalApproval": false,
+  "previousVerification": {
     "electricalRoundTrips": [
       "INST-01",
       "INST-02",
@@ -15,5 +29,10 @@
     "circuitjsRecoveryScenarios": 6,
     "workshopRecoveryScenarios": 2
   },
-  "formalApproval": false
+  "runtimeCorrections": [
+    "Paired NO/NC EGT pushbuttons",
+    "Compatible optional motor PE terminal",
+    "Current-dot threshold for series switches",
+    "Compact fuse labels"
+  ]
 }
