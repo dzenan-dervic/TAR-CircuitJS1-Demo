@@ -1,19 +1,19 @@
-<cir f="257" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
-  <x x="96 24 496 24" f="4" si="18" te="INST-01 - Installationsschaltplan Kinderzimmer"/>
-  <b x="144 96 976 448" f="0" />
-  <x x="624 320 1024 320" f="4" si="13" te="Kinderzimmer"/>
-  <EGTAbzweigdose x="240 112 368 224" f="16384" des="X2"/>
-  <EGTAbzweigdose x="496 112 624 224" f="16384" des="X3"/>
+<cir f="1" ts="0.000005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="96 24 470 27" f="4" si="18" te="INST-01 - Installationsschaltplan Kinderzimmer"/>
+  <b x="144 96 976 448" f="0"/>
+  <x x="624 320 704 323" f="4" si="13" te="Kinderzimmer"/>
+  <EGTAbzweigdose x="240 105 368 217" f="16384" des="X2"/>
+  <EGTAbzweigdose x="495 105 623 217" f="16384" des="X3"/>
   <EGTAusschalter x="256 272 352 368" f="16384" p="1" des="Q1" w="96" h="96"/>
-  <EGTLeuchte x="512 272 608 272" f="16384" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTLeuchte x="496 288 592 288" f="16384" sx="3" sy="3" des="E1" np="60" nv="230"/>
   <EGTSteckdose x="784 352 880 352" f="16384" sx="3" sy="2" des="X1"/>
   <EGTInstallationsleitung x="144 160 304 160" f="0" role="2" bez="3" col="#8B4513"/>
   <EGTInstallationsleitung x="304 160 560 160" f="0" role="2" bez="4" col="#8B4513"/>
   <EGTInstallationsleitung x="304 160 304 256" f="0" role="2" bez="3" col="#8B4513"/>
-  <EGTInstallationsleitung x="560 160 576 240" f="0" role="2" bez="3" col="#8B4513"/>
+  <EGTInstallationsleitung x="560 160 560 256" f="0" role="2" bez="3" col="#8B4513"/>
   <EGTInstallationsleitung x="560 160 848 320" f="0" role="2" bez="3" col="#8B4513" mids="848,160"/>
-  <x x="144 480 544 480" f="4" si="13" te="NYM-J Cu 1,5. Elektrischer Prüfaufbau derselben Ausschaltung unterhalb."/>
-  <x x="96 576 496 576" f="4" si="18" te="INST-03 - Ausschaltung, zusammenhängender Stromlaufplan"/>
+  <x x="144 480 571 483" f="4" si="13" te="NYM-J Cu 1,5. Elektrischer Prüfaufbau derselben Ausschaltung unterhalb."/>
+  <x x="96 576 586 579" f="4" si="18" te="INST-03 - Ausschaltung, zusammenhängender Stromlaufplan"/>
   <EGTSpannungsquelle x="32 640 64 640" f="0" urms="230" fr="50" des="U1"/>
   <EGTAbzweigdose x="240 624 368 736" f="0" des="X2"/>
   <EGTAbzweigdose x="496 624 624 736" f="0" des="X3"/>

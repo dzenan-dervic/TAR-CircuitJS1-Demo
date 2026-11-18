@@ -1,9 +1,19 @@
 {
-  "sourceCommit": "b01a03830c4dd78108fa93c6506be3a0d52d3eb3",
-  "createdAt": "2026-11-17",
+  "sourceCommit": "8a196b0add8de2e89f4328cfe10b57299c68d194",
+  "createdAt": "2026-11-18",
   "cases": 35,
   "variantFiles": 42,
-  "functionalRoundTrips": 41,
-  "symbolOverviewRoundTrip": 1,
+  "previousFullLibraryEvidence": "2026-11-17: 41 functional round-trips and 1 symbol overview",
+  "currentVerification": {
+    "electricalRoundTrips": [
+      "INST-01",
+      "INST-02",
+      "INST-05"
+    ],
+    "menuEntries": 42,
+    "nodeJavaTestGroups": 29,
+    "circuitjsRecoveryScenarios": 6,
+    "workshopRecoveryScenarios": 2
+  },
   "formalApproval": false
 }

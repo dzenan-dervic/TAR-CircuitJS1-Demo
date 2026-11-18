@@ -27,10 +27,4 @@
   <egtleitung x="880 880 864 416" f="131072" role="3" bez="N" col="#c0392b" mids="928,880;928,416"/>
   <egtleitung x="864 336 1552 336" f="0" role="3" bez="N" col="#c0392b"/>
   <egtleitung x="864 416 864 336" f="0" role="3" bez="N" col="#c0392b"/>
-  <EGTMeldeleuchte x="976 784 1024 832" f="16385" sx="3" sy="3" des="P1" np="1" nv="230" note="Glimmlampe zwischen den Korrespondierenden (Modelllast)."/>
-  <egtleitung x="816 720 1008 768" f="0" role="1" bez="K1" col="#343f3b" mids="816,736;1008,736"/>
-  <egtleitung x="880 720 1008 832" f="0" role="2" bez="K2" col="#8f969c" mids="944,720;944,864;1008,864"/>
-  <EGTMeldeleuchte x="1280 784 1328 832" f="16385" sx="3" sy="3" des="P2" np="1" nv="230" note="Glimmlampe zwischen den Korrespondierenden (Modelllast)."/>
-  <egtleitung x="1584 720 1312 768" f="0" role="1" bez="K1" col="#343f3b" mids="1584,736;1312,736"/>
-  <egtleitung x="1520 720 1312 832" f="0" role="2" bez="K2" col="#8f969c" mids="1408,720;1408,864;1312,864"/>
 </cir>
