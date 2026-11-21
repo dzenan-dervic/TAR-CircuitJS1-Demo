@@ -1,69 +1,73 @@
 <cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
-<x x="32 48 382 48" f="4" si="22" te="SCHUETZ-06 | Zwei Beleuchtungen mit gegenseitiger Verriegelung"/>
-<x x="32 80 382 80" f="4" si="13" te="Blatt 6.11, Aufgabe 3. S2 startet E1, S4 startet E2. S1/S3 schalten jeweils aus."/>
-<x x="168 126 518 126" f="4" si="17" te="Laststromkreis"/>
-<x x="656 126 1006 126" f="4" si="17" te="Steuerstromkreis"/>
-<EGTSpannungsquelle x="16 160 48 160" f="0" urms="230" fr="50" des="U1"/>
-<w x="112 160 224 160" f="0"/>
-<w x="224 160 400 160" f="0"/>
-<w x="400 160 656 160" f="0"/>
-<w x="112 192 112 832" f="0"/>
-<w x="112 832 224 832" f="0"/>
-<w x="224 832 400 832" f="0"/>
-<w x="400 832 656 832" f="0"/>
-<w x="656 832 976 832" f="0"/>
-<EGTSicherung x="192 208 240 288" f="1" sx="3" sy="5" des="F1" poles="1" in="6" ch="1"/>
-<EGTSchuetzHilfskontakt x="192 336 240 400" f="1" sx="3" sy="4" des="Q1" cn="3"/>
-<EGTLeuchte x="192 576 288 576" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
-<w x="224 160 224 192" f="0"/>
-<w x="224 288 224 320" f="0"/>
-<w x="224 400 224 544" f="0"/>
-<w x="288 544 288 784" f="0"/>
-<w x="288 784 224 784" f="0"/>
-<w x="224 784 224 832" f="0"/>
-<w x="256 544 256 800" f="0"/>
-<w x="256 800 80 800" f="0"/>
-<EGTSicherung x="368 208 416 288" f="1" sx="3" sy="5" des="F2" poles="1" in="6" ch="1"/>
-<EGTSchuetzHilfskontakt x="368 336 416 400" f="1" sx="3" sy="4" des="Q2" cn="3"/>
-<EGTLeuchte x="368 576 464 576" f="0" sx="3" sy="3" des="E2" np="60" nv="230"/>
-<w x="400 160 400 192" f="0"/>
-<w x="400 288 400 320" f="0"/>
-<w x="400 400 400 544" f="0"/>
-<w x="464 544 464 784" f="0"/>
-<w x="464 784 400 784" f="0"/>
-<w x="400 784 400 832" f="0"/>
-<w x="432 544 432 800" f="0"/>
-<w x="432 800 256 800" f="0"/>
-<w x="112 224 80 224" f="0"/>
-<w x="80 224 80 800" f="0"/>
-<EGTSicherung x="624 208 672 288" f="1" sx="3" sy="5" des="F3" poles="1" in="6" ch="1"/>
-<w x="656 160 656 192" f="0"/>
-<w x="656 288 656 304" f="0"/>
-<w x="656 304 976 304" f="0"/>
-<EGTTaster x="624 352 688 416" f="262144" p="1" mm="true" des="S1" w="64" h="64" nc="1"/>
-<EGTTaster x="624 480 688 544" f="0" p="1" mm="true" des="S2" w="64" h="64" nc="0"/>
-<EGTSchuetzHilfskontakt x="768 480 816 544" f="1" sx="3" sy="4" des="Q1" cn="1"/>
-<EGTSchuetzHilfskontakt x="624 608 672 672" f="3" sx="3" sy="4" des="Q2" cn="2"/>
-<EGTSchuetzSpule x="624 736 672 784" f="1" sx="3" sy="3" des="Q1" np="15" nv="230" L="10.752297974362593"/>
-<w x="656 304 656 336" f="0"/>
-<w x="656 432 656 464" f="0"/>
-<w x="656 464 800 464" f="0"/>
-<w x="656 560 800 560" f="0"/>
-<w x="800 560 800 544" f="0"/>
-<w x="656 560 656 592" f="0"/>
-<w x="656 672 656 720" f="0"/>
-<w x="656 784 656 832" f="0"/>
-<EGTTaster x="944 352 1008 416" f="262144" p="1" mm="true" des="S3" w="64" h="64" nc="1"/>
-<EGTTaster x="944 480 1008 544" f="0" p="1" mm="true" des="S4" w="64" h="64" nc="0"/>
-<EGTSchuetzHilfskontakt x="1088 480 1136 544" f="1" sx="3" sy="4" des="Q2" cn="1"/>
-<EGTSchuetzHilfskontakt x="944 608 992 672" f="3" sx="3" sy="4" des="Q1" cn="2"/>
-<EGTSchuetzSpule x="944 736 992 784" f="1" sx="3" sy="3" des="Q2" np="15" nv="230" L="10.752297974362593"/>
-<w x="976 304 976 336" f="0"/>
-<w x="976 432 976 464" f="0"/>
-<w x="976 464 1120 464" f="0"/>
-<w x="976 560 1120 560" f="0"/>
-<w x="1120 560 1120 544" f="0"/>
-<w x="976 560 976 592" f="0"/>
-<w x="976 672 976 720" f="0"/>
-<w x="976 784 976 832" f="0"/>
+  <x x="32 48 382 48" f="4" si="22" te="SCHUETZ-06 | Zwei Beleuchtungen mit gegenseitiger Verriegelung" />
+  <x x="32 80 382 80" f="4" si="13" te="Blatt 6.11, Aufgabe 3. S2 startet E1, S4 startet E2. S1/S3 schalten jeweils aus." />
+  <x x="168 126 518 126" f="4" si="17" te="Laststromkreis" />
+  <x x="656 126 1006 126" f="4" si="17" te="Steuerstromkreis" />
+  <EGTSpannungsquelle x="16 160 48 160" f="0" urms="230" fr="50" des="U1" />
+  <w x="112 160 224 160" f="0" />
+  <w x="224 160 400 160" f="0" />
+  <w x="400 160 656 160" f="0" />
+  <w x="112 192 112 832" f="0" />
+  <w x="112 832 224 832" f="0" />
+  <w x="224 832 400 832" f="0" />
+  <w x="400 832 656 832" f="0" />
+  <w x="656 832 976 832" f="0" />
+  <EGTSicherung x="192 208 240 288" f="1" sx="3" sy="5" des="F1" poles="1" in="6" ch="1" />
+  <EGTSchuetzHilfskontakt x="192 336 240 400" f="1" sx="3" sy="4" des="Q1" cn="3" />
+  <EGTLeuchte x="192 576 288 576" f="0" sx="3" sy="3" des="E1" np="60" nv="230" />
+  <w x="224 160 224 192" f="0" />
+  <w x="224 288 224 320" f="0" />
+  <w x="224 400 224 544" f="0" />
+  <EGTSicherung x="368 208 416 288" f="1" sx="3" sy="5" des="F2" poles="1" in="6" ch="1" />
+  <EGTSchuetzHilfskontakt x="368 336 416 400" f="1" sx="3" sy="4" des="Q2" cn="3" />
+  <EGTLeuchte x="368 576 464 576" f="0" sx="3" sy="3" des="E2" np="60" nv="230" />
+  <w x="400 160 400 192" f="0" />
+  <w x="400 288 400 320" f="0" />
+  <w x="400 400 400 544" f="0" />
+  <w x="112 224 80 224" f="0" />
+  <w x="80 224 80 800" f="0" />
+  <EGTSicherung x="624 208 672 288" f="1" sx="3" sy="5" des="F3" poles="1" in="6" ch="1" />
+  <w x="656 160 656 192" f="0" />
+  <w x="656 288 656 304" f="0" />
+  <w x="656 304 976 304" f="0" />
+  <EGTTaster x="624 352 688 416" f="262144" p="1" mm="true" des="S1" w="64" h="64" nc="1" />
+  <EGTTaster x="624 480 688 544" f="0" p="1" mm="true" des="S2" w="64" h="64" nc="0" />
+  <EGTSchuetzHilfskontakt x="768 480 816 544" f="1" sx="3" sy="4" des="Q1" cn="1" />
+  <EGTSchuetzHilfskontakt x="624 608 672 672" f="3" sx="3" sy="4" des="Q2" cn="2" />
+  <EGTSchuetzSpule x="624 736 672 784" f="1" sx="3" sy="3" des="Q1" np="15" nv="230" L="10.752297974362593" />
+  <w x="656 304 656 336" f="0" />
+  <w x="656 432 656 464" f="0" />
+  <w x="656 464 800 464" f="0" />
+  <w x="656 560 800 560" f="0" />
+  <w x="800 560 800 544" f="0" />
+  <w x="656 560 656 592" f="0" />
+  <w x="656 672 656 720" f="0" />
+  <w x="656 784 656 832" f="0" />
+  <EGTTaster x="944 352 1008 416" f="262144" p="1" mm="true" des="S3" w="64" h="64" nc="1" />
+  <EGTTaster x="944 480 1008 544" f="0" p="1" mm="true" des="S4" w="64" h="64" nc="0" />
+  <EGTSchuetzHilfskontakt x="1088 480 1136 544" f="1" sx="3" sy="4" des="Q2" cn="1" />
+  <EGTSchuetzHilfskontakt x="944 608 992 672" f="3" sx="3" sy="4" des="Q1" cn="2" />
+  <EGTSchuetzSpule x="944 736 992 784" f="1" sx="3" sy="3" des="Q2" np="15" nv="230" L="10.752297974362593" />
+  <w x="976 304 976 336" f="0" />
+  <w x="976 432 976 464" f="0" />
+  <w x="976 464 1120 464" f="0" />
+  <w x="976 560 1120 560" f="0" />
+  <w x="1120 560 1120 544" f="0" />
+  <w x="976 560 976 592" f="0" />
+  <w x="976 672 976 720" f="0" />
+  <w x="976 784 976 832" f="0" />
+  <egtleitung x="288 544 336 544" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="336 544 336 832" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="336 832 224 832" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="256 544 256 512" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="256 512 368 512" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="368 512 368 800" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="464 544 512 544" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="512 544 512 832" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="512 832 400 832" f="0" role="3" col="#1E90FF" bez="N" />
+  <egtleitung x="432 544 432 512" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="432 512 544 512" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="544 512 544 800" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="544 800 368 800" f="0" role="4" col="#4d8708" bez="PE" />
+  <egtleitung x="368 800 80 800" f="0" role="4" col="#4d8708" bez="PE" />
 </cir>

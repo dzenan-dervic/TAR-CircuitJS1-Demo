@@ -1,21 +1,27 @@
 {
-  "sourceCommit": "820e49704c658097b464b623aad02b01803045f8",
-  "createdAt": "2026-11-18",
+  "sourceCommit": "5adaf1fec67a3495455903d2475e4b5fc786843b",
+  "createdAt": "2026-11-21",
   "cases": 35,
   "variantFiles": 42,
   "previousFullLibraryEvidence": "2026-11-17: 41 functional round-trips and 1 symbol overview",
   "currentVerification": {
-    "scope": "Targeted SCHUETZ-07 update; full library not rerun",
-    "electricalRoundTrips": [
-      "SCHUETZ-07"
+    "scope": "Six Pomodoist corrections; targeted electrical round-trips and layout checks, not a full acceptance rerun",
+    "electricalRoundTripFiles": [
+      "egt-motor-03-steinmetz-rechts.txt",
+      "egt-motor-03-steinmetz-links.txt",
+      "egt-schuetz-04.txt",
+      "egt-schuetz-06.txt",
+      "egt-schuetz-11-dreileiter.txt",
+      "egt-schuetz-11-vierleiter.txt",
+      "egt-kondensatormotor-rechts.txt",
+      "egt-kondensatormotor-links.txt",
+      "egt-logik-01.txt"
     ],
     "nodeJavaTestGroups": 31,
-    "mouseButtons": [
-      "S2",
-      "S3"
-    ],
-    "browser": "157.0.8103.79",
-    "runtimeManifestSha256": "9d1959cfced113bfdf0f4a8b6fc5a3705301a88699261e0cb366d3d22e29843d"
+    "stairTerminalAlignment": 7,
+    "motorPropellerAndBodyClearance": true,
+    "xorTruthTableRows": 4,
+    "browser": "Chrome 157.0.8103.79"
   },
   "formalApproval": false,
   "previousVerification": {
@@ -34,5 +40,23 @@
     "Compatible optional motor PE terminal",
     "Current-dot threshold for series switches",
     "Compact fuse labels"
+  ],
+  "verificationHistory": [
+    {
+      "sourceCommit": "820e49704c658097b464b623aad02b01803045f8",
+      "verification": {
+        "scope": "Targeted SCHUETZ-07 update; full library not rerun",
+        "electricalRoundTrips": [
+          "SCHUETZ-07"
+        ],
+        "nodeJavaTestGroups": 31,
+        "mouseButtons": [
+          "S2",
+          "S3"
+        ],
+        "browser": "157.0.8103.79",
+        "runtimeManifestSha256": "9d1959cfced113bfdf0f4a8b6fc5a3705301a88699261e0cb366d3d22e29843d"
+      }
+    }
   ]
 }

@@ -1,4 +1,4 @@
-<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="257" ts="0.00005" ic="16.817414165184545" cb="50" pb="50" vr="5" mts="5e-11">
 <x x="32 48 700 48" f="4" si="20" te="MOTOR-03 | Steinmetzschaltung Linkslauf"/>
 <x x="32 80 700 80" f="4" si="14" te="Blatt 13.10, Aufgabe 3: Dreieckbrücken. L an U1, N an V1, C_B zwischen W1 und V1."/>
 <x x="32 106 700 106" f="4" si="14" te="230 V, 50 Hz. C_B = 18 µF als Simulationsparameter; das Aufgabenblatt gibt keinen Wert vor."/>
