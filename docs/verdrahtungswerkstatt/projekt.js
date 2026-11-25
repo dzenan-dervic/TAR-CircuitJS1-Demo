@@ -221,6 +221,24 @@ export function createProject(ctx) {
     result.push({id:'M2',type:'lineardrive',x:268,y:975,nomV:24,nomP:50,slide:.5});
     return {modules:result,wires:[],powered:true};
   }
+  function selfHoldingBoard() {
+    const demo = initial();
+    const pairs = [
+      ['G1.+24','S2.21','#bb4234'],
+      ['S2.22','S1.13'],
+      ['S1.14','Q1.A1'],
+      ['Q1.A2','G1.0V','#347caa'],
+      ['S1.13','Q1H.53'],
+      ['S1.14','Q1H.54'],
+      ['G1.+24','Q1.1','#bb4234'],
+      ['Q1.2','M1.+'],
+      ['M1.−','G1.0V','#347caa']
+    ];
+    const wiredModules = new Set(pairs.flatMap(([a,b]) => [a.split('.')[0], b.split('.')[0]]));
+    demo.modules = demo.modules.filter(module => wiredModules.has(module.id));
+    demo.wires = pairs.map(([a,b,color = '#d2ae27']) => ({a,b,color}));
+    return demo;
+  }
   function installationBoard(cross=false){
     const result=[
       {id:'T1',type:'mains',x:48,y:88,voltage:400},
@@ -407,22 +425,7 @@ export function createProject(ctx) {
     for(const [id,cross] of [['changeoverExample',false],['crossoverExample',true]])ctx.dom.$('#'+id).onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.installationBoard(cross));ctx.services.editor.fit();ctx.services.editor.say((cross?'Kreuzschaltung':'Wechselschaltung')+' geladen. Betrieb einschalten. Jede Wippe schaltet E1 um; E2 hängt an der Steckdose.');};
     ctx.dom.$('#demo').onclick = () => {
       ctx.services.projekt.remember();
-      const demo = ctx.services.projekt.initial();
-      const pairs = [
-        ['G1.+24','S2.21','#bb4234'],
-        ['S2.22','S1.13'],
-        ['S1.14','Q1.A1'],
-        ['Q1.A2','G1.0V','#347caa'],
-        ['S1.13','Q1H.53'],
-        ['S1.14','Q1H.54'],
-        ['G1.+24','Q1.1','#bb4234'],
-        ['Q1.2','M1.+'],
-        ['M1.−','G1.0V','#347caa']
-      ];
-      const wiredModules = new Set(pairs.flatMap(([a,b]) => [a.split('.')[0], b.split('.')[0]]));
-      demo.modules = demo.modules.filter(module => wiredModules.has(module.id));
-      demo.wires = pairs.map(([a,b,color = '#d2ae27']) => ({a,b,color}));
-      ctx.services.projekt.restore(demo);
+      ctx.services.projekt.restore(selfHoldingBoard());
       ctx.services.editor.fit();
       ctx.services.editor.say('Selbsthaltung geladen. Betrieb einschalten, dann S1 starten, S2 unterbrechen.');
     };
@@ -446,15 +449,21 @@ export function createProject(ctx) {
 
   function loadInitial() {
 const query = new URLSearchParams(location.search);
-const example = schuetzExamples.find(([id]) => id === query.get('schaltung'));
+const requested = query.get('schaltung');
+const example = schuetzExamples.find(([id]) => id === requested);
+const selfHolding = requested === 'selbsthaltung-dc';
 ctx.dom.$('#otherExamples').hidden = query.get('unterricht') === '1';
-if (example) ctx.config.STORE_KEY += ':' + example[0];
+if (example || selfHolding) ctx.config.STORE_KEY += ':' + requested;
 try{ctx.state.saved=JSON.parse(ctx.dom.$('#saved-state').textContent);}catch{}
 const embedded=ctx.state.saved&&Array.isArray(ctx.state.saved.modules)?ctx.state.saved:null;
 ctx.state.startupBlank=!embedded;
 if (example) {
   ctx.services.editor.setView('compare');
   ctx.services.projekt.restore({...example[2](), referenceExample: example[0]});
+  ctx.services.editor.clearPick();
+  ctx.services.editor.fit();
+} else if (selfHolding) {
+  ctx.services.projekt.restore(selfHoldingBoard());
   ctx.services.editor.clearPick();
   ctx.services.editor.fit();
 } else {

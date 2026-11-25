@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EK-SV · CircuitJS</title>
+  <link rel="stylesheet" href="unterricht.css">
+  <link rel="stylesheet" href="ek-sv.css?v=3">
+  <script type="module" src="ek-sv.js?v=4"></script>
+</head>
+<body>
+  <main class="review">
+    <header>
+      <a href="unterricht.html">← Unterrichtsübersicht</a>
+      <h1>CircuitJS in EK-SV</h1>
+      <p>Schaltungen und Bauelemente gemeinsam durchgehen. Häkchen, Bewertungen und Notizen werden bei jeder Änderung in diesem Browser gespeichert.</p>
+    </header>
+
+    <div class="review-toolbar">
+      <div class="review-sections" role="group" aria-label="Ansicht">
+        <button type="button" data-kind="circuit" aria-pressed="true">Schaltungen</button>
+        <button type="button" data-kind="part" aria-pressed="false">Bauelemente</button>
+      </div>
+      <div class="review-filter">
+        <label for="reviewSearch">Suchen</label>
+        <input type="search" id="reviewSearch" placeholder="z. B. Stern-Dreieck">
+      </div>
+      <div class="review-filter">
+        <label for="reviewStatus">Status</label>
+        <select id="reviewStatus">
+          <option value="all">Alle</option>
+          <option value="open">Offen</option>
+          <option value="done">Besprochen</option>
+          <optgroup id="assessmentFilters" label="Bewertung"></optgroup>
+        </select>
+      </div>
+    </div>
+
+    <div class="review-meta">
+      <label for="reviewProgress" id="reviewCount" role="status">Katalog wird geladen …</label>
+      <progress id="reviewProgress" max="1" value="0" hidden></progress>
+      <div class="review-backup" id="reviewBackup" hidden>
+        <button type="button" id="exportReview">Sicherung herunterladen</button>
+        <button type="button" id="importReview">Sicherung laden</button>
+        <input type="file" id="reviewFile" accept=".json,application/json" hidden>
+      </div>
+    </div>
+    <p id="reviewBackupStatus" role="status" hidden></p>
+    <p id="reviewError" role="alert" hidden></p>
+    <table id="reviewTable" role="table" aria-label="Besprechungsliste" hidden>
+      <thead role="rowgroup">
+        <tr role="row">
+          <th scope="col" role="columnheader">Besprochen</th>
+          <th scope="col" role="columnheader">Eintrag</th>
+          <th scope="col" role="columnheader">Öffnen</th>
+          <th scope="col" role="columnheader">Bewertung</th>
+          <th scope="col" role="columnheader">Verbesserungsvorschläge</th>
+        </tr>
+      </thead>
+      <tbody id="reviewRows" role="rowgroup"></tbody>
+    </table>
+    <p id="reviewEmpty" hidden>Keine passenden Einträge.</p>
+  </main>
+</body>
+</html>
