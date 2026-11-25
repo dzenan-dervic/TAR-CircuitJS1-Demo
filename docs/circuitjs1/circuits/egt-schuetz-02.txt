@@ -1,4 +1,4 @@
-<cir f="1" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="513" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="32 48 493 51" f="4" si="22" te="SCHÜTZ-02 | Schützschaltung mit Motorschutz"/>
   <x x="32 78 442 81" f="4" si="13" te="Blatt 6.8, Aufgabe 2. S1: EIN, S0: AUS. F3 überwacht den Motorstrom."/>
   <x x="32 157 162 160" f="4" si="18" te="Hauptstromkreis"/>

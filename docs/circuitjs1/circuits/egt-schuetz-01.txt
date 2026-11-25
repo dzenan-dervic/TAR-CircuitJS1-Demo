@@ -1,4 +1,4 @@
-<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="769" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="32 48 592 48" f="4" si="20" te="SCHÜTZ-01 | Elektromagnetischer Schalter"/>
   <x x="64 96 400 96" f="4" si="13" te="Steuerstromkreis 24 V DC"/>
   <x x="480 96 816 96" f="4" si="13" te="Hauptstromkreis 230 V AC"/>

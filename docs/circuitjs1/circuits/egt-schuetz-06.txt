@@ -1,4 +1,4 @@
-<cir f="1" ts="0.00005" ic="5.023272298708815" cb="50" pb="50" vr="5" mts="5e-11">
+<cir f="513" ts="0.00005" ic="5.023272298708815" cb="50" pb="50" vr="5" mts="5e-11">
   <x x="-2 52 639 55" f="4" si="22" te="SCHÜTZ-06 | Zwei Beleuchtungen mit gegenseitiger Verriegelung"/>
   <x x="-2 84 451 87" f="4" si="13" te="Blatt 6.11, Aufgabe 3. 24 V DC. S2 startet P1, S4 startet P2. S1/S3 schalten jeweils aus."/>
   <x x="248 133 358 136" f="4" si="17" te="Laststromkreis"/>
