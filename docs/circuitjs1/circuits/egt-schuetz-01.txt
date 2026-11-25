@@ -1,20 +1,22 @@
 <cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
-  <x x="32 48 592 48" f="4" si="20" te="SCHUETZ-01 | Elektromagnetischer Schalter"/>
+  <x x="32 48 592 48" f="4" si="20" te="SCHÜTZ-01 | Elektromagnetischer Schalter"/>
   <x x="64 96 400 96" f="4" si="13" te="Steuerstromkreis 24 V DC"/>
   <x x="480 96 816 96" f="4" si="13" te="Hauptstromkreis 230 V AC"/>
   <v x="64 432 64 192" f="0" wf="0" maxv="24"/>
   <EGTSpannungsquelle x="416 192 448 192" f="0" urms="230" fr="50" des="U1"/>
   <EGTTaster x="208 256 272 320" f="0" p="1" mm="true" des="S1" w="64" h="64"/>
   <EGTSchuetzSpule x="208 384 256 432" f="1" sx="3" sy="3" des="Q1" np="2" nv="24"/>
-  <EGTSchuetzHilfskontakt x="624 256 672 320" f="1" sx="3" sy="4" des="Q1" cn="1"/>
-  <EGTLeuchte x="624 464 720 464" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
+  <EGTSicherung x="624 256 688 336" f="1" sx="4" sy="5" des="F1" poles="1" in="6" ch="1"/>
+  <EGTSchuetzHilfskontakt x="624 368 672 432" f="1" sx="3" sy="4" des="Q1" cn="1"/>
+  <EGTLeuchte x="624 512 720 512" f="0" sx="3" sy="3" des="E1" np="60" nv="230"/>
   <w x="64 192 240 192" f="0"/>
   <w x="240 192 240 240" f="0"/>
   <w x="240 336 240 368" f="0"/>
   <w x="240 432 64 432" f="0"/>
   <w x="512 192 656 192" f="0"/>
   <w x="656 192 656 240" f="0"/>
-  <w x="656 320 656 432" f="0"/>
-  <egtleitung x="512 224 720 432" f="0" role="3" bez="N" col="#1e90ff" mids="768,224;768,400;720,400"/>
-  <egtleitung x="512 256 688 432" f="0" role="4" bez="PE" col="#5e9d2d" mids="592,256;592,400;688,400"/>
+  <w x="656 336 656 352" f="0"/>
+  <w x="656 432 656 480" f="0"/>
+  <egtleitung x="512 224 720 480" f="0" role="3" bez="N" col="#1e90ff" mids="768,224;768,464;720,464"/>
+  <egtleitung x="512 256 688 480" f="0" role="4" bez="PE" col="#5e9d2d" mids="592,256;592,464;688,464"/>
 </cir>

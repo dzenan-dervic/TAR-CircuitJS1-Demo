@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light">
 <link rel="icon" href="data:,">
 <title>Verdrahtungswerkstatt · CircuitJS</title>
-<link rel="stylesheet" href="verdrahtungswerkstatt.css?v=20261109workshop1">
+<link rel="stylesheet" href="verdrahtungswerkstatt.css?v=20261125schuetzuntermenue1">
 <link rel="stylesheet" href="egt-student-help.css?v=20261012d">
 </head>
 <body>
@@ -26,8 +26,31 @@
       <button class="ui-btn icon-only" id="redo" disabled aria-label="Wiederholen" title="Wiederholen, Strg+Y"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m12 5 4.5 4.5L12 14m4-4.5H8a4.5 4.5 0 0 0 0 9" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </div>
     <button class="ui-btn primary save-action" id="saveProject"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 2.8h10l4 4V17H3zM6 2.8v5h7v-5M6 17v-6h8v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Speichern</button>
-    <details class="app-menu" id="projectMenu"><summary>Projekt <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="openProject">Projekt öffnen</button><button type="button" id="restoreProject" disabled>Letzten Stand wiederherstellen</button><button type="button" id="clear" class="danger-action" disabled>Alle Leitungen der Schaltung löschen</button></div></details>
-    <details class="app-menu" id="examplesMenu"><summary>Beispiele <span aria-hidden="true">⌄</span></summary><div class="menu-panel"><button type="button" id="reset">Grundaufbau laden</button><button type="button" id="demo">Selbsthaltung laden</button><button type="button" id="reversing">Drehrichtungsumkehr</button><button type="button" id="changeoverExample">Wechselschaltung · zwei Stellen</button><button type="button" id="crossoverExample">Kreuzschaltung · drei Stellen</button></div></details>
+    <details class="app-menu" id="projectMenu">
+      <summary>Projekt</summary>
+      <div class="menu-panel">
+        <button type="button" id="openProject">Projekt öffnen</button>
+        <button type="button" id="restoreProject" disabled>Letzten Stand wiederherstellen</button>
+        <button type="button" id="clear" class="danger-action" disabled>Alle Leitungen löschen</button>
+      </div>
+    </details>
+    <details class="app-menu" id="examplesMenu">
+      <summary>Beispiele</summary>
+      <div class="menu-panel">
+        <details class="menu-group example-submenu" id="schuetzSubmenu">
+          <summary>Schütztechnik</summary>
+          <div class="example-list" id="schuetzExamples"></div>
+        </details>
+        <div class="menu-group" id="otherExamples" role="group" aria-labelledby="otherExamplesLabel">
+          <p class="menu-heading" id="otherExamplesLabel">Weitere Beispiele</p>
+          <button type="button" id="reset">Grundaufbau</button>
+          <button type="button" id="demo">Selbsthaltung</button>
+          <button type="button" id="reversing">Drehrichtungsumkehr</button>
+          <button type="button" id="changeoverExample">Wechselschaltung · zwei Stellen</button>
+          <button type="button" id="crossoverExample">Kreuzschaltung · drei Stellen</button>
+        </div>
+      </div>
+    </details>
     <input id="projectFile" type="file" accept="application/json,.json" hidden>
   </div>
 </header>
@@ -46,7 +69,22 @@
   </div>
 </div>
 <div class="app" id="app">
-<div class="sim-pane"><iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe></div>
+<div class="sim-pane">
+  <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
+  <section id="referencePane" aria-labelledby="referenceLabel" hidden>
+    <div class="reference-header">
+      <span id="referenceLabel">Referenzschaltplan</span>
+      <div class="reference-controls" role="group" aria-label="Schaltplanansicht">
+        <button type="button" class="ui-btn" id="referenceZoomOut" aria-label="Schaltplan verkleinern">−</button>
+        <button type="button" class="ui-btn" id="referenceZoomIn" aria-label="Schaltplan vergrößern">+</button>
+        <button type="button" class="ui-btn" id="referenceFit" aria-label="Schaltplan einpassen">Einpassen</button>
+      </div>
+    </div>
+    <div id="referenceViewport" role="region" tabindex="0" aria-label="Schaltplanansicht. Zum Zoomen Mausrad oder Plus und Minus verwenden. Zum Verschieben ziehen oder Pfeiltasten verwenden.">
+      <iframe id="referenceFrame" title="CircuitJS-Referenzschaltplan" tabindex="-1" inert></iframe>
+    </div>
+  </section>
+</div>
 <div class="split" id="split" role="separator" aria-orientation="vertical" tabindex="0"></div>
 <div class="hmi-pane">
 <section id="faultBanner" class="fault-banner" aria-label="Simulationsfehler" hidden><svg class="fault-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 22 21H2Z M12 9v5 M12 17v1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg><div class="fault-copy"><div role="alert" aria-atomic="true"><strong id="faultTitle">Simulation angehalten</strong><p id="faultExplanation"></p><p id="faultNextStep">Schaltung prüfen. Danach Reset.</p></div><details><summary>Technische Meldung</summary><p id="faultTechnical"></p></details></div><div class="fault-actions"><button type="button" class="ui-btn" id="faultLocate" hidden>Fehlerstelle zeigen</button><button type="button" class="ui-btn fault-reset" id="faultReset">Reset</button></div></section>
@@ -88,6 +126,16 @@
 
 
 </aside>
+<dialog id="exampleDialog" aria-labelledby="exampleDialogTitle" aria-describedby="exampleDialogDescription">
+  <h2 id="exampleDialogTitle">Schaltung laden?</h2>
+  <p class="example-dialog-name" id="exampleDialogName"></p>
+  <p id="exampleDialogDescription"></p>
+  <form method="dialog" class="example-dialog-actions">
+    <button type="button" class="ui-btn" id="saveBeforeExample">Aktuellen Aufbau speichern</button>
+    <button type="submit" class="ui-btn" value="cancel" autofocus>Abbrechen</button>
+    <button type="submit" class="ui-btn primary" value="load">Schaltung laden</button>
+  </form>
+</dialog>
 <dialog id="electricalEditDialog" aria-labelledby="electricalEditTitle" aria-describedby="electricalEditDescription">
   <h2 id="electricalEditTitle">Schaltung im Betrieb ändern</h2>
   <p id="electricalEditDescription">Zum Ändern der Schaltung in Aufbau wechseln. Die Spannung wird ausgeschaltet; Schütze und zeitabhängige Zustände werden zurückgesetzt.</p>
@@ -143,7 +191,7 @@
   <details class="help-topic"><summary>Beschriften, Speichern &amp; Beispiele</summary>
     <p>Notiz, Beschriftung oder Rahmen hinzufügen. Doppelklick öffnet die Eigenschaften für Text, Schriftgröße und Abmessungen. Beschriftungen und Rahmen lassen sich an ihren Griffen vergrößern. Rahmen werden an der gestrichelten Linie oder am Titel verschoben; ihre Innenfläche bleibt für Bauteile bedienbar.</p>
     <p><b>Speichern</b> lädt eine Projektdatei herunter. Mit <b>Projekt → Projekt öffnen</b> lässt sie sich auf diesem oder einem anderen Rechner laden. Das geladene Projekt startet im Aufbau mit ausgeschalteter Spannung.</p>
-    <p><b>Beispiele</b> bietet Selbsthaltung, Drehrichtungsumkehr sowie Wechsel- und Kreuzschaltung mit Abzweigdose und Steckdose. Nach dem Laden Betrieb einschalten.</p>
+    <p><b>Beispiele</b> bietet Selbsthaltung, Drehrichtungsumkehr sowie Wechsel- und Kreuzschaltung mit Abzweigdose und Steckdose. Unter <b>Schütztechnik</b> findest du die nummerierten Unterrichtsbeispiele mit Bedienhinweisen auf der Montageplatte. Nach dem Laden Betrieb einschalten.</p>
   </details>
   <details class="help-topic"><summary>Gebäudeinstallation: Schalter, Dose und Steckdose</summary>
     <p><b>Wechselschalter:</b> L wird abwechselnd mit 1 oder 2 verbunden. Zwei Wechselschalter ermöglichen das Schalten von zwei Stellen. <b>Kreuzschalter:</b> verbindet 1–3 / 2–4 oder 1–4 / 2–3 und wird zwischen die Wechselschalter gesetzt. Jede Wippe ändert den Zustand der richtig verdrahteten Leuchte; eine Wippenstellung allein bedeutet nicht EIN oder AUS.</p>
@@ -168,7 +216,7 @@
   </div>
 </div>
 <script type="application/json" id="saved-state">null</script>
-<script type="module" src="verdrahtungswerkstatt/start.js?v=20261109workshop1"></script>
+<script type="module" src="verdrahtungswerkstatt/start.js?v=20261125lsabgleich1"></script>
 
 </body>
 </html>

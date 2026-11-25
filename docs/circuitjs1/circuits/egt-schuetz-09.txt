@@ -1,22 +1,23 @@
-<cir f="257" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
-  <x x="32 48 592 48" f="4" si="20" te="SCHUETZ-09 | Ansprechverzögerter Steuerstromkreis"/>
-  <x x="32 80 592 80" f="4" si="13" te="Blatt 6.12, Aufgabe 2. S1 halten: K1 schaltet Q1 nach 1 s ein."/>
-  <EGTSpannungsquelle x="16 160 48 160" f="0" urms="230" fr="50" des="U1"/>
-  <EGTSicherung x="240 224 288 304" f="1" sx="3" sy="5" des="F1" poles="1" in="6" ch="1"/>
-  <EGTTaster x="240 384 304 448" f="0" p="1" mm="true" des="S1" w="64" h="64"/>
-  <EGTZeitrelaisKontakt x="464 384 512 448" f="1" sx="3" sy="4" des="K1"/>
-  <EGTZeitrelaisSpule x="240 560 288 608" f="1" sx="3" sy="3" des="K1" del="1" np="15" nv="230"/>
-  <EGTSchuetzSpule x="464 560 512 608" f="1" sx="3" sy="3" des="Q1" np="15" nv="230" L="10.752297974362593"/>
-  <w x="112 160 272 160" f="0"/>
-  <w x="272 160 272 208" f="0"/>
-  <w x="272 304 272 368" f="0"/>
-  <w x="272 304 496 304" f="0"/>
-  <w x="496 304 496 368" f="0"/>
-  <w x="272 464 272 544" f="0"/>
-  <w x="496 448 496 544" f="0"/>
-  <w x="272 608 272 656" f="0"/>
-  <w x="496 608 496 656" f="0"/>
-  <w x="496 656 272 656" f="0"/>
-  <w x="272 656 112 656" f="0"/>
-  <w x="112 656 112 192" f="0"/>
+<cir f="1793" ts="0.00005" ic="382.76258214399064" cb="50" pb="50" vr="5" mts="5e-11">
+  <x x="32 48 592 48" f="4" si="20" te="SCHÜTZ-09 | Ansprechverzögerter Steuerstromkreis" />
+  <x x="32 80 592 80" f="4" si="13" te="Blatt 6.12, Aufgabe 2. S1 halten: K1 schaltet Q1 nach 1 s ein." />
+  <EGTSpannungsquelle x="16 160 48 160" f="0" urms="230" fr="50" des="U1" />
+  <EGTSicherung x="240 224 288 304" f="1" sx="3" sy="5" des="F1" poles="1" in="6" ch="1" />
+  <EGTTaster x="240 384 304 448" f="0" p="1" mm="true" des="S1" w="64" h="64" />
+  <EGTZeitrelaisKontakt x="464 384 512 448" f="1" sx="3" sy="4" des="K1" />
+  <EGTZeitrelaisSpule x="240 560 288 608" f="1" sx="3" sy="3" des="K1" del="1" np="15" nv="230" />
+  <EGTSchuetzSpule x="464 560 512 608" f="1" sx="3" sy="3" des="Q1" np="15" nv="230" L="10.752297974362593" />
+  <w x="112 160 272 160" f="0" />
+  <w x="272 160 272 208" f="0" />
+  <w x="272 304 272 368" f="0" />
+  <w x="272 304 496 304" f="0" />
+  <w x="496 304 496 368" f="0" />
+  <w x="272 464 272 544" f="0" />
+  <w x="496 448 496 544" f="0" />
+  <w x="272 608 272 656" f="0" />
+  <w x="496 608 496 656" f="0" />
+  <w x="496 656 272 656" f="0" />
+  <w x="112 192 128 192" f="0" />
+  <w x="128 192 128 656" f="0" />
+  <w x="128 656 272 656" f="0" />
 </cir>

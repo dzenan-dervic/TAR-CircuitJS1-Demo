@@ -934,10 +934,8 @@
           <option value="egt-pumpe-real-uebung.txt" selected>Verdrahtung + FUP</option>
           <option value="egt-pumpe-real-beispiel.txt">Beispiel – vollständig</option>
           <option value="egt-pumpe-fup.txt">Bisherige Geber – FUP</option>
-          <option value="egt-pumpe-steckbrett.txt">Bisheriges Steckbrett</option>
-          <option value="egt-pumpe-beispiel.txt">Bisheriges Beispiel</option>
         </select>
-        <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Nur Simulator</a>
+        <a id="simBackLink" href="circuitjs.html?lang=de&amp;IECGates=true" target="_blank" rel="noopener">Nur Simulator</a>
         <a href="egt-hmi-pumpe.html?hmiOnly=1" target="_blank" rel="noopener">HMI-Demo</a>
       </div>
       <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
@@ -1772,7 +1770,14 @@
   document.getElementById("circSel").addEventListener("change", function () {
     loadCircuit(this.value);
   });
-  var initialCircuit = new URLSearchParams(location.search).get("example") === "1"
+  var entryParams = new URLSearchParams(location.search);
+  if (entryParams.get("unterricht") === "1") {
+    var backLink = document.getElementById("simBackLink");
+    backLink.href = "unterricht.html";
+    backLink.textContent = "Zurück zur Unterrichtsübersicht";
+    backLink.removeAttribute("target");
+  }
+  var initialCircuit = entryParams.get("example") === "1"
     ? "egt-pumpe-real-beispiel.txt" : "egt-pumpe-real-uebung.txt";
   document.getElementById("circSel").value = initialCircuit;
   loadCircuit(initialCircuit);

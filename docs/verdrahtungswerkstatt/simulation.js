@@ -21,6 +21,7 @@ export function createSimulation(ctx) {
     m.protectionSent=false;
     if(ctx.state.engineOk&&ctx.state.engine?.setProtection&&ctx.state.engine.setProtection(m.id,action))m.protectionSent=true;
     ctx.services.editor.paintProtection(m);
+    ctx.services.projekt.syncReference();
     ctx.services.projekt.schedulePersist();
     if(m.protectionSent)ctx.services.simulation.refreshLive();
     else ctx.services.simulation.scheduleSync();
@@ -46,7 +47,9 @@ export function createSimulation(ctx) {
       if(m.type==='socket')for(const pin of ['L','N','PE'])link(m.id+'.'+pin,m.id+'.'+pin+'out');
       if(m.type==='changeover')link(m.id+'.L',m.id+'.'+(m.selection===1?'2':'1'));
       if(m.type==='crossover'){link(m.id+'.1',m.id+'.'+(m.selection===1?'4':'3'));link(m.id+'.2',m.id+'.'+(m.selection===1?'3':'4'));}
-      if(m.type==='rail')for(const bar of ['+24','0V','PE'])for(let n=2;n<=ctx.services.editor.railScrews(m);n++)link(m.id+'.'+bar+'.1',m.id+'.'+bar+'.'+n);
+      if(m.type==='rail')for(const [first,...rest] of ctx.services.editor.railPinGroups(m)){
+        for(const pin of rest)link(m.id+'.'+first,m.id+'.'+pin);
+      }
       if(ctx.services.editor.isProtection(m)){
         const on=m.protectionOn&&!m.protectionTripped;
         if(includeProtection&&on)for(let i=0;i<m.poles;i++)link(m.id+'.'+(2*i+1),m.id+'.'+(2*i+2));
@@ -60,6 +63,12 @@ export function createSimulation(ctx) {
         else link(m.id+'.21',m.id+'.22');
       }
       if(m.type==='timer'){const on=!!current[m.id];link(m.id+'.15',m.id+(on?'.18':'.16'));}
+      if(m.type==='staircase'&&ctx.state.lastSnap?.timers?.[m.id]?.on)link(m.id+'.L',m.id+'.OUT');
+      if(m.type==='overload'){
+        for(let i=1;i<6;i+=2)link(m.id+'.'+i,m.id+'.'+(i+1));
+        if(ctx.state.lastSnap?.protections?.[m.id]?.tripped)link(m.id+'.97',m.id+'.98');
+        else link(m.id+'.95',m.id+'.96');
+      }
       if(ctx.config.contacts[m.type]||m.type==='relay'){
         const on=!!current[m.type==='auxiliary'?m.parent:m.id];
         (m.type==='relay'?ctx.services.editor.relayPairs(m):ctx.config.contacts[m.type]).forEach(([a,b,kind])=>{if(kind==='NO'?on:!on)link(m.id+'.'+a,m.id+'.'+b);});
@@ -229,7 +238,7 @@ export function createSimulation(ctx) {
     if(first)ctx.services.editor.say(ctx.services.simulation.getFaultPresentation(fault).toast);
   }
   function topologySig(){
-    const parts=ctx.state.modules.filter(ctx.services.simulation.electricalModule).map(m=>m.id+':'+m.type+':'+(m.type==='connector'?ctx.services.editor.connectorPorts(m):'')+':'+(m.type==='motion'?JSON.stringify([m.nomV,m.motionDelay]):'')+':'+(m.parent||'')+':'+JSON.stringify(m.relayContacts||null)+':'+(m.type==='timer'?JSON.stringify([m.timerMode,m.delayOn,m.delayOff]):'')+':'+(ctx.services.editor.isProtection(m)?JSON.stringify([m.ratedCurrent,m.poles,m.characteristic]):'')).slice().sort();
+    const parts=ctx.state.modules.filter(ctx.services.simulation.electricalModule).map(m=>m.id+':'+m.type+':'+(m.type==='connector'?ctx.services.editor.connectorPorts(m):'')+':'+(m.type==='rail'?JSON.stringify([!!m.railPotential,ctx.services.editor.railScrews(m)]):'')+':'+(m.type==='motion'?JSON.stringify([m.nomV,m.motionDelay]):'')+':'+(m.parent||'')+':'+JSON.stringify(m.relayContacts||null)+':'+(['timer','staircase','overload'].includes(m.type)?JSON.stringify([m.timerMode,m.delayOn,m.delayOff,m.threeWire,m.ratedCurrent]):'')+':'+(ctx.services.editor.isProtection(m)?JSON.stringify([m.ratedCurrent,m.poles,m.characteristic]):'')).slice().sort();
     const links=ctx.state.wires.map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
     const resistances=ctx.state.modules.filter(m=>m.type==='resistor').map(m=>m.id+':'+m.resistance).sort();
     return parts.join(',')+'|'+links.join(',')+'|'+resistances.join(',');
@@ -251,7 +260,7 @@ export function createSimulation(ctx) {
   }
   function setEngineTag(text,err){ctx.dom.$('#engineTag').textContent=text;ctx.dom.$('#engineTag').style.color=err?'#be442f':'#56665b';}
   function projectPayload(){
-    return {schema:1,revision:++ctx.state.importSeq,running:false,supplyOn:ctx.state.powered,components:ctx.state.modules.filter(ctx.services.simulation.electricalModule).map(m=>({ports:m.type==='connector'?ctx.services.editor.connectorPorts(m):undefined,resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:ctx.services.editor.isProtection(m)?m.poles:m.type==='terminal'?ctx.services.editor.terminalPoles(m):0,span:m.type==='terminal'?ctx.services.editor.terminalSpan(m):1,terminalVersion:m.type==='terminal'&&m.terminalVersion===2?2:undefined,bridges:m.type==='terminal'&&m.terminalVersion===2?ctx.services.editor.terminalLinks(m):undefined,screws:m.type==='rail'?ctx.services.editor.railScrews(m):0})),wires:ctx.state.wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
+    return {schema:1,revision:++ctx.state.importSeq,running:false,supplyOn:ctx.state.powered,components:ctx.state.modules.filter(ctx.services.simulation.electricalModule).map(m=>({ports:m.type==='connector'?ctx.services.editor.connectorPorts(m):undefined,resistance:m.resistance,potPosition:m.potPosition,motionDelay:m.motionDelay,threeWire:m.threeWire,nominalDelta:m.nominalDelta,timerMode:m.timerMode,delayOn:m.delayOn,delayOff:m.delayOff,ratedCurrent:m.ratedCurrent,characteristic:m.characteristic,protectionOn:m.protectionOn,protectionTripped:m.protectionTripped,protectionReason:m.protectionReason,relayContacts:m.relayContacts,id:m.id,type:m.type,parentId:m.parent||null,parent:m.parent||null,designation:m.type==='auxiliary'?m.parent:m.id,slide:m.slide,selection:m.selection,nomV:Number.isFinite(m.nomV)?m.nomV:24,nomP:Number.isFinite(m.nomP)?m.nomP:(m.type==='contactor'?4:50),voltage:Number.isFinite(m.voltage)?m.voltage:24,ratedKw:Number.isFinite(m.ratedKw)?m.ratedKw:1.5,eta:Number.isFinite(m.eta)?m.eta:0.8,poles:ctx.services.editor.isProtection(m)?m.poles:m.type==='terminal'?ctx.services.editor.terminalPoles(m):0,span:m.type==='terminal'?ctx.services.editor.terminalSpan(m):1,terminalVersion:m.type==='terminal'&&m.terminalVersion===2?2:undefined,bridges:m.type==='terminal'&&m.terminalVersion===2?ctx.services.editor.terminalLinks(m):undefined,singleRail:m.type==='rail'&&!!m.railPotential,screws:m.type==='rail'?ctx.services.editor.railScrews(m):0})),wires:ctx.state.wires.map((w,i)=>({id:'w'+i,a:w.a,b:w.b}))};
   }
   function scheduleSync(){
     if(!ctx.state.engine||!ctx.state.engineOk)return;
@@ -313,6 +322,7 @@ export function createSimulation(ctx) {
     }else if(short)ctx.services.simulation.haltOnFault(short);
     else if(ctx.state.recoveryTime!==null&&snap.running&&snap.time>ctx.state.recoveryTime){ctx.state.latchedFault=null;ctx.state.recoveryTime=null;}
     ctx.services.editor.renderSnapshot(snap);
+    ctx.services.projekt.syncReference();
   }
   function setWorkMode(mode){
     if(!ctx.state.engineOk){ctx.services.editor.say('CircuitJS ist nicht verbunden.');return;}
@@ -362,6 +372,7 @@ export function createSimulation(ctx) {
       ctx.state.lastImportedSig=ctx.services.simulation.topologySig();
       ctx.services.simulation.applyPresses();
       if(ctx.state.engine.setRunning)ctx.state.engine.setRunning(ctx.services.simulation.wantEngineRun());
+      ctx.services.projekt.syncReference(true);
       ctx.services.simulation.applySnapshot();
       if(previousFault&&ctx.services.simulation.faultKind(previousFault)==='short'&&!ctx.state.latchedFault){const unresolved=ctx.services.simulation.detectWorkshopShort(ctx.services.simulation.readEngineSnap(),true);if(unresolved)ctx.services.simulation.haltOnFault(unresolved);}
       ctx.services.editor.renderSimControls();ctx.services.editor.draw();
@@ -419,7 +430,7 @@ export function createSimulation(ctx) {
       try{iframe.contentWindow.oncircuitjsloaded=attached;}catch(e){}
       wait(60);
     };
-    iframe.src='circuitjs.html?v=20261002connectors1&cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false';
+    iframe.src='circuitjs.html?v=20261002connectors1&cct='+encodeURIComponent('$ 768 0.001 10.391247 50 24 50')+'&lang=de&IECGates=true&running=false&editable=false&autoSave=false';
   })();
   }
 

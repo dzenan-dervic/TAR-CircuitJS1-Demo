@@ -1,7 +1,95 @@
 // Projekte, Wiederherstellung und Undo verwenden dasselbe gespeicherte Datenformat.
+import {schuetzExamples} from './schuetztechnik.js?v=20261125schuetzexport1';
+
+import {referenceCircuits} from '../schuetz-katalog.js';
+
 export function createProject(ctx) {
   let bound = false;
-  function data(){return {modules:ctx.state.modules.map(({el,pressed,...m})=>m),wires:ctx.state.wires.map(w=>({...w})),powered: ctx.state.powered,view:{x:ctx.state.camera.x,y:ctx.state.camera.y,scale: ctx.state.scale}};}
+  let referenceExample = null;
+  let referenceApi = null;
+  let referenceMode = null;
+  let referenceBreakerState = null;
+  const referencePresses = new Map();
+
+  function syncReference(reset = false) {
+    if (!referenceApi) return;
+    const mode = ctx.state.latchedFault ? 'aufbau' : ctx.state.simMode;
+    if (reset || (mode === 'aufbau' && referenceMode !== 'aufbau')) {
+      referenceApi.reference.reset();
+      referencePresses.clear();
+      referenceMode = null;
+      referenceBreakerState = null;
+    }
+    if (referenceExample === '01' && referenceApi.reference.setBreaker) {
+      const breaker = ctx.state.modules.find(module => module.id === 'F1' && module.type === 'breaker');
+      const state = breaker?.protectionTripped ? 'tripped' : breaker?.protectionOn ? 'on' : 'off';
+      if (state !== referenceBreakerState) {
+        referenceApi.reference.setBreaker('F1', state);
+        referenceBreakerState = state;
+      }
+    }
+    if (mode !== 'aufbau') {
+      for (const module of ctx.state.modules) {
+        if (!['start', 'stop', 'emergency'].includes(module.type)) continue;
+        const id = referenceExample === '02' && module.id === 'S2' ? 'S0'
+          : referenceExample === '10' && module.id === 'S1' ? 'S2'
+          : referenceExample === '10' && module.id === 'S2' ? 'S1'
+          : module.id;
+        const pressed = Boolean(module.pressed);
+        if (pressed === (referencePresses.get(id) ?? false)) continue;
+        referenceApi.reference.setPressed(id, pressed);
+        referencePresses.set(id, pressed);
+      }
+    }
+    if (referenceMode !== mode) {
+      referenceApi.setSimRunning(mode === 'betrieb');
+      referenceMode = mode;
+    }
+  }
+
+  function renderReference() {
+    const circuit = referenceCircuits.get(referenceExample);
+    const show = ctx.state.viewMode === 'compare' && Boolean(circuit);
+    ctx.dom.$('#referencePane').hidden = !show;
+    const engineFrame = ctx.dom.$('#circuitFrame');
+    engineFrame.inert = show;
+    engineFrame.setAttribute('aria-hidden', String(show));
+    const frame = ctx.dom.$('#referenceFrame');
+    if (!circuit) {
+      frame.onload = null;
+      if (frame.hasAttribute('src')) frame.removeAttribute('src');
+      referenceApi = null;
+      return;
+    }
+    const params = new URLSearchParams({
+      startCircuit: circuit, lang: 'de', IECGates: 'true', running: 'false',
+      editable: 'false', hideMenu: 'true', hideSidebar: 'true', hideInfoBox: 'true',
+      autoSave: 'false'
+    });
+    const url = 'circuitjs.html?' + params;
+    if (frame.getAttribute('src') === url) return;
+    referenceApi = null;
+    referenceMode = null;
+    referenceBreakerState = null;
+    referencePresses.clear();
+    frame.onload = () => {
+      const document = frame.contentDocument;
+      function connect(attemptsLeft) {
+        if (frame.getAttribute('src') !== url || frame.contentDocument !== document) return;
+        const api = frame.contentWindow.CircuitJS1;
+        if (api?.reference?.prepare()) {
+          referenceApi = api;
+          syncReference();
+        } else if (attemptsLeft > 0) {
+          setTimeout(() => connect(attemptsLeft - 1), 100);
+        }
+      }
+      connect(100);
+    };
+    frame.src = url;
+  }
+
+  function data(){return {modules:ctx.state.modules.map(({el,pressed,...m})=>m),wires:ctx.state.wires.map(w=>({...w})),powered: ctx.state.powered,view:{x:ctx.state.camera.x,y:ctx.state.camera.y,scale: ctx.state.scale},referenceExample};}
   function persist(){if(ctx.state.startupBlank&&!ctx.state.modules.length&&!ctx.state.wires.length)return;ctx.state.startupBlank=false;const packed=JSON.stringify({v:1,savedAt:Date.now(),payload:ctx.services.projekt.data()});ctx.state.recoveryMemory=packed;if(ctx.config.skipStore)return;try{localStorage.setItem(ctx.config.STORE_KEY,packed);}catch(e){}}
   function schedulePersist(){if(ctx.state.booting)return;clearTimeout(ctx.state.persistTimer);ctx.state.persistTimer=setTimeout(ctx.services.projekt.persist,400);}
   function loadStored(){if(ctx.config.skipStore)return null;try{const raw=JSON.parse(localStorage.getItem(ctx.config.STORE_KEY)||'null');if(raw){const age=Date.now()-raw.savedAt;if(!Number.isFinite(raw.savedAt)||age<0||age>=24*60*60*1000){localStorage.removeItem(ctx.config.STORE_KEY);return null;}}if(raw&&raw.payload&&Array.isArray(raw.payload.modules)&&Array.isArray(raw.payload.wires))return raw.payload;}catch(e){}return null;}
@@ -67,12 +155,15 @@ export function createProject(ctx) {
   function restore(d,keepMode){
     clearTimeout(ctx.state.liveTimer);
     d=ctx.services.projekt.migrateJunctions(d);
+    referenceExample = referenceCircuits.has(d.referenceExample) ? d.referenceExample : null;
+    renderReference();
     ctx.services.editor.cancel();ctx.services.editor.closeDevMenu();
     ctx.dom.board.querySelectorAll('.module').forEach(e=>e.remove());
     ctx.state.modules=d.modules.map(m=>ctx.services.editor.defaultNom({...m,pressed:false}));
     ctx.state.wires=ctx.services.editor.normalizeSocketWires(d.wires);
     if(keepMode)ctx.state.powered=ctx.services.simulation.liveMode();
     else{ctx.state.powered=false;ctx.state.simMode='aufbau';}
+    syncReference(true);
     ctx.state.lastImportedSig='';ctx.state.lastSnap=null;
     ctx.state.states={};ctx.state.nextZ=2;ctx.state.modules.forEach(ctx.services.editor.renderModule);
     ctx.state.selectedIds=new Set([...ctx.state.selectedIds].filter(id=>ctx.state.modules.some(m=>m.id===id)));
@@ -89,12 +180,15 @@ export function createProject(ctx) {
     const mods=(d.modules||[]).filter(ctx.services.simulation.electricalModule).map(m=>{
       const rest=Object.assign({},m);
       delete rest.x;delete rest.y;delete rest.z;delete rest.el;delete rest.pressed;delete rest.description;delete rest.subtitle;delete rest.labelColor;delete rest.buttonColor;delete rest.signalColor;delete rest.titleLines;delete rest.locked;delete rest.showBanner;delete rest.noteText;delete rest.noteStyle;delete rest.noteTone;delete rest.noteTitleTone;delete rest.noteSize;delete rest.noteWidth;delete rest.noteHeight;
+      if(m.type==='rail'&&m.railPotential)rest.railPotential=true;
       return JSON.stringify(rest,Object.keys(rest).sort());
     }).sort();
     const links=(d.wires||[]).map(w=>w.a<w.b?w.a+'~'+w.b:w.b+'~'+w.a).sort();
     return JSON.stringify({mods,links});
   }
   function applyLayout(d){
+    referenceExample = referenceCircuits.has(d.referenceExample) ? d.referenceExample : null;
+    renderReference();
     const byId=new Map(d.modules.map(m=>[m.id,m]));
     ctx.state.modules=ctx.state.modules.filter(m=>{if(!byId.has(m.id)&&!ctx.services.simulation.electricalModule(m)){m.el.remove();return false;}return true;});
     d.modules.filter(m=>!ctx.services.simulation.electricalModule(m)&&!ctx.state.modules.some(x=>x.id===m.id)).forEach(m=>{const restored=ctx.services.editor.defaultNom({...m,pressed:false});ctx.state.modules.push(restored);ctx.services.editor.renderModule(restored);});
@@ -103,7 +197,7 @@ export function createProject(ctx) {
       const prev=byId.get(m.id);
       if(!prev||!m.el)return;
       m.x=prev.x;m.y=prev.y;
-      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.buttonColor=prev.buttonColor;m.signalColor=prev.signalColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteTitleTone','noteSize','noteWidth','noteHeight','boxWidth','boxHeight','junctionVersion','showBanner'])m[key]=prev[key];
+      m.description=prev.description||'';m.subtitle=typeof prev.subtitle==='string'?prev.subtitle:null;m.labelColor=prev.labelColor;m.buttonColor=prev.buttonColor;m.signalColor=prev.signalColor;m.titleLines=prev.titleLines||2;m.latching=!!prev.latching;m.locked=!!prev.locked;for(const key of ['noteText','noteStyle','noteTone','noteTitleTone','noteSize','noteWidth','noteHeight','boxWidth','boxHeight','junctionVersion','showBanner','railPotential'])m[key]=prev[key];
       if(ctx.services.editor.isMeter(m)){m.probeRed=prev.probeRed||null;m.probeBlack=prev.probeBlack||null;m.measuredWire=prev.measuredWire||null;}
       ctx.services.editor.remount(m);
       if(Number.isFinite(prev.z)){m.z=prev.z;m.el.style.zIndex=prev.z;}
@@ -177,7 +271,7 @@ export function createProject(ctx) {
     ];
     return {modules,wires:pairs.map(([a,b,c])=>({a,b,color:c})),powered:true};
   }
-  function projectDocument(){const d=ctx.services.projekt.data();return {kind:'schuetzwerkstatt',schema:1,savedAt:new Date().toISOString(),modules:d.modules,wires:d.wires,view:d.view};}
+  function projectDocument(){const d=ctx.services.projekt.data();return {kind:'schuetzwerkstatt',schema:1,savedAt:new Date().toISOString(),modules:d.modules,wires:d.wires,view:d.view,referenceExample:d.referenceExample};}
   function saveProjectFile(){
     const blob=new Blob([JSON.stringify(ctx.services.projekt.projectDocument(),null,2)],{type:'application/json'});
     const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='schuetzwerkstatt.json';a.click();
@@ -203,7 +297,7 @@ export function createProject(ctx) {
         const owner=key=>{const d=key.indexOf('.');return d<0?key:key.slice(0,d);};
         if(nextWires.some(w=>!ids.has(owner(w.a))||!ids.has(owner(w.b)))){ctx.services.editor.say('Datei enthält eine Leitung zu einem fehlenden Bauteil.');return;}
         const load=()=>{ctx.services.projekt.remember();
-        ctx.services.projekt.restore({modules:payload.modules.map(m=>({...m,x:Number(m.x),y:Number(m.y)})),wires:nextWires,view:payload.view});
+        ctx.services.projekt.restore({modules:payload.modules.map(m=>({...m,x:Number(m.x),y:Number(m.y)})),wires:nextWires,view:payload.view,referenceExample:payload.referenceExample});
         ctx.services.editor.say('Projekt geladen. Spannung aus — danach Betrieb.');};
         if(ctx.services.simulation.requestElectricalEdit(load))load();
       }catch(e){ctx.services.editor.say('Datei lässt sich nicht lesen.');}
@@ -214,10 +308,130 @@ export function createProject(ctx) {
   function bindEvents() {
     if (bound) return;
     bound = true;
+    const viewport = ctx.dom.$('#referenceViewport');
+    const zoomAtCenter = factor => referenceApi?.reference.zoom(factor,viewport.clientWidth/2,viewport.clientHeight/2);
+    ctx.dom.$('#referenceZoomIn').onclick = () => zoomAtCenter(1.25);
+    ctx.dom.$('#referenceZoomOut').onclick = () => zoomAtCenter(0.8);
+    ctx.dom.$('#referenceFit').onclick = () => referenceApi?.reference.fit();
+    viewport.addEventListener('wheel',event => {
+      event.preventDefault();
+      const bounds = viewport.getBoundingClientRect();
+      const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? viewport.clientHeight : 1);
+      referenceApi?.reference.zoom(Math.exp(-delta/400),event.clientX-bounds.left,event.clientY-bounds.top);
+    },{passive:false});
+    let pointer = null;
+    viewport.addEventListener('pointerdown',event => {
+      if(event.button !== 0 || pointer || !referenceApi) return;
+      viewport.focus({preventScroll:true});
+      viewport.setPointerCapture(event.pointerId);
+      pointer = {id:event.pointerId,x:event.clientX,y:event.clientY};
+    });
+    viewport.addEventListener('pointermove',event => {
+      if(pointer?.id !== event.pointerId) return;
+      referenceApi?.reference.pan(event.clientX-pointer.x,event.clientY-pointer.y);
+      pointer.x = event.clientX;
+      pointer.y = event.clientY;
+    });
+    viewport.addEventListener('lostpointercapture',event => {
+      if(pointer?.id === event.pointerId) pointer = null;
+    });
+    const arrows = new Map([['ArrowLeft',[36,0]],['ArrowRight',[-36,0]],['ArrowUp',[0,36]],['ArrowDown',[0,-36]]]);
+    viewport.addEventListener('keydown',event => {
+      event.stopPropagation();
+      if(!referenceApi || event.ctrlKey || event.metaKey || event.altKey) return;
+      const offset = arrows.get(event.key);
+      if(offset) referenceApi.reference.pan(...offset);
+      else if(event.key === '+' || event.key === '=') zoomAtCenter(1.25);
+      else if(event.key === '-') zoomAtCenter(0.8);
+      else return;
+      event.preventDefault();
+    });
+    const examplesMenu = ctx.dom.$('#examplesMenu');
+    const schuetzSubmenu = ctx.dom.$('#schuetzSubmenu');
+    const examplesList = ctx.dom.$('#schuetzExamples');
+    examplesMenu.addEventListener('toggle', () => {
+      if (!examplesMenu.open) schuetzSubmenu.open = false;
+    });
+    const dialog = ctx.dom.$('#exampleDialog');
+    const saveBeforeLoad = ctx.dom.$('#saveBeforeExample');
+    let pendingExample = null;
+    function requestExample(title,load) {
+      const hasWork = ctx.state.modules.length > 0 || ctx.state.wires.length > 0;
+      pendingExample = load;
+      ctx.dom.$('#exampleDialogName').textContent = title;
+      ctx.dom.$('#exampleDialogDescription').textContent = hasWork
+        ? 'Die Schaltung ersetzt deinen aktuellen Aufbau. Du kannst ihn vorher als Projektdatei speichern.'
+        : 'Die Schaltung wird auf der Montageplatte geöffnet.';
+      if(ctx.services.simulation.liveMode()){
+        ctx.dom.$('#exampleDialogDescription').textContent += ' Beim Laden wird die Spannung ausgeschaltet.';
+      }
+      saveBeforeLoad.hidden = !hasWork;
+      examplesMenu.open = false;
+      dialog.returnValue = '';
+      dialog.showModal();
+    }
+    saveBeforeLoad.onclick = ctx.services.projekt.saveProjectFile;
+    dialog.addEventListener('close', () => {
+      const load = pendingExample;
+      pendingExample = null;
+      examplesMenu.querySelector('summary').focus();
+      if(dialog.returnValue !== 'load' || !load) return;
+      if(ctx.services.simulation.liveMode()) {
+        ctx.services.simulation.setWorkMode('aufbau');
+        if(ctx.services.simulation.liveMode()) return;
+      }
+      load();
+    });
+    for (const [id, title, create] of schuetzExamples) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'example-option';
+      button.dataset.exampleId = id;
+      const [code,name] = title.split(' · ');
+      const badge = document.createElement('span');
+      badge.className = 'example-code';
+      badge.textContent = code;
+      const label = document.createElement('span');
+      label.textContent = name;
+      button.append(badge,label);
+      button.onclick = () => requestExample(title,() => {
+        ctx.services.projekt.remember();
+        ctx.services.projekt.restore({...create(), referenceExample: id});
+        ctx.services.editor.clearPick();
+        ctx.services.editor.fit();
+        ctx.services.editor.say(title + ' geladen. Betrieb einschalten.');
+      });
+      examplesList.append(button);
+    }
     ctx.dom.$('#reversing').onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.reversingBoard());ctx.services.editor.say('Drehrichtungsumkehr geladen. Betrieb einschalten. S1 Rechtslauf, S2 Linkslauf. Der Öffner 61–62 des anderen Schützes sperrt die Gegenrichtung. S0 hält an.');};
     for(const [id,cross] of [['changeoverExample',false],['crossoverExample',true]])ctx.dom.$('#'+id).onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.installationBoard(cross));ctx.services.editor.fit();ctx.services.editor.say((cross?'Kreuzschaltung':'Wechselschaltung')+' geladen. Betrieb einschalten. Jede Wippe schaltet E1 um; E2 hängt an der Steckdose.');};
-    ctx.dom.$('#demo').onclick=()=>{ctx.services.projekt.remember();const d=ctx.services.projekt.initial();const pairs=[['G1.+24','S2.21','#bb4234'],['S2.22','S1.13'],['S1.14','Q1.A1'],['Q1.A2','G1.0V','#347caa'],['S1.13','Q1H.53'],['S1.14','Q1H.54'],['G1.+24','Q1.1','#bb4234'],['Q1.2','M1.+'],['M1.−','G1.0V','#347caa']];d.wires=pairs.map(([a,b,c])=>({a,b,color:c||'#d2ae27'}));ctx.services.projekt.restore(d);ctx.services.editor.say('Selbsthaltung geladen. Betrieb einschalten, dann S1 starten, S2 unterbrechen.');};
+    ctx.dom.$('#demo').onclick = () => {
+      ctx.services.projekt.remember();
+      const demo = ctx.services.projekt.initial();
+      const pairs = [
+        ['G1.+24','S2.21','#bb4234'],
+        ['S2.22','S1.13'],
+        ['S1.14','Q1.A1'],
+        ['Q1.A2','G1.0V','#347caa'],
+        ['S1.13','Q1H.53'],
+        ['S1.14','Q1H.54'],
+        ['G1.+24','Q1.1','#bb4234'],
+        ['Q1.2','M1.+'],
+        ['M1.−','G1.0V','#347caa']
+      ];
+      const wiredModules = new Set(pairs.flatMap(([a,b]) => [a.split('.')[0], b.split('.')[0]]));
+      demo.modules = demo.modules.filter(module => wiredModules.has(module.id));
+      demo.wires = pairs.map(([a,b,color = '#d2ae27']) => ({a,b,color}));
+      ctx.services.projekt.restore(demo);
+      ctx.services.editor.fit();
+      ctx.services.editor.say('Selbsthaltung geladen. Betrieb einschalten, dann S1 starten, S2 unterbrechen.');
+    };
     ctx.dom.$('#reset').onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.initial());ctx.services.editor.say('Grundaufbau geladen. Spannung aus — danach Betrieb.');};
+    for (const id of ['reversing','demo','changeoverExample','crossoverExample','reset']) {
+      const button = ctx.dom.$('#'+id);
+      const load = button.onclick;
+      button.onclick = () => requestExample(button.textContent,load);
+    }
     ctx.dom.$('#clearBoard').onclick=()=>{if(!ctx.state.modules.length&&!ctx.state.wires.length){ctx.services.editor.say('Montagefläche ist schon leer.');return;}if(!confirm('Montagefläche leeren?\nAlle Geräte und Leitungen werden entfernt.'))return;ctx.services.projekt.remember();ctx.services.projekt.restore({modules:[],wires:[]});ctx.services.projekt.persist();ctx.services.editor.say('Montagefläche geleert.');};
     ctx.dom.$('#clear').onclick=()=>{if(!ctx.state.wires.length||!confirm('Alle '+ctx.state.wires.length+' Leitungen der Schaltung löschen? Die Bauteile bleiben erhalten.'))return;ctx.services.projekt.remember();ctx.services.editor.cancel();ctx.state.wires=[];ctx.services.simulation.update();ctx.services.simulation.noteWiringReset();ctx.dom.$('#projectMenu').open=false;};
     ctx.dom.$('#saveProject').onclick=ctx.services.projekt.saveProjectFile;
@@ -226,15 +440,26 @@ export function createProject(ctx) {
     ctx.dom.$('#projectFile').onchange=()=>{const file=ctx.dom.$('#projectFile').files&&ctx.dom.$('#projectFile').files[0];if(file)ctx.services.projekt.readProjectFile(file);};
     ctx.dom.$('#undo').onclick=()=>ctx.services.projekt.stepHistory(ctx.state.history,ctx.state.future);
     ctx.dom.$('#redo').onclick=()=>ctx.services.projekt.stepHistory(ctx.state.future,ctx.state.history);
-    ['reversing','demo','changeoverExample','crossoverExample','reset','clearBoard','clear'].forEach(id=>{const button=ctx.dom.$('#'+id),action=button.onclick;button.onclick=e=>{if(ctx.services.simulation.requestElectricalEdit(()=>action(e)))action(e);};});
+    ['clearBoard','clear'].forEach(id=>{const button=ctx.dom.$('#'+id),action=button.onclick;button.onclick=e=>{if(ctx.services.simulation.requestElectricalEdit(()=>action(e)))action(e);};});
     window.addEventListener('pagehide',ctx.services.projekt.persist);
   }
 
   function loadInitial() {
+const query = new URLSearchParams(location.search);
+const example = schuetzExamples.find(([id]) => id === query.get('schaltung'));
+ctx.dom.$('#otherExamples').hidden = query.get('unterricht') === '1';
+if (example) ctx.config.STORE_KEY += ':' + example[0];
 try{ctx.state.saved=JSON.parse(ctx.dom.$('#saved-state').textContent);}catch{}
 const embedded=ctx.state.saved&&Array.isArray(ctx.state.saved.modules)?ctx.state.saved:null;
 ctx.state.startupBlank=!embedded;
-ctx.services.projekt.restore(embedded||{modules:[],wires:[],powered:false});
+if (example) {
+  ctx.services.editor.setView('compare');
+  ctx.services.projekt.restore({...example[2](), referenceExample: example[0]});
+  ctx.services.editor.clearPick();
+  ctx.services.editor.fit();
+} else {
+  ctx.services.projekt.restore(embedded||{modules:[],wires:[],powered:false});
+}
 const recovered=ctx.services.projekt.loadStored(),restoreButton=ctx.dom.$('#restoreProject');
 if(restoreButton)restoreButton.disabled=!(recovered&&(recovered.modules.length||recovered.wires.length));
 if(!ctx.config.skipStore){try{const speed=localStorage.getItem(ctx.config.CURRENT_SPEED_STORE);if(speed!==null)ctx.services.editor.setCurrentSpeed(speed);if(localStorage.getItem(ctx.config.VOLT_STORE)==='1')ctx.services.editor.setShowVoltage(true);if(localStorage.getItem(ctx.config.CURRENT_STORE)==='1')ctx.services.editor.setShowCurrent(true);}catch(e){}}
@@ -244,6 +469,8 @@ if(ctx.config.skipStore)window.__workshop={present:ctx.services.simulation.getFa
   }
 
   return {
+    renderReference,
+    syncReference,
     data,
     persist,
     schedulePersist,

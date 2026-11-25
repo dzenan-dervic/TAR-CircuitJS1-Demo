@@ -770,9 +770,8 @@
           <option value="egt-tor-real-beispiel.txt">Beispiel · vollständig verdrahtet</option>
           <option value="egt-tor-standard.txt">Bisheriger Aufbau · Geber</option>
           <option value="egt-tor-steckbrett.txt">Freies Steckbrett</option>
-          <option value="egt-tor-beispiel.txt">Beispiel (fertig)</option>
         </select>
-        <a href="circuitjs.html?lang=de&IECGates=true" target="_blank" rel="noopener">Zurück zu CircuitJS</a>
+        <a id="simBackLink" href="circuitjs.html?lang=de&amp;IECGates=true" target="_blank" rel="noopener">Zurück zu CircuitJS</a>
       </div>
       <iframe id="circuitFrame" title="CircuitJS" allow="autoplay"></iframe>
     </section>
@@ -1496,7 +1495,14 @@
     loadCircuit(this.value);
   });
 
-  document.getElementById("circSel").value=new URLSearchParams(location.search).get("example")==="1"?"egt-tor-real-beispiel.txt":"egt-tor-real-uebung.txt";
+  var entryParams = new URLSearchParams(location.search);
+  if (entryParams.get("unterricht") === "1") {
+    var backLink = document.getElementById("simBackLink");
+    backLink.href = "unterricht.html";
+    backLink.textContent = "Zurück zur Unterrichtsübersicht";
+    backLink.removeAttribute("target");
+  }
+  document.getElementById("circSel").value=entryParams.get("example")==="1"?"egt-tor-real-beispiel.txt":"egt-tor-real-uebung.txt";
   loadCircuit(document.getElementById("circSel").value);
 
   (function splitDrag() {

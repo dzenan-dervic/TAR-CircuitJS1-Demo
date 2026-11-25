@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <link rel="manifest" href="/circuit/manifest.json">
-  
+
+
     <!-- Properties can be specified to influence deferred binding -->
     <meta name='gwt:property' content='locale=en_UK'>
-    
-    
+
+
     <!-- Titles are optional, but useful -->
     <title></title>
 
@@ -16,6 +16,22 @@
 }
 .topSpace {
 	margin-top: 12px;
+}
+#workshopCircuitLink:not([hidden]) {
+	display: block;
+	margin: 8px 2px 0;
+	padding: 7px;
+	border: 1px solid #b7cdcb;
+	border-radius: 5px;
+	background: #eaf4f2;
+	color: #124844;
+	font-weight: 600;
+	text-align: center;
+	text-decoration: none;
+}
+#workshopCircuitLink:hover, #workshopCircuitLink:focus-visible {
+	background: #d7ebe7;
+	text-decoration: underline;
 }
 .cursorPointer {
    cursor: default;
@@ -235,13 +251,14 @@
   <!--<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="YOUR_KEY"></script>-->
 
   <script language="javascript" src="lz-string.min.js"></script>
-   
+
     <!-- This script tag is what actually loads the GWT module.  The -->
     <!-- 'nocache.js' file (also called a "selection script") is     -->
     <!-- produced by the GWT compiler in the module output directory -->
     <!-- or generated automatically in development mode.             -->
-    <script language="javascript" src="circuitjs1/circuitjs1.nocache.js?v=20261111schuetz1"></script>
-    
+    <script language="javascript" src="circuitjs1/circuitjs1.nocache.js?v=20261125lsabgleich1"></script>
+    <script type="module" src="schuetz-werkstatt-link.js"></script>
+
     <!-- Include a history iframe to enable full GWT history support -->
     <!-- (the id must be exactly as shown)                           -->
     <iframe src="javascript:''" id="__gwt_historyFrame" style="width:0;height:0;border:0"></iframe>

@@ -28,24 +28,23 @@ egt-inst-kreuz-uebersicht.txt Installationsschaltplan
 -
 -
 +EGT Contactor Circuits
-egt-schuetz-01.txt SCHUETZ-01 Steuer- und Hauptstromkreis
-egt-schuetz-02.txt SCHUETZ-02 Motorstarter mit Motorschutz
-egt-schuetz-03.txt SCHUETZ-03 Relais und Reedrelais
-egt-schuetz-04.txt SCHUETZ-04 Tippbetrieb
-egt-schuetz-05.txt SCHUETZ-05 Selbsthaltung
-egt-schuetz-06.txt SCHUETZ-06 Lampenverriegelung
-egt-schuetz-07.txt SCHUETZ-07 Wendeschütz mit direkter Umschaltung
-+SCHUETZ-08 – Zeitrelais – vier Zeitfunktionen
-egt-zeitrelais-ein.txt SCHUETZ-08 – Zeitrelais einschaltverzögert
-egt-zeitrelais-aus.txt SCHUETZ-08 – Zeitrelais ausschaltverzögert
-egt-zeitrelais-kombiniert.txt SCHUETZ-08 – Zeitrelais ansprech- und rückfallverzögert
-egt-zeitrelais-blink.txt SCHUETZ-08 – Zeitrelais blinkend
+egt-schuetz-01.txt SCHÜTZ-01 Steuer- und Hauptstromkreis
+egt-schuetz-02.txt SCHÜTZ-02 Motorstarter mit Motorschutz
+egt-schuetz-04.txt SCHÜTZ-04 Tippbetrieb
+egt-schuetz-05.txt SCHÜTZ-05 Selbsthaltung
+egt-schuetz-06.txt SCHÜTZ-06 Lampenverriegelung
+egt-schuetz-07.txt SCHÜTZ-07 Wendeschütz mit direkter Umschaltung
++SCHÜTZ-08 – Zeitrelais – vier Zeitfunktionen
+egt-zeitrelais-ein.txt SCHÜTZ-08 – Zeitrelais einschaltverzögert
+egt-zeitrelais-aus.txt SCHÜTZ-08 – Zeitrelais ausschaltverzögert
+egt-zeitrelais-kombiniert.txt SCHÜTZ-08 – Zeitrelais ansprech- und rückfallverzögert
+egt-zeitrelais-blink.txt SCHÜTZ-08 – Zeitrelais blinkend
 -
-egt-schuetz-09.txt SCHUETZ-09 Verzögertes Einschalten
-egt-stern-dreieck.txt SCHUETZ-10 – Stern-Dreieck Haupt- und Steuerstromkreis
-+SCHUETZ-11 – Treppenlicht – Drei- und Vierleiter
-egt-schuetz-11-dreileiter.txt SCHUETZ-11 Dreileiter (nicht nachschaltbar)
-egt-schuetz-11-vierleiter.txt SCHUETZ-11 Vierleiter (nachschaltbar)
+egt-schuetz-09.txt SCHÜTZ-09 Verzögertes Einschalten
+egt-stern-dreieck.txt SCHÜTZ-10 – Stern-Dreieck Haupt- und Steuerstromkreis
++SCHÜTZ-11 – Treppenlicht – Drei- und Vierleiter
+egt-schuetz-11-dreileiter.txt SCHÜTZ-11 Dreileiter (nicht nachschaltbar)
+egt-schuetz-11-vierleiter.txt SCHÜTZ-11 Vierleiter (nachschaltbar)
 -
 -
 +EGT Motor Circuits

@@ -30,10 +30,10 @@ export function createEditor(ctx) {
   }
   function paintDetailPreview(m){
     const box=ctx.dom.$('#detailPreview');if(!box)return;box.replaceChildren();box.setAttribute('aria-hidden','true');
+    box.classList.remove('glyph-preview');
     if(!m||!m.el||!m.el.querySelector('.face')){box.hidden=true;return;}
     const icon=ctx.services.editor.paletteIcon(m);
     if(icon){box.classList.add('glyph-preview');box.append(icon.cloneNode(true));box.hidden=false;return;}
-    box.classList.remove('glyph-preview');
     const clone=m.el.cloneNode(true);
     clone.classList.remove('selected','dragging');
     clone.querySelectorAll('.handle,.state-label,.module-wires,.remove').forEach(n=>n.remove());
@@ -176,12 +176,24 @@ export function createEditor(ctx) {
     return out;
   }
   function terminalCaption(m){const n=ctx.services.editor.terminalPoles(m);return m.terminalVersion===2?n+' Durchgangsklemmen · '+ctx.services.editor.terminalLinks(m).length+' Steckbrücken':n+' Durchgangsklemmen · '+(ctx.services.editor.terminalSpan(m)===1?'jede Nummer für sich':ctx.services.editor.terminalGroups(m).join(' · '));}
-  function railCaption(m){return '+24 · 0 V · PE, je '+ctx.services.editor.railScrews(m)+' Schrauben';}
+  const railTypes = [
+    ['L1','L1','l1'],['L2','L2','l2'],['L3','L3','l3'],['N','N','zero'],
+    ['PE','PE','pe'],['0V','0 V','zero'],['+24','+24 V','plus']
+  ];
+  function railPinGroups(m){
+    const prefixes = m.railPotential ? [''] : ['+24.','0V.','PE.'];
+    return prefixes.map(prefix => Array.from({length:ctx.services.editor.railScrews(m)},(_,i)=>prefix+(i+1)));
+  }
+  function railCaption(m){
+    const potential = railTypes.find(([id]) => id === m.railPotential);
+    const screws = ctx.services.editor.railScrews(m)+' Schrauben';
+    return potential ? potential[1]+' · '+screws : '+24 · 0 V · PE, je '+screws;
+  }
   function dropLoose(m){
     const keys=new Set();
     if(m.type==='terminal'){for(let i=1;i<=ctx.services.editor.terminalPoles(m);i++){keys.add(m.id+'.'+i+'o');keys.add(m.id+'.'+i+'u');}}
     if(m.type==='connector')for(let i=1;i<=ctx.services.editor.connectorPorts(m);i++)keys.add(m.id+'.'+i);
-    if(m.type==='rail'){for(const bar of ['+24','0V','PE'])for(let i=1;i<=ctx.services.editor.railScrews(m);i++)keys.add(m.id+'.'+bar+'.'+i);}
+    if(m.type==='rail')for(const group of railPinGroups(m))for(const pin of group)keys.add(m.id+'.'+pin);
     const gone=k=>k&&k.startsWith(m.id+'.')&&!keys.has(k);
     ctx.state.wires=ctx.state.wires.filter(w=>!gone(w.a)&&!gone(w.b)&&!ctx.services.editor.internallyCommon(w.a,w.b));
     ctx.state.modules.filter(ctx.services.editor.isMeter).forEach(x=>{if(gone(x.probeRed))x.probeRed=null;if(gone(x.probeBlack))x.probeBlack=null;if(x.measuredWire&&(gone(x.measuredWire.a)||gone(x.measuredWire.b)))x.measuredWire=null;});
@@ -248,7 +260,10 @@ export function createEditor(ctx) {
     if(ctx.services.editor.isInstallationSwitch(m)&&![0,1].includes(m.selection))m.selection=0;
     if(m.type==='selector'&&![-1,0,1].includes(m.selection))m.selection=0;
     if(m.type==='terminal'){m.poles=ctx.services.editor.terminalPoles(m);m.span=ctx.services.editor.terminalSpan(m);if(m.terminalVersion===2){m.span=1;m.bridges=ctx.services.editor.terminalLinks(m);m.terminalColors=Array.from({length:m.poles},(_,i)=>['blue','pe'].includes(m.terminalColors?.[i])?m.terminalColors[i]:'gray');}}
-    if(m.type==='rail')m.screws=ctx.services.editor.railScrews(m);
+    if(m.type==='rail'){
+      m.screws=ctx.services.editor.railScrews(m);
+      if(!railTypes.some(([id])=>id===m.railPotential))delete m.railPotential;
+    }
     return m;
   }
   const isInstallationSwitch = m=>m.type==='changeover'||m.type==='crossover';
@@ -264,6 +279,8 @@ export function createEditor(ctx) {
     if(m.type==='note')return '';
 
     if(m.type==='timer')return '15 gemeinsam · 16 NC · 18 NO';
+    if(m.type==='overload')return 'Öffner 95–96 · Schließer 97–98';
+    if(m.type==='staircase')return m.threeWire?'L · N · S/L′':'L · N · T · L′';
     if(ctx.services.editor.isProtection(m))return m.type==='motorprotection'?'3 Pole · 1 NO + 1 NC':'Leitungsschutzschalter';
     if(ctx.services.editor.isMeter(m))return 'Messleitungen · nicht im Stromkreis';
     if(m.type==='relay')return 'A1 / A2 · eigene Spule';
@@ -623,6 +640,44 @@ export function createEditor(ctx) {
     if(m.type==='potentiometer')return `<div class="device-eyebrow">DREH-POTENTIOMETER</div><div class="pot-dial" aria-hidden="true"><span class="pot-zero">0</span><span class="pot-max">100</span><div class="pot-rotor"><i></i></div></div><div class="pot-controls"><label>Schleifer <output class="pot-value"></output><input class="pot-slider" type="range" min="0" max="100" step="1" value="${Math.round(m.potPosition*100)}" aria-label="${m.id} Schleiferposition"></label></div><div class="pot-rating"></div><svg class="pot-symbol" viewBox="0 0 194 56" aria-label="Potentiometer: Klemme 1 und 3 sind die Widerstandsenden, Klemme 2 ist der Schleifer"><path d="M16 51 V17 H55 M139 17 H178 V51 M97 51 V29 M91 37 L97 29 L103 37"/><rect x="55" y="9" width="84" height="16"/></svg><div class="sensor-terminals">${ctx.services.editor.terminal(m,'1','1','bottom')}${ctx.services.editor.terminal(m,'2','2','bottom')}${ctx.services.editor.terminal(m,'3','3','bottom')}</div>`;
     if(m.type==='motion')return `<div class="device-eyebrow">PIR · BEWEGUNGSMELDER</div><div class="motion-detection" title="Maus im Erfassungsbereich bewegen"><span class="motion-led" aria-hidden="true"></span><div class="pir-lens" aria-hidden="true"></div><span class="motion-status">Ohne Versorgung</span><small>Erfassungsbereich · Maus bewegen</small></div><button class="motion-test" type="button">Bewegung testen</button><div class="motion-rating">${m.nomV} V ${m.nomV===24?'DC':'AC'} · ${m.motionDelay} s Nachlauf</div><div class="sensor-terminals">${ctx.services.editor.terminal(m,'L',m.nomV===24?'+24':'L','bottom')}${ctx.services.editor.terminal(m,'N',m.nomV===24?'0 V':'N','bottom')}${ctx.services.editor.terminal(m,'OUT',m.nomV===24?'OUT':"L′",'bottom')}</div>`;
 
+    if(m.type==='staircase'){
+      const term = (id,label,side) => ctx.services.editor.terminal(m,id,label,side);
+      return `<div class="timer-terminals top">${term('L','L','top')}${term('N','N','top')}</div>
+        <div class="timer-brand">TREPPENLICHT <small>${m.threeWire?'Drei-':'Vier'}leiter · 230 V</small></div>
+        <div class="timer-display"><span class="timer-phase">Aus</span><output class="timer-countdown">—</output><progress class="timer-progress" max="1" value="0" aria-label="Nachlauf"></progress></div>
+        <div class="timer-leds"><span class="timer-input">Taster</span><span class="timer-output">Licht</span></div>
+        <div class="staircase-delay">Nachlauf ${m.delayOn} s</div>
+        <div class="timer-terminals bottom">${m.threeWire?'':term('T','T','bottom')}${term('OUT',m.threeWire?'S / L′':'L′','bottom')}</div>`;
+    }
+    if(m.type==='overload'){
+      const term = (id,label,side) => ctx.services.editor.terminal(m,id,label,side);
+      const inputs = [['1','1/L1'],['3','3/L2'],['5','5/L3']];
+      const outputs = [['2','2/T1'],['4','4/T2'],['6','6/T3']];
+      return `<div class="overload-bank overload-inputs">
+          ${inputs.map(([id,label]) => term(id,label,'top')).join('')}
+        </div>
+        <div class="overload-plate">
+          <strong>ÜBERLASTRELAIS</strong>
+          <span>Einstellstrom ${ctx.services.editor.fmtV(m.ratedCurrent)} A</span>
+          <div class="overload-readout">
+            <span class="overload-state">Bereit</span>
+            <progress class="overload-meter" max="1" value="0" aria-label="Thermische Belastung"></progress>
+          </div>
+        </div>
+        <div class="overload-output-deck">
+          <div class="overload-bank overload-outputs">
+            ${outputs.map(([id,label]) => term(id,label,'bottom')).join('')}
+          </div>
+          <div class="overload-bank overload-aux">
+            <span class="overload-aux-label">Öffner · NC</span>
+            ${['95','96'].map(id => term(id,id,'bottom')).join('')}
+          </div>
+          <div class="overload-bank overload-aux">
+            <span class="overload-aux-label">Schließer · NO</span>
+            ${['97','98'].map(id => term(id,id,'bottom')).join('')}
+          </div>
+        </div>`;
+    }
     if(m.type==='timer')return `<div class="timer-terminals top">${ctx.services.editor.terminal(m,'A1','A1','top')}${ctx.services.editor.terminal(m,'A2','A2','top')}</div><div class="timer-brand">MULTITIMER <small>${m.nomV} V · A1/A2</small></div><div class="timer-display"><span class="timer-phase">Abgefallen</span><output class="timer-countdown">—</output><progress class="timer-progress" max="1" value="0" aria-label="Zeitablauf"></progress></div><div class="timer-leds"><span class="timer-input">Spule</span><span class="timer-output">Kontakt</span></div><button class="timer-settings" type="button" title="Zeitrelais einstellen"><span>${ctx.config.timerModes[m.timerMode]}</span><strong>${m.timerMode===3?'EIN':m.timerMode===1?'AUS':'AN'} ${m.delayOn} s</strong>${m.timerMode>=2?'<strong>'+(m.timerMode===3?'AUS':'AB')+' '+m.delayOff+' s</strong>':''}<small>Funktion / Zeiten einstellen</small></button><svg class="timer-symbol" viewBox="0 0 160 72" role="img" aria-label="Wechsler: 15 gemeinsam, in Ruhe an 16, verzögert an 18"><g fill="none" stroke="#163848" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M80 18 V32"/><path class="timer-rest" d="M80 32 L46 56"/><path class="timer-work" d="M80 32 L114 56"/><path d="M34 56 H58"/><path d="M102 56 H126"/><path d="M46 56 V68"/><path d="M114 56 V68"/></g><text x="80" y="14" text-anchor="middle">15</text><text class="hint" x="28" y="52" text-anchor="end">16</text><text class="hint" x="132" y="52" text-anchor="start">18</text></svg><div class="timer-terminals bottom">${[['16','16 NC'],['15','15 COM'],['18','18 NO']].map(([key,label])=>ctx.services.editor.terminal(m,key,label,'bottom')).join('')}</div>`;
 
     if(ctx.services.editor.isProtection(m)){
@@ -663,8 +718,10 @@ export function createEditor(ctx) {
       return `<div class="terminal-strip" aria-label="${m.id} Reihenklemme">${html}</div>`;
     }
     if(m.type==='rail'){
-      const bars=[['+24','+24 V','plus'],['0V','0 V','zero'],['PE','PE','pe']],count=ctx.services.editor.railScrews(m);
-      return `<div class="rail-face">${bars.map(([key,label,cls])=>`<div class="rail-bar ${cls}"><span class="rail-name">${label}</span><div class="rail-screws">${Array.from({length:count},(_,i)=>ctx.services.editor.terminal(m,key+'.'+(i+1),String(i+1),'bottom')).join('')}</div></div>`).join('')}</div>`;
+      const bars = m.railPotential ? [railTypes.find(([id])=>id===m.railPotential)]
+        : ['+24','0V','PE'].map(id=>railTypes.find(([key])=>key===id));
+      const groups = railPinGroups(m);
+      return `<div class="rail-face">${bars.map(([,label,cls],index)=>`<div class="rail-bar ${cls}"><span class="rail-name">${label}</span><div class="rail-screws">${groups[index].map((key,i)=>ctx.services.editor.terminal(m,key,String(i+1),'bottom')).join('')}</div></div>`).join('')}</div>`;
     }
     if(m.type==='selector'){
       const pair=(side,top,bottom)=>`<div class="selector-contact ${side}">${ctx.services.editor.terminal(m,top,top,'top')}<svg viewBox="0 0 48 180" preserveAspectRatio="none" aria-hidden="true"><path d="M24 18 V83 M24 131 V162"/><path class="open" d="M24 131 L${side==='a'?38:10} 90"/><path class="closed" d="M24 131 V83"/></svg>${ctx.services.editor.terminal(m,bottom,bottom,'bottom')}</div>`;
@@ -690,8 +747,11 @@ export function createEditor(ctx) {
     }
     if(m.type==='acmotor'){
       const line=[['U1','U1','phase-u'],['V1','V1','phase-v'],['W1','W1','phase-w']];
-      const star=[['U2','U2','phase-u'],['V2','V2','phase-v'],['W2','W2','phase-w']];
-      return `<svg class="ac-illustration" viewBox="0 0 296 162" aria-hidden="true"><ellipse cx="148" cy="147" rx="112" ry="6" fill="#12202c" opacity=".14"/><path d="M86 122H112V142H72V135ZM193 122H215L228 142H188Z" fill="#344e63" stroke="#24394c" stroke-width="2"/><rect x="225" y="79" width="52" height="22" rx="3" fill="#bdcbd4" stroke="#667c8c" stroke-width="2"/><path d="M243 82H273M250 87H272" stroke="#edf4f8" stroke-width="3"/><rect x="78" y="48" width="151" height="81" rx="15" fill="#527c9b" stroke="#28495f" stroke-width="2"/><path d="M100 56H210M100 66H215M100 76H217M100 86H217M100 96H216M100 106H214M100 116H209" stroke="#2b506c" stroke-width="5" stroke-linecap="round"/><path d="M101 53H210M101 63H215M101 73H217M101 83H217M101 93H216M101 103H214M101 113H209" stroke="#7ba0ba" stroke-width="1.5" stroke-linecap="round"/><rect x="216" y="49" width="17" height="80" rx="6" fill="#90a9ba" stroke="#47657b" stroke-width="2"/><rect x="121" y="26" width="69" height="29" rx="4" fill="#395e7a" stroke="#28465c" stroke-width="2"/><path d="M125 31H185" stroke="#8caabc" stroke-width="2"/><circle cx="130" cy="41" r="2" fill="#c3d1d9"/><circle cx="181" cy="41" r="2" fill="#c3d1d9"/><circle cx="69" cy="88" r="44" fill="#304e64" stroke="#243a4b" stroke-width="2"/><circle cx="69" cy="88" r="36" fill="#172e40" stroke="#91a9b9" stroke-width="3"/><circle cx="69" cy="88" r="29" fill="none" stroke="#54768e" stroke-width="2"/><circle cx="41" cy="59" r="2.5" fill="#cfdae0"/><circle cx="97" cy="117" r="2.5" fill="#cfdae0"/></svg><div class="ac-rotor" aria-hidden="true"><div class="fan"></div></div><div class="ac-rating"><span class="ac-mark">3~ · 400 V</span><span class="ac-kw">${(m.ratedKw||1.5).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})} kW</span></div><div class="ac-banks"><div class="aux-bank">${line.map(([n,l,c])=>ctx.services.editor.terminal(m,n,l,'bottom',c)).join('')}</div><div class="aux-bank">${star.map(([n,l,c])=>ctx.services.editor.terminal(m,n,l,'bottom',c)).join('')}</div></div><div class="ac-earth">${ctx.services.editor.terminal(m,'PE','PE','bottom','phase-pe')}</div>`;
+      const ends=[['U2','U2','phase-u'],['V2','V2','phase-v'],['W2','W2','phase-w']];
+      const banks = [[ends,'top'],[line,'bottom']].map(([pins,direction]) =>
+        `<div class="aux-bank">${pins.map(([name,label,color])=>ctx.services.editor.terminal(m,name,label,direction,color)).join('')}</div>`
+      ).join('');
+      return `<svg class="ac-illustration" viewBox="0 0 296 162" aria-hidden="true"><ellipse cx="148" cy="147" rx="112" ry="6" fill="#12202c" opacity=".14"/><path d="M86 122H112V142H72V135ZM193 122H215L228 142H188Z" fill="#344e63" stroke="#24394c" stroke-width="2"/><rect x="225" y="79" width="52" height="22" rx="3" fill="#bdcbd4" stroke="#667c8c" stroke-width="2"/><path d="M243 82H273M250 87H272" stroke="#edf4f8" stroke-width="3"/><rect x="78" y="48" width="151" height="81" rx="15" fill="#527c9b" stroke="#28495f" stroke-width="2"/><path d="M100 56H210M100 66H215M100 76H217M100 86H217M100 96H216M100 106H214M100 116H209" stroke="#2b506c" stroke-width="5" stroke-linecap="round"/><path d="M101 53H210M101 63H215M101 73H217M101 83H217M101 93H216M101 103H214M101 113H209" stroke="#7ba0ba" stroke-width="1.5" stroke-linecap="round"/><rect x="216" y="49" width="17" height="80" rx="6" fill="#90a9ba" stroke="#47657b" stroke-width="2"/><rect x="121" y="26" width="69" height="29" rx="4" fill="#395e7a" stroke="#28465c" stroke-width="2"/><path d="M125 31H185" stroke="#8caabc" stroke-width="2"/><circle cx="130" cy="41" r="2" fill="#c3d1d9"/><circle cx="181" cy="41" r="2" fill="#c3d1d9"/><circle cx="69" cy="88" r="44" fill="#304e64" stroke="#243a4b" stroke-width="2"/><circle cx="69" cy="88" r="36" fill="#172e40" stroke="#91a9b9" stroke-width="3"/><circle cx="69" cy="88" r="29" fill="none" stroke="#54768e" stroke-width="2"/><circle cx="41" cy="59" r="2.5" fill="#cfdae0"/><circle cx="97" cy="117" r="2.5" fill="#cfdae0"/></svg><div class="ac-rotor" aria-hidden="true"><div class="fan"></div></div><div class="ac-rating"><span class="ac-mark">${m.nominalDelta?'400 V Δ / 690 V Y':'3~ · 400 V'}</span><span class="ac-kw">${(m.ratedKw||1.5).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})} kW</span></div><div class="ac-banks">${banks}</div><div class="ac-earth">${ctx.services.editor.terminal(m,'PE','PE','bottom','phase-pe')}</div>`;
     }
     if(m.type==='mains'){
       const pins=[['L1','L1','phase-l1'],['L2','L2','phase-l2'],['L3','L3','phase-l3'],['N','N','phase-n'],['PE','PE','phase-pe']];
@@ -707,10 +767,14 @@ export function createEditor(ctx) {
   }
   function renderModule(m){
     ctx.services.editor.defaultNom(m);
-    const el=document.createElement('div');m.el=el;el.className='module '+(m.type==='rail'?'bus':m.type);el.dataset.id=m.id;
+    const el=document.createElement('div');m.el=el;el.className='module '+(m.type==='rail'?'bus':m.type);
+    if (m.type==='staircase') el.classList.add('timer');el.dataset.id=m.id;
     if(m.type==='terminal'){el.classList.toggle('terminal-v2',m.terminalVersion===2);el.style.width=(m.terminalVersion===2?24+ctx.services.editor.terminalPoles(m)*36:Math.max(220,36+ctx.services.editor.terminalPoles(m)*46+Math.ceil(ctx.services.editor.terminalPoles(m)/ctx.services.editor.terminalSpan(m))*8))+'px';}
     if(m.type==='breaker'&&m.poles===3){el.style.width='198px';el.classList.add('poles-3');}
-    if(m.type==='rail')el.style.width=(ctx.services.editor.railScrews(m)>5?420:280)+'px';
+    if(m.type==='rail'){
+      el.style.width=(ctx.services.editor.railScrews(m)>5?420:280)+'px';
+      el.classList.toggle('single-rail',!!m.railPotential);
+    }
     el.innerHTML=`<div class="handle"><button class="handle-label" aria-label="${ctx.services.editor.displayName(m)} verschieben, Pfeiltasten verwenden">${ctx.services.editor.shortName(m)}</button><span class="handle-copy"><span class="handle-name">${ctx.config.types[m.type]}</span><span class="handle-sub"></span></span><span class="lock-indicator" hidden aria-label="Position gesperrt"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10 V7 a4 4 0 0 1 8 0 v3"/></svg></span><button class="remove" aria-label="${ctx.services.editor.displayName(m)} entfernen" title="Bauteil entfernen">×</button></div><div class="face">${ctx.services.editor.face(m)}</div><div class="state-label"><span class="module-state"></span></div>`;
     if(m.type==='note'||m.type==='junction'){
       const controls=document.createElement('div');controls.className='note-resize-controls';controls.setAttribute('aria-hidden','true');
@@ -918,6 +982,11 @@ export function createEditor(ctx) {
   function partKind(m){return ctx.services.editor.isCombinedTaster(m)&&m.latching?'Schalter · rastend':m.type==='note'?ctx.services.editor.componentTitle(m):m.type==='auxiliary'?'Hilfskontakte':m.type==='contactor'?'Hauptschütz':m.type==='terminal'&&m.terminalVersion===2?'Reihenklemmen V2':ctx.config.types[m.type];}
   function partBlob(m){return [m.id,ctx.services.editor.displayName(m),ctx.services.editor.shortName(m),ctx.services.editor.partKind(m),m.description||'',m.noteText||'',m.parent||''].join(' ').toLowerCase();}
   function inspectorRows(m){
+    if(m.type==='rail'&&m.railPotential)return [
+      ['Kennzeichnung',railTypes.find(([id])=>id===m.railPotential)[1]],
+      ['Anschlüsse','1 bis '+ctx.services.editor.railScrews(m)],
+      ['Intern verbunden','Alle Schrauben dieser Schiene']
+    ];
     if(m.type==='terminal'&&m.terminalVersion===2)return [['Klemmen','1 bis '+ctx.services.editor.terminalPoles(m)],['Oben / unten','Dieselbe Nummer'],['Verbunden',ctx.services.editor.terminalGroups(m).join(' · ')],['Steckbrücken',String(ctx.services.editor.terminalLinks(m).length)],['Gehäusefarbe','Kennzeichnung, keine Verdrahtung']];
     if(m.type==='changeover')return [['Gemeinsamer Anschluss','L'],['Korrespondierende','1 / 2'],['Stellung 1','L–1'],['Stellung 2','L–2'],['Betätigung','Rastende Wippe · zwei Stellungen']];
     if(m.type==='crossover')return [['Eingangspaar','1 / 2'],['Ausgangspaar','3 / 4'],['Stellung 1','1–3 und 2–4'],['Stellung 2','1–4 und 2–3'],['Kreuzung','Kein elektrischer Knoten in der Mitte']];
@@ -929,7 +998,7 @@ export function createEditor(ctx) {
     if(m.type==='motion')return [['Versorgung',m.nomV+' V '+(m.nomV===24?'DC':'AC')],['Eingang','L / +24 · N / 0 V'],['Ausgang','OUT / L′ · geschaltete Versorgung'],['Nachlauf',m.motionDelay+' s · nachtriggerbar']];
     if(m.type==='note')return [['Darstellung',m.noteStyle==='label'?'Beschriftungsstreifen':m.noteStyle==='frame'?'Markierungsrahmen':'Notizzettel'],['Position',m.locked?'Gesperrt':'Verschiebbar'],...(m.noteStyle==='card'?[]:[['Größe',m.noteWidth+' × '+m.noteHeight+' px']])];
 
-    return m.type==='timer'?[['Spule','A1 / A2 · '+(m.nomV||24)+' V'],['Gemeinsam','15'],['Ruhe','15–16'],['Arbeit','15–18'],['Funktion',ctx.config.timerModes[m.timerMode]||ctx.config.timerModes[0]]]:m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',ctx.services.editor.fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='mains'?[['U_LL',ctx.services.editor.fmtV(m.voltage)+' V'],['U_LN',ctx.services.editor.fmtV(m.voltage/Math.sqrt(3))+' V'],['Frequenz','50 Hz'],['Klemmen','L1 / L2 / L3 / N / PE'],['N–PE','intern verbunden']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B6 / B7','Inkrementalgeber · Rechteck'],['Richtung','Rechts: B6 vor B7 · Links: B7 vor B6'],['Versorgung','24 V nur für den Geber'],['Modell','10 s bei Nennspannung · 20 Takte'],['PE','Separate Gehäuseklemme']]:m.type==='acmotor'?[['Netz','400 V 3~'],['Nennleistung',(m.ratedKw||1.5)+' kW'],['Wirkungsgrad',Math.round((m.eta||0.8)*100)+' %'],['Zuleitung','U1 · V1 · W1'],['Wicklung','U2 · V2 · W2'],['PE','Gehäuse, nicht an der Wicklung']]:(m.type==='motor'||ctx.services.editor.isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',ctx.config.signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis '+ctx.services.editor.terminalPoles(m)],['Oben / unten','dieselbe Nummer'],['Rand',ctx.services.editor.terminalSpan(m)===2?'Paare, eine Verbindung':ctx.services.editor.terminalSpan(m)===4?'je 4, eine Verbindung':'keine Brücke']]:m.type==='rail'?[['+24',ctx.services.editor.railScrews(m)+' Schrauben, eine Schiene'],['0 V',ctx.services.editor.railScrews(m)+' Schrauben, getrennt von +24'],['PE',ctx.services.editor.railScrews(m)+' Schrauben, nicht auf 0 V']]:ctx.services.editor.isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',ctx.services.editor.lampTag(m)+' · X1 / X2'],['Tasterfarbe',ctx.config.buttonColors[m.buttonColor][0]],['Leuchtfarbe',ctx.config.signalColors[m.signalColor][0]]]:[['Bauteil',ctx.config.types[m.type]]];
+    return m.type==='timer'?[['Spule','A1 / A2 · '+(m.nomV||24)+' V'],['Gemeinsam','15'],['Ruhe','15–16'],['Arbeit','15–18'],['Funktion',ctx.config.timerModes[m.timerMode]||ctx.config.timerModes[0]]]:m.type==='contactor'?[['Leistung','1–2 · 3–4 · 5–6'],['Hilfskontakt','13–14 NO'],['Spule','A1+ / A2− · '+(m.nomV||24)+' V']]:m.type==='auxiliary'?[['Gekoppelt an',m.parent],['Schließer','53–54 · 83–84'],['Öffner','61–62 · 71–72'],['Eigene Spule','Keine']]:m.type==='psu'?[['Ausgang',ctx.services.editor.fmtV(m.voltage)+' V'],['Klemmen','+24 / 0 V']]:m.type==='mains'?[['U_LL',ctx.services.editor.fmtV(m.voltage)+' V'],['U_LN',ctx.services.editor.fmtV(m.voltage/Math.sqrt(3))+' V'],['Frequenz','50 Hz'],['Klemmen','L1 / L2 / L3 / N / PE'],['N–PE','intern verbunden']]:m.type==='lineardrive'?[['Motor','24 V DC · umpolbar'],['B1 / B2 / B3','Links / Mitte / rechts'],['Wechsler','11–12 Ruhe · 11–14 aktiv'],['B6 / B7','Inkrementalgeber · Rechteck'],['Richtung','Rechts: B6 vor B7 · Links: B7 vor B6'],['Versorgung','24 V nur für den Geber'],['Modell','10 s bei Nennspannung · 20 Takte'],['PE','Separate Gehäuseklemme']]:m.type==='acmotor'?[['Nennspannung',m.nominalDelta?'400 V Δ / 690 V Y':'400 V 3~'],['Nennleistung',(m.ratedKw||1.5)+' kW'],['Wirkungsgrad',Math.round((m.eta||0.8)*100)+' %'],['Zuleitung','U1 · V1 · W1'],['Wicklung','U2 · V2 · W2'],['PE','Gehäuse, nicht an der Wicklung']]:(m.type==='motor'||ctx.services.editor.isLight(m))?[['Nennspannung',(m.nomV||24)+' V'],['Nennleistung',(m.nomP||50)+' W']].concat(m.type==='pilot'?[['Leuchtfarbe',ctx.config.signalColors[m.signalColor][0]]]:[]):m.type==='selector'?[['Stellung A','13–14 geschlossen'],['Stellung 0','Beide offen'],['Stellung B','23–24 geschlossen'],['Betätigung','Rastend · A / 0 / B']]:m.type==='emergency'?[['Öffner','21–22 NC'],['Schließer','13–14 NO'],['Betätigung','Rastend'],['Rückstellen','Separat entriegeln']]:m.type==='terminal'?[['Klemmen','1 bis '+ctx.services.editor.terminalPoles(m)],['Oben / unten','dieselbe Nummer'],['Rand',ctx.services.editor.terminalSpan(m)===2?'Paare, eine Verbindung':ctx.services.editor.terminalSpan(m)===4?'je 4, eine Verbindung':'keine Brücke']]:m.type==='rail'?[['+24',ctx.services.editor.railScrews(m)+' Schrauben, eine Schiene'],['0 V',ctx.services.editor.railScrews(m)+' Schrauben, getrennt von +24'],['PE',ctx.services.editor.railScrews(m)+' Schrauben, nicht auf 0 V']]:ctx.services.editor.isCombinedTaster(m)?[['Schließer','13–14 NO'],['Öffner','21–22 NC'],['Meldeleuchte',ctx.services.editor.lampTag(m)+' · X1 / X2'],['Tasterfarbe',ctx.config.buttonColors[m.buttonColor][0]],['Leuchtfarbe',ctx.config.signalColors[m.signalColor][0]]]:[['Bauteil',ctx.config.types[m.type]]];
   }
   function refreshInspectorRows(m){
     const box=ctx.dom.$('#componentDetails .terminal-info');
@@ -1046,7 +1115,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     own.append(input);root.append(own);ctx.services.editor.syncCableButtons(root,current);
   }
   function renderWireDetails(){
-    ctx.services.editor.closeDevMenu();const w=ctx.state.selectedWire;ctx.dom.$('#detailTitle').textContent='Leitung';const kind=ctx.dom.$('#detailKind');if(kind){kind.hidden=false;kind.textContent='Ader';}ctx.services.editor.paintDetailPreview(null);ctx.dom.$('#addAux').hidden=true;ctx.dom.$('#couplingNote').hidden=true;
+    ctx.services.editor.closeDevMenu();const w=ctx.state.selectedWire;ctx.dom.$('#detailTitle').textContent='Leitung';const kind=ctx.dom.$('#detailKind');if(kind){kind.hidden=false;kind.textContent='Ader';}ctx.dom.$('#addAux').hidden=true;ctx.dom.$('#couplingNote').hidden=true;
+    const preview = ctx.dom.$('#detailPreview');
+    const cable = document.createElement('span');
+    cable.className = 'wire-preview-cable';
+    cable.style.setProperty('--cable',ctx.services.editor.cablePaint(w.color));
+    preview.classList.add('glyph-preview');
+    preview.setAttribute('aria-hidden','true');
+    preview.replaceChildren(cable);
+    preview.hidden = false;
     const root=ctx.dom.$('#componentDetails');root.replaceChildren();
     const ends=document.createElement('p');ends.className='wire-endpoints';ends.textContent=w.a+' ↔ '+w.b;root.append(ends);
     const field=document.createElement('div');field.className='color-field';const cap=document.createElement('span');cap.textContent='Aderfarbe';const box=document.createElement('div');box.className='wire-colors';field.append(cap,box);root.append(field);
@@ -1064,6 +1141,34 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const i=Number((ctx.state.lastSnap.wireCurrents||{})[w.a+'|'+w.b]);
     if(Number.isFinite(i)){const a=Math.abs(i);bits.push(a>=1?a.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' A':Math.round(a*1000).toLocaleString('de-DE')+' mA');}
     return bits.join(' · ');
+  }
+  const otherWireContacts = {
+    start: [['13','14','NO'],['21','22','NC']],
+    stop: [['13','14','NO'],['21','22','NC']],
+    emergency: [['13','14','NO'],['21','22','NC']],
+    overload: [['95','96','NC'],['97','98','NO']],
+    motorprotection: [['13','14','NO'],['21','22','NC']],
+    selector: [['13','14','NO'],['23','24','NO']]
+  };
+  function wireEndpoint(key){
+    const separator = key.indexOf('.');
+    if(separator < 0) return {label:key};
+    const id = key.slice(0,separator), pin = key.slice(separator+1);
+    const module = ctx.state.modules.find(m => m.id === id);
+    const badge = ctx.services.editor.term(key)?.parentElement.querySelector('.terminal-label')?.textContent.trim();
+    const label = id+' · '+(/^(A1\+|A2−)$/.test(badge) ? badge : pin);
+    if(!module) return {label};
+    const pairs = module.type === 'relay' ? ctx.services.editor.relayPairs(module)
+      : ctx.config.contacts[module.type] ?? otherWireContacts[module.type] ?? [];
+    const contact = pairs.find(([a,b]) => pin === a || pin === b);
+    if(contact){
+      const [a,b,kind] = contact;
+      return {label, contact:id+': '+(kind === 'NC' ? 'Öffner' : 'Schließer')+' ('+a+'–'+b+')'};
+    }
+    if(['contactor','relay','timer'].includes(module.type) && ['A1','A2'].includes(pin)){
+      return {label, role:id+': Spule (A1–A2)'};
+    }
+    return {label};
   }
   function renderWires(){
     ctx.dom.$('#clear').disabled=!ctx.state.wires.length;
@@ -1088,10 +1193,45 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(!ctx.state.wires.length){list.innerHTML='<p class="empty">Noch keine Leitungen.</p>';return;}
     if(!rows.length){list.innerHTML=electrical?'<p class="empty">Keine Leitung an diesem Bauteil.</p>':'<p class="empty">Bauteil auswählen oder „Alle Leitungen“ öffnen.</p>';return;}
     rows.forEach(({w,i})=>{
-      const row=document.createElement('div');row.className='wire-item';row.style.setProperty('--cable',ctx.services.editor.cablePaint(w.color));
-      row.innerHTML=`<i></i><span><b>${w.a} ↔ ${w.b}</b><small>${ctx.services.editor.wireMeasure(w)}</small></span><button aria-label="Leitung ${w.a} zu ${w.b} entfernen">×</button>`;
-      row.querySelector('button').onclick=()=>ctx.services.editor.removeWire(i);list.appendChild(row);
-      const pick=document.createElement('button');pick.className='wire-select';pick.textContent=w.a+' ↔ '+w.b;pick.setAttribute('aria-pressed',String(w===ctx.state.selectedWire));pick.onclick=()=>ctx.services.editor.selectWire(w);row.querySelector('b').replaceWith(pick);
+      const endpoints = [wireEndpoint(w.a), wireEndpoint(w.b)];
+      const connection = endpoints.map(endpoint => endpoint.label).join(' ↔ ');
+      const contacts = endpoints.map(endpoint => endpoint.contact).filter(Boolean);
+      const functions = contacts.length ? contacts : endpoints.map(endpoint => endpoint.role).filter(Boolean);
+      const knownColor = ctx.config.wirePalette.find(([,value]) => ctx.services.editor.sameCable(value,w.color));
+      const color = knownColor?.[0].split(' · ')[0] ?? w.color ?? 'Eigene Farbe';
+      const metadata = [...new Set([color,...functions])].join(' · ');
+
+      const row = document.createElement('div');
+      row.className = 'wire-item';
+      row.style.setProperty('--cable',ctx.services.editor.cablePaint(w.color));
+      const pick = document.createElement('button');
+      pick.type = 'button';
+      pick.className = 'wire-select';
+      pick.setAttribute('aria-pressed',String(w === ctx.state.selectedWire));
+      pick.title = [connection,metadata,ctx.state.powered ? wireMeasure(w) : ''].filter(Boolean).join('\n');
+      const ends = document.createElement('strong');
+      ends.textContent = connection;
+      const details = document.createElement('small');
+      const dot = document.createElement('i');
+      dot.setAttribute('aria-hidden','true');
+      const text = document.createElement('span');
+      text.textContent = metadata;
+      details.append(dot,text);
+      pick.append(ends,details);
+      pick.onclick = () => {
+        ctx.services.editor.selectWire(w);
+        list.querySelector('.wire-select[aria-pressed="true"]')?.focus({preventScroll:true});
+      };
+
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'wire-delete';
+      remove.title = 'Leitung löschen';
+      remove.setAttribute('aria-label','Leitung '+connection+' löschen');
+      remove.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 10v6m4-6v6"/></svg>';
+      remove.onclick = () => ctx.services.editor.removeWire(i);
+      row.append(pick,remove);
+      list.append(row);
     });
   }
   function badgeSwatchHtml(m){
@@ -1235,8 +1375,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       ctx.services.editor.markPolePreset();
       apply.hidden=true;
     }else if(m.type==='rail'){
-      note.textContent='Drei getrennte Schienen +24 V, 0 V und PE. Die Breite gilt sofort. PE liegt nicht auf 0 V.';
+      note.textContent=m.railPotential
+        ? 'Alle Schrauben dieser Schiene sind verbunden. Das Potenzial ergibt sich aus der angeschlossenen Leitung.'
+        : 'Drei getrennte Schienen +24 V, 0 V und PE.';
+      const potentialField = m.railPotential
+        ? '<label>Potenzial<select id="devRailPotential">'+railTypes.map(([id,label])=>'<option value="'+id+'">'+label+'</option>').join('')+'</select></label>'
+        : '';
       fields.innerHTML='<label>Schrauben je Schiene<select id="devScrews"><option value="5">5 · normal</option><option value="8">8 · breiter</option></select></label>';
+      fields.insertAdjacentHTML('afterbegin',potentialField);
+      if(m.railPotential)ctx.dom.$('#devRailPotential').value=m.railPotential;
       ctx.dom.$('#devScrews').value=String(ctx.services.editor.railScrews(m));
       apply.hidden=true;
     }else{
@@ -1329,6 +1476,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       if(!Number.isFinite(extra.boxWidth)||extra.boxWidth<240||extra.boxWidth>1600||!Number.isFinite(extra.boxHeight)||extra.boxHeight<180||extra.boxHeight>1600){fail('Breite 240–1600 und Höhe 180–1600 eingeben.');return;}
     }
     if(m.type==='connector'){extra.showBanner=!!ctx.dom.$('#devShowBanner')?.checked;extra.ports=Number(ctx.dom.$('#devPorts').value);if(![2,3,5].includes(extra.ports)){fail('2, 3 oder 5 Leiteranschlüsse wählen.');return;}}
+    if(m.type==='rail'&&m.railPotential){
+      const value=ctx.dom.$('#devRailPotential').value;
+      if(railTypes.some(([id])=>id===value))extra.railPotential=value;
+    }
     const extraSame=Object.keys(extra).every(key=>m[key]===extra[key]);
     let timerSettings=null;
     if(m.type==='timer'){
@@ -1382,7 +1533,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     const contactsSame=!nextContacts||nextContacts.every((c,i)=>m.relayContacts[i]&&m.relayContacts[i].kind===c.kind&&m.relayContacts[i].number===c.number);
     const protectionSame=!protectionSettings||(m.ratedCurrent===protectionSettings.ratedCurrent&&(m.type!=='breaker'||(m.poles===protectionSettings.poles&&m.characteristic===protectionSettings.characteristic&&m.breakingCapacity===protectionSettings.breakingCapacity)));
     if(extraSame&&(!tag||tag.id===m.id)&&description===(m.description||'')&&subtitleValue===m.subtitle&&titleLines===m.titleLines&&(!ctx.services.editor.isCombinedTaster(m)||latching===!!m.latching)&&timerSame&&contactsSame&&protectionSame&&(m.type!=='terminal'||(ctx.services.editor.terminalPoles(m)===poles&&ctx.services.editor.terminalSpan(m)===span))&&(m.type!=='rail'||ctx.services.editor.railScrews(m)===screws)&&(voltage===null||m.voltage===voltage)&&(kw===null||(m.ratedKw===kw&&m.eta===eta))&&(nv===null||(m.nomV===nv&&m.nomP===np)))return;
-    const electricalChange=ctx.services.simulation.electricalModule(m)&&((tag&&tag.id!==m.id)||!timerSame||!contactsSame||!protectionSame||ctx.services.editor.isCombinedTaster(m)&&latching!==!!m.latching||m.type==='terminal'&&(ctx.services.editor.terminalPoles(m)!==poles||ctx.services.editor.terminalSpan(m)!==span)||m.type==='rail'&&ctx.services.editor.railScrews(m)!==screws||voltage!==null&&m.voltage!==voltage||kw!==null&&(m.ratedKw!==kw||m.eta!==eta)||nv!==null&&(m.nomV!==nv||m.nomP!==np)||Object.keys(extra).some(key=>key!=='locked'&&key!=='showBanner'&&key!=='potPosition'&&extra[key]!==m[key]));
+    const electricalChange=ctx.services.simulation.electricalModule(m)&&((tag&&tag.id!==m.id)||!timerSame||!contactsSame||!protectionSame||ctx.services.editor.isCombinedTaster(m)&&latching!==!!m.latching||m.type==='terminal'&&(ctx.services.editor.terminalPoles(m)!==poles||ctx.services.editor.terminalSpan(m)!==span)||m.type==='rail'&&ctx.services.editor.railScrews(m)!==screws||voltage!==null&&m.voltage!==voltage||kw!==null&&(m.ratedKw!==kw||m.eta!==eta)||nv!==null&&(m.nomV!==nv||m.nomP!==np)||Object.keys(extra).some(key=>key!=='locked'&&key!=='showBanner'&&key!=='potPosition'&&key!=='railPotential'&&extra[key]!==m[key]));
     const commit=()=>{
     ctx.services.projekt.remember();
     ctx.services.editor.defaultNom(m);
@@ -1418,6 +1569,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.services.editor.mark();ctx.services.editor.draw();
     ctx.services.editor.paintDeviceFace(m);
     if(live){
+      if(m.type==='rail'&&m.subtitle===null)ctx.dom.$('#devSubtitle').value=ctx.services.editor.moduleCaption(m);
       ctx.dom.$('#devTitle').textContent='Bearbeiten';
       ctx.dom.$('#detailTitle').textContent=ctx.services.editor.displayName(m);const kind=ctx.dom.$('#detailKind');if(kind){kind.hidden=false;kind.textContent=ctx.services.editor.partKind(m);}ctx.services.editor.paintDetailPreview(m);
       ctx.services.editor.renderComponentResults();
@@ -1540,7 +1692,10 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     if(m.type==='terminal'){const hit=rest.match(/^(\d+)[ou]$/);if(!hit)return '';const n=Number(hit[1]);if(n<1||n>ctx.services.editor.terminalPoles(m))return '';const span=ctx.services.editor.terminalSpan(m);return id+'#'+(m.terminalVersion===2?ctx.services.editor.terminalGroupIndex(m,n):Math.floor((n-1)/span));}
     if(m.type==='connector')return /^[1-5]$/.test(rest)&&Number(rest)<=ctx.services.editor.connectorPorts(m)?id+'#common':'';
     if(m.type==='socket'){const hit=rest.match(/^(L|N|PE)(out)?$/);return hit?id+'#'+hit[1]:'';}
-    if(m.type==='rail'){const hit=rest.match(/^(\+24|0V|PE)\.\d+$/);return hit?id+'#'+hit[1]:'';}
+    if(m.type==='rail'){
+      const index = railPinGroups(m).findIndex(group=>group.includes(rest));
+      return index<0?'':id+'#'+index;
+    }
     if(m.type==='mains'&&(rest==='N'||rest==='PE'))return id+'#NPE';
     return '';
   }
@@ -2226,6 +2381,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       ctx.state.panelsBeforeCompare=null;
     }
     ctx.state.viewMode=mode;
+    ctx.services.projekt.renderReference();
     document.documentElement.classList.toggle('view-stick',mode==='stick');
     ctx.dom.$('#viewCompare').setAttribute('aria-pressed',String(mode==='compare'));
     ctx.dom.$('#viewStick').setAttribute('aria-pressed',String(mode==='stick'));
@@ -2486,7 +2642,15 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
       const label=m.el.querySelector('.module-state');
       if(m.type==='motion')ctx.services.editor.paintMotion(m,snap);
       if(ctx.services.editor.isProtection(m))ctx.services.editor.paintProtection(m,snap.protections?.[m.id]);
-      if(m.type==='timer')ctx.services.editor.paintTimer(m,snap);
+      if(m.type==='timer'||m.type==='staircase')ctx.services.editor.paintTimer(m,snap);
+      if(m.type==='overload'){
+        const state=snap.protections?.[m.id];
+        const text=state?.tripped?'Ausgelöst':'Bereit';
+        m.el.classList.toggle('overload-tripped', !!state?.tripped);
+        m.el.querySelector('.overload-state').textContent=text;
+        m.el.querySelector('.overload-meter').value=state?.thermal||0;
+        label.textContent=text;
+      }
       if(m.type==='contactor'||m.type==='auxiliary'||m.type==='relay'){
         const id=m.type==='auxiliary'?m.parent:m.id;
         const coil=coils[id]||{};
@@ -2685,7 +2849,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
   });
     document.querySelector('[data-add="start"]').insertAdjacentHTML('afterend',ctx.services.editor.partButton('switch','Schalter','Rastend · NO + NC'));
     document.querySelector('[data-add="lamp"]').closest('.add-set').before(ctx.services.editor.partGroup('Gebäudeinstallation',[
-    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['junction','Abzweigdose','Leeres, frei skalierbares Gehäuse'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
+    ['changeover','Wechselschalter','Rastend · L auf 1 oder 2'],['crossover','Kreuzschalter','Zwei Korrespondierende kreuzen'],['socket','Steckdose · L / N / PE','Schuko · Messpunkte vorne, Anschlussklemmen unten']
   ]));
     document.querySelector('[data-add="lamp"]').closest('.add-set').before(ctx.services.editor.partGroup('Regler & Sensoren',[
     ['resistor','Widerstand','Einstellbarer Wert · 2 Anschlüsse'],['potentiometer','Potentiometer','Linear · 3 Anschlüsse'],['motion','Bewegungsmelder','PIR · 24 / 230 V']
@@ -2701,6 +2865,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     ctx.services.projekt.remember();const type=['switch','label','frame'].includes(requested)?(requested==='switch'?'start':'note'):requested,prefix=ctx.services.editor.defaultPrefix(type);
     const m={id:ctx.services.editor.nextId(prefix),type,x:Math.max(24,Math.min(ctx.config.BOARD_W-510,(ctx.dom.viewport.clientWidth/2-ctx.state.camera.x)/ctx.state.scale-122)),y:Math.max(61,Math.min(ctx.config.BOARD_H-420,(ctx.dom.viewport.clientHeight/2-ctx.state.camera.y)/ctx.state.scale-170))};
     if(type==='connector')m.ports=Number(b.dataset.ports);
+    if(type==='rail')m.railPotential=railTypes[0][0];
     if(type==='terminal'&&b.dataset.terminalVersion==='2'){m.terminalVersion=2;m.bridges=[];m.poles=6;}
     if(type==='junction')m.junctionVersion=2;
     if(requested==='switch'){m.latching=true;m.buttonColor='black';}
@@ -2771,6 +2936,7 @@ details.innerHTML='<details class="terminal-info"><summary>Anschlüsse und Daten
     toggleTerminalBridge,
     connectorPorts,
     railScrews,
+    railPinGroups,
     terminalGroups,
     terminalCaption,
     railCaption,
