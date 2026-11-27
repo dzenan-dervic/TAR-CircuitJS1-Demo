@@ -5,20 +5,20 @@ egt-inst-02.txt INST-02 Ausschaltung in aufgelöster Darstellung
 egt-inst-03.txt INST-03 Ausschaltung in zusammenhängender Darstellung
 egt-inst-04.txt INST-04 Schaltzeichen im Vergleich
 +INST-05 – Wechselschaltung
-egt-inst-05.txt INST-05 Wechselschaltung – zusammenhängend
-egt-inst-05-uebersicht.txt INST-05 Wechselschaltung – Übersicht
+egt-inst-05.txt INST-05 Wechselschaltung – Zusammenhängende Darstellung
+egt-inst-05-uebersicht.txt INST-05 Wechselschaltung – Installationsschaltplan
 -
 +INST-06 – Sparwechselschaltung
-egt-inst-06.txt INST-06 Sparwechselschaltung – zusammenhängend
-egt-inst-06-uebersicht.txt INST-06 Sparwechselschaltung – Übersicht
+egt-inst-06.txt INST-06 Sparwechselschaltung – Zusammenhängende Darstellung
+egt-inst-06-uebersicht.txt INST-06 Sparwechselschaltung – Installationsschaltplan
 -
 +INST-07 – Serienschaltung
-egt-inst-07.txt INST-07 – Zusammenhängende Darstellung
-egt-inst-07-uebersicht.txt INST-07 – Installationsschaltplan
+egt-inst-07.txt INST-07 Serienschaltung – Zusammenhängende Darstellung
+egt-inst-07-uebersicht.txt INST-07 Serienschaltung – Installationsschaltplan
 -
 +INST-08 – Stromstoßschaltung
-egt-inst-08.txt INST-08 – Zusammenhängende Darstellung
-egt-inst-08-uebersicht.txt INST-08 – Installationsschaltplan
+egt-inst-08.txt INST-08 Stromstoßschaltung – Zusammenhängende Darstellung
+egt-inst-08-uebersicht.txt INST-08 Stromstoßschaltung – Installationsschaltplan
 -
 egt-inst-09.txt INST-09 Bewegungsmelder mit Steuertastern
 egt-inst-10.txt INST-10 Klingeln und Türöffner
@@ -43,8 +43,8 @@ egt-zeitrelais-blink.txt SCHÜTZ-08 – Zeitrelais blinkend
 egt-schuetz-09.txt SCHÜTZ-09 Verzögertes Einschalten
 egt-stern-dreieck.txt SCHÜTZ-10 – Stern-Dreieck Haupt- und Steuerstromkreis
 +SCHÜTZ-11 – Treppenlicht – Drei- und Vierleiter
-egt-schuetz-11-dreileiter.txt SCHÜTZ-11 Dreileiter (nicht nachschaltbar)
-egt-schuetz-11-vierleiter.txt SCHÜTZ-11 Vierleiter (nachschaltbar)
+egt-schuetz-11-dreileiter.txt SCHÜTZ-11 Treppenlicht – Dreileiter (nicht nachschaltbar)
+egt-schuetz-11-vierleiter.txt SCHÜTZ-11 Treppenlicht – Vierleiter (nachschaltbar)
 -
 -
 +EGT Motor Circuits
@@ -59,10 +59,10 @@ egt-motor-03-steinmetz-links.txt MOTOR-03 Steinmetz mit Linkslauf
 -
 egt-motor-04-prinzip.txt MOTOR-04 Stern-Dreieck-Prinzip
 +MOTOR-05 – Kondensatormotor – Drehrichtungen
-egt-kondensatormotor-rechts.txt MOTOR-05 Rechtslauf
-egt-kondensatormotor-links.txt MOTOR-05 Linkslauf
+egt-kondensatormotor-rechts.txt MOTOR-05 Kondensatormotor – Rechtslauf
+egt-kondensatormotor-links.txt MOTOR-05 Kondensatormotor – Linkslauf
 -
-egt-kondensatormotor-kompakt.txt MOTOR-05 – Vereinfachter Aufbau
+egt-kondensatormotor-kompakt.txt MOTOR-05 Kondensatormotor – Vereinfachter Aufbau
 -
 +EGT Function Plan
 egt-logik-01.txt LOGIK-01 Exklusiv-ODER
@@ -77,8 +77,8 @@ egt-logik-09.txt LOGIK-09 Außenbeleuchtung
 egt-fup-ton-tof.txt Zusatz – FUP-Zeitbausteine TON und TOF
 -
 +ANH-07 Thermal Overload Relay
-egt-anh-07-a.txt ANH-07 Location A Line Current
-egt-anh-07-b.txt ANH-07 Location B Winding Current
+egt-anh-07-a.txt ANH-07 Thermisches Überlastrelais – Einbauort A (Leiterstrom)
+egt-anh-07-b.txt ANH-07 Thermisches Überlastrelais – Einbauort B (Strangstrom)
 -
 +Basics
 ohms.txt Ohm's Law
