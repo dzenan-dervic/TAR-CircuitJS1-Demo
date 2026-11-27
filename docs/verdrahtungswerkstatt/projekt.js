@@ -1,7 +1,10 @@
 // Projekte, Wiederherstellung und Undo verwenden dasselbe gespeicherte Datenformat.
 import {schuetzExamples} from './schuetztechnik.js?v=20261125schuetzexport1';
+import {wiringExamples} from './unterricht-aufbauten.js';
 
 import {referenceCircuits} from '../schuetz-katalog.js';
+
+const classroomExamples = [...schuetzExamples, ...wiringExamples];
 
 export function createProject(ctx) {
   let bound = false;
@@ -367,8 +370,13 @@ export function createProject(ctx) {
     const examplesMenu = ctx.dom.$('#examplesMenu');
     const schuetzSubmenu = ctx.dom.$('#schuetzSubmenu');
     const examplesList = ctx.dom.$('#schuetzExamples');
+    const wiringList = ctx.dom.$('#wiringExamples');
+    const wiringSubmenu = ctx.dom.$('#wiringSubmenu');
     examplesMenu.addEventListener('toggle', () => {
-      if (!examplesMenu.open) schuetzSubmenu.open = false;
+      if (!examplesMenu.open) {
+        schuetzSubmenu.open = false;
+        if (wiringSubmenu) wiringSubmenu.open = false;
+      }
     });
     const dialog = ctx.dom.$('#exampleDialog');
     const saveBeforeLoad = ctx.dom.$('#saveBeforeExample');
@@ -400,7 +408,7 @@ export function createProject(ctx) {
       }
       load();
     });
-    for (const [id, title, create] of schuetzExamples) {
+    for (const [id, title, create] of classroomExamples) {
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'example-option';
@@ -419,7 +427,7 @@ export function createProject(ctx) {
         ctx.services.editor.fit();
         ctx.services.editor.say(title + ' geladen. Betrieb einschalten.');
       });
-      examplesList.append(button);
+      (wiringExamples.some(([key]) => key === id) && wiringList ? wiringList : examplesList).append(button);
     }
     ctx.dom.$('#reversing').onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.reversingBoard());ctx.services.editor.say('Drehrichtungsumkehr geladen. Betrieb einschalten. S1 Rechtslauf, S2 Linkslauf. Der Öffner 61–62 des anderen Schützes sperrt die Gegenrichtung. S0 hält an.');};
     for(const [id,cross] of [['changeoverExample',false],['crossoverExample',true]])ctx.dom.$('#'+id).onclick=()=>{ctx.services.projekt.remember();ctx.services.projekt.restore(ctx.services.projekt.installationBoard(cross));ctx.services.editor.fit();ctx.services.editor.say((cross?'Kreuzschaltung':'Wechselschaltung')+' geladen. Betrieb einschalten. Jede Wippe schaltet E1 um; E2 hängt an der Steckdose.');};
@@ -450,7 +458,7 @@ export function createProject(ctx) {
   function loadInitial() {
 const query = new URLSearchParams(location.search);
 const requested = query.get('schaltung');
-const example = schuetzExamples.find(([id]) => id === requested);
+const example = classroomExamples.find(([id]) => id === requested);
 const selfHolding = requested === 'selbsthaltung-dc';
 ctx.dom.$('#otherExamples').hidden = query.get('unterricht') === '1';
 if (example || selfHolding) ctx.config.STORE_KEY += ':' + requested;
