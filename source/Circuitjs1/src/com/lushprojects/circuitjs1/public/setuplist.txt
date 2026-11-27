@@ -16,8 +16,8 @@ egt-inst-06.txt INST-06 Connected Representation
 egt-inst-06-uebersicht.txt INST-06 Installation Plan
 -
 +INST Kreuzschaltung
-egt-inst-kreuz.txt Connected Representation
-egt-inst-kreuz-uebersicht.txt Installation Plan
+egt-inst-kreuz.txt Crossover Circuit – Connected Representation
+egt-inst-kreuz-uebersicht.txt Crossover Circuit – Installation Plan
 -
 +INST-07 Series Circuit
 egt-inst-07.txt Connected Representation

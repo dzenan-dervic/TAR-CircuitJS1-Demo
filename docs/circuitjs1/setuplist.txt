@@ -23,8 +23,8 @@ egt-inst-08-uebersicht.txt INST-08 – Installationsschaltplan
 egt-inst-09.txt INST-09 Bewegungsmelder mit Steuertastern
 egt-inst-10.txt INST-10 Klingeln und Türöffner
 +Zusatz – Kreuzschaltung
-egt-inst-kreuz.txt Zusammenhängende Darstellung
-egt-inst-kreuz-uebersicht.txt Installationsschaltplan
+egt-inst-kreuz.txt Kreuzschaltung – Zusammenhängende Darstellung
+egt-inst-kreuz-uebersicht.txt Kreuzschaltung – Installationsschaltplan
 -
 -
 +EGT Contactor Circuits
